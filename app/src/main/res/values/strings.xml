@@ -5,6 +5,8 @@
 
     <string name="change_note">Change Note</string>
 
+    <string name="home_title">Notes</string>
+
     <string name="new_note_content"></string>
     <string name="new_note_name">New Note</string>
     <string name="note_icon">Note Icon</string>

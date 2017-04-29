@@ -72,7 +72,7 @@ public class NotesWidgetProvider extends AppWidgetProvider {
         switch (intent.getAction()) {
             case BUTTON_CLICK_INTENT:
                 Intent buttonIntent = new Intent(context, SelectionActivity.class);
-                buttonIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                buttonIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 buttonIntent.setAction(IntentLibrary.CHOOSE_NOTE_INTENT);
                 context.startActivity(buttonIntent);
                 break;
