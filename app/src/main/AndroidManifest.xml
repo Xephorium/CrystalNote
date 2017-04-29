@@ -8,7 +8,18 @@
         android:supportsRtl="true"
         android:theme="@style/CrystalNoteTheme">
 
-        <!-- Note Modification Activity -->
+        <!-- Home Activity -->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CrystalNoteTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Note Creation Activity -->
         <activity
             android:name=".ui.creation.CreationActivity"
             android:screenOrientation="portrait"
@@ -25,8 +36,7 @@
             android:noHistory="false"
             android:theme="@style/CrystalNoteTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="com.xephorium.crystalnote.widget.CHOOSE_NOTE" />
             </intent-filter>
         </activity>
 

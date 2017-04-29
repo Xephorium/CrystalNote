@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.xephorium.crystalnote.ui.custom.NoteToolbar
+            android:id="@+id/home_toolbar"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:layout_alignParentTop="true"
+            android:elevation="@dimen/toolbar_elevation"
+            app:contentInsetStart="0dp"
+            app:theme="@style/ToolbarTheme"
+            />
+
+        <com.xephorium.crystalnote.ui.custom.NoteListView
+            android:id="@+id/note_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_toolbar">
+
+        </com.xephorium.crystalnote.ui.custom.NoteListView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/home_action_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_padding"
+            android:layout_marginBottom="@dimen/activity_padding"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/icon_add"
+            app:backgroundTint="@color/colorPrimary"
+            app:rippleColor="@color/rippleDark"
+            app:theme="@style/FloatingActionButtonTheme"
+            />
+
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/red"
+        >
+
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
