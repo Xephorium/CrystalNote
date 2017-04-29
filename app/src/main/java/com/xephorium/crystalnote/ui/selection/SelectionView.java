@@ -6,7 +6,7 @@ import com.xephorium.crystalnote.ui.base.BaseView;
 import java.util.List;
 
 public interface SelectionView extends BaseView {
-    void populateNoteList(List<Note> newNotes, List<Note> oldNotes);
+    void populateNoteList(List<Note> notes);
 
     void closeSelectionActivity();
 }

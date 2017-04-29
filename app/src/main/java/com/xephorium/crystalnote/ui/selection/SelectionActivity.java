@@ -21,7 +21,7 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
     @BindView(R.id.selection_toolbar)
     NoteToolbar toolbar;
 
-    @BindView(R.id.note_list_view)
+    @BindView(R.id.selection_note_list)
     NoteListView noteListView;
 
     SelectionPresenter presenter;
@@ -56,17 +56,17 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
     }
 
     @Override
+    public void populateNoteList(List<Note> notes) {
+        noteListView.populateNoteList(notes);
+    }
+
+    @Override
     public Toolbar getToolbar() {
         toolbar.setEditMode(false);
         toolbar.setTitle(R.string.selection_title);
         toolbar.setLeftButtonImage(R.drawable.icon_back);
         toolbar.setRightButtonImage(R.drawable.icon_search);
         return toolbar;
-    }
-
-    @Override
-    public void populateNoteList(List<Note> newNotes, List<Note> oldNotes) {
-        noteListView.populateNoteList(newNotes, oldNotes);
     }
 
     @Override
@@ -96,8 +96,8 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
             }
 
             @Override
-            public void onNoteLongClick(Note note) {
-                presenter.handleNoteLongClick(note);
+            public boolean onNoteLongClick(Note note) {
+                return presenter.handleNoteLongClick(note);
             }
 
             @Override

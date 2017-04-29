@@ -24,6 +24,7 @@ import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.model.Note;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -42,6 +43,9 @@ public class NoteListView extends SwipeRefreshLayout {
 
     @BindView(R.id.old_note_list_view)
     ListView oldNoteListView;
+
+    private List<Note> newNotes;
+    private List<Note> oldNotes;
 
     private NoteListViewListener noteListViewListener;
 
@@ -66,7 +70,9 @@ public class NoteListView extends SwipeRefreshLayout {
         this.setOnRefreshListener(getOnRefreshListener());
     }
 
-    public void populateNoteList(List<Note> newNotes, List<Note> oldNotes) {
+    public void populateNoteList(List<Note> noteList) {
+        parseNotes(noteList);
+
         if (newNotes.size() > 0 && oldNotes.size() > 0) {
             newNoteHeader.setVisibility(View.VISIBLE);
             newNoteListView.setVisibility(View.VISIBLE);
@@ -100,6 +106,21 @@ public class NoteListView extends SwipeRefreshLayout {
         oldNoteListView.setLayoutParams(getScrollViewHeightParams(oldNoteListView));
     }
 
+    private void parseNotes(List<Note> notes) {
+        List<Note> newNotes = new ArrayList<>();
+        List<Note> oldNotes = new ArrayList<>();
+
+        for (int x = 0; x < notes.size(); x++) {
+            if (Calendar.getInstance().getTime().getDay() == notes.get(x).getDate().getDay())
+                newNotes.add(notes.get(x));
+            else
+                oldNotes.add(notes.get(x));
+        }
+
+        this.newNotes = newNotes;
+        this.oldNotes = oldNotes;
+    }
+
     public void setNoteListViewListener(NoteListViewListener noteListViewListener) {
         this.noteListViewListener = noteListViewListener;
     }
@@ -116,8 +137,9 @@ public class NoteListView extends SwipeRefreshLayout {
             }
 
             @Override
-            public void onNoteLongClick(Note note) {
+            public boolean onNoteLongClick(Note note) {
                 // Default Behavior; Do Nothing
+                return true;
             }
 
             @Override
@@ -144,8 +166,7 @@ public class NoteListView extends SwipeRefreshLayout {
                 return new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
-                        noteListViewListener.onNoteLongClick(notes.get(position));
-                        return true;
+                        return noteListViewListener.onNoteLongClick(notes.get(position));
                     }
                 };
             }
@@ -177,7 +198,7 @@ public class NoteListView extends SwipeRefreshLayout {
 
     public interface NoteListViewListener {
         void onNoteClick(Note note);
-        void onNoteLongClick(Note note);
+        boolean onNoteLongClick(Note note);
         void onNoteListRefresh();
     }
 

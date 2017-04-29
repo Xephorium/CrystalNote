@@ -21,8 +21,6 @@ public class SelectionPresenter extends BasePresenter<SelectionView> {
 
     private Context context;
     private NoteManager noteManager;
-    private List<Note> newNoteList;
-    private List<Note> oldNoteList;
 
     public SelectionPresenter(SelectionView view) {
         attachView(view);
@@ -31,8 +29,7 @@ public class SelectionPresenter extends BasePresenter<SelectionView> {
     }
 
     public void refreshNoteList() {
-        parseNotes(NoteUtils.sortNotes(noteManager.getNotes(), SortType.DATE_NEW));
-        getView().populateNoteList(this.newNoteList, this.oldNoteList);
+        getView().populateNoteList(NoteUtils.sortNotes(noteManager.getNotes(), SortType.DATE_NEW));
     }
 
     public void handleToolbarBackClick() {
@@ -52,38 +49,8 @@ public class SelectionPresenter extends BasePresenter<SelectionView> {
     }
 
     public boolean handleNoteLongClick(Note note) {
+        // Do Nothing
         return true;
-    }
-
-    public List<Note> getNewNoteList() {
-        return newNoteList;
-    }
-
-    public void setNewNoteList(List<Note> newNoteList) {
-        this.newNoteList = newNoteList;
-    }
-
-    public List<Note> getOldNoteList() {
-        return oldNoteList;
-    }
-
-    public void setOldNoteList(List<Note> oldNoteList) {
-        this.oldNoteList = oldNoteList;
-    }
-
-    private void parseNotes(List<Note> notes) {
-        List<Note> newNotes = new ArrayList<>();
-        List<Note> oldNotes = new ArrayList<>();
-
-        for (int x = 0; x < notes.size(); x++) {
-            if (Calendar.getInstance().getTime().getDay() == notes.get(x).getDate().getDay())
-                newNotes.add(notes.get(x));
-            else
-                oldNotes.add(notes.get(x));
-        }
-
-        this.newNoteList = newNotes;
-        this.oldNoteList = oldNotes;
     }
 
     private void refreshWidget() {

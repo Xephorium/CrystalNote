@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/home_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
@@ -22,7 +23,7 @@
             />
 
         <com.xephorium.crystalnote.ui.custom.NoteListView
-            android:id="@+id/note_list_view"
+            android:id="@+id/home_note_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/home_toolbar">
@@ -46,8 +47,10 @@
     </RelativeLayout>
     
     <LinearLayout
+        android:id="@+id/navigation_drawer_content"
         android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:backgroundTint="@color/red"
         >
 
