@@ -16,60 +16,68 @@
         app:theme="@style/ToolbarTheme"
         />
 
-    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                  android:id="@+id/swipe_refresh_layout"
-                                                  android:layout_width="match_parent"
-                                                  android:layout_height="wrap_content"
-                                                  android:layout_below="@+id/selection_toolbar"
-        >
+    <com.xephorium.crystalnote.ui.custom.NoteListView
+        android:id="@+id/note_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selection_toolbar">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </com.xephorium.crystalnote.ui.custom.NoteListView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+    <!--<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+                                                  <!--android:id="@+id/swipe_refresh_layout"-->
+                                                  <!--android:layout_width="match_parent"-->
+                                                  <!--android:layout_height="wrap_content"-->
+                                                  <!--android:layout_below="@+id/selection_toolbar"-->
+        <!--&gt;-->
 
-                <TextView
-                    android:id="@+id/new_note_header"
-                    android:layout_width="@dimen/list_item_height"
-                    android:layout_height="@dimen/list_header_height"
-                    android:paddingBottom="@dimen/padding_small"
-                    android:gravity="bottom|center_horizontal"
-                    android:text="@string/today"
-                    style="@style/ListViewHeaderTheme"
-                    />
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/new_note_header"-->
+                    <!--android:layout_width="@dimen/list_item_height"-->
+                    <!--android:layout_height="@dimen/list_header_height"-->
+                    <!--android:paddingBottom="@dimen/padding_small"-->
+                    <!--android:gravity="bottom|center_horizontal"-->
+                    <!--android:text="@string/today"-->
+                    <!--style="@style/ListViewHeaderTheme"-->
+                    <!--/>-->
 
 
-                <ListView
-                    android:id="@+id/new_note_list_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                <!--<ListView-->
+                    <!--android:id="@+id/new_note_list_view"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--/>-->
 
-                <TextView
-                    android:id="@+id/old_note_header"
-                    android:layout_width="@dimen/list_item_height"
-                    android:layout_height="@dimen/list_header_height"
-                    android:paddingBottom="@dimen/padding_small"
-                    android:gravity="bottom|center_horizontal"
-                    android:text="@string/older"
-                    style="@style/ListViewHeaderTheme"
-                    />
+                <!--<TextView-->
+                    <!--android:id="@+id/old_note_header"-->
+                    <!--android:layout_width="@dimen/list_item_height"-->
+                    <!--android:layout_height="@dimen/list_header_height"-->
+                    <!--android:paddingBottom="@dimen/padding_small"-->
+                    <!--android:gravity="bottom|center_horizontal"-->
+                    <!--android:text="@string/older"-->
+                    <!--style="@style/ListViewHeaderTheme"-->
+                    <!--/>-->
 
-                <ListView
-                    android:id="@+id/old_note_list_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                <!--<ListView-->
+                    <!--android:id="@+id/old_note_list_view"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--/>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
-        </ScrollView>
+        <!--</ScrollView>-->
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/selection_action_button"
