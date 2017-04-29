@@ -13,6 +13,7 @@ import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.model.Note;
 import com.xephorium.crystalnote.ui.base.BaseActivity;
 import com.xephorium.crystalnote.ui.custom.NoteListAdapter;
+import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import butterknife.OnClick;
 public class SelectionActivity extends BaseActivity implements SelectionView {
 
     @BindView(R.id.selection_toolbar)
-    Toolbar selectionToolbar;
+    NoteToolbar toolbar;
 
     @BindView(R.id.new_note_header)
     TextView newNoteHeader;
@@ -42,16 +43,6 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
     SwipeRefreshLayout swipeRefreshLayout;
 
     SelectionPresenter presenter;
-
-    @OnClick(R.id.selection_toolbar_back)
-    public void handleToolbarBackClick() {
-        presenter.handleToolbarBackClick();
-    }
-
-    @OnClick(R.id.selection_toolbar_search)
-    public void handleToolbarSearchClick() {
-        Toast.makeText(this, "Search Notes", Toast.LENGTH_SHORT).show();
-    }
 
     @OnClick(R.id.selection_action_button)
     public void handleActionButtonClick() {
@@ -83,7 +74,12 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
 
     @Override
     public Toolbar getToolbar() {
-        return selectionToolbar;
+        toolbar.setEditMode(false);
+        toolbar.setTitle(R.string.selection_title);
+        toolbar.setLeftButtonImage(R.drawable.icon_back);
+        toolbar.setRightButtonImage(R.drawable.icon_search);
+        toolbar.setNoteToolbarListener(getSelectionNoteToolbarListener());
+        return toolbar;
     }
 
     @Override
@@ -171,5 +167,19 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = listViewHeight + (listView.getDividerHeight() * (listView.getAdapter().getCount() - 1));
         return params;
+    }
+
+    private NoteToolbar.NoteToolbarListener getSelectionNoteToolbarListener() {
+        return new NoteToolbar.NoteToolbarListener() {
+            @Override
+            public void onLeftButtonClick() {
+                presenter.handleToolbarBackClick();
+            }
+
+            @Override
+            public void onRightButtonClick() {
+                Toast.makeText(getApplicationContext(), "Search Notes", Toast.LENGTH_SHORT).show();
+            }
+        };
     }
 }

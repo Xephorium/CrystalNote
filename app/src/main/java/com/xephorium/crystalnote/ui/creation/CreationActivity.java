@@ -29,10 +29,6 @@ public class CreationActivity extends BaseActivity implements CreationView {
         ButterKnife.bind(this);
 
         presenter = new CreationPresenter(this);
-        toolbar.setEditMode(true);
-        toolbar.setLeftButtonImage(R.drawable.icon_back);
-        toolbar.setRightButtonImage(R.drawable.icon_save);
-        toolbar.setNoteToolbarListener(getCreationNoteToolbarListener());
     }
 
     @Override
@@ -49,6 +45,10 @@ public class CreationActivity extends BaseActivity implements CreationView {
 
     @Override
     public Toolbar getToolbar() {
+        toolbar.setEditMode(true);
+        toolbar.setLeftButtonImage(R.drawable.icon_back);
+        toolbar.setRightButtonImage(R.drawable.icon_save);
+        toolbar.setNoteToolbarListener(getCreationNoteToolbarListener());
         return toolbar;
     }
 
