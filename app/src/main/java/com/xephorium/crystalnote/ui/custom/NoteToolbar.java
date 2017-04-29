@@ -12,7 +12,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xephorium.crystalnote.R;
-import com.xephorium.crystalnote.ui.base.BaseView;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -73,6 +72,14 @@ public class NoteToolbar extends Toolbar {
     @Override
     public CharSequence getTitle() {
         return getTitleView().getText();
+    }
+
+    public void setTitleContent(String content) {
+        getEditView().setText(content);
+    }
+
+    public String getTitleContent() {
+            return getEditView().getText() != null ? getEditView().getText().toString() : "";
     }
 
     public void setEditMode(boolean editMode) {
