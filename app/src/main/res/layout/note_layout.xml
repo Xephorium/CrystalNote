@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="@drawable/note_list_ripple"
+    >
+
+    <ImageView
+        android:id="@+id/note_icon"
+        android:src="@drawable/note_list_icon"
+        android:layout_alignParentStart="true"
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height"
+        android:paddingStart="@dimen/activity_padding"
+        android:paddingEnd="@dimen/padding_big"
+        android:background="#00ffffff"
+        android:contentDescription="@string/note_icon"
+        />
+
+    <TextView
+        android:id="@+id/note_date"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        android:paddingTop="@dimen/padding_big"
+        android:paddingStart="0dp"
+        android:paddingEnd="@dimen/activity_padding"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:orientation="vertical"
+        android:layout_toStartOf="@id/note_date"
+        android:layout_toEndOf="@+id/note_icon"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/note_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_small"
+            android:textSize="16sp"
+            android:textColor="@color/textPrimary"
+            android:background="#00ffffff"
+            />
+
+        <TextView
+            android:id="@+id/note_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_tiny"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:background="#00ffffff"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

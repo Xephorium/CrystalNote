@@ -1,0 +1,50 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.xephorium.crystalnote">
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/CrystalNoteTheme">
+
+        <!-- Note Modification Activity -->
+        <activity
+            android:name=".ui.creation.CreationActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/CrystalNoteTheme">
+            <intent-filter>
+                <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Note Selection Activity -->
+        <activity
+            android:name=".ui.selection.SelectionActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="false"
+            android:theme="@style/CrystalNoteTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Widget Broadcast Receiver -->
+        <receiver
+            android:icon="@mipmap/ic_launcher"
+            android:label="CrystalNote Widget"
+            android:name=".ui.widget.NotesWidgetProvider" >
+            <intent-filter >
+                <action android:name="com.xephorium.crystalnote.widget.UPDATE_NOTE" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/note_widget_info" />
+        </receiver>
+
+    </application>
+
+</manifest>

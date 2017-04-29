@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/note_widget_layout"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+			  android:layout_margin="@dimen/padding_small"
+			  android:orientation="vertical"
+              android:background="@drawable/note_widget_background"
+	>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="top"
+        android:background="@drawable/note_widget_header_background"
+		>
+
+		<TextView
+			android:id="@+id/note_widget_title"
+            android:layout_height="@dimen/widget_header_height"
+            android:layout_width="wrap_content"
+            android:paddingStart="@dimen/widget_default_padding"
+            android:paddingEnd="@dimen/widget_default_padding"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/note_widget_button"
+			android:textSize="@dimen/widget_text_header"
+			android:textColor="@color/textPrimary"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:maxLines="1"
+            android:ellipsize="end"
+            style="@android:style/TextAppearance.Medium"
+            />
+
+		<ImageButton
+            android:id="@+id/note_widget_button"
+            android:layout_width="@dimen/widget_icon_width"
+            android:layout_height="@dimen/widget_header_height"
+            android:layout_alignParentEnd="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:gravity="end|center_vertical"
+            android:src="@drawable/icon_edit"
+            android:clickable="true"
+            android:contentDescription="@string/change_note"/>
+
+	</RelativeLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/widget_divider_height"
+		android:background="@color/widgetDivider"
+		/>
+
+    <TextView
+        android:id="@+id/note_widget_text"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/widget_default_padding"
+        android:paddingRight="@dimen/widget_default_padding"
+        android:paddingTop="@dimen/widget_divider_padding"
+        android:paddingBottom="@dimen/widget_default_padding"
+        android:background="@drawable/note_widget_text_ripple"
+        android:textColor="@color/textSecondary"
+        android:clickable="true"
+        style="@android:style/TextAppearance.Small"
+        />
+
+</LinearLayout>

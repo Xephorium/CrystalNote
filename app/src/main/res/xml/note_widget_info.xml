@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:previewImage="@drawable/note_widget_thumbnail"
+                    android:initialLayout="@layout/note_widget_layout"
+                    android:minHeight="@dimen/widget_minimum_height"
+                    android:minWidth="@dimen/widget_minimum_width"
+                    android:updatePeriodMillis="1000000"/>

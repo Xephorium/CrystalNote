@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginEnd="@dimen/padding_large"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/toolbar_left_icon"
+    />
+
+    <ImageView
+        android:id="@+id/right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginEnd="@dimen/padding_large"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/toolbar_right_icon"
+    />
+
+    <EditText
+        android:id="@+id/edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/left_button"
+        android:layout_toStartOf="@+id/right_button"
+        android:gravity="center_vertical"
+        android:inputType="text"
+        android:hint="@string/new_note_name"
+        style="@style/ToolbarEditTextTheme"
+    />
+
+    <TextView
+        android:id="@+id/note_toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/left_button"
+        android:layout_toStartOf="@+id/right_button"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:ellipsize="end"
+        style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_tiny">2dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+    <dimen name="padding_big">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_huge">32dp</dimen>
+
+    <dimen name="activity_padding">16dp</dimen>
+
+    <dimen name="floating_action_button_elevation">6dp</dimen>
+    <dimen name="floating_action_button_raised_elevation">12dp</dimen>
+
+    <dimen name="list_header_height">42dp</dimen>
+    <dimen name="list_item_height">72dp</dimen>
+
+    <dimen name="modification_bottom_padding">192dp</dimen>
+    <dimen name="modification_name_min_width">192dp</dimen>
+
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <dimen name="widget_corner_radius">2dp</dimen>
+    <dimen name="widget_default_padding">10dp</dimen>
+    <dimen name="widget_divider_padding">4dp</dimen>
+    <dimen name="widget_divider_height">0dp</dimen>
+    <dimen name="widget_header_height">36dp</dimen>
+    <dimen name="widget_icon_width">40dp</dimen>
+    <dimen name="widget_minimum_height">110dp</dimen>
+    <dimen name="widget_minimum_width">110dp</dimen>
+    <dimen name="widget_text_header">15sp</dimen>
+
+</resources>

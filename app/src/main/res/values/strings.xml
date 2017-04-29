@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CrystalNote</string>
+
+    <string name="back_icon">Back Icon</string>
+
+    <string name="change_note">Change Note</string>
+
+    <string name="new_note_content"></string>
+    <string name="new_note_name">New Note</string>
+    <string name="note_icon">Note Icon</string>
+
+    <string name="older">Older</string>
+
+    <string name="selection_title">Select a Note</string>
+
+    <string name="today">Today</string>
+    <string name="toolbar_right_icon">Save Icon</string>
+    <string name="toolbar_left_icon">Search Icon</string>
+
+</resources>

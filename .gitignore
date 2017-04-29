@@ -34,7 +34,11 @@ captures/
 
 # Intellij
 *.iml
-.idea/workspace.xml
+**/.idea/workspace.xml
+**/.idea/tasks.xml
 
 # Keystore files
 *.jks
+
+# MacOS Spam
+.DS_Store

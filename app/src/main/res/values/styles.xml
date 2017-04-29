@@ -1,0 +1,46 @@
+<resources>
+
+    <!-- Universal -->
+    <style name="CrystalNoteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorHighlight">@color/textHighlight</item>
+        <item name="android:textColorHint">@color/textHint</item>
+        <item name="android:colorControlActivated">@color/textHandle</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Controls -->
+    <style name="ToolbarTheme" parent="Theme.AppCompat">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:actionMenuTextColor">@color/toolbarTextPrimary</item>
+        <item name="android:colorControlActivated">@color/textHandle</item>
+    </style>
+
+    <style name="FloatingActionButtonTheme" parent="Widget.Design.FloatingActionButton">
+        <item name="android:elevation">@dimen/floating_action_button_elevation</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="ListViewItemTheme">
+        <item name="android:colorEdgeEffect">#888888</item>
+    </style>
+
+    <!-- Text -->
+    <style name="ListViewHeaderTheme" parent="@style/TextAppearance.AppCompat.Body2">
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ToolbarEditTextTheme" parent="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColorHighlight">@color/toolbarTextHighlight</item>
+        <item name="android:textColorHint">@color/toolbarTextHint</item>
+        <item name="android:textColorTertiary">@color/toolbarTextPrimary</item>
+        <item name="android:colorControlActivated">@color/toolbarTextHint</item>
+        <item name="android:textCursorDrawable">@color/toolbarTextPrimary</item>
+    </style>
+
+</resources>

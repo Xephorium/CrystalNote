@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- System Colors -->
+    <color name="colorPrimary">#333333</color>
+    <color name="colorPrimaryDark">#222222</color>
+    <color name="colorAccent">#888888</color>
+
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <!-- Custom Colors -->
+    <color name="white">#ffffff</color>
+    <color name="red">#ec4d4d</color>
+
+    <color name="transparent">#00ffffff</color>
+
+    <color name="iconDefault">#aaaaaa</color>
+    <color name="rippleDefault">#cccccc</color>
+    <color name="rippleDark">#888888</color>
+
+    <color name="textPrimary">#222222</color>
+    <color name="textSecondary">#777777</color>
+    <color name="textHighlight">#7d888888</color>
+    <color name="textHint">#808080</color>
+    <color name="textHeader">#555555</color>
+    <color name="textHandle">#888888</color>
+    <color name="textUnderline">#b3b3b3</color>
+
+    <color name="toolbarTextPrimary">#f3f3f3</color>
+    <color name="toolbarTextSecondary">#bbf3f3f3</color>
+    <color name="toolbarTextHighlight">#3cf3f3f3</color>
+    <color name="toolbarTextHint">#bbf3f3f3</color>
+
+    <color name="widgetBackground">#ffffff</color>
+    <color name="widgetDivider">#dddddd</color>
+    <color name="widgetTextPrimary">#333333</color>
+    <color name="widgetTextSecondary">#888888</color>
+
+</resources>
