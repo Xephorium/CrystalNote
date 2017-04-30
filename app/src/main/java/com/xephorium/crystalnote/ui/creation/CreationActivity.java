@@ -1,21 +1,17 @@
 package com.xephorium.crystalnote.ui.creation;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 
 import com.xephorium.crystalnote.R;
-import com.xephorium.crystalnote.ui.base.BaseActivity;
+import com.xephorium.crystalnote.ui.base.ToolbarActivity;
 import com.xephorium.crystalnote.ui.custom.LineEditText;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CreationActivity extends BaseActivity implements CreationView {
-
-    @BindView(R.id.creation_toolbar)
-    NoteToolbar toolbar;
+public class CreationActivity extends ToolbarActivity implements CreationView {
 
     @BindView(R.id.creation_content)
     LineEditText content;
@@ -25,10 +21,11 @@ public class CreationActivity extends BaseActivity implements CreationView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.creation_activity_layout);
+        setActivityContent(R.layout.creation_activity_layout);
         ButterKnife.bind(this);
 
         presenter = new CreationPresenter(this);
+        setupCreationToolbar();
     }
 
     @Override
@@ -44,15 +41,6 @@ public class CreationActivity extends BaseActivity implements CreationView {
     }
 
     @Override
-    public Toolbar getToolbar() {
-        toolbar.setEditMode(true);
-        toolbar.setLeftButtonImage(R.drawable.icon_back);
-        toolbar.setRightButtonImage(R.drawable.icon_save);
-        toolbar.setNoteToolbarListener(getCreationNoteToolbarListener());
-        return toolbar;
-    }
-
-    @Override
     public void onBackPressed() {
         presenter.handleBackClick();
     }
@@ -64,7 +52,14 @@ public class CreationActivity extends BaseActivity implements CreationView {
 
     @Override
     public boolean isNewNotePopulated() {
-        return !TextUtils.isEmpty(toolbar.getTitleContent()) || !TextUtils.isEmpty(content.getText());
+        return !TextUtils.isEmpty(getToolbar().getTitleContent()) || !TextUtils.isEmpty(content.getText());
+    }
+
+    private void setupCreationToolbar() {
+        getToolbar().setEditMode(true);
+        getToolbar().setLeftButtonImage(R.drawable.icon_back);
+        getToolbar().setRightButtonImage(R.drawable.icon_save);
+        getToolbar().setNoteToolbarListener(getCreationNoteToolbarListener());
     }
 
     private NoteToolbar.NoteToolbarListener getCreationNoteToolbarListener() {
@@ -76,7 +71,7 @@ public class CreationActivity extends BaseActivity implements CreationView {
 
             @Override
             public void onRightButtonClick() {
-                presenter.handleSaveClick(toolbar.getTitleContent(), content.getText().toString());
+                presenter.handleSaveClick(getToolbar().getTitleContent(), content.getText().toString());
             }
         };
     }

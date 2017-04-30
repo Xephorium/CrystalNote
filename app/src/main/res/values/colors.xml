@@ -2,6 +2,7 @@
 <resources>
 
     <!-- System Colors -->
+
     <color name="colorPrimary">#333333</color>
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#888888</color>
@@ -11,12 +12,18 @@
     <!--<color name="colorAccent">#FF4081</color>-->
 
     <!-- Custom Colors -->
-    <color name="white">#ffffff</color>
-    <color name="red">#ec4d4d</color>
 
+    <color name="red">#ec4d4d</color>
     <color name="transparent">#00ffffff</color>
+    <color name="white">#ffffff</color>
+
+
+    <!-- Control Colors -->
+
+    <color name="backgroundDefault">#eeeeee</color>
 
     <color name="iconDefault">#aaaaaa</color>
+
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#888888</color>
 

@@ -1,12 +1,11 @@
 package com.xephorium.crystalnote.ui.selection;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.model.Note;
-import com.xephorium.crystalnote.ui.base.BaseActivity;
+import com.xephorium.crystalnote.ui.base.ToolbarActivity;
 import com.xephorium.crystalnote.ui.custom.NoteListView;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
@@ -16,10 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class SelectionActivity extends BaseActivity implements SelectionView {
-
-    @BindView(R.id.selection_toolbar)
-    NoteToolbar toolbar;
+public class SelectionActivity extends ToolbarActivity implements SelectionView {
 
     @BindView(R.id.selection_note_list)
     NoteListView noteListView;
@@ -34,12 +30,12 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.selection_activity_layout);
+        setActivityContent(R.layout.selection_activity_layout);
         ButterKnife.bind(this);
 
         presenter = new SelectionPresenter(this);
         noteListView.setNoteListViewListener(getSelectionNoteListViewListener());
-        toolbar.setNoteToolbarListener(getSelectionNoteToolbarListener());
+        setupSelectionToolbar();
     }
 
     @Override
@@ -61,17 +57,16 @@ public class SelectionActivity extends BaseActivity implements SelectionView {
     }
 
     @Override
-    public Toolbar getToolbar() {
-        toolbar.setEditMode(false);
-        toolbar.setTitle(R.string.selection_title);
-        toolbar.setLeftButtonImage(R.drawable.icon_back);
-        toolbar.setRightButtonImage(R.drawable.icon_search);
-        return toolbar;
-    }
-
-    @Override
     public void closeSelectionActivity() {
         this.finish();
+    }
+
+    private void setupSelectionToolbar() {
+        getToolbar().setEditMode(false);
+        getToolbar().setTitle(R.string.selection_title);
+        getToolbar().setLeftButtonImage(R.drawable.icon_back);
+        getToolbar().setRightButtonImage(R.drawable.icon_search);
+        getToolbar().setNoteToolbarListener(getSelectionNoteToolbarListener());
     }
 
     private NoteToolbar.NoteToolbarListener getSelectionNoteToolbarListener() {

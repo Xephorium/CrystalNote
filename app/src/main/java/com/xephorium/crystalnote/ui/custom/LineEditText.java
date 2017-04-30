@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.custom;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -11,8 +10,6 @@ import android.view.Gravity;
 import android.widget.EditText;
 
 import com.xephorium.crystalnote.R;
-import com.xephorium.crystalnote.ui.util.DisplayUtils;
-import com.xephorium.crystalnote.ui.util.KeyboardUtils;
 
 public class LineEditText extends EditText {
 
@@ -45,7 +42,6 @@ public class LineEditText extends EditText {
         this.setBackground(TRANSPARENT);
         this.setGravity(Gravity.TOP);
         this.setInputType(INPUT_TYPE);
-        this.setMinHeight(calculateMinHeight());
         this.setScrollContainer(true);
         this.setVerticalScrollBarEnabled(false);
 
@@ -63,12 +59,5 @@ public class LineEditText extends EditText {
             canvas.drawLine(getLeft() + getPaddingLeft(), lineYPos, getRight() - getPaddingRight(), lineYPos, paint);
         }
         super.onDraw(canvas);
-    }
-
-    private int calculateMinHeight() {
-        int displayHeight = DisplayUtils.getDisplayHeight((Activity) context);
-        int keyboardHeight = KeyboardUtils.getKeyboardHeight((Activity) context);
-        int lineEditTextTop = DisplayUtils.getAbsoluteViewTop(this);
-        return displayHeight - (lineEditTextTop + keyboardHeight);
     }
 }

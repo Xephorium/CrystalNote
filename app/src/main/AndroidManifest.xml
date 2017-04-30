@@ -6,7 +6,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/CrystalNoteTheme">
+        android:windowSoftInputMode="adjustResize"
+        android:theme="@style/CrystalNoteTheme"
+        >
 
         <!-- Home Activity -->
         <activity
@@ -44,7 +46,7 @@
         <receiver
             android:icon="@mipmap/ic_launcher"
             android:label="CrystalNote Widget"
-            android:name=".ui.widget.NotesWidgetProvider" >
+            android:name=".ui.widget.NotesWidgetProvider">
             <intent-filter >
                 <action android:name="com.xephorium.crystalnote.widget.UPDATE_NOTE" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
