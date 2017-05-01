@@ -1,12 +1,11 @@
 package com.xephorium.crystalnote.ui.home;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.model.Note;
-import com.xephorium.crystalnote.ui.base.BaseActivity;
+import com.xephorium.crystalnote.ui.base.NavigationActivity;
 import com.xephorium.crystalnote.ui.custom.NoteListView;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
@@ -16,10 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HomeActivity extends BaseActivity implements HomeView {
-
-    @BindView(R.id.home_toolbar)
-    NoteToolbar toolbar;
+public class HomeActivity extends NavigationActivity implements HomeView {
 
     @BindView(R.id.home_note_list)
     NoteListView noteListView;
@@ -34,12 +30,12 @@ public class HomeActivity extends BaseActivity implements HomeView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity_layout);
+        setActivityContent(R.layout.home_activity_layout);
         ButterKnife.bind(this);
 
         presenter = new HomePresenter(this);
         noteListView.setNoteListViewListener(getHomeNoteListViewListener());
-        toolbar.setNoteToolbarListener(getCreationNoteToolbarListener());
+        setupHomeToolbar();
     }
 
     @Override
@@ -60,20 +56,19 @@ public class HomeActivity extends BaseActivity implements HomeView {
         noteListView.populateNoteList(notes);
     }
 
-    @Override
-    public Toolbar getToolbar() {
-        toolbar.setEditMode(false);
-        toolbar.setTitle(R.string.home_title);
-        toolbar.setLeftButtonImage(R.drawable.icon_menu);
-        toolbar.setRightButtonImage(R.drawable.icon_search);
-        return toolbar;
+    private void setupHomeToolbar() {
+        getToolbar().setEditMode(false);
+        getToolbar().setTitle(R.string.home_title);
+        getToolbar().setLeftButtonImage(R.drawable.icon_menu);
+        getToolbar().setRightButtonImage(R.drawable.icon_search);
+        getToolbar().setNoteToolbarListener(getCreationNoteToolbarListener());
     }
 
     private NoteToolbar.NoteToolbarListener getCreationNoteToolbarListener() {
         return new NoteToolbar.NoteToolbarListener() {
             @Override
             public void onLeftButtonClick() {
-                // Show Navigation Drawer
+                openDrawer();
             }
 
             @Override
@@ -97,7 +92,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
             @Override
             public void onNoteListRefresh() {
-                //presenter.refreshNoteList();
+                presenter.refreshNoteList();
             }
         };
     }

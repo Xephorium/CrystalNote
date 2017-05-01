@@ -14,16 +14,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setSupportActionBar(getToolbar());
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-
-    public Toolbar getToolbar() {
-        return new Toolbar(this);
     }
 }

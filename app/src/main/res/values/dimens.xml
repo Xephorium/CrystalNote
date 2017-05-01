@@ -19,8 +19,6 @@
     <dimen name="modification_bottom_padding">192dp</dimen>
     <dimen name="modification_name_min_width">192dp</dimen>
 
-    <dimen name="navigation_drawer_width">240dp</dimen>
-
     <dimen name="toolbar_height">56dp</dimen>
     <dimen name="toolbar_elevation">4dp</dimen>
 
