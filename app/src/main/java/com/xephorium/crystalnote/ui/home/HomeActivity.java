@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.model.Note;
-import com.xephorium.crystalnote.ui.base.NavigationActivity;
+import com.xephorium.crystalnote.ui.base.DrawerActivity;
 import com.xephorium.crystalnote.ui.custom.NoteListView;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class HomeActivity extends NavigationActivity implements HomeView {
+public class HomeActivity extends DrawerActivity implements HomeView {
 
     @BindView(R.id.home_note_list)
     NoteListView noteListView;

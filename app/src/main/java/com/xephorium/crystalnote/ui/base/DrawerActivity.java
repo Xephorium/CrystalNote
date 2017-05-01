@@ -13,7 +13,7 @@ import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 import com.xephorium.crystalnote.ui.util.DisplayUtils;
 
-public class NavigationActivity extends BaseActivity {
+public class DrawerActivity extends BaseActivity {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
