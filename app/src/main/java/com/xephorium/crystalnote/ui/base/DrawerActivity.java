@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.xephorium.crystalnote.R;
@@ -33,6 +34,7 @@ public class DrawerActivity extends BaseActivity {
         statusBarMargin = (LinearLayout) findViewById(R.id.status_bar_margin);
         toolbar = (NoteToolbar) findViewById(R.id.toolbar);
         activityContent = (LinearLayout) findViewById(R.id.activity_content);
+        drawerContent = (NavigationView) findViewById(R.id.drawer_content);
         drawerOpen = false;
         drawerAnimating = false;
 
@@ -42,6 +44,7 @@ public class DrawerActivity extends BaseActivity {
 
         setupStatusBar();
         setupToolbar();
+        setupNavDrawer();
     }
 
     public void setActivityContent(int layoutResource) {
@@ -78,14 +81,19 @@ public class DrawerActivity extends BaseActivity {
         return toolbar;
     }
 
+    private void setupStatusBar() {
+        statusBarMargin.setMinimumHeight(DisplayUtils.getStatusBarHeight(this));
+        statusBarMargin.setElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+    }
+
     private void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    private void setupStatusBar() {
-        statusBarMargin.setMinimumHeight(DisplayUtils.getStatusBarHeight(this));
-        statusBarMargin.setElevation(getResources().getDimension(R.dimen.toolbar_elevation));
+    private void setupNavDrawer() {
+        drawerContent.getLayoutParams().width = DisplayUtils.getDisplayWidth(this) -
+                getResources().getDimensionPixelSize(R.dimen.toolbar_height);
     }
 
     private View getInflatedView(int layoutResource) {
