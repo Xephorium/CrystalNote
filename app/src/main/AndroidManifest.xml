@@ -13,8 +13,7 @@
         <!-- Home Activity -->
         <activity
             android:name=".ui.home.HomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/CrystalNoteTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -24,8 +23,7 @@
         <!-- Note Creation Activity -->
         <activity
             android:name=".ui.creation.CreationActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/CrystalNoteTheme">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />
             </intent-filter>
@@ -35,8 +33,7 @@
         <activity
             android:name=".ui.selection.SelectionActivity"
             android:screenOrientation="portrait"
-            android:noHistory="false"
-            android:theme="@style/CrystalNoteTheme">
+            android:noHistory="false">
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.widget.CHOOSE_NOTE" />
             </intent-filter>
