@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:windowSoftInputMode="adjustResize"
-        android:theme="@style/CrystalNoteThemem"
+        android:theme="@style/CrystalNoteTheme"
         >
 
         <!-- Home Activity -->
