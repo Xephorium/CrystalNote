@@ -5,7 +5,7 @@
 
     <color name="colorPrimary">#333333</color>
     <color name="colorPrimaryDark">#222222</color>
-    <color name="colorAccent">#888888</color>
+    <color name="colorAccent">@color/gray8</color>
 
     <!-- Custom Colors -->
     <color name="charcoalDark">#222222</color>
@@ -16,6 +16,7 @@
     <color name="blue900">#0d47a1</color>
     <color name="brown800">#4e342e</color>
     <color name="brown900">#3e2723</color>
+    <color name="gray8">#888888</color>
     <color name="red500">#f44336</color>
     <color name="red700">#d32f2f</color>
     <color name="transparent">#00ffffff</color>
@@ -30,7 +31,7 @@
     <color name="iconDefault">#aaaaaa</color>
 
     <color name="rippleDefault">#cccccc</color>
-    <color name="rippleDark">#888888</color>
+    <color name="rippleDark">@color/gray8</color>
     <color name="rippleLight">#73dcdcdc</color>
 
     <color name="textPrimary">#222222</color>
@@ -38,7 +39,7 @@
     <color name="textHighlight">#7d888888</color>
     <color name="textHint">#808080</color>
     <color name="textHeader">#555555</color>
-    <color name="textHandle">#888888</color>
+    <color name="textHandle">@color/gray8</color>
     <color name="textUnderline">#b3b3b3</color>
 
     <color name="toolbarPrimaryColorDark">@color/whiteSmoke</color>
@@ -51,6 +52,6 @@
     <color name="widgetBackground">#ffffff</color>
     <color name="widgetDivider">#dddddd</color>
     <color name="widgetTextPrimary">#333333</color>
-    <color name="widgetTextSecondary">#888888</color>
+    <color name="widgetTextSecondary">@color/gray8</color>
 
 </resources>
