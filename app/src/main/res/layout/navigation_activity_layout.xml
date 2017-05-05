@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentTop="true"
-            android:background="@color/colorPrimaryDark"
+            android:background="?attr/colorPrimaryDark"
             />
 
         <LinearLayout
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/status_bar_margin"
-            android:background="@color/colorPrimary"
+            android:background="?attr/colorPrimary"
             android:elevation="@dimen/toolbar_elevation"
             app:contentInsetStart="0dp"
             />

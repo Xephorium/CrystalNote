@@ -7,16 +7,21 @@
     <color name="colorPrimaryDark">#222222</color>
     <color name="colorAccent">#888888</color>
 
-    <!--<color name="colorPrimary">#3F51B5</color>-->
-    <!--<color name="colorPrimaryDark">#303F9F</color>-->
-    <!--<color name="colorAccent">#FF4081</color>-->
-
     <!-- Custom Colors -->
-
-    <color name="red">#ec4d4d</color>
+    <color name="charcoalDark">#222222</color>
+    <color name="charcoalLight">#333333</color>
+    <color name="blue500">#2196f3</color>
+    <color name="blue700">#1976d2</color>
+    <color name="blue800">#1565c0</color>
+    <color name="blue900">#0d47a1</color>
+    <color name="brown800">#4e342e</color>
+    <color name="brown900">#3e2723</color>
+    <color name="red500">#f44336</color>
+    <color name="red700">#d32f2f</color>
     <color name="transparent">#00ffffff</color>
     <color name="white">#ffffff</color>
-
+    <color name="whiteSmoke">#f3f3f3</color>
+    <color name="whiteSmokeAlpha">#bbf3f3f3</color>
 
     <!-- Control Colors -->
 
@@ -26,6 +31,7 @@
 
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#888888</color>
+    <color name="rippleLight">#73dcdcdc</color>
 
     <color name="textPrimary">#222222</color>
     <color name="textSecondary">#777777</color>
@@ -35,7 +41,9 @@
     <color name="textHandle">#888888</color>
     <color name="textUnderline">#b3b3b3</color>
 
-    <color name="toolbarTextPrimary">#f3f3f3</color>
+    <color name="toolbarPrimaryColorDark">@color/whiteSmoke</color>
+    <color name="toolbarSecondaryColorDark">@color/whiteSmokeAlpha</color>
+    <color name="toolbarTextPrimary">@color/whiteSmoke</color>
     <color name="toolbarTextSecondary">#bbf3f3f3</color>
     <color name="toolbarTextHighlight">#3cf3f3f3</color>
     <color name="toolbarTextHint">#bbf3f3f3</color>

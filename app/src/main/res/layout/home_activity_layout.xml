@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:src="@drawable/icon_add"
-        app:backgroundTint="@color/colorPrimary"
+        app:backgroundTint="?attr/colorPrimary"
         app:rippleColor="@color/rippleDark"
         app:theme="@style/FloatingActionButtonTheme"
         app:useCompatPadding="true"

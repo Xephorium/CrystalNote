@@ -1,22 +1,36 @@
 <resources>
 
-    <!-- Universal -->
+    <!-- Universal Themes -->
     <style name="CrystalNoteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorHighlight">@color/textHighlight</item>
-        <item name="android:textColorHint">@color/textHint</item>
-        <item name="android:colorControlActivated">@color/textHandle</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="windowNoTitle">true</item>
+
+        <item name="colorPrimary">@color/charcoalLight</item>
+        <item name="colorPrimaryDark">@color/charcoalDark</item>
+        <item name="colorAccent">@color/red500</item>
+        <item name="android:colorControlActivated">@color/textHandle</item>
+        <item name="android:colorControlHighlight">@color/rippleLight</item>
+
+        <item name="android:textColorHighlight">@color/textHighlight</item>
+        <item name="android:textColorHint">@color/textHint</item>
+
+        <item name="android:toolbarStyle">@style/ToolbarTheme</item>
     </style>
 
-    <!-- Controls -->
+    <style name="CrystalNoteThemeBrown" parent="CrystalNoteTheme">
+        <item name="colorPrimary">@color/brown800</item>
+        <item name="colorPrimaryDark">@color/brown900</item>
+    </style>
+
+    <!-- Control Themes -->
     <style name="ToolbarTheme" parent="Theme.AppCompat">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">?attr/colorPrimary</item>
         <item name="android:actionMenuTextColor">@color/toolbarTextPrimary</item>
         <item name="android:colorControlActivated">@color/textHandle</item>
+    </style>
+
+    <style name="ToolbarTitleTheme" parent="Base.TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/whiteSmoke</item>
     </style>
 
     <style name="FloatingActionButtonTheme" parent="Widget.Design.FloatingActionButton">
@@ -36,6 +50,7 @@
 
     <style name="ToolbarEditTextTheme" parent="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/toolbarTextPrimary</item>
         <item name="android:textColorHighlight">@color/toolbarTextHighlight</item>
         <item name="android:textColorHint">@color/toolbarTextHint</item>
         <item name="android:textColorTertiary">@color/toolbarTextPrimary</item>
