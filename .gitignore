@@ -28,6 +28,7 @@ captures/
 **/.idea/tasks.xml
 .idea/vcs.xml
 .idea/misc.xml
+.idea/dictionaries/Xephorium.xml
 
 # Keystore files
 *.jks
