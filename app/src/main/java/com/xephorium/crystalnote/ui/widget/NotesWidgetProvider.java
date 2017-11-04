@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.NoteRepository;
-import com.xephorium.crystalnote.data.SharedPreferencesManager;
+import com.xephorium.crystalnote.data.SharedPreferencesRepository;
 import com.xephorium.crystalnote.data.model.Note;
 import com.xephorium.crystalnote.data.util.NoteUtils;
 import com.xephorium.crystalnote.ui.IntentLibrary;
@@ -41,7 +41,7 @@ public class NotesWidgetProvider extends AppWidgetProvider {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.note_widget_layout);
             NoteRepository noteRepository = new NoteRepository(context);
             List<Note> availableNotes = noteRepository.getNotes();
-            Note displayNote = NoteUtils.getNoteFromList(availableNotes, SharedPreferencesManager.getDisplayNoteName(context));
+            Note displayNote = NoteUtils.getNoteFromList(availableNotes, SharedPreferencesRepository.getDisplayNoteName(context));
 
             if (displayNote != null) {
                 remoteViews.setTextViewText(R.id.note_widget_title, displayNote.getName());

@@ -7,13 +7,13 @@ import android.widget.Toast;
 import com.xephorium.crystalnote.data.model.Note;
 
 /*
-  SharedPreferencesManager.java                                             04.13.2017
+  SharedPreferencesRepository.java                                             04.13.2017
   Christopher Cruzen
 
-    Convenience wrapper for SharedPreferences io.
+    Manages read/write to SharedPreferences.
 */
 
-public final class SharedPreferencesManager {
+public final class SharedPreferencesRepository {
 
     public static final String APP_PRIMARY_KEY = "CrystalNotePreferences";
     public static final String DISPLAY_NOTE_NAME = "DisplayNoteName";

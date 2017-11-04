@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.xephorium.crystalnote.data.NoteRepository;
-import com.xephorium.crystalnote.data.SharedPreferencesManager;
+import com.xephorium.crystalnote.data.SharedPreferencesRepository;
 import com.xephorium.crystalnote.data.util.NoteUtils;
 import com.xephorium.crystalnote.data.util.NoteUtils.SortType;
 import com.xephorium.crystalnote.data.model.Note;
@@ -39,7 +39,7 @@ public class SelectionPresenter extends BasePresenter<SelectionView> {
     }
 
     public void handleNoteClick(Note note) {
-        SharedPreferencesManager.setDisplayNoteName(context, note);
+        SharedPreferencesRepository.setDisplayNoteName(context, note);
         refreshWidget();
         getView().closeSelectionActivity();
     }
