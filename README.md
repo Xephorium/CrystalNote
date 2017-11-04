@@ -1,2 +1,2 @@
 # CrystalNote
-A monochrome notes app for Android
+A monochromatic notes app for Android
