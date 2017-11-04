@@ -3,7 +3,7 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:windowSoftInputMode="adjustResize"
@@ -41,7 +41,7 @@
 
         <!-- Widget Broadcast Receiver -->
         <receiver
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/ic_launcher"
             android:label="CrystalNote Widget"
             android:name=".ui.widget.NotesWidgetProvider">
             <intent-filter >
