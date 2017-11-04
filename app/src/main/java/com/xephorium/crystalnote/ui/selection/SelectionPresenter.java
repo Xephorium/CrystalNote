@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.xephorium.crystalnote.data.NoteManager;
+import com.xephorium.crystalnote.data.NoteRepository;
 import com.xephorium.crystalnote.data.SharedPreferencesManager;
 import com.xephorium.crystalnote.data.util.NoteUtils;
 import com.xephorium.crystalnote.data.util.NoteUtils.SortType;
@@ -13,23 +13,19 @@ import com.xephorium.crystalnote.ui.IntentLibrary;
 import com.xephorium.crystalnote.ui.base.BasePresenter;
 import com.xephorium.crystalnote.ui.creation.CreationActivity;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
 public class SelectionPresenter extends BasePresenter<SelectionView> {
 
     private Context context;
-    private NoteManager noteManager;
+    private NoteRepository noteRepository;
 
     public SelectionPresenter(SelectionView view) {
         attachView(view);
         this.context = (Context) view;
-        this.noteManager = new NoteManager(context);
+        this.noteRepository = new NoteRepository(context);
     }
 
     public void refreshNoteList() {
-        getView().populateNoteList(NoteUtils.sortNotes(noteManager.getNotes(), SortType.DATE_NEW));
+        getView().populateNoteList(NoteUtils.sortNotes(noteRepository.getNotes(), SortType.DATE_NEW));
     }
 
     public void handleToolbarBackClick() {

@@ -10,7 +10,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.xephorium.crystalnote.R;
-import com.xephorium.crystalnote.data.NoteManager;
+import com.xephorium.crystalnote.data.NoteRepository;
 import com.xephorium.crystalnote.data.SharedPreferencesManager;
 import com.xephorium.crystalnote.data.model.Note;
 import com.xephorium.crystalnote.data.util.NoteUtils;
@@ -39,18 +39,18 @@ public class NotesWidgetProvider extends AppWidgetProvider {
 		for (int widgetInstance : widgetInstances) {
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.note_widget_layout);
-            NoteManager noteManager = new NoteManager(context);
-            List<Note> availableNotes = noteManager.getNotes();
+            NoteRepository noteRepository = new NoteRepository(context);
+            List<Note> availableNotes = noteRepository.getNotes();
             Note displayNote = NoteUtils.getNoteFromList(availableNotes, SharedPreferencesManager.getDisplayNoteName(context));
 
             if (displayNote != null) {
                 remoteViews.setTextViewText(R.id.note_widget_title, displayNote.getName());
-                remoteViews.setTextViewText(R.id.note_widget_text, noteManager.getNoteContents(noteManager
+                remoteViews.setTextViewText(R.id.note_widget_text, noteRepository.getNoteContents(noteRepository
                         .getNoteFile(displayNote)));
 
             } else if (availableNotes != null && availableNotes.size() > 0) {
                 remoteViews.setTextViewText(R.id.note_widget_title, availableNotes.get(0).getName());
-                remoteViews.setTextViewText(R.id.note_widget_text, noteManager.getNoteContents(noteManager
+                remoteViews.setTextViewText(R.id.note_widget_text, noteRepository.getNoteContents(noteRepository
                         .getNoteFile(availableNotes.get(0))));
             } else {
                 remoteViews.setTextViewText(R.id.note_widget_title, "");

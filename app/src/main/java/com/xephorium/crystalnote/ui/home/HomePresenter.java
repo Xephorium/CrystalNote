@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.xephorium.crystalnote.data.NoteManager;
+import com.xephorium.crystalnote.data.NoteRepository;
 import com.xephorium.crystalnote.data.model.Note;
 import com.xephorium.crystalnote.data.util.NoteUtils;
 import com.xephorium.crystalnote.ui.IntentLibrary;
@@ -14,16 +14,16 @@ import com.xephorium.crystalnote.ui.creation.CreationActivity;
 public class HomePresenter extends BasePresenter<HomeView> {
 
     private Context context;
-    private NoteManager noteManager;
+    private NoteRepository noteRepository;
 
     public HomePresenter(HomeView view) {
         attachView(view);
         this.context = (Context) view;
-        this.noteManager = new NoteManager(context);
+        this.noteRepository = new NoteRepository(context);
     }
 
     public void refreshNoteList() {
-        getView().populateNoteList(NoteUtils.sortNotes(noteManager.getNotes(), NoteUtils.SortType.DATE_NEW));
+        getView().populateNoteList(NoteUtils.sortNotes(noteRepository.getNotes(), NoteUtils.SortType.DATE_NEW));
     }
 
     public void handleActionButtonClick() {

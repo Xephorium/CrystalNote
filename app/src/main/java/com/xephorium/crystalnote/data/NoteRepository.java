@@ -18,15 +18,13 @@ import java.util.Date;
 import java.util.List;
 
 /*
-  NoteManager.java                                                          04.11.2017
+  NoteRepository.java                                   04.11.2017
   Christopher Cruzen
 
-    Manages read/write to Android's external storage for note creation, retrieval, and
-  updating.
-
+    Manages read/write to note files in Android's external storage.
 */
 
-public class NoteManager {
+public class NoteRepository {
 
 
     /*--- Local Variables ---*/
@@ -40,7 +38,7 @@ public class NoteManager {
 
     /*--- Constructor ---*/
 
-    public NoteManager(Context context) {
+    public NoteRepository(Context context) {
         this.context = context;
         createNotesDirectory();
     }

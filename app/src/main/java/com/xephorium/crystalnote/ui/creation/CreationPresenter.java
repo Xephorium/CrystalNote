@@ -3,19 +3,19 @@ package com.xephorium.crystalnote.ui.creation;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.xephorium.crystalnote.data.NoteManager;
+import com.xephorium.crystalnote.data.NoteRepository;
 import com.xephorium.crystalnote.data.util.NoteUtils;
 import com.xephorium.crystalnote.ui.base.BasePresenter;
 
 public class CreationPresenter extends BasePresenter<CreationView> {
 
     private Context context;
-    private NoteManager noteManager;
+    private NoteRepository noteRepository;
 
     public CreationPresenter(CreationView view) {
         attachView(view);
         this.context = (Context) view;
-        this.noteManager = new NoteManager(context);
+        this.noteRepository = new NoteRepository(context);
     }
 
     public void handleBackClick() {
@@ -28,7 +28,7 @@ public class CreationPresenter extends BasePresenter<CreationView> {
         if (!checkNoteValidity(noteName, noteContent))
             return;
 
-        noteManager.writeToNote(noteName, noteContent);
+        noteRepository.writeToNote(noteName, noteContent);
         getView().closeCreationActivity();
     }
 
@@ -39,7 +39,7 @@ public class CreationPresenter extends BasePresenter<CreationView> {
         } else if (!NoteUtils.isValidNoteName(name)) {
             Toast.makeText(context, "Invalid Note Name", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (noteManager.noteExists(name)) {
+        } else if (noteRepository.noteExists(name)) {
             Toast.makeText(context, "Note Already Exists", Toast.LENGTH_SHORT).show();
             return false;
         }
