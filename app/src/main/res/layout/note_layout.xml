@@ -9,13 +9,14 @@
 
     <ImageView
         android:id="@+id/note_icon"
-        android:src="@drawable/note_list_icon"
+        android:src="@drawable/ic_launcher"
         android:layout_alignParentStart="true"
         android:layout_width="@dimen/list_item_height"
         android:layout_height="@dimen/list_item_height"
         android:paddingStart="@dimen/activity_padding"
         android:paddingEnd="@dimen/padding_big"
         android:background="#00ffffff"
+        android:tint="@color/iconDefault"
         android:contentDescription="@string/note_icon"
         />
 
