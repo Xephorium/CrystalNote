@@ -126,7 +126,7 @@ public class NoteRepository {
     }
 
     public boolean createNote(String name) {
-        File notesFile = new File(getNotesDirectory().toString() + "/" + name + FILE_EXTENSION);
+        File notesFile = getNoteFile(name);
 
         if(notesFile == null)
             return false;
@@ -134,6 +134,23 @@ public class NoteRepository {
         if(!notesFile.exists()) {
             try {
                 return notesFile.createNewFile();
+            } catch (Exception e) {
+                return false;
+            }
+        } else {
+            return true;
+        }
+    }
+
+    public boolean deleteNote(String name) {
+        File notesFile = getNoteFile(name);
+
+        if(notesFile == null)
+            return false;
+
+        if(notesFile.exists()) {
+            try {
+                return notesFile.delete();
             } catch (Exception e) {
                 return false;
             }
