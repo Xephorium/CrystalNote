@@ -5,7 +5,7 @@ import com.xephorium.crystalnote.data.util.NoteUtils
 class CreationPresenter(view: CreationContract.View) : CreationContract.Presenter() {
 
 
-    /*--- Business Logic Methods ---*/
+    /*--- Action Handling Methods ---*/
 
     override fun handleNameTextChange(name: String) {
         this.name = name
