@@ -12,13 +12,14 @@ package com.xephorium.crystalnote.ui.custom;
 */
 
 import android.content.Context;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.data.model.Note;

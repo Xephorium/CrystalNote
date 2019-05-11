@@ -1,15 +1,15 @@
 package com.xephorium.crystalnote.ui.base;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 import com.xephorium.crystalnote.ui.util.DisplayUtils;
