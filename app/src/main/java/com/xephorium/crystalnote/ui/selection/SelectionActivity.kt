@@ -54,9 +54,7 @@ class SelectionActivity : ToolbarActivity(), SelectionContract.View {
     }
 
     override fun refreshWidget() {
-        val intent = Intent()
-        intent.action = IntentLibrary.UPDATE_NOTE_INTENT
-        sendBroadcast(intent)
+        sendBroadcast(Intent().also { it.action = IntentLibrary.UPDATE_NOTE_INTENT })
     }
 
     override fun navigateBack() {
