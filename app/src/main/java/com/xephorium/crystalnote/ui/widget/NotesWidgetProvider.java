@@ -41,7 +41,8 @@ public class NotesWidgetProvider extends AppWidgetProvider {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.note_widget_layout);
             NoteRepository noteRepository = new NoteRepository(context);
             List<Note> availableNotes = noteRepository.getNotes();
-            Note displayNote = NoteUtils.getNoteFromList(availableNotes, SharedPreferencesRepository.getDisplayNoteName(context));
+            SharedPreferencesRepository repository = new SharedPreferencesRepository(context);
+            Note displayNote = NoteUtils.getNoteFromList(availableNotes, repository.getDisplayNoteName());
 
             if (displayNote != null) {
                 remoteViews.setTextViewText(R.id.note_widget_title, displayNote.getName());
