@@ -79,6 +79,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
             override fun onRightButtonClick() = presenter.handleSearchButtonClick()
+            override fun onTextChange(text: String) = Unit
         })
     }
 

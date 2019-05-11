@@ -16,7 +16,7 @@ class SelectionPresenter : SelectionContract.Presenter() {
     }
 
 
-    /*--- Business Logic Methods ---*/
+    /*--- Action Handling Methods ---*/
 
     override fun handleToolbarBackClick() {
         view?.navigateBack()

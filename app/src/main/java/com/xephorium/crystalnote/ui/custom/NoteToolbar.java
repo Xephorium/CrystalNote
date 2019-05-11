@@ -1,6 +1,8 @@
 package com.xephorium.crystalnote.ui.custom;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
@@ -60,6 +63,21 @@ public class NoteToolbar extends Toolbar {
                 noteToolbarListener.onRightButtonClick();
             }
         });
+        ((EditText) findViewById(R.id.edit_text)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                noteToolbarListener.onTextChange(
+                        ((EditText) findViewById(R.id.edit_text)).getText().toString());
+            }
+        });
     }
 
     @Override
@@ -77,7 +95,7 @@ public class NoteToolbar extends Toolbar {
     }
 
     public String getTitleContent() {
-            return getEditView().getText() != null ? getEditView().getText().toString() : "";
+        return getEditView().getText() != null ? getEditView().getText().toString() : "";
     }
 
     public void setEditMode(boolean editMode) {
@@ -135,15 +153,24 @@ public class NoteToolbar extends Toolbar {
     private NoteToolbarListener getDefaultNoteToolbarListener() {
         return new NoteToolbarListener() {
             @Override
-            public void onLeftButtonClick() {}
+            public void onLeftButtonClick() {
+            }
 
             @Override
-            public void onRightButtonClick() {}
+            public void onRightButtonClick() {
+            }
+
+            @Override
+            public void onTextChange(String text) {
+            }
         };
     }
 
     public interface NoteToolbarListener {
         void onLeftButtonClick();
+
         void onRightButtonClick();
+
+        void onTextChange(String text);
     }
 }

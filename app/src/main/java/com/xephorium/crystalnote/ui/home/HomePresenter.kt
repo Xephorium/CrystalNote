@@ -15,7 +15,7 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
 
-    /*--- Business Logic Methods ---*/
+    /*--- Action Handling Methods ---*/
 
     override fun handleMenuButtonClick() {
         view?.showNavigationDrawer()

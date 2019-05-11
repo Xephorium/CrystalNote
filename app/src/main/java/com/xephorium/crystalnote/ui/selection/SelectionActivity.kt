@@ -79,6 +79,7 @@ class SelectionActivity : ToolbarActivity(), SelectionContract.View {
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleToolbarBackClick()
             override fun onRightButtonClick() = Unit
+            override fun onTextChange(text: String) = Unit
         })
     }
 

@@ -107,6 +107,10 @@ public final class NoteUtils {
         return true;
     }
 
+    public static boolean isValidNoteContent(String content) {
+        return true;
+    }
+
     private static List<Note> sortNotesByDateNew(List<Note> inputList) {
         for (int x = 0; x < inputList.size(); x++) {
             for (int y = inputList.size() -1; y > x; y--) {
