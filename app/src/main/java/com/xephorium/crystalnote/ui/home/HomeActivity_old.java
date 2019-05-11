@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -11,18 +12,17 @@ import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class HomeActivity extends DrawerActivity implements HomeView {
 
-    @BindView(R.id.home_note_list)
+@SuppressLint("Registered")
+public class HomeActivity_old extends DrawerActivity implements HomeView {
+
+    //@BindView(R.id.home_note_list)
     NoteListView noteListView;
 
     HomePresenter presenter;
 
-    @OnClick(R.id.home_action_button)
+    //@OnClick(R.id.home_action_button)
     public void handleActionButtonClick() {
         presenter.handleActionButtonClick();
     }
@@ -31,7 +31,7 @@ public class HomeActivity extends DrawerActivity implements HomeView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActivityContent(R.layout.home_activity_layout);
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
 
         presenter = new HomePresenter(this);
         noteListView.setNoteListViewListener(getHomeNoteListViewListener());

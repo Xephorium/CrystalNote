@@ -8,12 +8,9 @@ import com.xephorium.crystalnote.ui.base.ToolbarActivity;
 import com.xephorium.crystalnote.ui.custom.LineEditText;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+public class CreationActivity_old extends ToolbarActivity implements CreationView {
 
-public class CreationActivity extends ToolbarActivity implements CreationView {
-
-    @BindView(R.id.creation_content)
+    //@BindView(R.id.creation_content)
     LineEditText content;
 
     CreationPresenter presenter;
@@ -22,7 +19,7 @@ public class CreationActivity extends ToolbarActivity implements CreationView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActivityContent(R.layout.creation_activity_layout);
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
 
         presenter = new CreationPresenter(this);
         setupCreationToolbar();

@@ -30,11 +30,11 @@ public class DrawerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_activity_layout);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        statusBarMargin = (LinearLayout) findViewById(R.id.status_bar_margin);
-        toolbar = (NoteToolbar) findViewById(R.id.toolbar);
-        activityContent = (LinearLayout) findViewById(R.id.activity_content);
-        drawerContent = (NavigationView) findViewById(R.id.drawer_content);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        statusBarMargin = findViewById(R.id.status_bar_margin);
+        toolbar = findViewById(R.id.toolbar);
+        activityContent = findViewById(R.id.activity_content);
+        drawerContent = findViewById(R.id.drawer_content);
         drawerOpen = false;
         drawerAnimating = false;
 

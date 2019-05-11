@@ -28,21 +28,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class NoteListView extends SwipeRefreshLayout {
 
-    @BindView(R.id.new_note_header)
     TextView newNoteHeader;
-
-    @BindView(R.id.new_note_list_view)
     ListView newNoteListView;
-
-    @BindView(R.id.old_note_header)
     TextView oldNoteHeader;
-
-    @BindView(R.id.old_note_list_view)
     ListView oldNoteListView;
 
     private List<Note> newNotes;
@@ -53,13 +43,11 @@ public class NoteListView extends SwipeRefreshLayout {
     public NoteListView(Context context) {
         super(context, null);
         buildNoteListView(context);
-        ButterKnife.bind(this);
     }
 
     public NoteListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         buildNoteListView(context);
-        ButterKnife.bind(this);
     }
 
     private void buildNoteListView(Context context) {
@@ -69,6 +57,11 @@ public class NoteListView extends SwipeRefreshLayout {
 
         this.setNoteListViewListener(getDefaultNoteListViewListener());
         this.setOnRefreshListener(getOnRefreshListener());
+
+        newNoteHeader = findViewById(R.id.new_note_header);
+        newNoteListView = findViewById(R.id.new_note_list_view);
+        oldNoteHeader = findViewById(R.id.old_note_header);
+        oldNoteListView = findViewById(R.id.old_note_list_view);
     }
 
     public void populateNoteList(List<Note> noteList) {

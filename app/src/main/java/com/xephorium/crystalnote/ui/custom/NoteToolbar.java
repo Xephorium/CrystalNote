@@ -14,9 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.xephorium.crystalnote.R;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class NoteToolbar extends Toolbar {
 
     private static final int DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back;
@@ -29,19 +26,16 @@ public class NoteToolbar extends Toolbar {
     public NoteToolbar(Context context) {
         super(context);
         buildNoteToolbar(context);
-        ButterKnife.bind(this);
     }
 
     public NoteToolbar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         buildNoteToolbar(context);
-        ButterKnife.bind(this);
     }
 
     public NoteToolbar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         buildNoteToolbar(context);
-        ButterKnife.bind(this);
     }
 
     private void buildNoteToolbar(Context context) {
@@ -53,16 +47,19 @@ public class NoteToolbar extends Toolbar {
         this.setLeftButtonImage(DEFAULT_LEFT_BUTTON_IMAGE);
         this.setRightButtonImage(NO_IMAGE);
         this.noteToolbarListener = getDefaultNoteToolbarListener();
-    }
 
-    @OnClick(R.id.left_button)
-    public void onLeftButtonClick() {
-        noteToolbarListener.onLeftButtonClick();
-    }
-
-    @OnClick(R.id.right_button)
-    public void onRightButtonClick() {
-        noteToolbarListener.onRightButtonClick();
+        findViewById(R.id.left_button).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noteToolbarListener.onLeftButtonClick();
+            }
+        });
+        findViewById(R.id.right_button).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noteToolbarListener.onRightButtonClick();
+            }
+        });
     }
 
     @Override

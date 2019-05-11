@@ -20,9 +20,9 @@ public class ToolbarActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.toolbar_activity_layout);
 
-        statusBarMargin = (LinearLayout) findViewById(R.id.status_bar_margin);
-        toolbar = (NoteToolbar) findViewById(R.id.toolbar);
-        activityContent = (LinearLayout) findViewById(R.id.activity_content);
+        statusBarMargin = findViewById(R.id.status_bar_margin);
+        toolbar = findViewById(R.id.toolbar);
+        activityContent = findViewById(R.id.activity_content);
 
         setupStatusBar();
         setupToolbar();

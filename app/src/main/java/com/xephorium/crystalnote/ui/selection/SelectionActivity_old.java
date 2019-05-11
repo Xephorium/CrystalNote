@@ -11,18 +11,14 @@ import com.xephorium.crystalnote.ui.custom.NoteToolbar;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+public class SelectionActivity_old extends ToolbarActivity implements SelectionView {
 
-public class SelectionActivity extends ToolbarActivity implements SelectionView {
-
-    @BindView(R.id.selection_note_list)
+    //@BindView(R.id.selection_note_list)
     NoteListView noteListView;
 
     SelectionPresenter presenter;
 
-    @OnClick(R.id.selection_action_button)
+    //@OnClick(R.id.selection_action_button)
     public void handleActionButtonClick() {
         presenter.handleActionButtonClick();
     }
@@ -31,7 +27,7 @@ public class SelectionActivity extends ToolbarActivity implements SelectionView 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setActivityContent(R.layout.selection_activity_layout);
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
 
         presenter = new SelectionPresenter(this);
         noteListView.setNoteListViewListener(getSelectionNoteListViewListener());
