@@ -2,7 +2,7 @@ package com.xephorium.crystalnote.ui.creation
 
 import com.xephorium.crystalnote.data.util.NoteUtils
 
-class CreationPresenter(view: CreationContract.View) : CreationContract.Presenter() {
+class CreationPresenter : CreationContract.Presenter() {
 
 
     /*--- Action Handling Methods ---*/

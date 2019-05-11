@@ -26,7 +26,7 @@ class CreationActivity : ToolbarActivity(), CreationContract.View {
         super.onCreate(savedInstanceState)
         setActivityContent(R.layout.creation_activity_layout)
 
-        presenter = CreationPresenter(this)
+        presenter = CreationPresenter()
         presenter.noteRepository = NoteRepository(this)
 
         setupToolbar()
