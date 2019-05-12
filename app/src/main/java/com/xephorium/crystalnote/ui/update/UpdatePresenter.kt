@@ -91,5 +91,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
             // New Note - Save
             noteRepository.writeToNote(name, content)
         }
+
+        if (isLaunchFromWidget) view?.refreshWidget()
     }
 }

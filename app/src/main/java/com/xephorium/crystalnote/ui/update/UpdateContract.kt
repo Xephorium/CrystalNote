@@ -13,12 +13,14 @@ interface UpdateContract {
         fun showDiscardChangesDialog()
         fun showDeleteNoteDialog()
         fun navigateBack()
+        fun refreshWidget()
     }
 
     abstract class Presenter : BasePresenter<View>() {
         lateinit var noteRepository: NoteRepository
 
         var isInEditMode: Boolean = false
+        var isLaunchFromWidget: Boolean = false
         var initialName: String = ""
         var initialContent: String = ""
         var name: String = ""

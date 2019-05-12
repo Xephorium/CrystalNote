@@ -2,6 +2,7 @@ package com.xephorium.crystalnote.ui.update
 
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
+import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
@@ -29,6 +31,9 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     private val isInEditMode: Boolean
         get() = (intent.getStringExtra(KEY_NOTE_NAME) ?: "").isNotBlank()
 
+    private val isLaunchFromWidget: Boolean
+        get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_WIDGET, false))
+
 
     /*--- Lifecycle Methods ---*/
 
@@ -39,6 +44,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         presenter = UpdatePresenter()
         presenter.noteRepository = NoteRepository(this)
         presenter.isInEditMode = isInEditMode
+        presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.initialName = initialName
 
         setupToolbar()
@@ -116,6 +122,10 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         finish()
     }
 
+    override fun refreshWidget() {
+        sendBroadcast(Intent().also { it.action = IntentLibrary.UPDATE_NOTE_INTENT })
+    }
+
 
     /*--- Private Setup Methods ---*/
 
@@ -145,5 +155,6 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
     companion object {
         const val KEY_NOTE_NAME = "NOTE_NAME_KEY"
+        const val KEY_LAUNCH_FROM_WIDGET = "LAUNCH_FROM_WIDGET_KEY"
     }
 }

@@ -15,6 +15,9 @@ import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.selection.SelectionActivity
+import com.xephorium.crystalnote.ui.update.UpdateActivity
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_NAME
 
 /*
   NotesWidgetProvider                          05.11.2019
@@ -68,10 +71,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Set Listeners
                 widgetView.setOnClickPendingIntent(
-                        R.id.note_widget_button,
-                        getOnClickPendingIntent(context, BUTTON_CLICK_INTENT)
-                )
-                widgetView.setOnClickPendingIntent(
                         R.id.note_widget_text,
                         getOnClickPendingIntent(context, TEXT_CLICK_INTENT)
                 )
@@ -89,16 +88,28 @@ class NotesWidgetProvider : AppWidgetProvider() {
         super.onReceive(context, intent)
 
         when (intent.action) {
-            BUTTON_CLICK_INTENT -> {
+
+            TITLE_CLICK_INTENT -> {
+
+                // Choose New Display Note
                 val buttonIntent = Intent(context, SelectionActivity::class.java)
                 buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 buttonIntent.action = IntentLibrary.CHOOSE_NOTE_INTENT
                 context.startActivity(buttonIntent)
             }
 
-            TEXT_CLICK_INTENT -> Toast.makeText(context, "Text Clicked", Toast.LENGTH_SHORT).show()
+            TEXT_CLICK_INTENT -> {
 
-            TITLE_CLICK_INTENT -> Toast.makeText(context, "Title Clicked", Toast.LENGTH_SHORT).show()
+                // Update Current Display Note
+                SharedPreferencesRepository(context).getDisplayNoteName()?.let { name ->
+                    val updateIntent = Intent(context, UpdateActivity::class.java)
+                    updateIntent.putExtra(KEY_NOTE_NAME, name)
+                    updateIntent.putExtra(KEY_LAUNCH_FROM_WIDGET, true)
+                    updateIntent.addFlags(
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    context.startActivity(updateIntent)
+                }
+            }
 
             IntentLibrary.UPDATE_NOTE_INTENT -> updateWidgets(context)
         }
@@ -124,8 +135,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
     }
 
     companion object {
-
-        private const val BUTTON_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.BUTTON"
         private const val TEXT_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TEXT"
         private const val TITLE_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TITLE"
     }
