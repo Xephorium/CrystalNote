@@ -1,15 +1,15 @@
-package com.xephorium.crystalnote.ui.selection
+package com.xephorium.crystalnote.ui.select
 
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.utility.NoteUtility.SortType
 import com.xephorium.crystalnote.data.model.Note
 
-class SelectionPresenter : SelectionContract.Presenter() {
+class SelectPresenter : SelectContract.Presenter() {
 
 
     /*--- Lifecycle Methods ---*/
 
-    override fun attachView(view: SelectionContract.View) {
+    override fun attachView(view: SelectContract.View) {
         super.attachView(view)
 
         refreshNoteList()

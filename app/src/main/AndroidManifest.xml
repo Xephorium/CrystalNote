@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Note Creation Activity -->
+        <!-- Note Update Activity -->
         <activity
             android:name=".ui.update.UpdateActivity"
             android:screenOrientation="portrait">
@@ -31,9 +31,9 @@
             </intent-filter>
         </activity>
 
-        <!-- Note Selection Activity -->
+        <!-- Note Select Activity -->
         <activity
-            android:name=".ui.selection.SelectionActivity"
+            android:name=".ui.select.SelectActivity"
             android:screenOrientation="portrait"
             android:noHistory="false">
             <intent-filter>

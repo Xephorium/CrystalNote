@@ -7,14 +7,13 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import android.widget.Toast
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.IntentLibrary
-import com.xephorium.crystalnote.ui.selection.SelectionActivity
+import com.xephorium.crystalnote.ui.select.SelectActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_NAME
@@ -92,7 +91,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
             TITLE_CLICK_INTENT -> {
 
                 // Choose New Display Note
-                val buttonIntent = Intent(context, SelectionActivity::class.java)
+                val buttonIntent = Intent(context, SelectActivity::class.java)
                 buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 buttonIntent.action = IntentLibrary.CHOOSE_NOTE_INTENT
                 context.startActivity(buttonIntent)

@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.selection
+package com.xephorium.crystalnote.ui.select
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,24 +12,24 @@ import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
-import kotlinx.android.synthetic.main.selection_activity_layout.*
+import kotlinx.android.synthetic.main.select_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
-class SelectionActivity : ToolbarActivity(), SelectionContract.View {
+class SelectActivity : ToolbarActivity(), SelectContract.View {
 
 
     /*--- Variable Declarations ---*/
 
-    lateinit var presenter: SelectionPresenter
+    lateinit var presenter: SelectPresenter
 
 
     /*--- Lifecycle Methods ---*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.selection_activity_layout)
+        setActivityContent(R.layout.select_activity_layout)
 
-        presenter = SelectionPresenter()
+        presenter = SelectPresenter()
         presenter.noteRepository = NoteRepository(this)
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
 
@@ -51,7 +51,7 @@ class SelectionActivity : ToolbarActivity(), SelectionContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
-        selection_note_list.populateNoteList(notes)
+        select_note_list.populateNoteList(notes)
     }
 
     override fun refreshWidget() {
@@ -83,8 +83,8 @@ class SelectionActivity : ToolbarActivity(), SelectionContract.View {
     }
 
     private fun setupClickListeners() {
-        selection_action_button.setOnClickListener { presenter.handleNewNoteButtonClick() }
-        selection_note_list.noteListViewListener = object : NoteListView.NoteListViewListener {
+        select_action_button.setOnClickListener { presenter.handleNewNoteButtonClick() }
+        select_note_list.noteListViewListener = object : NoteListView.NoteListViewListener {
             override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
             override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()
