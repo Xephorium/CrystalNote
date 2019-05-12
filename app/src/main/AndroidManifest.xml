@@ -12,14 +12,21 @@
         android:theme="@style/CrystalNoteTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <!-- Home Activity -->
+        <!-- Splash Activity -->
         <activity
-            android:name=".ui.home.HomeActivity"
-            android:screenOrientation="portrait">
+            android:name=".ui.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+
+        <!-- Home Activity -->
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <!-- Note Update Activity -->

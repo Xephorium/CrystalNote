@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item android:drawable="@drawable/splash_gradient" />
+
+    <!-- TODO: Find Splash Screen image scaling fix on API 21-22 -->
+    <item
+        android:width="@dimen/splash_icon_size"
+        android:height="@dimen/splash_icon_size"
+        android:gravity="center"
+        tools:ignore="UnusedAttribute">
+        <bitmap android:src="@drawable/icon_splash" />
+    </item>
+
+</layer-list>
