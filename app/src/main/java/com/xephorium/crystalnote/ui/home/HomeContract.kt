@@ -11,7 +11,6 @@ interface HomeContract {
         fun populateNoteList(notes: List<Note>)
 
         fun showNavigationDrawer()
-        fun showSearchDialog()
         fun navigateToEditNote(name: String)
         fun navigateToNewNote()
     }
@@ -20,7 +19,6 @@ interface HomeContract {
         lateinit var noteRepository: NoteRepository
 
         abstract fun handleMenuButtonClick()
-        abstract fun handleSearchButtonClick()
         abstract fun handleNewNoteButtonClick()
         abstract fun handleNoteClick(note: Note)
         abstract fun handleNoteLongClick(note: Note)

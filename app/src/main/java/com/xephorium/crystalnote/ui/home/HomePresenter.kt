@@ -21,10 +21,6 @@ class HomePresenter : HomeContract.Presenter() {
         view?.showNavigationDrawer()
     }
 
-    override fun handleSearchButtonClick() {
-        view?.showSearchDialog()
-    }
-
     override fun handleNewNoteButtonClick() {
         view?.navigateToNewNote()
     }

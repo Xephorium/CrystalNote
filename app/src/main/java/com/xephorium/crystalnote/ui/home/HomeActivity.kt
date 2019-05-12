@@ -58,11 +58,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         openDrawer()
     }
 
-    override fun showSearchDialog() {
-        // TODO - Handle Search
-        Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show()
-    }
-
     override fun navigateToEditNote(name: String) {
         val intent = Intent(this, UpdateActivity::class.java)
         intent.putExtra(KEY_NOTE_NAME, name)
@@ -81,10 +76,9 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         toolbar.isEditMode = false
         toolbar.setTitle(R.string.home_title)
         toolbar.setLeftButtonImage(R.drawable.icon_menu)
-        toolbar.setRightButtonImage(R.drawable.icon_search)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
-            override fun onRightButtonClick() = presenter.handleSearchButtonClick()
+            override fun onRightButtonClick() = Unit
             override fun onTextChange(text: String) = Unit
         })
     }
