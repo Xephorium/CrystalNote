@@ -85,10 +85,7 @@ class SelectionActivity : ToolbarActivity(), SelectionContract.View {
         selection_action_button.setOnClickListener { presenter.handleNewNoteButtonClick() }
         selection_note_list.noteListViewListener = object : NoteListView.NoteListViewListener {
             override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
-            override fun onNoteLongClick(note: Note): Boolean = true.also {
-                presenter.handleNoteLongClick(note)
-            }
-
+            override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()
         }
     }

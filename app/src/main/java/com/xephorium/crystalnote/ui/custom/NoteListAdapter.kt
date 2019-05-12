@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.note_layout.view.*
 
 open class NoteListAdapter(private val notes: List<Note>) : BaseAdapter() {
 
-    override fun getView(position: Int, noteLayout: View, parent: ViewGroup): View {
+    override fun getView(position: Int, noteLayout: View?, parent: ViewGroup): View {
 
         val inflater = parent.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout = inflater.inflate(R.layout.note_layout, parent, false)
@@ -51,13 +51,13 @@ open class NoteListAdapter(private val notes: List<Note>) : BaseAdapter() {
         return notes.size
     }
 
-    private fun getOnClickListener(position: Int): View.OnClickListener {
+    open fun getOnClickListener(position: Int): View.OnClickListener {
         return View.OnClickListener {
             // Default Behavior; Do Nothing
         }
     }
 
-    private fun getOnLongClickListener(position: Int): View.OnLongClickListener {
+    open fun getOnLongClickListener(position: Int): View.OnLongClickListener {
         return View.OnLongClickListener {
             // Default Behavior; Do Nothing
             true

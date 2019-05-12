@@ -87,9 +87,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         home_action_button.setOnClickListener { presenter.handleNewNoteButtonClick() }
         home_note_list.noteListViewListener = object : NoteListView.NoteListViewListener {
             override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
-            override fun onNoteLongClick(note: Note): Boolean = true.also {
-                presenter.handleNoteLongClick(note)
-            }
+            override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()
         }
     }
