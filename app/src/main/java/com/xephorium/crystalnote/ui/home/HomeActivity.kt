@@ -2,6 +2,7 @@ package com.xephorium.crystalnote.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 
 import com.xephorium.crystalnote.R
@@ -51,7 +52,14 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
+        home_note_list.visibility = View.VISIBLE
+        home_empty_list.visibility = View.GONE
         home_note_list.populateNoteList(notes)
+    }
+
+    override fun showEmptyNotesList() {
+        home_note_list.visibility = View.GONE
+        home_empty_list.visibility = View.VISIBLE
     }
 
     override fun showNavigationDrawer() {

@@ -11,6 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
+    <TextView
+        android:id="@+id/select_empty_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/text_no_notes"
+        android:gravity="center"
+        android:text="Tap + to create a note."/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/select_action_button"
         android:layout_width="wrap_content"

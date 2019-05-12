@@ -2,6 +2,7 @@ package com.xephorium.crystalnote.ui.select
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
@@ -51,7 +52,14 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
+        select_note_list.visibility = View.VISIBLE
+        select_empty_list.visibility = View.GONE
         select_note_list.populateNoteList(notes)
+    }
+
+    override fun showEmptyNotesList() {
+        select_note_list.visibility = View.GONE
+        select_empty_list.visibility = View.VISIBLE
     }
 
     override fun refreshWidget() {

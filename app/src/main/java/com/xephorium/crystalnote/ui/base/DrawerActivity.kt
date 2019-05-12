@@ -9,7 +9,7 @@ import androidx.core.view.GravityCompat
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.ui.utility.DisplayUtils
-import kotlinx.android.synthetic.main.navigation_activity_layout.*
+import kotlinx.android.synthetic.main.drawer_activity_layout.*
 
 @SuppressLint("Registered")
 open class DrawerActivity : BaseActivity() {
@@ -26,7 +26,7 @@ open class DrawerActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.navigation_activity_layout)
+        setContentView(R.layout.drawer_activity_layout)
 
         drawerOpen = false
         drawerAnimating = false

@@ -10,6 +10,7 @@ interface SelectContract {
 
     interface View : BaseView {
         fun populateNoteList(notes: List<Note>)
+        fun showEmptyNotesList()
 
         fun refreshWidget()
         fun navigateBack()

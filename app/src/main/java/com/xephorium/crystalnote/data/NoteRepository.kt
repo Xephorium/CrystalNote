@@ -35,14 +35,14 @@ class NoteRepository(private val context: Context) {
     /*--- Public Read/Write Methods ---*/
 
     fun getNotes(): List<Note> {
-        var notesList = getNotesDirectory().listFiles()
+        val notesList = getNotesDirectory().listFiles()
 
-        if (notesList.isEmpty()) {
-            writeToNote(DEFAULT_NOTE_NAME, DEFAULT_NOTE_TEXT)
-            notesList = getNotesDirectory().listFiles()
-        }
+        //if (notesList.isEmpty()) {
+        //    writeToNote(DEFAULT_NOTE_NAME, DEFAULT_NOTE_TEXT)
+        //    notesList = getNotesDirectory().listFiles()
+        //}
 
-        val notes = ArrayList<Note>()
+        val notes = mutableListOf<Note>()
         notesList.forEach { file ->
             notes.add(Note(
                     color = NoteUtility.getDefaultColor(),
@@ -186,20 +186,9 @@ class NoteRepository(private val context: Context) {
         }
     }
 
-    private fun createNotesDirectory(): Boolean {
+    private fun createNotesDirectory() {
         val directory = getNotesDirectory()
-
-        if (!directory.exists()) {
-            if (!directory.mkdir())
-                return false
-            else
-                populateNotesDirectory()
-            return true
-        } else {
-            if (isNotesDirectoryEmpty())
-                populateNotesDirectory()
-            return true
-        }
+        if (!directory.exists()) directory.mkdir()
     }
 
     private fun isNotesDirectoryEmpty(): Boolean {

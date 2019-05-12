@@ -9,6 +9,7 @@ interface HomeContract {
 
     interface View : BaseView {
         fun populateNoteList(notes: List<Note>)
+        fun showEmptyNotesList()
 
         fun showNavigationDrawer()
         fun navigateToEditNote(name: String)

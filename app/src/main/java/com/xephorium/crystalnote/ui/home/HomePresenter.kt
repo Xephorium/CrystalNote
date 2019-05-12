@@ -41,9 +41,12 @@ class HomePresenter : HomeContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        view?.populateNoteList(NoteUtility.sortNotes(
-                noteRepository.getNotes().toMutableList(),
-                NoteUtility.SortType.DATE_NEW
-        ))
+        val list = noteRepository.getNotes().toMutableList()
+
+        if (list.isNotEmpty()) {
+            view?.populateNoteList(NoteUtility.sortNotes(list, NoteUtility.SortType.DATE_NEW))
+        } else {
+            view?.showEmptyNotesList()
+        }
     }
 }

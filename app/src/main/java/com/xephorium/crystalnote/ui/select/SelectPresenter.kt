@@ -44,15 +44,12 @@ class SelectPresenter : SelectContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        view?.populateNoteList(NoteUtility.sortNotes(
-                noteRepository.getNotes().toMutableList(),
-                SortType.DATE_NEW
-        ))
+        val list = noteRepository.getNotes().toMutableList()
+
+        if (list.isNotEmpty()) {
+            view?.populateNoteList(NoteUtility.sortNotes(list, NoteUtility.SortType.DATE_NEW))
+        } else {
+            view?.showEmptyNotesList()
+        }
     }
 }
-
-// Text Edit Launch Intent
-// Intent intent = new Intent(Intent.ACTION_VIEW);
-// Uri uri = Uri.parse("file://" + note.getPath());
-// intent.setDataAndType(uri, "text/plain");
-// this.startActivity(intent);
