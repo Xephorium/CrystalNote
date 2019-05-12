@@ -11,6 +11,7 @@ import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
 import kotlinx.android.synthetic.main.creation_activity_layout.*
+import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
 class CreationActivity : ToolbarActivity(), CreationContract.View {
 

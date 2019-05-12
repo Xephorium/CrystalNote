@@ -13,6 +13,7 @@ import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
 import kotlinx.android.synthetic.main.selection_activity_layout.*
+import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
 class SelectionActivity : ToolbarActivity(), SelectionContract.View {
 

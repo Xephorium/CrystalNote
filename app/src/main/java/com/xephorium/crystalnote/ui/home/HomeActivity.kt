@@ -14,6 +14,7 @@ import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
 import kotlinx.android.synthetic.main.home_activity_layout.*
+import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
 class HomeActivity : DrawerActivity(), HomeContract.View {
 
