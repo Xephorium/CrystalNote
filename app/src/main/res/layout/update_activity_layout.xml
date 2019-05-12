@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/backgroundDefault">
 
     <com.xephorium.crystalnote.ui.custom.LineEditText
         android:id="@+id/text_note_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="@dimen/activity_padding"
-        android:paddingEnd="@dimen/activity_padding"
         android:layout_alignParentTop="true"
-        />
+        android:paddingStart="@dimen/activity_padding"
+        android:paddingEnd="@dimen/activity_padding" />
 
 </RelativeLayout>

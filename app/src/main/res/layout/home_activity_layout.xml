@@ -8,15 +8,17 @@
         android:id="@+id/home_note_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:background="@color/backgroundDefault" />
 
     <TextView
         android:id="@+id/home_empty_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/text_no_notes"
+        android:background="@color/backgroundDefault"
         android:gravity="center"
-        android:text="Tap + to create a note."/>
+        android:text="Tap + to create a note."
+        android:textSize="@dimen/text_no_notes" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/home_action_button"
