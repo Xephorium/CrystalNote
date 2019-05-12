@@ -58,6 +58,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     override fun handleDeleteConfirm() {
         noteRepository.deleteNote(initialName)
+        if (isLaunchFromWidget) view?.refreshWidget()
         view?.navigateBack()
     }
 

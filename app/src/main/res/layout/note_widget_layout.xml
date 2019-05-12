@@ -22,13 +22,14 @@
         android:paddingEnd="@dimen/widget_default_padding"
         android:textColor="@color/textPrimary"
         android:textSize="@dimen/widget_text_header"
-        tools:text="Widget Title"
-        />
+        tools:text="Widget Title" />
 
     <LinearLayout
+        android:id="@+id/note_widget_divider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/widget_divider_height"
-        android:background="@color/widgetDivider" />
+        android:background="@color/widgetDivider"
+        android:orientation="horizontal" />
 
     <TextView
         android:id="@+id/note_widget_text"
@@ -42,7 +43,17 @@
         android:paddingRight="@dimen/widget_default_padding"
         android:paddingBottom="@dimen/widget_default_padding"
         android:textColor="@color/textSecondary"
-        tools:text="This is a bunch of widget text!"
-        />
+        tools:text="This is a bunch of widget text!" />
+
+    <TextView
+        android:id="@+id/note_widget_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/note_widget_blank_ripple"
+        android:gravity="center"
+        android:padding="@dimen/activity_padding"
+        android:text="Tap here to choose a note."
+        android:textColor="@color/textSecondary" />
 
 </LinearLayout>

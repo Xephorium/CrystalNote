@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.view.View
 import android.widget.RemoteViews
 
 import com.xephorium.crystalnote.R
@@ -46,36 +47,36 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Populate Fields
                 if (displayNote != null) {
+
+                    widgetView.setViewVisibility(R.id.note_widget_title, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.note_widget_divider, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.note_widget_text, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.note_widget_empty, View.GONE)
+
                     widgetView.setTextViewText(R.id.note_widget_title, displayNote.name)
                     widgetView.setTextViewText(
                             R.id.note_widget_text,
                             noteRepository.readNoteContents(displayNote.name)
                     )
                 } else {
-                    val noteList = noteRepository.getNotes()
-                    if (noteList.isNotEmpty()) {
-                        widgetView.setTextViewText(R.id.note_widget_title, noteList[0].name)
-                        widgetView.setTextViewText(
-                                R.id.note_widget_text,
-                                noteRepository.readNoteContents(noteList[0].name)
-                        )
-                    } else {
-                        widgetView.setTextViewText(R.id.note_widget_title, noteList[0].name)
-                        widgetView.setTextViewText(
-                                R.id.note_widget_text,
-                                noteRepository.readNoteContents(noteList[0].name)
-                        )
-                    }
+                    widgetView.setViewVisibility(R.id.note_widget_title, View.GONE)
+                    widgetView.setViewVisibility(R.id.note_widget_divider, View.GONE)
+                    widgetView.setViewVisibility(R.id.note_widget_text, View.GONE)
+                    widgetView.setViewVisibility(R.id.note_widget_empty, View.VISIBLE)
                 }
 
                 // Set Listeners
+                widgetView.setOnClickPendingIntent(
+                        R.id.note_widget_title,
+                        getOnClickPendingIntent(context, TITLE_CLICK_INTENT)
+                )
                 widgetView.setOnClickPendingIntent(
                         R.id.note_widget_text,
                         getOnClickPendingIntent(context, TEXT_CLICK_INTENT)
                 )
                 widgetView.setOnClickPendingIntent(
-                        R.id.note_widget_title,
-                        getOnClickPendingIntent(context, TITLE_CLICK_INTENT)
+                        R.id.note_widget_empty,
+                        getOnClickPendingIntent(context, EMPTY_CLICK_INTENT)
                 )
 
                 appWidgetManager.updateAppWidget(widgetInstance, widgetView)
@@ -110,6 +111,15 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 }
             }
 
+            EMPTY_CLICK_INTENT -> {
+
+                // Choose New Display Note
+                val buttonIntent = Intent(context, SelectActivity::class.java)
+                buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                buttonIntent.action = IntentLibrary.CHOOSE_NOTE_INTENT
+                context.startActivity(buttonIntent)
+            }
+
             IntentLibrary.UPDATE_NOTE_INTENT -> updateWidgets(context)
         }
     }
@@ -134,7 +144,8 @@ class NotesWidgetProvider : AppWidgetProvider() {
     }
 
     companion object {
-        private const val TEXT_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TEXT"
         private const val TITLE_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TITLE"
+        private const val TEXT_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TEXT"
+        private const val EMPTY_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.EMPTY"
     }
 }
