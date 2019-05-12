@@ -40,7 +40,7 @@
     <color name="textHint">#808080</color>
     <color name="textHeader">#555555</color>
     <color name="textHandle">@color/gray8</color>
-    <color name="textUnderline">#b3b3b3</color>
+    <color name="textUnderline">#ccc</color>
 
     <color name="toolbarPrimaryColorDark">@color/whiteSmoke</color>
     <color name="toolbarSecondaryColorDark">@color/whiteSmokeAlpha</color>
