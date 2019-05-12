@@ -17,9 +17,9 @@
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
     </style>
 
-    <style name="CrystalNoteThemeBrown" parent="CrystalNoteTheme">
-        <item name="colorPrimary">@color/brown800</item>
-        <item name="colorPrimaryDark">@color/brown900</item>
+    <style name="CrystalNoteThemeBlue" parent="CrystalNoteTheme">
+        <item name="colorPrimary">@color/blue700</item>
+        <item name="colorPrimaryDark">@color/blue800</item>
     </style>
 
 
