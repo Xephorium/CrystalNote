@@ -7,9 +7,9 @@ import android.widget.Toast
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.model.Note
-import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.base.DrawerActivity
-import com.xephorium.crystalnote.ui.creation.CreationActivity
+import com.xephorium.crystalnote.ui.update.UpdateActivity
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_NAME
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
@@ -63,9 +63,14 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show()
     }
 
+    override fun navigateToEditNote(name: String) {
+        val intent = Intent(this, UpdateActivity::class.java)
+        intent.putExtra(KEY_NOTE_NAME, name)
+        startActivity(intent)
+    }
+
     override fun navigateToNewNote() {
-        val intent = Intent(this, CreationActivity::class.java)
-        intent.action = IntentLibrary.CREATE_NOTE
+        val intent = Intent(this, UpdateActivity::class.java)
         startActivity(intent)
     }
 

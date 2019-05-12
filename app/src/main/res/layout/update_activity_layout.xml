@@ -6,7 +6,7 @@
     >
 
     <com.xephorium.crystalnote.ui.custom.LineEditText
-        android:id="@+id/creation_content"
+        android:id="@+id/text_note_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/activity_padding"

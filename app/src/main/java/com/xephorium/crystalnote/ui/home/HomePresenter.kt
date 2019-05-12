@@ -30,7 +30,7 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleNoteClick(note: Note) {
-        // Do Nothing
+        view?.navigateToEditNote(note.name)
     }
 
     override fun handleNoteLongClick(note: Note) {

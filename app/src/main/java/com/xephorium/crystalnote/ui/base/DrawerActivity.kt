@@ -83,7 +83,7 @@ open class DrawerActivity : BaseActivity() {
 
     private fun setupToolbar() {
         setSupportActionBar(toolbar)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     private fun setupNavDrawer() {

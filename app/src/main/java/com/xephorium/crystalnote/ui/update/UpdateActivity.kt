@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.creation
+package com.xephorium.crystalnote.ui.update
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,25 +10,33 @@ import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
-import kotlinx.android.synthetic.main.creation_activity_layout.*
+import kotlinx.android.synthetic.main.update_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
-class CreationActivity : ToolbarActivity(), CreationContract.View {
+class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
 
     /*--- Variable Declarations ---*/
 
-    lateinit var presenter: CreationPresenter
+    lateinit var presenter: UpdatePresenter
+
+    private val initialName: String
+        get() = intent.getStringExtra(KEY_NOTE_NAME) ?: ""
+
+    private val isInEditMode: Boolean
+        get() = (intent.getStringExtra(KEY_NOTE_NAME) ?: "").isNotBlank()
 
 
     /*--- Lifecycle Methods ---*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.creation_activity_layout)
+        setActivityContent(R.layout.update_activity_layout)
 
-        presenter = CreationPresenter()
+        presenter = UpdatePresenter()
         presenter.noteRepository = NoteRepository(this)
+        presenter.isInEditMode = isInEditMode
+        presenter.initialName = initialName
 
         setupToolbar()
         setupClickListeners()
@@ -50,6 +58,11 @@ class CreationActivity : ToolbarActivity(), CreationContract.View {
 
 
     /*--- View Manipulation Methods ---*/
+
+    override fun populateFields(name: String, content: String) {
+        toolbar.setEditTextContent(name)
+        text_note_content.setText(content)
+    }
 
     override fun showDraftDiscardedMessage() {
         Toast.makeText(this, "Draft Discarded", Toast.LENGTH_SHORT).show()
@@ -78,12 +91,19 @@ class CreationActivity : ToolbarActivity(), CreationContract.View {
     }
 
     private fun setupClickListeners() {
-        creation_content.addTextChangedListener(object : TextWatcher {
+        text_note_content.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun afterTextChanged(editable: Editable?) {
-                presenter.handleContentTextChange(creation_content.text.toString())
+                presenter.handleContentTextChange(text_note_content.text.toString())
             }
         })
+    }
+
+
+    /*--- ---*/
+
+    companion object {
+        const val KEY_NOTE_NAME = "NOTE_NAME_KEY"
     }
 }

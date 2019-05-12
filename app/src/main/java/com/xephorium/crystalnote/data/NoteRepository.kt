@@ -44,13 +44,13 @@ class NoteRepository(private val context: Context) {
 
         val notes = ArrayList<Note>()
         notesList.forEach { file ->
-            val note = Note()
-            note.name = getNoteName(file)
-            note.date = getNoteDate(file)
-            note.path = getNotePath(file)
-            note.preview = getNotePreview(file)
-            note.color = NoteUtility.getDefaultColor()
-            notes.add(note)
+            notes.add(Note(
+                    color = NoteUtility.getDefaultColor(),
+                    name = getNoteName(file),
+                    date = getNoteDate(file),
+                    path = getNotePath(file),
+                    preview = getNotePreview(file)
+            ))
         }
 
         return notes
@@ -79,9 +79,9 @@ class NoteRepository(private val context: Context) {
         }
     }
 
-    fun readNoteContents(name: String): String? {
+    fun readNoteContents(name: String): String {
         val note = getNoteFile(name)
-        if (!note.exists()) return null
+        if (!note.exists()) return ""
 
         try {
             val inputStream = FileInputStream(note.toString())
@@ -100,7 +100,7 @@ class NoteRepository(private val context: Context) {
             return stringBuilder.toString()
 
         } catch (e: Exception) {
-            return null
+            return ""
         }
     }
 
@@ -155,8 +155,8 @@ class NoteRepository(private val context: Context) {
         return note.path
     }
 
-    private fun getNotePreview(note: File): String? {
-        return readNoteContents(getNoteName(note))?.let { NoteUtility.getPreview(it) }
+    private fun getNotePreview(note: File): String {
+        return NoteUtility.getPreview(readNoteContents(getNoteName(note)))
     }
 
 
@@ -168,8 +168,7 @@ class NoteRepository(private val context: Context) {
      *       the newly created DCIM and files folders, and returns the final notes directory.
      */
     private fun getNotesDirectory(): File {
-        val tempDirectory = context.getExternalFilesDir(Environment.DIRECTORY_DCIM)
-        return tempDirectory!!.let {
+        return context.getExternalFilesDir(Environment.DIRECTORY_DCIM)!!.let {
 
             // Delete DCIM Directory
             it.delete()

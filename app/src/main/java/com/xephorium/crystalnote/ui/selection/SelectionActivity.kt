@@ -8,7 +8,7 @@ import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
-import com.xephorium.crystalnote.ui.creation.CreationActivity
+import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
@@ -63,7 +63,7 @@ class SelectionActivity : ToolbarActivity(), SelectionContract.View {
     }
 
     override fun navigateToNewNote() {
-        val intent = Intent(this, CreationActivity::class.java)
+        val intent = Intent(this, UpdateActivity::class.java)
         intent.action = IntentLibrary.CREATE_NOTE
         startActivity(intent)
     }

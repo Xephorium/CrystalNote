@@ -12,6 +12,7 @@ interface HomeContract {
 
         fun showNavigationDrawer()
         fun showSearchDialog()
+        fun navigateToEditNote(name: String)
         fun navigateToNewNote()
     }
 

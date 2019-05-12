@@ -47,7 +47,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
                     widgetView.setTextViewText(R.id.note_widget_title, displayNote.name)
                     widgetView.setTextViewText(
                             R.id.note_widget_text,
-                            noteRepository.readNoteContents(displayNote.name!!)
+                            noteRepository.readNoteContents(displayNote.name)
                     )
                 } else {
                     val noteList = noteRepository.getNotes()
@@ -55,13 +55,13 @@ class NotesWidgetProvider : AppWidgetProvider() {
                         widgetView.setTextViewText(R.id.note_widget_title, noteList[0].name)
                         widgetView.setTextViewText(
                                 R.id.note_widget_text,
-                                noteRepository.readNoteContents(noteList[0].name!!)
+                                noteRepository.readNoteContents(noteList[0].name)
                         )
                     } else {
                         widgetView.setTextViewText(R.id.note_widget_title, noteList[0].name)
                         widgetView.setTextViewText(
                                 R.id.note_widget_text,
-                                noteRepository.readNoteContents(noteList[0].name!!)
+                                noteRepository.readNoteContents(noteList[0].name)
                         )
                     }
                 }

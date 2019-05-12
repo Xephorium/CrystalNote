@@ -24,7 +24,7 @@
 
         <!-- Note Creation Activity -->
         <activity
-            android:name=".ui.creation.CreationActivity"
+            android:name=".ui.update.UpdateActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />

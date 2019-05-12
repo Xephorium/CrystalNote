@@ -56,15 +56,17 @@ class NoteToolbar : Toolbar {
         this.setRightButtonImage(NO_IMAGE)
         this.noteToolbarListener = getDefaultNoteToolbarListener()
 
-        findViewById<View>(R.id.left_button).setOnClickListener { noteToolbarListener!!.onLeftButtonClick() }
-        findViewById<View>(R.id.right_button).setOnClickListener { noteToolbarListener!!.onRightButtonClick() }
+        findViewById<View>(R.id.left_button).setOnClickListener {
+            noteToolbarListener?.onLeftButtonClick()
+        }
+        findViewById<View>(R.id.right_button).setOnClickListener {
+            noteToolbarListener?.onRightButtonClick()
+        }
         (findViewById<View>(R.id.edit_text) as EditText).addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-
             override fun afterTextChanged(editable: Editable) {
-                noteToolbarListener!!.onTextChange(
+                noteToolbarListener?.onTextChange(
                         (findViewById<View>(R.id.edit_text) as EditText).text.toString())
             }
         })
@@ -79,6 +81,14 @@ class NoteToolbar : Toolbar {
 
     override fun getTitle(): CharSequence {
         return note_toolbar_title.text
+    }
+
+    fun setEditTextContent(content: String) {
+        edit_text.setText(content)
+    }
+
+    fun getEditTextContent(): String {
+        return edit_text.toString()
     }
 
     fun setLeftButtonImage(drawable: Int) {

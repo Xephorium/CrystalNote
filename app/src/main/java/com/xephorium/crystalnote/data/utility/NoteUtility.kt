@@ -68,7 +68,7 @@ object NoteUtility {
         val dayFormat = SimpleDateFormat("M.d.yy", Locale.US)
         val hourFormat = SimpleDateFormat("h:mma", Locale.US)
 
-        return if (currentDate.day == note.date!!.day) {
+        return if (currentDate.day == note.date.day) {
             hourFormat.format(note.date).toLowerCase()
         } else {
             dayFormat.format(note.date)
@@ -92,7 +92,7 @@ object NoteUtility {
     private fun sortNotesByDateNew(inputList: MutableList<Note>): List<Note> {
         for (x in inputList.indices) {
             for (y in inputList.size - 1 downTo x + 1) {
-                if (inputList[y].date!!.after(inputList[y - 1].date)) {
+                if (inputList[y].date.after(inputList[y - 1].date)) {
                     val temp = inputList[y]
                     inputList[y] = inputList[y - 1]
                     inputList[y - 1] = temp
@@ -105,7 +105,7 @@ object NoteUtility {
     private fun sortNotesByDateOld(inputList: MutableList<Note>): List<Note> {
         for (x in inputList.indices) {
             for (y in inputList.size - 1 downTo x + 1) {
-                if (inputList[y].date!!.before(inputList[y - 1].date)) {
+                if (inputList[y].date.before(inputList[y - 1].date)) {
                     val temp = inputList[y]
                     inputList[y] = inputList[y - 1]
                     inputList[y - 1] = temp

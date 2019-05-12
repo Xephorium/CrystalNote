@@ -1,8 +1,30 @@
-package com.xephorium.crystalnote.ui.creation
+package com.xephorium.crystalnote.ui.update
 
 import com.xephorium.crystalnote.data.validation.NoteValidator
 
-class CreationPresenter : CreationContract.Presenter() {
+class UpdatePresenter : UpdateContract.Presenter() {
+
+
+    /*--- Lifecycle Methods ---*/
+
+    override fun attachView(view: UpdateContract.View) {
+        super.attachView(view)
+
+        if (isInEditMode) {
+
+            // Get Note
+            noteRepository.getNote(initialName)?.let {
+
+                // Update State Fields
+                name = initialName
+                initialContent = noteRepository.readNoteContents(it.name)
+                content = initialContent
+
+                // Update View
+                this.view?.populateFields(it.name, noteRepository.readNoteContents(it.name))
+            }
+        }
+    }
 
 
     /*--- Action Handling Methods ---*/
