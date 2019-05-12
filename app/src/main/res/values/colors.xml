@@ -28,6 +28,8 @@
 
     <color name="backgroundDefault">#f6f6f6</color>
 
+    <color name="drawerSelectedItem">#eee</color>
+
     <color name="iconDefault">#aaaaaa</color>
 
     <color name="rippleDefault">#cccccc</color>
