@@ -69,7 +69,7 @@ class CreationActivity : ToolbarActivity(), CreationContract.View {
         toolbar.isEditMode = true
         toolbar.setLeftButtonImage(R.drawable.icon_back)
         toolbar.setRightButtonImage(R.drawable.icon_save)
-        toolbar.setNoteToolbarListener( object : NoteToolbar.NoteToolbarListener {
+        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleBackClick()
             override fun onRightButtonClick() = presenter.handleSaveClick()
             override fun onTextChange(text: String) = presenter.handleNameTextChange(text)

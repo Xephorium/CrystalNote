@@ -12,7 +12,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
-import com.xephorium.crystalnote.ui.util.DisplayUtils;
+import com.xephorium.crystalnote.ui.utility.DisplayUtils;
 
 public class DrawerActivity extends BaseActivity {
 

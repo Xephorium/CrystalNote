@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 
 import com.xephorium.crystalnote.R;
 import com.xephorium.crystalnote.ui.custom.NoteToolbar;
-import com.xephorium.crystalnote.ui.util.DisplayUtils;
+import com.xephorium.crystalnote.ui.utility.DisplayUtils;
 
 public class ToolbarActivity extends BaseActivity {
 

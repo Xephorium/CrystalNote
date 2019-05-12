@@ -1,0 +1,77 @@
+package com.xephorium.crystalnote.ui.custom
+
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.drawable.ColorDrawable
+import android.text.InputType
+import android.util.AttributeSet
+import android.view.Gravity
+import android.widget.EditText
+
+import com.xephorium.crystalnote.R
+
+class LineEditText : EditText {
+
+
+    /*--- Declare Variables ---*/
+
+    private lateinit var paint: Paint
+
+
+    /*--- Line Edit Text Setup ---*/
+
+    constructor(context: Context) : super(context) {
+        initializeLineEditText(context)
+    }
+
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        initializeLineEditText(context)
+    }
+
+    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle) {
+        initializeLineEditText(context)
+    }
+
+    private fun initializeLineEditText(context: Context) {
+        this.paint = Paint()
+        this.background = TRANSPARENT
+        this.gravity = Gravity.TOP
+        this.inputType = INPUT_TYPE
+        this.isScrollContainer = true
+        this.isVerticalScrollBarEnabled = false
+
+        paint.style = Paint.Style.STROKE
+        paint.color = resources.getColor(R.color.textUnderline)
+    }
+
+
+    /*--- Lifecycle Methods ---*/
+
+    override fun onDraw(canvas: Canvas) {
+        val viewHeight = if (height > computeVerticalScrollRange()) height
+        else computeVerticalScrollRange()
+        val numLines = (viewHeight - paddingTop - paddingBottom) / lineHeight
+
+        for (x in 0 until numLines + 1) {
+            val lineYPos = lineHeight * (x + 1) + paddingTop
+            canvas.drawLine(
+                    (left + paddingLeft).toFloat(),
+                    lineYPos.toFloat(),
+                    (right - paddingRight).toFloat(),
+                    lineYPos.toFloat(), paint
+            )
+        }
+        super.onDraw(canvas)
+    }
+
+
+    /*--- Constants ---*/
+
+    companion object {
+        val TRANSPARENT = ColorDrawable(0x00FFFFFF)
+        const val INPUT_TYPE = InputType.TYPE_CLASS_TEXT or
+                InputType.TYPE_TEXT_FLAG_MULTI_LINE or
+                InputType.TYPE_TEXT_FLAG_CAP_SENTENCES
+    }
+}
