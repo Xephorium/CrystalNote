@@ -1,7 +1,7 @@
 package com.xephorium.crystalnote.ui.selection
 
-import com.xephorium.crystalnote.data.util.NoteUtils
-import com.xephorium.crystalnote.data.util.NoteUtils.SortType
+import com.xephorium.crystalnote.data.utility.NoteUtility
+import com.xephorium.crystalnote.data.utility.NoteUtility.SortType
 import com.xephorium.crystalnote.data.model.Note
 
 class SelectionPresenter : SelectionContract.Presenter() {
@@ -44,8 +44,8 @@ class SelectionPresenter : SelectionContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        view?.populateNoteList(NoteUtils.sortNotes(
-                noteRepository.notes,
+        view?.populateNoteList(NoteUtility.sortNotes(
+                noteRepository.getNotes().toMutableList(),
                 SortType.DATE_NEW
         ))
     }

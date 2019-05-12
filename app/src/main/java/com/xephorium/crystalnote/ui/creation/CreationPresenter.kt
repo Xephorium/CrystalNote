@@ -1,6 +1,6 @@
 package com.xephorium.crystalnote.ui.creation
 
-import com.xephorium.crystalnote.data.util.NoteUtils
+import com.xephorium.crystalnote.data.validation.NoteValidator
 
 class CreationPresenter : CreationContract.Presenter() {
 
@@ -33,14 +33,14 @@ class CreationPresenter : CreationContract.Presenter() {
 
     /*--- Private Methods ---*/
 
-    private fun isNoteValid(): Boolean = NoteUtils.isValidNoteName(name)
-            && NoteUtils.isValidNoteContent(content)
+    private fun isNoteValid(): Boolean = NoteValidator.isValidNoteName(name)
+            && NoteValidator.isValidNoteContent(content)
             && !noteRepository.noteExists(name)
 
     private fun getInvalidNoteMessage() : String {
         return when {
             name.isBlank() && content.isBlank() -> "No Changes to Save"
-            !NoteUtils.isValidNoteName(name) -> "Invalid Note Name"
+            !NoteValidator.isValidNoteName(name) -> "Invalid Note Name"
             noteRepository.noteExists(name) -> "Note Already Exists"
             else -> "Note Invalid"
         }

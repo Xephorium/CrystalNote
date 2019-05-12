@@ -1,7 +1,7 @@
 package com.xephorium.crystalnote.ui.home
 
 import com.xephorium.crystalnote.data.model.Note
-import com.xephorium.crystalnote.data.util.NoteUtils
+import com.xephorium.crystalnote.data.utility.NoteUtility
 
 class HomePresenter : HomeContract.Presenter() {
 
@@ -45,9 +45,9 @@ class HomePresenter : HomeContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        view?.populateNoteList(NoteUtils.sortNotes(
-                noteRepository.notes,
-                NoteUtils.SortType.DATE_NEW
+        view?.populateNoteList(NoteUtility.sortNotes(
+                noteRepository.getNotes().toMutableList(),
+                NoteUtility.SortType.DATE_NEW
         ))
     }
 }
