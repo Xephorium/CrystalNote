@@ -38,33 +38,58 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleBackClick() {
-        // TODO - Implement Warning
-        if (isNoteValid()) view?.showDraftDiscardedMessage()
+        if (!isInEditMode && name.isBlank() && content.isBlank()) {
+            view?.navigateBack()
+        } else if (NoteValidator.isValidNoteName(name)) {
+            saveNote()
+            view?.navigateBack()
+        } else {
+            view?.showInvalidNameDialog()
+        }
+    }
+
+    override fun handleDeleteClick() {
+        if (isInEditMode) {
+            view?.showDeleteNoteDialog()
+        } else {
+            view?.showDiscardChangesDialog()
+        }
+    }
+
+    override fun handleDeleteConfirm() {
+        noteRepository.deleteNote(initialName)
         view?.navigateBack()
     }
 
-    override fun handleSaveClick() {
-        if (!isNoteValid()) {
-            view?.showInvalidNoteMessage(getInvalidNoteMessage())
-        } else {
-            noteRepository.writeToNote(name, content)
-            view?.navigateBack()
-        }
+    override fun handleDiscardChangesConfirm() {
+        view?.navigateBack()
     }
 
 
     /*--- Private Methods ---*/
 
-    private fun isNoteValid(): Boolean = NoteValidator.isValidNoteName(name)
-            && NoteValidator.isValidNoteContent(content)
-            && !noteRepository.noteExists(name)
+    // TODO - Distinguish between updating the current note and saving over another. (Primary Key?)
+    private fun saveNote() {
 
-    private fun getInvalidNoteMessage() : String {
-        return when {
-            name.isBlank() && content.isBlank() -> "No Changes to Save"
-            !NoteValidator.isValidNoteName(name) -> "Invalid Note Name"
-            noteRepository.noteExists(name) -> "Note Already Exists"
-            else -> "Note Invalid"
+        if (initialName == name && initialContent == content) {
+
+            // No Changes - Do Nothing
+
+        } else if (initialName == name) {
+
+            // Note Updated - Save Over Existing
+            noteRepository.writeToNote(name, content)
+
+        } else if (isInEditMode && initialName != name) {
+
+            // Note Renamed - Save New, Delete Old
+            noteRepository.writeToNote(name, content)
+            noteRepository.deleteNote(initialName)
+
+        } else if (!isInEditMode) {
+
+            // New Note - Save
+            noteRepository.writeToNote(name, content)
         }
     }
 }

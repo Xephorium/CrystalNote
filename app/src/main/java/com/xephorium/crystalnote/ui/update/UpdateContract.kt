@@ -9,8 +9,9 @@ interface UpdateContract {
     interface View : BaseView {
         fun populateFields(name: String, content: String)
 
-        fun showDraftDiscardedMessage()
-        fun showInvalidNoteMessage(message: String)
+        fun showInvalidNameDialog()
+        fun showDiscardChangesDialog()
+        fun showDeleteNoteDialog()
         fun navigateBack()
     }
 
@@ -26,6 +27,8 @@ interface UpdateContract {
         abstract fun handleNameTextChange(name: String)
         abstract fun handleContentTextChange(content: String)
         abstract fun handleBackClick()
-        abstract fun handleSaveClick()
+        abstract fun handleDeleteClick()
+        abstract fun handleDeleteConfirm()
+        abstract fun handleDiscardChangesConfirm()
     }
 }

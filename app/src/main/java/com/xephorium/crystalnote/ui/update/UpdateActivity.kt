@@ -1,9 +1,12 @@
 package com.xephorium.crystalnote.ui.update
 
+import android.content.DialogInterface.BUTTON_NEGATIVE
+import android.content.DialogInterface.BUTTON_POSITIVE
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
@@ -64,12 +67,49 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         text_note_content.setText(content)
     }
 
-    override fun showDraftDiscardedMessage() {
-        Toast.makeText(this, "Draft Discarded", Toast.LENGTH_SHORT).show()
+    override fun showInvalidNameDialog() {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setCancelable(false)
+        alertDialog.setTitle("Invalid Name")
+        alertDialog.setMessage("Note name is invalid and cannot be saved.")
+        alertDialog.setButton(BUTTON_NEGATIVE, "Rename") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.setButton(BUTTON_POSITIVE, "Continue") { dialog, _ ->
+            dialog.dismiss()
+            presenter.handleDiscardChangesConfirm()
+        }
+        alertDialog.show()
     }
 
-    override fun showInvalidNoteMessage(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    override fun showDiscardChangesDialog() {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setCancelable(false)
+        alertDialog.setTitle("Discard Note")
+        alertDialog.setMessage("Discard new note?")
+        alertDialog.setButton(BUTTON_NEGATIVE, "No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.setButton(BUTTON_POSITIVE, "Yes") { dialog, _ ->
+            dialog.dismiss()
+            presenter.handleDiscardChangesConfirm()
+        }
+        alertDialog.show()
+    }
+
+    override fun showDeleteNoteDialog() {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setCancelable(false)
+        alertDialog.setTitle("Delete Note")
+        alertDialog.setMessage("Are you sure?")
+        alertDialog.setButton(BUTTON_NEGATIVE, "No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.setButton(BUTTON_POSITIVE, "Yes") { dialog, _ ->
+            dialog.dismiss()
+            presenter.handleDeleteConfirm()
+        }
+        alertDialog.show()
     }
 
     override fun navigateBack() {
@@ -82,10 +122,10 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     private fun setupToolbar() {
         toolbar.isEditMode = true
         toolbar.setLeftButtonImage(R.drawable.icon_back)
-        toolbar.setRightButtonImage(R.drawable.icon_save)
+        toolbar.setRightButtonImage(R.drawable.icon_delete)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleBackClick()
-            override fun onRightButtonClick() = presenter.handleSaveClick()
+            override fun onRightButtonClick() = presenter.handleDeleteClick()
             override fun onTextChange(text: String) = presenter.handleNameTextChange(text)
         })
     }
