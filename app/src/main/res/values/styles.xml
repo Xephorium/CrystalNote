@@ -24,10 +24,9 @@
 
 
     <!-- Splash Theme -->
-    <style name="SplashTheme" parent ="Theme.AppCompat.Light.NoActionBar">
+    <style name="SplashTheme" parent ="ThemeOverlay.AppCompat.Dark">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
     </style>
 
     <!-- Control Themes -->
