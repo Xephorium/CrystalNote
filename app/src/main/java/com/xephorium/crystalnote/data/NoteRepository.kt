@@ -37,11 +37,6 @@ class NoteRepository(private val context: Context) {
     fun getNotes(): List<Note> {
         val notesList = getNotesDirectory().listFiles()
 
-        //if (notesList.isEmpty()) {
-        //    writeToNote(DEFAULT_NOTE_NAME, DEFAULT_NOTE_TEXT)
-        //    notesList = getNotesDirectory().listFiles()
-        //}
-
         val notes = mutableListOf<Note>()
         notesList.forEach { file ->
             notes.add(Note(

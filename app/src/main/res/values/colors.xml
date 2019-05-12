@@ -3,8 +3,8 @@
 
     <!-- System Colors -->
 
-    <color name="colorPrimary">#333333</color>
-    <color name="colorPrimaryDark">#222222</color>
+    <color name="colorPrimary">#444</color>
+    <color name="colorPrimaryDark">#333</color>
     <color name="colorAccent">@color/gray8</color>
 
     <!-- Custom Colors -->
@@ -26,7 +26,7 @@
 
     <!-- Control Colors -->
 
-    <color name="backgroundDefault">#efefef</color>
+    <color name="backgroundDefault">#f6f6f6</color>
 
     <color name="iconDefault">#aaaaaa</color>
 
