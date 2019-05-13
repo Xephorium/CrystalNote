@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/activity_padding"
     android:layout_marginEnd="@dimen/activity_padding"
-    android:layout_marginTop="@dimen/activity_padding"
+    android:layout_marginBottom="@dimen/padding_normal"
     android:clickable="true"
     android:elevation="@dimen/card_view_elevation"
     android:focusable="true"

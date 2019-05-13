@@ -29,6 +29,7 @@ class NoteRepository(private val context: Context) {
 
     init {
         createNotesDirectory()
+        //populateNotesDirectory()
     }
 
 

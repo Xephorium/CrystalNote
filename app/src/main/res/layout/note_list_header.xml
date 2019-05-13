@@ -11,7 +11,7 @@
         android:layout_width="@dimen/list_item_height"
         android:layout_height="@dimen/list_header_height"
         android:gravity="bottom|center_horizontal"
-        android:paddingBottom="@dimen/padding_small"
+        android:paddingBottom="@dimen/padding_normal"
         tools:text="@string/today" />
 
 </LinearLayout>
