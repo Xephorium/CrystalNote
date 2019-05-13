@@ -2,9 +2,7 @@ package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -13,10 +11,7 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
 import kotlinx.android.synthetic.main.note_list_layout.view.*
 
-import java.util.ArrayList
 import java.util.Calendar
-import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.note_list_item.view.*
 
 /*
   NoteListView                                                             05.12.2019
@@ -111,22 +106,6 @@ class NoteListView : SwipeRefreshLayout {
     private fun getOnRefreshListener() = OnRefreshListener {
         noteListViewListener?.onNoteListRefresh()
         isRefreshing = false
-    }
-
-    private fun getScrollViewHeightParams(recyclerView: RecyclerView): LayoutParams {
-        var recyclerViewHeight = 0
-        recyclerView.adapter!!.let { adapter ->
-            for (x in 0 until adapter.itemCount) {
-                val noteView = recyclerView.findViewHolderForLayoutPosition(x)!!.itemView
-                Log.d("Aardvark", "Sample: " + noteView.note_title)
-                noteView.measure(0, 0)
-                recyclerViewHeight += noteView.measuredHeight
-            }
-
-            val params = recyclerView.layoutParams
-            params.height = recyclerViewHeight
-            return params
-        }
     }
 
 
