@@ -15,7 +15,7 @@ object NoteUtility {
 
     /*--- Constants ---*/
 
-    private const val PREVIEW_LENGTH = 50
+    private const val PREVIEW_LENGTH = 60
 
     enum class SortType {
         DATE_OLD,
@@ -40,7 +40,6 @@ object NoteUtility {
                 Color.parseColor("#009688"),
                 Color.parseColor("#ff5722"),
                 Color.parseColor("#795548"),
-                Color.parseColor("#9e9e9e"),
                 Color.parseColor("#607d8b")
         )
         return colors[Random().nextInt(colors.size - 1)]
