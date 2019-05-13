@@ -22,7 +22,6 @@
             android:id="@+id/note_color_bar"
             android:layout_width="@dimen/card_view_color_bar"
             android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/activity_padding"
             android:background="@drawable/note_color_bar"
             tools:backgroundTint="@color/blue700" />
 
@@ -30,7 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/note_list_ripple"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/activity_padding"
+            android:paddingEnd="0dp">
 
             <TextView
                 android:id="@+id/note_date"
