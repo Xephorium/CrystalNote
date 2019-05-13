@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:orientation="vertical"
     android:background="@color/backgroundDefault"
     android:clickable="true"
     android:focusable="true"
-    >
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="180dp"
         android:background="@drawable/image_drawer_header"
-        android:importantForAccessibility="no"/>
+        android:importantForAccessibility="no" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,10 +24,10 @@
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/activity_padding"
             android:layout_marginTop="@dimen/activity_padding"
-            android:layout_marginBottom="@dimen/activity_padding"
             android:layout_marginEnd="@dimen/padding_normal"
+            android:layout_marginBottom="@dimen/activity_padding"
             android:src="@drawable/ic_launcher"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/colorPrimary" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,12 +38,12 @@
                 android:id="@+id/text_drawer_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_padding"
                 android:layout_marginTop="@dimen/padding_normal"
+                android:layout_marginEnd="@dimen/activity_padding"
                 android:paddingTop="@dimen/padding_small"
-                android:textSize="@dimen/text_drawer_header"
+                android:text="Crystal Note"
                 android:textColor="@color/textHeader"
-                android:text="Crystal Note"/>
+                android:textSize="@dimen/text_drawer_header" />
 
             <TextView
                 android:id="@+id/text_drawer_message"
@@ -53,9 +51,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/activity_padding"
                 android:layout_marginBottom="@dimen/activity_padding"
-                android:textSize="@dimen/text_drawer_message"
+                android:text="A simple notes app"
                 android:textColor="@color/textSecondary"
-                android:text="A simple notes app"/>
+                android:textSize="@dimen/text_drawer_message" />
 
         </LinearLayout>
 
@@ -72,13 +70,13 @@
         android:id="@+id/text_drawer_home"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/drawerSelectedItem"
         android:padding="@dimen/activity_padding"
         android:paddingStart="@dimen/padding_gargantuan"
         android:paddingEnd="0dp"
-        android:textSize="@dimen/text_drawer_item"
+        android:text="Home"
         android:textColor="@color/textSecondary"
-        android:background="@color/drawerSelectedItem"
-        android:text="Home"/>
+        android:textSize="@dimen/text_drawer_item" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,9 +91,9 @@
         android:padding="@dimen/activity_padding"
         android:paddingStart="@dimen/padding_gargantuan"
         android:paddingEnd="0dp"
-        android:textSize="@dimen/text_drawer_item"
+        android:text="Settings"
         android:textColor="@color/textSecondary"
-        android:text="Settings"/>
+        android:textSize="@dimen/text_drawer_item" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,14 +108,22 @@
         android:padding="@dimen/activity_padding"
         android:paddingStart="@dimen/padding_gargantuan"
         android:paddingEnd="0dp"
-        android:textSize="@dimen/text_drawer_item"
+        android:text="Extras"
         android:textColor="@color/textSecondary"
-        android:text="Extras"/>
+        android:textSize="@dimen/text_drawer_item" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/drawer_divider_height"
         android:background="@color/widgetDivider"
         android:orientation="horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|end"
+        android:padding="@dimen/activity_padding"
+        android:textColor="@color/textSecondary"
+        android:text="v1.0.0" />
 
 </LinearLayout>
