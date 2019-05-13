@@ -2,20 +2,21 @@ package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.ListView
-import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
-import kotlinx.android.synthetic.main.note_list_view_layout.view.*
+import kotlinx.android.synthetic.main.note_list_layout.view.*
 
 import java.util.ArrayList
 import java.util.Calendar
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.note_list_item.view.*
 
 /*
   NoteListView                                                             05.12.2019
@@ -51,7 +52,7 @@ class NoteListView : SwipeRefreshLayout {
 
     private fun buildNoteListView(context: Context) {
         val layoutInflater = LayoutInflater.from(context)
-        val noteListViewLayout = layoutInflater.inflate(R.layout.note_list_view_layout, null)
+        val noteListViewLayout = layoutInflater.inflate(R.layout.note_list_layout, null)
         this.addView(noteListViewLayout)
 
         this.noteListViewListener = getDefaultNoteListViewListener()
@@ -64,37 +65,8 @@ class NoteListView : SwipeRefreshLayout {
     fun populateNoteList(noteList: List<Note>) {
         parseNotes(noteList)
 
-        if (newNotes.isNotEmpty() && oldNotes.isNotEmpty()) {
-            new_note_header.visibility = View.VISIBLE
-            new_note_list_view.visibility = View.VISIBLE
-            new_note_list_view.adapter = getNoteListAdapter(newNotes)
-            old_note_header.visibility = View.VISIBLE
-            old_note_list_view.visibility = View.VISIBLE
-            old_note_list_view.adapter = getNoteListAdapter(oldNotes)
-        } else if (newNotes.isNotEmpty()) {
-            new_note_header.visibility = View.GONE
-            new_note_list_view.visibility = View.VISIBLE
-            new_note_list_view.adapter = getNoteListAdapter(newNotes)
-            old_note_header.visibility = View.GONE
-            old_note_list_view.visibility = View.GONE
-            old_note_list_view.adapter = getNoteListAdapter(ArrayList())
-        } else if (oldNotes.isNotEmpty()) {
-            new_note_header.visibility = View.GONE
-            new_note_list_view.visibility = View.GONE
-            new_note_list_view.adapter = getNoteListAdapter(ArrayList())
-            old_note_header.visibility = View.GONE
-            old_note_list_view.visibility = View.VISIBLE
-            old_note_list_view.adapter = getNoteListAdapter(oldNotes)
-        } else {
-            new_note_header.visibility = View.GONE
-            new_note_list_view.visibility = View.GONE
-            new_note_list_view.adapter = getNoteListAdapter(ArrayList())
-            old_note_header.visibility = View.GONE
-            old_note_list_view.visibility = View.GONE
-            old_note_list_view.adapter = getNoteListAdapter(ArrayList())
-        }
-        new_note_list_view.layoutParams = getScrollViewHeightParams(new_note_list_view)
-        old_note_list_view.layoutParams = getScrollViewHeightParams(old_note_list_view)
+        note_recycler_view.layoutManager = LinearLayoutManager(context)
+        note_recycler_view.adapter = getNoteListAdapter(newNotes, oldNotes)
     }
 
 
@@ -115,15 +87,15 @@ class NoteListView : SwipeRefreshLayout {
         this.oldNotes = oldNotes
     }
 
-    private fun getNoteListAdapter(notes: List<Note>): NoteListAdapter {
-        return object : NoteListAdapter(notes) {
-            override fun getOnClickListener(position: Int): OnClickListener {
-                return OnClickListener { noteListViewListener?.onNoteClick(notes[position]) }
+    private fun getNoteListAdapter(newNotes: List<Note>, oldNotes: List<Note>): NoteListAdapter {
+        return object : NoteListAdapter(context, newNotes, oldNotes) {
+            override fun getOnClickListener(note: Note): OnClickListener {
+                return OnClickListener { noteListViewListener?.onNoteClick(note) }
             }
 
-            override fun getOnLongClickListener(position: Int): OnLongClickListener {
+            override fun getOnLongClickListener(note: Note): OnLongClickListener {
                 return OnLongClickListener {
-                    noteListViewListener?.onNoteLongClick(notes[position])
+                    noteListViewListener?.onNoteLongClick(note)
                     true
                 }
             }
@@ -141,17 +113,20 @@ class NoteListView : SwipeRefreshLayout {
         isRefreshing = false
     }
 
-    private fun getScrollViewHeightParams(listView: ListView): LayoutParams {
-        var listViewHeight = 0
-        for (x in 0 until listView.adapter.count) {
-            val listItem = listView.adapter.getView(x, null, listView)
-            listItem.measure(0, 0)
-            listViewHeight += listItem.measuredHeight
-        }
+    private fun getScrollViewHeightParams(recyclerView: RecyclerView): LayoutParams {
+        var recyclerViewHeight = 0
+        recyclerView.adapter!!.let { adapter ->
+            for (x in 0 until adapter.itemCount) {
+                val noteView = recyclerView.findViewHolderForLayoutPosition(x)!!.itemView
+                Log.d("Aardvark", "Sample: " + noteView.note_title)
+                noteView.measure(0, 0)
+                recyclerViewHeight += noteView.measuredHeight
+            }
 
-        val params = listView.layoutParams
-        params.height = listViewHeight + listView.dividerHeight * (listView.adapter.count - 1)
-        return params
+            val params = recyclerView.layoutParams
+            params.height = recyclerViewHeight
+            return params
+        }
     }
 
 
