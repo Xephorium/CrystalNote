@@ -20,7 +20,7 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.settings_activity_layout)
+        setActivityContent(R.layout.about_activity_layout)
 
         presenter = AboutPresenter()
 

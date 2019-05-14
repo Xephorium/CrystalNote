@@ -1,6 +1,10 @@
 <resources>
 
     <string name="about_title">About</string>
+    <string name="about_header">Crystal Note</string>
+    <string name="about_author">Chris Cruzen</string>
+    <string name="about_version">v1.0.0</string>
+    <string name="about_description">An aggressively minimalist notes app for Android.</string>
 
     <string name="app_name">CrystalNote</string>
 
