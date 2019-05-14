@@ -28,6 +28,11 @@
             android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait" />
 
+        <!-- Widget Activity -->
+        <activity
+            android:name=".ui.widget.WidgetActivity"
+            android:screenOrientation="portrait" />
+
         <!-- Note Update Activity -->
         <activity
             android:name=".ui.update.UpdateActivity"
