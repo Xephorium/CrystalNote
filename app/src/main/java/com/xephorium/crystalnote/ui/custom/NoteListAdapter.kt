@@ -16,11 +16,11 @@ import kotlinx.android.synthetic.main.note_list_header.view.*
 import kotlinx.android.synthetic.main.note_list_item.view.*
 
 /*
-  NoteListAdapter                                                           05.12.2019
+  NoteListAdapter                                                        05.12.2019
   Christopher Cruzen
 
-    Provides view behavior for each element of the NoteList and a default onClickListener.
-  Per implementation, getOnClickListener should be overridden for desired behavior.
+    This class provides display logic and handling behavior for each element of the
+  NoteListView.
 
 */
 
@@ -28,8 +28,10 @@ open class NoteListAdapter(
         private val context: Context,
         private val newNotes: List<Note>,
         private val oldNotes: List<Note>
-) :
-        RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
+
+
+    /*--- Lifecycle Methods ---*/
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -53,7 +55,6 @@ open class NoteListAdapter(
         }
 
         if (holder.type == VIEW_TYPE_NOTE) {
-            Log.d("Aardvark", "New: " + newNotes.size + ", Old: " + oldNotes.size + ", Total: " + itemCount)
             val note = getNoteFromPosition(position)
             holder.name.text = note.name
             holder.preview.text = note.preview
@@ -123,7 +124,6 @@ open class NoteListAdapter(
         fun setNoteClickListeners(note: Note) {
             view.setOnClickListener(getOnClickListener(note))
             view.setOnLongClickListener(getOnLongClickListener(note))
-
         }
     }
 

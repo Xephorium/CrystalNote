@@ -23,9 +23,10 @@
     <dimen name="card_view_elevation">4dp</dimen>
     <dimen name="card_view_margin">5dp</dimen>
     <dimen name="drawer_divider_height">1dp</dimen>
+    <dimen name="drawer_icon_padding">12dp</dimen>
+    <dimen name="drawer_item_height">56dp</dimen>
     <dimen name="floating_action_button_elevation">6dp</dimen>
     <dimen name="floating_action_button_raised_elevation">12dp</dimen>
-    <dimen name="list_header_height">42dp</dimen>
     <dimen name="list_item_height">72dp</dimen>
     <dimen name="splash_icon_size">60dp</dimen>
     <dimen name="toolbar_height">56dp</dimen>

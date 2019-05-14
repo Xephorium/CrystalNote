@@ -28,7 +28,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/note_list_ripple"
+            android:background="@drawable/ripple"
             android:orientation="horizontal"
             android:paddingStart="@dimen/activity_padding"
             android:paddingEnd="0dp">

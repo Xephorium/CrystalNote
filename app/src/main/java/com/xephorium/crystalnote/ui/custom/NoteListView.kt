@@ -17,9 +17,9 @@ import java.util.Calendar
   NoteListView                                                             05.12.2019
   Christopher Cruzen
 
-    Encapsulating the view behavior of a SwipeRefreshLayout, ScrollView, and two ListViews,
+    Encapsulating the view behavior of a SwipeRefreshLayout and a custom RecyclerView,
   this class represents a collection of notes organized by reverse chronological order.
-  The first ListView is populated by notes modified today and the second is populated by
+  The first section is populated by notes modified today and the second is populated by
   notes modified before today.
 
 */

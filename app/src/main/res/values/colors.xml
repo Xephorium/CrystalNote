@@ -10,6 +10,7 @@
     <!-- Custom Colors -->
     <color name="charcoalDark">#222222</color>
     <color name="charcoalLight">#333333</color>
+    <color name="black">#000</color>
     <color name="blue500">#2196f3</color>
     <color name="blue700">#1976d2</color>
     <color name="blue800">#1565c0</color>
@@ -29,6 +30,8 @@
     <color name="backgroundDefault">#f6f6f6</color>
 
     <color name="drawerSelectedItem">#eee</color>
+    <color name="drawerItemDivider">#ddd</color>
+    <color name="drawerItemIcon">#757575</color>
 
     <color name="iconDefault">#aaaaaa</color>
 

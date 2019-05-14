@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/drawer_item_height"
+    android:orientation="vertical"
+    android:background="@drawable/ripple">
+
+    <ImageView
+        android:id="@+id/icon_drawer_item"
+        android:layout_width="@dimen/drawer_item_height"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/drawer_icon_padding"
+        android:tint="@color/drawerItemIcon"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/icon_home" />
+
+    <TextView
+        android:id="@+id/text_drawer_item"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/padding_large"
+        android:gravity="center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_drawer_message"
+        app:layout_constraintStart_toEndOf="@id/icon_drawer_item"
+        tools:text="Home" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

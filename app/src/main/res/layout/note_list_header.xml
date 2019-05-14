@@ -8,10 +8,13 @@
     <TextView
         android:id="@+id/note_list_header"
         style="@style/ListViewHeaderTheme"
-        android:layout_width="@dimen/list_item_height"
-        android:layout_height="@dimen/list_header_height"
-        android:gravity="bottom|center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
         android:paddingBottom="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_normal"
+        android:paddingStart="@dimen/activity_padding"
+        android:paddingEnd="@dimen/activity_padding"
         tools:text="@string/today" />
 
 </LinearLayout>
