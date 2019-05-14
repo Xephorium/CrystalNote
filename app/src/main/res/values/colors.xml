@@ -38,6 +38,8 @@
 
     <color name="textPrimary">#222222</color>
     <color name="textSecondary">#777777</color>
+    <color name="textPrimaryDark">#fff</color>
+    <color name="textSecondaryDark">#ddffffff</color>
     <color name="textHighlight">#7d888888</color>
     <color name="textHint">#808080</color>
     <color name="textHeader">#555555</color>

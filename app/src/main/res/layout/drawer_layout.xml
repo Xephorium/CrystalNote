@@ -8,122 +8,127 @@
     android:focusable="true"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
-        android:background="@drawable/image_drawer_header"
-        android:importantForAccessibility="no" />
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/image_drawer"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="180dp"
+            android:background="@drawable/image_drawer_header"
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_drawer_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_normal"
             android:layout_marginStart="@dimen/activity_padding"
-            android:layout_marginTop="@dimen/activity_padding"
-            android:layout_marginEnd="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_small"
+            android:text="Crystal Note"
+            android:textColor="@color/textPrimaryDark"
+            android:textSize="@dimen/text_drawer_header"
+            app:layout_constraintBottom_toTopOf="@+id/text_drawer_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/text_drawer_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_padding"
             android:layout_marginBottom="@dimen/activity_padding"
-            android:src="@drawable/ic_launcher"
-            android:tint="@color/colorPrimary" />
+            android:text="A simple notes app"
+            android:textColor="@color/textSecondaryDark"
+            android:textSize="@dimen/text_drawer_message"
+            app:layout_constraintBottom_toBottomOf="@id/image_drawer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image_drawer"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:id="@+id/note_widget_divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawer_divider_height"
+                android:background="@color/widgetDivider"
+                android:orientation="horizontal" />
 
             <TextView
-                android:id="@+id/text_drawer_header"
+                android:id="@+id/text_drawer_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_normal"
-                android:layout_marginEnd="@dimen/activity_padding"
-                android:paddingTop="@dimen/padding_small"
-                android:text="Crystal Note"
-                android:textColor="@color/textHeader"
-                android:textSize="@dimen/text_drawer_header" />
-
-            <TextView
-                android:id="@+id/text_drawer_message"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_padding"
-                android:layout_marginBottom="@dimen/activity_padding"
-                android:text="A simple notes app"
+                android:background="@color/drawerSelectedItem"
+                android:padding="@dimen/activity_padding"
+                android:paddingStart="@dimen/padding_gargantuan"
+                android:paddingEnd="0dp"
+                android:text="Home"
                 android:textColor="@color/textSecondary"
-                android:textSize="@dimen/text_drawer_message" />
+                android:textSize="@dimen/text_drawer_item" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawer_divider_height"
+                android:background="@color/widgetDivider"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/text_drawer_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_padding"
+                android:paddingStart="@dimen/padding_gargantuan"
+                android:paddingEnd="0dp"
+                android:text="Settings"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_drawer_item" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawer_divider_height"
+                android:background="@color/widgetDivider"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/text_drawer_extras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_padding"
+                android:paddingStart="@dimen/padding_gargantuan"
+                android:paddingEnd="0dp"
+                android:text="Extras"
+                android:textColor="@color/textSecondary"
+                android:textSize="@dimen/text_drawer_item" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawer_divider_height"
+                android:background="@color/widgetDivider"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom|end"
+                android:padding="@dimen/activity_padding"
+                android:text="v1.0.0"
+                android:textColor="@color/textSecondary" />
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/note_widget_divider"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_divider_height"
-        android:background="@color/widgetDivider"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:id="@+id/text_drawer_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/drawerSelectedItem"
-        android:padding="@dimen/activity_padding"
-        android:paddingStart="@dimen/padding_gargantuan"
-        android:paddingEnd="0dp"
-        android:text="Home"
-        android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_drawer_item" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_divider_height"
-        android:background="@color/widgetDivider"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:id="@+id/text_drawer_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_padding"
-        android:paddingStart="@dimen/padding_gargantuan"
-        android:paddingEnd="0dp"
-        android:text="Settings"
-        android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_drawer_item" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_divider_height"
-        android:background="@color/widgetDivider"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:id="@+id/text_drawer_extras"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_padding"
-        android:paddingStart="@dimen/padding_gargantuan"
-        android:paddingEnd="0dp"
-        android:text="Extras"
-        android:textColor="@color/textSecondary"
-        android:textSize="@dimen/text_drawer_item" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_divider_height"
-        android:background="@color/widgetDivider"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom|end"
-        android:padding="@dimen/activity_padding"
-        android:textColor="@color/textSecondary"
-        android:text="v1.0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
