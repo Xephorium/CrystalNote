@@ -7,7 +7,7 @@ import android.view.View
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.model.Note
-import com.xephorium.crystalnote.ui.base.drawer.DrawerActivity
+import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_NAME
 import com.xephorium.crystalnote.ui.custom.NoteListView
@@ -42,7 +42,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         presenter.attachView(this)
     }
 
-    public override fun onDestroy() {
+    override fun onDestroy() {
         super.onDestroy()
         presenter.detachView()
     }

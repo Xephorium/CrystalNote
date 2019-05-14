@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.base.drawer
+package com.xephorium.crystalnote.ui.drawer
 
 data class DrawerItem(
         val iconResource: Int,

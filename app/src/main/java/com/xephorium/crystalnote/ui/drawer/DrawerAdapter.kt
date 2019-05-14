@@ -1,7 +1,6 @@
-package com.xephorium.crystalnote.ui.base.drawer
+package com.xephorium.crystalnote.ui.drawer
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.ui.base.drawer.DrawerItem.Companion.DrawerItemType.*
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
 import kotlinx.android.synthetic.main.drawer_item.view.*
 
 /*
