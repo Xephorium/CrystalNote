@@ -1,4 +1,7 @@
 <resources>
+
+    <string name="about_title">About</string>
+
     <string name="app_name">CrystalNote</string>
 
     <string name="back_icon">Back Icon</string>

@@ -38,6 +38,11 @@
             android:name=".ui.settings.SettingsActivity"
             android:screenOrientation="portrait" />
 
+        <!-- About Activity -->
+        <activity
+            android:name=".ui.about.AboutActivity"
+            android:screenOrientation="portrait" />
+
         <!-- Note Update Activity -->
         <activity
             android:name=".ui.update.UpdateActivity"

@@ -12,6 +12,8 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.ui.about.AboutActivity
+import com.xephorium.crystalnote.ui.about.AboutPresenter
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.utility.DisplayUtils
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
@@ -108,7 +110,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     override fun navigateToAbout() {
-        Toast.makeText(this, "Go to About", Toast.LENGTH_SHORT).show()
+        navigateToActivity(Intent(this@DrawerActivity, AboutActivity::class.java))
     }
 
 
