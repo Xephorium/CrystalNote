@@ -16,6 +16,8 @@
 
     <string name="selection_title">Select a Note</string>
 
+    <string name="settings_title">Settings</string>
+
     <string name="today">Today</string>
     <string name="toolbar_right_icon">Save Icon</string>
     <string name="toolbar_left_icon">Search Icon</string>

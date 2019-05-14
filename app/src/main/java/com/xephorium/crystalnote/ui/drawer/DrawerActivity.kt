@@ -16,6 +16,7 @@ import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.utility.DisplayUtils
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
 import com.xephorium.crystalnote.ui.home.HomeActivity
+import com.xephorium.crystalnote.ui.settings.SettingsActivity
 import com.xephorium.crystalnote.ui.widget.WidgetActivity
 import kotlinx.android.synthetic.main.drawer_activity_layout.*
 import kotlinx.android.synthetic.main.drawer_layout.*
@@ -103,7 +104,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     override fun navigateToSettings() {
-        Toast.makeText(this, "Go to Settings", Toast.LENGTH_SHORT).show()
+        navigateToActivity(Intent(this@DrawerActivity, SettingsActivity::class.java))
     }
 
     override fun navigateToAbout() {
