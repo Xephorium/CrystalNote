@@ -8,75 +8,73 @@
     android:layout_marginStart="@dimen/paddingActivity"
     android:layout_marginEnd="@dimen/paddingActivity"
     android:layout_marginBottom="@dimen/paddingMedium"
-    android:clickable="true"
     android:elevation="@dimen/cardViewElevation"
-    android:focusable="true"
     app:cardCornerRadius="@dimen/cardViewCornerRadius">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/ripple"
         android:orientation="horizontal">
 
         <View
             android:id="@+id/colorBarNoteList"
             android:layout_width="@dimen/cardViewColorBar"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
             android:background="@drawable/note_color_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:backgroundTint="@color/blue700" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textNoteListDate"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:paddingStart="@dimen/paddingBig"
+            android:paddingTop="@dimen/paddingBig"
+            android:paddingEnd="@dimen/paddingBig"
+            android:paddingBottom="@dimen/paddingMedium"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/textNoteListTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textNoteListTitle"
+            tools:text="11.11.11" />
+
+        <TextView
+            android:id="@+id/textNoteListTitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/ripple"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/paddingActivity"
-            android:paddingEnd="0dp">
+            android:paddingStart="@dimen/paddingBig"
+            android:paddingTop="@dimen/paddingBig"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/paddingMedium"
+            android:textColor="@color/textPrimary"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/textNoteListPreview"
+            app:layout_constraintEnd_toStartOf="@id/textNoteListDate"
+            app:layout_constraintStart_toEndOf="@+id/colorBarNoteList"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Note Title" />
 
-            <TextView
-                android:id="@+id/textNoteListDate"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/noteListItemHeight"
-                android:layout_alignParentEnd="true"
-                android:gravity="end"
-                android:paddingStart="0dp"
-                android:paddingTop="@dimen/paddingBig"
-                android:paddingEnd="@dimen/paddingActivity"
-                tools:text="11.11.11" />
+        <TextView
+            android:id="@+id/textNoteListPreview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingStart="@dimen/paddingBig"
+            android:paddingEnd="@dimen/paddingBig"
+            android:paddingBottom="@dimen/paddingBig"
+            android:textColor="@color/textSecondary"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/colorBarNoteList"
+            app:layout_constraintTop_toBottomOf="@+id/textNoteListTitle"
+            tools:text="This is a note preview which contains a bunch of text. This is a note preview which contains a bunch of text." />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/noteListItemHeight"
-                android:layout_toStartOf="@id/textNoteListDate"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textNoteListTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00ffffff"
-                    android:paddingBottom="@dimen/paddingSmall"
-                    android:textColor="@color/textPrimary"
-                    android:textSize="16sp"
-                    tools:text="Note Title" />
-
-                <TextView
-                    android:id="@+id/textNoteListPreview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#00ffffff"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="@dimen/paddingMicro"
-                    android:textColor="@color/textSecondary"
-                    android:textSize="14sp"
-                    tools:text="This is a note preview which contains..." />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

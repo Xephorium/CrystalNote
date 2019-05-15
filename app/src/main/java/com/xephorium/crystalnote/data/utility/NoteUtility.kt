@@ -15,7 +15,7 @@ object NoteUtility {
 
     /*--- Constants ---*/
 
-    private const val PREVIEW_LENGTH = 60
+    private const val PREVIEW_LENGTH = 120
 
     enum class SortType {
         DATE_OLD,
