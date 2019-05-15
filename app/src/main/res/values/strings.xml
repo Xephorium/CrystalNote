@@ -1,34 +1,33 @@
 <resources>
 
-    <string name="about_title">About</string>
-    <string name="about_header">Crystal Note</string>
-    <string name="about_author">Chris Cruzen</string>
-    <string name="about_version">v1.0.0</string>
-    <string name="about_description">An aggressively minimalist notes app for Android.</string>
+    <string name="aboutTitle">About</string>
+    <string name="aboutHeader">Crystal Note</string>
+    <string name="aboutAuthor">Chris Cruzen</string>
+    <string name="aboutVersion">v1.0.0</string>
+    <string name="aboutDescription">An aggressively minimalist notes app for Android.</string>
 
-    <string name="app_name">CrystalNote</string>
+    <string name="appName">CrystalNote</string>
+    <string name="appVersion">v1.0.0</string>
 
-    <string name="back_icon">Back Icon</string>
+    <string name="drawerHeader">Crystal Note</string>
+    <string name="drawerMessage">A simple notes app</string>
 
-    <string name="change_note">Change Note</string>
+    <string name="homeTitle">Notes</string>
+    <string name="homeTextEmpty">Tap + to create a note.</string>
 
-    <string name="home_title">Notes</string>
+    <string name="navigationDrawerClosed">Navigation Drawer Closed</string>
+    <string name="navigationDrawerOpened">Navigation Drawer Opened</string>
 
-    <string name="navigation_drawer_closed">Navigation Drawer Closed</string>
-    <string name="navigation_drawer_open">Navigation Drawer Open</string>
-    <string name="new_note_name">New Note</string>
-    <string name="note_icon">Note Icon</string>
+    <string name="noteListOlder">Older</string>
+    <string name="noteListToday">Today</string>
+    <string name="noteNewName">New Note</string>
 
-    <string name="older">Older</string>
+    <string name="selectTitle">Select a Note</string>
+    <string name="selectTextEmpty">Tap + to create a note.</string>
 
-    <string name="selection_title">Select a Note</string>
+    <string name="settingsTitle">Settings</string>
 
-    <string name="settings_title">Settings</string>
-
-    <string name="today">Today</string>
-    <string name="toolbar_right_icon">Save Icon</string>
-    <string name="toolbar_left_icon">Search Icon</string>
-
-    <string name="widget_title">Widget Settings</string>
+    <string name="widgetTitle">Widget Settings</string>
+    <string name="widgetTextEmpty">Tap here to choose a note.</string>
 
 </resources>

@@ -6,15 +6,15 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/note_list_header"
+        android:id="@+id/textNoteListHeader"
         style="@style/ListViewHeaderTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:paddingBottom="@dimen/padding_normal"
-        android:paddingTop="@dimen/padding_normal"
-        android:paddingStart="@dimen/activity_padding"
-        android:paddingEnd="@dimen/activity_padding"
-        tools:text="@string/today" />
+        android:paddingBottom="@dimen/paddingMedium"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingStart="@dimen/paddingActivity"
+        android:paddingEnd="@dimen/paddingActivity"
+        tools:text="@string/noteListToday" />
 
 </LinearLayout>

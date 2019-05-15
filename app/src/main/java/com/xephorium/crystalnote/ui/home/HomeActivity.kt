@@ -51,14 +51,14 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
-        home_note_list.visibility = View.VISIBLE
-        home_empty_list.visibility = View.GONE
-        home_note_list.populateNoteList(notes)
+        listHomeNotes.visibility = View.VISIBLE
+        textHomeEmpty.visibility = View.GONE
+        listHomeNotes.populateNoteList(notes)
     }
 
     override fun showEmptyNotesList() {
-        home_note_list.visibility = View.GONE
-        home_empty_list.visibility = View.VISIBLE
+        listHomeNotes.visibility = View.GONE
+        textHomeEmpty.visibility = View.VISIBLE
     }
 
     override fun showNavigationDrawer() {
@@ -81,7 +81,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     private fun setupToolbar() {
         toolbar.isEditMode = false
-        toolbar.setTitle(R.string.home_title)
+        toolbar.setTitle(R.string.homeTitle)
         toolbar.setLeftButtonImage(R.drawable.icon_menu)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
@@ -91,8 +91,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     }
 
     private fun setupClickListeners() {
-        home_action_button.setOnClickListener { presenter.handleNewNoteButtonClick() }
-        home_note_list.noteListViewListener = object : NoteListView.NoteListViewListener {
+        floatingActionButtonHome.setOnClickListener { presenter.handleNewNoteButtonClick() }
+        listHomeNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
             override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
             override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()

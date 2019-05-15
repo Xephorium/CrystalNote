@@ -5,8 +5,8 @@
 	<solid android:color="@color/widgetBackground"/>
 
 	<corners
-		android:topLeftRadius="@dimen/widget_corner_radius"
-		android:topRightRadius="@dimen/widget_corner_radius"
+		android:topLeftRadius="@dimen/widgetCornerRadius"
+		android:topRightRadius="@dimen/widgetCornerRadius"
 		/>
 
 </shape>

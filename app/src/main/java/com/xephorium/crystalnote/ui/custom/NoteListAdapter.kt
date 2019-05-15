@@ -1,7 +1,6 @@
 package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,8 +49,8 @@ open class NoteListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         if (holder.type == VIEW_TYPE_HEADER) {
-            holder.header.text = if (position == 0) context.resources.getString(R.string.today)
-            else context.resources.getString(R.string.older)
+            holder.header.text = if (position == 0) context.resources.getString(R.string.noteListToday)
+            else context.resources.getString(R.string.noteListOlder)
         }
 
         if (holder.type == VIEW_TYPE_NOTE) {
@@ -112,12 +111,12 @@ open class NoteListAdapter(
 
         init {
             if (type == VIEW_TYPE_NOTE) {
-                name = view.note_title
-                preview = view.note_preview
-                date = view.note_date
-                colorBar = view.note_color_bar
+                name = view.textNoteListTitle
+                preview = view.textNoteListPreview
+                date = view.textNoteListDate
+                colorBar = view.colorBarNoteList
             } else {
-                header = view.note_list_header
+                header = view.textNoteListHeader
             }
         }
 

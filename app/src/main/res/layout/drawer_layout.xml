@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start"
@@ -8,12 +9,12 @@
     android:focusable="true"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image_drawer"
+            android:id="@+id/imageDrawerHeader"
             android:layout_width="wrap_content"
             android:layout_height="180dp"
             android:background="@drawable/image_drawer_header"
@@ -23,50 +24,50 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_drawer_header"
+            android:id="@+id/textDrawerHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_padding"
-            android:layout_marginTop="@dimen/padding_normal"
-            android:paddingTop="@dimen/padding_small"
-            android:text="Crystal Note"
+            android:layout_marginStart="@dimen/paddingActivity"
+            android:layout_marginTop="@dimen/paddingMedium"
+            android:paddingTop="@dimen/paddingSmall"
+            android:text="@string/drawerHeader"
             android:textColor="@color/textPrimaryDark"
-            android:textSize="@dimen/text_drawer_header"
-            app:layout_constraintBottom_toTopOf="@+id/text_drawer_message"
+            android:textSize="@dimen/textDrawerHeader"
+            app:layout_constraintBottom_toTopOf="@+id/textDrawerMessage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/text_drawer_message"
+            android:id="@+id/textDrawerMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/activity_padding"
-            android:layout_marginBottom="@dimen/activity_padding"
-            android:text="A simple notes app"
+            android:layout_marginStart="@dimen/paddingActivity"
+            android:layout_marginBottom="@dimen/paddingActivity"
+            android:text="@string/drawerMessage"
             android:textColor="@color/textSecondaryDark"
-            android:textSize="@dimen/text_drawer_message"
-            app:layout_constraintBottom_toBottomOf="@id/image_drawer"
+            android:textSize="@dimen/textDrawerMessage"
+            app:layout_constraintBottom_toBottomOf="@id/imageDrawerHeader"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_drawer"
+            android:id="@+id/listDrawer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:overScrollMode="never"
-            android:paddingTop="@dimen/padding_normal"
+            android:paddingTop="@dimen/paddingMedium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_drawer">
+            app:layout_constraintTop_toBottomOf="@+id/imageDrawerHeader">
 
         </androidx.recyclerview.widget.RecyclerView>
 
         <TextView
-            android:id="@+id/text_drawer_version"
+            android:id="@+id/textDrawerVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/activity_padding"
-            android:text="v1.0.0"
+            android:padding="@dimen/paddingActivity"
+            android:text="@string/appVersion"
             android:textColor="@color/textSecondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

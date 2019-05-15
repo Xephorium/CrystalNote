@@ -5,23 +5,23 @@
     android:layout_height="match_parent">
 
     <com.xephorium.crystalnote.ui.custom.NoteListView
-        android:id="@+id/home_note_list"
+        android:id="@+id/listHomeNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/backgroundDefault" />
 
     <TextView
-        android:id="@+id/home_empty_list"
+        android:id="@+id/textHomeEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundDefault"
         android:gravity="center"
-        android:text="Tap + to create a note."
-        android:textSize="@dimen/text_no_notes" />
+        android:text="@string/homeTextEmpty"
+        android:textSize="@dimen/textEmpty" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/home_action_button"
+        android:id="@+id/floatingActionButtonHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

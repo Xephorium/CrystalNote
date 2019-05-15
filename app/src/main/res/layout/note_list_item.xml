@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/activity_padding"
-    android:layout_marginEnd="@dimen/activity_padding"
-    android:layout_marginBottom="@dimen/padding_normal"
+    android:layout_marginStart="@dimen/paddingActivity"
+    android:layout_marginEnd="@dimen/paddingActivity"
+    android:layout_marginBottom="@dimen/paddingMedium"
     android:clickable="true"
-    android:elevation="@dimen/card_view_elevation"
+    android:elevation="@dimen/cardViewElevation"
     android:focusable="true"
-    app:cardCornerRadius="@dimen/card_view_corner_radius">
+    app:cardCornerRadius="@dimen/cardViewCornerRadius">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +19,8 @@
         android:orientation="horizontal">
 
         <View
-            android:id="@+id/note_color_bar"
-            android:layout_width="@dimen/card_view_color_bar"
+            android:id="@+id/colorBarNoteList"
+            android:layout_width="@dimen/cardViewColorBar"
             android:layout_height="match_parent"
             android:background="@drawable/note_color_bar"
             tools:backgroundTint="@color/blue700" />
@@ -30,45 +30,45 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ripple"
             android:orientation="horizontal"
-            android:paddingStart="@dimen/activity_padding"
+            android:paddingStart="@dimen/paddingActivity"
             android:paddingEnd="0dp">
 
             <TextView
-                android:id="@+id/note_date"
+                android:id="@+id/textNoteListDate"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/list_item_height"
+                android:layout_height="@dimen/noteListItemHeight"
                 android:layout_alignParentEnd="true"
                 android:gravity="end"
                 android:paddingStart="0dp"
-                android:paddingTop="@dimen/padding_big"
-                android:paddingEnd="@dimen/activity_padding"
+                android:paddingTop="@dimen/paddingBig"
+                android:paddingEnd="@dimen/paddingActivity"
                 tools:text="11.11.11" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/list_item_height"
-                android:layout_toStartOf="@id/note_date"
+                android:layout_height="@dimen/noteListItemHeight"
+                android:layout_toStartOf="@id/textNoteListDate"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/note_title"
+                    android:id="@+id/textNoteListTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00ffffff"
-                    android:paddingBottom="@dimen/padding_small"
+                    android:paddingBottom="@dimen/paddingSmall"
                     android:textColor="@color/textPrimary"
                     android:textSize="16sp"
                     tools:text="Note Title" />
 
                 <TextView
-                    android:id="@+id/note_preview"
+                    android:id="@+id/textNoteListPreview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="#00ffffff"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:paddingBottom="@dimen/padding_tiny"
+                    android:paddingBottom="@dimen/paddingMicro"
                     android:textColor="@color/textSecondary"
                     android:textSize="14sp"
                     tools:text="This is a note preview which contains..." />

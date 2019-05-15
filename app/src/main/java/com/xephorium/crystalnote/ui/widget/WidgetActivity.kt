@@ -49,7 +49,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     private fun setupToolbar() {
         toolbar.isEditMode = false
-        toolbar.setTitle(R.string.widget_title)
+        toolbar.setTitle(R.string.widgetTitle)
         toolbar.setLeftButtonImage(R.drawable.icon_menu)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleMenuButtonClick()

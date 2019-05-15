@@ -48,34 +48,32 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 // Populate Fields
                 if (displayNote != null) {
 
-                    widgetView.setViewVisibility(R.id.note_widget_title, View.VISIBLE)
-                    widgetView.setViewVisibility(R.id.note_widget_divider, View.VISIBLE)
-                    widgetView.setViewVisibility(R.id.note_widget_text, View.VISIBLE)
-                    widgetView.setViewVisibility(R.id.note_widget_empty, View.GONE)
+                    widgetView.setViewVisibility(R.id.textWidgetTitle, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.textWidgetContent, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
 
-                    widgetView.setTextViewText(R.id.note_widget_title, displayNote.name)
+                    widgetView.setTextViewText(R.id.textWidgetTitle, displayNote.name)
                     widgetView.setTextViewText(
-                            R.id.note_widget_text,
+                            R.id.textWidgetContent,
                             noteRepository.readNoteContents(displayNote.name)
                     )
                 } else {
-                    widgetView.setViewVisibility(R.id.note_widget_title, View.GONE)
-                    widgetView.setViewVisibility(R.id.note_widget_divider, View.GONE)
-                    widgetView.setViewVisibility(R.id.note_widget_text, View.GONE)
-                    widgetView.setViewVisibility(R.id.note_widget_empty, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.textWidgetTitle, View.GONE)
+                    widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
+                    widgetView.setViewVisibility(R.id.textWidgetEmpty, View.VISIBLE)
                 }
 
                 // Set Listeners
                 widgetView.setOnClickPendingIntent(
-                        R.id.note_widget_title,
+                        R.id.textWidgetTitle,
                         getOnClickPendingIntent(context, TITLE_CLICK_INTENT)
                 )
                 widgetView.setOnClickPendingIntent(
-                        R.id.note_widget_text,
+                        R.id.textWidgetContent,
                         getOnClickPendingIntent(context, TEXT_CLICK_INTENT)
                 )
                 widgetView.setOnClickPendingIntent(
-                        R.id.note_widget_empty,
+                        R.id.textWidgetEmpty,
                         getOnClickPendingIntent(context, EMPTY_CLICK_INTENT)
                 )
 

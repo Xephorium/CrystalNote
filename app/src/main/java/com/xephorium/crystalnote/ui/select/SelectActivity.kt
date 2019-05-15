@@ -52,14 +52,14 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
-        select_note_list.visibility = View.VISIBLE
-        select_empty_list.visibility = View.GONE
-        select_note_list.populateNoteList(notes)
+        listSelectNotes.visibility = View.VISIBLE
+        text_select_empty.visibility = View.GONE
+        listSelectNotes.populateNoteList(notes)
     }
 
     override fun showEmptyNotesList() {
-        select_note_list.visibility = View.GONE
-        select_empty_list.visibility = View.VISIBLE
+        listSelectNotes.visibility = View.GONE
+        text_select_empty.visibility = View.VISIBLE
     }
 
     override fun refreshWidget() {
@@ -81,7 +81,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
 
     private fun setupToolbar() {
         toolbar.isEditMode = false
-        toolbar.setTitle(R.string.selection_title)
+        toolbar.setTitle(R.string.selectTitle)
         toolbar.setLeftButtonImage(R.drawable.icon_back)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
             override fun onLeftButtonClick() = presenter.handleToolbarBackClick()
@@ -91,8 +91,8 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     }
 
     private fun setupClickListeners() {
-        select_action_button.setOnClickListener { presenter.handleNewNoteButtonClick() }
-        select_note_list.noteListViewListener = object : NoteListView.NoteListViewListener {
+        floatingActionButtonSelect.setOnClickListener { presenter.handleNewNoteButtonClick() }
+        listSelectNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
             override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
             override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()

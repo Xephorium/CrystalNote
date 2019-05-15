@@ -26,15 +26,15 @@ open class ToolbarActivity : BaseActivity() {
     /*--- Public Methods ---*/
 
     fun setActivityContent(layoutResource: Int) {
-        activity_content.addView(getInflatedView(layoutResource))
+        layoutActivityContent.addView(getInflatedView(layoutResource))
     }
 
 
     /*--- Private Setup Methods ---*/
 
     private fun setupStatusBar() {
-        status_bar_margin.minimumHeight = DisplayUtils.getStatusBarHeight(this)
-        status_bar_margin.elevation = resources.getDimension(R.dimen.toolbar_elevation)
+        layoutToolbarActivityStatusBar.minimumHeight = DisplayUtils.getStatusBarHeight(this)
+        layoutToolbarActivityStatusBar.elevation = resources.getDimension(R.dimen.toolbarElevation)
     }
 
     private fun setupToolbar() {

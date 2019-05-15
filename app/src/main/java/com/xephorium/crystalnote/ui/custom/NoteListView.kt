@@ -60,8 +60,8 @@ class NoteListView : SwipeRefreshLayout {
     fun populateNoteList(noteList: List<Note>) {
         parseNotes(noteList)
 
-        note_recycler_view.layoutManager = LinearLayoutManager(context)
-        note_recycler_view.adapter = getNoteListAdapter(newNotes, oldNotes)
+        listNotes.layoutManager = LinearLayoutManager(context)
+        listNotes.adapter = getNoteListAdapter(newNotes, oldNotes)
     }
 
 

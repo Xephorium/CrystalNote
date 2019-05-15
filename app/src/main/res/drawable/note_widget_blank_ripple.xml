@@ -8,7 +8,7 @@
         <shape android:shape="rectangle">
 
             <corners
-                android:radius="@dimen/widget_corner_radius"
+                android:radius="@dimen/widgetCornerRadius"
                 />
 
             <solid android:color="@color/rippleDefault" />

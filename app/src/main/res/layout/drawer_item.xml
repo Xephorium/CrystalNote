@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/drawer_item_height"
+    android:layout_height="@dimen/drawerItemHeight"
     android:orientation="vertical"
     android:background="@drawable/ripple">
 
     <ImageView
-        android:id="@+id/icon_drawer_item"
-        android:layout_width="@dimen/drawer_item_height"
+        android:id="@+id/iconDividerItem"
+        android:layout_width="@dimen/drawerItemHeight"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/padding_normal"
+        android:layout_marginStart="@dimen/paddingMedium"
         android:importantForAccessibility="no"
-        android:padding="@dimen/drawer_icon_padding"
+        android:padding="@dimen/drawerIconPadding"
         android:tint="@color/drawerItemIcon"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/icon_home" />
 
     <TextView
-        android:id="@+id/text_drawer_item"
+        android:id="@+id/textDividerItem"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/padding_large"
+        android:layout_marginStart="@dimen/paddingLarge"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_drawer_message"
-        app:layout_constraintStart_toEndOf="@id/icon_drawer_item"
+        android:textSize="@dimen/textDrawerMessage"
+        app:layout_constraintStart_toEndOf="@id/iconDividerItem"
         tools:text="Home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

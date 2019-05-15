@@ -5,10 +5,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/text_about_header"
+        android:id="@+id/textAboutHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_header"
+        android:text="@string/aboutHeader"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,37 +18,37 @@
         app:layout_constraintVertical_bias=".3" />
 
     <TextView
-        android:id="@+id/text_about_author"
+        android:id="@+id/textAboutAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_author"
+        android:text="@string/aboutAuthor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_about_header" />
+        app:layout_constraintTop_toBottomOf="@+id/textAboutHeader" />
 
     <TextView
-        android:id="@+id/text_about_version"
+        android:id="@+id/textAboutVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/about_version"
+        android:text="@string/aboutVersion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_about_author" />
+        app:layout_constraintTop_toBottomOf="@+id/textAboutAuthor" />
 
     <TextView
-        android:id="@+id/text_about_description"
+        android:id="@+id/textAboutDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/padding_huge"
-        android:paddingEnd="@dimen/padding_huge"
-        android:paddingTop="@dimen/padding_large"
+        android:paddingStart="@dimen/paddingHuge"
+        android:paddingEnd="@dimen/paddingHuge"
+        android:paddingTop="@dimen/paddingLarge"
         android:gravity="center_horizontal"
-        android:text="@string/about_description"
+        android:text="@string/aboutDescription"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/text_about_version"
+        app:layout_constraintTop_toBottomOf="@+id/textAboutVersion"
         app:layout_constraintVertical_bias=".15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

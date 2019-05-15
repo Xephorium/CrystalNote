@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.widget.Toast
 
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.ui.about.AboutActivity
-import com.xephorium.crystalnote.ui.about.AboutPresenter
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.utility.DisplayUtils
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
@@ -65,7 +63,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
             return
 
         if (drawerOpen) {
-            drawer_layout.closeDrawers()
+            layoutDrawer.closeDrawers()
             drawerAnimating = true
         } else
             super.onBackPressed()
@@ -75,16 +73,16 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     /*--- Child Activity Methods ---*/
 
     fun setActivityContent(layoutResource: Int) {
-        activity_content.addView(getInflatedView(layoutResource))
+        layoutActivityContent.addView(getInflatedView(layoutResource))
     }
 
     fun openDrawer() {
-        drawer_layout.openDrawer(GravityCompat.START)
+        layoutDrawer.openDrawer(GravityCompat.START)
         drawerAnimating = true
     }
 
     fun closeDrawer() {
-        drawer_layout.closeDrawers()
+        layoutDrawer.closeDrawers()
         drawerAnimating = true
     }
 
@@ -117,8 +115,8 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupStatusBar() {
-        status_bar_margin.minimumHeight = DisplayUtils.getStatusBarHeight(this)
-        status_bar_margin.elevation = resources.getDimension(R.dimen.toolbar_elevation)
+        layoutDrawerActivityStatusBar.minimumHeight = DisplayUtils.getStatusBarHeight(this)
+        layoutDrawerActivityStatusBar.elevation = resources.getDimension(R.dimen.toolbarElevation)
     }
 
     private fun setupToolbar() {
@@ -132,12 +130,12 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
         drawerToggle = getActionBarDrawerToggle()
         drawerToggle.isDrawerIndicatorEnabled = false
-        drawer_layout.setDrawerListener(drawerToggle)
+        layoutDrawer.addDrawerListener(drawerToggle)
     }
 
     private fun setupNavDrawerItems() {
-        list_drawer.layoutManager = LinearLayoutManager(this)
-        list_drawer.adapter = DrawerAdapter(this, getItems())
+        listDrawer.layoutManager = LinearLayoutManager(this)
+        listDrawer.adapter = DrawerAdapter(this, getItems())
     }
 
     private fun getInflatedView(layoutResource: Int): View {
@@ -147,9 +145,9 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
     private fun getActionBarDrawerToggle() = object : ActionBarDrawerToggle(
             this,
-            drawer_layout,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_closed) {
+            layoutDrawer,
+            R.string.navigationDrawerOpened,
+            R.string.navigationDrawerClosed) {
 
         override fun onDrawerClosed(drawerView: View) {
             super.onDrawerClosed(drawerView)

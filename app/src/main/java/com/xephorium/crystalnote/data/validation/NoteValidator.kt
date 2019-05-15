@@ -15,8 +15,4 @@ object NoteValidator {
         RESERVED_CHARACTERS.forEach { character -> if (name.contains(character)) return false }
         return true
     }
-
-    fun isValidNoteContent(content: String): Boolean {
-        return true
-    }
 }

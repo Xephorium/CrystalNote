@@ -60,8 +60,8 @@ open class DrawerAdapter(
 
         init {
             if (type == ITEM.ordinal) {
-                icon = view.icon_drawer_item
-                text = view.text_drawer_item
+                icon = view.iconDividerItem
+                text = view.textDividerItem
             }
         }
 

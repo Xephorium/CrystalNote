@@ -1,46 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- System Dimens -->
+    <dimen name="paddingActivity">16dp</dimen>
+
     <!-- General Dimens -->
-    <dimen name="padding_tiny">2dp</dimen>
-    <dimen name="padding_small">4dp</dimen>
-    <dimen name="padding_normal">8dp</dimen>
-    <dimen name="padding_big">16dp</dimen>
-    <dimen name="padding_large">24dp</dimen>
-    <dimen name="padding_huge">32dp</dimen>
-    <dimen name="padding_gargantuan">72dp</dimen>
+    <dimen name="paddingMicro">2dp</dimen>
+    <dimen name="paddingSmall">4dp</dimen>
+    <dimen name="paddingMedium">8dp</dimen>
+    <dimen name="paddingBig">16dp</dimen>
+    <dimen name="paddingLarge">24dp</dimen>
+    <dimen name="paddingHuge">32dp</dimen>
+    <dimen name="paddingGargantuan">72dp</dimen>
 
     <!-- Text -->
-    <dimen name="text_no_notes">18sp</dimen>
-    <dimen name="text_drawer_header">18sp</dimen>
-    <dimen name="text_drawer_message">14sp</dimen>
-    <dimen name="text_drawer_item">15sp</dimen>
+    <dimen name="textEmpty">18sp</dimen>
+    <dimen name="textDrawerHeader">18sp</dimen>
+    <dimen name="textDrawerMessage">14sp</dimen>
+    <dimen name="textDrawerItem">15sp</dimen>
 
     <!-- Custom Controls -->
-    <dimen name="activity_padding">16dp</dimen>
-    <dimen name="card_view_color_bar">10dp</dimen>
-    <dimen name="card_view_corner_radius">5dp</dimen>
-    <dimen name="card_view_elevation">4dp</dimen>
-    <dimen name="card_view_margin">5dp</dimen>
-    <dimen name="drawer_divider_height">1dp</dimen>
-    <dimen name="drawer_icon_padding">12dp</dimen>
-    <dimen name="drawer_item_height">56dp</dimen>
-    <dimen name="floating_action_button_elevation">6dp</dimen>
-    <dimen name="floating_action_button_raised_elevation">12dp</dimen>
-    <dimen name="list_item_height">72dp</dimen>
-    <dimen name="splash_icon_size">60dp</dimen>
-    <dimen name="toolbar_height">56dp</dimen>
-    <dimen name="toolbar_elevation">4dp</dimen>
-    <dimen name="update_bottom_padding">192dp</dimen>
-    <dimen name="update_name_min_width">192dp</dimen>
-    <dimen name="widget_corner_radius">2dp</dimen>
-    <dimen name="widget_default_padding">10dp</dimen>
-    <dimen name="widget_divider_padding">4dp</dimen>
-    <dimen name="widget_divider_height">0dp</dimen>
-    <dimen name="widget_header_height">36dp</dimen>
-    <dimen name="widget_icon_width">40dp</dimen>
-    <dimen name="widget_minimum_height">110dp</dimen>
-    <dimen name="widget_minimum_width">110dp</dimen>
-    <dimen name="widget_text_header">15sp</dimen>
+    <dimen name="cardViewColorBar">10dp</dimen>
+    <dimen name="cardViewCornerRadius">5dp</dimen>
+    <dimen name="cardViewElevation">4dp</dimen>
+    <dimen name="cardViewMargin">5dp</dimen>
+    <dimen name="drawerDividerHeight">1dp</dimen>
+    <dimen name="drawerIconPadding">12dp</dimen>
+    <dimen name="drawerItemHeight">56dp</dimen>
+    <dimen name="floatingActionButtonElevation">6dp</dimen>
+    <dimen name="noteListItemHeight">72dp</dimen>
+    <dimen name="splashIconSize">60dp</dimen>
+    <dimen name="toolbarHeight">56dp</dimen>
+    <dimen name="toolbarElevation">4dp</dimen>
+    <dimen name="widgetCornerRadius">2dp</dimen>
+    <dimen name="widgetDefaultPadding">10dp</dimen>
+    <dimen name="widgetDividerPadding">4dp</dimen>
+    <dimen name="widgetDividerHeight">0dp</dimen>
+    <dimen name="widgetHeaderHeight">36dp</dimen>
+    <dimen name="widgetIconWidth">40dp</dimen>
+    <dimen name="widgetMinimumHeight">110dp</dimen>
+    <dimen name="widgetMinimumWidth">110dp</dimen>
+    <dimen name="widgetTextHeader">15sp</dimen>
 
 </resources>

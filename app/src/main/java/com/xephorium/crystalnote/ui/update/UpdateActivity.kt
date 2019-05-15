@@ -69,7 +69,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
     override fun populateFields(name: String, content: String) {
         toolbar.setEditTextContent(name)
-        text_note_content.setText(content)
+        textNoteContent.setText(content)
     }
 
     override fun showInvalidNameDialog() {
@@ -140,11 +140,11 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     }
 
     private fun setupClickListeners() {
-        text_note_content.addTextChangedListener(object : TextWatcher {
+        textNoteContent.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun afterTextChanged(editable: Editable?) {
-                presenter.handleContentTextChange(text_note_content.text.toString())
+                presenter.handleContentTextChange(textNoteContent.text.toString())
             }
         })
     }

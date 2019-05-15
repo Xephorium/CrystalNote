@@ -6,8 +6,8 @@
 
     <!-- TODO: Find Splash Screen image scaling fix on API 21-22 -->
     <item
-        android:width="@dimen/splash_icon_size"
-        android:height="@dimen/splash_icon_size"
+        android:width="@dimen/splashIconSize"
+        android:height="@dimen/splashIconSize"
         android:gravity="center"
         tools:ignore="UnusedAttribute">
         <bitmap android:src="@drawable/icon_splash" />

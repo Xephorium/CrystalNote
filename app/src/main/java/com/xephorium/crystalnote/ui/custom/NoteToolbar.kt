@@ -7,9 +7,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 
 import com.xephorium.crystalnote.R
@@ -24,11 +21,11 @@ class NoteToolbar : Toolbar {
 
     var isEditMode: Boolean = false
         set(editMode) = if (editMode) {
-            edit_text.visibility = View.VISIBLE
-            note_toolbar_title.visibility = View.GONE
+            textToolbarEdit.visibility = View.VISIBLE
+            textToolbarTitle.visibility = View.GONE
         } else {
-            edit_text.visibility = View.GONE
-            note_toolbar_title.visibility = View.VISIBLE
+            textToolbarEdit.visibility = View.GONE
+            textToolbarTitle.visibility = View.VISIBLE
         }
 
 
@@ -56,18 +53,18 @@ class NoteToolbar : Toolbar {
         this.setRightButtonImage(NO_IMAGE)
         this.noteToolbarListener = getDefaultNoteToolbarListener()
 
-        findViewById<View>(R.id.left_button).setOnClickListener {
+        findViewById<View>(R.id.buttonToolbarLeft).setOnClickListener {
             noteToolbarListener?.onLeftButtonClick()
         }
-        findViewById<View>(R.id.right_button).setOnClickListener {
+        findViewById<View>(R.id.buttonToolbarRight).setOnClickListener {
             noteToolbarListener?.onRightButtonClick()
         }
-        (findViewById<View>(R.id.edit_text) as EditText).addTextChangedListener(object : TextWatcher {
+        (findViewById<View>(R.id.textToolbarEdit) as EditText).addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 noteToolbarListener?.onTextChange(
-                        (findViewById<View>(R.id.edit_text) as EditText).text.toString())
+                        (findViewById<View>(R.id.textToolbarEdit) as EditText).text.toString())
             }
         })
     }
@@ -76,36 +73,36 @@ class NoteToolbar : Toolbar {
     /*--- Public Methods ---*/
 
     override fun setTitle(stringResource: Int) {
-        note_toolbar_title.text = resources.getText(stringResource)
+        textToolbarTitle.text = resources.getText(stringResource)
     }
 
     override fun getTitle(): CharSequence {
-        return note_toolbar_title.text
+        return textToolbarTitle.text
     }
 
     fun setEditTextContent(content: String) {
-        edit_text.setText(content)
+        textToolbarEdit.setText(content)
     }
 
     fun getEditTextContent(): String {
-        return edit_text.toString()
+        return textToolbarEdit.toString()
     }
 
     fun setLeftButtonImage(drawable: Int) {
         if (drawable == NO_IMAGE) {
-            left_button.visibility = View.GONE
+            buttonToolbarLeft.visibility = View.GONE
         } else {
-            left_button.visibility = View.VISIBLE
-            left_button.setImageDrawable(resources.getDrawable(drawable, context.theme))
+            buttonToolbarLeft.visibility = View.VISIBLE
+            buttonToolbarLeft.setImageDrawable(resources.getDrawable(drawable, context.theme))
         }
     }
 
     fun setRightButtonImage(drawable: Int) {
         if (drawable == NO_IMAGE) {
-            right_button.visibility = View.GONE
+            buttonToolbarRight.visibility = View.GONE
         } else {
-            right_button.visibility = View.VISIBLE
-            right_button.setImageDrawable(resources.getDrawable(drawable, context.theme))
+            buttonToolbarRight.visibility = View.VISIBLE
+            buttonToolbarRight.setImageDrawable(resources.getDrawable(drawable, context.theme))
         }
     }
 

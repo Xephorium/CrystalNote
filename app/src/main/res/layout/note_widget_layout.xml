@@ -1,59 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/note_widget_layout"
+    android:id="@+id/layoutNoteWidget"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/padding_small"
+    android:layout_margin="@dimen/paddingSmall"
     android:background="@drawable/note_widget_background"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/note_widget_title"
+        android:id="@+id/textWidgetTitle"
         style="@android:style/TextAppearance.Medium"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/widget_header_height"
-        android:background="@drawable/note_widget_text_ripple"
-        android:clickable="true"
+        android:layout_height="@dimen/widgetHeaderHeight"
         android:ellipsize="end"
         android:gravity="center_vertical"
+        android:background="@drawable/note_widget_header_ripple"
+        android:clickable="true"
+        android:focusable="true"
         android:maxLines="1"
-        android:paddingStart="@dimen/widget_default_padding"
-        android:paddingEnd="@dimen/widget_default_padding"
+        android:paddingStart="@dimen/widgetDefaultPadding"
+        android:paddingEnd="@dimen/widgetDefaultPadding"
         android:textColor="@color/textPrimary"
-        android:textSize="@dimen/widget_text_header"
+        android:textSize="@dimen/widgetTextHeader"
         tools:text="Widget Title" />
 
-    <LinearLayout
-        android:id="@+id/note_widget_divider"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/widget_divider_height"
-        android:background="@color/widgetDivider"
-        android:orientation="horizontal" />
-
     <TextView
-        android:id="@+id/note_widget_text"
+        android:id="@+id/textWidgetContent"
         style="@android:style/TextAppearance.Small"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
         android:background="@drawable/note_widget_text_ripple"
         android:clickable="true"
-        android:paddingLeft="@dimen/widget_default_padding"
-        android:paddingTop="@dimen/widget_divider_padding"
-        android:paddingRight="@dimen/widget_default_padding"
-        android:paddingBottom="@dimen/widget_default_padding"
+        android:focusable="true"
+        android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/widgetDefaultPadding"
+        android:paddingRight="@dimen/widgetDefaultPadding"
+        android:paddingBottom="@dimen/widgetDefaultPadding"
         android:textColor="@color/textSecondary"
         tools:text="This is a bunch of widget text!" />
 
     <TextView
-        android:id="@+id/note_widget_empty"
+        android:id="@+id/textWidgetEmpty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@drawable/note_widget_blank_ripple"
+        android:clickable="true"
+        android:focusable="true"
         android:gravity="center"
-        android:padding="@dimen/activity_padding"
-        android:text="Tap here to choose a note."
+        android:padding="@dimen/paddingActivity"
+        android:text="@string/widgetTextEmpty"
         android:textColor="@color/textSecondary" />
 
 </LinearLayout>

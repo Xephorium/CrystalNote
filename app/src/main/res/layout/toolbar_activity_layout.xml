@@ -9,10 +9,10 @@
     <Space
         android:id="@+id/space"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"/>
+        android:layout_height="@dimen/toolbarHeight"/>
 
     <LinearLayout
-        android:id="@+id/status_bar_margin"
+        android:id="@+id/layoutToolbarActivityStatusBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -21,7 +21,7 @@
         />
 
     <LinearLayout
-        android:id="@+id/activity_content"
+        android:id="@+id/layoutActivityContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
@@ -34,9 +34,9 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/status_bar_margin"
+        android:layout_below="@+id/layoutToolbarActivityStatusBar"
         android:background="?attr/colorPrimary"
-        android:elevation="@dimen/toolbar_elevation"
+        android:elevation="@dimen/toolbarElevation"
         app:contentInsetStart="0dp"
         />
 

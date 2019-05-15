@@ -6,12 +6,9 @@
 
     <item android:id="@android:id/mask">
         <shape android:shape="rectangle">
-
             <corners
-                android:bottomLeftRadius="@dimen/widget_corner_radius"
-                android:bottomRightRadius="@dimen/widget_corner_radius"
-                />
-
+                android:bottomLeftRadius="@dimen/widgetCornerRadius"
+                android:bottomRightRadius="@dimen/widgetCornerRadius" />
             <solid android:color="@color/rippleDefault" />
         </shape>
     </item>
