@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/paddingActivity"
     android:layout_marginEnd="@dimen/paddingActivity"
-    android:layout_marginBottom="@dimen/paddingMedium"
+    android:layout_marginTop="@dimen/paddingMedium"
     android:elevation="@dimen/cardViewElevation"
     app:cardCornerRadius="@dimen/cardViewCornerRadius">
 

@@ -5,6 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <Space
+        android:id="@+id/space"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:visibility="gone"
+        />
+
     <TextView
         android:id="@+id/textNoteListHeader"
         style="@style/ListViewHeaderTheme"

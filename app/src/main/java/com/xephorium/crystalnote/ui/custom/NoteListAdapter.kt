@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Space
 import android.widget.TextView
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -49,8 +50,12 @@ open class NoteListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         if (holder.type == VIEW_TYPE_HEADER) {
-            holder.header.text = if (position == 0) context.resources.getString(R.string.noteListToday)
-            else context.resources.getString(R.string.noteListOlder)
+            if (position == 0) {
+                holder.header.text = context.resources.getString(R.string.noteListToday)
+            } else {
+                holder.header.text = context.resources.getString(R.string.noteListOlder)
+                holder.space.visibility = View.VISIBLE
+            }
         }
 
         if (holder.type == VIEW_TYPE_NOTE) {
@@ -108,6 +113,7 @@ open class NoteListAdapter(
         internal lateinit var date: TextView
         internal lateinit var colorBar: View
         internal lateinit var header: TextView
+        internal lateinit var space: Space
 
         init {
             if (type == VIEW_TYPE_NOTE) {
@@ -117,6 +123,7 @@ open class NoteListAdapter(
                 colorBar = view.colorBarNoteList
             } else {
                 header = view.textNoteListHeader
+                space = view.space
             }
         }
 
