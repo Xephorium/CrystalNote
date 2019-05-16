@@ -4,6 +4,7 @@ import android.app.Activity
 import android.graphics.Point
 import android.graphics.Rect
 import android.view.View
+import androidx.core.content.ContextCompat
 
 object DisplayUtils {
 

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import android.view.ViewGroup
 
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -73,7 +74,10 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     /*--- Child Activity Methods ---*/
 
     fun setActivityContent(layoutResource: Int) {
-        layoutActivityContent.addView(getInflatedView(layoutResource))
+        val view = layoutInflater.inflate(layoutResource, null)
+        view.layoutParams =
+                ViewGroup.LayoutParams(layoutActivityContent.width, getActivityContentHeight())
+        layoutActivityContent.addView(view)
     }
 
     fun openDrawer() {
@@ -138,11 +142,6 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         listDrawer.adapter = DrawerAdapter(this, getItems())
     }
 
-    private fun getInflatedView(layoutResource: Int): View {
-        val layoutInflater = layoutInflater
-        return layoutInflater.inflate(layoutResource, null)
-    }
-
     private fun getActionBarDrawerToggle() = object : ActionBarDrawerToggle(
             this,
             layoutDrawer,
@@ -196,6 +195,13 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
             startActivity(intent)
             overridePendingTransition(0, 0)
         }, RIPPLE_DELAY + DRAWER_CLOSE_TIME)
+    }
+
+    private fun getActivityContentHeight(): Int {
+        val displayHeight = DisplayUtils.getDisplayHeight(this)
+        val statusBarHeight = DisplayUtils.getStatusBarHeight(this)
+        val toolbarHeight = resources.getDimensionPixelSize(R.dimen.toolbarHeight)
+        return displayHeight - (statusBarHeight + toolbarHeight)
     }
 
 
