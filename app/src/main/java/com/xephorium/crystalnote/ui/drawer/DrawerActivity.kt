@@ -102,7 +102,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     override fun closeDrawerAfterDelay() {
         Handler().postDelayed({
             closeDrawer()
-        }, RIPPLE_DELAY)
+        }, DRAWER_UI_UPDATE_DELAY)
     }
 
     override fun navigateToHome() {
@@ -225,7 +225,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
             overridePendingTransition(0, 0)
-        }, RIPPLE_DELAY + DRAWER_CLOSE_TIME)
+        }, DRAWER_UI_UPDATE_DELAY + DRAWER_CLOSE_TIME)
     }
 
     private fun getActivityContentHeight(): Int {
@@ -239,7 +239,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     /*--- Constants ---*/
 
     companion object {
-        private const val DRAWER_CLOSE_TIME: Long = 300
-        private const val RIPPLE_DELAY: Long = 100
+        private const val DRAWER_CLOSE_TIME: Long = 290
+        private const val DRAWER_UI_UPDATE_DELAY: Long = 10
     }
 }
