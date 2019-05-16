@@ -19,7 +19,7 @@
         android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:tint="@color/drawerItemIcon"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/icon_home" />
+        tools:src="@drawable/icon_note" />
 
     <TextView
         android:id="@+id/textDividerItem"

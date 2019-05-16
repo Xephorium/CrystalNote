@@ -8,6 +8,7 @@ import android.text.InputType
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.EditText
+import androidx.core.content.ContextCompat
 
 import com.xephorium.crystalnote.R
 
@@ -42,7 +43,7 @@ class LineEditText : EditText {
         this.isVerticalScrollBarEnabled = false
 
         paint.style = Paint.Style.STROKE
-        paint.color = resources.getColor(R.color.textUnderline)
+        paint.color = ContextCompat.getColor(context, R.color.textUnderline)
     }
 
 

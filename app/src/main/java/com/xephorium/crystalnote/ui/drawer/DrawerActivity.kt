@@ -162,19 +162,19 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     private fun getItems() = listOf(
-            DrawerItem(R.drawable.icon_home, "Home",
+            DrawerItem(R.drawable.icon_note, "Notes",
                     object : DrawerItem.ClickListener {
                         override fun onClick() = presenter.handleHomeClick()
+                    }, ITEM
+            ),
+            DrawerItem(R.drawable.icon_sliders, "Settings",
+                    object : DrawerItem.ClickListener {
+                        override fun onClick() = presenter.handleSettingsClick()
                     }, ITEM
             ),
             DrawerItem(R.drawable.icon_widget, "Widget",
                     object : DrawerItem.ClickListener {
                         override fun onClick() = presenter.handleWidgetClick()
-                    }, ITEM
-            ),
-            DrawerItem(R.drawable.icon_settings, "Settings",
-                    object : DrawerItem.ClickListener {
-                        override fun onClick() = presenter.handleSettingsClick()
                     }, ITEM
             ),
             DrawerItem(0, "",
