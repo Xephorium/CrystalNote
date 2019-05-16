@@ -29,6 +29,7 @@
     <dimen name="drawerIconPaddingIncreased">14dp</dimen>
     <dimen name="drawerItemHeight">50dp</dimen>
     <dimen name="drawerItemPadding">20dp</dimen>
+    <dimen name="drawerItemRadius">5dp</dimen>
     <dimen name="floatingActionButtonElevation">6dp</dimen>
     <dimen name="noteListItemHeight">72dp</dimen>
     <dimen name="splashIconSize">60dp</dimen>

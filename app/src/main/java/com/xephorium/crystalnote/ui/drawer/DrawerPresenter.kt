@@ -25,24 +25,28 @@ class DrawerPresenter : DrawerContract.Presenter() {
     override fun handleHomeClick() {
         view?.closeDrawerAfterDelay()
         sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
+        view?.setSelectedMenuButton(NOTES)
         view?.navigateToHome()
     }
 
     override fun handleWidgetClick() {
         view?.closeDrawerAfterDelay()
         sharedPreferencesRepository.setSelectedDrawerButton(WIDGET)
+        view?.setSelectedMenuButton(WIDGET)
         view?.navigateToWidget()
     }
 
     override fun handleSettingsClick() {
         view?.closeDrawerAfterDelay()
         sharedPreferencesRepository.setSelectedDrawerButton(SETTINGS)
+        view?.setSelectedMenuButton(SETTINGS)
         view?.navigateToSettings()
     }
 
     override fun handleAboutClick() {
         view?.closeDrawerAfterDelay()
         sharedPreferencesRepository.setSelectedDrawerButton(ABOUT)
+        view?.setSelectedMenuButton(ABOUT)
         view?.navigateToAbout()
     }
 

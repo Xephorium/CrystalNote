@@ -16,7 +16,7 @@ data class DrawerItem(
             DIVIDER
         }
 
-        enum class DrawerButton(name: String) {
+        enum class DrawerButton(val displayName: String) {
             NOTES("Notes"),
             SETTINGS("Settings"),
             WIDGET("Widget"),

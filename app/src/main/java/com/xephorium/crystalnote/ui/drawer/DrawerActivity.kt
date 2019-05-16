@@ -127,15 +127,15 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
                 val holder = listDrawer.findViewHolderForLayoutPosition(index)
                         as? DrawerAdapter.ViewHolder
                 holder?.let {
-                    if (item.text == button.name) {
-                        it.layout.setBackgroundColor(ContextCompat
-                                .getColor(this, R.color.drawerItemSelected))
+                    if (item.text == button.displayName) {
                         it.text.setTextColor(ContextCompat
                                 .getColor(this, R.color.drawerItemSelectedText))
                         it.icon.setColorFilter(
                                 ContextCompat.getColor(this, R.color.drawerItemSelectedIcon),
                                 PorterDuff.Mode.SRC_IN
                         )
+                        it.layout.background = ContextCompat
+                                .getDrawable(this, R.drawable.drawer_selection_background)
                     } else {
                         it.text.setTextColor(ContextCompat
                                 .getColor(this, R.color.drawerItemText)
@@ -144,6 +144,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
                                 ContextCompat.getColor(this, R.color.drawerItemText),
                                 PorterDuff.Mode.SRC_IN
                         )
+                        it.layout.background = null
                     }
                 }
             }
@@ -197,15 +198,15 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     private fun getItems() = listOf(
-            DrawerItem(R.drawable.icon_note, NOTES.name, object : DrawerItem.ClickListener {
+            DrawerItem(R.drawable.icon_note, NOTES.displayName, object : DrawerItem.ClickListener {
                 override fun onClick() = presenter.handleHomeClick()
             }, BUTTON
             ),
-            DrawerItem(R.drawable.icon_sliders, SETTINGS.name, object : DrawerItem.ClickListener {
+            DrawerItem(R.drawable.icon_sliders, SETTINGS.displayName, object : DrawerItem.ClickListener {
                 override fun onClick() = presenter.handleSettingsClick()
             }, BUTTON
             ),
-            DrawerItem(R.drawable.icon_widget, WIDGET.name, object : DrawerItem.ClickListener {
+            DrawerItem(R.drawable.icon_widget, WIDGET.displayName, object : DrawerItem.ClickListener {
                 override fun onClick() = presenter.handleWidgetClick()
             }, BUTTON
             ),
@@ -213,7 +214,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
                 override fun onClick() = Unit
             }, DIVIDER
             ),
-            DrawerItem(R.drawable.icon_about, ABOUT.name, object : DrawerItem.ClickListener {
+            DrawerItem(R.drawable.icon_about, ABOUT.displayName, object : DrawerItem.ClickListener {
                 override fun onClick() = presenter.handleAboutClick()
             }, BUTTON
             )

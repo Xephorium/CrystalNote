@@ -35,7 +35,7 @@
     <color name="drawerItemIcon">#757575</color>
     <color name="drawerItemText">@color/drawerItemIcon</color>
     <color name="drawerItemSelected">#ddd</color>
-    <color name="drawerItemSelectedIcon">#333</color>
+    <color name="drawerItemSelectedIcon">#222</color>
     <color name="drawerItemSelectedText">@color/drawerItemSelectedIcon</color>
 
     <color name="iconDefault">#aaaaaa</color>

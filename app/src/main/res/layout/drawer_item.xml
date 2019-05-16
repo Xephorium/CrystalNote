@@ -5,7 +5,8 @@
     android:id="@+id/layoutDrawerItem"
     android:layout_width="match_parent"
     android:layout_height="@dimen/drawerItemHeight"
-    android:background="@drawable/ripple"
+    android:layout_marginStart="@dimen/paddingMedium"
+    android:layout_marginEnd="@dimen/paddingMedium"
     android:orientation="vertical">
 
     <ImageView
@@ -14,7 +15,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/paddingMedium"
         android:importantForAccessibility="no"
-        android:paddingStart="@dimen/drawerIconPadding"
+        android:paddingStart="@dimen/paddingSmall"
         android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:paddingEnd="@dimen/drawerIconPadding"
         android:paddingBottom="@dimen/drawerIconPadding"
