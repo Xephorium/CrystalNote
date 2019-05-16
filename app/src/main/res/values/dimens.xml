@@ -25,9 +25,10 @@
     <dimen name="cardViewElevation">4dp</dimen>
     <dimen name="cardViewMargin">5dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
-    <dimen name="drawerIconPadding">10dp</dimen>
-    <dimen name="drawerIconPaddingIncreased">12dp</dimen>
+    <dimen name="drawerIconPadding">12dp</dimen>
+    <dimen name="drawerIconPaddingIncreased">14dp</dimen>
     <dimen name="drawerItemHeight">50dp</dimen>
+    <dimen name="drawerItemPadding">20dp</dimen>
     <dimen name="floatingActionButtonElevation">6dp</dimen>
     <dimen name="noteListItemHeight">72dp</dimen>
     <dimen name="splashIconSize">60dp</dimen>
