@@ -1,9 +1,9 @@
 package com.xephorium.crystalnote.ui.drawer
 
-import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 
 interface DrawerContract {
 
@@ -14,9 +14,12 @@ interface DrawerContract {
         fun navigateToWidget()
         fun navigateToSettings()
         fun navigateToAbout()
+        fun setSelectedMenuButton(button: DrawerButton)
     }
 
     abstract class Presenter : BasePresenter<View>() {
+        lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+
         abstract fun handleHomeClick()
         abstract fun handleWidgetClick()
         abstract fun handleSettingsClick()

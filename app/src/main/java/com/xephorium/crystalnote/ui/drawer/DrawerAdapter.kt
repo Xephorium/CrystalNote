@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.drawer_item.view.*
 
 open class DrawerAdapter(
         private val context: Context,
-        private val items: List<DrawerItem>
+        val items: List<DrawerItem>
 ) : RecyclerView.Adapter<DrawerAdapter.ViewHolder>() {
 
 
@@ -31,7 +31,7 @@ open class DrawerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(context)
         val view = when (viewType) {
-            ITEM.ordinal -> inflater.inflate(R.layout.drawer_item, parent, false)
+            BUTTON.ordinal -> inflater.inflate(R.layout.drawer_item, parent, false)
             else -> inflater.inflate(R.layout.drawer_divider, parent, false)
         }
 
@@ -39,7 +39,7 @@ open class DrawerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (holder.type == ITEM.ordinal) {
+        if (holder.type == BUTTON.ordinal) {
             items[position].let { item ->
                 holder.icon.setImageResource(item.iconResource)
                 holder.text.text = item.text
@@ -55,11 +55,13 @@ open class DrawerAdapter(
     inner class ViewHolder internal constructor(val view: View, val type: Int) :
             RecyclerView.ViewHolder(view) {
 
+        internal lateinit var layout: View
         internal lateinit var icon: ImageView
         internal lateinit var text: TextView
 
         init {
-            if (type == ITEM.ordinal) {
+            if (type == BUTTON.ordinal) {
+                layout = view.layoutDrawerItem
                 icon = view.iconDividerItem
                 text = view.textDividerItem
             }
@@ -67,7 +69,6 @@ open class DrawerAdapter(
 
         fun setNoteClickListeners(item: DrawerItem) {
             view.setOnClickListener { item.listener.onClick() }
-
         }
     }
 

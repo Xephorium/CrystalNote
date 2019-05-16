@@ -2,16 +2,19 @@ package com.xephorium.crystalnote.ui.drawer
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.about.AboutActivity
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.utility.DisplayUtils
@@ -21,6 +24,8 @@ import com.xephorium.crystalnote.ui.settings.SettingsActivity
 import com.xephorium.crystalnote.ui.widget.WidgetActivity
 import kotlinx.android.synthetic.main.drawer_activity_layout.*
 import kotlinx.android.synthetic.main.drawer_layout.*
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton.*
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 
 @SuppressLint("Registered")
 open class DrawerActivity : BaseActivity(), DrawerContract.View {
@@ -42,6 +47,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         setContentView(R.layout.drawer_activity_layout)
 
         presenter = DrawerPresenter()
+        presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
 
         setupViewFields()
         setupStatusBar()
@@ -115,6 +121,35 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         navigateToActivity(Intent(this@DrawerActivity, AboutActivity::class.java))
     }
 
+    override fun setSelectedMenuButton(button: DrawerButton) {
+        (listDrawer.adapter as? DrawerAdapter)?.items?.forEachIndexed { index, item ->
+            if (item.type == BUTTON) {
+                val holder = listDrawer.findViewHolderForLayoutPosition(index)
+                        as? DrawerAdapter.ViewHolder
+                holder?.let {
+                    if (item.text == button.name) {
+                        it.layout.setBackgroundColor(ContextCompat
+                                .getColor(this, R.color.drawerItemSelected))
+                        it.text.setTextColor(ContextCompat
+                                .getColor(this, R.color.drawerItemSelectedText))
+                        it.icon.setColorFilter(
+                                ContextCompat.getColor(this, R.color.drawerItemSelectedIcon),
+                                PorterDuff.Mode.SRC_IN
+                        )
+                    } else {
+                        it.text.setTextColor(ContextCompat
+                                .getColor(this, R.color.drawerItemText)
+                        )
+                        it.icon.setColorFilter(
+                                ContextCompat.getColor(this, R.color.drawerItemText),
+                                PorterDuff.Mode.SRC_IN
+                        )
+                    }
+                }
+            }
+        }
+    }
+
 
     /*--- Private Setup Methods ---*/
 
@@ -162,30 +197,25 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     private fun getItems() = listOf(
-            DrawerItem(R.drawable.icon_note, "Notes",
-                    object : DrawerItem.ClickListener {
-                        override fun onClick() = presenter.handleHomeClick()
-                    }, ITEM
+            DrawerItem(R.drawable.icon_note, NOTES.name, object : DrawerItem.ClickListener {
+                override fun onClick() = presenter.handleHomeClick()
+            }, BUTTON
             ),
-            DrawerItem(R.drawable.icon_sliders, "Settings",
-                    object : DrawerItem.ClickListener {
-                        override fun onClick() = presenter.handleSettingsClick()
-                    }, ITEM
+            DrawerItem(R.drawable.icon_sliders, SETTINGS.name, object : DrawerItem.ClickListener {
+                override fun onClick() = presenter.handleSettingsClick()
+            }, BUTTON
             ),
-            DrawerItem(R.drawable.icon_widget, "Widget",
-                    object : DrawerItem.ClickListener {
-                        override fun onClick() = presenter.handleWidgetClick()
-                    }, ITEM
+            DrawerItem(R.drawable.icon_widget, WIDGET.name, object : DrawerItem.ClickListener {
+                override fun onClick() = presenter.handleWidgetClick()
+            }, BUTTON
             ),
-            DrawerItem(0, "",
-                    object : DrawerItem.ClickListener {
-                        override fun onClick() = Unit
-                    }, DIVIDER
+            DrawerItem(0, "", object : DrawerItem.ClickListener {
+                override fun onClick() = Unit
+            }, DIVIDER
             ),
-            DrawerItem(R.drawable.icon_about, "About",
-                    object : DrawerItem.ClickListener {
-                        override fun onClick() = presenter.handleAboutClick()
-                    }, ITEM
+            DrawerItem(R.drawable.icon_about, ABOUT.name, object : DrawerItem.ClickListener {
+                override fun onClick() = presenter.handleAboutClick()
+            }, BUTTON
             )
     )
 

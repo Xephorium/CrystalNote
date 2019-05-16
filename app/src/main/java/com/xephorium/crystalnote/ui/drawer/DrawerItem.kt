@@ -12,8 +12,15 @@ data class DrawerItem(
 
     companion object {
         enum class DrawerItemType {
-            ITEM,
+            BUTTON,
             DIVIDER
+        }
+
+        enum class DrawerButton(name: String) {
+            NOTES("Notes"),
+            SETTINGS("Settings"),
+            WIDGET("Widget"),
+            ABOUT("About")
         }
     }
 }

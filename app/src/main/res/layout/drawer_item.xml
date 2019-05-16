@@ -2,10 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutDrawerItem"
     android:layout_width="match_parent"
     android:layout_height="@dimen/drawerItemHeight"
-    android:orientation="vertical"
-    android:background="@drawable/ripple">
+    android:background="@drawable/ripple"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/iconDividerItem"
@@ -14,9 +15,9 @@
         android:layout_marginStart="@dimen/paddingMedium"
         android:importantForAccessibility="no"
         android:paddingStart="@dimen/drawerIconPadding"
+        android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:paddingEnd="@dimen/drawerIconPadding"
         android:paddingBottom="@dimen/drawerIconPadding"
-        android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:tint="@color/drawerItemIcon"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/icon_note" />
@@ -27,9 +28,9 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/drawerItemPadding"
         android:gravity="center_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         android:textColor="@color/drawerItemText"
         android:textSize="@dimen/textDrawerItem"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iconDividerItem"
         tools:text="Home" />
 
