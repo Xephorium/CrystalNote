@@ -12,7 +12,8 @@
         android:layout_marginEnd="@dimen/paddingLarge"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        />
 
     <ImageView
         android:id="@+id/buttonToolbarRight"
@@ -23,7 +24,8 @@
         android:layout_marginEnd="@dimen/paddingLarge"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
-        android:focusable="true" />
+        android:focusable="true"
+        />
 
     <EditText
         android:id="@+id/textToolbarEdit"

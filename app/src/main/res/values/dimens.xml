@@ -16,7 +16,7 @@
     <!-- Text -->
     <dimen name="textEmpty">18sp</dimen>
     <dimen name="textDrawerHeader">18sp</dimen>
-    <dimen name="textDrawerMessage">14sp</dimen>
+    <dimen name="textDrawerMessage">16sp</dimen>
     <dimen name="textDrawerItem">15sp</dimen>
 
     <!-- Custom Controls -->

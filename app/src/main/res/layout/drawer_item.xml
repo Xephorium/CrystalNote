@@ -28,8 +28,8 @@
         android:layout_marginStart="@dimen/drawerItemPadding"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textDrawerMessage"
+        android:textColor="@color/drawerItemText"
+        android:textSize="@dimen/textDrawerItem"
         app:layout_constraintStart_toEndOf="@id/iconDividerItem"
         tools:text="Home" />
 

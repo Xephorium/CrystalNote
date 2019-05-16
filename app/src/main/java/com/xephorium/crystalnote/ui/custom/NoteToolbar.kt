@@ -99,7 +99,13 @@ class NoteToolbar : Toolbar {
                     ContextCompat.getColor(context, R.color.toolbarTextSecondary),
                     android.graphics.PorterDuff.Mode.SRC_IN
             )
+            setLeftButtonScale(TOOLBAR_ICON_SCALE_SMALLER)
         }
+    }
+
+    fun setLeftButtonScale(scale: Float) {
+        buttonToolbarLeft.scaleX = scale
+        buttonToolbarLeft.scaleY = scale
     }
 
     fun setRightButtonImage(drawable: Int) {
@@ -112,7 +118,13 @@ class NoteToolbar : Toolbar {
                     ContextCompat.getColor(context, R.color.toolbarTextSecondary),
                     android.graphics.PorterDuff.Mode.SRC_IN
             )
+            setRightButtonScale(TOOLBAR_ICON_SCALE_SMALLER)
         }
+    }
+
+    fun setRightButtonScale(scale: Float) {
+        buttonToolbarRight.scaleX = scale
+        buttonToolbarRight.scaleY = scale
     }
 
     fun setNoteToolbarListener(noteToolbarListener: NoteToolbarListener) {
@@ -143,5 +155,6 @@ class NoteToolbar : Toolbar {
     companion object {
         private const val DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back
         private const val NO_IMAGE = -1
+        const val TOOLBAR_ICON_SCALE_SMALLER = (.93).toFloat()
     }
 }

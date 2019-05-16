@@ -34,6 +34,7 @@
     <color name="drawerSelectedItem">#eee</color>
     <color name="drawerItemDivider">#ddd</color>
     <color name="drawerItemIcon">#757575</color>
+    <color name="drawerItemText">@color/drawerItemIcon</color>
 
     <color name="iconDefault">#aaaaaa</color>
 
