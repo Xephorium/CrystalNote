@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 
 import com.xephorium.crystalnote.R
 import kotlinx.android.synthetic.main.note_toolbar_layout.view.*
@@ -94,6 +95,10 @@ class NoteToolbar : Toolbar {
         } else {
             buttonToolbarLeft.visibility = View.VISIBLE
             buttonToolbarLeft.setImageDrawable(resources.getDrawable(drawable, context.theme))
+            buttonToolbarLeft.setColorFilter(
+                    ContextCompat.getColor(context, R.color.toolbarTextSecondary),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+            )
         }
     }
 
@@ -103,6 +108,10 @@ class NoteToolbar : Toolbar {
         } else {
             buttonToolbarRight.visibility = View.VISIBLE
             buttonToolbarRight.setImageDrawable(resources.getDrawable(drawable, context.theme))
+            buttonToolbarRight.setColorFilter(
+                    ContextCompat.getColor(context, R.color.toolbarTextSecondary),
+                    android.graphics.PorterDuff.Mode.SRC_IN
+            )
         }
     }
 
@@ -133,7 +142,6 @@ class NoteToolbar : Toolbar {
 
     companion object {
         private const val DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back
-        private const val DEFAULT_RIGHT_BUTTON_IMAGE = R.drawable.icon_save
         private const val NO_IMAGE = -1
     }
 }

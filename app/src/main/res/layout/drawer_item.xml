@@ -13,7 +13,10 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/paddingMedium"
         android:importantForAccessibility="no"
-        android:padding="@dimen/drawerIconPadding"
+        android:paddingStart="@dimen/drawerIconPadding"
+        android:paddingEnd="@dimen/drawerIconPadding"
+        android:paddingBottom="@dimen/drawerIconPadding"
+        android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:tint="@color/drawerItemIcon"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/icon_home" />

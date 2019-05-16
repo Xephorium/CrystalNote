@@ -11,7 +11,7 @@
     <dimen name="paddingBig">16dp</dimen>
     <dimen name="paddingLarge">24dp</dimen>
     <dimen name="paddingHuge">32dp</dimen>
-    <dimen name="paddingGargantuan">72dp</dimen>
+    <dimen name="paddingGargantuan">92dp</dimen>
 
     <!-- Text -->
     <dimen name="textEmpty">18sp</dimen>
@@ -26,6 +26,7 @@
     <dimen name="cardViewMargin">5dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">10dp</dimen>
+    <dimen name="drawerIconPaddingIncreased">12dp</dimen>
     <dimen name="drawerItemHeight">50dp</dimen>
     <dimen name="floatingActionButtonElevation">6dp</dimen>
     <dimen name="noteListItemHeight">72dp</dimen>
