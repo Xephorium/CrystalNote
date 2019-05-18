@@ -18,7 +18,7 @@
     <dimen name="textDrawerHeader">18sp</dimen>
     <dimen name="textDrawerMessage">16sp</dimen>
     <dimen name="textDrawerItem">15sp</dimen>
-    <dimen name="textSettings">16sp</dimen>
+    <dimen name="textSettings">15sp</dimen>
 
     <!-- Custom Controls -->
     <dimen name="cardViewColorBar">10dp</dimen>
@@ -33,6 +33,7 @@
     <dimen name="drawerItemRadius">5dp</dimen>
     <dimen name="floatingActionButtonElevation">6dp</dimen>
     <dimen name="noteListItemHeight">72dp</dimen>
+    <dimen name="selectorSettings">150dp</dimen>
     <dimen name="splashIconSize">60dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
     <dimen name="toolbarElevation">4dp</dimen>

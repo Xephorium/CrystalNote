@@ -54,7 +54,7 @@
         android:paddingTop="@dimen/paddingMedium"
         android:paddingEnd="@dimen/paddingLarge"
         android:paddingBottom="@dimen/paddingMedium"
-        android:text="@string/settingsTheme"
+        android:text="@string/settingsAppTheme"
         android:textColor="@color/settingsItem"
         android:textSize="@dimen/textSettings"
         app:layout_constraintEnd_toStartOf="@id/selectorSettingsTheme"
@@ -65,7 +65,7 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/selectorSettingsTheme"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/selectorSettings"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/textSettingsThemeLabel"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,15 +85,15 @@
         android:text="@string/settingsNotePreviewLines"
         android:textColor="@color/settingsItem"
         android:textSize="@dimen/textSettings"
-        app:layout_constraintEnd_toStartOf="@id/editTextSettingsNoteLines"
+        app:layout_constraintEnd_toStartOf="@id/selectorSettingsLines"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSettingsThemeLabel"
         />
 
     <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/editTextSettingsNoteLines"
-        android:layout_width="150dp"
+        android:id="@+id/selectorSettingsLines"
+        android:layout_width="@dimen/selectorSettings"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/textSettingsNoteLinesLabel"
         app:layout_constraintEnd_toEndOf="parent"
@@ -122,8 +122,7 @@
         android:id="@+id/switchSettingsNoteColors"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:enabled="false"
+        android:checked="true"
         android:paddingStart="@dimen/paddingHuge"
         android:paddingTop="@dimen/paddingMedium"
         android:paddingEnd="@dimen/paddingActivity"
@@ -135,16 +134,16 @@
         />
 
     <Button
+        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/paddingActivity"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/commonSave"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/white"
-        android:text="@string/commonSave"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
