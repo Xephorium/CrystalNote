@@ -10,6 +10,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.model.Note
 import kotlinx.android.synthetic.main.note_list_header.view.*
@@ -29,6 +30,13 @@ open class NoteListAdapter(
         private val newNotes: List<Note>,
         private val oldNotes: List<Note>
 ) : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
+
+
+    /*--- Private Variables ---*/
+
+    private val sharedPreferencesRepository = SharedPreferencesRepository(context)
+    private val shouldShowColorBar = sharedPreferencesRepository.getNoteColorsEnabled()
+    private val shouldShowTodayHeader = sharedPreferencesRepository.getTodayHeaderEnabled()
 
 
     /*--- Lifecycle Methods ---*/
@@ -64,6 +72,7 @@ open class NoteListAdapter(
             holder.preview.text = note.preview
             holder.date.text = NoteUtility.getFormattedDate(note)
             DrawableCompat.setTint(holder.colorBar.background, note.color)
+            if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE
             holder.setNoteClickListeners(note)
         }
     }
