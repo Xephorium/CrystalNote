@@ -80,36 +80,55 @@ open class NoteListAdapter(
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getItemCount(): Int {
-        return when {
-            newNotes.isEmpty() && oldNotes.isEmpty() -> 0
-            newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes.size
-            newNotes.isEmpty() && oldNotes.isNotEmpty() -> oldNotes.size
-            else -> newNotes.size + oldNotes.size + 2
+        if (shouldShowTodayHeader) {
+            return when {
+                newNotes.isEmpty() && oldNotes.isEmpty() -> 0
+                newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes.size
+                newNotes.isEmpty() && oldNotes.isNotEmpty() -> oldNotes.size
+                else -> newNotes.size + oldNotes.size + 2
+            }
+        } else {
+            return newNotes.size + oldNotes.size
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when {
-            newNotes.isNotEmpty() && oldNotes.isEmpty() -> VIEW_TYPE_NOTE
-            newNotes.isEmpty() && oldNotes.isNotEmpty() -> VIEW_TYPE_NOTE
-            else -> {
-                when {
-                    position == 0 -> VIEW_TYPE_HEADER
-                    position < (newNotes.size + 1) -> VIEW_TYPE_NOTE
-                    position == (newNotes.size + 1) -> VIEW_TYPE_HEADER
-                    else -> VIEW_TYPE_NOTE
+        if (shouldShowTodayHeader) {
+            return when {
+                newNotes.isNotEmpty() && oldNotes.isEmpty() -> VIEW_TYPE_NOTE
+                newNotes.isEmpty() && oldNotes.isNotEmpty() -> VIEW_TYPE_NOTE
+                else -> {
+                    when {
+                        position == 0 -> VIEW_TYPE_HEADER
+                        position < (newNotes.size + 1) -> VIEW_TYPE_NOTE
+                        position == (newNotes.size + 1) -> VIEW_TYPE_HEADER
+                        else -> VIEW_TYPE_NOTE
+                    }
                 }
             }
+        } else {
+            return VIEW_TYPE_NOTE
         }
     }
 
     private fun getNoteFromPosition(position: Int): Note {
-        return when {
-            newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes[position]
-            newNotes.isEmpty() && oldNotes.isNotEmpty() -> oldNotes[position]
-            else -> {
-                if (position <= newNotes.size) newNotes[position - 1]
-                else oldNotes[position - newNotes.size - 2]
+        if (shouldShowTodayHeader) {
+            return when {
+                newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes[position]
+                newNotes.isEmpty() && oldNotes.isNotEmpty() -> oldNotes[position]
+                else -> {
+                    if (position <= newNotes.size) newNotes[position - 1]
+                    else oldNotes[position - newNotes.size - 2]
+                }
+            }
+        } else {
+            return when {
+                newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes[position]
+                newNotes.isEmpty() && oldNotes.isNotEmpty() -> oldNotes[position]
+                else -> {
+                    if (position < newNotes.size) newNotes[position]
+                    else oldNotes[position - newNotes.size]
+                }
             }
         }
     }
