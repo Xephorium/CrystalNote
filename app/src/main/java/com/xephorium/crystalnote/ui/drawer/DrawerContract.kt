@@ -24,5 +24,7 @@ interface DrawerContract {
         abstract fun handleWidgetClick()
         abstract fun handleSettingsClick()
         abstract fun handleAboutClick()
+
+        abstract fun handleBackClick()
     }
 }

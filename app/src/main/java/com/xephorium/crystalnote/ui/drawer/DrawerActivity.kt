@@ -72,8 +72,10 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         if (drawerOpen) {
             layoutDrawer.closeDrawers()
             drawerAnimating = true
-        } else
+        } else {
+            presenter.handleBackClick()
             super.onBackPressed()
+        }
     }
 
 

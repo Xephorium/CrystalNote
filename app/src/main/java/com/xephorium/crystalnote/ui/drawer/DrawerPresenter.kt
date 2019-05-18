@@ -50,6 +50,10 @@ class DrawerPresenter : DrawerContract.Presenter() {
         view?.navigateToAbout()
     }
 
+    override fun handleBackClick() {
+        sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
+    }
+
 
     /*--- Constants ---*/
 
