@@ -9,6 +9,8 @@
     <string name="appName">CrystalNote</string>
     <string name="appVersion">v1.0.0</string>
 
+    <string name="commonSave">Save</string>
+
     <string name="drawerHeader">Crystal Note</string>
     <string name="drawerMessage">A simple notes app</string>
 
@@ -26,6 +28,13 @@
     <string name="selectTextEmpty">Tap + to create a note.</string>
 
     <string name="settingsTitle">Settings</string>
+    <string name="settingsAppearance">Appearance</string>
+    <string name="settingsTheme">Theme</string>
+    <string name="settingsNotePreviewLines">Note Preview Lines</string>
+    <string name="settingsBehavior">Behavior</string>
+    <string name="settingsCustomNoteColors">Custom Note Colors</string>
+
+    <string name="space">_____________________________________________________________________________________________________________________________________________________________</string>
 
     <string name="widgetTitle">Widget Settings</string>
     <string name="widgetTextEmpty">Tap here to choose a note.</string>

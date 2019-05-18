@@ -18,6 +18,7 @@
     <dimen name="textDrawerHeader">18sp</dimen>
     <dimen name="textDrawerMessage">16sp</dimen>
     <dimen name="textDrawerItem">15sp</dimen>
+    <dimen name="textSettings">16sp</dimen>
 
     <!-- Custom Controls -->
     <dimen name="cardViewColorBar">10dp</dimen>

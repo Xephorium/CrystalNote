@@ -1,8 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundDefault"
     >
+
+    <!-- Note: This view is a dirty hack. Because I'm manually inflating each layout added to
+         the layoutActivityContent view, the layouts don't want to expand horizontally into the
+         available space. -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:id="@+id/viewSettingsPreviewBackground"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/settingsPreviewBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/textSettingsAppearanceHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/paddingActivity"
+        android:paddingTop="@dimen/paddingLarge"
+        android:paddingEnd="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingSmall"
+        android:text="@string/settingsAppearance"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewSettingsPreviewBackground"
+        />
+
+    <TextView
+        android:id="@+id/textSettingsThemeLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/paddingHuge"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingEnd="@dimen/paddingLarge"
+        android:paddingBottom="@dimen/paddingMedium"
+        android:text="@string/settingsTheme"
+        android:textColor="@color/settingsItem"
+        android:textSize="@dimen/textSettings"
+        app:layout_constraintEnd_toStartOf="@id/selectorSettingsTheme"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSettingsAppearanceHeader"
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/selectorSettingsTheme"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/textSettingsThemeLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@id/textSettingsThemeLabel"
+        app:layout_constraintTop_toTopOf="@id/textSettingsThemeLabel"
+        />
+
+    <TextView
+        android:id="@+id/textSettingsNoteLinesLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/paddingHuge"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingEnd="@dimen/paddingLarge"
+        android:paddingBottom="@dimen/paddingMedium"
+        android:text="@string/settingsNotePreviewLines"
+        android:textColor="@color/settingsItem"
+        android:textSize="@dimen/textSettings"
+        app:layout_constraintEnd_toStartOf="@id/editTextSettingsNoteLines"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSettingsThemeLabel"
+        />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/editTextSettingsNoteLines"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/textSettingsNoteLinesLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@id/textSettingsNoteLinesLabel"
+        app:layout_constraintTop_toTopOf="@id/textSettingsNoteLinesLabel"
+        />
+
+    <TextView
+        android:id="@+id/textSettingsBehaviorHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/paddingActivity"
+        android:paddingTop="@dimen/paddingLarge"
+        android:paddingEnd="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingSmall"
+        android:text="@string/settingsBehavior"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSettings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textSettingsNoteLinesLabel"
+        />
+
+    <Switch
+        android:id="@+id/switchSettingsNoteColors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:paddingStart="@dimen/paddingHuge"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingEnd="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingMedium"
+        android:text="@string/settingsCustomNoteColors"
+        android:textColor="@color/settingsItem"
+        android:textSize="@dimen/textSettings"
+        app:layout_constraintTop_toBottomOf="@id/textSettingsBehaviorHeader"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/paddingActivity"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+        android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:text="@string/commonSave"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

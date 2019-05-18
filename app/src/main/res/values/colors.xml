@@ -44,6 +44,10 @@
     <color name="rippleDark">@color/gray8</color>
     <color name="rippleLight">#73dcdcdc</color>
 
+    <color name="settingsHeader">#222222</color>
+    <color name="settingsItem">#777</color>
+    <color name="settingsPreviewBackground">#ccc</color>
+
     <color name="textPrimary">#222222</color>
     <color name="textSecondary">#777777</color>
     <color name="textPrimaryDark">#fff</color>
