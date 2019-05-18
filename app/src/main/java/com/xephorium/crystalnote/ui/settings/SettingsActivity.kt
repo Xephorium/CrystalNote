@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.settings
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -10,6 +11,8 @@ import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import kotlinx.android.synthetic.main.settings_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
+import com.xephorium.crystalnote.data.SharedPreferencesRepository
 
 
 class SettingsActivity : DrawerActivity(), SettingsContract.View {
@@ -27,10 +30,13 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         setActivityContent(R.layout.settings_activity_layout)
 
         presenter = SettingsPresenter()
+        presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
 
         setupToolbar()
         setupThemeSpinner()
         setupNotePreviewLinesSpinner()
+        setupSwitches()
+        setupSaveButton()
     }
 
     override fun onResume() {
@@ -43,11 +49,46 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         presenter.detachView()
     }
 
+    override fun onBackPressed() {
+        if (drawerOpen) {
+            super.onBackPressed()
+        } else {
+            presenter.handleBackClick()
+        }
+    }
+
 
     /*--- View Manipulation Methods ---*/
 
+    override fun populateNoteColorsCheckbox(checked: Boolean) {
+        switchSettingsNoteColors.isChecked = checked
+    }
+
+    override fun populateTodayHeaderCheckbox(checked: Boolean) {
+        switchSettingsToday.isChecked = checked
+    }
+
     override fun showNavigationDrawer() {
         openDrawer()
+    }
+
+    override fun showDiscardChangesDialog() {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setCancelable(false)
+        alertDialog.setTitle("Discard Changes")
+        alertDialog.setMessage("Your changes have not been saved. Discard changes?")
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { dialog, _ ->
+            dialog.dismiss()
+            presenter.handleBackConfirm()
+        }
+        alertDialog.show()
+    }
+
+    override fun navigateBack() {
+        super.onBackPressed()
     }
 
 
@@ -88,6 +129,19 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
             }
         }
         textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
+    }
+
+    private fun setupSwitches() {
+        switchSettingsNoteColors.setOnCheckedChangeListener { _, checked ->
+            presenter.handleNoteColorsToggle(checked)
+        }
+        switchSettingsToday.setOnCheckedChangeListener { _, checked ->
+            presenter.handleTodayHeaderToggle(checked)
+        }
+    }
+
+    private fun setupSaveButton() {
+        buttonSave.setOnClickListener { presenter.handleSaveClick() }
     }
 
 

@@ -149,6 +149,7 @@
         />
 
     <Button
+        android:id="@+id/buttonSave"
         style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

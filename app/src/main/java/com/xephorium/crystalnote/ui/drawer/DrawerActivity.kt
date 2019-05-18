@@ -36,8 +36,9 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     private lateinit var presenter: DrawerPresenter
 
     private lateinit var drawerToggle: ActionBarDrawerToggle
-    private var drawerOpen: Boolean = false
     private var drawerAnimating: Boolean = false
+    var drawerOpen: Boolean = false
+        private set
 
 
     /*--- Lifecycle Methods ---*/
