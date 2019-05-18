@@ -35,6 +35,7 @@ open class NoteListAdapter(
     /*--- Private Variables ---*/
 
     private val sharedPreferencesRepository = SharedPreferencesRepository(context)
+    private val notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
     private val shouldShowColorBar = sharedPreferencesRepository.getNoteColorsEnabled()
     private val shouldShowTodayHeader = sharedPreferencesRepository.getTodayHeaderEnabled()
 
@@ -70,6 +71,7 @@ open class NoteListAdapter(
             val note = getNoteFromPosition(position)
             holder.name.text = note.name
             holder.preview.text = note.preview
+            holder.preview.maxLines = notePreviewLines
             holder.date.text = NoteUtility.getFormattedDate(note)
             DrawableCompat.setTint(holder.colorBar.background, note.color)
             if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE

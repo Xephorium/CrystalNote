@@ -9,9 +9,11 @@ class SettingsPresenter : SettingsContract.Presenter() {
     override fun attachView(view: SettingsContract.View) {
         super.attachView(view)
 
+        notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
         noteColorsEnabled = sharedPreferencesRepository.getNoteColorsEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
 
+        this.view?.populateNotePreviewLines(notePreviewLines)
         this.view?.populateNoteColorsCheckbox(noteColorsEnabled)
         this.view?.populateTodayHeaderCheckbox(todayHeaderEnabled)
     }
@@ -23,6 +25,10 @@ class SettingsPresenter : SettingsContract.Presenter() {
         view?.showNavigationDrawer()
     }
 
+    override fun handleNoteLinesChange(lines: Int) {
+        notePreviewLines = lines
+    }
+
     override fun handleNoteColorsToggle(checked: Boolean) {
         noteColorsEnabled = checked
     }
@@ -32,6 +38,7 @@ class SettingsPresenter : SettingsContract.Presenter() {
     }
 
     override fun handleSaveClick() {
+        sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
 
@@ -55,6 +62,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     private fun unsavedChanges(): Boolean {
         var unsavedChanges = false
+
+        if (sharedPreferencesRepository.getNotePreviewLines() != notePreviewLines) unsavedChanges = true
 
         if (sharedPreferencesRepository.getNoteColorsEnabled() != noteColorsEnabled) unsavedChanges = true
 

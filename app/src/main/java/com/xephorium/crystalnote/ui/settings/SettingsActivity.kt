@@ -60,6 +60,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     /*--- View Manipulation Methods ---*/
 
+    override fun populateNotePreviewLines(lines: Int) {
+        selectorSettingsLines.setSelection(lines - 1)
+    }
+
     override fun populateNoteColorsCheckbox(checked: Boolean) {
         switchSettingsNoteColors.isChecked = checked
     }
@@ -125,7 +129,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         selectorSettingsLines.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {}
             override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                // TODO - Handle Item Select
+                presenter.handleNoteLinesChange(position + 1)
             }
         }
         textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }

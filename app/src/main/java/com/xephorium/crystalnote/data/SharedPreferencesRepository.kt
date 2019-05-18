@@ -12,13 +12,24 @@ class SharedPreferencesRepository(private val context: Context) {
 
     fun setNoteColorsEnabled(enabled: Boolean) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
-        editor.putBoolean(CUSTOM_NOTE_COLORS_ENABLED, enabled)
+        editor.putBoolean(NOTE_COLORS_ENABLED, enabled)
         editor.apply()
     }
 
     fun getNoteColorsEnabled(): Boolean {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        return prefs.getBoolean(CUSTOM_NOTE_COLORS_ENABLED, true)
+        return prefs.getBoolean(NOTE_COLORS_ENABLED, true)
+    }
+
+    fun setNotePreviewLines(lines: Int) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putInt(NOTE_PREVIEW_LINES, lines)
+        editor.apply()
+    }
+
+    fun getNotePreviewLines(): Int {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getInt(NOTE_PREVIEW_LINES, 1)
     }
 
     fun setDisplayNoteName(note: Note) {
@@ -61,7 +72,8 @@ class SharedPreferencesRepository(private val context: Context) {
 
     companion object {
         private const val APP_PRIMARY_KEY = "CrystalNotePreferences"
-        private const val CUSTOM_NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
+        private const val NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
+        private const val NOTE_PREVIEW_LINES = "NotePreviewLines"
         private const val DISPLAY_NOTE_NAME = "DisplayNoteName"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
