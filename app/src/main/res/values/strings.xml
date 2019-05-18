@@ -4,7 +4,7 @@
     <string name="aboutHeader">Crystal Note</string>
     <string name="aboutAuthor">Chris Cruzen</string>
     <string name="aboutVersion">v1.0.0</string>
-    <string name="aboutDescription">A highly customizable, minimalist notes app for Android. ❤</string>
+    <string name="aboutDescription">An aggressively minimalist, highly customizable notes app for Android. ❤</string>
 
     <string name="appName">CrystalNote</string>
     <string name="appVersion">v1.0.0</string>
@@ -33,6 +33,7 @@
     <string name="settingsNotePreviewLines">Note Preview</string>
     <string name="settingsBehavior">Behavior</string>
     <string name="settingsCustomNoteColors">Custom Note Colors</string>
+    <string name="settingsToday">Separate Today Header</string>
 
     <string name="space">_____________________________________________________________________________________________________________________________________________________________</string>
 

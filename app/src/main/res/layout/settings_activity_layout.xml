@@ -133,6 +133,21 @@
         app:layout_constraintTop_toBottomOf="@id/textSettingsBehaviorHeader"
         />
 
+    <Switch
+        android:id="@+id/switchSettingsToday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:paddingStart="@dimen/paddingHuge"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingEnd="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingMedium"
+        android:text="@string/settingsToday"
+        android:textColor="@color/settingsItem"
+        android:textSize="@dimen/textSettings"
+        app:layout_constraintTop_toBottomOf="@id/switchSettingsNoteColors"
+        />
+
     <Button
         style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
