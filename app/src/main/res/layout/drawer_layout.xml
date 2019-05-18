@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -7,11 +8,15 @@
     android:background="@color/backgroundDefault"
     android:clickable="true"
     android:focusable="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
+    <!-- Note: Something about the way this layout is imported to the DrawerLayout
+         means the root can't be a ConstraintLayout. Hence the wrapping LinearLayout. -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <ImageView
             android:id="@+id/imageDrawerHeader"
@@ -21,7 +26,8 @@
             android:importantForAccessibility="no"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/textDrawerHeader"
@@ -35,7 +41,8 @@
             android:textSize="@dimen/textDrawerHeader"
             app:layout_constraintBottom_toTopOf="@+id/textDrawerMessage"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <TextView
             android:id="@+id/textDrawerMessage"
@@ -48,7 +55,8 @@
             android:textSize="@dimen/textDrawerMessage"
             app:layout_constraintBottom_toBottomOf="@id/imageDrawerHeader"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listDrawer"
@@ -58,7 +66,8 @@
             android:overScrollMode="never"
             android:paddingTop="@dimen/paddingMedium"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageDrawerHeader">
+            app:layout_constraintTop_toBottomOf="@+id/imageDrawerHeader"
+            >
 
         </androidx.recyclerview.widget.RecyclerView>
 
@@ -70,7 +79,8 @@
             android:text="@string/appVersion"
             android:textColor="@color/textSecondary"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

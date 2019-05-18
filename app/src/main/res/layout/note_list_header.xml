@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    >
 
     <Space
         android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <TextView
@@ -17,11 +22,14 @@
         style="@style/ListViewHeaderTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:paddingBottom="@dimen/paddingMedium"
-        android:paddingTop="@dimen/paddingMedium"
         android:paddingStart="@dimen/paddingActivity"
+        android:paddingTop="@dimen/paddingMedium"
         android:paddingEnd="@dimen/paddingActivity"
-        tools:text="@string/noteListToday" />
+        android:paddingBottom="@dimen/paddingMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space"
+        tools:text="@string/noteListToday"
+        />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,16 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/paddingActivity"
-    android:layout_marginEnd="@dimen/paddingActivity"
     android:layout_marginTop="@dimen/paddingMedium"
-    android:elevation="@dimen/cardViewElevation"
-    app:cardCornerRadius="@dimen/cardViewCornerRadius">
+    android:layout_marginEnd="@dimen/paddingActivity"
+    app:cardCornerRadius="@dimen/cardViewCornerRadius"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ripple"
-        android:orientation="horizontal">
+        >
 
         <View
             android:id="@+id/colorBarNoteList"
@@ -25,7 +25,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:backgroundTint="@color/blue700" />
+            tools:backgroundTint="@color/blue700"
+            />
 
         <TextView
             android:id="@+id/textNoteListDate"
@@ -39,7 +40,8 @@
             app:layout_constraintBottom_toBottomOf="@id/textNoteListTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/textNoteListTitle"
-            tools:text="11.11.11" />
+            tools:text="11.11.11"
+            />
 
         <TextView
             android:id="@+id/textNoteListTitle"
@@ -56,7 +58,8 @@
             app:layout_constraintStart_toEndOf="@+id/colorBarNoteList"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="Note Title" />
+            tools:text="Note Title"
+            />
 
         <TextView
             android:id="@+id/textNoteListPreview"
@@ -73,7 +76,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/colorBarNoteList"
             app:layout_constraintTop_toBottomOf="@+id/textNoteListTitle"
-            tools:text="This is a note preview which contains a bunch of text. This is a note preview which contains a bunch of text." />
+            tools:text="This is a note preview which contains a bunch of text. This is a note preview which contains a bunch of text."
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

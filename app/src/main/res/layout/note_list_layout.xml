@@ -4,6 +4,7 @@
     android:id="@+id/listNotes"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clipToPadding="false"
     android:paddingTop="@dimen/paddingMedium"
     android:paddingBottom="@dimen/paddingGargantuan"
-    android:clipToPadding="false"/>
+    />

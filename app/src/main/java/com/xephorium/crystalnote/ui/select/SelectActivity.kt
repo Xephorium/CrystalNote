@@ -53,13 +53,13 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
 
     override fun populateNoteList(notes: List<Note>) {
         listSelectNotes.visibility = View.VISIBLE
-        text_select_empty.visibility = View.GONE
+        textSelectEmpty.visibility = View.GONE
         listSelectNotes.populateNoteList(notes)
     }
 
     override fun showEmptyNotesList() {
         listSelectNotes.visibility = View.GONE
-        text_select_empty.visibility = View.VISIBLE
+        textSelectEmpty.visibility = View.VISIBLE
     }
 
     override fun refreshWidget() {

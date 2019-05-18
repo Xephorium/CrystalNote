@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutDrawerItem"
@@ -7,7 +8,7 @@
     android:layout_height="@dimen/drawerItemHeight"
     android:layout_marginStart="@dimen/paddingMedium"
     android:layout_marginEnd="@dimen/paddingMedium"
-    android:orientation="vertical">
+    >
 
     <ImageView
         android:id="@+id/iconDividerItem"
@@ -21,7 +22,8 @@
         android:paddingBottom="@dimen/drawerIconPadding"
         android:tint="@color/drawerItemIcon"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/icon_note" />
+        tools:src="@drawable/icon_note"
+        />
 
     <TextView
         android:id="@+id/textDividerItem"
@@ -33,6 +35,7 @@
         android:textSize="@dimen/textDrawerItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iconDividerItem"
-        tools:text="Home" />
+        tools:text="Home"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

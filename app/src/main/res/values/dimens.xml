@@ -11,7 +11,7 @@
     <dimen name="paddingBig">16dp</dimen>
     <dimen name="paddingLarge">24dp</dimen>
     <dimen name="paddingHuge">32dp</dimen>
-    <dimen name="paddingGargantuan">92dp</dimen>
+    <dimen name="paddingGargantuan">96dp</dimen>
 
     <!-- Text -->
     <dimen name="textEmpty">18sp</dimen>

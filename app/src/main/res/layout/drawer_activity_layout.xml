@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutDrawer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundDefault"
-        android:orientation="vertical">
+        >
 
         <LinearLayout
             android:id="@+id/layoutDrawerActivityStatusBar"
@@ -18,7 +20,8 @@
             android:background="?attr/colorPrimaryDark"
             android:elevation="@dimen/toolbarElevation"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <com.xephorium.crystalnote.ui.custom.NoteToolbar
             android:id="@+id/toolbar"
@@ -26,22 +29,23 @@
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
             android:elevation="@dimen/toolbarElevation"
-            android:orientation="horizontal"
             app:contentInsetStart="0dp"
-            app:layout_constraintTop_toBottomOf="@id/layoutDrawerActivityStatusBar" />
+            app:layout_constraintTop_toBottomOf="@id/layoutDrawerActivityStatusBar"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutActivityContent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/layoutDrawerContent"
-        layout="@layout/drawer_layout" />
+        layout="@layout/drawer_layout"
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>

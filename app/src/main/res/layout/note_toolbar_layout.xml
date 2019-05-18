@@ -1,52 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    >
 
-    <ImageView
-        android:id="@+id/buttonToolbarLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/toolbarHeight"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="@dimen/paddingLarge"
-        android:layout_marginEnd="@dimen/paddingLarge"
-        android:background="?selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        />
+    <!-- Note: Something about the way this layout is added to the default Toolbar
+         means the root can't be a ConstraintLayout without compressing all the views
+         to the left. Hence the wrapping RelativeLayout. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        >
 
-    <ImageView
-        android:id="@+id/buttonToolbarRight"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/toolbarHeight"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="@dimen/paddingLarge"
-        android:layout_marginEnd="@dimen/paddingLarge"
-        android:background="?selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:focusable="true"
-        />
+        <ImageView
+            android:id="@+id/buttonToolbarLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/toolbarHeight"
+            android:layout_marginStart="@dimen/paddingLarge"
+            android:layout_marginEnd="@dimen/paddingLarge"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:importantForAccessibility="no"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/icon_back"
+            tools:tint="@color/toolbarSecondaryColorDark"
+            />
 
-    <EditText
-        android:id="@+id/textToolbarEdit"
-        style="@style/ToolbarEditTextTheme"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/toolbarHeight"
-        android:layout_toStartOf="@+id/buttonToolbarRight"
-        android:layout_toEndOf="@+id/buttonToolbarLeft"
-        android:gravity="center_vertical"
-        android:hint="@string/noteNewName"
-        android:inputType="text" />
+        <ImageView
+            android:id="@+id/buttonToolbarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/toolbarHeight"
+            android:layout_marginStart="@dimen/paddingLarge"
+            android:layout_marginEnd="@dimen/paddingLarge"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:importantForAccessibility="no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/icon_delete"
+            tools:tint="@color/toolbarSecondaryColorDark"
+            />
 
-    <TextView
-        android:id="@+id/textToolbarTitle"
-        style="@style/ToolbarTitleTheme"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/toolbarHeight"
-        android:layout_toStartOf="@+id/buttonToolbarRight"
-        android:layout_toEndOf="@+id/buttonToolbarLeft"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:maxLines="1" />
+        <EditText
+            android:id="@+id/textToolbarEdit"
+            style="@style/ToolbarEditTextTheme"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbarHeight"
+            android:gravity="center_vertical"
+            android:hint="@string/noteNewName"
+            android:inputType="text"
+            android:paddingStart="@dimen/paddingActivity"
+            android:paddingEnd="@dimen/paddingActivity"
+            app:layout_constraintEnd_toStartOf="@id/buttonToolbarRight"
+            app:layout_constraintStart_toEndOf="@id/buttonToolbarLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/textToolbarTitle"
+            style="@style/ToolbarTitleTheme"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/toolbarHeight"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="@dimen/paddingActivity"
+            android:paddingEnd="@dimen/paddingActivity"
+            app:layout_constraintEnd_toStartOf="@id/buttonToolbarRight"
+            app:layout_constraintStart_toEndOf="@id/buttonToolbarLeft"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

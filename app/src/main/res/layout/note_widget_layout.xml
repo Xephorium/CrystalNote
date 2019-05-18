@@ -1,43 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- Note: As of May 2019, widgets don't support ConstraintLayout. :( -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutNoteWidget"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/paddingSmall"
     android:background="@drawable/note_widget_background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <TextView
         android:id="@+id/textWidgetTitle"
         style="@android:style/TextAppearance.Medium"
         android:layout_width="match_parent"
         android:layout_height="@dimen/widgetHeaderHeight"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
         android:background="@drawable/note_widget_header_ripple"
         android:clickable="true"
+        android:ellipsize="end"
         android:focusable="true"
+        android:gravity="center_vertical"
         android:maxLines="1"
         android:paddingStart="@dimen/widgetDefaultPadding"
         android:paddingEnd="@dimen/widgetDefaultPadding"
         android:textColor="@color/textPrimary"
         android:textSize="@dimen/widgetTextHeader"
-        tools:text="Widget Title" />
+        tools:text="Widget Title"
+        />
 
     <TextView
         android:id="@+id/textWidgetContent"
         style="@android:style/TextAppearance.Small"
         android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:background="@drawable/note_widget_text_ripple"
         android:clickable="true"
         android:focusable="true"
-        android:layout_height="fill_parent"
         android:paddingLeft="@dimen/widgetDefaultPadding"
         android:paddingRight="@dimen/widgetDefaultPadding"
         android:paddingBottom="@dimen/widgetDefaultPadding"
         android:textColor="@color/textSecondary"
-        tools:text="This is a bunch of widget text!" />
+        tools:text="This is a bunch of widget text!"
+        />
 
     <TextView
         android:id="@+id/textWidgetEmpty"
@@ -50,6 +56,7 @@
         android:gravity="center"
         android:padding="@dimen/paddingActivity"
         android:text="@string/widgetTextEmpty"
-        android:textColor="@color/textSecondary" />
+        android:textColor="@color/textSecondary"
+        />
 
 </LinearLayout>
