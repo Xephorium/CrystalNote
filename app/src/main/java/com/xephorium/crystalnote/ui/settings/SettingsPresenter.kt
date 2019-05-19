@@ -1,5 +1,8 @@
 package com.xephorium.crystalnote.ui.settings
 
+import android.util.Log
+import com.xephorium.crystalnote.data.model.DateType
+
 
 class SettingsPresenter : SettingsContract.Presenter() {
 
@@ -10,10 +13,12 @@ class SettingsPresenter : SettingsContract.Presenter() {
         super.attachView(view)
 
         notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
+        noteDateType = sharedPreferencesRepository.getNoteDateType()
         noteColorsEnabled = sharedPreferencesRepository.getNoteColorsEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
 
         this.view?.populateNotePreviewLines(notePreviewLines)
+        this.view?.populateNoteDateType(noteDateType)
         this.view?.populateNoteColorsCheckbox(noteColorsEnabled)
         this.view?.populateTodayHeaderCheckbox(todayHeaderEnabled)
     }
@@ -29,6 +34,10 @@ class SettingsPresenter : SettingsContract.Presenter() {
         notePreviewLines = lines
     }
 
+    override fun handleNoteDateTypeChange(dateType: DateType) {
+        noteDateType = dateType
+    }
+
     override fun handleNoteColorsToggle(checked: Boolean) {
         noteColorsEnabled = checked
     }
@@ -39,6 +48,7 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     override fun handleSaveClick() {
         sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
+        sharedPreferencesRepository.setNoteDateType(noteDateType)
         sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
 
@@ -64,6 +74,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
         var unsavedChanges = false
 
         if (sharedPreferencesRepository.getNotePreviewLines() != notePreviewLines) unsavedChanges = true
+
+        if (sharedPreferencesRepository.getNoteDateType() != noteDateType) unsavedChanges = true
 
         if (sharedPreferencesRepository.getNoteColorsEnabled() != noteColorsEnabled) unsavedChanges = true
 

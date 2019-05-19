@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.DateType
 
 
 class SettingsActivity : DrawerActivity(), SettingsContract.View {
@@ -35,8 +36,9 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         setupToolbar()
         setupThemeSpinner()
         setupNotePreviewLinesSpinner()
-        setupNoteDate()
+        setupNoteDateType()
         setupSwitches()
+        setupSaveButton()
     }
 
     override fun onResume() {
@@ -62,6 +64,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     override fun populateNotePreviewLines(lines: Int) {
         selectorSettingsLines.setSelection(lines - 1)
+    }
+
+    override fun populateNoteDateType(dateType: DateType) {
+        selectorSettingsDate.setSelection(dateType.ordinal)
     }
 
     override fun populateNoteColorsCheckbox(checked: Boolean) {
@@ -135,14 +141,14 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
     }
 
-    private fun setupNoteDate() {
+    private fun setupNoteDateType() {
         val dateAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, NOTE_DATE)
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         selectorSettingsDate.adapter = dateAdapter
         selectorSettingsDate.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {}
             override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                // TODO - Handle Item Select
+                presenter.handleNoteDateTypeChange(DateType.values()[position])
             }
         }
         textSettingsThemeLabel.setOnClickListener { selectorSettingsTheme.performClick() }
@@ -157,13 +163,17 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         }
     }
 
+    private fun setupSaveButton() {
+        buttonSave.setOnClickListener { presenter.handleSaveClick() }
+    }
+
 
     /*--- Constants ---*/
 
     companion object {
         private val THEMES = listOf("Monochrome", "Blue")
         private val NOTE_PREVIEW_LINES = listOf("1 Line", "2 Lines", "3 Lines", "4 Lines", "5 Lines")
-        private val NOTE_DATE = listOf("Dynamic", "Date", "Time", "None")
+        private val NOTE_DATE = DateType.values().map { it.displayName }
     }
 
 }

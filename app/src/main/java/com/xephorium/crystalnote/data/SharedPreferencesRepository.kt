@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.data
 
 import android.content.Context
+import com.xephorium.crystalnote.data.model.DateType
 
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
@@ -30,6 +31,17 @@ class SharedPreferencesRepository(private val context: Context) {
     fun getNotePreviewLines(): Int {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
         return prefs.getInt(NOTE_PREVIEW_LINES, 1)
+    }
+
+    fun setNoteDateType(dateType: DateType) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putInt(NOTE_DATE_TYPE, dateType.ordinal)
+        editor.apply()
+    }
+
+    fun getNoteDateType(): DateType {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return DateType.values()[prefs.getInt(NOTE_DATE_TYPE, 0)]
     }
 
     fun setDisplayNoteName(note: Note) {
@@ -74,6 +86,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val APP_PRIMARY_KEY = "CrystalNotePreferences"
         private const val NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
         private const val NOTE_PREVIEW_LINES = "NotePreviewLines"
+        private const val NOTE_DATE_TYPE = "NoteDateType"
         private const val DISPLAY_NOTE_NAME = "DisplayNoteName"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
