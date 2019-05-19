@@ -1,25 +1,35 @@
 <resources>
 
-    <!-- Universal Themes -->
+    <!-- Universal Theme -->
     <style name="CrystalNoteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="windowNoTitle">true</item>
-
-        <item name="colorPrimary">@color/charcoalLight</item>
-        <item name="colorPrimaryDark">@color/charcoalDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorControlActivated">@color/textHandle</item>
-        <item name="android:colorControlHighlight">@color/rippleLight</item>
-
-        <item name="android:textColorHighlight">@color/textHighlight</item>
-        <item name="android:textColorHint">@color/textHint</item>
-
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
+        <item name="android:colorControlActivated">?themeColorTextHandle</item>
+        <item name="android:colorControlHighlight">?themeColorRipplePrimary</item>
+        <item name="android:textColorHighlight">?themeColorTextHighlight</item>
+        <item name="android:textColorHint">?themeColorTextHint</item>
     </style>
 
-    <style name="CrystalNoteThemeBlue" parent="CrystalNoteTheme">
-        <item name="colorPrimary">@color/blue700</item>
-        <item name="colorPrimaryDark">@color/blue800</item>
+
+    <!-- Color Themes -->
+
+    <style name="Monochrome" parent="CrystalNoteTheme">
+
+        <item name="themeColorPrimary">@color/charcoalLight</item>
+        <item name="themeColorPrimaryDark">@color/charcoalDark</item>
+        <item name="themeColorAccent">@color/charcoalLight</item>
+
+        <item name="themeColorTextHandle">@color/textHandle</item>
+        <item name="themeColorRipplePrimary">@color/rippleLight</item>
+
+        <item name="themeColorTextHighlight">@color/textHighlight</item>
+        <item name="themeColorTextHint">@color/textHint</item>
+    </style>
+
+    <style name="Blue" parent="CrystalNoteTheme">
+        <item name="themeColorPrimary">@color/blue700</item>
+        <item name="themeColorPrimaryDark">@color/blue800</item>
     </style>
 
 
@@ -31,7 +41,7 @@
 
     <!-- Control Themes -->
     <style name="ToolbarTheme" parent="Theme.AppCompat">
-        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:background">?themeColorPrimary</item>
         <item name="android:actionMenuTextColor">@color/toolbarTextPrimary</item>
         <item name="android:colorControlActivated">@color/textHandle</item>
     </style>
