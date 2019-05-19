@@ -62,16 +62,26 @@ object NoteUtility {
         return outputList
     }
 
+    fun getDynamicallyFormattedDate(note: Note): String {
+        return if (Calendar.getInstance().time.day == note.date.day) {
+            getFormattedTime(note)
+        } else {
+            getFormattedDate(note)
+        }
+    }
+
     fun getFormattedDate(note: Note): String {
-        val currentDate = Calendar.getInstance().time
+        return SimpleDateFormat("M.d.yy", Locale.US).format(note.date)
+    }
+
+    fun getFormattedTime(note: Note): String {
+        return SimpleDateFormat("h:mma", Locale.US).format(note.date).toLowerCase()
+    }
+
+    fun getFormattedDateTime(note: Note): String {
         val dayFormat = SimpleDateFormat("M.d.yy", Locale.US)
         val hourFormat = SimpleDateFormat("h:mma", Locale.US)
-
-        return if (currentDate.day == note.date.day) {
-            hourFormat.format(note.date).toLowerCase()
-        } else {
-            dayFormat.format(note.date)
-        }
+        return dayFormat.format(note.date) + " - " + hourFormat.format(note.date).toLowerCase()
     }
 
     fun getPreview(c: String): String {

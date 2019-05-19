@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.model.Note
 import kotlinx.android.synthetic.main.note_list_header.view.*
@@ -36,6 +37,7 @@ open class NoteListAdapter(
 
     private val sharedPreferencesRepository = SharedPreferencesRepository(context)
     private val notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
+    private val noteDateType = sharedPreferencesRepository.getNoteDateType()
     private val shouldShowColorBar = sharedPreferencesRepository.getNoteColorsEnabled()
     private val shouldShowTodayHeader = sharedPreferencesRepository.getTodayHeaderEnabled()
 
@@ -69,12 +71,23 @@ open class NoteListAdapter(
 
         if (holder.type == VIEW_TYPE_NOTE) {
             val note = getNoteFromPosition(position)
+
             holder.name.text = note.name
+
             holder.preview.text = note.preview
             holder.preview.maxLines = notePreviewLines
-            holder.date.text = NoteUtility.getFormattedDate(note)
+
+            when (noteDateType) {
+                DateType.DYNAMIC -> holder.date.text = NoteUtility.getDynamicallyFormattedDate(note)
+                DateType.DATE -> holder.date.text = NoteUtility.getFormattedDate(note)
+                DateType.TIME -> holder.date.text = NoteUtility.getFormattedTime(note)
+                DateType.COMBINED -> holder.date.text = NoteUtility.getFormattedDateTime(note)
+                else -> holder.date.visibility = View.GONE
+            }
+
             DrawableCompat.setTint(holder.colorBar.background, note.color)
             if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE
+
             holder.setNoteClickListeners(note)
         }
     }
