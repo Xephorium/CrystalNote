@@ -34,12 +34,14 @@
         android:id="@+id/floatingActionButtonSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:elevation="@dimen/floatingActionButtonElevation"
+        android:focusable="true"
         android:src="@drawable/icon_add"
-        app:backgroundTint="?themeColorPrimary"
+        app:backgroundTint="?themeColorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/rippleDark"
-        app:theme="@style/FloatingActionButtonTheme"
+        app:rippleColor="?themeColorRippleAccent"
         app:useCompatPadding="true"
         />
 

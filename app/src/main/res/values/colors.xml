@@ -34,9 +34,9 @@
 
     <color name="iconDefault">#aaaaaa</color>
 
-    <color name="rippleDefault">#cccccc</color>
-    <color name="rippleDark">@color/gray8</color>
-    <color name="rippleLight">#73dcdcdc</color>
+    <color name="rippleDefault">#55ffffff</color>
+    <color name="rippleDark">#33ffffff</color>
+    <color name="rippleLight">#88ffffff</color>
 
     <color name="settingsHeader">#222222</color>
     <color name="settingsItem">#777</color>

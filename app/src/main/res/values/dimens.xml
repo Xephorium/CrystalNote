@@ -38,6 +38,7 @@
     <dimen name="splashIconSize">60dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
     <dimen name="toolbarElevation">4dp</dimen>
+    <dimen name="toolbarText">19sp</dimen>
     <dimen name="widgetCornerRadius">2dp</dimen>
     <dimen name="widgetDefaultPadding">10dp</dimen>
     <dimen name="widgetDividerPadding">4dp</dimen>

@@ -195,7 +195,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/paddingActivity"
-        android:backgroundTint="?themeColorPrimary"
+        android:backgroundTint="?themeColorAccent"
         android:text="@string/commonSave"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -21,6 +21,7 @@
     <attr name="themeColorTextHighlight" format="reference|color" />
     <attr name="themeColorTextHint" format="reference|color" />
     <attr name="themeColorRipplePrimary" format="reference|color" />
+    <attr name="themeColorRippleAccent" format="reference|color" />
 
 
 </resources>

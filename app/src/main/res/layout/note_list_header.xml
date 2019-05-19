@@ -19,7 +19,8 @@
 
     <TextView
         android:id="@+id/textNoteListHeader"
-        style="@style/ListViewHeaderTheme"
+        android:textColor="@color/textSecondary"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/paddingActivity"
@@ -30,6 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space"
         tools:text="@string/noteListToday"
+        style="@style/TextAppearance.AppCompat.Body2"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
