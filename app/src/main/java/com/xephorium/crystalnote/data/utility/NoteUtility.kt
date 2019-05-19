@@ -71,7 +71,7 @@ object NoteUtility {
     }
 
     fun getFormattedDate(note: Note): String {
-        return SimpleDateFormat("M.d.yy", Locale.US).format(note.date)
+        return SimpleDateFormat("M/d/yy", Locale.US).format(note.date)
     }
 
     fun getFormattedTime(note: Note): String {
@@ -79,9 +79,9 @@ object NoteUtility {
     }
 
     fun getFormattedDateTime(note: Note): String {
-        val dayFormat = SimpleDateFormat("M.d.yy", Locale.US)
+        val dayFormat = SimpleDateFormat("M/d/yy", Locale.US)
         val hourFormat = SimpleDateFormat("h:mma", Locale.US)
-        return dayFormat.format(note.date) + " - " + hourFormat.format(note.date).toLowerCase()
+        return dayFormat.format(note.date) + " " + hourFormat.format(note.date).toLowerCase()
     }
 
     fun getPreview(c: String): String {
