@@ -23,6 +23,8 @@
 
     <color name="aboutVersion">#44000000</color>
 
+    <color name="accentItemPrimary">#bbf3f3f3</color>
+
     <color name="backgroundDefault">#f6f6f6</color>
 
     <color name="drawerItemDivider">#ddd</color>
@@ -51,13 +53,6 @@
     <color name="textHeader">#555555</color>
     <color name="textHandle">@color/gray8</color>
     <color name="textUnderline">#ccc</color>
-
-    <color name="toolbarPrimaryColorDark">@color/whiteSmoke</color>
-    <color name="toolbarSecondaryColorDark">@color/whiteSmokeAlpha</color>
-    <color name="toolbarTextPrimary">@color/whiteSmoke</color>
-    <color name="toolbarTextSecondary">#bbf3f3f3</color>
-    <color name="toolbarTextHighlight">#3cf3f3f3</color>
-    <color name="toolbarTextHint">#bbf3f3f3</color>
 
     <color name="widgetBackground">#ffffff</color>
     <color name="widgetDivider">#dddddd</color>

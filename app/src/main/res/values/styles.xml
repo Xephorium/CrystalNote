@@ -13,18 +13,17 @@
     <style name="CrystalNoteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:colorControlActivated">?themeColorTextHandle</item>
-        <item name="android:colorControlHighlight">?themeColorRipplePrimary</item>
-        <item name="android:textColorHighlight">?themeColorTextHighlight</item>
-        <item name="android:textColorHint">?themeColorTextHint</item>
+        <item name="android:colorControlActivated">?themeTextHandle</item>
+        <item name="android:colorControlHighlight">?themeToolbarRipple</item>
+        <item name="android:textColorHighlight">?themeTextHighlight</item>
 
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
     </style>
 
     <style name="ToolbarTheme" parent="Theme.AppCompat">
-        <item name="android:background">?themeColorPrimary</item>
-        <item name="android:actionMenuTextColor">@color/toolbarTextPrimary</item>
-        <item name="android:colorControlActivated">?themeColorTextHandle</item>
+        <item name="android:background">?themeToolbar</item>
+        <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
+        <item name="android:colorControlActivated">?themeTextHandle</item>
     </style>
 
 
@@ -32,21 +31,29 @@
 
     <style name="Monochrome" parent="CrystalNoteTheme">
 
-        <item name="themeColorPrimary">@color/charcoalLight</item>
-        <item name="themeColorPrimaryDark">@color/charcoalDark</item>
-        <item name="themeColorAccent">@color/charcoalLight</item>
+        <item name="themeStatusBar">@color/charcoalDark</item>
 
-        <item name="themeColorTextHandle">@color/textHandle</item>
-        <item name="themeColorRipplePrimary">@color/rippleLight</item>
-        <item name="themeColorRippleAccent">@color/rippleDefault</item>
+        <item name="themeToolbar">@color/charcoalLight</item>
+        <item name="themeToolbarRipple">@color/rippleDark</item>
+        <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
+        <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
 
-        <item name="themeColorTextHighlight">@color/textHighlight</item>
-        <item name="themeColorTextHint">@color/textHint</item>
+        <item name="themeBackground">@color/backgroundDefault</item>
+
+        <item name="themeAccent">@color/charcoalLight</item>
+        <item name="themeAccentRipple">@color/rippleDark</item>
+
+        <item name="themeTextHandle">@color/textHandle</item>
+        <item name="themeTextHighlight">@color/textHighlight</item>
+
     </style>
 
     <style name="Blue" parent="CrystalNoteTheme">
-        <item name="themeColorPrimary">@color/blue700</item>
-        <item name="themeColorPrimaryDark">@color/blue800</item>
+
+        <item name="themeStatusBar">@color/blue800</item>
+
+        <item name="themeToolbar">@color/blue700</item>
+
     </style>
 
 </resources>

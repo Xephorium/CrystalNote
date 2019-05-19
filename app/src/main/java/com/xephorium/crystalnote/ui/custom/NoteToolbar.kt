@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.custom
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.ui.extensions.getThemeColor
 import kotlinx.android.synthetic.main.note_toolbar_layout.view.*
 
 class NoteToolbar : Toolbar {
@@ -96,7 +98,7 @@ class NoteToolbar : Toolbar {
             buttonToolbarLeft.visibility = View.VISIBLE
             buttonToolbarLeft.setImageDrawable(resources.getDrawable(drawable, context.theme))
             buttonToolbarLeft.setColorFilter(
-                    ContextCompat.getColor(context, R.color.toolbarTextSecondary),
+                    context.getThemeColor(R.attr.themeToolbarTextSecondary),
                     android.graphics.PorterDuff.Mode.SRC_IN
             )
             setLeftButtonScale(TOOLBAR_ICON_SCALE_SMALLER)
@@ -115,7 +117,7 @@ class NoteToolbar : Toolbar {
             buttonToolbarRight.visibility = View.VISIBLE
             buttonToolbarRight.setImageDrawable(resources.getDrawable(drawable, context.theme))
             buttonToolbarRight.setColorFilter(
-                    ContextCompat.getColor(context, R.color.toolbarTextSecondary),
+                    context.getThemeColor(R.attr.themeToolbarTextSecondary),
                     android.graphics.PorterDuff.Mode.SRC_IN
             )
             setRightButtonScale(TOOLBAR_ICON_SCALE_SMALLER)

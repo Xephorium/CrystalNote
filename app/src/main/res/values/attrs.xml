@@ -6,22 +6,24 @@
         Theme Attributes
 
             These custom attributes are represent color categories which can be overridden in each theme and used
-            throughout the app. The access syntax is ?attr/colorName.
+            throughout the app. The access syntax is ?themeColorName.
 
     -->
 
+    <attr name="themeStatusBar" format="reference|color" />
 
-    <!-- System Colors -->
-    <attr name="themeColorPrimary" format="reference|color" />
-    <attr name="themeColorPrimaryDark" format="reference|color" />
-    <attr name="themeColorAccent" format="reference|color" />
+    <attr name="themeToolbar" format="reference|color" />
+    <attr name="themeToolbarRipple" format="reference|color" />
+    <attr name="themeToolbarTextPrimary" format="reference|color" />
+    <attr name="themeToolbarTextSecondary" format="reference|color" />
 
-    <!-- Control Colors-->
-    <attr name="themeColorTextHandle" format="reference|color" />
-    <attr name="themeColorTextHighlight" format="reference|color" />
-    <attr name="themeColorTextHint" format="reference|color" />
-    <attr name="themeColorRipplePrimary" format="reference|color" />
-    <attr name="themeColorRippleAccent" format="reference|color" />
+    <attr name="themeBackground" format="reference|color" />
+
+    <attr name="themeAccent" format="reference|color" />
+    <attr name="themeAccentRipple" format="reference|color" />
+
+    <attr name="themeTextHandle" format="reference|color" />
+    <attr name="themeTextHighlight" format="reference|color" />
 
 
 </resources>
