@@ -30,123 +30,164 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <TextView
-        android:id="@+id/textSettingsAppearanceHeader"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/paddingActivity"
-        android:paddingTop="@dimen/paddingLarge"
-        android:paddingEnd="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingSmall"
-        android:text="@string/settingsAppearance"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textSettings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewSettingsPreviewBackground"
-        />
-
-    <TextView
-        android:id="@+id/textSettingsThemeLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/paddingHuge"
-        android:paddingTop="@dimen/paddingMedium"
-        android:paddingEnd="@dimen/paddingLarge"
-        android:paddingBottom="@dimen/paddingMedium"
-        android:text="@string/settingsAppTheme"
-        android:textColor="@color/settingsItem"
-        android:textSize="@dimen/textSettings"
-        app:layout_constraintEnd_toStartOf="@id/selectorSettingsTheme"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSettingsAppearanceHeader"
-        />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/selectorSettingsTheme"
-        android:layout_width="@dimen/selectorSettings"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/textSettingsThemeLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@id/textSettingsThemeLabel"
-        app:layout_constraintTop_toTopOf="@id/textSettingsThemeLabel"
-        />
+        android:layout_marginBottom="@dimen/settingsSaveButtonPadding"
+        android:overScrollMode="ifContentScrolls"
+        app:layout_constraintBottom_toTopOf="@id/buttonSave"
+        app:layout_constraintTop_toBottomOf="@id/viewSettingsPreviewBackground"
+        >
 
-    <TextView
-        android:id="@+id/textSettingsNoteLinesLabel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/paddingHuge"
-        android:paddingTop="@dimen/paddingMedium"
-        android:paddingEnd="@dimen/paddingLarge"
-        android:paddingBottom="@dimen/paddingMedium"
-        android:text="@string/settingsNotePreviewLines"
-        android:textColor="@color/settingsItem"
-        android:textSize="@dimen/textSettings"
-        app:layout_constraintEnd_toStartOf="@id/selectorSettingsLines"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSettingsThemeLabel"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/selectorSettingsLines"
-        android:layout_width="@dimen/selectorSettings"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/textSettingsNoteLinesLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintStart_toEndOf="@id/textSettingsNoteLinesLabel"
-        app:layout_constraintTop_toTopOf="@id/textSettingsNoteLinesLabel"
-        />
+            <TextView
+                android:id="@+id/textSettingsAppearanceHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/paddingActivity"
+                android:paddingTop="@dimen/paddingLarge"
+                android:paddingEnd="@dimen/paddingActivity"
+                android:paddingBottom="@dimen/paddingSmall"
+                android:text="@string/settingsAppearance"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSettings"
+                />
 
-    <TextView
-        android:id="@+id/textSettingsBehaviorHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/paddingActivity"
-        android:paddingTop="@dimen/paddingLarge"
-        android:paddingEnd="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingSmall"
-        android:text="@string/settingsBehavior"
-        android:textColor="@color/black"
-        android:textSize="@dimen/textSettings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSettingsNoteLinesLabel"
-        />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
 
-    <Switch
-        android:id="@+id/switchSettingsNoteColors"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:paddingStart="@dimen/paddingHuge"
-        android:paddingTop="@dimen/paddingMedium"
-        android:paddingEnd="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingMedium"
-        android:text="@string/settingsCustomNoteColors"
-        android:textColor="@color/settingsItem"
-        android:textSize="@dimen/textSettings"
-        app:layout_constraintTop_toBottomOf="@id/textSettingsBehaviorHeader"
-        />
+                <TextView
+                    android:id="@+id/textSettingsThemeLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/paddingHuge"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingLarge"
+                    android:paddingBottom="@dimen/paddingMedium"
+                    android:text="@string/settingsAppTheme"
+                    android:textColor="@color/settingsItem"
+                    android:textSize="@dimen/textSettings"
+                    />
 
-    <Switch
-        android:id="@+id/switchSettingsToday"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:checked="true"
-        android:paddingStart="@dimen/paddingHuge"
-        android:paddingTop="@dimen/paddingMedium"
-        android:paddingEnd="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingMedium"
-        android:text="@string/settingsToday"
-        android:textColor="@color/settingsItem"
-        android:textSize="@dimen/textSettings"
-        app:layout_constraintTop_toBottomOf="@id/switchSettingsNoteColors"
-        />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/selectorSettingsTheme"
+                    android:layout_width="@dimen/selectorSettings"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="@id/textSettingsThemeLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/textSettingsNoteLinesLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/paddingHuge"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingLarge"
+                    android:paddingBottom="@dimen/paddingMedium"
+                    android:text="@string/settingsNotePreviewLines"
+                    android:textColor="@color/settingsItem"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/selectorSettingsLines"
+                    android:layout_width="@dimen/selectorSettings"
+                    android:layout_height="match_parent"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/textSettingsNoteDateLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/paddingHuge"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingLarge"
+                    android:paddingBottom="@dimen/paddingMedium"
+                    android:text="@string/settingsNoteDate"
+                    android:textColor="@color/settingsItem"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/selectorSettingsDate"
+                    android:layout_width="@dimen/selectorSettings"
+                    android:layout_height="match_parent"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textSettingsBehaviorHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/paddingActivity"
+                android:paddingTop="@dimen/paddingLarge"
+                android:paddingEnd="@dimen/paddingActivity"
+                android:paddingBottom="@dimen/paddingSmall"
+                android:text="@string/settingsBehavior"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSettings"
+                />
+
+            <Switch
+                android:id="@+id/switchSettingsNoteColors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:paddingStart="@dimen/paddingHuge"
+                android:paddingTop="@dimen/paddingMedium"
+                android:paddingEnd="@dimen/paddingActivity"
+                android:paddingBottom="@dimen/paddingMedium"
+                android:text="@string/settingsCustomNoteColors"
+                android:textColor="@color/settingsItem"
+                android:textSize="@dimen/textSettings"
+                />
+
+            <Switch
+                android:id="@+id/switchSettingsToday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:paddingStart="@dimen/paddingHuge"
+                android:paddingTop="@dimen/paddingMedium"
+                android:paddingEnd="@dimen/paddingActivity"
+                android:paddingBottom="@dimen/paddingMedium"
+                android:text="@string/settingsToday"
+                android:textColor="@color/settingsItem"
+                android:textSize="@dimen/textSettings"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <Button
         android:id="@+id/buttonSave"

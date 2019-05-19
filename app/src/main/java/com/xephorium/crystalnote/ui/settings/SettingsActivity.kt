@@ -35,8 +35,8 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         setupToolbar()
         setupThemeSpinner()
         setupNotePreviewLinesSpinner()
+        setupNoteDate()
         setupSwitches()
-        setupSaveButton()
     }
 
     override fun onResume() {
@@ -135,6 +135,19 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
     }
 
+    private fun setupNoteDate() {
+        val dateAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, NOTE_DATE)
+        dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        selectorSettingsDate.adapter = dateAdapter
+        selectorSettingsDate.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {}
+            override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                // TODO - Handle Item Select
+            }
+        }
+        textSettingsThemeLabel.setOnClickListener { selectorSettingsTheme.performClick() }
+    }
+
     private fun setupSwitches() {
         switchSettingsNoteColors.setOnCheckedChangeListener { _, checked ->
             presenter.handleNoteColorsToggle(checked)
@@ -144,16 +157,13 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         }
     }
 
-    private fun setupSaveButton() {
-        buttonSave.setOnClickListener { presenter.handleSaveClick() }
-    }
-
 
     /*--- Constants ---*/
 
     companion object {
         private val THEMES = listOf("Monochrome", "Blue")
         private val NOTE_PREVIEW_LINES = listOf("1 Line", "2 Lines", "3 Lines", "4 Lines", "5 Lines")
+        private val NOTE_DATE = listOf("Dynamic", "Date", "Time", "None")
     }
 
 }

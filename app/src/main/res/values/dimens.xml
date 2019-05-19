@@ -34,6 +34,7 @@
     <dimen name="floatingActionButtonElevation">6dp</dimen>
     <dimen name="noteListItemHeight">72dp</dimen>
     <dimen name="selectorSettings">150dp</dimen>
+    <dimen name="settingsSaveButtonPadding">14dp</dimen>
     <dimen name="splashIconSize">60dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
     <dimen name="toolbarElevation">4dp</dimen>
