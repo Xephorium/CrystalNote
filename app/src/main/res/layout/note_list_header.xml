@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/textNoteListHeader"
-        android:textColor="@color/textSecondary"
+        android:textColor="?themeTextSecondary"
         android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

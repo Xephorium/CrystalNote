@@ -8,6 +8,7 @@
     android:layout_marginStart="@dimen/paddingActivity"
     android:layout_marginTop="@dimen/paddingMedium"
     android:layout_marginEnd="@dimen/paddingActivity"
+    android:background="?themeNoteBackground"
     app:cardCornerRadius="@dimen/cardViewCornerRadius"
     >
 
@@ -51,7 +52,7 @@
             android:paddingTop="@dimen/paddingBig"
             android:paddingEnd="0dp"
             android:paddingBottom="@dimen/paddingMedium"
-            android:textColor="@color/textPrimary"
+            android:textColor="?themeTextPrimary"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/textNoteListPreview"
             app:layout_constraintEnd_toStartOf="@id/textNoteListDate"
@@ -70,7 +71,7 @@
             android:paddingStart="@dimen/paddingBig"
             android:paddingEnd="@dimen/paddingBig"
             android:paddingBottom="@dimen/paddingBig"
-            android:textColor="@color/textSecondary"
+            android:textColor="?themeTextSecondary"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

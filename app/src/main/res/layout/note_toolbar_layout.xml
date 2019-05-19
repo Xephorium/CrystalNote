@@ -80,7 +80,7 @@
             android:textSize="@dimen/toolbarText"
             android:paddingStart="@dimen/paddingActivity"
             android:paddingEnd="@dimen/paddingActivity"
-            android:textColor="@color/whiteSmoke"
+            android:textColor="?themeToolbarTextPrimary"
             app:layout_constraintEnd_toStartOf="@id/buttonToolbarRight"
             app:layout_constraintStart_toEndOf="@id/buttonToolbarLeft"
             app:layout_constraintTop_toTopOf="parent"

@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/paddingActivity"
             android:text="@string/appVersion"
-            android:textColor="@color/textSecondary"
+            android:textColor="?themeTextSecondary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />

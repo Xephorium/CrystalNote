@@ -42,9 +42,16 @@
 
         <item name="themeAccent">@color/charcoalLight</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
+        <item name="themeAccentTextPrimary">@color/white</item>
+        <item name="themeAccentTextSecondary">@color/accentItemSecondary</item>
 
+        <item name="themeTextPrimary">@color/textPrimary</item>
+        <item name="themeTextSecondary">@color/textSecondary</item>
         <item name="themeTextHandle">@color/textHandle</item>
         <item name="themeTextHighlight">@color/textHighlight</item>
+
+        <item name="themeNoteBackground">@color/white</item>
+        <item name="themeNoteRipple">@color/rippleDefault</item>
 
     </style>
 

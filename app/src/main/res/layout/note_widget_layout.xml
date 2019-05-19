@@ -25,7 +25,7 @@
         android:maxLines="1"
         android:paddingStart="@dimen/widgetDefaultPadding"
         android:paddingEnd="@dimen/widgetDefaultPadding"
-        android:textColor="@color/textPrimary"
+        android:textColor="?themeTextPrimary"
         android:textSize="@dimen/widgetTextHeader"
         tools:text="Widget Title"
         />
@@ -41,7 +41,7 @@
         android:paddingLeft="@dimen/widgetDefaultPadding"
         android:paddingRight="@dimen/widgetDefaultPadding"
         android:paddingBottom="@dimen/widgetDefaultPadding"
-        android:textColor="@color/textSecondary"
+        android:textColor="?themeTextSecondary"
         tools:text="This is a bunch of widget text!"
         />
 
@@ -56,7 +56,7 @@
         android:gravity="center"
         android:padding="@dimen/paddingActivity"
         android:text="@string/widgetTextEmpty"
-        android:textColor="@color/textSecondary"
+        android:textColor="?themeTextSecondary"
         />
 
 </LinearLayout>

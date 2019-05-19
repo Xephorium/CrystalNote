@@ -21,9 +21,15 @@
 
     <attr name="themeAccent" format="reference|color" />
     <attr name="themeAccentRipple" format="reference|color" />
+    <attr name="themeAccentTextPrimary" format="reference|color" />
+    <attr name="themeAccentTextSecondary" format="reference|color" />
 
+    <attr name="themeTextPrimary" format="reference|color" />
+    <attr name="themeTextSecondary" format="reference|color" />
     <attr name="themeTextHandle" format="reference|color" />
     <attr name="themeTextHighlight" format="reference|color" />
 
+    <attr name="themeNoteBackground" format="reference|color" />
+    <attr name="themeNoteRipple" format="reference|color" />
 
 </resources>

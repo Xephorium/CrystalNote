@@ -54,7 +54,7 @@
                 android:paddingEnd="@dimen/paddingActivity"
                 android:paddingBottom="@dimen/paddingSmall"
                 android:text="@string/settingsAppearance"
-                android:textColor="@color/black"
+                android:textColor="?themeTextPrimary"
                 android:textSize="@dimen/textSettings"
                 />
 
@@ -74,7 +74,7 @@
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/paddingMedium"
                     android:text="@string/settingsAppTheme"
-                    android:textColor="@color/settingsItem"
+                    android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
 
@@ -104,7 +104,7 @@
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/paddingMedium"
                     android:text="@string/settingsNotePreviewLines"
-                    android:textColor="@color/settingsItem"
+                    android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
 
@@ -132,7 +132,7 @@
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/paddingMedium"
                     android:text="@string/settingsNoteDate"
-                    android:textColor="@color/settingsItem"
+                    android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
 
@@ -153,7 +153,7 @@
                 android:paddingEnd="@dimen/paddingActivity"
                 android:paddingBottom="@dimen/paddingSmall"
                 android:text="@string/settingsBehavior"
-                android:textColor="@color/black"
+                android:textColor="?themeTextPrimary"
                 android:textSize="@dimen/textSettings"
                 />
 
@@ -167,7 +167,7 @@
                 android:paddingEnd="@dimen/paddingActivity"
                 android:paddingBottom="@dimen/paddingMedium"
                 android:text="@string/settingsCustomNoteColors"
-                android:textColor="@color/settingsItem"
+                android:textColor="?themeTextSecondary"
                 android:textSize="@dimen/textSettings"
                 />
 
@@ -181,7 +181,7 @@
                 android:paddingEnd="@dimen/paddingActivity"
                 android:paddingBottom="@dimen/paddingMedium"
                 android:text="@string/settingsToday"
-                android:textColor="@color/settingsItem"
+                android:textColor="?themeTextSecondary"
                 android:textSize="@dimen/textSettings"
                 />
 
@@ -197,7 +197,7 @@
         android:layout_margin="@dimen/paddingActivity"
         android:backgroundTint="?themeAccent"
         android:text="@string/commonSave"
-        android:textColor="@color/white"
+        android:textColor="?themeAccentTextPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
