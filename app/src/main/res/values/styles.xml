@@ -55,11 +55,29 @@
 
     </style>
 
-    <style name="Blue" parent="CrystalNoteTheme">
+    <style name="Dark" parent="CrystalNoteTheme">
 
-        <item name="themeStatusBar">@color/blue800</item>
+        <item name="themeStatusBar">@color/charcoalDark</item>
 
-        <item name="themeToolbar">@color/blue700</item>
+        <item name="themeToolbar">@color/charcoalLight</item>
+        <item name="themeToolbarRipple">@color/rippleDark</item>
+        <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
+        <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
+
+        <item name="themeBackground">@color/charcoalDark</item>
+
+        <item name="themeAccent">@color/charcoalLight</item>
+        <item name="themeAccentRipple">@color/rippleDark</item>
+        <item name="themeAccentTextPrimary">@color/white</item>
+        <item name="themeAccentTextSecondary">@color/accentItemSecondary</item>
+
+        <item name="themeTextPrimary">@color/textPrimaryDark</item>
+        <item name="themeTextSecondary">@color/textSecondaryDark</item>
+        <item name="themeTextHandle">@color/textHandle</item>
+        <item name="themeTextHighlight">@color/textHighlight</item>
+
+        <item name="themeNoteBackground">@color/charcoalLight</item>
+        <item name="themeNoteRipple">@color/rippleDark</item>
 
     </style>
 
