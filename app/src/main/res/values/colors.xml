@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Base Theme Colors -->
+
+    <color name="backgroundLight">#f6f6f6</color>
+    <color name="dividerLight">#ddd</color>
+    <color name="textLightPrimary">#222</color>
+    <color name="textLightSecondary">#777</color>
+    <color name="textLightTertiary">#B9B9B9</color>
+    <color name="drawerSelectionLight">#ddd</color>
+
+    <color name="backgroundDark">#444</color>
+    <color name="dividerDark">#666</color>
+    <color name="textDarkPrimary">#fff</color>
+    <color name="textDarkSecondary">#aaffffff</color>
+    <color name="textDarkTertiary">#77ffffff</color>
+    <color name="drawerSelectionDark">#555</color>
+
+
     <!-- Custom Colors -->
     <color name="charcoalDark">#222222</color>
     <color name="charcoalLight">#333333</color>
@@ -19,17 +36,15 @@
     <color name="whiteSmoke">#f3f3f3</color>
     <color name="whiteSmokeAlpha">#bbf3f3f3</color>
 
-    <color name="drawerFilterGray">#cc333333</color>
+    <color name="drawerFilterCharcoal">#cc333333</color>
+    <color name="drawerFilterBlack">#cc111111</color>
     <color name="drawerFilterWhite">#ccffffff</color>
+
 
     <!-- Control Colors -->
 
     <color name="accentItemSecondary">#bbf3f3f3</color>
 
-    <color name="backgroundDefault">#f6f6f6</color>
-
-    <color name="divider">#ddd</color>
-    <color name="drawerItemDivider">#ddd</color>
     <color name="drawerItemIcon">#757575</color>
     <color name="drawerItemText">@color/drawerItemIcon</color>
     <color name="drawerItemSelected">#ddd</color>
@@ -46,11 +61,6 @@
     <color name="settingsItem">#777</color>
     <color name="settingsPreviewBackground">#ccc</color>
 
-    <color name="textPrimary">#222222</color>
-    <color name="textSecondary">#777777</color>
-    <color name="textTertiary">#B9B9B9</color>
-    <color name="textPrimaryDark">#fff</color>
-    <color name="textSecondaryDark">#ddffffff</color>
     <color name="textHighlight">#7d888888</color>
     <color name="textHint">#808080</color>
     <color name="textHandle">@color/gray8</color>
