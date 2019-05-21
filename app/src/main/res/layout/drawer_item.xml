@@ -20,7 +20,7 @@
         android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:paddingEnd="@dimen/drawerIconPadding"
         android:paddingBottom="@dimen/drawerIconPadding"
-        android:tint="@color/drawerItemIcon"
+        android:tint="?themeDrawerItem"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/icon_note"
         />
@@ -31,7 +31,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/drawerItemPadding"
         android:gravity="center_vertical"
-        android:textColor="@color/drawerItemText"
+        android:textColor="?themeDrawerItem"
         android:textSize="@dimen/textDrawerItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iconDividerItem"

@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.drawer
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.drawer_activity_layout.*
 import kotlinx.android.synthetic.main.drawer_layout.*
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton.*
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
+import com.xephorium.crystalnote.ui.extensions.getThemeColor
 
 @SuppressLint("Registered")
 open class DrawerActivity : BaseActivity(), DrawerContract.View {
@@ -127,26 +129,20 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     override fun setSelectedMenuButton(button: DrawerButton) {
         (listDrawer.adapter as? DrawerAdapter)?.items?.forEachIndexed { index, item ->
             if (item.type == BUTTON) {
-                val holder = listDrawer.findViewHolderForLayoutPosition(index)
-                        as? DrawerAdapter.ViewHolder
+                val holder = listDrawer.findViewHolderForLayoutPosition(index) as? DrawerAdapter.ViewHolder
                 holder?.let {
                     if (item.text == button.displayName) {
-                        it.text.setTextColor(ContextCompat
-                                .getColor(this, R.color.drawerItemSelectedText))
-                        it.icon.setColorFilter(
-                                ContextCompat.getColor(this, R.color.drawerItemSelectedIcon),
-                                PorterDuff.Mode.SRC_IN
-                        )
-                        it.layout.background = ContextCompat
-                                .getDrawable(this, R.drawable.drawer_selection_background)
+
+                        val itemColor = (this as Context).getThemeColor(R.attr.themeDrawerItemSelected)
+                        it.text.setTextColor(itemColor)
+                        it.icon.setColorFilter(itemColor, PorterDuff.Mode.SRC_IN)
+                        it.layout.background = ContextCompat.getDrawable(this, R.drawable.drawer_selection_background)
+
                     } else {
-                        it.text.setTextColor(ContextCompat
-                                .getColor(this, R.color.drawerItemText)
-                        )
-                        it.icon.setColorFilter(
-                                ContextCompat.getColor(this, R.color.drawerItemText),
-                                PorterDuff.Mode.SRC_IN
-                        )
+
+                        val itemColor = (this as Context).getThemeColor(R.attr.themeDrawerItem)
+                        it.text.setTextColor(itemColor)
+                        it.icon.setColorFilter(itemColor, PorterDuff.Mode.SRC_IN)
                         it.layout.background = null
                     }
                 }

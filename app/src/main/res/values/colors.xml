@@ -19,6 +19,9 @@
     <color name="whiteSmoke">#f3f3f3</color>
     <color name="whiteSmokeAlpha">#bbf3f3f3</color>
 
+    <color name="drawerFilterGray">#cc333333</color>
+    <color name="drawerFilterWhite">#ccffffff</color>
+
     <!-- Control Colors -->
 
     <color name="aboutVersion">#44000000</color>
@@ -27,6 +30,7 @@
 
     <color name="backgroundDefault">#f6f6f6</color>
 
+    <color name="divider">#ddd</color>
     <color name="drawerItemDivider">#ddd</color>
     <color name="drawerItemIcon">#757575</color>
     <color name="drawerItemText">@color/drawerItemIcon</color>

@@ -11,6 +11,7 @@ import android.widget.EditText
 import androidx.core.content.ContextCompat
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.ui.extensions.getThemeColor
 
 class LineEditText : EditText {
 
@@ -43,7 +44,7 @@ class LineEditText : EditText {
         this.isVerticalScrollBarEnabled = false
 
         paint.style = Paint.Style.STROKE
-        paint.color = ContextCompat.getColor(context, R.color.textUnderline)
+        paint.color = context.getThemeColor(R.attr.themeNoteUnderline)
     }
 
 

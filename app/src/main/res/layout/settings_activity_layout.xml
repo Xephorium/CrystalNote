@@ -24,7 +24,7 @@
         android:id="@+id/viewSettingsPreviewBackground"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/settingsPreviewBackground"
+        android:background="?themeSettingsPreviewBackground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

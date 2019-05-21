@@ -39,6 +39,7 @@
         <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
 
         <item name="themeBackground">@color/backgroundDefault</item>
+        <item name="themeDivider">@color/divider</item>
 
         <item name="themeAccent">@color/charcoalLight</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
@@ -47,11 +48,21 @@
 
         <item name="themeTextPrimary">@color/textPrimary</item>
         <item name="themeTextSecondary">@color/textSecondary</item>
+        <item name="themeTextInvertedPrimary">@color/textPrimaryDark</item>
+        <item name="themeTextInvertedSecondary">@color/textSecondaryDark</item>
         <item name="themeTextHandle">@color/textHandle</item>
         <item name="themeTextHighlight">@color/textHighlight</item>
 
         <item name="themeNoteBackground">@color/white</item>
         <item name="themeNoteRipple">@color/rippleDefault</item>
+        <item name="themeNoteUnderline">@color/textUnderline</item>
+
+        <item name="themeSettingsPreviewBackground">@color/settingsPreviewBackground</item>
+
+        <item name="themeDrawerItem">@color/drawerItemIcon</item>
+        <item name="themeDrawerItemSelected">@color/drawerItemSelectedIcon</item>
+        <item name="themeDrawerItemSelectedBackground">@color/drawerItemSelected</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterGray</item>
 
     </style>
 
@@ -64,7 +75,8 @@
         <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
         <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
 
-        <item name="themeBackground">@color/charcoalDark</item>
+        <item name="themeBackground">#444</item>
+        <item name="themeDivider">#666</item>
 
         <item name="themeAccent">@color/charcoalLight</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
@@ -73,11 +85,21 @@
 
         <item name="themeTextPrimary">@color/textPrimaryDark</item>
         <item name="themeTextSecondary">@color/textSecondaryDark</item>
+        <item name="themeTextInvertedPrimary">@color/textPrimary</item>
+        <item name="themeTextInvertedSecondary">@color/textSecondary</item>
         <item name="themeTextHandle">@color/textHandle</item>
         <item name="themeTextHighlight">@color/textHighlight</item>
 
-        <item name="themeNoteBackground">@color/charcoalLight</item>
+        <item name="themeNoteBackground">#666</item>
         <item name="themeNoteRipple">@color/rippleDark</item>
+        <item name="themeNoteUnderline">#666</item>
+
+        <item name="themeSettingsPreviewBackground">#000</item>
+
+        <item name="themeDrawerItem">@color/textSecondaryDark</item>
+        <item name="themeDrawerItemSelected">@color/textPrimaryDark</item>
+        <item name="themeDrawerItemSelectedBackground">#777</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterWhite</item>
 
     </style>
 

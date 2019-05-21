@@ -18,6 +18,7 @@
     <attr name="themeToolbarTextSecondary" format="reference|color" />
 
     <attr name="themeBackground" format="reference|color" />
+    <attr name="themeDivider" format="reference|color" />
 
     <attr name="themeAccent" format="reference|color" />
     <attr name="themeAccentRipple" format="reference|color" />
@@ -26,10 +27,20 @@
 
     <attr name="themeTextPrimary" format="reference|color" />
     <attr name="themeTextSecondary" format="reference|color" />
+    <attr name="themeTextInvertedPrimary" format="reference|color" />
+    <attr name="themeTextInvertedSecondary" format="reference|color" />
     <attr name="themeTextHandle" format="reference|color" />
     <attr name="themeTextHighlight" format="reference|color" />
 
     <attr name="themeNoteBackground" format="reference|color" />
     <attr name="themeNoteRipple" format="reference|color" />
+    <attr name="themeNoteUnderline" format="reference|color" />
+
+    <attr name="themeSettingsPreviewBackground" format="reference|color" />
+
+    <attr name="themeDrawerItem" format="reference|color" />
+    <attr name="themeDrawerItemSelected" format="reference|color" />
+    <attr name="themeDrawerItemSelectedBackground" format="reference|color" />
+    <attr name="themeDrawerImageFilter" format="reference|color" />
 
 </resources>
