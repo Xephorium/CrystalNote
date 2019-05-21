@@ -24,8 +24,6 @@
 
     <!-- Control Colors -->
 
-    <color name="aboutVersion">#44000000</color>
-
     <color name="accentItemSecondary">#bbf3f3f3</color>
 
     <color name="backgroundDefault">#f6f6f6</color>
@@ -50,6 +48,7 @@
 
     <color name="textPrimary">#222222</color>
     <color name="textSecondary">#777777</color>
+    <color name="textTertiary">#B9B9B9</color>
     <color name="textPrimaryDark">#fff</color>
     <color name="textSecondaryDark">#ddffffff</color>
     <color name="textHighlight">#7d888888</color>

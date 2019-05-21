@@ -19,6 +19,7 @@
 
     <attr name="themeBackground" format="reference|color" />
     <attr name="themeDivider" format="reference|color" />
+    <attr name="themeOverscroll" format="reference|color" />
 
     <attr name="themeAccent" format="reference|color" />
     <attr name="themeAccentRipple" format="reference|color" />
@@ -27,6 +28,7 @@
 
     <attr name="themeTextPrimary" format="reference|color" />
     <attr name="themeTextSecondary" format="reference|color" />
+    <attr name="themeTextTertiary" format="reference|color"/>
     <attr name="themeTextInvertedPrimary" format="reference|color" />
     <attr name="themeTextInvertedSecondary" format="reference|color" />
     <attr name="themeTextHandle" format="reference|color" />
