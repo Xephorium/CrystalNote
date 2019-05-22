@@ -8,6 +8,7 @@ import com.xephorium.crystalnote.ui.base.BaseView
 interface SettingsContract {
 
     interface View : BaseView {
+        fun populateTheme(theme: String)
         fun populateNotePreviewLines(lines: Int)
         fun populateNoteDateType(dateType: DateType)
         fun populateNoteColorsCheckbox(checked: Boolean)
@@ -15,17 +16,20 @@ interface SettingsContract {
 
         fun showNavigationDrawer()
         fun showDiscardChangesDialog()
+        fun refreshScreen()
         fun navigateBack()
     }
 
     abstract class Presenter : BasePresenter<View>() {
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+        lateinit var theme: String
         var notePreviewLines: Int = 1
         lateinit var noteDateType: DateType
         var noteColorsEnabled: Boolean = true
         var todayHeaderEnabled: Boolean = true
 
         abstract fun handleMenuButtonClick()
+        abstract fun handleThemeChange(newTheme: String)
         abstract fun handleNoteLinesChange(lines: Int)
         abstract fun handleNoteDateTypeChange(dateType: DateType)
         abstract fun handleNoteColorsToggle(checked: Boolean)

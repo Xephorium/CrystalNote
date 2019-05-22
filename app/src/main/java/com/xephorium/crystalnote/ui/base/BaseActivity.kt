@@ -4,11 +4,19 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
+import com.xephorium.crystalnote.data.SharedPreferencesRepository
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        // Set App Theme
+        val sharedPreferencesRepository = SharedPreferencesRepository(this)
+        val themeName = sharedPreferencesRepository.getTheme()
+        val theme = resources.getIdentifier(themeName, "style", packageName)
+        setTheme(theme)
+
         super.onCreate(savedInstanceState)
     }
 

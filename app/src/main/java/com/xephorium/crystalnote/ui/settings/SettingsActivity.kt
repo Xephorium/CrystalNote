@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
 
@@ -62,6 +63,11 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     /*--- View Manipulation Methods ---*/
 
+    override fun populateTheme(theme: String) {
+        val themeIndex = CrystalNoteTheme.Themes.values().firstOrNull { it.displayName == theme }?.ordinal ?: 0
+        selectorSettingsTheme.setSelection(themeIndex)
+    }
+
     override fun populateNotePreviewLines(lines: Int) {
         selectorSettingsLines.setSelection(lines - 1)
     }
@@ -97,6 +103,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         alertDialog.show()
     }
 
+    override fun refreshScreen() {
+        recreate()
+    }
+
     override fun navigateBack() {
         super.onBackPressed()
     }
@@ -122,7 +132,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         selectorSettingsTheme.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {}
             override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                // TODO - Handle Item Select
+                presenter.handleThemeChange(CrystalNoteTheme.Themes.values()[position].displayName)
             }
         }
         textSettingsThemeLabel.setOnClickListener { selectorSettingsTheme.performClick() }
@@ -171,7 +181,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     /*--- Constants ---*/
 
     companion object {
-        private val THEMES = listOf("Monochrome", "Blue")
+        private val THEMES = CrystalNoteTheme.Themes.values().map { it.displayName }
         private val NOTE_PREVIEW_LINES = listOf("1 Line", "2 Lines", "3 Lines", "4 Lines", "5 Lines")
         private val NOTE_DATE = DateType.values().map { it.displayName }
     }

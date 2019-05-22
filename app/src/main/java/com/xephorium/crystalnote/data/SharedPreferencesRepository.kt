@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.data
 
 import android.content.Context
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
 import com.xephorium.crystalnote.data.model.Note
@@ -10,6 +11,18 @@ class SharedPreferencesRepository(private val context: Context) {
 
 
     /*--- Public Methods ---*/
+
+    fun setTheme(theme: String) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putString(THEME, theme)
+        editor.apply()
+    }
+
+    fun getTheme(): String {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        val backupValue = CrystalNoteTheme.Themes.values()[0].displayName
+        return prefs.getString(THEME, backupValue) ?: backupValue
+    }
 
     fun setNoteColorsEnabled(enabled: Boolean) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
@@ -84,6 +97,7 @@ class SharedPreferencesRepository(private val context: Context) {
 
     companion object {
         private const val APP_PRIMARY_KEY = "CrystalNotePreferences"
+        private const val THEME = "Theme"
         private const val NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
         private const val NOTE_PREVIEW_LINES = "NotePreviewLines"
         private const val NOTE_DATE_TYPE = "NoteDateType"

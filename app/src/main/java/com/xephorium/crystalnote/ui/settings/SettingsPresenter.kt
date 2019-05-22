@@ -12,11 +12,13 @@ class SettingsPresenter : SettingsContract.Presenter() {
     override fun attachView(view: SettingsContract.View) {
         super.attachView(view)
 
+        theme = sharedPreferencesRepository.getTheme()
         notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
         noteDateType = sharedPreferencesRepository.getNoteDateType()
         noteColorsEnabled = sharedPreferencesRepository.getNoteColorsEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
 
+        this.view?.populateTheme(theme)
         this.view?.populateNotePreviewLines(notePreviewLines)
         this.view?.populateNoteDateType(noteDateType)
         this.view?.populateNoteColorsCheckbox(noteColorsEnabled)
@@ -28,6 +30,10 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     override fun handleMenuButtonClick() {
         view?.showNavigationDrawer()
+    }
+
+    override fun handleThemeChange(newTheme: String) {
+        theme = newTheme
     }
 
     override fun handleNoteLinesChange(lines: Int) {
@@ -47,12 +53,13 @@ class SettingsPresenter : SettingsContract.Presenter() {
     }
 
     override fun handleSaveClick() {
+        sharedPreferencesRepository.setTheme(theme)
         sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         sharedPreferencesRepository.setNoteDateType(noteDateType)
         sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
 
-        // TODO - Reload Screen
+        view?.refreshScreen()
     }
 
     override fun handleBackClick() {
@@ -72,6 +79,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     private fun unsavedChanges(): Boolean {
         var unsavedChanges = false
+
+        if (sharedPreferencesRepository.getTheme() != theme) unsavedChanges = true
 
         if (sharedPreferencesRepository.getNotePreviewLines() != notePreviewLines) unsavedChanges = true
 
