@@ -1,6 +1,8 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.xephorium.crystalnote">
+    package="com.xephorium.crystalnote"
+    >
 
     <application
         android:allowBackup="true"
@@ -10,13 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Dark"
         android:windowSoftInputMode="adjustResize"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        >
 
         <!-- Splash Activity -->
         <activity
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,27 +30,32 @@
         <!-- Home Activity -->
         <activity
             android:name=".ui.home.HomeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
 
         <!-- Widget Activity -->
         <activity
             android:name=".ui.widget.WidgetActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
 
         <!-- Settings Activity -->
         <activity
             android:name=".ui.settings.SettingsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
 
         <!-- About Activity -->
         <activity
             android:name=".ui.about.AboutActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
 
         <!-- Note Update Activity -->
         <activity
             android:name=".ui.update.UpdateActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />
             </intent-filter>
@@ -56,7 +65,8 @@
         <activity
             android:name=".ui.select.SelectActivity"
             android:noHistory="false"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.widget.CHOOSE_NOTE" />
             </intent-filter>
@@ -67,7 +77,8 @@
             android:name=".ui.widget.NotesWidgetProvider"
             android:icon="@drawable/ic_launcher"
             android:label="CrystalNote Widget"
-            android:permission="false">
+            android:permission="false"
+            >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.widget.UPDATE_NOTE" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -75,7 +86,8 @@
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/note_widget_info" />
+                android:resource="@xml/note_widget_info"
+                />
         </receiver>
 
     </application>
