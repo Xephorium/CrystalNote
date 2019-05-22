@@ -32,18 +32,18 @@
 
     <style name="Light" parent="CrystalNoteTheme">
 
-        <item name="themeStatusBar">@color/charcoalDark</item>
+        <item name="themeStatusBar">@color/lightStatusBar</item>
 
-        <item name="themeToolbar">@color/charcoalLight</item>
-        <item name="themeToolbarRipple">@color/rippleDark</item>
-        <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
-        <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
+        <item name="themeToolbar">@color/lightToolbar</item>
+        <item name="themeToolbarRipple">@color/lightToolbarRipple</item>
+        <item name="themeToolbarTextPrimary">@color/lightToolbarTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/lightToolbarTextSecondary</item>
 
         <item name="themeBackground">@color/lightBackground</item>
         <item name="themeDivider">@color/lightDivider</item>
-        <item name="themeOverscroll">@color/charcoalLight</item>
+        <item name="themeOverscroll">@color/lightOverscroll</item>
 
-        <item name="themeAccent">@color/charcoalLight</item>
+        <item name="themeAccent">@color/lightAccent</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
         <item name="themeAccentTextPrimary">@color/lightAccentTextPrimary</item>
         <item name="themeAccentTextSecondary">@color/lightAccentTextSecondary</item>
@@ -71,18 +71,18 @@
 
     <style name="Dark" parent="CrystalNoteTheme">
 
-        <item name="themeStatusBar">@color/charcoalDark</item>
+        <item name="themeStatusBar">@color/darkStatusBar</item>
 
-        <item name="themeToolbar">@color/charcoalLight</item>
-        <item name="themeToolbarRipple">@color/rippleDark</item>
-        <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
-        <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
+        <item name="themeToolbar">@color/darkToolbar</item>
+        <item name="themeToolbarRipple">@color/darkToolbarRipple</item>
+        <item name="themeToolbarTextPrimary">@color/darkToolbarTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/darkToolbarTextSecondary</item>
 
         <item name="themeBackground">@color/darkBackground</item>
         <item name="themeDivider">@color/darkDivider</item>
-        <item name="themeOverscroll">#fff</item>
+        <item name="themeOverscroll">@color/darkOverscroll</item>
 
-        <item name="themeAccent">@color/charcoalLight</item>
+        <item name="themeAccent">@color/darkAccent</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
         <item name="themeAccentTextPrimary">@color/darkAccentTextPrimary</item>
         <item name="themeAccentTextSecondary">@color/darkAccentTextSecondary</item>
@@ -107,5 +107,9 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
 
     </style>
+
+
+    <!-- Custom Color Themes -->
+
 
 </resources>
