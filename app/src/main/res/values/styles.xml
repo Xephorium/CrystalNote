@@ -39,32 +39,32 @@
         <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
         <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
 
-        <item name="themeBackground">@color/backgroundLight</item>
-        <item name="themeDivider">@color/dividerLight</item>
+        <item name="themeBackground">@color/lightBackground</item>
+        <item name="themeDivider">@color/lightDivider</item>
         <item name="themeOverscroll">@color/charcoalLight</item>
 
         <item name="themeAccent">@color/charcoalLight</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
-        <item name="themeAccentTextPrimary">@color/white</item>
-        <item name="themeAccentTextSecondary">@color/accentItemSecondary</item>
+        <item name="themeAccentTextPrimary">@color/lightAccentTextPrimary</item>
+        <item name="themeAccentTextSecondary">@color/lightAccentTextSecondary</item>
 
-        <item name="themeTextPrimary">@color/textLightPrimary</item>
-        <item name="themeTextSecondary">@color/textLightSecondary</item>
-        <item name="themeTextTertiary">@color/textLightTertiary</item>
-        <item name="themeTextInvertedPrimary">@color/textDarkPrimary</item>
-        <item name="themeTextInvertedSecondary">@color/textDarkSecondary</item>
-        <item name="themeTextHandle">@color/textHandle</item>
-        <item name="themeTextHighlight">@color/textHighlight</item>
+        <item name="themeTextPrimary">@color/lightTextPrimary</item>
+        <item name="themeTextSecondary">@color/lightTextSecondary</item>
+        <item name="themeTextTertiary">@color/lightTextTertiary</item>
+        <item name="themeTextInvertedPrimary">@color/darkTextPrimary</item>
+        <item name="themeTextInvertedSecondary">@color/darkTextSecondary</item>
+        <item name="themeTextHandle">@color/lightTextHandle</item>
+        <item name="themeTextHighlight">@color/lightTextHighlight</item>
 
-        <item name="themeNoteBackground">@color/white</item>
-        <item name="themeNoteRipple">@color/rippleDefault</item>
-        <item name="themeNoteUnderline">@color/textUnderline</item>
+        <item name="themeNoteBackground">@color/lightNoteBackground</item>
+        <item name="themeNoteRipple">@color/lightNoteRipple</item>
+        <item name="themeNoteUnderline">@color/lightNoteUnderline</item>
 
-        <item name="themeSettingsPreviewBackground">@color/settingsPreviewBackground</item>
+        <item name="themeSettingsPreviewBackground">@color/lightSettingsPreviewBackground</item>
 
-        <item name="themeDrawerItem">@color/drawerItemIcon</item>
-        <item name="themeDrawerItemSelected">@color/drawerItemSelectedIcon</item>
-        <item name="themeDrawerItemSelectedBackground">@color/drawerSelectionLight</item>
+        <item name="themeDrawerItem">@color/lightDrawerItem</item>
+        <item name="themeDrawerItemSelected">@color/lightDrawerItemSelected</item>
+        <item name="themeDrawerItemSelectedBackground">@color/lightDrawerSelection</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterCharcoal</item>
 
     </style>
@@ -78,32 +78,32 @@
         <item name="themeToolbarTextPrimary">@color/whiteSmoke</item>
         <item name="themeToolbarTextSecondary">@color/whiteSmokeAlpha</item>
 
-        <item name="themeBackground">@color/backgroundDark</item>
-        <item name="themeDivider">@color/dividerDark</item>
+        <item name="themeBackground">@color/darkBackground</item>
+        <item name="themeDivider">@color/darkDivider</item>
         <item name="themeOverscroll">#fff</item>
 
         <item name="themeAccent">@color/charcoalLight</item>
         <item name="themeAccentRipple">@color/rippleDark</item>
-        <item name="themeAccentTextPrimary">@color/white</item>
-        <item name="themeAccentTextSecondary">@color/accentItemSecondary</item>
+        <item name="themeAccentTextPrimary">@color/darkAccentTextPrimary</item>
+        <item name="themeAccentTextSecondary">@color/darkAccentTextSecondary</item>
 
-        <item name="themeTextPrimary">@color/textDarkPrimary</item>
-        <item name="themeTextSecondary">@color/textDarkSecondary</item>
-        <item name="themeTextTertiary">@color/textDarkTertiary</item>
-        <item name="themeTextInvertedPrimary">@color/textDarkPrimary</item>
-        <item name="themeTextInvertedSecondary">@color/textDarkSecondary</item>
-        <item name="themeTextHandle">@color/textHandle</item>
-        <item name="themeTextHighlight">@color/textHighlight</item>
+        <item name="themeTextPrimary">@color/darkTextPrimary</item>
+        <item name="themeTextSecondary">@color/darkTextSecondary</item>
+        <item name="themeTextTertiary">@color/darkTextTertiary</item>
+        <item name="themeTextInvertedPrimary">@color/darkTextPrimary</item>
+        <item name="themeTextInvertedSecondary">@color/darkTextSecondary</item>
+        <item name="themeTextHandle">@color/darkTextHandle</item>
+        <item name="themeTextHighlight">@color/darkTextHighlight</item>
 
-        <item name="themeNoteBackground">#555</item>
-        <item name="themeNoteRipple">@color/rippleDark</item>
-        <item name="themeNoteUnderline">#666</item>
+        <item name="themeNoteBackground">@color/darkNoteBackground</item>
+        <item name="themeNoteRipple">@color/darkNoteRipple</item>
+        <item name="themeNoteUnderline">@color/darkNoteUnderline</item>
 
-        <item name="themeSettingsPreviewBackground">#000</item>
+        <item name="themeSettingsPreviewBackground">@color/darkSettingsPreviewBackground</item>
 
-        <item name="themeDrawerItem">@color/textDarkSecondary</item>
-        <item name="themeDrawerItemSelected">@color/textDarkPrimary</item>
-        <item name="themeDrawerItemSelectedBackground">@color/drawerSelectionDark</item>
+        <item name="themeDrawerItem">@color/darkDrawerItem</item>
+        <item name="themeDrawerItemSelected">@color/darkDrawerItemSelected</item>
+        <item name="themeDrawerItemSelectedBackground">@color/darkDrawerSelection</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
 
     </style>

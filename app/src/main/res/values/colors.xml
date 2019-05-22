@@ -3,22 +3,43 @@
 
     <!-- Base Theme Colors -->
 
-    <color name="backgroundLight">#f6f6f6</color>
-    <color name="dividerLight">#ddd</color>
-    <color name="textLightPrimary">#222</color>
-    <color name="textLightSecondary">#777</color>
-    <color name="textLightTertiary">#B9B9B9</color>
-    <color name="drawerSelectionLight">#ddd</color>
+    <color name="lightBackground">#f6f6f6</color>
+    <color name="lightDivider">#ddd</color>
+    <color name="lightAccentTextPrimary">@color/white</color>
+    <color name="lightAccentTextSecondary">#bbf3f3f3</color>
+    <color name="lightTextPrimary">#222</color>
+    <color name="lightTextSecondary">#777</color>
+    <color name="lightTextTertiary">#B9B9B9</color>
+    <color name="lightTextHighlight">#7d888888</color>
+    <color name="lightTextHandle">@color/gray8</color>
+    <color name="lightNoteBackground">@color/white</color>
+    <color name="lightNoteRipple">@color/rippleDefault</color>
+    <color name="lightNoteUnderline">#ccc</color>
+    <color name="lightSettingsPreviewBackground">#ccc</color>
+    <color name="lightDrawerItem">@color/lightTextSecondary</color>
+    <color name="lightDrawerItemSelected">@color/lightTextPrimary</color>
+    <color name="lightDrawerSelection">#ddd</color>
 
-    <color name="backgroundDark">#444</color>
-    <color name="dividerDark">#666</color>
-    <color name="textDarkPrimary">#fff</color>
-    <color name="textDarkSecondary">#aaffffff</color>
-    <color name="textDarkTertiary">#77ffffff</color>
-    <color name="drawerSelectionDark">#555</color>
+    <color name="darkBackground">#444</color>
+    <color name="darkDivider">#666</color>
+    <color name="darkAccentTextPrimary">@color/white</color>
+    <color name="darkAccentTextSecondary">#bbf3f3f3</color>
+    <color name="darkTextPrimary">#fff</color>
+    <color name="darkTextSecondary">#aaffffff</color>
+    <color name="darkTextTertiary">#77ffffff</color>
+    <color name="darkTextHighlight">#7d888888</color>
+    <color name="darkTextHandle">@color/gray8</color>
+    <color name="darkNoteBackground">#555</color>
+    <color name="darkNoteRipple">#fff</color>
+    <color name="darkNoteUnderline">#666</color>
+    <color name="darkSettingsPreviewBackground">#111</color>
+    <color name="darkDrawerItem">@color/darkTextSecondary</color>
+    <color name="darkDrawerItemSelected">@color/darkTextPrimary</color>
+    <color name="darkDrawerSelection">#555</color>
 
 
     <!-- Custom Colors -->
+
     <color name="charcoalDark">#222222</color>
     <color name="charcoalLight">#333333</color>
     <color name="black">#000</color>
@@ -36,35 +57,19 @@
     <color name="whiteSmoke">#f3f3f3</color>
     <color name="whiteSmokeAlpha">#bbf3f3f3</color>
 
-    <color name="drawerFilterCharcoal">#cc333333</color>
-    <color name="drawerFilterBlack">#cc111111</color>
-    <color name="drawerFilterWhite">#ccffffff</color>
-
 
     <!-- Control Colors -->
 
-    <color name="accentItemSecondary">#bbf3f3f3</color>
-
-    <color name="drawerItemIcon">#757575</color>
-    <color name="drawerItemText">@color/drawerItemIcon</color>
-    <color name="drawerItemSelected">#ddd</color>
-    <color name="drawerItemSelectedIcon">#222</color>
-    <color name="drawerItemSelectedText">@color/drawerItemSelectedIcon</color>
-
-    <color name="iconDefault">#aaaaaa</color>
+    <color name="drawerFilterCharcoal">#cc333333</color>
+    <color name="drawerFilterBlack">#cc111111</color>
+    <color name="drawerFilterWhite">#ccffffff</color>
 
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#33ffffff</color>
     <color name="rippleLight">#88ffffff</color>
 
-    <color name="settingsHeader">#222222</color>
-    <color name="settingsItem">#777</color>
-    <color name="settingsPreviewBackground">#ccc</color>
 
-    <color name="textHighlight">#7d888888</color>
-    <color name="textHint">#808080</color>
-    <color name="textHandle">@color/gray8</color>
-    <color name="textUnderline">#ccc</color>
+    <!-- Widget Colors (TODO - Extract to Theme) -->
 
     <color name="widgetBackground">#ffffff</color>
     <color name="widgetDivider">#dddddd</color>
