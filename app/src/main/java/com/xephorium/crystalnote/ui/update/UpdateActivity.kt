@@ -73,7 +73,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     }
 
     override fun showInvalidNameDialog() {
-        val alertDialog = AlertDialog.Builder(this).create()
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
         alertDialog.setCancelable(false)
         alertDialog.setTitle("Invalid Name")
         alertDialog.setMessage("Note name is invalid and cannot be saved.")
@@ -88,7 +88,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     }
 
     override fun showDiscardChangesDialog() {
-        val alertDialog = AlertDialog.Builder(this).create()
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
         alertDialog.setCancelable(false)
         alertDialog.setTitle("Discard Note")
         alertDialog.setMessage("Discard new note?")
@@ -103,7 +103,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     }
 
     override fun showDeleteNoteDialog() {
-        val alertDialog = AlertDialog.Builder(this).create()
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
         alertDialog.setCancelable(false)
         alertDialog.setTitle("Delete Note")
         alertDialog.setMessage("Are you sure?")
