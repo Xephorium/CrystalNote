@@ -29,6 +29,7 @@ import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton.*
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 import com.xephorium.crystalnote.ui.extensions.getThemeColor
 
+
 @SuppressLint("Registered")
 open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
@@ -77,7 +78,6 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
             drawerAnimating = true
         } else {
             presenter.handleBackClick()
-            super.onBackPressed()
         }
     }
 
@@ -124,6 +124,10 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
     override fun navigateToAbout() {
         navigateToActivity(Intent(this@DrawerActivity, AboutActivity::class.java))
+    }
+
+    override fun closeCrystalNote() {
+        super.onBackPressed()
     }
 
     override fun setSelectedMenuButton(button: DrawerButton) {
@@ -221,9 +225,10 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
     private fun navigateToActivity(intent: Intent) {
         Handler().postDelayed({
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             overridePendingTransition(0, 0)
+            finish()
         }, DRAWER_UI_UPDATE_DELAY + DRAWER_CLOSE_TIME)
     }
 

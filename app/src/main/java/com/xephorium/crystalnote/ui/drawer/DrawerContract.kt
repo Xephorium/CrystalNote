@@ -14,6 +14,7 @@ interface DrawerContract {
         fun navigateToWidget()
         fun navigateToSettings()
         fun navigateToAbout()
+        fun closeCrystalNote()
         fun setSelectedMenuButton(button: DrawerButton)
     }
 

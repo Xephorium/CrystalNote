@@ -51,7 +51,12 @@ class DrawerPresenter : DrawerContract.Presenter() {
     }
 
     override fun handleBackClick() {
-        sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
+        if (sharedPreferencesRepository.getSelectedDrawerButton() == NOTES) {
+            view?.closeCrystalNote()
+        } else {
+            sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
+            view?.navigateToHome()
+        }
     }
 
 
