@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.settings
 
-import android.util.Log
 import com.xephorium.crystalnote.data.model.DateType
 
 
