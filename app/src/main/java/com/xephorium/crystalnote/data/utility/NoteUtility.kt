@@ -27,7 +27,7 @@ object NoteUtility {
 
     /*--- Public Utility Methods ---*/
 
-    fun getDefaultColor(): Int = Color.parseColor("#aaaaaa")
+    fun getDefaultColor(): Int = Color.parseColor("#777777")
 
     fun getRandomColor(): Int {
         val colors = intArrayOf(
