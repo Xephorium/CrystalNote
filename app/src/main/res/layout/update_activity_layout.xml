@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:paddingStart="@dimen/paddingActivity"
         android:paddingEnd="@dimen/paddingActivity"
-        android:textColor="?themeTextPrimary"
+        android:textColor="?themeTextSecondary"
         />
 
 </RelativeLayout>

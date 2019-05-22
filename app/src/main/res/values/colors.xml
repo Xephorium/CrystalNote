@@ -42,10 +42,10 @@
     <color name="darkTextSecondary">#aaffffff</color>
     <color name="darkTextTertiary">#77ffffff</color>
     <color name="darkTextHighlight">#7d888888</color>
-    <color name="darkTextHandle">@color/gray8</color>
+    <color name="darkTextHandle">@color/white</color>
     <color name="darkNoteBackground">#555</color>
     <color name="darkNoteRipple">@color/rippleLight</color>
-    <color name="darkNoteUnderline">#666</color>
+    <color name="darkNoteUnderline">#777</color>
     <color name="darkSettingsPreviewBackground">#111</color>
     <color name="darkDrawerItem">@color/darkTextSecondary</color>
     <color name="darkDrawerItemSelected">@color/darkTextPrimary</color>
