@@ -4,6 +4,7 @@ class CrystalNoteTheme {
 
     enum class Themes(val displayName: String) {
         LIGHT("Light"),
-        DARK("Dark")
+        DARK("Dark"),
+        SAGE("Sage")
     }
 }

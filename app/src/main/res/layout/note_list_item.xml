@@ -37,7 +37,7 @@
             android:paddingTop="@dimen/paddingBig"
             android:paddingEnd="@dimen/paddingBig"
             android:paddingBottom="@dimen/paddingMedium"
-            android:textColor="?themeTextSecondary"
+            android:textColor="?themeTextTertiary"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@id/textNoteListTitle"
             app:layout_constraintEnd_toEndOf="parent"

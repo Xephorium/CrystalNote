@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     >
 
+    <!-- Note: This view is a dirty hack. Because I'm manually inflating each layout added to
+         the layoutActivityContent view, the layouts don't want to expand horizontally into the
+         available space. -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/space"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <com.xephorium.crystalnote.ui.custom.NoteListView
         android:id="@+id/listHomeNotes"
         android:layout_width="wrap_content"

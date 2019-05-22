@@ -16,7 +16,7 @@
     <color name="lightAccentTextSecondary">#bbf3f3f3</color>
     <color name="lightTextPrimary">#222</color>
     <color name="lightTextSecondary">#777</color>
-    <color name="lightTextTertiary">#B9B9B9</color>
+    <color name="lightTextTertiary">#999</color>
     <color name="lightTextHighlight">#7d888888</color>
     <color name="lightTextHandle">@color/gray8</color>
     <color name="lightNoteBackground">@color/white</color>
@@ -64,8 +64,14 @@
     <color name="brown800">#4e342e</color>
     <color name="brown900">#3e2723</color>
     <color name="gray8">#888888</color>
+    <color name="direwolf">#EEEEEE</color>
     <color name="red500">#f44336</color>
     <color name="red700">#d32f2f</color>
+    <color name="sage">#01797C</color>
+    <color name="sageDesaturated">#448081</color>
+    <color name="sageDesaturatedDark">#114C50</color>
+    <color name="sageLight">#0DB1B6</color>
+    <color name="sageHighlight">#33057477</color>
     <color name="transparent">#00ffffff</color>
     <color name="white">#ffffff</color>
     <color name="whiteSmoke">#f3f3f3</color>
@@ -77,6 +83,7 @@
     <color name="drawerFilterCharcoal">#cc333333</color>
     <color name="drawerFilterBlack">#cc111111</color>
     <color name="drawerFilterWhite">#ccffffff</color>
+    <color name="drawerFilterSage">#cc01797C</color>
 
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#33ffffff</color>
