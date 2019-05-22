@@ -11,6 +11,7 @@ interface DrawerContract {
         fun closeDrawerAfterDelay()
 
         fun navigateToHome()
+        fun navigateToHomeImmediately()
         fun navigateToWidget()
         fun navigateToSettings()
         fun navigateToAbout()

@@ -114,6 +114,10 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         navigateToActivity(Intent(this@DrawerActivity, HomeActivity::class.java))
     }
 
+    override fun navigateToHomeImmediately() {
+        navigateToActivityImmediately(Intent(this@DrawerActivity, HomeActivity::class.java))
+    }
+
     override fun navigateToWidget() {
         navigateToActivity(Intent(this@DrawerActivity, WidgetActivity::class.java))
     }
@@ -230,6 +234,13 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
             overridePendingTransition(0, 0)
             finish()
         }, DRAWER_UI_UPDATE_DELAY + DRAWER_CLOSE_TIME)
+    }
+
+    private fun navigateToActivityImmediately(intent: Intent) {
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+        finish()
     }
 
     private fun getActivityContentHeight(): Int {

@@ -55,7 +55,7 @@ class DrawerPresenter : DrawerContract.Presenter() {
             view?.closeCrystalNote()
         } else {
             sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
-            view?.navigateToHome()
+            view?.navigateToHomeImmediately()
         }
     }
 
