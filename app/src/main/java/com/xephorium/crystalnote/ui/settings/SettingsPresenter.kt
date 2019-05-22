@@ -52,13 +52,15 @@ class SettingsPresenter : SettingsContract.Presenter() {
     }
 
     override fun handleSaveClick() {
-        sharedPreferencesRepository.setTheme(theme)
         sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         sharedPreferencesRepository.setNoteDateType(noteDateType)
         sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
 
-        view?.refreshScreen()
+        if (sharedPreferencesRepository.getTheme() != theme) {
+            sharedPreferencesRepository.setTheme(theme)
+            view?.refreshScreen()
+        }
     }
 
     override fun handleBackClick() {
