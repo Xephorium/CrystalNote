@@ -83,8 +83,8 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     override fun showDiscardChangesDialog() {
-        val alertDialog = AlertDialog.Builder(this).create()
-        alertDialog.setCancelable(false)
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
+        alertDialog.setCancelable(true)
         alertDialog.setTitle("Discard Changes")
         alertDialog.setMessage("Your changes have not been saved. Discard changes?")
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No") { dialog, _ ->
