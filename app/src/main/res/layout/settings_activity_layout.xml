@@ -82,8 +82,8 @@
                     android:id="@+id/selectorSettingsTheme"
                     android:layout_width="@dimen/selectorSettings"
                     android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="@id/textSettingsThemeLabel"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:popupBackground="@drawable/selector_popup_background"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>
@@ -112,6 +112,8 @@
                     android:id="@+id/selectorSettingsLines"
                     android:layout_width="@dimen/selectorSettings"
                     android:layout_height="match_parent"
+                    android:popupBackground="@drawable/selector_popup_background"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>
@@ -140,6 +142,8 @@
                     android:id="@+id/selectorSettingsDate"
                     android:layout_width="@dimen/selectorSettings"
                     android:layout_height="match_parent"
+                    android:popupBackground="@drawable/selector_popup_background"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>

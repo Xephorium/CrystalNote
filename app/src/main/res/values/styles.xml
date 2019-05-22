@@ -19,12 +19,17 @@
         <item name="android:textColorHighlight">?themeTextHighlight</item>
         <item name="android:colorEdgeEffect">?themeOverscroll</item>
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
     </style>
 
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <item name="android:background">?themeToolbar</item>
         <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
         <item name="android:colorControlActivated">?themeTextHandle</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">?themeTextSecondary</item>
     </style>
 
 
