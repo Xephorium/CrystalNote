@@ -20,15 +20,26 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <View
+    <LinearLayout
         android:id="@+id/viewSettingsPreviewBackground"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="?themeSettingsPreviewBackground"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        >
+
+        <com.xephorium.crystalnote.ui.custom.ThemePreview
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/paddingActivity"
+            android:layout_marginBottom="@dimen/paddingActivity"
+            />
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
