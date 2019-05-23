@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.model.DateType
 
 
 class ThemePreview : View {
@@ -18,8 +19,15 @@ class ThemePreview : View {
     private val paint = Paint()
     private var viewHeight: Int? = null
     private var viewWidth: Int? = null
-    private var padding: Int? = null
+    private var scaleUnit: Int? = null
+
+    private var toolbarHeight: Int? = null
     private var textHeight: Int? = null
+    private var actionButtonRadius: Int? = null
+
+    private var paddingLarge: Int? = null
+    private var paddingMedium: Int? = null
+    private var paddingSmall: Int? = null
 
 
     /*--- Constructors ---*/
@@ -50,13 +58,22 @@ class ThemePreview : View {
             val width = ((viewHeight!! * 9.0) / 15).toInt()
             viewWidth = if (width % 2 == 0) width else width - 1
         }
-        if (padding == null) padding = (viewWidth!! / 12)
-        if (textHeight == null) textHeight = (padding!! * .5).toInt()
+        if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
+
+        if (textHeight == null) textHeight = (scaleUnit!! * .5).toInt()
+        if (toolbarHeight == null) toolbarHeight = (scaleUnit!! * 2.25).toInt()
+        if (actionButtonRadius == null) actionButtonRadius = (scaleUnit!! * 1).toInt()
+
+        if (paddingLarge == null) paddingLarge = (scaleUnit!! * .75).toInt()
+        if (paddingMedium == null) paddingMedium = (scaleUnit!! * .5).toInt()
+        if (paddingSmall == null) paddingSmall = (scaleUnit!! * .25).toInt()
 
         setMeasuredDimension(viewWidth!!, viewHeight!!)
     }
 
     override fun onDraw(canvas: Canvas?) {
+
+        var currentVerticalPosition = 0
 
         // Background
         this.background = ContextCompat.getDrawable(context, R.color.lightBackground)
@@ -68,17 +85,18 @@ class ThemePreview : View {
                 0.toFloat(),
                 0.toFloat(),
                 (viewWidth!!).toFloat(),
-                (padding!! * 2.5).toFloat(),
+                (toolbarHeight!!).toFloat(),
                 paint
         )
+        currentVerticalPosition += (toolbarHeight!! + scaleUnit!!)
 
         // Toolbar Icon
         paint.color = ContextCompat.getColor(context, R.color.whiteSmokeAlpha)
         canvas?.drawRoundRect(
-                (padding!! * .75).toFloat(),
-                (padding!! * .75).toFloat(),
-                (padding!! * 1.75).toFloat(),
-                (padding!! * 1.75).toFloat(),
+                (paddingLarge!!).toFloat(),
+                (paddingLarge!!).toFloat(),
+                (toolbarHeight!! - paddingLarge!!).toFloat(),
+                (toolbarHeight!! - paddingLarge!!).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
                 paint
@@ -87,36 +105,39 @@ class ThemePreview : View {
         // Toolbar Title
         paint.color = ContextCompat.getColor(context, R.color.white)
         canvas?.drawRoundRect(
-                (padding!! * 2.5).toFloat(),
-                (padding!! * .75).toFloat(),
-                (padding!! * 7.5).toFloat(),
-                (padding!! * 1.75).toFloat(),
+                (toolbarHeight!!).toFloat(),
+                (paddingLarge!!).toFloat(),
+                (toolbarHeight!! + (scaleUnit!! * 5.5)).toFloat(),
+                (toolbarHeight!! - paddingLarge!!).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
                 paint
         )
 
+        // Header 1
         if (SHOW_HEADERS) {
-
-            // Header 1
             paint.color = ContextCompat.getColor(context, R.color.lightTextSecondary)
             canvas?.drawRoundRect(
-                    (padding!! * .75).toFloat(),
-                    (padding!! * 3.5).toFloat(),
-                    (padding!! * 3.25).toFloat(),
-                    (padding!! * 3.5 + textHeight!!).toFloat(),
+                    (paddingLarge!!).toFloat(),
+                    currentVerticalPosition.toFloat(),
+                    (paddingLarge!! + (scaleUnit!! * 2.5)).toFloat(),
+                    (currentVerticalPosition + textHeight!!).toFloat(),
                     CORNER_RADIUS,
                     CORNER_RADIUS,
                     paint
             )
+            currentVerticalPosition += (textHeight!! + paddingLarge!!)
         }
+
+        // Card 1
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition)
 
         // Floating Action Button
         paint.color = ContextCompat.getColor(context, R.color.red500)
         canvas?.drawCircle(
-                (viewWidth!! - (padding!! * 2.2)).toFloat(),
-                (viewHeight!! - (padding!! * 2.2)).toFloat(),
-                (padding!! * 1.2).toFloat(),
+                (viewWidth!! - (actionButtonRadius!! + paddingLarge!!)).toFloat(),
+                (viewHeight!! - (actionButtonRadius!! + paddingLarge!!)).toFloat(),
+                (actionButtonRadius!!).toFloat(),
                 paint
         )
 
@@ -128,6 +149,45 @@ class ThemePreview : View {
     /*--- Public Methods ---*/
 
 
+    /*--- Private Methods ---*/
+
+    private fun drawNoteCard(
+            canvas: Canvas?,
+            paint: Paint,
+            currentVerticalPosition: Int
+    ): Int {
+
+        val textLineHeight = textHeight!! + (scaleUnit!! * (.5))
+        val viewHeight = (scaleUnit!! * (1)) + (NOTE_LINES * textLineHeight)
+
+        // Background
+        paint.color = ContextCompat.getColor(context, R.color.white)
+        canvas?.drawRoundRect(
+                (scaleUnit!! * .75).toFloat(),
+                currentVerticalPosition.toFloat(),
+                (viewWidth!! - (scaleUnit!! * .75)).toFloat(),
+                (currentVerticalPosition + viewHeight).toFloat(),
+                CORNER_RADIUS,
+                CORNER_RADIUS,
+                paint
+        )
+
+        // Title
+        paint.color = ContextCompat.getColor(context, R.color.white)
+        canvas?.drawRoundRect(
+                (scaleUnit!! * 1.25).toFloat(),
+                (currentVerticalPosition + (scaleUnit!! * .5)).toFloat(),
+                (viewWidth!! - (scaleUnit!! * .75)).toFloat(),
+                (currentVerticalPosition + (scaleUnit!! * .5) + textHeight!!).toFloat(),
+                CORNER_RADIUS,
+                CORNER_RADIUS,
+                paint
+        )
+
+        return 5
+    }
+
+
     /*--- Constants ---*/
 
     companion object {
@@ -135,5 +195,8 @@ class ThemePreview : View {
         private const val CORNER_RADIUS = 3.toFloat()
 
         private const val SHOW_HEADERS = true
+        private const val SHOW_COLOR_BAR = true
+        private val DATE_TYPE = DateType.DYNAMIC
+        private const val NOTE_LINES = 3
     }
 }
