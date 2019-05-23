@@ -2,7 +2,6 @@ package com.xephorium.crystalnote.ui.update
 
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,9 +9,9 @@ import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 
 import kotlinx.android.synthetic.main.update_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
@@ -122,7 +121,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     }
 
     override fun refreshWidget() {
-        sendBroadcast(Intent().also { it.action = IntentLibrary.UPDATE_NOTE_INTENT })
+        NotesWidgetProvider.refreshWidgets(this, application)
     }
 
 

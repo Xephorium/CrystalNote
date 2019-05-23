@@ -80,7 +80,6 @@
             android:permission="false"
             >
             <intent-filter>
-                <action android:name="com.xephorium.crystalnote.widget.UPDATE_NOTE" />
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 

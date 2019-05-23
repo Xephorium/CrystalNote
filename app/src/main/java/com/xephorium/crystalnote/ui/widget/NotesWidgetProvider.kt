@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.widget
 
+import android.app.Application
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
@@ -13,7 +14,6 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
-import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.select.SelectActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
@@ -92,7 +92,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 // Choose New Display Note
                 val buttonIntent = Intent(context, SelectActivity::class.java)
                 buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                buttonIntent.action = IntentLibrary.CHOOSE_NOTE_INTENT
                 context.startActivity(buttonIntent)
             }
 
@@ -114,11 +113,8 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 // Choose New Display Note
                 val buttonIntent = Intent(context, SelectActivity::class.java)
                 buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                buttonIntent.action = IntentLibrary.CHOOSE_NOTE_INTENT
                 context.startActivity(buttonIntent)
             }
-
-            IntentLibrary.UPDATE_NOTE_INTENT -> updateWidgets(context)
         }
     }
 
@@ -145,5 +141,15 @@ class NotesWidgetProvider : AppWidgetProvider() {
         private const val TITLE_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TITLE"
         private const val TEXT_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.TEXT"
         private const val EMPTY_CLICK_INTENT = "com.xephorium.crystalnote.widget.click.EMPTY"
+
+        fun refreshWidgets(context: Context, application: Application) {
+            val intent = Intent(context, NotesWidgetProvider::class.java)
+            val ids = AppWidgetManager.getInstance(application)
+                    .getAppWidgetIds(ComponentName(application, NotesWidgetProvider::class.java))
+
+            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            context.sendBroadcast(intent)
+        }
     }
 }

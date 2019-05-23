@@ -7,7 +7,6 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.Note
-import com.xephorium.crystalnote.ui.IntentLibrary
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
@@ -15,6 +14,7 @@ import com.xephorium.crystalnote.ui.custom.NoteToolbar
 
 import kotlinx.android.synthetic.main.select_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
+import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 
 class SelectActivity : ToolbarActivity(), SelectContract.View {
 
@@ -63,7 +63,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     }
 
     override fun refreshWidget() {
-        sendBroadcast(Intent().also { it.action = IntentLibrary.UPDATE_NOTE_INTENT })
+        NotesWidgetProvider.refreshWidgets(this, application)
     }
 
     override fun navigateBack() {
@@ -72,7 +72,6 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
 
     override fun navigateToNewNote() {
         val intent = Intent(this, UpdateActivity::class.java)
-        intent.action = IntentLibrary.CREATE_NOTE
         startActivity(intent)
     }
 
