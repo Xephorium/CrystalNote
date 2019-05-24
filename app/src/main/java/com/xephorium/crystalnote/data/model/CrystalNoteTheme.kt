@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.data.model
 
 import android.content.Context
+import android.content.res.TypedArray
 import com.xephorium.crystalnote.R
 import android.graphics.Color
 import androidx.core.content.ContextCompat
@@ -44,30 +45,34 @@ data class CrystalNoteTheme(
         fun fromThemeName(context: Context, themeName: String): CrystalNoteTheme {
 
             // Get Theme Attributes
-            val a = listOf(
+            // Note: Undocumented obtainStyledAttributes() bug! This list of resources MUST be in
+            //       alphabetical order. Any attributes that are out of place will fail the getColor()
+            //       call below.
+            val attributes = listOf(
+                    R.attr.themeAccent,
                     R.attr.themeBackground,
                     R.attr.themeNoteBackground,
-                    R.attr.themeToolbar,
-                    R.attr.themeToolbarTextPrimary,
-                    R.attr.themeToolbarTextSecondary,
                     R.attr.themeTextPrimary,
                     R.attr.themeTextSecondary,
                     R.attr.themeTextTertiary,
-                    R.attr.themeAccent
+                    R.attr.themeToolbar,
+                    R.attr.themeToolbarTextPrimary,
+                    R.attr.themeToolbarTextSecondary
             )
-            val ta = context.obtainStyledAttributes(Themes.fromName(themeName).resourceId, a.toIntArray())
+            val typedArray =
+                    context.obtainStyledAttributes(Themes.fromName(themeName).resourceId, attributes.toIntArray())
 
             // Parse Theme Colors
-            val colorBackground = ta.getColor(a.indexOf(R.attr.themeBackground), Color.WHITE)
-            val colorNoteBackground = ta.getColor(a.indexOf(R.attr.themeNoteBackground), Color.WHITE)
-            val colorToolbar = ta.getColor(a.indexOf(R.attr.themeToolbar), Color.WHITE)
-            val colorToolbarTextPrimary = ta.getColor(a.indexOf(R.attr.themeToolbarTextPrimary), Color.WHITE)
-            val colorToolbarTextSecondary = ta.getColor(a.indexOf(R.attr.themeToolbarTextSecondary), Color.WHITE)
-            val colorTextPrimary = ta.getColor(a.indexOf(R.attr.themeTextPrimary), Color.WHITE)
-            val colorTextSecondary = ta.getColor(a.indexOf(R.attr.themeTextSecondary), Color.WHITE)
-            val colorTextTertiary = ta.getColor(a.indexOf(R.attr.themeTextTertiary), Color.WHITE)
-            val colorAccent = ta.getColor(a.indexOf(R.attr.themeAccent), Color.WHITE)
-            ta.recycle()
+            val colorBackground = parseColor(typedArray, attributes, R.attr.themeBackground)
+            val colorNoteBackground = parseColor(typedArray, attributes, R.attr.themeNoteBackground)
+            val colorToolbar = parseColor(typedArray, attributes, R.attr.themeToolbar)
+            val colorToolbarTextPrimary = parseColor(typedArray, attributes, R.attr.themeToolbarTextPrimary)
+            val colorToolbarTextSecondary = parseColor(typedArray, attributes, R.attr.themeToolbarTextSecondary)
+            val colorTextPrimary = parseColor(typedArray, attributes, R.attr.themeTextPrimary)
+            val colorTextSecondary = parseColor(typedArray, attributes, R.attr.themeTextSecondary)
+            val colorTextTertiary = parseColor(typedArray, attributes, R.attr.themeTextTertiary)
+            val colorAccent = parseColor(typedArray, attributes, R.attr.themeAccent)
+            typedArray.recycle()
 
             // Return Theme
             return CrystalNoteTheme(
@@ -81,6 +86,10 @@ data class CrystalNoteTheme(
                     colorTextTertiary,
                     colorAccent
             )
+        }
+
+        private fun parseColor(typedArray: TypedArray, attributes: List<Any>, id: Int): Int {
+            return typedArray.getColor(attributes.indexOf(id), Color.TRANSPARENT)
         }
     }
 }
