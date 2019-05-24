@@ -2,10 +2,12 @@ package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.IntegerRes
 import androidx.core.content.ContextCompat
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
@@ -31,6 +33,8 @@ class ThemePreview : View {
     private var paddingLarge: Int? = null
     private var paddingMedium: Int? = null
     private var paddingSmall: Int? = null
+
+    private var colorToolbar: Int = Color.RED
 
     private var maxLines = 5
     private var dateType = DateType.DYNAMIC
@@ -89,7 +93,7 @@ class ThemePreview : View {
         this.background = ContextCompat.getDrawable(context, R.color.lightBackground)
 
         // Toolbar
-        paint.color = ContextCompat.getColor(context, R.color.red500)
+        paint.color = colorToolbar
         paint.style = FILL
         canvas?.drawRect(
                 0.toFloat(),
@@ -192,7 +196,8 @@ class ThemePreview : View {
     /*--- Public Methods ---*/
 
     fun setTheme(theme: CrystalNoteTheme) {
-        // TODO - Set Theme
+        colorToolbar = theme.themeColor
+        invalidate()
     }
 
     fun setPreviewLines(lines: Int) {
