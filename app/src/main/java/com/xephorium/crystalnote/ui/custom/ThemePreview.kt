@@ -48,7 +48,7 @@ class ThemePreview : View {
     constructor(context: Context) : this(context, null)
 
     init {
-        paint.style = STROKE
+        paint.style = FILL
         paint.isAntiAlias = true
     }
 
@@ -90,7 +90,6 @@ class ThemePreview : View {
 
         // Toolbar
         paint.color = theme.colorToolbar
-        paint.style = FILL
         canvas?.drawRect(
                 0.toFloat(),
                 0.toFloat(),
