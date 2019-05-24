@@ -85,7 +85,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     override fun setPreviewTheme(theme: String) {
-        themePreview.setTheme(CrystalNoteTheme.fromSystemTheme(this, theme))
+        themePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
     }
 
     override fun setPreviewLines(lines: Int) {

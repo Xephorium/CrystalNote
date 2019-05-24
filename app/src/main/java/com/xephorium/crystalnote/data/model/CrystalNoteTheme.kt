@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.data.model
 import android.content.Context
 import com.xephorium.crystalnote.R
 import android.graphics.Color
+import androidx.core.content.ContextCompat
 
 
 data class CrystalNoteTheme(
@@ -23,12 +24,24 @@ data class CrystalNoteTheme(
         SAGE("Sage", R.style.Sage);
 
         companion object {
-            fun fromName(name: String): Themes = values().firstOrNull { it.displayName == name } ?: Themes.values()[0]
+            fun fromName(name: String): Themes = values().firstOrNull { it.displayName == name } ?: values()[0]
         }
     }
 
     companion object {
-        fun fromSystemTheme(context: Context, themeName: String): CrystalNoteTheme {
+        fun default(context: Context): CrystalNoteTheme = CrystalNoteTheme(
+                ContextCompat.getColor(context, R.color.lightBackground),
+                ContextCompat.getColor(context, R.color.lightNoteBackground),
+                ContextCompat.getColor(context, R.color.lightToolbar),
+                ContextCompat.getColor(context, R.color.lightToolbarTextPrimary),
+                ContextCompat.getColor(context, R.color.lightToolbarTextSecondary),
+                ContextCompat.getColor(context, R.color.lightTextPrimary),
+                ContextCompat.getColor(context, R.color.lightTextSecondary),
+                ContextCompat.getColor(context, R.color.lightTextTertiary),
+                ContextCompat.getColor(context, R.color.lightAccent)
+        )
+
+        fun fromThemeName(context: Context, themeName: String): CrystalNoteTheme {
 
             // Get Theme Attributes
             val a = listOf(
