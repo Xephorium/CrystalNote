@@ -34,7 +34,15 @@ class ThemePreview : View {
     private var paddingMedium: Int? = null
     private var paddingSmall: Int? = null
 
-    private var colorToolbar: Int = Color.RED
+    private var colorBackground = ContextCompat.getColor(context, R.color.lightBackground)
+    private var colorNoteBackground = ContextCompat.getColor(context, R.color.lightNoteBackground)
+    private var colorToolbar = ContextCompat.getColor(context, R.color.lightToolbar)
+    private var colorToolbarTextPrimary = ContextCompat.getColor(context, R.color.lightToolbarTextPrimary)
+    private var colorToolbarTextSecondary = ContextCompat.getColor(context, R.color.lightToolbarTextSecondary)
+    private var colorTextPrimary = ContextCompat.getColor(context, R.color.lightTextPrimary)
+    private var colorTextSecondary = ContextCompat.getColor(context, R.color.lightTextSecondary)
+    private var colorTextTertiary = ContextCompat.getColor(context, R.color.lightTextTertiary)
+    private var colorAccent = ContextCompat.getColor(context, R.color.lightAccent)
 
     private var maxLines = 5
     private var dateType = DateType.DYNAMIC
@@ -90,7 +98,7 @@ class ThemePreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        this.background = ContextCompat.getDrawable(context, R.color.lightBackground)
+        this.setBackgroundColor(colorBackground)
 
         // Toolbar
         paint.color = colorToolbar
@@ -105,7 +113,7 @@ class ThemePreview : View {
         currentVerticalPosition += (toolbarHeight!! + scaleUnit!!)
 
         // Toolbar Icon
-        paint.color = ContextCompat.getColor(context, R.color.whiteSmokeAlpha)
+        paint.color = colorToolbarTextSecondary
         canvas?.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 (paddingLarge!!).toFloat(),
@@ -117,7 +125,7 @@ class ThemePreview : View {
         )
 
         // Toolbar Title
-        paint.color = ContextCompat.getColor(context, R.color.white)
+        paint.color = colorToolbarTextPrimary
         canvas?.drawRoundRect(
                 (toolbarHeight!!).toFloat(),
                 (paddingLarge!!).toFloat(),
@@ -130,7 +138,7 @@ class ThemePreview : View {
 
         // Header 1
         if (showHeaders) {
-            paint.color = ContextCompat.getColor(context, R.color.lightTextSecondary)
+            paint.color = colorTextSecondary
             canvas?.drawRoundRect(
                     (paddingLarge!!).toFloat(),
                     currentVerticalPosition.toFloat(),
@@ -151,7 +159,7 @@ class ThemePreview : View {
 
         // Header 2
         if (showHeaders) {
-            paint.color = ContextCompat.getColor(context, R.color.lightTextSecondary)
+            paint.color = colorTextSecondary
             canvas?.drawRoundRect(
                     (paddingLarge!!).toFloat(),
                     (currentVerticalPosition + paddingMedium!!).toFloat(),
@@ -180,7 +188,7 @@ class ThemePreview : View {
         currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3)
 
         // Floating Action Button
-        paint.color = ContextCompat.getColor(context, R.color.red500)
+        paint.color = colorAccent
         canvas?.drawCircle(
                 (viewWidth!! - (actionButtonRadius!! + paddingLarge!!)).toFloat(),
                 (viewHeight!! - (actionButtonRadius!! + paddingLarge!!)).toFloat(),
@@ -196,7 +204,15 @@ class ThemePreview : View {
     /*--- Public Methods ---*/
 
     fun setTheme(theme: CrystalNoteTheme) {
-        colorToolbar = theme.themeColor
+        colorBackground = theme.colorBackground
+        colorNoteBackground = theme.colorNoteBackground
+        colorToolbar = theme.colorToolbar
+        colorToolbarTextPrimary = theme.colorToolbarTextPrimary
+        colorToolbarTextSecondary = theme.colorToolbarTextSecondary
+        colorTextPrimary = theme.colorTextPrimary
+        colorTextSecondary = theme.colorTextSecondary
+        colorTextTertiary = theme.colorTextTertiary
+        colorAccent = theme.colorAccent
         invalidate()
     }
 
@@ -238,7 +254,7 @@ class ThemePreview : View {
         val colorBarDisplayWidth = if (showColorBar) colorBarWidth!! else 0
 
         // Background
-        paint.color = ContextCompat.getColor(context, R.color.lightNoteBackground)
+        paint.color = colorNoteBackground
         canvas?.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 currentVerticalPosition.toFloat(),
@@ -250,7 +266,7 @@ class ThemePreview : View {
         )
 
         // Color Bar
-        paint.color = ContextCompat.getColor(context, R.color.red500)
+        paint.color = colorToolbar
         canvas?.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 currentVerticalPosition.toFloat(),
@@ -269,7 +285,7 @@ class ThemePreview : View {
         )
 
         // Title
-        paint.color = ContextCompat.getColor(context, R.color.lightTextPrimary)
+        paint.color = colorTextPrimary
         canvas?.drawRoundRect(
                 (colorBarDisplayWidth + paddingLarge!! + paddingMedium!!).toFloat(),
                 (currentVerticalPosition + paddingMedium!!).toFloat(),
@@ -282,7 +298,7 @@ class ThemePreview : View {
 
         // Date
         if (dateType != DateType.NONE) {
-            paint.color = ContextCompat.getColor(context, R.color.lightTextTertiary)
+            paint.color = colorTextTertiary
             canvas?.drawRoundRect(
                     (viewWidth!! - (paddingLarge!! + paddingMedium!!) - (scaleUnit!! * 1.7)).toFloat(),
                     (currentVerticalPosition + paddingMedium!!).toFloat(),
@@ -295,7 +311,7 @@ class ThemePreview : View {
         }
 
         // Lines
-        paint.color = ContextCompat.getColor(context, R.color.lightTextSecondary)
+        paint.color = colorTextSecondary
         for (x in 0 until lines) {
             val lineEndPosition = viewWidth!! - (paddingLarge!! + paddingMedium!!)
             val baseHeight = currentVerticalPosition + textTitleHeight + (x * textLineHeight)
