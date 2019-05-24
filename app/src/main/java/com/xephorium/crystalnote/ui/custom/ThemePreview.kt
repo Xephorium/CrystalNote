@@ -30,6 +30,11 @@ class ThemePreview : View {
     private var paddingMedium: Int? = null
     private var paddingSmall: Int? = null
 
+    private var maxLines = 5
+    private var dateType = DateType.DYNAMIC
+    private var showColorBar = true
+    private var showHeaders = true
+
 
     /*--- Constructors ---*/
 
@@ -117,7 +122,7 @@ class ThemePreview : View {
         )
 
         // Header 1
-        if (SHOW_HEADERS) {
+        if (showHeaders) {
             paint.color = ContextCompat.getColor(context, R.color.lightTextSecondary)
             canvas?.drawRoundRect(
                     (paddingLarge!!).toFloat(),
@@ -138,7 +143,7 @@ class ThemePreview : View {
         currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 2)
 
         // Header 2
-        if (SHOW_HEADERS) {
+        if (showHeaders) {
             paint.color = ContextCompat.getColor(context, R.color.lightTextSecondary)
             canvas?.drawRoundRect(
                     (paddingLarge!!).toFloat(),
@@ -183,6 +188,26 @@ class ThemePreview : View {
 
     /*--- Public Methods ---*/
 
+    fun setPreviewLines(lines: Int) {
+        maxLines = lines
+        invalidate()
+    }
+
+    fun setDateType(type: DateType) {
+        dateType = type
+        invalidate()
+    }
+
+    fun setNoteColorsVisible(visible: Boolean) {
+        showColorBar = visible
+        invalidate()
+    }
+
+    fun setHeadersVisible(visible: Boolean) {
+        showHeaders = visible
+        invalidate()
+    }
+
 
     /*--- Private Methods ---*/
 
@@ -196,7 +221,7 @@ class ThemePreview : View {
 
         val textTitleHeight = textHeight!! + (paddingMedium!! * 2)
         val textLineHeight = textHeight!! + paddingSmall!!
-        val lines = if (previewLines > MAX_LINES) MAX_LINES else previewLines
+        val lines = if (previewLines > maxLines) maxLines else previewLines
         val viewHeight = textTitleHeight + (lines * textLineHeight) + paddingSmall!!
 
         // Background
@@ -224,7 +249,7 @@ class ThemePreview : View {
         )
 
         // Date
-        if (DATE_TYPE != DateType.NONE) {
+        if (dateType != DateType.NONE) {
             paint.color = ContextCompat.getColor(context, R.color.lightTextTertiary)
             canvas?.drawRoundRect(
                     (viewWidth!! - (paddingLarge!! + paddingMedium!!) - (scaleUnit!! * 1.7)).toFloat(),
@@ -262,10 +287,5 @@ class ThemePreview : View {
     companion object {
         private const val STROKE_WIDTH = 3.toFloat()
         private const val CORNER_RADIUS = 3.toFloat()
-
-        private const val SHOW_HEADERS = false
-        private const val SHOW_COLOR_BAR = true
-        private const val MAX_LINES = 2
-        private val DATE_TYPE = DateType.DYNAMIC
     }
 }
