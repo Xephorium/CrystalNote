@@ -8,7 +8,7 @@
     <color name="lightToolbarRipple">@color/rippleDark</color>
     <color name="lightToolbarTextPrimary">@color/whiteSmoke</color>
     <color name="lightToolbarTextSecondary">@color/whiteSmokeAlpha</color>
-    <color name="lightBackground">#f6f6f6</color>
+    <color name="lightBackground">@color/direwolf</color>
     <color name="lightDivider">#ddd</color>
     <color name="lightOverscroll">@color/charcoalLight</color>
     <color name="lightAccent">@color/charcoalLight</color>
@@ -23,10 +23,10 @@
     <color name="lightNoteColorBar">@color/gray8</color>
     <color name="lightNoteRipple">@color/rippleDefault</color>
     <color name="lightNoteUnderline">#ccc</color>
-    <color name="lightSettingsPreviewBackground">#ccc</color>
+    <color name="lightSettingsPreviewBackground">#b8b8b8</color>
     <color name="lightDrawerItem">@color/lightTextSecondary</color>
     <color name="lightDrawerItemSelected">@color/lightTextPrimary</color>
-    <color name="lightDrawerSelection">#ddd</color>
+    <color name="lightDrawerSelection">#eee</color>
 
     <color name="darkStatusBar">@color/charcoalDark</color>
     <color name="darkToolbar">@color/charcoalLight</color>
@@ -51,7 +51,7 @@
     <color name="darkSettingsPreviewBackground">#111</color>
     <color name="darkDrawerItem">@color/darkTextSecondary</color>
     <color name="darkDrawerItemSelected">@color/darkTextPrimary</color>
-    <color name="darkDrawerSelection">#555</color>
+    <color name="darkDrawerSelection">#494949</color>
 
 
     <!-- Custom Colors -->
@@ -66,14 +66,14 @@
     <color name="brown800">#4e342e</color>
     <color name="brown900">#3e2723</color>
     <color name="gray8">#888888</color>
-    <color name="direwolf">#EEEEEE</color>
+    <color name="direwolf">#f1f1f1</color>
     <color name="red500">#f44336</color>
     <color name="red700">#d32f2f</color>
-    <color name="sage">#01797C</color>
-    <color name="sageDesaturated">#448081</color>
-    <color name="sageDesaturatedDark">#114C50</color>
-    <color name="sageLight">#0DB1B6</color>
-    <color name="sageHighlight">#33057477</color>
+    <color name="sage">#007c89</color>
+    <color name="sageLight">#12B4B8</color>
+    <color name="sageHighlight">#333D8C94</color>
+    <color name="sageDesaturated">#3B8B92</color>
+    <color name="sageDesaturatedDark">#26555A</color>
     <color name="transparent">#00ffffff</color>
     <color name="white">#ffffff</color>
     <color name="whiteSmoke">#f3f3f3</color>
@@ -83,7 +83,7 @@
     <!-- Control Colors -->
 
     <color name="drawerFilterCharcoal">#cc333333</color>
-    <color name="drawerFilterBlack">#cc111111</color>
+    <color name="drawerFilterBlack">#cc191919</color>
     <color name="drawerFilterWhite">#ccffffff</color>
     <color name="drawerFilterSage">#cc01797C</color>
 

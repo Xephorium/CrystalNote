@@ -87,8 +87,7 @@ class ThemePreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        val backgroundColor = ColorUtils.blendARGB(theme.colorBackground, Color.BLACK, 0.015f)
-        this.setBackgroundColor(backgroundColor)
+        this.setBackgroundColor(theme.colorBackground)
 
         // Toolbar
         paint.color = theme.colorToolbar

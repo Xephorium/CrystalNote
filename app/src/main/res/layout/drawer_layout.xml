@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="?themeBackground"
+    android:background="?themeNoteBackground"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
