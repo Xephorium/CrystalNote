@@ -84,6 +84,12 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         switchSettingsToday.isChecked = checked
     }
 
+    override fun setPreviewTheme(theme: String) {
+        // TODO - Get Theme From System
+        val displayTheme = theme
+        //themePreview.setTheme(displayTheme)
+    }
+
     override fun setPreviewLines(lines: Int) {
         themePreview.setPreviewLines(lines)
     }

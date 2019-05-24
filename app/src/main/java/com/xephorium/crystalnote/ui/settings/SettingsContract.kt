@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.settings
 
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
@@ -14,6 +15,7 @@ interface SettingsContract {
         fun populateNoteColorsCheckbox(checked: Boolean)
         fun populateTodayHeaderCheckbox(checked: Boolean)
 
+        fun setPreviewTheme(theme: String)
         fun setPreviewLines(lines: Int)
         fun setPreviewDateType(type: DateType)
         fun setPreviewColorBoxVisibility(visible: Boolean)

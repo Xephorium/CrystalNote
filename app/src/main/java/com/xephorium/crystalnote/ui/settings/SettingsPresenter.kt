@@ -38,6 +38,7 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     override fun handleThemeChange(newTheme: String) {
         theme = newTheme
+        view?.setPreviewTheme(theme)
     }
 
     override fun handleNoteLinesChange(lines: Int) {

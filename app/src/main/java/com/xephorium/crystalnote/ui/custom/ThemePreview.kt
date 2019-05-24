@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
 
@@ -24,6 +25,7 @@ class ThemePreview : View {
     private var toolbarHeight: Int? = null
     private var headerHeight: Int? = null
     private var textHeight: Int? = null
+    private var colorBarWidth: Int? = null
     private var actionButtonRadius: Int? = null
 
     private var paddingLarge: Int? = null
@@ -66,9 +68,10 @@ class ThemePreview : View {
         }
         if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
 
-        if (textHeight == null) textHeight = (scaleUnit!! * .3).toInt()
-        if (headerHeight == null) headerHeight = (scaleUnit!! * .4).toInt()
         if (toolbarHeight == null) toolbarHeight = (scaleUnit!! * 2.25).toInt()
+        if (headerHeight == null) headerHeight = (scaleUnit!! * .3).toInt()
+        if (textHeight == null) textHeight = (scaleUnit!! * .25).toInt()
+        if (colorBarWidth == null) colorBarWidth = (scaleUnit!! * .35).toInt()
         if (actionButtonRadius == null) actionButtonRadius = (scaleUnit!! * 1).toInt()
 
         if (paddingLarge == null) paddingLarge = (scaleUnit!! * .75).toInt()
@@ -127,7 +130,7 @@ class ThemePreview : View {
             canvas?.drawRoundRect(
                     (paddingLarge!!).toFloat(),
                     currentVerticalPosition.toFloat(),
-                    (paddingLarge!! + (scaleUnit!! * 1.7)).toFloat(),
+                    (paddingLarge!! + (scaleUnit!! * 1.5)).toFloat(),
                     (currentVerticalPosition + headerHeight!!).toFloat(),
                     CORNER_RADIUS,
                     CORNER_RADIUS,
@@ -137,10 +140,10 @@ class ThemePreview : View {
         }
 
         // Card 1
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 4)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 5)
 
         // Card 2
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 2)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 2)
 
         // Header 2
         if (showHeaders) {
@@ -158,19 +161,19 @@ class ThemePreview : View {
         }
 
         // Card 3
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 6, 3)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3)
 
         // Card 4
         currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 1)
 
         // Card 5
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 4)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 4)
 
         // Card 6
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 2)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 2)
 
         // Card 7
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 6, 3)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3)
 
         // Floating Action Button
         paint.color = ContextCompat.getColor(context, R.color.red500)
@@ -187,6 +190,10 @@ class ThemePreview : View {
 
 
     /*--- Public Methods ---*/
+
+    fun setTheme(theme: CrystalNoteTheme) {
+        // TODO - Set Theme
+    }
 
     fun setPreviewLines(lines: Int) {
         maxLines = lines
@@ -223,6 +230,7 @@ class ThemePreview : View {
         val textLineHeight = textHeight!! + paddingSmall!!
         val lines = if (previewLines > maxLines) maxLines else previewLines
         val viewHeight = textTitleHeight + (lines * textLineHeight) + paddingSmall!!
+        val colorBarDisplayWidth = if (showColorBar) colorBarWidth!! else 0
 
         // Background
         paint.color = ContextCompat.getColor(context, R.color.lightNoteBackground)
@@ -236,10 +244,29 @@ class ThemePreview : View {
                 paint
         )
 
+        // Color Bar
+        paint.color = ContextCompat.getColor(context, R.color.red500)
+        canvas?.drawRoundRect(
+                (paddingLarge!!).toFloat(),
+                currentVerticalPosition.toFloat(),
+                (paddingLarge!! + colorBarDisplayWidth).toFloat(),
+                (currentVerticalPosition + viewHeight).toFloat(),
+                CORNER_RADIUS,
+                CORNER_RADIUS,
+                paint
+        )
+        canvas?.drawRect(
+                (paddingLarge!! + (colorBarDisplayWidth / 2)).toFloat(),
+                currentVerticalPosition.toFloat(),
+                (paddingLarge!! + colorBarDisplayWidth).toFloat(),
+                (currentVerticalPosition + viewHeight).toFloat(),
+                paint
+        )
+
         // Title
         paint.color = ContextCompat.getColor(context, R.color.lightTextPrimary)
         canvas?.drawRoundRect(
-                (paddingLarge!! + paddingMedium!!).toFloat(),
+                (colorBarDisplayWidth + paddingLarge!! + paddingMedium!!).toFloat(),
                 (currentVerticalPosition + paddingMedium!!).toFloat(),
                 (paddingLarge!! + paddingMedium!! + (scaleUnit!! * titleLength)).toFloat(),
                 (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
@@ -268,7 +295,7 @@ class ThemePreview : View {
             val lineEndPosition = viewWidth!! - (paddingLarge!! + paddingMedium!!)
             val baseHeight = currentVerticalPosition + textTitleHeight + (x * textLineHeight)
             canvas?.drawRoundRect(
-                    (paddingLarge!! + paddingMedium!!).toFloat(),
+                    (colorBarDisplayWidth + paddingLarge!! + paddingMedium!!).toFloat(),
                     (baseHeight).toFloat(),
                     (lineEndPosition).toFloat(),
                     (baseHeight + textHeight!!).toFloat(),
