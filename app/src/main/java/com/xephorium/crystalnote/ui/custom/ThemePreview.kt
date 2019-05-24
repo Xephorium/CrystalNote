@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.IntegerRes
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
@@ -86,7 +87,8 @@ class ThemePreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        this.setBackgroundColor(theme.colorBackground)
+        val backgroundColor = ColorUtils.blendARGB(theme.colorBackground, Color.BLACK, 0.015f)
+        this.setBackgroundColor(backgroundColor)
 
         // Toolbar
         paint.color = theme.colorToolbar
