@@ -35,6 +35,7 @@
     <attr name="themeTextHighlight" format="reference|color" />
 
     <attr name="themeNoteBackground" format="reference|color" />
+    <attr name="themeNoteColorBar" format="reference|color" />
     <attr name="themeNoteRipple" format="reference|color" />
     <attr name="themeNoteUnderline" format="reference|color" />
 

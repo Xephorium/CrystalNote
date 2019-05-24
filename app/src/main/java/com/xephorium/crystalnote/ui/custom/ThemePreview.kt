@@ -247,7 +247,7 @@ class ThemePreview : View {
         )
 
         // Color Bar
-        paint.color = theme.colorToolbar
+        paint.color = theme.colorNoteColorBar
         canvas?.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 currentVerticalPosition.toFloat(),

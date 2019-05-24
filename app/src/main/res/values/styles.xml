@@ -70,6 +70,7 @@
         <item name="themeTextHighlight">@color/lightTextHighlight</item>
 
         <item name="themeNoteBackground">@color/lightNoteBackground</item>
+        <item name="themeNoteColorBar">@color/lightNoteColorBar</item>
         <item name="themeNoteRipple">@color/lightNoteRipple</item>
         <item name="themeNoteUnderline">@color/lightNoteUnderline</item>
 
@@ -109,6 +110,7 @@
         <item name="themeTextHighlight">@color/darkTextHighlight</item>
 
         <item name="themeNoteBackground">@color/darkNoteBackground</item>
+        <item name="themeNoteColorBar">@color/darkNoteColorBar</item>
         <item name="themeNoteRipple">@color/darkNoteRipple</item>
         <item name="themeNoteUnderline">@color/darkNoteUnderline</item>
 
@@ -135,6 +137,7 @@
         <item name="themeTextTertiary">@color/sageDesaturated</item>
         <item name="themeTextHandle">@color/sageLight</item>
         <item name="themeTextHighlight">@color/sageHighlight</item>
+        <item name="themeNoteColorBar">@color/sage</item>
         <item name="themeDrawerItem">@color/sageDesaturated</item>
         <item name="themeDrawerItemSelected">@color/sageDesaturatedDark</item>
         <item name="themeDrawerItemSelectedBackground">@color/sageHighlight</item>

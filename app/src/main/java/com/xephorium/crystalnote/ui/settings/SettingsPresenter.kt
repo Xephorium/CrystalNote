@@ -20,8 +20,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
         this.view?.populateTheme(theme)
         this.view?.populateNotePreviewLines(notePreviewLines)
         this.view?.populateNoteDateType(noteDateType)
-        this.view?.populateNoteColorsCheckbox(noteColorsEnabled)
-        this.view?.populateTodayHeaderCheckbox(todayHeaderEnabled)
+        this.view?.populateNoteColorsSwitch(noteColorsEnabled)
+        this.view?.populateTodayHeaderSwitch(todayHeaderEnabled)
 
         this.view?.setPreviewLines(notePreviewLines)
         this.view?.setPreviewDateType(noteDateType)

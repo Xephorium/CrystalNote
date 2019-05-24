@@ -12,8 +12,8 @@ interface SettingsContract {
         fun populateTheme(theme: String)
         fun populateNotePreviewLines(lines: Int)
         fun populateNoteDateType(dateType: DateType)
-        fun populateNoteColorsCheckbox(checked: Boolean)
-        fun populateTodayHeaderCheckbox(checked: Boolean)
+        fun populateNoteColorsSwitch(checked: Boolean)
+        fun populateTodayHeaderSwitch(checked: Boolean)
 
         fun setPreviewTheme(theme: String)
         fun setPreviewLines(lines: Int)

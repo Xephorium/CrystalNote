@@ -76,11 +76,11 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         selectorSettingsDate.setSelection(dateType.ordinal)
     }
 
-    override fun populateNoteColorsCheckbox(checked: Boolean) {
+    override fun populateNoteColorsSwitch(checked: Boolean) {
         switchSettingsNoteColors.isChecked = checked
     }
 
-    override fun populateTodayHeaderCheckbox(checked: Boolean) {
+    override fun populateTodayHeaderSwitch(checked: Boolean) {
         switchSettingsToday.isChecked = checked
     }
 

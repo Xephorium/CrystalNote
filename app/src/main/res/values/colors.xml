@@ -20,6 +20,7 @@
     <color name="lightTextHighlight">#7d888888</color>
     <color name="lightTextHandle">@color/gray8</color>
     <color name="lightNoteBackground">@color/white</color>
+    <color name="lightNoteColorBar">@color/gray8</color>
     <color name="lightNoteRipple">@color/rippleDefault</color>
     <color name="lightNoteUnderline">#ccc</color>
     <color name="lightSettingsPreviewBackground">#ccc</color>
@@ -44,6 +45,7 @@
     <color name="darkTextHighlight">#7d888888</color>
     <color name="darkTextHandle">@color/white</color>
     <color name="darkNoteBackground">#555</color>
+    <color name="darkNoteColorBar">@color/gray8</color>
     <color name="darkNoteRipple">@color/rippleLight</color>
     <color name="darkNoteUnderline">#777</color>
     <color name="darkSettingsPreviewBackground">#111</color>

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.model.Note
@@ -85,7 +86,10 @@ open class NoteListAdapter(
                 else -> holder.date.visibility = View.GONE
             }
 
-            DrawableCompat.setTint(holder.colorBar.background, note.color)
+            DrawableCompat.setTint(
+                    holder.colorBar.background,
+                    CrystalNoteTheme.fromCurrentTheme(context).colorNoteColorBar
+            )
             if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE
 
             holder.setNoteClickListeners(note)
