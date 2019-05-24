@@ -33,6 +33,7 @@
         >
 
         <com.xephorium.crystalnote.ui.custom.ThemePreview
+            android:id="@+id/themePreview"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/paddingActivity"

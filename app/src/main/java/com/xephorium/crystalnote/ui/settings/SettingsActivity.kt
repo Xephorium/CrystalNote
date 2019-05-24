@@ -84,6 +84,22 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         switchSettingsToday.isChecked = checked
     }
 
+    override fun setPreviewLines(lines: Int) {
+        themePreview.setPreviewLines(lines)
+    }
+
+    override fun setPreviewDateType(type: DateType) {
+        themePreview.setDateType(type)
+    }
+
+    override fun setPreviewColorBoxVisibility(visible: Boolean) {
+        themePreview.setNoteColorsVisible(visible)
+    }
+
+    override fun setPreviewHeaderVisibility(visible: Boolean) {
+        themePreview.setHeadersVisible(visible)
+    }
+
     override fun showNavigationDrawer() {
         openDrawer()
     }

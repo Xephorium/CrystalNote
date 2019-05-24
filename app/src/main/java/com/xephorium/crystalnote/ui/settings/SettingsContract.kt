@@ -14,6 +14,11 @@ interface SettingsContract {
         fun populateNoteColorsCheckbox(checked: Boolean)
         fun populateTodayHeaderCheckbox(checked: Boolean)
 
+        fun setPreviewLines(lines: Int)
+        fun setPreviewDateType(type: DateType)
+        fun setPreviewColorBoxVisibility(visible: Boolean)
+        fun setPreviewHeaderVisibility(visible: Boolean)
+
         fun showNavigationDrawer()
         fun showDiscardChangesDialog()
         fun refreshScreen()

@@ -22,6 +22,11 @@ class SettingsPresenter : SettingsContract.Presenter() {
         this.view?.populateNoteDateType(noteDateType)
         this.view?.populateNoteColorsCheckbox(noteColorsEnabled)
         this.view?.populateTodayHeaderCheckbox(todayHeaderEnabled)
+
+        this.view?.setPreviewLines(notePreviewLines)
+        this.view?.setPreviewDateType(noteDateType)
+        this.view?.setPreviewColorBoxVisibility(noteColorsEnabled)
+        this.view?.setPreviewHeaderVisibility(todayHeaderEnabled)
     }
 
 
@@ -37,18 +42,22 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     override fun handleNoteLinesChange(lines: Int) {
         notePreviewLines = lines
+        view?.setPreviewLines(notePreviewLines)
     }
 
     override fun handleNoteDateTypeChange(dateType: DateType) {
         noteDateType = dateType
+        view?.setPreviewDateType(noteDateType)
     }
 
     override fun handleNoteColorsToggle(checked: Boolean) {
         noteColorsEnabled = checked
+        view?.setPreviewColorBoxVisibility(noteColorsEnabled)
     }
 
     override fun handleTodayHeaderToggle(checked: Boolean) {
         todayHeaderEnabled = checked
+        view?.setPreviewHeaderVisibility(todayHeaderEnabled)
     }
 
     override fun handleSaveClick() {
