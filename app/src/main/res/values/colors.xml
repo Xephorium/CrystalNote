@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <!-- Base Theme Colors -->
 
     <color name="lightStatusBar">@color/charcoalDark</color>
@@ -66,6 +67,9 @@
     <color name="brown800">#4e342e</color>
     <color name="brown900">#3e2723</color>
     <color name="gray8">#888888</color>
+    <color name="olive">#7B8F5A</color>
+    <color name="oliveDesaturated">#889E64</color>
+    <color name="oliveHighlight">#33ABD860</color>
     <color name="direwolf">#f1f1f1</color>
     <color name="red500">#f44336</color>
     <color name="red700">#d32f2f</color>
@@ -86,6 +90,7 @@
     <color name="drawerFilterBlack">#cc191919</color>
     <color name="drawerFilterWhite">#ccffffff</color>
     <color name="drawerFilterSage">#cc01797C</color>
+    <color name="drawerFilterOlive">#CC26350E</color>
 
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#33ffffff</color>

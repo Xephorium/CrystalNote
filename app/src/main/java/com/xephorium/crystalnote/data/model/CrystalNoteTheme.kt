@@ -23,7 +23,8 @@ data class CrystalNoteTheme(
     enum class Themes(val displayName: String, val resourceId: Int) {
         LIGHT("Light", R.style.Light),
         DARK("Dark", R.style.Dark),
-        SAGE("Sage", R.style.Sage);
+        SAGE("Sage", R.style.Sage),
+        OLIVE("Olive", R.style.Olive);
 
         companion object {
             fun fromName(name: String): Themes = values().firstOrNull { it.displayName == name } ?: values()[0]

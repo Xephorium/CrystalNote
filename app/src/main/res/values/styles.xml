@@ -144,4 +144,13 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterSage</item>
     </style>
 
+    <style name="Olive" parent="Dark">
+        <item name="themeAccent">@color/olive</item>
+        <item name="themeTextTertiary">@color/oliveDesaturated</item>
+        <item name="themeTextHandle">@color/olive</item>
+        <item name="themeTextHighlight">@color/oliveHighlight</item>
+        <item name="themeNoteColorBar">@color/olive</item>
+        <item name="themeDrawerItemSelectedBackground">@color/oliveHighlight</item>
+    </style>
+
 </resources>
