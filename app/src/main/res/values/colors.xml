@@ -57,6 +57,11 @@
 
     <!-- Custom Colors -->
 
+    <color name="azure">#408FE4</color>
+    <color name="azureLight">#408FE4</color>
+    <color name="azureHighlight">#33408FE4</color>
+    <color name="azureDesaturated">#5599E0</color>
+    <color name="azureDesaturatedDark">#3D6C9E</color>
     <color name="charcoalDark">#222222</color>
     <color name="charcoalLight">#333333</color>
     <color name="black">#000</color>
@@ -89,6 +94,7 @@
     <color name="drawerFilterCharcoal">#cc333333</color>
     <color name="drawerFilterBlack">#cc191919</color>
     <color name="drawerFilterWhite">#ccffffff</color>
+    <color name="drawerFilterAzure">#cc4A84C2</color>
     <color name="drawerFilterSage">#cc01797C</color>
     <color name="drawerFilterOlive">#CC26350E</color>
 

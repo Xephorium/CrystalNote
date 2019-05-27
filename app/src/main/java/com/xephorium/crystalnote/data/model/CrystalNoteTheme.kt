@@ -23,6 +23,7 @@ data class CrystalNoteTheme(
     enum class Themes(val displayName: String, val resourceId: Int) {
         LIGHT("Light", R.style.Light),
         DARK("Dark", R.style.Dark),
+        AZURE("Azure", R.style.Azure),
         SAGE("Sage", R.style.Sage),
         OLIVE("Olive", R.style.Olive);
 
