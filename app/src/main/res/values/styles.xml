@@ -139,7 +139,6 @@
         <item name="themeNoteColorBar">@color/azureDesaturated</item>
         <item name="themeDrawerItem">@color/azureDesaturated</item>
         <item name="themeDrawerItemSelected">@color/azureDesaturatedDark</item>
-        <item name="themeDrawerItemSelectedBackground">@color/azureHighlight</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterAzure</item>
     </style>
 
@@ -156,8 +155,23 @@
         <item name="themeNoteColorBar">@color/sageDesaturated</item>
         <item name="themeDrawerItem">@color/sageDesaturated</item>
         <item name="themeDrawerItemSelected">@color/sageDesaturatedDark</item>
-        <item name="themeDrawerItemSelectedBackground">@color/sageHighlight</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterSage</item>
+    </style>
+
+    <style name="Tomato" parent="Light">
+        <item name="themeStatusBar">@color/tomato</item>
+        <item name="themeToolbar">@color/tomato</item>
+        <item name="themeToolbarTextSecondary">@color/white</item>
+        <item name="themeOverscroll">@color/tomato</item>
+        <item name="themeAccent">@color/tomatoLight</item>
+        <item name="themeAccentTextSecondary">@color/white</item>
+        <item name="themeTextTertiary">@color/tomatoDesaturated</item>
+        <item name="themeTextHandle">@color/tomatoLight</item>
+        <item name="themeTextHighlight">@color/tomatoHighlight</item>
+        <item name="themeNoteColorBar">@color/tomatoDesaturated</item>
+        <item name="themeDrawerItem">@color/tomatoDesaturated</item>
+        <item name="themeDrawerItemSelected">@color/tomatoDesaturatedDark</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterTomato</item>
     </style>
 
     <style name="Olive" parent="Dark">
