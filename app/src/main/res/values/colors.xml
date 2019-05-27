@@ -57,11 +57,11 @@
 
     <!-- Custom Colors -->
 
-    <color name="azure">#408FE4</color>
-    <color name="azureLight">#408FE4</color>
-    <color name="azureHighlight">#33408FE4</color>
-    <color name="azureDesaturated">#5599E0</color>
-    <color name="azureDesaturatedDark">#3D6C9E</color>
+    <color name="azure">#3F7AB9</color>
+    <color name="azureLight">#4DA5FF</color>
+    <color name="azureHighlight">#333F7AB9</color>
+    <color name="azureDesaturated">#5F91C7</color>
+    <color name="azureDesaturatedDark">#406185</color>
     <color name="charcoalDark">#222222</color>
     <color name="charcoalLight">#333333</color>
     <color name="black">#000</color>
@@ -94,9 +94,9 @@
     <color name="drawerFilterCharcoal">#cc333333</color>
     <color name="drawerFilterBlack">#cc191919</color>
     <color name="drawerFilterWhite">#ccffffff</color>
-    <color name="drawerFilterAzure">#cc4A84C2</color>
+    <color name="drawerFilterAzure">#CC2064AF</color>
     <color name="drawerFilterSage">#cc01797C</color>
-    <color name="drawerFilterOlive">#CC26350E</color>
+    <color name="drawerFilterOlive">#cc26350E</color>
 
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#33ffffff</color>

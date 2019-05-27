@@ -52,7 +52,7 @@
         <item name="themeToolbarTextPrimary">@color/lightToolbarTextPrimary</item>
         <item name="themeToolbarTextSecondary">@color/lightToolbarTextSecondary</item>
 
-        <item name="themeBackground">@color/direwolf</item>
+        <item name="themeBackground">@color/lightBackground</item>
         <item name="themeDivider">@color/lightDivider</item>
         <item name="themeOverscroll">@color/lightOverscroll</item>
 
@@ -132,6 +132,7 @@
         <item name="themeToolbarTextSecondary">@color/white</item>
         <item name="themeOverscroll">@color/azure</item>
         <item name="themeAccent">@color/azureLight</item>
+        <item name="themeAccentTextSecondary">@color/white</item>
         <item name="themeTextTertiary">@color/azureDesaturated</item>
         <item name="themeTextHandle">@color/azureLight</item>
         <item name="themeTextHighlight">@color/azureHighlight</item>
@@ -148,6 +149,7 @@
         <item name="themeToolbarTextSecondary">@color/white</item>
         <item name="themeOverscroll">@color/sage</item>
         <item name="themeAccent">@color/sageLight</item>
+        <item name="themeAccentTextSecondary">@color/white</item>
         <item name="themeTextTertiary">@color/sageDesaturated</item>
         <item name="themeTextHandle">@color/sageLight</item>
         <item name="themeTextHighlight">@color/sageHighlight</item>
