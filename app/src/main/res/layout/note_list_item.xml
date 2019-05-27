@@ -26,7 +26,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:backgroundTint="@color/blue700"
+            tools:backgroundTint="@color/azureLight"
             />
 
         <TextView
