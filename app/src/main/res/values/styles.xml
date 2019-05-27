@@ -137,7 +137,7 @@
         <item name="themeTextTertiary">@color/sageDesaturated</item>
         <item name="themeTextHandle">@color/sageLight</item>
         <item name="themeTextHighlight">@color/sageHighlight</item>
-        <item name="themeNoteColorBar">@color/sage</item>
+        <item name="themeNoteColorBar">@color/sageDesaturated</item>
         <item name="themeDrawerItem">@color/sageDesaturated</item>
         <item name="themeDrawerItemSelected">@color/sageDesaturatedDark</item>
         <item name="themeDrawerItemSelectedBackground">@color/sageHighlight</item>
