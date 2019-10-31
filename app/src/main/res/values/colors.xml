@@ -57,6 +57,10 @@
 
     <!-- Custom Colors -->
 
+    <color name="Black">#000000</color>
+    <color name="BlackDesaturated">#424242</color>
+    <color name="BlackTextHandle">#757575</color>
+    <color name="BlackToolbar">#212121</color>
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>
     <color name="azureLight">#4DA5FF</color>

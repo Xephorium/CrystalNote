@@ -179,6 +179,16 @@
 
     <!-- Custom Color Themes -->
 
+    <style name="Black" parent="Dark">
+        <item name="themeBackground">@color/Black</item>
+        <item name="themeTextHandle">@color/BlackTextHandle</item>
+        <item name="themeToolbar">@color/BlackToolbar</item>
+        <item name="themeNoteBackground">@color/Black</item>
+        <item name="themeNoteColorBar">@color/BlackDesaturated</item>
+        <item name="themeSettingsPreviewBackground">@color/Black</item>
+        <item name="themeDrawerItemSelectedBackground">@color/BlackDesaturated</item>
+    </style>
+
     <style name="Azure" parent="Light">
         <item name="themeStatusBar">@color/azureDark</item>
         <item name="themeToolbar">@color/azure</item>
