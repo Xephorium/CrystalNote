@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:overScrollMode="ifContentScrolls"
+    android:scrollbars="none"
     android:background="?themeBackground"
     >
 
     <com.xephorium.crystalnote.ui.custom.LineEditText
         android:id="@+id/textNoteContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
         android:paddingStart="@dimen/paddingActivity"
         android:paddingEnd="@dimen/paddingActivity"
         android:textColor="?themeTextSecondary"
         />
 
-</RelativeLayout>
+</ScrollView>

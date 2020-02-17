@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.custom
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.ui.extensions.getThemeColor

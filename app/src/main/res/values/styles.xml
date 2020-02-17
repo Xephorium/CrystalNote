@@ -11,9 +11,20 @@
     <!-- Universal App Theme -->
 
     <style name="CrystalNoteTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:windowTranslucentStatus">true</item>
+
+        <!--
+             Note: Layout bug! Setting status bar translucency to true breaks dynamic layout
+                   resizing on soft keyboard load regardless of whether "adjustResize" is set.
+                   This causes significant problems for EditText size and scrolling in the
+                   UpdateActivity. For now, I've disabled the effect. :(
+
+                   More details on Stack Overflow: https://tinyurl.com/ycmzf35o
+        -->
+        <item name="android:windowTranslucentStatus">false</item>
+
         <item name="windowNoTitle">true</item>
         <item name="colorAccent">?themeAccent</item>
+        <item name="colorPrimaryDark">?themeStatusBar</item>
         <item name="android:colorControlActivated">?themeTextHandle</item>
         <item name="android:colorControlHighlight">?themeToolbarRipple</item>
         <item name="android:textColorHighlight">?themeTextHighlight</item>
@@ -127,7 +138,7 @@
     <!-- Custom Color Themes -->
 
     <style name="Azure" parent="Light">
-        <item name="themeStatusBar">@color/azure</item>
+        <item name="themeStatusBar">@color/azureDark</item>
         <item name="themeToolbar">@color/azure</item>
         <item name="themeToolbarTextSecondary">@color/white</item>
         <item name="themeOverscroll">@color/azure</item>
@@ -143,7 +154,7 @@
     </style>
 
     <style name="Sage" parent="Light">
-        <item name="themeStatusBar">@color/sage</item>
+        <item name="themeStatusBar">@color/sageDark</item>
         <item name="themeToolbar">@color/sage</item>
         <item name="themeToolbarTextSecondary">@color/white</item>
         <item name="themeOverscroll">@color/sage</item>
@@ -159,7 +170,7 @@
     </style>
 
     <style name="Tomato" parent="Light">
-        <item name="themeStatusBar">@color/tomato</item>
+        <item name="themeStatusBar">@color/tomatoDark</item>
         <item name="themeToolbar">@color/tomato</item>
         <item name="themeToolbarTextSecondary">@color/white</item>
         <item name="themeOverscroll">@color/tomato</item>

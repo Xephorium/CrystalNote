@@ -40,7 +40,7 @@ class LineEditText : EditText {
         this.background = TRANSPARENT
         this.gravity = Gravity.TOP
         this.inputType = INPUT_TYPE
-        this.isScrollContainer = true
+        this.isScrollContainer = false
         this.isVerticalScrollBarEnabled = false
 
         paint.style = Paint.Style.STROKE

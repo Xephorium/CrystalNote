@@ -54,7 +54,6 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
 
         setupViewFields()
-        setupStatusBar()
         setupToolbar()
         setupNavDrawerItems()
     }
@@ -160,11 +159,6 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
 
     /*--- Private Setup Methods ---*/
-
-    private fun setupStatusBar() {
-        layoutDrawerActivityStatusBar.minimumHeight = DisplayUtils.getStatusBarHeight(this)
-        layoutDrawerActivityStatusBar.elevation = resources.getDimension(R.dimen.toolbarElevation)
-    }
 
     private fun setupToolbar() {
         setSupportActionBar(toolbar)

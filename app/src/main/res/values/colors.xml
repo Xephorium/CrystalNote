@@ -4,7 +4,7 @@
 
     <!-- Base Theme Colors -->
 
-    <color name="lightStatusBar">@color/charcoalDark</color>
+    <color name="lightStatusBar">@color/charcoalDarker</color>
     <color name="lightToolbar">@color/charcoalLight</color>
     <color name="lightToolbarRipple">@color/rippleDark</color>
     <color name="lightToolbarTextPrimary">@color/whiteSmoke</color>
@@ -29,7 +29,7 @@
     <color name="lightDrawerItemSelected">@color/lightTextPrimary</color>
     <color name="lightDrawerSelection">#eee</color>
 
-    <color name="darkStatusBar">@color/charcoalDark</color>
+    <color name="darkStatusBar">@color/charcoalDarker</color>
     <color name="darkToolbar">@color/charcoalLight</color>
     <color name="darkToolbarRipple">@color/rippleDark</color>
     <color name="darkToolbarTextPrimary">@color/whiteSmoke</color>
@@ -58,11 +58,13 @@
     <!-- Custom Colors -->
 
     <color name="azure">#3F7AB9</color>
+    <color name="azureDark">#26496F</color>
     <color name="azureLight">#4DA5FF</color>
     <color name="azureHighlight">#333F7AB9</color>
     <color name="azureDesaturated">#5F91C7</color>
     <color name="azureDesaturatedDark">#406185</color>
     <color name="charcoalDark">#222222</color>
+    <color name="charcoalDarker">#161616</color>
     <color name="charcoalLight">#333333</color>
     <color name="black">#000</color>
     <color name="gray8">#888888</color>
@@ -71,11 +73,13 @@
     <color name="oliveHighlight">#33ABD860</color>
     <color name="direwolf">#f1f1f1</color>
     <color name="sage">#007c89</color>
+    <color name="sageDark">#004A52</color>
     <color name="sageLight">#12B4B8</color>
     <color name="sageHighlight">#333D8C94</color>
     <color name="sageDesaturated">#3B8B92</color>
     <color name="sageDesaturatedDark">#255B61</color>
     <color name="tomato">#B3564D</color>
+    <color name="tomatoDark">#6B342E</color>
     <color name="tomatoLight">#F17265</color>
     <color name="tomatoHighlight">#28B65349</color>
     <color name="tomatoDesaturated">#B66860</color>
