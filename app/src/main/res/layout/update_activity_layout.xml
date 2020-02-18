@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/paddingActivity"
         android:paddingEnd="@dimen/paddingActivity"
+        android:paddingTop="@dimen/paddingActivity"
         android:textColor="?themeTextSecondary"
         />
 

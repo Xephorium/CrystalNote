@@ -19,6 +19,7 @@ class LineEditText : EditText {
     /*--- Declare Variables ---*/
 
     private lateinit var paint: Paint
+    private var showUnderline = true
 
 
     /*--- Line Edit Text Setup ---*/
@@ -51,20 +52,35 @@ class LineEditText : EditText {
     /*--- Lifecycle Methods ---*/
 
     override fun onDraw(canvas: Canvas) {
-        val viewHeight = if (height > computeVerticalScrollRange()) height
-        else computeVerticalScrollRange()
-        val numLines = (viewHeight - paddingTop - paddingBottom) / lineHeight
+        if (showUnderline) {
+            val viewHeight = if (height > computeVerticalScrollRange()) height
+            else computeVerticalScrollRange()
+            val numLines = (viewHeight - paddingTop - paddingBottom) / lineHeight
 
-        for (x in 0 until numLines + 1) {
-            val lineYPos = lineHeight * (x + 1) + paddingTop
-            canvas.drawLine(
-                    (left + paddingLeft).toFloat(),
-                    lineYPos.toFloat(),
-                    (right - paddingRight).toFloat(),
-                    lineYPos.toFloat(), paint
-            )
+            for (x in 0 until numLines + 1) {
+                val lineYPos = lineHeight * (x + 1) + paddingTop
+                canvas.drawLine(
+                        (left + paddingLeft).toFloat(),
+                        lineYPos.toFloat(),
+                        (right - paddingRight).toFloat(),
+                        lineYPos.toFloat(), paint
+                )
+            }
         }
         super.onDraw(canvas)
+    }
+
+
+    /*--- Public Methods ---*/
+
+    fun showUnderline() {
+        showUnderline = true
+        invalidate()
+    }
+
+    fun hideUnderline() {
+        showUnderline = false
+        invalidate()
     }
 
 
