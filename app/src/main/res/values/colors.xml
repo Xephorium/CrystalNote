@@ -48,7 +48,7 @@
     <color name="darkNoteBackground">#555</color>
     <color name="darkNoteColorBar">@color/gray8</color>
     <color name="darkNoteRipple">@color/rippleLight</color>
-    <color name="darkNoteUnderline">#777</color>
+    <color name="darkNoteUnderline">#666</color>
     <color name="darkSettingsPreviewBackground">#1d1d1d</color>
     <color name="darkDrawerItem">@color/darkTextSecondary</color>
     <color name="darkDrawerItemSelected">@color/darkTextPrimary</color>
