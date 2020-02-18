@@ -23,6 +23,12 @@ class UpdatePresenter : UpdateContract.Presenter() {
                 // Update View
                 this.view?.populateFields(it.name, noteRepository.readNoteContents(it.name))
             }
+
+            // Update UI
+            if (sharedPreferencesRepository.getNoteUnderlineEnabled())
+                this.view?.showTextUnderline()
+            else
+                this.view?.hideTextUnderline()
         }
     }
 

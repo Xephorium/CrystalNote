@@ -16,12 +16,14 @@ class SettingsPresenter : SettingsContract.Presenter() {
         noteDateType = sharedPreferencesRepository.getNoteDateType()
         noteColorsEnabled = sharedPreferencesRepository.getNoteColorsEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
+        noteUnderlineEnabled = sharedPreferencesRepository.getNoteUnderlineEnabled()
 
         this.view?.populateTheme(theme)
         this.view?.populateNotePreviewLines(notePreviewLines)
         this.view?.populateNoteDateType(noteDateType)
         this.view?.populateNoteColorsSwitch(noteColorsEnabled)
         this.view?.populateTodayHeaderSwitch(todayHeaderEnabled)
+        this.view?.populateNoteUnderlineSwitch(noteUnderlineEnabled)
 
         this.view?.setPreviewLines(notePreviewLines)
         this.view?.setPreviewDateType(noteDateType)
@@ -61,11 +63,16 @@ class SettingsPresenter : SettingsContract.Presenter() {
         view?.setPreviewHeaderVisibility(todayHeaderEnabled)
     }
 
+    override fun handleNoteUnderlineToggle(checked: Boolean) {
+        noteUnderlineEnabled = checked
+    }
+
     override fun handleSaveClick() {
         sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         sharedPreferencesRepository.setNoteDateType(noteDateType)
         sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
+        sharedPreferencesRepository.setNoteUnderlineEnabled(noteUnderlineEnabled)
 
         if (sharedPreferencesRepository.getTheme() != theme) {
             sharedPreferencesRepository.setTheme(theme)
@@ -100,6 +107,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
         if (sharedPreferencesRepository.getNoteColorsEnabled() != noteColorsEnabled) unsavedChanges = true
 
         if (sharedPreferencesRepository.getTodayHeaderEnabled() != todayHeaderEnabled) unsavedChanges = true
+
+        if (sharedPreferencesRepository.getNoteUnderlineEnabled() != noteUnderlineEnabled) unsavedChanges = true
 
         return unsavedChanges
     }

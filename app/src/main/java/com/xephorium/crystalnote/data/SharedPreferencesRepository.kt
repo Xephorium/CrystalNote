@@ -68,6 +68,17 @@ class SharedPreferencesRepository(private val context: Context) {
         return prefs.getBoolean(TODAY_HEADER_ENABLED, true)
     }
 
+    fun setNoteUnderlineEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(NOTE_UNDERLINE_ENABLED, enabled)
+        editor.apply()
+    }
+
+    fun getNoteUnderlineEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(NOTE_UNDERLINE_ENABLED, true)
+    }
+
 
     /*--- Public State Methods ---*/
 
@@ -105,6 +116,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val NOTE_DATE_TYPE = "NoteDateType"
         private const val NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
+        private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
         private const val DISPLAY_NOTE_NAME = "DisplayNoteName"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
     }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.NoteRepository
+import com.xephorium.crystalnote.data.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
@@ -41,6 +42,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
         presenter = UpdatePresenter()
         presenter.noteRepository = NoteRepository(this)
+        presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.isInEditMode = isInEditMode
         presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.initialName = initialName
@@ -74,6 +76,14 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     override fun populateFields(name: String, content: String) {
         toolbar.setEditTextContent(name)
         textNoteContent.setText(content)
+    }
+
+    override fun showTextUnderline() {
+        textNoteContent.showUnderline()
+    }
+
+    override fun hideTextUnderline() {
+        textNoteContent.hideUnderline()
     }
 
     override fun showInvalidNameDialog() {

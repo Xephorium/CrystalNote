@@ -84,6 +84,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         switchSettingsToday.isChecked = checked
     }
 
+    override fun populateNoteUnderlineSwitch(checked: Boolean) {
+        switchSettingsUnderline.isChecked = checked
+    }
+
     override fun setPreviewTheme(theme: String) {
         themePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
     }
@@ -181,7 +185,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
                 presenter.handleNoteDateTypeChange(DateType.values()[position])
             }
         }
-        textSettingsThemeLabel.setOnClickListener { selectorSettingsTheme.performClick() }
+        textSettingsNoteDateLabel.setOnClickListener { selectorSettingsDate.performClick() }
     }
 
     private fun setupSwitches() {
@@ -190,6 +194,9 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         }
         switchSettingsToday.setOnCheckedChangeListener { _, checked ->
             presenter.handleTodayHeaderToggle(checked)
+        }
+        switchSettingsUnderline.setOnCheckedChangeListener { _, checked ->
+            presenter.handleNoteUnderlineToggle(checked)
         }
     }
 

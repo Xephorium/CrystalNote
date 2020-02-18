@@ -14,6 +14,7 @@ interface SettingsContract {
         fun populateNoteDateType(dateType: DateType)
         fun populateNoteColorsSwitch(checked: Boolean)
         fun populateTodayHeaderSwitch(checked: Boolean)
+        fun populateNoteUnderlineSwitch(checked: Boolean)
 
         fun setPreviewTheme(theme: String)
         fun setPreviewLines(lines: Int)
@@ -29,11 +30,13 @@ interface SettingsContract {
 
     abstract class Presenter : BasePresenter<View>() {
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+
         lateinit var theme: String
         var notePreviewLines: Int = 1
         lateinit var noteDateType: DateType
         var noteColorsEnabled: Boolean = true
         var todayHeaderEnabled: Boolean = true
+        var noteUnderlineEnabled: Boolean = true
 
         abstract fun handleMenuButtonClick()
         abstract fun handleThemeChange(newTheme: String)
@@ -41,6 +44,7 @@ interface SettingsContract {
         abstract fun handleNoteDateTypeChange(dateType: DateType)
         abstract fun handleNoteColorsToggle(checked: Boolean)
         abstract fun handleTodayHeaderToggle(checked: Boolean)
+        abstract fun handleNoteUnderlineToggle(checked: Boolean)
         abstract fun handleSaveClick()
         abstract fun handleBackClick()
         abstract fun handleBackConfirm()
