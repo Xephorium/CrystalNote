@@ -109,7 +109,7 @@ class LineEditText : EditText {
     companion object {
         val TRANSPARENT = ColorDrawable(0x00FFFFFF)
         const val UNDERLINE_VERTICAL_OFFSET = 4
-        const val UNDERLINE_VERTICAL_OFFSET_MONO = 8
+        const val UNDERLINE_VERTICAL_OFFSET_MONO = 10
         const val INPUT_TYPE = InputType.TYPE_CLASS_TEXT or
                 InputType.TYPE_TEXT_FLAG_MULTI_LINE or
                 InputType.TYPE_TEXT_FLAG_CAP_SENTENCES

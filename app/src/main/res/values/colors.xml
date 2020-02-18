@@ -15,8 +15,8 @@
     <color name="lightAccent">@color/charcoalLight</color>
     <color name="lightAccentTextPrimary">@color/white</color>
     <color name="lightAccentTextSecondary">#bbf3f3f3</color>
-    <color name="lightTextPrimary">#222</color>
-    <color name="lightTextSecondary">#777</color>
+    <color name="lightTextPrimary">#1c1c1c</color>
+    <color name="lightTextSecondary">#666</color>
     <color name="lightTextTertiary">#999</color>
     <color name="lightTextHighlight">#7d888888</color>
     <color name="lightTextHandle">@color/gray8</color>
