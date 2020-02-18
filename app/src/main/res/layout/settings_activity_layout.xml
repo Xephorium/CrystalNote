@@ -228,6 +228,20 @@
             android:textSize="@dimen/textSettings"
             />
 
+        <Switch
+            android:id="@+id/switchSettingsMonospace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:paddingStart="@dimen/paddingHuge"
+            android:paddingTop="@dimen/paddingMedium"
+            android:paddingEnd="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/settingsItemPadding"
+            android:text="@string/settingsMonospace"
+            android:textColor="?themeTextSecondary"
+            android:textSize="@dimen/textSettings"
+            />
+
         </LinearLayout>
 
     </ScrollView>

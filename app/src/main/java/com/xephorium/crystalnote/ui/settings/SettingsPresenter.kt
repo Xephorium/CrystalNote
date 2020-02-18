@@ -17,6 +17,7 @@ class SettingsPresenter : SettingsContract.Presenter() {
         noteColorsEnabled = sharedPreferencesRepository.getNoteColorsEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
         noteUnderlineEnabled = sharedPreferencesRepository.getNoteUnderlineEnabled()
+        useMonospacedFont = sharedPreferencesRepository.getMonospacedFontEnabled()
 
         this.view?.populateTheme(theme)
         this.view?.populateNotePreviewLines(notePreviewLines)
@@ -24,6 +25,7 @@ class SettingsPresenter : SettingsContract.Presenter() {
         this.view?.populateNoteColorsSwitch(noteColorsEnabled)
         this.view?.populateTodayHeaderSwitch(todayHeaderEnabled)
         this.view?.populateNoteUnderlineSwitch(noteUnderlineEnabled)
+        this.view?.populateMonospaceSwitch(useMonospacedFont)
 
         this.view?.setPreviewLines(notePreviewLines)
         this.view?.setPreviewDateType(noteDateType)
@@ -67,12 +69,17 @@ class SettingsPresenter : SettingsContract.Presenter() {
         noteUnderlineEnabled = checked
     }
 
+    override fun handleMonospaceToggle(checked: Boolean) {
+        useMonospacedFont = checked
+    }
+
     override fun handleSaveClick() {
         sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         sharedPreferencesRepository.setNoteDateType(noteDateType)
         sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
         sharedPreferencesRepository.setNoteUnderlineEnabled(noteUnderlineEnabled)
+        sharedPreferencesRepository.setMonospacedFontEnabled(useMonospacedFont)
 
         if (sharedPreferencesRepository.getTheme() != theme) {
             sharedPreferencesRepository.setTheme(theme)
@@ -109,6 +116,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
         if (sharedPreferencesRepository.getTodayHeaderEnabled() != todayHeaderEnabled) unsavedChanges = true
 
         if (sharedPreferencesRepository.getNoteUnderlineEnabled() != noteUnderlineEnabled) unsavedChanges = true
+
+        if (sharedPreferencesRepository.getMonospacedFontEnabled() != useMonospacedFont) unsavedChanges = true
 
         return unsavedChanges
     }

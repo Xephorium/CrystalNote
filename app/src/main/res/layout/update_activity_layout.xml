@@ -16,6 +16,8 @@
         android:paddingStart="@dimen/paddingActivity"
         android:paddingEnd="@dimen/paddingActivity"
         android:paddingTop="@dimen/paddingActivity"
+        android:lineSpacingMultiplier="1.1"
+        android:textSize="@dimen/textUpdate"
         android:textColor="?themeTextSecondary"
         />
 

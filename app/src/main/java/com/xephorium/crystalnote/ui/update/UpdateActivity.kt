@@ -86,6 +86,10 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         textNoteContent.hideUnderline()
     }
 
+    override fun showMonospacedFont() {
+        textNoteContent.useMonospacedFont()
+    }
+
     override fun showInvalidNameDialog() {
         val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
         alertDialog.setCancelable(false)

@@ -11,6 +11,7 @@ interface UpdateContract {
         fun populateFields(name: String, content: String)
         fun showTextUnderline()
         fun hideTextUnderline()
+        fun showMonospacedFont()
 
         fun showInvalidNameDialog()
         fun showDiscardChangesDialog()

@@ -8,7 +8,7 @@ import android.text.InputType
 import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.EditText
-import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.ui.extensions.getThemeColor
@@ -20,6 +20,7 @@ class LineEditText : EditText {
 
     private lateinit var paint: Paint
     private var showUnderline = true
+    private var useMonospacedFont = false
 
 
     /*--- Line Edit Text Setup ---*/
@@ -52,13 +53,18 @@ class LineEditText : EditText {
     /*--- Lifecycle Methods ---*/
 
     override fun onDraw(canvas: Canvas) {
+
+        // Draw Underline
         if (showUnderline) {
             val viewHeight = if (height > computeVerticalScrollRange()) height
             else computeVerticalScrollRange()
             val numLines = (viewHeight - paddingTop - paddingBottom) / lineHeight
 
+            val offset = if (useMonospacedFont) UNDERLINE_VERTICAL_OFFSET_MONO
+            else UNDERLINE_VERTICAL_OFFSET
+
             for (x in 0 until numLines + 1) {
-                val lineYPos = lineHeight * (x + 1) + paddingTop
+                val lineYPos = lineHeight * (x + 1) + paddingTop - offset
                 canvas.drawLine(
                         (left + paddingLeft).toFloat(),
                         lineYPos.toFloat(),
@@ -67,6 +73,7 @@ class LineEditText : EditText {
                 )
             }
         }
+
         super.onDraw(canvas)
     }
 
@@ -83,11 +90,26 @@ class LineEditText : EditText {
         invalidate()
     }
 
+    fun useMonospacedFont() {
+        useMonospacedFont = true
+        this.typeface = ResourcesCompat.getFont(context, R.font.roboto_mono)
+        this.textSize = pixelsToSp(resources.getDimension(R.dimen.textUpdateMono))
+    }
+
+
+    /*--- Private Methods ---*/
+
+    fun pixelsToSp(px: Float): Float {
+        return px / resources.displayMetrics.scaledDensity
+    }
+
 
     /*--- Constants ---*/
 
     companion object {
         val TRANSPARENT = ColorDrawable(0x00FFFFFF)
+        const val UNDERLINE_VERTICAL_OFFSET = 4
+        const val UNDERLINE_VERTICAL_OFFSET_MONO = 8
         const val INPUT_TYPE = InputType.TYPE_CLASS_TEXT or
                 InputType.TYPE_TEXT_FLAG_MULTI_LINE or
                 InputType.TYPE_TEXT_FLAG_CAP_SENTENCES

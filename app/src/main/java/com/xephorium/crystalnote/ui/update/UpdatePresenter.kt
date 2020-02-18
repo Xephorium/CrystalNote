@@ -24,11 +24,15 @@ class UpdatePresenter : UpdateContract.Presenter() {
                 this.view?.populateFields(it.name, noteRepository.readNoteContents(it.name))
             }
 
-            // Update UI
+            // Update Underline
             if (sharedPreferencesRepository.getNoteUnderlineEnabled())
                 this.view?.showTextUnderline()
             else
                 this.view?.hideTextUnderline()
+
+            // Update Monospaced Font
+            if (sharedPreferencesRepository.getMonospacedFontEnabled())
+                this.view?.showMonospacedFont()
         }
     }
 

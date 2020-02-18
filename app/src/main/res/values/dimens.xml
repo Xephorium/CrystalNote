@@ -19,6 +19,8 @@
     <dimen name="textDrawerMessage">16sp</dimen>
     <dimen name="textDrawerItem">15sp</dimen>
     <dimen name="textSettings">15sp</dimen>
+    <dimen name="textUpdate">17sp</dimen>
+    <dimen name="textUpdateMono">16sp</dimen>
 
     <!-- Custom Controls -->
     <dimen name="cardViewColorBar">10dp</dimen>

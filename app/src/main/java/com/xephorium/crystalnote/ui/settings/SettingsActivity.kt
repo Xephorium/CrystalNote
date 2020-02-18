@@ -88,6 +88,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         switchSettingsUnderline.isChecked = checked
     }
 
+    override fun populateMonospaceSwitch(checked: Boolean) {
+        switchSettingsMonospace.isChecked = checked
+    }
+
     override fun setPreviewTheme(theme: String) {
         themePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
     }
@@ -197,6 +201,9 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         }
         switchSettingsUnderline.setOnCheckedChangeListener { _, checked ->
             presenter.handleNoteUnderlineToggle(checked)
+        }
+        switchSettingsMonospace.setOnCheckedChangeListener { _, checked ->
+            presenter.handleMonospaceToggle(checked)
         }
     }
 

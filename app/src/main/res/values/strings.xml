@@ -37,6 +37,7 @@
     <string name="settingsToday">Separate Today Header</string>
     <string name="settingsNoteAppearance">Note Appearance</string>
     <string name="settingsUnderline">Text Underline</string>
+    <string name="settingsMonospace">Monospaced Font</string>
 
     <string name="space">_____________________________________________________________________________________________________________________________________________________________</string>
 

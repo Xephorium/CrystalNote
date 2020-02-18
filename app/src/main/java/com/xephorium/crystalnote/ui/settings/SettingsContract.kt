@@ -15,6 +15,7 @@ interface SettingsContract {
         fun populateNoteColorsSwitch(checked: Boolean)
         fun populateTodayHeaderSwitch(checked: Boolean)
         fun populateNoteUnderlineSwitch(checked: Boolean)
+        fun populateMonospaceSwitch(checked: Boolean)
 
         fun setPreviewTheme(theme: String)
         fun setPreviewLines(lines: Int)
@@ -37,6 +38,7 @@ interface SettingsContract {
         var noteColorsEnabled: Boolean = true
         var todayHeaderEnabled: Boolean = true
         var noteUnderlineEnabled: Boolean = true
+        var useMonospacedFont: Boolean = true
 
         abstract fun handleMenuButtonClick()
         abstract fun handleThemeChange(newTheme: String)
@@ -45,6 +47,7 @@ interface SettingsContract {
         abstract fun handleNoteColorsToggle(checked: Boolean)
         abstract fun handleTodayHeaderToggle(checked: Boolean)
         abstract fun handleNoteUnderlineToggle(checked: Boolean)
+        abstract fun handleMonospaceToggle(checked: Boolean)
         abstract fun handleSaveClick()
         abstract fun handleBackClick()
         abstract fun handleBackConfirm()

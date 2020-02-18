@@ -79,6 +79,17 @@ class SharedPreferencesRepository(private val context: Context) {
         return prefs.getBoolean(NOTE_UNDERLINE_ENABLED, true)
     }
 
+    fun setMonospacedFontEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(MONOSPACED_FONT, enabled)
+        editor.apply()
+    }
+
+    fun getMonospacedFontEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(MONOSPACED_FONT, false)
+    }
+
 
     /*--- Public State Methods ---*/
 
@@ -117,6 +128,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
+        private const val MONOSPACED_FONT = "MonospacedFont"
         private const val DISPLAY_NOTE_NAME = "DisplayNoteName"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
     }
