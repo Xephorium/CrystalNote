@@ -48,6 +48,12 @@ class UpdatePresenter : UpdateContract.Presenter() {
         }
     }
 
+    override fun handleBackground() {
+        if (NoteValidator.isValidNoteName(name)) {
+            saveNote()
+        }
+    }
+
     override fun handleDeleteClick() {
         if (isInEditMode) {
             view?.showDeleteNoteDialog()

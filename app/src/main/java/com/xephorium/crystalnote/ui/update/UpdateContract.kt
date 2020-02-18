@@ -29,6 +29,7 @@ interface UpdateContract {
         abstract fun handleNameTextChange(name: String)
         abstract fun handleContentTextChange(content: String)
         abstract fun handleBackClick()
+        abstract fun handleBackground()
         abstract fun handleDeleteClick()
         abstract fun handleDeleteConfirm()
         abstract fun handleDiscardChangesConfirm()

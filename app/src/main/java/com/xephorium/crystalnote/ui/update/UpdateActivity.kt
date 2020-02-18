@@ -54,6 +54,11 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         presenter.attachView(this)
     }
 
+    public override fun onPause() {
+        super.onPause()
+        presenter.handleBackground()
+    }
+
     public override fun onDestroy() {
         super.onDestroy()
         presenter.detachView()
