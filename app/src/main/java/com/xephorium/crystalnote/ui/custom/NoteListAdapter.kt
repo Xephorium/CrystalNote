@@ -75,7 +75,7 @@ open class NoteListAdapter(
 
             holder.name.text = note.name
 
-            holder.preview.text = note.preview
+            holder.preview.text = note.preview.replace("\\s+".toRegex(), " ").trim()
             holder.preview.maxLines = notePreviewLines
 
             when (noteDateType) {
