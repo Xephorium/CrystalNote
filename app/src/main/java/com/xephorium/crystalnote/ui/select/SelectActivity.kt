@@ -11,6 +11,7 @@ import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_SELECT
 
 import kotlinx.android.synthetic.main.select_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
@@ -77,6 +78,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
 
     override fun navigateToNewNote() {
         val intent = Intent(this, UpdateActivity::class.java)
+        intent.putExtra(KEY_LAUNCH_FROM_SELECT, true)
         startActivity(intent)
     }
 

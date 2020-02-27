@@ -78,7 +78,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     override fun handleDeleteConfirm() {
         noteRepository.deleteNote(noteId)
-        if (isLaunchFromWidget) view?.refreshWidget()
+        view?.refreshWidget()
         returnToCallingScreen()
     }
 
@@ -110,7 +110,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     private fun returnToCallingScreen() {
-        if (isLaunchFromWidget) view?.navigateBack()
+        if (isLaunchFromWidget || isLaunchFromSelect) view?.navigateBack()
         else view?.navigateHome()
     }
 }

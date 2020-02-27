@@ -28,6 +28,7 @@ interface UpdateContract {
 
         var isInEditMode: Boolean = false
         var isLaunchFromWidget: Boolean = false
+        var isLaunchFromSelect: Boolean = false
         var noteId: Int = DEFAULT_NOTE_ID
         var initialName: String = ""
         var initialContent: String = ""

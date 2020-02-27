@@ -33,6 +33,9 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     private val isLaunchFromWidget: Boolean
         get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_WIDGET, false))
 
+    private val isLaunchFromSelect: Boolean
+        get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_SELECT, false))
+
 
     /*--- Lifecycle Methods ---*/
 
@@ -45,6 +48,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.isInEditMode = noteId != DEFAULT_NOTE_ID
         presenter.isLaunchFromWidget = isLaunchFromWidget
+        presenter.isLaunchFromSelect = isLaunchFromSelect
         presenter.noteId = noteId
 
         setupToolbar()
@@ -182,5 +186,6 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         const val KEY_NOTE_ID = "NOTE_ID_KEY"
         const val KEY_FROM_UPDATE_ACTIVITY = "FROM_UPDATE_ACTIVITY_KEY"
         const val KEY_LAUNCH_FROM_WIDGET = "LAUNCH_FROM_WIDGET_KEY"
+        const val KEY_LAUNCH_FROM_SELECT = "LAUNCH_FROM_SELECT_KEY"
     }
 }

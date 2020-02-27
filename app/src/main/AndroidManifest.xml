@@ -66,6 +66,7 @@
             android:name=".ui.select.SelectActivity"
             android:noHistory="false"
             android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
             >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.widget.CHOOSE_NOTE" />
