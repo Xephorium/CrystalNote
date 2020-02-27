@@ -26,7 +26,7 @@ class SelectPresenter : SelectContract.Presenter() {
     }
 
     override fun handleNoteClick(note: Note) {
-        sharedPreferencesRepository.setDisplayNoteId(note.id)
+        sharedPreferencesRepository.setNoteIdForWidget(widgetId, note.id)
         view?.refreshWidget()
         view?.navigateBack()
     }

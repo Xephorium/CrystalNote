@@ -15,11 +15,15 @@ import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import kotlinx.android.synthetic.main.select_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
+import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider.Companion.KEY_WIDGET_ID
 
 class SelectActivity : ToolbarActivity(), SelectContract.View {
 
 
     /*--- Variable Declarations ---*/
+
+    private val widgetId: Int
+        get() = intent.getIntExtra(KEY_WIDGET_ID, 0)
 
     lateinit var presenter: SelectPresenter
 
@@ -33,6 +37,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
         presenter = SelectPresenter()
         presenter.noteRepository = NoteRoomRepository(this)
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
+        presenter.widgetId = widgetId
 
         setupToolbar()
         setupClickListeners()

@@ -4,7 +4,7 @@ import android.content.Context
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
-import com.xephorium.crystalnote.data.model.Note.Companion.DEFAULT_NOTE_ID
+import com.xephorium.crystalnote.data.model.WidgetIdMap
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 
 class SharedPreferencesRepository(private val context: Context) {
@@ -93,16 +93,33 @@ class SharedPreferencesRepository(private val context: Context) {
 
     /*--- Public State Methods ---*/
 
-    fun setDisplayNoteId(id: Int) {
+    fun setNoteIdForWidget(widgetId: Int, noteId: Int) {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        val widgetIdMap = WidgetIdMap(prefs.getString(WIDGET_ID_MAP, "") ?: "")
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
-        editor.putInt(DISPLAY_NOTE_ID, id)
+
+        widgetIdMap.setNoteIdForWidget(widgetId, noteId)
+
+        editor.putString(WIDGET_ID_MAP, widgetIdMap.toString())
         editor.apply()
     }
 
-    fun getDisplayNoteId(): Int? {
+    fun getNoteIdForWidget(widgetId: Int): Int? {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        val widgetIdMap = WidgetIdMap(prefs.getString(WIDGET_ID_MAP, "") ?: "")
 
-        return prefs.getInt(DISPLAY_NOTE_ID, DEFAULT_NOTE_ID)
+        return widgetIdMap.getNoteIdForWidget(widgetId)
+    }
+
+    fun removeNoteIdForWidget(widgetId: Int) {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        val widgetIdMap = WidgetIdMap(prefs.getString(WIDGET_ID_MAP, "") ?: "")
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+
+        widgetIdMap.removeWidgetId(widgetId)
+
+        editor.putString(WIDGET_ID_MAP, widgetIdMap.toString())
+        editor.apply()
     }
 
     fun setSelectedDrawerButton(button: DrawerButton) {
@@ -129,7 +146,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
         private const val MONOSPACED_FONT = "MonospacedFont"
-        private const val DISPLAY_NOTE_ID = "DisplayNoteId"
+        private const val WIDGET_ID_MAP = "WidgetIdMap"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
     }
 }

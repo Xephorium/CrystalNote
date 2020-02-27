@@ -20,6 +20,7 @@ interface SelectContract {
     abstract class Presenter : BasePresenter<View>() {
         lateinit var noteRepository: NoteRoomRepository
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
+        var widgetId = 0
 
         abstract fun handleToolbarBackClick()
         abstract fun handleNewNoteButtonClick()
