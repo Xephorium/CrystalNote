@@ -1,7 +1,6 @@
 package com.xephorium.crystalnote.ui.select
 
 import com.xephorium.crystalnote.data.utility.NoteUtility
-import com.xephorium.crystalnote.data.utility.NoteUtility.SortType
 import com.xephorium.crystalnote.data.model.Note
 
 class SelectPresenter : SelectContract.Presenter() {
@@ -27,7 +26,7 @@ class SelectPresenter : SelectContract.Presenter() {
     }
 
     override fun handleNoteClick(note: Note) {
-        sharedPreferencesRepository.setDisplayNoteName(note)
+        sharedPreferencesRepository.setDisplayNoteId(note.id)
         view?.refreshWidget()
         view?.navigateBack()
     }

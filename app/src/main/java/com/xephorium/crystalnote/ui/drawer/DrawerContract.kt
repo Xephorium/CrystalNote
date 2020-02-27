@@ -1,6 +1,6 @@
 package com.xephorium.crystalnote.ui.drawer
 
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton

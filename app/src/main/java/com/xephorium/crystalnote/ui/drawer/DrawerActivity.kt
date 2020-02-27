@@ -15,7 +15,7 @@ import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.about.AboutActivity
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.utility.DisplayUtils

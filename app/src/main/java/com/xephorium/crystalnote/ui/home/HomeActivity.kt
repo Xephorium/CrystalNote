@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.View
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_NAME
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
 
 import kotlinx.android.synthetic.main.home_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
@@ -20,6 +21,9 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
 
     /*--- Variable Declarations ---*/
+
+    private val fromUpdateActivity: Boolean
+        get() = intent.getBooleanExtra(KEY_FROM_UPDATE_ACTIVITY, false)
 
     lateinit var presenter: HomePresenter
 
@@ -31,7 +35,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         setActivityContent(R.layout.home_activity_layout)
 
         presenter = HomePresenter()
-        presenter.noteRepository = NoteRepository(this)
+        presenter.noteRepository = NoteRoomRepository(this)
+        presenter.fromUpdateActivity = fromUpdateActivity
 
         setupToolbar()
         setupClickListeners()
@@ -65,9 +70,9 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         openDrawer()
     }
 
-    override fun navigateToEditNote(name: String) {
+    override fun navigateToEditNote(id: Int) {
         val intent = Intent(this, UpdateActivity::class.java)
-        intent.putExtra(KEY_NOTE_NAME, name)
+        intent.putExtra(KEY_NOTE_ID, id)
         startActivity(intent)
     }
 

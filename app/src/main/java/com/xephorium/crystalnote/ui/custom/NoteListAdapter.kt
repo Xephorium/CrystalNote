@@ -10,7 +10,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.data.utility.NoteUtility
@@ -75,7 +75,7 @@ open class NoteListAdapter(
 
             holder.name.text = note.name
 
-            holder.preview.text = note.preview.replace("\\s+".toRegex(), " ").trim()
+            holder.preview.text = note.contents.replace("\\s+".toRegex(), " ").trim()
             holder.preview.maxLines = notePreviewLines
 
             when (noteDateType) {

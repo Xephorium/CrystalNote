@@ -1,8 +1,8 @@
 package com.xephorium.crystalnote.ui.select
 
-import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
 
@@ -18,7 +18,7 @@ interface SelectContract {
     }
 
     abstract class Presenter : BasePresenter<View>() {
-        lateinit var noteRepository: NoteRepository
+        lateinit var noteRepository: NoteRoomRepository
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
 
         abstract fun handleToolbarBackClick()

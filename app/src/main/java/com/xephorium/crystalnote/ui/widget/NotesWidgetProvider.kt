@@ -11,13 +11,15 @@ import android.view.View
 import android.widget.RemoteViews
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
-import com.xephorium.crystalnote.data.utility.NoteUtility
+import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.select.SelectActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_NAME
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
+import java.util.concurrent.Callable
+import java.util.concurrent.Executors
 
 /*
   NotesWidgetProvider                          05.11.2019
@@ -39,10 +41,14 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Get Necessary Variables
                 val widgetView = RemoteViews(context.packageName, R.layout.note_widget_layout)
-                val sharedPreferencesRepository = SharedPreferencesRepository(context)
-                val noteRepository = NoteRepository(context)
-                val displayNote = sharedPreferencesRepository.getDisplayNoteName()?.let { name ->
-                    NoteUtility.getNoteFromList(noteRepository.getNotes(), name)
+                val sharedPreferencesRepository =
+                    SharedPreferencesRepository(context)
+                val displayNote = sharedPreferencesRepository.getDisplayNoteId()?.let { id ->
+                    val callable = Callable<Note> {
+                        NoteRoomRepository(context).getNoteSynchronously(id)
+                    }
+                    val future = Executors.newSingleThreadExecutor().submit(callable)
+                    future.get()
                 }
 
                 // Populate Fields
@@ -53,10 +59,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
                     widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
 
                     widgetView.setTextViewText(R.id.textWidgetTitle, displayNote.name)
-                    widgetView.setTextViewText(
-                            R.id.textWidgetContent,
-                            noteRepository.readNoteContents(displayNote.name)
-                    )
+                    widgetView.setTextViewText(R.id.textWidgetContent, displayNote.contents)
                 } else {
                     widgetView.setViewVisibility(R.id.textWidgetTitle, View.GONE)
                     widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
@@ -98,9 +101,9 @@ class NotesWidgetProvider : AppWidgetProvider() {
             TEXT_CLICK_INTENT -> {
 
                 // Update Current Display Note
-                SharedPreferencesRepository(context).getDisplayNoteName()?.let { name ->
+                SharedPreferencesRepository(context).getDisplayNoteId()?.let { id ->
                     val updateIntent = Intent(context, UpdateActivity::class.java)
-                    updateIntent.putExtra(KEY_NOTE_NAME, name)
+                    updateIntent.putExtra(KEY_NOTE_ID, id)
                     updateIntent.putExtra(KEY_LAUNCH_FROM_WIDGET, true)
                     updateIntent.addFlags(
                             Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)

@@ -1,7 +1,7 @@
 package com.xephorium.crystalnote.ui.home
 
-import com.xephorium.crystalnote.data.NoteRepository
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
 
@@ -12,12 +12,13 @@ interface HomeContract {
         fun showEmptyNotesList()
 
         fun showNavigationDrawer()
-        fun navigateToEditNote(name: String)
+        fun navigateToEditNote(id: Int)
         fun navigateToNewNote()
     }
 
     abstract class Presenter : BasePresenter<View>() {
-        lateinit var noteRepository: NoteRepository
+        lateinit var noteRepository: NoteRoomRepository
+        var fromUpdateActivity: Boolean = false
 
         abstract fun handleMenuButtonClick()
         abstract fun handleNewNoteButtonClick()

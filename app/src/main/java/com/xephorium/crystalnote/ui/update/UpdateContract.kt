@@ -1,7 +1,8 @@
 package com.xephorium.crystalnote.ui.update
 
-import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.Note.Companion.DEFAULT_NOTE_ID
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
 
@@ -16,16 +17,18 @@ interface UpdateContract {
         fun showInvalidNameDialog()
         fun showDiscardChangesDialog()
         fun showDeleteNoteDialog()
+        fun navigateHome()
         fun navigateBack()
         fun refreshWidget()
     }
 
     abstract class Presenter : BasePresenter<View>() {
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
-        lateinit var noteRepository: NoteRepository
+        lateinit var noteRepository: NoteRoomRepository
 
         var isInEditMode: Boolean = false
         var isLaunchFromWidget: Boolean = false
+        var noteId: Int = DEFAULT_NOTE_ID
         var initialName: String = ""
         var initialContent: String = ""
         var name: String = ""

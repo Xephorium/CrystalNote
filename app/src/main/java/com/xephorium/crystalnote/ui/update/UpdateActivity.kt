@@ -2,16 +2,19 @@ package com.xephorium.crystalnote.ui.update
 
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.model.Note.Companion.DEFAULT_NOTE_ID
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 
 import kotlinx.android.synthetic.main.update_activity_layout.*
@@ -24,11 +27,8 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
     lateinit var presenter: UpdatePresenter
 
-    private val initialName: String
-        get() = intent.getStringExtra(KEY_NOTE_NAME) ?: ""
-
-    private val isInEditMode: Boolean
-        get() = (intent.getStringExtra(KEY_NOTE_NAME) ?: "").isNotBlank()
+    private val noteId: Int
+        get() = intent.getIntExtra(KEY_NOTE_ID, DEFAULT_NOTE_ID)
 
     private val isLaunchFromWidget: Boolean
         get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_WIDGET, false))
@@ -41,11 +41,11 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         setActivityContent(R.layout.update_activity_layout)
 
         presenter = UpdatePresenter()
-        presenter.noteRepository = NoteRepository(this)
+        presenter.noteRepository = NoteRoomRepository(this)
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
-        presenter.isInEditMode = isInEditMode
+        presenter.isInEditMode = noteId != DEFAULT_NOTE_ID
         presenter.isLaunchFromWidget = isLaunchFromWidget
-        presenter.initialName = initialName
+        presenter.noteId = noteId
 
         setupToolbar()
         setupClickListeners()
@@ -135,6 +135,14 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         alertDialog.show()
     }
 
+    override fun navigateHome() {
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra(KEY_FROM_UPDATE_ACTIVITY, true)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        finish()
+    }
+
     override fun navigateBack() {
         finish()
     }
@@ -171,7 +179,8 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     /*--- ---*/
 
     companion object {
-        const val KEY_NOTE_NAME = "NOTE_NAME_KEY"
+        const val KEY_NOTE_ID = "NOTE_ID_KEY"
+        const val KEY_FROM_UPDATE_ACTIVITY = "FROM_UPDATE_ACTIVITY_KEY"
         const val KEY_LAUNCH_FROM_WIDGET = "LAUNCH_FROM_WIDGET_KEY"
     }
 }

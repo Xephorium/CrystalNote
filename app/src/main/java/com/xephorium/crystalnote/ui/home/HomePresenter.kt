@@ -11,9 +11,13 @@ class HomePresenter : HomeContract.Presenter() {
     override fun attachView(view: HomeContract.View) {
         super.attachView(view)
 
-        refreshNoteList()
+        // TODO - Find Better Solution
+        // Note: Refresh delayed minimum amount to account for async
+        //       database access in UpdateActivity.
+        if (fromUpdateActivity) beginDelayedNoteListRefresh {
+            refreshNoteList()
+        } else refreshNoteList()
     }
-
 
     /*--- Action Handling Methods ---*/
 
@@ -26,7 +30,7 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleNoteClick(note: Note) {
-        view?.navigateToEditNote(note.name)
+        view?.navigateToEditNote(note.id)
     }
 
     override fun handleNoteLongClick(note: Note) {
@@ -48,5 +52,17 @@ class HomePresenter : HomeContract.Presenter() {
         } else {
             view?.showEmptyNotesList()
         }
+    }
+
+    private fun beginDelayedNoteListRefresh(afterDelay: () -> Unit) {
+        Thread.sleep(REFRESH_DELAY)
+        afterDelay()
+    }
+
+
+    /*--- Constants ---*/
+
+    companion object {
+        private const val REFRESH_DELAY: Long = 50
     }
 }

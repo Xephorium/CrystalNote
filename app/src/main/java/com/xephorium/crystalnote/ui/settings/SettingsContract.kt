@@ -1,7 +1,6 @@
 package com.xephorium.crystalnote.ui.settings
 
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
-import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView

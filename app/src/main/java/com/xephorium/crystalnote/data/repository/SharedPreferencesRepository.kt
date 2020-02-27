@@ -1,10 +1,10 @@
-package com.xephorium.crystalnote.data
+package com.xephorium.crystalnote.data.repository
 
 import android.content.Context
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.Note.Companion.DEFAULT_NOTE_ID
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 
 class SharedPreferencesRepository(private val context: Context) {
@@ -93,16 +93,16 @@ class SharedPreferencesRepository(private val context: Context) {
 
     /*--- Public State Methods ---*/
 
-    fun setDisplayNoteName(note: Note) {
+    fun setDisplayNoteId(id: Int) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
-        editor.putString(DISPLAY_NOTE_NAME, note.name)
+        editor.putInt(DISPLAY_NOTE_ID, id)
         editor.apply()
     }
 
-    fun getDisplayNoteName(): String? {
+    fun getDisplayNoteId(): Int? {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
 
-        return prefs.getString(DISPLAY_NOTE_NAME, null)
+        return prefs.getInt(DISPLAY_NOTE_ID, DEFAULT_NOTE_ID)
     }
 
     fun setSelectedDrawerButton(button: DrawerButton) {
@@ -129,7 +129,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
         private const val MONOSPACED_FONT = "MonospacedFont"
-        private const val DISPLAY_NOTE_NAME = "DisplayNoteName"
+        private const val DISPLAY_NOTE_ID = "DisplayNoteId"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
     }
 }

@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
+import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.validation.NoteValidator
 
 class UpdatePresenter : UpdateContract.Presenter() {
@@ -13,15 +14,16 @@ class UpdatePresenter : UpdateContract.Presenter() {
         if (isInEditMode) {
 
             // Get Note
-            noteRepository.getNote(initialName)?.let {
+            noteRepository.getNote(noteId)?.let {
 
                 // Update State Fields
+                initialName = it.name
                 name = initialName
-                initialContent = noteRepository.readNoteContents(it.name)
+                initialContent = it.contents
                 content = initialContent
 
                 // Update View
-                this.view?.populateFields(it.name, noteRepository.readNoteContents(it.name))
+                this.view?.populateFields(it.name, it.contents)
             }
 
             // Update Underline
@@ -49,10 +51,9 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     override fun handleBackClick() {
         if (!isInEditMode && name.isBlank() && content.isBlank()) {
-            view?.navigateBack()
+            returnToCallingScreen()
         } else if (NoteValidator.isValidNoteName(name)) {
-            saveNote()
-            view?.navigateBack()
+            returnToCallingScreen()
         } else {
             view?.showInvalidNameDialog()
         }
@@ -73,42 +74,40 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleDeleteConfirm() {
-        noteRepository.deleteNote(initialName)
+        noteRepository.deleteNote(noteId)
         if (isLaunchFromWidget) view?.refreshWidget()
-        view?.navigateBack()
+        returnToCallingScreen()
     }
 
     override fun handleDiscardChangesConfirm() {
-        view?.navigateBack()
+        returnToCallingScreen()
     }
 
 
     /*--- Private Methods ---*/
 
-    // TODO - Distinguish between updating the current note and saving over another. (Primary Key?)
     private fun saveNote() {
 
         if (initialName == name && initialContent == content) {
 
             // No Changes - Do Nothing
 
-        } else if (initialName == name) {
-
-            // Note Updated - Save Over Existing
-            noteRepository.writeToNote(name, content)
-
-        } else if (isInEditMode && initialName != name) {
-
-            // Note Renamed - Save New, Delete Old
-            noteRepository.writeToNote(name, content)
-            noteRepository.deleteNote(initialName)
-
         } else if (!isInEditMode) {
 
             // New Note - Save
-            noteRepository.writeToNote(name, content)
+            noteRepository.insertNote(name, content, NoteUtility.getDefaultColor())
+
+        } else {
+
+            // Existing Note - Update
+            noteRepository.updateNote(noteId, name, content, NoteUtility.getDefaultColor())
         }
 
         if (isLaunchFromWidget) view?.refreshWidget()
+    }
+
+    private fun returnToCallingScreen() {
+        if (isLaunchFromWidget) view?.navigateBack()
+        else view?.navigateHome()
     }
 }

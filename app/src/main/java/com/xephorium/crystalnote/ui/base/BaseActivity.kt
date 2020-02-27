@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 
 import androidx.appcompat.app.AppCompatActivity
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {

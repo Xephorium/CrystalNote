@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.NoteRepository
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
@@ -31,7 +31,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
         setActivityContent(R.layout.select_activity_layout)
 
         presenter = SelectPresenter()
-        presenter.noteRepository = NoteRepository(this)
+        presenter.noteRepository = NoteRoomRepository(this)
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
 
         setupToolbar()

@@ -1,9 +1,8 @@
-package com.xephorium.crystalnote.data
+package com.xephorium.crystalnote.data.repository
 
 import android.content.Context
 import android.os.Environment
 
-import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.utility.NoteUtility
 
 import java.io.BufferedReader
@@ -12,17 +11,19 @@ import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.InputStreamReader
 import java.io.PrintWriter
-import java.util.ArrayList
 import java.util.Date
 
 /*
-  NoteRepository                                        05.11.2019
+  NoteDiskRepository                                    05.11.2019
   Christopher Cruzen
 
     Manages read/write to note files in Android's external storage.
+  Obsolete as of 2.26.2020 when the note backend was changed to
+  Room. However, this class remains as reference for the upcoming
+  "export note to txt" feature.
 */
 
-class NoteRepository(private val context: Context) {
+class NoteDiskRepository(private val context: Context) {
 
 
     /*--- Object Initialization ---*/
@@ -35,12 +36,12 @@ class NoteRepository(private val context: Context) {
 
     /*--- Public Read/Write Methods ---*/
 
-    fun getNotes(): List<Note> {
+    private fun getNotes(): List<OldNote> {
         val notesList = getNotesDirectory().listFiles()
 
-        val notes = mutableListOf<Note>()
+        val notes = mutableListOf<OldNote>()
         notesList.forEach { file ->
-            notes.add(Note(
+            notes.add(OldNote(
                     color = NoteUtility.getDefaultColor(),
                     name = getNoteName(file),
                     date = getNoteDate(file),
@@ -52,7 +53,7 @@ class NoteRepository(private val context: Context) {
         return notes
     }
 
-    fun getNote(name: String): Note? {
+    private fun getNote(name: String): OldNote? {
         return getNotes().firstOrNull { currentNote -> currentNote.name == name }
     }
 
@@ -130,7 +131,7 @@ class NoteRepository(private val context: Context) {
         }
     }
 
-    private fun getNoteFile(note: Note): File {
+    private fun getNoteFile(note: OldNote): File {
         return File(getNotesDirectory().toString() + "/" + note.name + FILE_EXTENSION)
     }
 
@@ -192,7 +193,10 @@ class NoteRepository(private val context: Context) {
     }
 
     private fun populateNotesDirectory() {
-        writeToNote(DEFAULT_NOTE_NAME, DEFAULT_NOTE_TEXT)
+        writeToNote(
+            DEFAULT_NOTE_NAME,
+            DEFAULT_NOTE_TEXT
+        )
 
         // Test Data
         writeToNote("Shopping List", "- Bread\n- Milk\n- Eggs\n- Sugar")
@@ -210,5 +214,13 @@ class NoteRepository(private val context: Context) {
         private const val FILE_EXTENSION = ".txt"
         private const val DEFAULT_NOTE_NAME = "Note"
         private const val DEFAULT_NOTE_TEXT = "• List Item #5\n• List Item #6\n\n• List Item #7\n• List Item #8\n\nLorem ipsum dolor sit amet, consecte adipiscing elit, sed do eiusmod tempor."
+
+        private data class OldNote(
+            var color: Int,
+            var date: Date,
+            var name: String,
+            var path: String,
+            var preview: String
+        )
     }
 }

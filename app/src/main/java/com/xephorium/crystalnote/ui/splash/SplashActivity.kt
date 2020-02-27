@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.app.Activity
 import android.os.Handler
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton.*
 import com.xephorium.crystalnote.ui.home.HomeActivity
 

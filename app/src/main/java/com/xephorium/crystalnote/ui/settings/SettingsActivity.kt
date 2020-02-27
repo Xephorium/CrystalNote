@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.settings_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
-import com.xephorium.crystalnote.data.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
