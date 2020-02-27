@@ -52,6 +52,9 @@ class UpdatePresenter : UpdateContract.Presenter() {
     override fun handleBackClick() {
         if (!isInEditMode && name.isBlank() && content.isBlank()) {
             returnToCallingScreen()
+        } else if (NoteValidator.isValidNoteName(name) && !isInEditMode) {
+            returnToCallingScreen()
+            saveNote()
         } else if (NoteValidator.isValidNoteName(name)) {
             returnToCallingScreen()
         } else {
@@ -60,7 +63,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleBackground() {
-        if (NoteValidator.isValidNoteName(name)) {
+        if (NoteValidator.isValidNoteName(name) && isInEditMode) {
             saveNote()
         }
     }
