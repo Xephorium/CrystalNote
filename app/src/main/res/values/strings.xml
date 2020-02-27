@@ -27,7 +27,7 @@
     <string name="selectTitle">Select a Note</string>
     <string name="selectTextEmpty">Tap + to create a note.</string>
 
-    <string name="settingsTitle">Settings</string>
+    <string name="settingsTitle">App Settings</string>
     <string name="settingsAppAppearance">App Appearance</string>
     <string name="settingsAppTheme">Theme</string>
     <string name="settingsHomeAppearance">Home Appearance</string>
