@@ -102,16 +102,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
         when (intent.action) {
 
-            TITLE_CLICK_INTENT -> {
-
-                // Choose New Display Note
-                val buttonIntent = Intent(context, SelectActivity::class.java)
-                buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                buttonIntent.putExtra(KEY_WIDGET_ID, widgetId)
-                context.startActivity(buttonIntent)
-            }
-
-            TEXT_CLICK_INTENT -> {
+            TITLE_CLICK_INTENT, TEXT_CLICK_INTENT -> {
 
                 // Update Current Display Note
                 SharedPreferencesRepository(context).getNoteIdForWidget(widgetId)?.let { id ->
