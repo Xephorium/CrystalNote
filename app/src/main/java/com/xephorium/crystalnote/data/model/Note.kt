@@ -10,7 +10,8 @@ data class Note(
     var name: String,
     var contents: String,
     var date: Date,
-    var color: Int
+    var color: Int,
+    var password: String = ""
 ) {
     companion object {
         const val DEFAULT_NOTE_ID: Int = 0
