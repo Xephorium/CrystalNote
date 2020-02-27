@@ -56,7 +56,7 @@
             android:colorControlActivated="?themeToolbarTextSecondary"
             android:gravity="center_vertical"
             android:hint="@string/noteNewName"
-            android:inputType="text"
+            android:inputType="textCapSentences"
             android:textSize="@dimen/toolbarText"
             android:paddingStart="@dimen/paddingActivity"
             android:paddingEnd="@dimen/paddingActivity"
