@@ -9,7 +9,7 @@ import android.text.TextWatcher
 import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.model.Note.Companion.DEFAULT_NOTE_ID
+import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
@@ -28,7 +28,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     lateinit var presenter: UpdatePresenter
 
     private val noteId: Int
-        get() = intent.getIntExtra(KEY_NOTE_ID, DEFAULT_NOTE_ID)
+        get() = intent.getIntExtra(KEY_NOTE_ID, NO_NOTE)
 
     private val isLaunchFromWidget: Boolean
         get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_WIDGET, false))
@@ -46,7 +46,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         presenter = UpdatePresenter()
         presenter.noteRepository = NoteRoomRepository(this)
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
-        presenter.isInEditMode = noteId != DEFAULT_NOTE_ID
+        presenter.isInEditMode = noteId != NO_NOTE
         presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.isLaunchFromSelect = isLaunchFromSelect
         presenter.noteId = noteId

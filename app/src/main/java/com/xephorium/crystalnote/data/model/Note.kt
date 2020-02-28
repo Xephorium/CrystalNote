@@ -14,6 +14,7 @@ data class Note(
     var password: String = ""
 ) {
     companion object {
-        const val DEFAULT_NOTE_ID: Int = 0
+        const val NO_NOTE: Int = 0
+        const val NO_COLOR: Int = 17
     }
 }

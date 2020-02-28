@@ -87,42 +87,42 @@ class NoteRoomRepository(context: Context) {
         private val DATE_OF_FIRST_COMMIT: Long = 1493355600000
         private val DEVELOPER_NOTES = listOf(
             Note(
-                id = Note.DEFAULT_NOTE_ID,
+                id = Note.NO_NOTE,
                 name = "Shopping List",
                 contents = "- Bread\n- Milk\n- Eggs\n- Sugar",
                 date = Date(DATE_OF_FIRST_COMMIT),
                 color = NoteUtility.getDefaultColor()
             ),
             Note(
-                id = Note.DEFAULT_NOTE_ID,
+                id = Note.NO_NOTE,
                 name = "Beautiful Vistas",
                 contents = "- Shipyard, Halo Reach\n- All of Skyrim\n- Winterfell, The Forest",
                 date = Date(DATE_OF_FIRST_COMMIT),
                 color = NoteUtility.getDefaultColor()
             ),
             Note(
-                id = Note.DEFAULT_NOTE_ID,
+                id = Note.NO_NOTE,
                 name = "Reasons To Code",
                 contents = "- Puzzle Solving!\n- Free To Learn\n- Hones Critical Thinking\n- It Pays Well",
                 date = Date(DATE_OF_FIRST_COMMIT),
                 color = NoteUtility.getDefaultColor()
             ),
             Note(
-                id = Note.DEFAULT_NOTE_ID,
+                id = Note.NO_NOTE,
                 name = "Cities to Visit",
                 contents = "- Chicago\n- New York\n- Seattle\n- San Francisco",
                 date = Date(DATE_OF_FIRST_COMMIT),
                 color = NoteUtility.getDefaultColor()
             ),
             Note(
-                id = Note.DEFAULT_NOTE_ID,
+                id = Note.NO_NOTE,
                 name = "Note",
                 contents = "• List Item #5\n• List Item #6\n\n• List Item #7\n• List Item #8\n\nLorem ipsum dolor sit amet, consecte adipiscing elit, sed do eiusmod tempor.",
                 date = Date(DATE_OF_FIRST_COMMIT),
                 color = NoteUtility.getDefaultColor()
             ),
             Note(
-                id = Note.DEFAULT_NOTE_ID,
+                id = Note.NO_NOTE,
                 name = "A Final Note",
                 contents = "Building this app has been challenging. There were more than a few moments when I was ready to throw in the towel and accept that I'd learned enough. But each successfully rendered list item, formatted to responsive perfection has been a reminder of why I started: to create something beautiful. The world deserves a clean notes app for Android. It's about time someone put in the hours to code one.",
                 date = Date(DATE_OF_FIRST_COMMIT),

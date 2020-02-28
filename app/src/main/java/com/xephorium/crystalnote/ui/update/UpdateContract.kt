@@ -1,6 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
-import com.xephorium.crystalnote.data.model.Note.Companion.DEFAULT_NOTE_ID
+import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
@@ -29,7 +29,7 @@ interface UpdateContract {
         var isInEditMode: Boolean = false
         var isLaunchFromWidget: Boolean = false
         var isLaunchFromSelect: Boolean = false
-        var noteId: Int = DEFAULT_NOTE_ID
+        var noteId: Int = NO_NOTE
         var initialName: String = ""
         var initialContent: String = ""
         var name: String = ""
