@@ -59,7 +59,8 @@ class WidgetStateList(string: String) {
         val builder = StringBuilder()
         for (x in 0 until (widgetStates.size - 1)) {
             builder.append(widgetStates[x])
-            builder.append(", ")
+            builder.append(STRING_DELIMITER)
+            builder.append(" ")
         }
         if(widgetStates.size > 0) builder.append(widgetStates[widgetStates.size - 1])
 
@@ -76,7 +77,7 @@ class WidgetStateList(string: String) {
     private fun parseString(string: String) {
 
         // Split Into Individual Widget State Substrings
-        val states = string.split(Regex(",")).map { it.trim() }
+        val states = string.split(Regex(STRING_DELIMITER)).map { it.trim() }
 
         // Store WidgetStates
         for (state in states) {
@@ -84,5 +85,12 @@ class WidgetStateList(string: String) {
                 widgetStates.add(WidgetState(state))
             }
         }
+    }
+
+
+    /*--- Constants ---*/
+
+    companion object {
+        const val STRING_DELIMITER = ","
     }
 }
