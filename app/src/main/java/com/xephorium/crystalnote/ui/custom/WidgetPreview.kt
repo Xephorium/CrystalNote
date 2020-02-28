@@ -98,8 +98,8 @@ class WidgetPreview : View {
                 (paddingBorder!! + (paddingTiny!! * 3)).toFloat(),
                 (viewWidth!! * 0.4).toFloat(),
                 (paddingBorder!! + (paddingTiny!! * 3) + titleHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
+                (titleHeight!! / 2).toFloat(),
+                (titleHeight!! / 2).toFloat(),
                 paint
         )
         currentVerticalPosition += paddingBorder!! + (paddingTiny!! * 3) +
@@ -252,8 +252,8 @@ class WidgetPreview : View {
             lineTop.toFloat(),
             lineEnd.toFloat(),
             lineBottom.toFloat(),
-            CORNER_RADIUS,
-            CORNER_RADIUS,
+            (textHeight!! / 2).toFloat(),
+            (textHeight!! / 2).toFloat(),
             paint
         )
 
@@ -264,6 +264,6 @@ class WidgetPreview : View {
     /*--- Constants ---*/
 
     companion object {
-        private const val CORNER_RADIUS = 4.toFloat()
+        private const val CORNER_RADIUS = 5.toFloat()
     }
 }
