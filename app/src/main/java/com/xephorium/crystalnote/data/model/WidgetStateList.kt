@@ -1,0 +1,88 @@
+package com.xephorium.crystalnote.data.model
+
+import java.lang.StringBuilder
+
+/*
+  WidgetStateList                                             02.27.2020
+  Christopher Cruzen
+
+    The WidgetStateList class represents a list of WidgetState objects.
+  Its primary purpose is to encapsulate the logic of converting this list
+  to and from a string to be stored in Shared Preferences. The string's
+  format is as follows:
+
+    "<widgetState1.toString()>, <widgetState2.toString()>, ..."
+*/
+
+class WidgetStateList(string: String) {
+
+
+    /*--- Variable Declarations ---*/
+
+    private var widgetStates: MutableList<WidgetState> = mutableListOf()
+
+
+    /*--- Constructor ---*/
+
+    init {
+        parseString(string)
+    }
+
+
+    /*--- Public Methods ---*/
+
+    fun setNoteIdForWidget(widgetId: Int, noteId: Int) {
+        if (containsWidget(widgetId)) {
+
+            // Update Existing Widget
+            (widgetStates.find { it.getWidgetId() == widgetId })?.setNoteId(noteId)
+
+        } else {
+
+            // Add Widget
+            widgetStates.add(WidgetState(widgetId = widgetId, noteId = noteId))
+        }
+    }
+
+    fun getNoteIdForWidget(widgetId: Int): Int? {
+        return (widgetStates.find { it.getWidgetId() == widgetId })?.getNoteId()
+    }
+
+    fun removeWidgetState(widgetId: Int) {
+        if (containsWidget(widgetId)) {
+            val index = widgetStates.indexOfFirst { it.getWidgetId() == widgetId }
+            widgetStates.removeAt(index)
+        }
+    }
+
+    override fun toString() : String {
+        val builder = StringBuilder()
+        for (x in 0 until (widgetStates.size - 1)) {
+            builder.append(widgetStates[x])
+            builder.append(", ")
+        }
+        if(widgetStates.size > 0) builder.append(widgetStates[widgetStates.size - 1])
+
+        return builder.toString()
+    }
+
+
+    /*--- Private Methods ---*/
+
+    private fun containsWidget(id: Int): Boolean {
+        return widgetStates.any { it.getWidgetId() == id}
+    }
+
+    private fun parseString(string: String) {
+
+        // Split Into Individual Widget State Substrings
+        val states = string.split(Regex(",")).map { it.trim() }
+
+        // Store WidgetStates
+        for (state in states) {
+            if (state.isNotBlank()) {
+                widgetStates.add(WidgetState(state))
+            }
+        }
+    }
+}

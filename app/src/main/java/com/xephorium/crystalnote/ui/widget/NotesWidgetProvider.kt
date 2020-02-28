@@ -132,7 +132,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
         // Remove Widget ID from Shared Preferences
         val sharedPreferencesRepository = SharedPreferencesRepository(context)
         for (widgetId in widgetIds) {
-            sharedPreferencesRepository.removeNoteIdForWidget(widgetId)
+            sharedPreferencesRepository.removeWidgetState(widgetId)
         }
     }
 

@@ -4,7 +4,7 @@ import android.content.Context
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
-import com.xephorium.crystalnote.data.model.WidgetIdMap
+import com.xephorium.crystalnote.data.model.WidgetStateList
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 
 class SharedPreferencesRepository(private val context: Context) {
@@ -95,30 +95,30 @@ class SharedPreferencesRepository(private val context: Context) {
 
     fun setNoteIdForWidget(widgetId: Int, noteId: Int) {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        val widgetIdMap = WidgetIdMap(prefs.getString(WIDGET_ID_MAP, "") ?: "")
+        val widgetStateList = WidgetStateList(prefs.getString(WIDGET_STATE_LIST, "") ?: "")
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
 
-        widgetIdMap.setNoteIdForWidget(widgetId, noteId)
+        widgetStateList.setNoteIdForWidget(widgetId, noteId)
 
-        editor.putString(WIDGET_ID_MAP, widgetIdMap.toString())
+        editor.putString(WIDGET_STATE_LIST, widgetStateList.toString())
         editor.apply()
     }
 
     fun getNoteIdForWidget(widgetId: Int): Int? {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        val widgetIdMap = WidgetIdMap(prefs.getString(WIDGET_ID_MAP, "") ?: "")
+        val widgetStateList = WidgetStateList(prefs.getString(WIDGET_STATE_LIST, "") ?: "")
 
-        return widgetIdMap.getNoteIdForWidget(widgetId)
+        return widgetStateList.getNoteIdForWidget(widgetId)
     }
 
-    fun removeNoteIdForWidget(widgetId: Int) {
+    fun removeWidgetState(widgetId: Int) {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        val widgetIdMap = WidgetIdMap(prefs.getString(WIDGET_ID_MAP, "") ?: "")
+        val widgetStateList = WidgetStateList(prefs.getString(WIDGET_STATE_LIST, "") ?: "")
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
 
-        widgetIdMap.removeWidgetId(widgetId)
+        widgetStateList.removeWidgetState(widgetId)
 
-        editor.putString(WIDGET_ID_MAP, widgetIdMap.toString())
+        editor.putString(WIDGET_STATE_LIST, widgetStateList.toString())
         editor.apply()
     }
 
@@ -146,7 +146,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
         private const val MONOSPACED_FONT = "MonospacedFont"
-        private const val WIDGET_ID_MAP = "WidgetIdMap"
+        private const val WIDGET_STATE_LIST = "WidgetStateList"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
     }
 }
