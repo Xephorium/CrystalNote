@@ -54,7 +54,7 @@ class WidgetPreview : View {
         if (viewHeight == null)
             viewHeight = if (measuredHeight % 2 == 0) measuredHeight else measuredHeight - 1
         if (viewWidth == null) {
-            val width = (viewHeight!! * (8.0/11.5)).toInt()
+            val width = (viewHeight!! * (8.0/11.7)).toInt()
             viewWidth = if (width % 2 == 0) width else width - 1
         }
         if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
@@ -96,7 +96,7 @@ class WidgetPreview : View {
         canvas?.drawRoundRect(
                 (paddingBorder!!).toFloat(),
                 (paddingBorder!! + (paddingTiny!! * 3)).toFloat(),
-                (paddingBorder!! + titleHeight!! * 6).toFloat(),
+                (viewWidth!! * 0.4).toFloat(),
                 (paddingBorder!! + (paddingTiny!! * 3) + titleHeight!!).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
@@ -110,7 +110,7 @@ class WidgetPreview : View {
             canvas,
             currentVerticalPosition,
             true,
-            0.8,
+            0.6,
             theme.colorTextSecondary
         )
 
@@ -119,7 +119,7 @@ class WidgetPreview : View {
             canvas,
             currentVerticalPosition,
             true,
-            0.7,
+            0.6,
             theme.colorTextSecondary
         )
 
@@ -137,7 +137,7 @@ class WidgetPreview : View {
             canvas,
             currentVerticalPosition,
             true,
-            0.8,
+            0.6,
             theme.colorTextSecondary
         )
 
@@ -146,7 +146,7 @@ class WidgetPreview : View {
             canvas,
             currentVerticalPosition,
             true,
-            0.7,
+            0.6,
             theme.colorTextSecondary
         )
 
