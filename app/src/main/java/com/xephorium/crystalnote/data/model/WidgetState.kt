@@ -30,11 +30,12 @@ class WidgetState(string: String) {
 
     /*--- Variable Declarations ---*/
 
-    private var widgetId: Int = Note.DEFAULT_NOTE_ID
-    private var noteId: Int = Note.DEFAULT_NOTE_ID
+    var widgetId: Int = Note.DEFAULT_NOTE_ID
+        private set
+    var noteId: Int = Note.DEFAULT_NOTE_ID
 
 
-    /*--- Constructor ---*/
+    /*--- Constructors ---*/
 
     constructor(
         widgetId: Int,
@@ -49,18 +50,6 @@ class WidgetState(string: String) {
 
 
     /*--- Public Methods ---*/
-
-    fun getWidgetId(): Int {
-        return widgetId
-    }
-
-    fun getNoteId(): Int {
-        return noteId
-    }
-
-    fun setNoteId(id: Int) {
-        noteId = id
-    }
 
     override fun toString() : String {
         val builder = StringBuilder()

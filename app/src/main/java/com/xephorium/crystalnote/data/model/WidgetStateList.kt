@@ -35,7 +35,7 @@ class WidgetStateList(string: String) {
         if (containsWidget(widgetId)) {
 
             // Update Existing Widget
-            (widgetStates.find { it.getWidgetId() == widgetId })?.setNoteId(noteId)
+            (widgetStates.find { it.widgetId == widgetId })?.noteId = noteId
 
         } else {
 
@@ -45,12 +45,12 @@ class WidgetStateList(string: String) {
     }
 
     fun getNoteIdForWidget(widgetId: Int): Int? {
-        return (widgetStates.find { it.getWidgetId() == widgetId })?.getNoteId()
+        return (widgetStates.find { it.widgetId == widgetId })?.noteId
     }
 
     fun removeWidgetState(widgetId: Int) {
         if (containsWidget(widgetId)) {
-            val index = widgetStates.indexOfFirst { it.getWidgetId() == widgetId }
+            val index = widgetStates.indexOfFirst { it.widgetId == widgetId }
             widgetStates.removeAt(index)
         }
     }
@@ -70,7 +70,7 @@ class WidgetStateList(string: String) {
     /*--- Private Methods ---*/
 
     private fun containsWidget(id: Int): Boolean {
-        return widgetStates.any { it.getWidgetId() == id}
+        return widgetStates.any { it.widgetId == id}
     }
 
     private fun parseString(string: String) {
