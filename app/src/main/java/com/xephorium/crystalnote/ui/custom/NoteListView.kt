@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
+import android.text.format.DateUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -72,7 +73,7 @@ class NoteListView : SwipeRefreshLayout {
         val oldNotes = mutableListOf<Note>()
 
         for (x in notes.indices) {
-            if (Calendar.getInstance().time.day == notes[x].date.day)
+            if (DateUtils.isToday(notes[x].date.time))
                 newNotes.add(notes[x])
             else
                 oldNotes.add(notes[x])

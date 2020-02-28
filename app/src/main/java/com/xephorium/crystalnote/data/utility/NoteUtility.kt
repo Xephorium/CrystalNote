@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.data.utility
 
 import android.graphics.Color
+import android.text.format.DateUtils
 
 import com.xephorium.crystalnote.data.model.Note
 
@@ -63,7 +64,7 @@ object NoteUtility {
     }
 
     fun getDynamicallyFormattedDate(note: Note): String {
-        return if (Calendar.getInstance().time.day == note.date.day) {
+        return if (DateUtils.isToday(note.date.time)) {
             getFormattedTime(note)
         } else {
             getFormattedDate(note)
