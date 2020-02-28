@@ -7,7 +7,6 @@ import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import com.xephorium.crystalnote.data.model.DateType
 
 
 class WidgetPreview : View {
@@ -25,8 +24,9 @@ class WidgetPreview : View {
     private var textBulletRadius: Int? = null
 
     private var paddingBorder: Int? = null
-    private var paddingMedium: Int? = null
-    private var paddingSmall: Int? = null
+    private var paddingLineGap: Int? = null
+    private var paddingBulletLineStart: Int? = null
+    private var paddingTitleGap: Int? = null
     private var paddingTiny: Int? = null
 
     private var theme = CrystalNoteTheme.default(context)
@@ -50,23 +50,25 @@ class WidgetPreview : View {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        if (viewHeight == null) {
-            val height = measuredHeight
-            viewHeight = if (height % 2 == 0) height else height - 1
-        }
+        // Calculate View Dimensions & Scale
+        if (viewHeight == null)
+            viewHeight = if (measuredHeight % 2 == 0) measuredHeight else measuredHeight - 1
         if (viewWidth == null) {
-            val width = (viewHeight!! * (4.0/5.5)).toInt()
+            val width = (viewHeight!! * (8.0/11.5)).toInt()
             viewWidth = if (width % 2 == 0) width else width - 1
         }
         if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
 
-        if (titleHeight == null) titleHeight = (scaleUnit!! * 0.85 * textScale).toInt()
-        if (textHeight == null) textHeight = (scaleUnit!! * 0.75 * textScale).toInt()
-        if (textBulletRadius == null) textBulletRadius = (scaleUnit!! * 0.25 * textScale).toInt()
+        // Calculate Text Size
+        if (titleHeight == null) titleHeight = (scaleUnit!! * 0.9 * textScale).toInt()
+        if (textHeight == null) textHeight = (scaleUnit!! * 0.80 * textScale).toInt()
+        if (textBulletRadius == null) textBulletRadius = (scaleUnit!! * 0.3 * textScale).toInt()
 
+        // Calculate Element Size
         if (paddingBorder == null) paddingBorder = (scaleUnit!! * 1.1).toInt()
-        if (paddingMedium == null) paddingMedium = (scaleUnit!! * 0.5).toInt()
-        if (paddingSmall == null) paddingSmall = (scaleUnit!! * 0.35).toInt()
+        if (paddingLineGap == null) paddingLineGap = (scaleUnit!! * 0.45).toInt()
+        if (paddingBulletLineStart == null) paddingBulletLineStart = (scaleUnit!! * 0.35).toInt()
+        if (paddingTitleGap == null) paddingTitleGap = (scaleUnit!! * 1.2).toInt()
         if (paddingTiny == null) paddingTiny = (scaleUnit!! * 0.1).toInt()
 
 
@@ -82,8 +84,8 @@ class WidgetPreview : View {
         canvas?.drawRoundRect(
                 0.toFloat(),
                 0.toFloat(),
-                (viewWidth!!).toFloat(),
-                (viewHeight!!).toFloat(),
+                viewWidth!!.toFloat(),
+                viewHeight!!.toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
                 paint
@@ -92,168 +94,105 @@ class WidgetPreview : View {
         // Title
         paint.color = theme.colorTextPrimary
         canvas?.drawRoundRect(
-                (paddingBorder!! - paddingTiny!!).toFloat(),
-                (paddingBorder!! + paddingSmall!!).toFloat(),
-                (paddingBorder!! - paddingTiny!! + titleHeight!! * 5).toFloat(),
-                (paddingBorder!! + paddingSmall!! + titleHeight!!).toFloat(),
+                (paddingBorder!!).toFloat(),
+                (paddingBorder!! + (paddingTiny!! * 3)).toFloat(),
+                (paddingBorder!! + titleHeight!! * 6).toFloat(),
+                (paddingBorder!! + (paddingTiny!! * 3) + titleHeight!!).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
                 paint
         )
-        currentVerticalPosition += (paddingBorder!! + paddingSmall!! + titleHeight!! + paddingSmall!!)
+        currentVerticalPosition += paddingBorder!! + (paddingTiny!! * 3) +
+                titleHeight!! + paddingTitleGap!!
 
         // List Bullet #1
-        paint.color = theme.colorTextSecondary
-        canvas?.drawCircle(
-                (paddingBorder!! + (textBulletRadius!! / 2)).toFloat(),
-                (currentVerticalPosition + paddingBorder!! + (textHeight!! / 2)).toFloat(),
-                (textBulletRadius!!).toFloat(),
-                paint
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            true,
+            0.8,
+            theme.colorTextSecondary
         )
-
-        // List Item #1
-        paint.color = theme.colorTextSecondary
-        var xValue = viewWidth!! * 0.7
-        var xBound: Int = if (xValue < viewWidth!! - paddingBorder!!) xValue.toInt()
-        else viewWidth!! - paddingBorder!!
-        canvas?.drawRoundRect(
-                (paddingBorder!! + paddingSmall!! + (textBulletRadius!! * 2)).toFloat(),
-                (currentVerticalPosition + paddingBorder!!).toFloat(),
-                (xBound).toFloat(),
-                (currentVerticalPosition + paddingBorder!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
-        )
-        currentVerticalPosition += textHeight!! + paddingBorder!!
 
         // List Bullet #2
-        paint.color = theme.colorTextSecondary
-        canvas?.drawCircle(
-                (paddingBorder!! + (textBulletRadius!! / 2)).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + (textHeight!! / 2)).toFloat(),
-                (textBulletRadius!!).toFloat(),
-                paint
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            true,
+            0.7,
+            theme.colorTextSecondary
         )
 
-        // List Item #2
-        paint.color = theme.colorTextSecondary
-        xValue = viewWidth!! * 0.65
-        xBound = if (xValue < viewWidth!! - paddingBorder!!) xValue.toInt()
-        else viewWidth!! - paddingBorder!!
-        canvas?.drawRoundRect(
-                (paddingBorder!! + paddingSmall!! + (textBulletRadius!! * 2)).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (xBound).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
+        // Blank Line
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            true,
+            1.0,
+            theme.colorBackground
         )
-        currentVerticalPosition += (textHeight!! + paddingMedium!!) * 2
 
         // List Bullet #3
-        paint.color = theme.colorTextSecondary
-        canvas?.drawCircle(
-                (paddingBorder!! + (textBulletRadius!! / 2)).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + (textHeight!! / 2)).toFloat(),
-                (textBulletRadius!!).toFloat(),
-                paint
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            true,
+            0.8,
+            theme.colorTextSecondary
         )
-
-        // List Item #3
-        paint.color = theme.colorTextSecondary
-        xValue = viewWidth!! * 0.67
-        xBound = if (xValue < viewWidth!! - paddingBorder!!) xValue.toInt()
-        else viewWidth!! - paddingBorder!!
-        canvas?.drawRoundRect(
-                (paddingBorder!! + paddingSmall!! + (textBulletRadius!! * 2)).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (xBound).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
-        )
-        currentVerticalPosition += textHeight!! + paddingMedium!!
 
         // List Bullet #4
-        paint.color = theme.colorTextSecondary
-        canvas?.drawCircle(
-                (paddingBorder!! + (textBulletRadius!! / 2)).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + (textHeight!! / 2)).toFloat(),
-                (textBulletRadius!!).toFloat(),
-                paint
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            true,
+            0.7,
+            theme.colorTextSecondary
         )
 
-        // List Item #4
-        paint.color = theme.colorTextSecondary
-        xValue = viewWidth!! * 0.55
-        xBound = if (xValue < viewWidth!! - paddingBorder!!) xValue.toInt()
-        else viewWidth!! - paddingBorder!!
-        canvas?.drawRoundRect(
-                (paddingBorder!! + paddingSmall!! + (textBulletRadius!! * 2)).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (xBound).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
+        // Blank Line
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            true,
+            1.0,
+            theme.colorBackground
         )
-        currentVerticalPosition += (textHeight!! + paddingMedium!!) * 2
 
-        // Paragraph Line 1
-        paint.color = theme.colorTextSecondary
-        canvas?.drawRoundRect(
-                (paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (viewWidth!! - paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
+        // Paragraph Line #1
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            false,
+            1.0,
+            theme.colorTextSecondary
         )
-        currentVerticalPosition += textHeight!! + paddingMedium!!
 
-        // Paragraph Line 2
-        paint.color = theme.colorTextSecondary
-        canvas?.drawRoundRect(
-                (paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (viewWidth!! - paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
+        // Paragraph Line #2
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            false,
+            1.0,
+            theme.colorTextSecondary
         )
-        currentVerticalPosition += textHeight!! + paddingMedium!!
 
-        // Paragraph Line 3
-        paint.color = theme.colorTextSecondary
-        canvas?.drawRoundRect(
-                (paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (viewWidth!! - paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
+        // Paragraph Line #3
+        currentVerticalPosition = drawLine(
+            canvas,
+            currentVerticalPosition,
+            false,
+            1.0,
+            theme.colorTextSecondary
         )
-        currentVerticalPosition += textHeight!! + paddingMedium!!
 
-        // Paragraph Line 4
-        paint.color = theme.colorTextSecondary
-        xValue = viewWidth!! * 0.73
-        xBound = if (xValue < viewWidth!! - paddingBorder!!) xValue.toInt()
-        else viewWidth!! - paddingBorder!!
-        canvas?.drawRoundRect(
-                (paddingBorder!!).toFloat(),
-                (currentVerticalPosition + paddingMedium!!).toFloat(),
-                (xBound).toFloat(),
-                (currentVerticalPosition + paddingMedium!! + textHeight!!).toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
-                paint
+        // Paragraph Line #4
+        drawLine(
+            canvas,
+            currentVerticalPosition,
+            false,
+            0.8,
+            theme.colorTextSecondary
         )
 
         super.onDraw(canvas)
@@ -270,10 +209,61 @@ class WidgetPreview : View {
 
     /*--- Private Methods ---*/
 
+    private fun drawLine(
+        canvas: Canvas?,
+        currentVerticalPosition: Int,
+        displayBullet: Boolean,
+        lineWidth: Double,
+        color: Int
+    ): Int {
+
+        // Calculate Widget Borders
+        val leftBorder = paddingBorder!!
+        val rightBorder = viewWidth!! - paddingBorder!!
+
+        // Calculate Bullet Positions
+        val bulletStart = leftBorder + (textBulletRadius!! / 2) + (paddingTiny!! * 2)
+        val bulletTop = currentVerticalPosition + (textHeight!! / 2)
+
+        // Calculate Line Positions
+        var lineEnd: Int = (viewWidth!! * lineWidth).toInt()
+        lineEnd = if (lineEnd < rightBorder) lineEnd else rightBorder
+        val lineStart: Int = if (!displayBullet) leftBorder
+        else leftBorder + paddingBulletLineStart!! + (textBulletRadius!! * 2)
+        val lineTop = currentVerticalPosition
+        val lineBottom = currentVerticalPosition + textHeight!!
+
+        // Set Paint Color
+        paint.color = color
+
+        // Draw Bullet
+        if (displayBullet) {
+            canvas?.drawCircle(
+                bulletStart.toFloat(),
+                bulletTop.toFloat(),
+                (textBulletRadius!!).toFloat(),
+                paint
+            )
+        }
+
+        // Draw Line
+        canvas?.drawRoundRect(
+            lineStart.toFloat(),
+            lineTop.toFloat(),
+            lineEnd.toFloat(),
+            lineBottom.toFloat(),
+            CORNER_RADIUS,
+            CORNER_RADIUS,
+            paint
+        )
+
+        return lineBottom + paddingLineGap!!
+    }
+
 
     /*--- Constants ---*/
 
     companion object {
-        private const val CORNER_RADIUS = 5.toFloat()
+        private const val CORNER_RADIUS = 4.toFloat()
     }
 }
