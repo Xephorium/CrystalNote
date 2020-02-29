@@ -32,7 +32,6 @@ class WidgetState(string: String) {
     /*--- Variable Declarations ---*/
 
     var widgetId: Int = Note.NO_NOTE
-        private set
     var noteId: Int = Note.NO_NOTE
     var textSize: TextSize = DEFAULT_TEXT_SIZE
     var backgroundTransparency: Transparency = DEFAULT_BACKGROUND_TRANSPARENCY

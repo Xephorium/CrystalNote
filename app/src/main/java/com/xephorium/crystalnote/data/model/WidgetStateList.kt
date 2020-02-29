@@ -73,6 +73,10 @@ class WidgetStateList(string: String) {
         widgetStates[index].backgroundTransparency = transparency
     }
 
+    fun updateWidgetId(oldId: Int, newId: Int) {
+        (widgetStates.find { it.widgetId == oldId })?.widgetId = newId
+    }
+
     override fun toString() : String {
         val builder = StringBuilder()
         for (x in 0 until (widgetStates.size - 1)) {

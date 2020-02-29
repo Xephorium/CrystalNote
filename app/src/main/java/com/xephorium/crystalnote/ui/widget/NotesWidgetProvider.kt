@@ -153,10 +153,19 @@ class NotesWidgetProvider : AppWidgetProvider() {
         }
     }
 
-    // TODO - Update Widget ID's in Room Database
     // Handle Device Reboot
-    override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) {
+    override fun onRestored(context: Context, oldWidgetIds: IntArray, newWidgetIds: IntArray) {
         super.onRestored(context, oldWidgetIds, newWidgetIds)
+
+        // Create Update Variables
+        val sharedPreferencesRepository = SharedPreferencesRepository(context)
+        val widgetStateList = sharedPreferencesRepository.getWidgetStateList()
+
+        // Update Widget ID's
+        for (index in oldWidgetIds.indices) {
+            widgetStateList.updateWidgetId(oldWidgetIds[index], newWidgetIds[index])
+        }
+        sharedPreferencesRepository.setWidgetStateList(widgetStateList)
     }
 
 

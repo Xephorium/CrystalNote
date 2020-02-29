@@ -104,7 +104,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
         for (widgetState in initialWidgetStates.getWidgetStates()) {
             var noteName = notes.firstOrNull { it.id == widgetState.noteId }?.name
             if (noteName == null) {
-                noteName = "Blank Widget #$blankCount"
+                noteName = "Blank Widget $blankCount"
                 blankCount++
             }
             names.add(noteName)
