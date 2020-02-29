@@ -13,7 +13,7 @@ import java.lang.StringBuilder
     widgetId                 (Int)      ID for widget
     noteId                   (Int)      ID for note to display
     textSize                 (Int)      Size of display text
-    backgroundTransparency   (Double)   Transparency of widget background
+    transparency   (Double)   Transparency of widget background
     backgroundColor          (Int)      Color of widget background
     titleColor               (Int)      Color of widget title
     textColor                (Int)      Color of widget text
@@ -22,7 +22,7 @@ import java.lang.StringBuilder
   converting the class' fields to and from a string to be stored
   in Shared Preferences. The string's format is as follows:
 
-    "<widgetId> <noteId> <textSize> <backgroundTransparency> "
+    "<widgetId> <noteId> <textSize> <transparency> "
       + "<backgroundColor> <titleColor> <textColor>"
 */
 
@@ -34,7 +34,7 @@ class WidgetState(string: String) {
     var widgetId: Int = Note.NO_NOTE
     var noteId: Int = Note.NO_NOTE
     var textSize: TextSize = DEFAULT_TEXT_SIZE
-    var backgroundTransparency: Transparency = DEFAULT_BACKGROUND_TRANSPARENCY
+    var transparency: Transparency = DEFAULT_TRANSPARENCY
     var backgroundColor: Int = DEFAULT_BACKGROUND_COLOR
     var titleColor: Int = DEFAULT_TITLE_COLOR
     var textColor: Int = DEFAULT_TEXT_COLOR
@@ -46,7 +46,7 @@ class WidgetState(string: String) {
         widgetId: Int,
         noteId: Int = Note.NO_NOTE,
         textSize: TextSize = DEFAULT_TEXT_SIZE,
-        backgroundTransparency: Transparency = DEFAULT_BACKGROUND_TRANSPARENCY,
+        backgroundTransparency: Transparency = DEFAULT_TRANSPARENCY,
         backgroundColor: Int = DEFAULT_BACKGROUND_COLOR,
         titleColor: Int = DEFAULT_TITLE_COLOR,
         textColor: Int = DEFAULT_TEXT_COLOR
@@ -74,7 +74,7 @@ class WidgetState(string: String) {
         builder.append(STRING_DELIMITER)
         builder.append(textSize.size)
         builder.append(STRING_DELIMITER)
-        builder.append(backgroundTransparency.value)
+        builder.append(transparency.value)
         builder.append(STRING_DELIMITER)
         builder.append(backgroundColor)
         builder.append(STRING_DELIMITER)
@@ -95,7 +95,7 @@ class WidgetState(string: String) {
             widgetId = values[0].toInt()
             noteId = values[1].toInt()
             textSize = TextSize.fromSize(values[2].toInt())
-            backgroundTransparency = Transparency.fromValue(values[3].toDouble())
+            transparency = Transparency.fromValue(values[3].toDouble())
             backgroundColor = values[4].toInt()
             titleColor = values[5].toInt()
             textColor = values[6].toInt()
@@ -108,7 +108,7 @@ class WidgetState(string: String) {
     companion object {
         const val STRING_DELIMITER = " "
         val DEFAULT_TEXT_SIZE: TextSize = TextSize.Medium
-        val DEFAULT_BACKGROUND_TRANSPARENCY = Transparency.NONE
+        val DEFAULT_TRANSPARENCY = Transparency.NONE
         val DEFAULT_BACKGROUND_COLOR = Color.parseColor("#FFFFFF")
         val DEFAULT_TITLE_COLOR = Color.parseColor("#1C1C1C")
         val DEFAULT_TEXT_COLOR = Color.parseColor("#666666")

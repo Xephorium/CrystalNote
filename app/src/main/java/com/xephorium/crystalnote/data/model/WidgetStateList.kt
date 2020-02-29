@@ -70,7 +70,7 @@ class WidgetStateList(string: String) {
     }
 
     fun setTransparencyAtIndex(index: Int, transparency: Transparency) {
-        widgetStates[index].backgroundTransparency = transparency
+        widgetStates[index].transparency = transparency
     }
 
     fun updateWidgetId(oldId: Int, newId: Int) {

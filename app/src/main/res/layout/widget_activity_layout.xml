@@ -21,7 +21,7 @@
         />
 
     <LinearLayout
-        android:id="@+id/viewWidgetPreviewBackground"
+        android:id="@+id/viewWidgetSettingsPreviewBackground"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:background="?themeSettingsPreviewBackground"
@@ -33,7 +33,7 @@
         >
 
         <com.xephorium.crystalnote.ui.custom.WidgetPreview
-            android:id="@+id/widgetPreview"
+            android:id="@+id/widgetSettingsPreview"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/paddingActivity"
@@ -49,7 +49,7 @@
         android:layout_marginBottom="@dimen/settingsSaveButtonPadding"
         android:overScrollMode="ifContentScrolls"
         app:layout_constraintBottom_toTopOf="@id/buttonSave"
-        app:layout_constraintTop_toBottomOf="@id/viewWidgetPreviewBackground"
+        app:layout_constraintTop_toBottomOf="@id/viewWidgetSettingsPreviewBackground"
         >
 
         <LinearLayout
@@ -59,7 +59,7 @@
             >
 
             <TextView
-                android:id="@+id/textWidgetSelectionHeader"
+                android:id="@+id/textWidgetSettingsSelectionHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/paddingActivity"
@@ -78,7 +78,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetSelectionLabel"
+                    android:id="@+id/textWidgetSettingsSelectionLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -92,7 +92,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSelection"
+                    android:id="@+id/selectorWidgetSettingsSelection"
                     android:layout_width="@dimen/selectorWidgetLarge"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
@@ -103,7 +103,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textWidgetAppearanceHeader"
+                android:id="@+id/textWidgetSettingsAppearanceHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/paddingActivity"
@@ -122,7 +122,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetTextSizeLabel"
+                    android:id="@+id/textWidgetSettingsTextSizeLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -136,7 +136,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetTextSize"
+                    android:id="@+id/selectorWidgetSettingsTextSize"
                     android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
@@ -153,7 +153,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetBackgroundTransparencyLabel"
+                    android:id="@+id/textWidgetSettingsTransparencyLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -167,7 +167,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetBackgroundTransparency"
+                    android:id="@+id/selectorWidgetSettingsTransparency"
                     android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
@@ -184,7 +184,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetBackgroundColorLabel"
+                    android:id="@+id/textWidgetSettingsBackgroundColorLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -198,7 +198,7 @@
                     />
 
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbBackgroundColor"
+                    android:id="@+id/colorOrbWidgetSettingsBackgroundColor"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/widgetSettingsOrbSize"
                     android:layout_marginEnd="@dimen/widgetSettingsOrbPadding"
@@ -213,7 +213,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetTitleColorLabel"
+                    android:id="@+id/textWidgetSettingsTitleColorLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -227,7 +227,7 @@
                     />
 
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbTitleColor"
+                    android:id="@+id/colorOrbWidgetSettingsTitleColor"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/widgetSettingsOrbSize"
                     android:layout_marginEnd="@dimen/widgetSettingsOrbPadding"
@@ -242,7 +242,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetTextColorLabel"
+                    android:id="@+id/textWidgetSettingsTextColorLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -256,7 +256,7 @@
                     />
 
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbTextColor"
+                    android:id="@+id/colorOrbWidgetSettingsTextColor"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/widgetSettingsOrbSize"
                     android:layout_marginEnd="@dimen/widgetSettingsOrbPadding"
@@ -294,7 +294,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewWidgetPreviewBackground"
+        app:layout_constraintTop_toBottomOf="@id/viewWidgetSettingsPreviewBackground"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

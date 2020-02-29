@@ -28,14 +28,14 @@ class WidgetPresenter : WidgetContract.Presenter() {
             this.view?.setupWidgetSelector(noteNameList)
             this.view?.populateWidgetSelector(workingWidgetIndex)
             this.view?.populateTextSize(getWorkingWidgetState().textSize)
-            this.view?.populateTransparency(getWorkingWidgetState().backgroundTransparency)
+            this.view?.populateTransparency(getWorkingWidgetState().transparency)
             this.view?.populateBackgroundColor(getWorkingWidgetState().backgroundColor)
             this.view?.populateTitleColor(getWorkingWidgetState().titleColor)
             this.view?.populateTextColor(getWorkingWidgetState().textColor)
 
             // Configure Preview
             this.view?.setPreviewTextSize(getWorkingWidgetState().textSize)
-            this.view?.setPreviewTransparency(getWorkingWidgetState().backgroundTransparency)
+            this.view?.setPreviewTransparency(getWorkingWidgetState().transparency)
             this.view?.setPreviewBackgroundColor(getWorkingWidgetState().backgroundColor)
             this.view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
             this.view?.setPreviewTextColor(getWorkingWidgetState().textColor)
@@ -48,7 +48,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
             // Reset Preview
             this.view?.setPreviewTextSize(WidgetState.DEFAULT_TEXT_SIZE)
-            this.view?.setPreviewTransparency(WidgetState.DEFAULT_BACKGROUND_TRANSPARENCY)
+            this.view?.setPreviewTransparency(WidgetState.DEFAULT_TRANSPARENCY)
             this.view?.setPreviewBackgroundColor(WidgetState.DEFAULT_BACKGROUND_COLOR)
             this.view?.setPreviewTitleColor(WidgetState.DEFAULT_TITLE_COLOR)
             this.view?.setPreviewTextColor(WidgetState.DEFAULT_TEXT_COLOR)
@@ -66,14 +66,14 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
         // Populate Fields
         view?.populateTextSize(getWorkingWidgetState().textSize)
-        view?.populateTransparency(getWorkingWidgetState().backgroundTransparency)
+        view?.populateTransparency(getWorkingWidgetState().transparency)
         view?.populateBackgroundColor(getWorkingWidgetState().backgroundColor)
         view?.populateTitleColor(getWorkingWidgetState().titleColor)
         view?.populateTextColor(getWorkingWidgetState().textColor)
 
         // Configure Preview
         view?.setPreviewTextSize(getWorkingWidgetState().textSize)
-        view?.setPreviewTransparency(getWorkingWidgetState().backgroundTransparency)
+        view?.setPreviewTransparency(getWorkingWidgetState().transparency)
         view?.setPreviewBackgroundColor(getWorkingWidgetState().backgroundColor)
         view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
         view?.setPreviewTextColor(getWorkingWidgetState().textColor)
@@ -86,7 +86,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
     override fun handleTransparencyChange(transparency: Transparency) {
         workingWidgetStates.setTransparencyAtIndex(workingWidgetIndex, transparency)
-        view?.setPreviewTransparency(getWorkingWidgetState().backgroundTransparency)
+        view?.setPreviewTransparency(getWorkingWidgetState().transparency)
     }
 
     override fun handleSaveClick() {
@@ -104,7 +104,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
         for (widgetState in initialWidgetStates.getWidgetStates()) {
             var noteName = notes.firstOrNull { it.id == widgetState.noteId }?.name
             if (noteName == null) {
-                noteName = "Blank Widget $blankCount"
+                noteName = "New Widget $blankCount"
                 blankCount++
             }
             names.add(noteName)

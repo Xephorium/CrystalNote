@@ -34,7 +34,7 @@ class WidgetPreview : View {
     private var paddingTiny: Int? = null
 
     private var textScale = DEFAULT_TEXT_SCALE
-    private var backgroundTransparency = WidgetState.DEFAULT_BACKGROUND_TRANSPARENCY
+    private var transparency = WidgetState.DEFAULT_TRANSPARENCY
     private var backgroundColor = WidgetState.DEFAULT_BACKGROUND_COLOR
     private var titleColor = WidgetState.DEFAULT_TITLE_COLOR
     private var textColor = WidgetState.DEFAULT_TEXT_COLOR
@@ -87,7 +87,7 @@ class WidgetPreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        paint.color = getColorWithTransparencyApplied(backgroundColor, backgroundTransparency.value)
+        paint.color = getColorWithTransparencyApplied(backgroundColor, transparency.value)
         canvas?.drawRoundRect(
                 0.toFloat(),
                 0.toFloat(),
@@ -207,8 +207,8 @@ class WidgetPreview : View {
         invalidate()
     }
 
-    fun setBackgroundTransparency(transparency: Transparency) {
-        backgroundTransparency = transparency
+    fun setTransparency(transparency: Transparency) {
+        this.transparency = transparency
         invalidate()
     }
 

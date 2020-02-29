@@ -184,7 +184,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
         widgetView.setInt(
             R.id.imageWidgetBackground,
             "setImageAlpha",
-            ((1.0 - state.backgroundTransparency.value) * 255.0).toInt()
+            ((1.0 - state.transparency.value) * 255.0).toInt()
         )
 
         // Text Size
