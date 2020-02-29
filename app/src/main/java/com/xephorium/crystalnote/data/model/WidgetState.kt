@@ -34,8 +34,8 @@ class WidgetState(string: String) {
     var widgetId: Int = Note.NO_NOTE
         private set
     var noteId: Int = Note.NO_NOTE
-    var textSize: Int = DEFAULT_TEXT_SIZE
-    var backgroundTransparency: Double = DEFAULT_BACKGROUND_TRANSPARENCY
+    var textSize: TextSize = DEFAULT_TEXT_SIZE
+    var backgroundTransparency: Transparency = DEFAULT_BACKGROUND_TRANSPARENCY
     var backgroundColor: Int = DEFAULT_BACKGROUND_COLOR
     var titleColor: Int = DEFAULT_TITLE_COLOR
     var textColor: Int = DEFAULT_TEXT_COLOR
@@ -46,15 +46,15 @@ class WidgetState(string: String) {
     constructor(
         widgetId: Int,
         noteId: Int = Note.NO_NOTE,
-        textSize: Int = DEFAULT_TEXT_SIZE,
-        backgroundTransparency: Double = DEFAULT_BACKGROUND_TRANSPARENCY,
+        textSize: TextSize = DEFAULT_TEXT_SIZE,
+        backgroundTransparency: Transparency = DEFAULT_BACKGROUND_TRANSPARENCY,
         backgroundColor: Int = DEFAULT_BACKGROUND_COLOR,
         titleColor: Int = DEFAULT_TITLE_COLOR,
         textColor: Int = DEFAULT_TEXT_COLOR
     ): this(widgetId.toString() + STRING_DELIMITER
             + noteId.toString() + STRING_DELIMITER
-            + textSize.toString() + STRING_DELIMITER
-            + backgroundTransparency.toString() + STRING_DELIMITER
+            + textSize.size.toString() + STRING_DELIMITER
+            + backgroundTransparency.value.toString() + STRING_DELIMITER
             + backgroundColor.toString() + STRING_DELIMITER
             + titleColor.toString() + STRING_DELIMITER
             + textColor.toString() + STRING_DELIMITER
@@ -73,9 +73,9 @@ class WidgetState(string: String) {
         builder.append(STRING_DELIMITER)
         builder.append(noteId)
         builder.append(STRING_DELIMITER)
-        builder.append(textSize)
+        builder.append(textSize.size)
         builder.append(STRING_DELIMITER)
-        builder.append(backgroundTransparency)
+        builder.append(backgroundTransparency.value)
         builder.append(STRING_DELIMITER)
         builder.append(backgroundColor)
         builder.append(STRING_DELIMITER)
@@ -95,8 +95,8 @@ class WidgetState(string: String) {
             val values = input.split(Regex(STRING_DELIMITER))
             widgetId = values[0].toInt()
             noteId = values[1].toInt()
-            textSize = values[2].toInt()
-            backgroundTransparency = values[3].toDouble()
+            textSize = TextSize.fromSize(values[2].toInt())
+            backgroundTransparency = Transparency.fromValue(values[3].toDouble())
             backgroundColor = values[4].toInt()
             titleColor = values[5].toInt()
             textColor = values[6].toInt()
@@ -108,8 +108,8 @@ class WidgetState(string: String) {
 
     companion object {
         const val STRING_DELIMITER = " "
-        val DEFAULT_TEXT_SIZE: Int = TextSize.Medium.size
-        const val DEFAULT_BACKGROUND_TRANSPARENCY = 0.0
+        val DEFAULT_TEXT_SIZE: TextSize = TextSize.Medium
+        val DEFAULT_BACKGROUND_TRANSPARENCY = Transparency.NONE
         val DEFAULT_BACKGROUND_COLOR = Color.parseColor("#FFFFFF")
         val DEFAULT_TITLE_COLOR = Color.parseColor("#1C1C1C")
         val DEFAULT_TEXT_COLOR = Color.parseColor("#666666")
@@ -117,15 +117,27 @@ class WidgetState(string: String) {
         enum class TextSize(val displayName: String, val size: Int) {
             Small("Small", 13),
             Medium("Medium", 14),
-            Large("Large", 15)
+            Large("Large", 16);
+
+            companion object {
+                fun fromSize(size: Int): TextSize {
+                    return values().firstOrNull { it.size == size } ?: Medium
+                }
+            }
         }
 
-        enum class Transparency(val displayName: String, val transparency: Double) {
+        enum class Transparency(val displayName: String, val value: Double) {
             NONE("None", 0.0),
             Low("25 %", 0.25),
             Medium("50 %", 0.5),
             High("75 %", 0.75),
-            Full("100 %", 1.0)
+            Full("100 %", 1.0);
+
+            companion object {
+                fun fromValue(value: Double): Transparency {
+                    return values().firstOrNull { it.value == value } ?: NONE
+                }
+            }
         }
     }
 }

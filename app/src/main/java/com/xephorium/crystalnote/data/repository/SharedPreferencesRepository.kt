@@ -135,6 +135,13 @@ class SharedPreferencesRepository(private val context: Context) {
         return WidgetStateList(prefs.getString(WIDGET_STATE_LIST, "") ?: "")
     }
 
+    fun setWidgetStateList(widgetStateList: WidgetStateList) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+
+        editor.putString(WIDGET_STATE_LIST, widgetStateList.toString())
+        editor.apply()
+    }
+
     fun setSelectedDrawerButton(button: DrawerButton) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
         editor.putString(SELECTED_DRAWER_BUTTON_NAME, button.name)

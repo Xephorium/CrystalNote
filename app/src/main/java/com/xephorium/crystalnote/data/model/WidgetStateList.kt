@@ -1,5 +1,7 @@
 package com.xephorium.crystalnote.data.model
 
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import java.lang.StringBuilder
 
 /*
@@ -61,6 +63,14 @@ class WidgetStateList(string: String) {
 
     fun getWidgetStates(): MutableList<WidgetState> {
         return widgetStates
+    }
+
+    fun setTextSizeAtIndex(index: Int, textSize: TextSize) {
+        widgetStates[index].textSize = textSize
+    }
+
+    fun setTransparencyAtIndex(index: Int, transparency: Transparency) {
+        widgetStates[index].backgroundTransparency = transparency
     }
 
     override fun toString() : String {
