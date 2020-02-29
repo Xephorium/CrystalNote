@@ -1,6 +1,6 @@
 package com.xephorium.crystalnote.data.model
 
-import com.xephorium.crystalnote.data.model.Note.Companion.NO_COLOR
+import android.graphics.Color
 import java.lang.StringBuilder
 
 /*
@@ -34,11 +34,11 @@ class WidgetState(string: String) {
     var widgetId: Int = Note.NO_NOTE
         private set
     var noteId: Int = Note.NO_NOTE
-    var textSize: Int = 16 // TODO - Replace
-    var backgroundTransparency: Double = 1.0
-    var backgroundColor: Int = NO_COLOR
-    var titleColor: Int = NO_COLOR
-    var textColor: Int = NO_COLOR
+    var textSize: Int = DEFAULT_TEXT_SIZE
+    var backgroundTransparency: Double = DEFAULT_BACKGROUND_TRANSPARENCY
+    var backgroundColor: Int = DEFAULT_BACKGROUND_COLOR
+    var titleColor: Int = DEFAULT_TITLE_COLOR
+    var textColor: Int = DEFAULT_TEXT_COLOR
 
 
     /*--- Constructors ---*/
@@ -46,11 +46,11 @@ class WidgetState(string: String) {
     constructor(
         widgetId: Int,
         noteId: Int = Note.NO_NOTE,
-        textSize: Int = 16, // TODO - Replace
-        backgroundTransparency: Double = 1.0,
-        backgroundColor: Int = NO_COLOR,
-        titleColor: Int = NO_COLOR,
-        textColor: Int = NO_COLOR
+        textSize: Int = DEFAULT_TEXT_SIZE,
+        backgroundTransparency: Double = DEFAULT_BACKGROUND_TRANSPARENCY,
+        backgroundColor: Int = DEFAULT_BACKGROUND_COLOR,
+        titleColor: Int = DEFAULT_TITLE_COLOR,
+        textColor: Int = DEFAULT_TEXT_COLOR
     ): this(widgetId.toString() + STRING_DELIMITER
             + noteId.toString() + STRING_DELIMITER
             + textSize.toString() + STRING_DELIMITER
@@ -108,5 +108,16 @@ class WidgetState(string: String) {
 
     companion object {
         const val STRING_DELIMITER = " "
+        val DEFAULT_TEXT_SIZE: Int = TextSize.Medium.size
+        const val DEFAULT_BACKGROUND_TRANSPARENCY = 0.0
+        val DEFAULT_BACKGROUND_COLOR = Color.parseColor("#FFFFFF")
+        val DEFAULT_TITLE_COLOR = Color.parseColor("#1C1C1C")
+        val DEFAULT_TEXT_COLOR = Color.parseColor("#666666")
+
+        enum class TextSize(val size: Int) {
+            Small(13),
+            Medium(14),
+            Large(15)
+        }
     }
 }

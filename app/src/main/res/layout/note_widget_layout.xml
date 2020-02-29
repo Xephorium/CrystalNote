@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!-- Note: As of May 2019, widgets don't support ConstraintLayout. :( -->
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layoutNoteWidget"
+    android:id="@+id/layoutWidgetBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/paddingSmall"
-    android:background="@drawable/note_widget_background"
     android:orientation="vertical"
     >
+
+    <ImageView
+        android:id="@+id/imageWidgetBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:src="@drawable/note_widget_background"
+        />
 
     <TextView
         android:id="@+id/textWidgetTitle"
@@ -42,6 +49,7 @@
         android:paddingRight="@dimen/widgetDefaultPadding"
         android:paddingBottom="@dimen/widgetDefaultPadding"
         android:textColor="@color/lightTextSecondary"
+        android:layout_below="@+id/textWidgetTitle"
         tools:text="This is a bunch of widget text!"
         />
 
@@ -59,4 +67,4 @@
         android:textColor="@color/lightTextSecondary"
         />
 
-</LinearLayout>
+</RelativeLayout>

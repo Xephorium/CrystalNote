@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.data.repository
 import android.content.Context
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
+import com.xephorium.crystalnote.data.model.WidgetState
 
 import com.xephorium.crystalnote.data.model.WidgetStateList
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
@@ -109,6 +110,13 @@ class SharedPreferencesRepository(private val context: Context) {
         val widgetStateList = WidgetStateList(prefs.getString(WIDGET_STATE_LIST, "") ?: "")
 
         return widgetStateList.getNoteIdForWidget(widgetId)
+    }
+
+    fun getWidgetState(widgetId: Int): WidgetState? {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        val widgetStateList = WidgetStateList(prefs.getString(WIDGET_STATE_LIST, "") ?: "")
+
+        return widgetStateList.getWidgetState(widgetId)
     }
 
     fun removeWidgetState(widgetId: Int) {

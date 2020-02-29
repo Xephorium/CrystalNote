@@ -7,6 +7,7 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.util.TypedValue.COMPLEX_UNIT_SP
 import android.view.View
 import android.widget.RemoteViews
 
@@ -20,12 +21,14 @@ import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_F
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
+import com.xephorium.crystalnote.data.model.WidgetState
+
 
 /*
-  NotesWidgetProvider                               05.11.2019
+  NotesWidgetProvider                                      05.11.2019
   Christopher Cruzen
 
-    Defines appearance and view behavior for all note widgets.
+    Defines appearance and view behavior for all CrystalNote widgets.
 */
 
 class NotesWidgetProvider : AppWidgetProvider() {
@@ -33,7 +36,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
     /*--- Lifecycle Methods ---*/
 
-    // Setup Each Widget Instance
+    // Handle Widget Update
     override fun onUpdate(
         context: Context,
         widgetManager: AppWidgetManager,
@@ -50,8 +53,9 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Get Widget Variables
                 val widgetView = RemoteViews(context.packageName, R.layout.note_widget_layout)
-                val displayNote =
-                    sharedPreferencesRepository.getNoteIdForWidget(widgetId)?.let { id ->
+                val widgetState = sharedPreferencesRepository.getWidgetState(widgetId)
+                val widgetNoteId = sharedPreferencesRepository.getNoteIdForWidget(widgetId)
+                val widgetNote = widgetNoteId?.let { id ->
                         val callable = Callable<Note> {
                             NoteRoomRepository(context).getNoteSynchronously(id)
                         }
@@ -59,15 +63,21 @@ class NotesWidgetProvider : AppWidgetProvider() {
                         future.get()
                     }
 
-                // Populate Fields
-                if (displayNote != null) {
+                // Set Widget Style
+                if (widgetState == null) {
+                    styleWidget(widgetView, WidgetState(0, 0))
+                } else {
+                    styleWidget(widgetView, widgetState)
+                }
 
+                // Populate Widget Fields
+                if (widgetNote != null) {
                     widgetView.setViewVisibility(R.id.textWidgetTitle, View.VISIBLE)
                     widgetView.setViewVisibility(R.id.textWidgetContent, View.VISIBLE)
                     widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
 
-                    widgetView.setTextViewText(R.id.textWidgetTitle, displayNote.name)
-                    widgetView.setTextViewText(R.id.textWidgetContent, displayNote.contents)
+                    widgetView.setTextViewText(R.id.textWidgetTitle, widgetNote.name)
+                    widgetView.setTextViewText(R.id.textWidgetContent, widgetNote.contents)
                 } else {
                     widgetView.setViewVisibility(R.id.textWidgetTitle, View.GONE)
                     widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
@@ -126,6 +136,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
         }
     }
 
+    // Handle Widget Delete
     override fun onDeleted(context: Context, widgetIds: IntArray) {
         super.onDeleted(context, widgetIds)
 
@@ -136,8 +147,53 @@ class NotesWidgetProvider : AppWidgetProvider() {
         }
     }
 
+    // TODO - Update Widget ID's in Room Database
+    // Handle Device Reboot
+    override fun onRestored(context: Context?, oldWidgetIds: IntArray?, newWidgetIds: IntArray?) {
+        super.onRestored(context, oldWidgetIds, newWidgetIds)
+    }
+
 
     /*--- Private Methods ---*/
+
+    private fun styleWidget(widgetView: RemoteViews, state: WidgetState) {
+
+        // Background Color
+        widgetView.setInt(
+            R.id.imageWidgetBackground,
+            "setColorFilter",
+            state.backgroundColor
+        )
+
+        // Background Transparency
+        widgetView.setInt(
+            R.id.imageWidgetBackground,
+            "setImageAlpha",
+            ((1.0 - state.backgroundTransparency) * 255.0).toInt()
+        )
+
+        // Text Size
+        widgetView.setTextViewTextSize(
+            R.id.textWidgetTitle,
+            COMPLEX_UNIT_SP,
+            (state.textSize + 1).toFloat()
+        )
+        widgetView.setTextViewTextSize(
+            R.id.textWidgetContent,
+            COMPLEX_UNIT_SP,
+            (state.textSize).toFloat()
+        )
+        widgetView.setTextViewTextSize(
+            R.id.textWidgetEmpty,
+            COMPLEX_UNIT_SP,
+            (state.textSize).toFloat()
+        )
+
+        // Text Color
+        widgetView.setTextColor(R.id.textWidgetTitle, state.titleColor)
+        widgetView.setTextColor(R.id.textWidgetContent, state.textColor)
+        widgetView.setTextColor(R.id.textWidgetEmpty, state.textColor)
+    }
 
     private fun getOnClickPendingIntent(
         context: Context,

@@ -48,6 +48,10 @@ class WidgetStateList(string: String) {
         return (widgetStates.find { it.widgetId == widgetId })?.noteId
     }
 
+    fun getWidgetState(widgetId: Int): WidgetState? {
+        return widgetStates.find { it.widgetId == widgetId }
+    }
+
     fun removeWidgetState(widgetId: Int) {
         if (containsWidget(widgetId)) {
             val index = widgetStates.indexOfFirst { it.widgetId == widgetId }
