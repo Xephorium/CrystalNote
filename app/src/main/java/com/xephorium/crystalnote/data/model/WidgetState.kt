@@ -114,10 +114,18 @@ class WidgetState(string: String) {
         val DEFAULT_TITLE_COLOR = Color.parseColor("#1C1C1C")
         val DEFAULT_TEXT_COLOR = Color.parseColor("#666666")
 
-        enum class TextSize(val size: Int) {
-            Small(13),
-            Medium(14),
-            Large(15)
+        enum class TextSize(val displayName: String, val size: Int) {
+            Small("Small", 13),
+            Medium("Medium", 14),
+            Large("Large", 15)
+        }
+
+        enum class Transparency(val displayName: String, val transparency: Double) {
+            NONE("None", 0.0),
+            Low("25 %", 0.25),
+            Medium("50 %", 0.5),
+            High("75 %", 0.75),
+            Full("100 %", 1.0)
         }
     }
 }

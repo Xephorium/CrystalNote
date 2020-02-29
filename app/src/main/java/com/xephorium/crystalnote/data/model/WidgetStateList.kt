@@ -59,6 +59,10 @@ class WidgetStateList(string: String) {
         }
     }
 
+    fun getWidgetStates(): MutableList<WidgetState> {
+        return widgetStates
+    }
+
     override fun toString() : String {
         val builder = StringBuilder()
         for (x in 0 until (widgetStates.size - 1)) {
