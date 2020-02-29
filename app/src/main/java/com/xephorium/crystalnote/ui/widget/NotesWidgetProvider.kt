@@ -13,6 +13,7 @@ import android.widget.RemoteViews
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.select.SelectActivity
@@ -62,6 +63,11 @@ class NotesWidgetProvider : AppWidgetProvider() {
                         val future = Executors.newSingleThreadExecutor().submit(callable)
                         future.get()
                     }
+
+                // Save New WidgetState
+                if (widgetState == null) {
+                    sharedPreferencesRepository.setNoteIdForWidget(widgetId, NO_NOTE)
+                }
 
                 // Set Widget Style
                 if (widgetState == null) {
