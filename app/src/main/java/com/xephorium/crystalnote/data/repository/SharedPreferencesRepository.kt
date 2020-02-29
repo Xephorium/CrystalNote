@@ -148,6 +148,15 @@ class SharedPreferencesRepository(private val context: Context) {
     }
 
 
+    /*--- Developer Utility Methods ---*/
+
+    fun clearWidgetStates() {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putString(WIDGET_STATE_LIST, "")
+        editor.apply()
+    }
+
+
     /*--- Constants ---*/
 
     companion object {
