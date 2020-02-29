@@ -33,7 +33,7 @@
         android:paddingStart="@dimen/widgetDefaultPadding"
         android:paddingEnd="@dimen/widgetDefaultPadding"
         android:textColor="@color/lightTextPrimary"
-        android:textSize="@dimen/widgetTextHeader"
+        android:textSize="@dimen/widgetHeaderTextSize"
         tools:text="Widget Title"
         />
 

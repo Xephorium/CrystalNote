@@ -66,7 +66,7 @@
                 android:paddingTop="@dimen/paddingLarge"
                 android:paddingEnd="@dimen/paddingActivity"
                 android:paddingBottom="@dimen/paddingSmall"
-                android:text="@string/widgetSelectionHeader"
+                android:text="@string/widgetSettingsSelectionHeader"
                 android:textColor="?themeTextPrimary"
                 android:textSize="@dimen/textSettings"
                 />
@@ -86,7 +86,7 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSelectionLabel"
+                    android:text="@string/widgetSettingsSelectionLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
@@ -96,7 +96,7 @@
                     android:layout_width="@dimen/selectorWidgetLarge"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
+                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
                     app:backgroundTint="?themeTextSecondary"
                     />
 
@@ -110,7 +110,7 @@
                 android:paddingTop="@dimen/paddingLarge"
                 android:paddingEnd="@dimen/paddingActivity"
                 android:paddingBottom="@dimen/paddingSmall"
-                android:text="@string/widgetAppearanceHeader"
+                android:text="@string/widgetSettingsAppearanceHeader"
                 android:textColor="?themeTextPrimary"
                 android:textSize="@dimen/textSettings"
                 />
@@ -130,7 +130,7 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetTextSizeLabel"
+                    android:text="@string/widgetSettingsTextSizeLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
@@ -140,7 +140,7 @@
                     android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
+                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
                     app:backgroundTint="?themeTextSecondary"
                     />
 
@@ -161,7 +161,7 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetBackgroundTransparencyLabel"
+                    android:text="@string/widgetSettingsTransparencyLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
@@ -171,7 +171,7 @@
                     android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
+                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
                     app:backgroundTint="?themeTextSecondary"
                     />
 
@@ -192,7 +192,7 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetBackgroundColorLabel"
+                    android:text="@string/widgetSettingsBackgroundColorLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
@@ -200,8 +200,8 @@
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
                     android:id="@+id/colorOrbWidgetSettingsBackgroundColor"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/widgetSettingsOrbSize"
-                    android:layout_marginEnd="@dimen/widgetSettingsOrbPadding"
+                    android:layout_height="@dimen/colorOrbSizeWidgetSettings"
+                    android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     />
 
             </LinearLayout>
@@ -221,7 +221,7 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetTitleColorLabel"
+                    android:text="@string/widgetSettingsTitleColorLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
@@ -229,8 +229,8 @@
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
                     android:id="@+id/colorOrbWidgetSettingsTitleColor"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/widgetSettingsOrbSize"
-                    android:layout_marginEnd="@dimen/widgetSettingsOrbPadding"
+                    android:layout_height="@dimen/colorOrbSizeWidgetSettings"
+                    android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     />
 
             </LinearLayout>
@@ -250,7 +250,7 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetTextColorLabel"
+                    android:text="@string/widgetSettingsTextColorLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
@@ -258,8 +258,8 @@
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
                     android:id="@+id/colorOrbWidgetSettingsTextColor"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/widgetSettingsOrbSize"
-                    android:layout_marginEnd="@dimen/widgetSettingsOrbPadding"
+                    android:layout_height="@dimen/colorOrbSizeWidgetSettings"
+                    android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     />
 
             </LinearLayout>
