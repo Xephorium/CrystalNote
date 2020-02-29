@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="start"
+    android:gravity="end"
     android:textColor="?themeTextSecondary"
     android:textSize="@dimen/textSettings"
     tools:text="This is an Item"
+    android:singleLine="true"
+    android:ellipsize="end"
+
     />

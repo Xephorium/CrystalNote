@@ -92,9 +92,10 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/selectorWidgetSelection"
-                    android:layout_width="@dimen/selectorSettings"
+                    android:layout_width="@dimen/selectorWidgetLarge"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
+                    android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
                     app:backgroundTint="?themeTextHandle"
                     />
 
@@ -135,9 +136,10 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/selectorWidgetTextSize"
-                    android:layout_width="@dimen/selectorSettings"
+                    android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
+                    android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
                     app:backgroundTint="?themeTextHandle"
                     />
 
@@ -165,9 +167,10 @@
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/selectorWidgetBackgroundTransparency"
-                    android:layout_width="@dimen/selectorSettings"
+                    android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
+                    android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
                     app:backgroundTint="?themeTextHandle"
                     />
 
