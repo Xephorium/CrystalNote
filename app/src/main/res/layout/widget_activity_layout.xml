@@ -97,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
                     android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
-                    app:backgroundTint="?themeTextHandle"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>
@@ -141,7 +141,7 @@
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
                     android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
-                    app:backgroundTint="?themeTextHandle"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>
@@ -172,7 +172,7 @@
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
                     android:layout_marginEnd="@dimen/widgetSettingsSelectorPadding"
-                    app:backgroundTint="?themeTextHandle"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>

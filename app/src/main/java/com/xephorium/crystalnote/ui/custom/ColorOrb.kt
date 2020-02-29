@@ -7,12 +7,7 @@ import android.graphics.Paint
 import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
-import androidx.annotation.IntegerRes
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
-import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import com.xephorium.crystalnote.data.model.DateType
 
 
 class ColorOrb : View {
@@ -35,8 +30,8 @@ class ColorOrb : View {
     constructor(context: Context) : this(context, null)
 
     init {
-        paint.style = FILL
         paint.isAntiAlias = true
+        paint.strokeWidth = OUTLINE_WIDTH
     }
 
 
@@ -56,32 +51,35 @@ class ColorOrb : View {
 
     override fun onDraw(canvas: Canvas?) {
 
-        // Draw Selection Highlight
+        // Conditional Selection Highlight
         if (showSelector) {
-            paint.color = theme.colorTextTertiary
+            paint.color = theme.colorTextSecondary
+            paint.style = FILL
             canvas?.drawCircle(
                 (viewWidth!! / 2.0).toFloat(),
                 (viewHeight!! / 2.0).toFloat(),
-                ((viewWidth!! * SIZE_SELECTION) / 2.0).toFloat(),
+                ((viewWidth!! * RADIUS_SELECTION) / 2.0).toFloat(),
                 paint
             )
         }
 
-        // Draw Outline
-        paint.color = theme.colorTextTertiary
+        // Color Circle
+        paint.color = orbColor
+        paint.style = FILL
         canvas?.drawCircle(
             (viewWidth!! / 2.0).toFloat(),
             (viewHeight!! / 2.0).toFloat(),
-            ((viewWidth!! * SIZE_OUTLINE) / 2.0).toFloat(),
+            ((viewWidth!! * RADIUS_COLOR) / 2.0).toFloat(),
             paint
         )
 
-        // Draw Color
-        paint.color = orbColor
+        // Outline
+        paint.color = theme.colorTextSecondary
+        paint.style = STROKE
         canvas?.drawCircle(
             (viewWidth!! / 2.0).toFloat(),
             (viewHeight!! / 2.0).toFloat(),
-            ((viewWidth!! * SIZE_COLOR) / 2.0).toFloat(),
+            ((viewWidth!! * RADIUS_COLOR) / 2.0).toFloat(),
             paint
         )
 
@@ -116,8 +114,8 @@ class ColorOrb : View {
 
     companion object {
         val DEFAULT_ORB_COLOR = Color.parseColor("#000000")
-        const val SIZE_SELECTION = 1.0
-        const val SIZE_OUTLINE = 0.6
-        const val SIZE_COLOR = 0.525
+        const val RADIUS_SELECTION = 1.0
+        const val RADIUS_COLOR = 0.525
+        const val OUTLINE_WIDTH = (3.0).toFloat()
     }
 }

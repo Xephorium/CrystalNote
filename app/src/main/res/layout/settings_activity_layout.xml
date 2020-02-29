@@ -95,7 +95,7 @@
                 android:layout_width="@dimen/selectorSettings"
                 android:layout_height="match_parent"
                 android:popupBackground="@drawable/selector_popup_background"
-                app:backgroundTint="?themeTextHandle"
+                app:backgroundTint="?themeTextSecondary"
                 />
 
         </LinearLayout>
@@ -138,7 +138,7 @@
                 android:layout_width="@dimen/selectorSettings"
                 android:layout_height="match_parent"
                 android:popupBackground="@drawable/selector_popup_background"
-                app:backgroundTint="?themeTextHandle"
+                app:backgroundTint="?themeTextSecondary"
                 />
 
         </LinearLayout>
@@ -168,7 +168,7 @@
                 android:layout_width="@dimen/selectorSettings"
                 android:layout_height="match_parent"
                 android:popupBackground="@drawable/selector_popup_background"
-                app:backgroundTint="?themeTextHandle"
+                app:backgroundTint="?themeTextSecondary"
                 />
 
         </LinearLayout>
