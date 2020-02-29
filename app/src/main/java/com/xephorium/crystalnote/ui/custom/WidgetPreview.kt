@@ -10,6 +10,7 @@ import android.view.View
 import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 
 
 class WidgetPreview : View {
@@ -66,9 +67,9 @@ class WidgetPreview : View {
         if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
 
         // Calculate Text Size
-        if (titleHeight == null) titleHeight = (scaleUnit!! * 0.9 * textScale).toInt()
-        if (textHeight == null) textHeight = (scaleUnit!! * 0.80 * textScale).toInt()
-        if (textBulletRadius == null) textBulletRadius = (scaleUnit!! * 0.3 * textScale).toInt()
+        if (titleHeight == null) titleHeight = (scaleUnit!! * 0.9).toInt()
+        if (textHeight == null) textHeight = (scaleUnit!! * 0.80).toInt()
+        if (textBulletRadius == null) textBulletRadius = (scaleUnit!! * 0.3).toInt()
 
         // Calculate Element Size
         if (paddingBorder == null) paddingBorder = (scaleUnit!! * 1.1).toInt()
@@ -86,7 +87,7 @@ class WidgetPreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        paint.color = getColorWithTransparencyApplied(backgroundColor, backgroundTransparency)
+        paint.color = getColorWithTransparencyApplied(backgroundColor, backgroundTransparency.value)
         canvas?.drawRoundRect(
                 0.toFloat(),
                 0.toFloat(),
@@ -103,13 +104,13 @@ class WidgetPreview : View {
                 (paddingBorder!!).toFloat(),
                 (paddingBorder!! + (paddingTiny!! * 3)).toFloat(),
                 (viewWidth!! * 0.4).toFloat(),
-                (paddingBorder!! + (paddingTiny!! * 3) + titleHeight!!).toFloat(),
-                (titleHeight!! / 2).toFloat(),
-                (titleHeight!! / 2).toFloat(),
+                (paddingBorder!! + (paddingTiny!! * 3) + (titleHeight!! * textScale)).toFloat(),
+                ((titleHeight!! * textScale) / 2).toFloat(),
+                ((titleHeight!! * textScale) / 2).toFloat(),
                 paint
         )
         currentVerticalPosition += paddingBorder!! + (paddingTiny!! * 3) +
-                titleHeight!! + paddingTitleGap!!
+                (titleHeight!! * textScale).toInt() + paddingTitleGap!!
 
         // List Bullet #1
         currentVerticalPosition = drawLine(
@@ -205,7 +206,7 @@ class WidgetPreview : View {
         invalidate()
     }
 
-    fun setBackgroundTransparency(transparency: Double) {
+    fun setBackgroundTransparency(transparency: Transparency) {
         backgroundTransparency = transparency
         invalidate()
     }
@@ -241,16 +242,16 @@ class WidgetPreview : View {
         val rightBorder = viewWidth!! - paddingBorder!!
 
         // Calculate Bullet Positions
-        val bulletStart = leftBorder + (textBulletRadius!! / 2) + (paddingTiny!! * 2)
-        val bulletTop = currentVerticalPosition + (textHeight!! / 2)
+        val bulletStart = leftBorder + ((textBulletRadius!! * textScale) / 2) + (paddingTiny!! * 2)
+        val bulletTop = currentVerticalPosition + ((textHeight!! * textScale) / 2)
 
         // Calculate Line Positions
         var lineEnd: Int = (viewWidth!! * lineWidth).toInt()
         lineEnd = if (lineEnd < rightBorder) lineEnd else rightBorder
         val lineStart: Int = if (!displayBullet) leftBorder
-        else leftBorder + paddingBulletLineStart!! + (textBulletRadius!! * 2)
+        else leftBorder + paddingBulletLineStart!! + ((textBulletRadius!! * textScale).toInt() * 2)
         val lineTop = currentVerticalPosition
-        val lineBottom = currentVerticalPosition + textHeight!!
+        val lineBottom = currentVerticalPosition + (textHeight!! * textScale).toInt()
 
         // Set Paint Color
         paint.color = color
@@ -260,7 +261,7 @@ class WidgetPreview : View {
             canvas?.drawCircle(
                 bulletStart.toFloat(),
                 bulletTop.toFloat(),
-                (textBulletRadius!!).toFloat(),
+                (textBulletRadius!! * textScale).toFloat(),
                 paint
             )
         }
@@ -271,8 +272,8 @@ class WidgetPreview : View {
             lineTop.toFloat(),
             lineEnd.toFloat(),
             lineBottom.toFloat(),
-            (textHeight!! / 2).toFloat(),
-            (textHeight!! / 2).toFloat(),
+            ((textHeight!! * textScale) / 2).toFloat(),
+            ((textHeight!! * textScale) / 2).toFloat(),
             paint
         )
 
