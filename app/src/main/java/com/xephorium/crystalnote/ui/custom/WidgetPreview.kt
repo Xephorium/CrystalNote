@@ -202,6 +202,7 @@ class WidgetPreview : View {
             TextSize.Small -> textScale -= TEXT_SCALE_VARIATION
             TextSize.Medium -> Unit
             TextSize.Large -> textScale += TEXT_SCALE_VARIATION
+            TextSize.ExtraLarge -> textScale += (TEXT_SCALE_VARIATION * 2)
         }
         invalidate()
     }

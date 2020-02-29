@@ -117,7 +117,8 @@ class WidgetState(string: String) {
         enum class TextSize(val displayName: String, val size: Int) {
             Small("Small", 13),
             Medium("Medium", 14),
-            Large("Large", 16);
+            Large("Large", 15),
+            ExtraLarge("Extra Large", 16);
 
             companion object {
                 fun fromSize(size: Int): TextSize {
@@ -128,9 +129,10 @@ class WidgetState(string: String) {
 
         enum class Transparency(val displayName: String, val value: Double) {
             NONE("None", 0.0),
-            Low("25 %", 0.25),
-            Medium("50 %", 0.5),
-            High("75 %", 0.75),
+            Low("20 %", 0.2),
+            Medium("40 %", 0.4),
+            High("60 %", 0.6),
+            Higher("80 %", 0.8),
             Full("100 %", 1.0);
 
             companion object {

@@ -212,9 +212,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     private fun setupSaveButton() {
-        buttonSave.setOnClickListener {
-            buttonSave.setOnClickListener { presenter.handleSaveClick() }
-        }
+        buttonSave.setOnClickListener { presenter.handleSaveClick() }
     }
 
     override fun refreshWidgets() {
