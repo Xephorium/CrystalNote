@@ -50,6 +50,8 @@
     <dimen name="widgetIconWidth">40dp</dimen>
     <dimen name="widgetMinimumHeight">110dp</dimen>
     <dimen name="widgetMinimumWidth">110dp</dimen>
+    <dimen name="widgetSettingsOrbSize">35dp</dimen>
+    <dimen name="widgetSettingsOrbPadding">11dp</dimen>
     <dimen name="widgetTextHeader">15sp</dimen>
 
 </resources>

@@ -39,6 +39,15 @@
     <string name="settingsUnderline">Text Underline</string>
     <string name="settingsMonospace">Monospaced Font</string>
 
+    <string name="widgetSelectionHeader">Current Selection</string>
+    <string name="widgetSelectionLabel">Widget</string>
+    <string name="widgetAppearanceHeader">Widget Appearance</string>
+    <string name="widgetTextSizeLabel">Text Size</string>
+    <string name="widgetBackgroundTransparencyLabel">Transparency</string>
+    <string name="widgetBackgroundColorLabel">Background Color</string>
+    <string name="widgetTitleColorLabel">Title Color</string>
+    <string name="widgetTextColorLabel">Text Color</string>
+
     <string name="space">_____________________________________________________________________________________________________________________________________________________________</string>
 
     <string name="widgetTitle">Widget Settings</string>
