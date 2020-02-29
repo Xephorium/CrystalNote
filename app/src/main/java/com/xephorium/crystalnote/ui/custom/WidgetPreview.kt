@@ -2,11 +2,14 @@ package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
-import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import androidx.core.graphics.ColorUtils
+import com.xephorium.crystalnote.data.model.WidgetState
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 
 
 class WidgetPreview : View {
@@ -29,8 +32,11 @@ class WidgetPreview : View {
     private var paddingTitleGap: Int? = null
     private var paddingTiny: Int? = null
 
-    private var theme = CrystalNoteTheme.default(context)
-    private var textScale = 1.0
+    private var textScale = DEFAULT_TEXT_SCALE
+    private var backgroundTransparency = WidgetState.DEFAULT_BACKGROUND_TRANSPARENCY
+    private var backgroundColor = WidgetState.DEFAULT_BACKGROUND_COLOR
+    private var titleColor = WidgetState.DEFAULT_TITLE_COLOR
+    private var textColor = WidgetState.DEFAULT_TEXT_COLOR
 
 
     /*--- Constructors ---*/
@@ -80,7 +86,7 @@ class WidgetPreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        paint.color = theme.colorBackground
+        paint.color = getColorWithTransparencyApplied(backgroundColor, backgroundTransparency)
         canvas?.drawRoundRect(
                 0.toFloat(),
                 0.toFloat(),
@@ -92,7 +98,7 @@ class WidgetPreview : View {
         )
 
         // Title
-        paint.color = theme.colorTextPrimary
+        paint.color = titleColor
         canvas?.drawRoundRect(
                 (paddingBorder!!).toFloat(),
                 (paddingBorder!! + (paddingTiny!! * 3)).toFloat(),
@@ -111,7 +117,7 @@ class WidgetPreview : View {
             currentVerticalPosition,
             true,
             0.6,
-            theme.colorTextSecondary
+            textColor
         )
 
         // List Bullet #2
@@ -120,17 +126,11 @@ class WidgetPreview : View {
             currentVerticalPosition,
             true,
             0.6,
-            theme.colorTextSecondary
+            textColor
         )
 
         // Blank Line
-        currentVerticalPosition = drawLine(
-            canvas,
-            currentVerticalPosition,
-            true,
-            1.0,
-            theme.colorBackground
-        )
+        currentVerticalPosition += textHeight!! + paddingLineGap!!
 
         // List Bullet #3
         currentVerticalPosition = drawLine(
@@ -138,7 +138,7 @@ class WidgetPreview : View {
             currentVerticalPosition,
             true,
             0.6,
-            theme.colorTextSecondary
+            textColor
         )
 
         // List Bullet #4
@@ -147,17 +147,11 @@ class WidgetPreview : View {
             currentVerticalPosition,
             true,
             0.6,
-            theme.colorTextSecondary
+            textColor
         )
 
         // Blank Line
-        currentVerticalPosition = drawLine(
-            canvas,
-            currentVerticalPosition,
-            true,
-            1.0,
-            theme.colorBackground
-        )
+        currentVerticalPosition += textHeight!! + paddingLineGap!!
 
         // Paragraph Line #1
         currentVerticalPosition = drawLine(
@@ -165,7 +159,7 @@ class WidgetPreview : View {
             currentVerticalPosition,
             false,
             1.0,
-            theme.colorTextSecondary
+            textColor
         )
 
         // Paragraph Line #2
@@ -174,7 +168,7 @@ class WidgetPreview : View {
             currentVerticalPosition,
             false,
             1.0,
-            theme.colorTextSecondary
+            textColor
         )
 
         // Paragraph Line #3
@@ -183,7 +177,7 @@ class WidgetPreview : View {
             currentVerticalPosition,
             false,
             1.0,
-            theme.colorTextSecondary
+            textColor
         )
 
         // Paragraph Line #4
@@ -192,7 +186,7 @@ class WidgetPreview : View {
             currentVerticalPosition,
             false,
             0.8,
-            theme.colorTextSecondary
+            textColor
         )
 
         super.onDraw(canvas)
@@ -201,8 +195,33 @@ class WidgetPreview : View {
 
     /*--- Public Methods ---*/
 
-    fun setTheme(newTheme: CrystalNoteTheme) {
-        theme = newTheme
+    fun setTextSize(textSize: TextSize) {
+        textScale = DEFAULT_TEXT_SCALE
+        when (textSize) {
+            TextSize.Small -> textScale -= TEXT_SCALE_VARIATION
+            TextSize.Medium -> Unit
+            TextSize.Large -> textScale += TEXT_SCALE_VARIATION
+        }
+        invalidate()
+    }
+
+    fun setBackgroundTransparency(transparency: Double) {
+        backgroundTransparency = transparency
+        invalidate()
+    }
+
+    override fun setBackgroundColor(color: Int) {
+        backgroundColor = color
+        invalidate()
+    }
+
+    fun setTitleColor(color: Int) {
+        titleColor = color
+        invalidate()
+    }
+
+    fun setTextColor(color: Int) {
+        textColor = color
         invalidate()
     }
 
@@ -260,10 +279,17 @@ class WidgetPreview : View {
         return lineBottom + paddingLineGap!!
     }
 
+    private fun getColorWithTransparencyApplied(color: Int, transparency: Double): Int {
+        val c = Color.parseColor("#" + Integer.toHexString(color).substring(2))
+        return ColorUtils.setAlphaComponent(c, ((1.0 - transparency) * 255.0).toInt())
+    }
+
 
     /*--- Constants ---*/
 
     companion object {
         private const val CORNER_RADIUS = 5.toFloat()
+        private const val DEFAULT_TEXT_SCALE = 1.05
+        private const val TEXT_SCALE_VARIATION = 0.1
     }
 }
