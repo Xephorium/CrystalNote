@@ -19,7 +19,7 @@ data class DrawerItem(
         enum class DrawerButton(val displayName: String) {
             NOTES("Notes"),
             SETTINGS("Settings"),
-            WIDGET("Widget"),
+            WIDGET("Widgets"),
             ABOUT("About")
         }
     }

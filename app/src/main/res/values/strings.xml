@@ -41,7 +41,7 @@
 
     <string name="widgetSelectionHeader">Current Selection</string>
     <string name="widgetSelectionLabel">Widget</string>
-    <string name="widgetAppearanceHeader">Widget Appearance</string>
+    <string name="widgetAppearanceHeader">Appearance</string>
     <string name="widgetTextSizeLabel">Text Size</string>
     <string name="widgetBackgroundTransparencyLabel">Transparency</string>
     <string name="widgetBackgroundColorLabel">Background Color</string>
