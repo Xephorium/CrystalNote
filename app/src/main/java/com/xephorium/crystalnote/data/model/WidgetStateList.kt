@@ -73,6 +73,18 @@ class WidgetStateList(string: String) {
         widgetStates[index].transparency = transparency
     }
 
+    fun setBackgroundColorAtIndex(index: Int, color: Int) {
+        widgetStates[index].backgroundColor = color
+    }
+
+    fun setTitleColorAtIndex(index: Int, color: Int) {
+        widgetStates[index].titleColor = color
+    }
+
+    fun setTextColorAtIndex(index: Int, color: Int) {
+        widgetStates[index].textColor = color
+    }
+
     fun updateWidgetId(oldId: Int, newId: Int) {
         (widgetStates.find { it.widgetId == oldId })?.widgetId = newId
     }

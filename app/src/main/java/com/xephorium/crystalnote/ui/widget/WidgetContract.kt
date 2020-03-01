@@ -51,6 +51,9 @@ interface WidgetContract {
         abstract fun handleBackgroundColorClick()
         abstract fun handleTitleColorClick()
         abstract fun handleTextColorClick()
+        abstract fun handleBackgroundColorChange(color: Int)
+        abstract fun handleTitleColorChange(color: Int)
+        abstract fun handleTextColorChange(color: Int)
 
         abstract fun handleMenuButtonClick()
         abstract fun handleSaveClick()

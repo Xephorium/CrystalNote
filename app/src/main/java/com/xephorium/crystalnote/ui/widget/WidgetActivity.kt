@@ -140,18 +140,34 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
             override fun onColorSelect(color: Int) {
                 colorPickerDialog.dismiss()
-                println("Test - " + color) // TODO - Presenter
+                presenter.handleBackgroundColorChange(color)
             }
         })
         colorPickerDialog.show()
     }
 
     override fun showTitleColorPickerDialog() {
-        Toast.makeText(this, "Title Orb Tap", Toast.LENGTH_SHORT).show()
+        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
+        colorPickerDialog.setTitle("Choose Title Color")
+        colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
+            override fun onColorSelect(color: Int) {
+                colorPickerDialog.dismiss()
+                presenter.handleTitleColorChange(color)
+            }
+        })
+        colorPickerDialog.show()
     }
 
     override fun showTextColorPickerDialog() {
-        Toast.makeText(this, "Text Orb Tap", Toast.LENGTH_SHORT).show()
+        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
+        colorPickerDialog.setTitle("Choose Text Color")
+        colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
+            override fun onColorSelect(color: Int) {
+                colorPickerDialog.dismiss()
+                presenter.handleTextColorChange(color)
+            }
+        })
+        colorPickerDialog.show()
     }
 
     override fun showNavigationDrawer() {

@@ -69,6 +69,24 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.showTextColorPickerDialog()
     }
 
+    override fun handleBackgroundColorChange(color: Int) {
+        workingWidgetStates.setBackgroundColorAtIndex(workingWidgetIndex, color)
+        view?.populateBackgroundColor(color)
+        view?.setPreviewBackgroundColor(getWorkingWidgetState().backgroundColor)
+    }
+
+    override fun handleTitleColorChange(color: Int) {
+        workingWidgetStates.setTitleColorAtIndex(workingWidgetIndex, color)
+        view?.populateTitleColor(color)
+        view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
+    }
+
+    override fun handleTextColorChange(color: Int) {
+        workingWidgetStates.setTextColorAtIndex(workingWidgetIndex, color)
+        view?.populateTextColor(color)
+        view?.setPreviewTextColor(getWorkingWidgetState().textColor)
+    }
+
     override fun handleSaveClick() {
         sharedPreferencesRepository.setWidgetStateList(workingWidgetStates)
         this.initialWidgetStates = sharedPreferencesRepository.getWidgetStateList()
