@@ -12,7 +12,6 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
-import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
