@@ -36,7 +36,7 @@ interface WidgetContract {
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
         lateinit var noteRoomRepository: NoteRoomRepository
 
-        lateinit var initialWidgetStates: WidgetStateList
+        var initialWidgetStates: WidgetStateList? = null
         lateinit var workingWidgetStates: WidgetStateList
         lateinit var noteNameList: List<String>
         var workingWidgetIndex = 0

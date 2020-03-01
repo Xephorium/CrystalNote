@@ -13,15 +13,17 @@ class WidgetPresenter : WidgetContract.Presenter() {
     override fun attachView(view: WidgetContract.View) {
         super.attachView(view)
 
-        // Initialize State Variables
-        this.initialWidgetStates = sharedPreferencesRepository.getWidgetStateList()
-        this.workingWidgetStates = sharedPreferencesRepository.getWidgetStateList()
-        this.noteNameList = generateNoteNameList()
+        // Conditionally Initialize State Variables
+        if (widgetStateListChanged()) {
+            this.initialWidgetStates = sharedPreferencesRepository.getWidgetStateList()
+            this.workingWidgetStates = sharedPreferencesRepository.getWidgetStateList()
+            this.noteNameList = generateNoteNameList()
+            this.workingWidgetIndex = 0
+        }
 
         if (noteNameList.isNotEmpty()) {
 
             // Set State & Populate Screen
-            this.workingWidgetIndex = 0
             this.view?.hideNoWidgetsMessage()
             this.view?.setupWidgetSelector(noteNameList)
             populateFieldsAndConfigurePreview()
@@ -57,17 +59,24 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
     override fun handleSaveClick() {
         sharedPreferencesRepository.setWidgetStateList(workingWidgetStates)
+        this.initialWidgetStates = sharedPreferencesRepository.getWidgetStateList()
         view?.refreshWidgets()
     }
 
 
     /*--- Private Methods ---*/
 
+    private fun widgetStateListChanged(): Boolean {
+        if (this.initialWidgetStates == null) return true
+        val newWidgetStateList = sharedPreferencesRepository.getWidgetStateList()
+        return newWidgetStateList.toString() != initialWidgetStates.toString()
+    }
+
     private fun generateNoteNameList(): List<String> {
         val notes = noteRoomRepository.getNotes()
         val names = mutableListOf<String>()
         var blankCount = 1
-        for (widgetState in initialWidgetStates.getWidgetStates()) {
+        for (widgetState in initialWidgetStates!!.getWidgetStates()) {
             var noteName = notes.firstOrNull { it.id == widgetState.noteId }?.name
             if (noteName == null) {
                 noteName = "New Widget $blankCount"
@@ -82,6 +91,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
     private fun populateFieldsAndConfigurePreview() {
 
         // Populate Fields
+        view?.populateWidgetSelector(workingWidgetIndex)
         view?.populateTextSize(getWorkingWidgetState().textSize)
         view?.populateTransparency(getWorkingWidgetState().transparency)
         view?.populateBackgroundColor(getWorkingWidgetState().backgroundColor)
