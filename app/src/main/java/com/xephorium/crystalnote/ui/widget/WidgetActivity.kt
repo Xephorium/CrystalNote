@@ -132,6 +132,18 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         textWidgetSettingsEmpty.visibility = View.GONE
     }
 
+    override fun showBackgroundColorPickerDialog() {
+        Toast.makeText(this, "Background Orb Tap", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showTitleColorPickerDialog() {
+        Toast.makeText(this, "Title Orb Tap", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showTextColorPickerDialog() {
+        Toast.makeText(this, "Text Orb Tap", Toast.LENGTH_SHORT).show()
+    }
+
     override fun showNavigationDrawer() {
         openDrawer()
     }
@@ -198,8 +210,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
         colorOrbWidgetSettingsBackgroundColor.setTheme(theme)
         colorOrbWidgetSettingsBackgroundColor.setOnClickListener {
-            Toast.makeText(this, "Background Orb Tap", Toast.LENGTH_SHORT).show()
-            // TODO - presenter.handle()
+            presenter.handleBackgroundColorClick()
         }
 
         // Title Color Orb
@@ -208,8 +219,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
         colorOrbWidgetSettingsTitleColor.setTheme(theme)
         colorOrbWidgetSettingsTitleColor.setOnClickListener {
-            Toast.makeText(this, "Title Orb Tap", Toast.LENGTH_SHORT).show()
-            // TODO - presenter.handle()
+            presenter.handleTitleColorClick()
         }
 
         // Text Color Orb
@@ -218,8 +228,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
         colorOrbWidgetSettingsTextColor.setTheme(theme)
         colorOrbWidgetSettingsTextColor.setOnClickListener {
-            Toast.makeText(this, "Text Orb Tap", Toast.LENGTH_SHORT).show()
-            // TODO - presenter.handle()
+            presenter.handleTextColorClick()
         }
     }
 

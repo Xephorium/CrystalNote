@@ -57,6 +57,18 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewTransparency(getWorkingWidgetState().transparency)
     }
 
+    override fun handleBackgroundColorClick() {
+        view?.showBackgroundColorPickerDialog()
+    }
+
+    override fun handleTitleColorClick() {
+        view?.showTitleColorPickerDialog()
+    }
+
+    override fun handleTextColorClick() {
+        view?.showTextColorPickerDialog()
+    }
+
     override fun handleSaveClick() {
         sharedPreferencesRepository.setWidgetStateList(workingWidgetStates)
         this.initialWidgetStates = sharedPreferencesRepository.getWidgetStateList()

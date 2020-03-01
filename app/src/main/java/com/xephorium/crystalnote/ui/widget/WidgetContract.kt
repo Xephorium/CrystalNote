@@ -28,7 +28,11 @@ interface WidgetContract {
 
         fun showNoWidgetsMessage()
         fun hideNoWidgetsMessage()
+        fun showBackgroundColorPickerDialog()
+        fun showTitleColorPickerDialog()
+        fun showTextColorPickerDialog()
         fun showNavigationDrawer()
+
         fun refreshWidgets()
     }
 
@@ -44,6 +48,9 @@ interface WidgetContract {
         abstract fun handleWidgetChange(index: Int)
         abstract fun handleTextSizeChange(textSize: TextSize)
         abstract fun handleTransparencyChange(transparency: Transparency)
+        abstract fun handleBackgroundColorClick()
+        abstract fun handleTitleColorClick()
+        abstract fun handleTextColorClick()
 
         abstract fun handleMenuButtonClick()
         abstract fun handleSaveClick()
