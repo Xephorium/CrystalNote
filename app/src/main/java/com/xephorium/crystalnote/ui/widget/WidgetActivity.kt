@@ -12,6 +12,7 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
@@ -205,6 +206,9 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         val theme = CrystalNoteTheme.fromCurrentTheme(this)
 
         // Background Color Orb
+        layoutWidgetSettingsBackgroundColor.setOnClickListener {
+            colorOrbWidgetSettingsBackgroundColor.performClick()
+        }
         textWidgetSettingsBackgroundColorLabel.setOnClickListener {
             colorOrbWidgetSettingsBackgroundColor.performClick()
         }
@@ -214,6 +218,9 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
 
         // Title Color Orb
+        layoutWidgetSettingsTitleColor.setOnClickListener {
+            colorOrbWidgetSettingsTitleColor.performClick()
+        }
         textWidgetSettingsTitleColorLabel.setOnClickListener {
             colorOrbWidgetSettingsTitleColor.performClick()
         }
@@ -223,6 +230,9 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
 
         // Text Color Orb
+        layoutWidgetSettingsTextColor.setOnClickListener {
+            colorOrbWidgetSettingsTextColor.performClick()
+        }
         textWidgetSettingsTextColorLabel.setOnClickListener {
             colorOrbWidgetSettingsTextColor.performClick()
         }

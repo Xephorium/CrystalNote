@@ -178,9 +178,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layoutWidgetSettingsBackgroundColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 >
 
                 <TextView
@@ -202,14 +204,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
+                    android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
                     />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layoutWidgetSettingsTitleColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 >
 
                 <TextView
@@ -231,14 +236,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
+                    android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
                     />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/layoutWidgetSettingsTextColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="center"
                 >
 
                 <TextView
@@ -260,6 +268,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
+                    android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
                     />
 
             </LinearLayout>
