@@ -69,7 +69,7 @@ class ColorOrb : View {
 
         // Set Outline Paint Color
         if (orbContrast < CONTRAST_THRESHOLD && useContrastOutline) {
-            paint.color = ColorUtils.setAlphaComponent(theme.colorTextPrimary, 40)
+            paint.color = ColorUtils.setAlphaComponent(theme.colorTextPrimary, OUTLINE_ALPHA)
         } else {
             paint.color = orbColor
         }
@@ -128,12 +128,8 @@ class ColorOrb : View {
         padding = newPadding
     }
 
-    fun enableContrastOutline() {
-        useContrastOutline = true
-    }
-
-    fun disableContrastOutline() {
-        useContrastOutline = false
+    fun showContrastOutline(show: Boolean) {
+        useContrastOutline = show
     }
 
 
@@ -144,5 +140,6 @@ class ColorOrb : View {
         const val CONTRAST_THRESHOLD = 1.1
         const val RADIUS_COLOR = 0.9
         const val OUTLINE_WIDTH = (5.0).toFloat()
+        const val OUTLINE_ALPHA = (0.2 * 255).toInt()
     }
 }
