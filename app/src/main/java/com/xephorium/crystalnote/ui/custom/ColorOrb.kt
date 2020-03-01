@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 
 
@@ -18,9 +19,9 @@ class ColorOrb : View {
     private val paint = Paint()
     private var viewHeight: Int? = null
     private var viewWidth: Int? = null
+    private var desiredViewHeight: Int? = null
     private var theme = CrystalNoteTheme.default(context)
     private var orbColor = DEFAULT_ORB_COLOR
-    private var showSelector = false
 
 
     /*--- Constructors ---*/
@@ -51,21 +52,17 @@ class ColorOrb : View {
 
     override fun onDraw(canvas: Canvas?) {
 
-        // Conditional Selection Highlight
-        if (showSelector) {
-            paint.color = theme.colorTextSecondary
-            paint.style = FILL
-            canvas?.drawCircle(
-                (viewWidth!! / 2.0).toFloat(),
-                (viewHeight!! / 2.0).toFloat(),
-                ((viewWidth!! * RADIUS_SELECTION) / 2.0).toFloat(),
-                paint
-            )
+        desiredViewHeight?. let {
+            layoutParams.height = it
+            layoutParams.width = it
+            val height = it
+            viewHeight = if (height % 2 == 0) height else height - 1
+            viewWidth = viewHeight!!
         }
 
-        // Color Circle
-        paint.color = orbColor
-        paint.style = FILL
+        // Outline
+        paint.color = ColorUtils.setAlphaComponent(theme.colorTextSecondary, 125)
+        paint.style = STROKE
         canvas?.drawCircle(
             (viewWidth!! / 2.0).toFloat(),
             (viewHeight!! / 2.0).toFloat(),
@@ -73,9 +70,9 @@ class ColorOrb : View {
             paint
         )
 
-        // Outline
-        paint.color = theme.colorTextSecondary
-        paint.style = STROKE
+        // Color Circle
+        paint.color = orbColor
+        paint.style = FILL
         canvas?.drawCircle(
             (viewWidth!! / 2.0).toFloat(),
             (viewHeight!! / 2.0).toFloat(),
@@ -99,13 +96,8 @@ class ColorOrb : View {
         invalidate()
     }
 
-    fun showSelector() {
-        showSelector = true
-        invalidate()
-    }
-
-    fun hideSelector() {
-        showSelector = false
+    fun setSize(sizeResource: Int) {
+        desiredViewHeight = resources.getDimension(sizeResource).toInt()
         invalidate()
     }
 
@@ -114,8 +106,7 @@ class ColorOrb : View {
 
     companion object {
         val DEFAULT_ORB_COLOR = Color.parseColor("#000000")
-        const val RADIUS_SELECTION = 1.0
-        const val RADIUS_COLOR = 0.525
-        const val OUTLINE_WIDTH = (3.0).toFloat()
+        const val RADIUS_COLOR = 0.9
+        const val OUTLINE_WIDTH = (5.0).toFloat()
     }
 }
