@@ -27,8 +27,8 @@
     <dimen name="cardViewCornerRadius">5dp</dimen>
     <dimen name="cardViewElevation">4dp</dimen>
     <dimen name="cardViewMargin">5dp</dimen>
-    <dimen name="colorOrbPaddingWidgetSettings">11dp</dimen>
-    <dimen name="colorOrbSizeWidgetSettings">35dp</dimen>
+    <dimen name="colorOrbPaddingWidgetSettings">16dp</dimen>
+    <dimen name="colorOrbSizeWidgetSettings">25dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">12dp</dimen>
     <dimen name="drawerIconPaddingIncreased">14dp</dimen>
