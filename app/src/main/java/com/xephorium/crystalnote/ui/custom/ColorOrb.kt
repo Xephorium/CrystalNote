@@ -47,18 +47,16 @@ class ColorOrb : View {
         }
         if (viewWidth == null) viewWidth = viewHeight!!
 
-        setMeasuredDimension(viewWidth!!, viewHeight!!)
-    }
-
-    override fun onDraw(canvas: Canvas?) {
-
-        desiredViewHeight?. let {
-            layoutParams.height = it
-            layoutParams.width = it
+        desiredViewHeight?.let {
             val height = it
             viewHeight = if (height % 2 == 0) height else height - 1
             viewWidth = viewHeight!!
         }
+
+        setMeasuredDimension(viewWidth!!, viewHeight!!)
+    }
+
+    override fun onDraw(canvas: Canvas?) {
 
         // Outline
         paint.color = ColorUtils.setAlphaComponent(theme.colorTextSecondary, 125)
@@ -97,7 +95,7 @@ class ColorOrb : View {
     }
 
     fun setSize(sizeResource: Int) {
-        desiredViewHeight = resources.getDimension(sizeResource).toInt()
+        desiredViewHeight = resources.getDimensionPixelSize(sizeResource).toInt()
         invalidate()
     }
 
