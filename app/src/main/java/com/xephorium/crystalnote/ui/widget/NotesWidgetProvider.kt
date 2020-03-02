@@ -185,7 +185,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
         widgetView.setInt(
             R.id.imageWidgetBackground,
             "setImageAlpha",
-            ((1.0 - state.transparency.value) * 255.0).toInt()
+            ((1.0 - state.backgroundAlpha.value) * 255.0).toInt()
         )
 
         // Text Size
@@ -209,11 +209,11 @@ class NotesWidgetProvider : AppWidgetProvider() {
         widgetView.setTextColor(R.id.textWidgetTitle, state.titleColor)
         widgetView.setTextColor(
             R.id.textWidgetContent,
-            ColorUtility.applyTransparency(state.textColor, state.textTransparency)
+            ColorUtility.applyTransparency(state.contentColor, state.contentAlpha)
         )
         widgetView.setTextColor(
             R.id.textWidgetEmpty,
-            ColorUtility.applyTransparency(state.textColor, state.textTransparency)
+            ColorUtility.applyTransparency(state.contentColor, state.contentAlpha)
         )
     }
 

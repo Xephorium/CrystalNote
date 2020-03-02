@@ -46,10 +46,10 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
         setupToolbar()
         setupPreviewIcons()
-        setupTextSizeSpinner()
-        setupTransparencySpinner()
-        setupTextTransparencySpinner()
         setupColorOrbs()
+        setupTextSizeSpinner()
+        setupBackgroundAlphaSpinner()
+        setupContentAlphaSpinner()
         setupSaveButton()
     }
 
@@ -90,18 +90,6 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         selectorWidgetSettingsSelection.setSelection(index)
     }
 
-    override fun populateTextSize(size: TextSize) {
-        selectorWidgetSettingsTextSize.setSelection(size.ordinal)
-    }
-
-    override fun populateTransparency(transparency: Transparency) {
-        selectorWidgetSettingsTransparency.setSelection(transparency.ordinal)
-    }
-
-    override fun populateTextTransparency(transparency: Transparency) {
-        selectorWidgetSettingsTextTransparency.setSelection(transparency.ordinal)
-    }
-
     override fun populateBackgroundColor(color: Int) {
         colorOrbWidgetSettingsBackgroundColor.setColor(color)
     }
@@ -110,16 +98,20 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         colorOrbWidgetSettingsTitleColor.setColor(color)
     }
 
-    override fun populateTextColor(color: Int) {
-        colorOrbWidgetSettingsTextColor.setColor(color)
+    override fun populateContentColor(color: Int) {
+        colorOrbWidgetSettingsContentColor.setColor(color)
     }
 
-    override fun setPreviewTextSize(size: TextSize) {
-        widgetSettingsPreview.setTextSize(size)
+    override fun populateTextSize(size: TextSize) {
+        selectorWidgetSettingsTextSize.setSelection(size.ordinal)
     }
 
-    override fun setPreviewTransparency(transparency: Transparency) {
-        widgetSettingsPreview.setTransparency(transparency)
+    override fun populateBackgroundAlpha(transparency: Transparency) {
+        selectorWidgetSettingsBackgroundAlpha.setSelection(transparency.ordinal)
+    }
+
+    override fun populateContentAlpha(transparency: Transparency) {
+        selectorWidgetSettingsContentAlpha.setSelection(transparency.ordinal)
     }
 
     override fun setPreviewBackgroundColor(color: Int) {
@@ -130,8 +122,16 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         widgetSettingsPreview.setTitleColor(color)
     }
 
-    override fun setPreviewTextColor(color: Int) {
+    override fun setPreviewContentColor(color: Int) {
         widgetSettingsPreview.setTextColor(color)
+    }
+
+    override fun setPreviewTextSize(size: TextSize) {
+        widgetSettingsPreview.setTextSize(size)
+    }
+
+    override fun setPreviewBackgroundAlpha(transparency: Transparency) {
+        widgetSettingsPreview.setTransparency(transparency)
     }
 
     override fun setPreviewBackgroundBrightness(light: Boolean) {
@@ -191,13 +191,13 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         colorPickerDialog.show()
     }
 
-    override fun showTextColorPickerDialog() {
+    override fun showContentColorPickerDialog() {
         val colorPickerDialog = ColorPickerDialog.Builder(this).create()
         colorPickerDialog.setTitle("Choose Text Color")
         colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
             override fun onColorSelect(color: Int) {
                 colorPickerDialog.dismiss()
-                presenter.handleTextColorChange(color)
+                presenter.handleContentColorChange(color)
             }
         })
         colorPickerDialog.show()
@@ -227,64 +227,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
     }
 
-    private fun setupTextSizeSpinner() {
-        val textSizesAdapter =
-            ArrayAdapter<String>(this, R.layout.settings_selector_item, TEXT_SIZES)
-        textSizesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsTextSize.adapter = textSizesAdapter
-        selectorWidgetSettingsTextSize.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleTextSizeChange(TextSize.values()[position])
-                }
-            }
-        textWidgetSettingsTextSizeLabel.setOnClickListener {
-            selectorWidgetSettingsTextSize.performClick()
-        }
-    }
-
-    private fun setupTransparencySpinner() {
-        val transparencyAdapter = ArrayAdapter<String>(
-            this,
-            R.layout.settings_selector_item,
-            TRANSPARENCY_VALUES
-        )
-        transparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsTransparency.adapter = transparencyAdapter
-        selectorWidgetSettingsTransparency.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleTransparencyChange(Transparency.values()[position])
-                }
-            }
-        textWidgetSettingsTransparencyLabel.setOnClickListener {
-            selectorWidgetSettingsTransparency.performClick()
-        }
-    }
-
-    private fun setupTextTransparencySpinner() {
-        val textTransparencyAdapter = ArrayAdapter<String>(
-            this,
-            R.layout.settings_selector_item,
-            TRANSPARENCY_VALUES
-        )
-        textTransparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsTextTransparency.adapter = textTransparencyAdapter
-        selectorWidgetSettingsTextTransparency.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleTextTransparencyChange(Transparency.values()[position])
-                }
-            }
-        textWidgetSettingsTextTransparencyLabel.setOnClickListener {
-            selectorWidgetSettingsTextTransparency.performClick()
-        }
-    }
-
-    fun setupColorOrbs() {
+    private fun setupColorOrbs() {
 
         // Retrieve Theme
         val theme = CrystalNoteTheme.fromCurrentTheme(this)
@@ -314,15 +257,72 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
 
         // Text Color Orb
-        layoutWidgetSettingsTextColor.setOnClickListener {
-            colorOrbWidgetSettingsTextColor.performClick()
+        layoutWidgetSettingsContentColor.setOnClickListener {
+            colorOrbWidgetSettingsContentColor.performClick()
         }
-        textWidgetSettingsTextColorLabel.setOnClickListener {
-            colorOrbWidgetSettingsTextColor.performClick()
+        textWidgetSettingsContentColorLabel.setOnClickListener {
+            colorOrbWidgetSettingsContentColor.performClick()
         }
-        colorOrbWidgetSettingsTextColor.setTheme(theme)
-        colorOrbWidgetSettingsTextColor.setOnClickListener {
-            presenter.handleTextColorClick()
+        colorOrbWidgetSettingsContentColor.setTheme(theme)
+        colorOrbWidgetSettingsContentColor.setOnClickListener {
+            presenter.handleContentColorClick()
+        }
+    }
+
+    private fun setupTextSizeSpinner() {
+        val textSizesAdapter =
+            ArrayAdapter<String>(this, R.layout.settings_selector_item, TEXT_SIZES)
+        textSizesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        selectorWidgetSettingsTextSize.adapter = textSizesAdapter
+        selectorWidgetSettingsTextSize.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                    presenter.handleTextSizeChange(TextSize.values()[position])
+                }
+            }
+        textWidgetSettingsTextSizeLabel.setOnClickListener {
+            selectorWidgetSettingsTextSize.performClick()
+        }
+    }
+
+    private fun setupBackgroundAlphaSpinner() {
+        val transparencyAdapter = ArrayAdapter<String>(
+            this,
+            R.layout.settings_selector_item,
+            TRANSPARENCY_VALUES
+        )
+        transparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        selectorWidgetSettingsBackgroundAlpha.adapter = transparencyAdapter
+        selectorWidgetSettingsBackgroundAlpha.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                    presenter.handleBackgroundAlphaChange(Transparency.values()[position])
+                }
+            }
+        textWidgetSettingsBackgroundAlphaLabel.setOnClickListener {
+            selectorWidgetSettingsBackgroundAlpha.performClick()
+        }
+    }
+
+    private fun setupContentAlphaSpinner() {
+        val textTransparencyAdapter = ArrayAdapter<String>(
+            this,
+            R.layout.settings_selector_item,
+            TRANSPARENCY_VALUES
+        )
+        textTransparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        selectorWidgetSettingsContentAlpha.adapter = textTransparencyAdapter
+        selectorWidgetSettingsContentAlpha.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                    presenter.handleContentAlphaChange(Transparency.values()[position])
+                }
+            }
+        textWidgetSettingsContentAlphaLabel.setOnClickListener {
+            selectorWidgetSettingsContentAlpha.performClick()
         }
     }
 

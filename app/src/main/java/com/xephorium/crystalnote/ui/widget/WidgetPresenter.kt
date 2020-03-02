@@ -51,20 +51,6 @@ class WidgetPresenter : WidgetContract.Presenter() {
         populateFieldsAndConfigurePreview()
     }
 
-    override fun handleTextSizeChange(textSize: TextSize) {
-        workingWidgetStates.setTextSizeAtIndex(workingWidgetIndex, textSize)
-        view?.setPreviewTextSize(getWorkingWidgetState().textSize)
-    }
-
-    override fun handleTransparencyChange(transparency: Transparency) {
-        workingWidgetStates.setTransparencyAtIndex(workingWidgetIndex, transparency)
-        view?.setPreviewTransparency(getWorkingWidgetState().transparency)
-    }
-
-    override fun handleTextTransparencyChange(transparency: Transparency) {
-        workingWidgetStates.setTextTransparencyAtIndex(workingWidgetIndex, transparency)
-        view?.setPreviewTextColor(getTextColorWithTransparency())
-    }
 
     override fun handleBackgroundColorClick() {
         view?.showBackgroundColorPickerDialog()
@@ -74,8 +60,8 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.showTitleColorPickerDialog()
     }
 
-    override fun handleTextColorClick() {
-        view?.showTextColorPickerDialog()
+    override fun handleContentColorClick() {
+        view?.showContentColorPickerDialog()
     }
 
     override fun handleBackgroundColorChange(color: Int) {
@@ -90,10 +76,25 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
     }
 
-    override fun handleTextColorChange(color: Int) {
-        workingWidgetStates.setTextColorAtIndex(workingWidgetIndex, color)
-        view?.populateTextColor(color)
-        view?.setPreviewTextColor(getTextColorWithTransparency())
+    override fun handleContentColorChange(color: Int) {
+        workingWidgetStates.setContentColorAtIndex(workingWidgetIndex, color)
+        view?.populateContentColor(color)
+        view?.setPreviewContentColor(getContentColorWithAlpha())
+    }
+
+    override fun handleTextSizeChange(textSize: TextSize) {
+        workingWidgetStates.setTextSizeAtIndex(workingWidgetIndex, textSize)
+        view?.setPreviewTextSize(getWorkingWidgetState().textSize)
+    }
+
+    override fun handleBackgroundAlphaChange(transparency: Transparency) {
+        workingWidgetStates.setBackgroundAlphaAtIndex(workingWidgetIndex, transparency)
+        view?.setPreviewBackgroundAlpha(getWorkingWidgetState().backgroundAlpha)
+    }
+
+    override fun handleContentAlphaChange(transparency: Transparency) {
+        workingWidgetStates.setContentAlphaAtIndex(workingWidgetIndex, transparency)
+        view?.setPreviewContentColor(getContentColorWithAlpha())
     }
 
     override fun handlePreviewBackgroundBrightnessToggle() {
@@ -136,34 +137,34 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
         // Populate Fields
         view?.populateWidgetSelector(workingWidgetIndex)
-        view?.populateTextSize(getWorkingWidgetState().textSize)
-        view?.populateTransparency(getWorkingWidgetState().transparency)
-        view?.populateTextTransparency(getWorkingWidgetState().textTransparency)
         view?.populateBackgroundColor(getWorkingWidgetState().backgroundColor)
         view?.populateTitleColor(getWorkingWidgetState().titleColor)
-        view?.populateTextColor(getWorkingWidgetState().textColor)
+        view?.populateContentColor(getWorkingWidgetState().contentColor)
+        view?.populateTextSize(getWorkingWidgetState().textSize)
+        view?.populateBackgroundAlpha(getWorkingWidgetState().backgroundAlpha)
+        view?.populateContentAlpha(getWorkingWidgetState().contentAlpha)
 
         // Configure Preview
         view?.setPreviewTextSize(getWorkingWidgetState().textSize)
-        view?.setPreviewTransparency(getWorkingWidgetState().transparency)
         view?.setPreviewBackgroundColor(getWorkingWidgetState().backgroundColor)
         view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
-        view?.setPreviewTextColor(getTextColorWithTransparency())
+        view?.setPreviewContentColor(getContentColorWithAlpha())
+        view?.setPreviewBackgroundAlpha(getWorkingWidgetState().backgroundAlpha)
     }
 
-    private fun getTextColorWithTransparency(): Int {
+    private fun getContentColorWithAlpha(): Int {
         return ColorUtility.applyTransparency(
-            getWorkingWidgetState().textColor,
-            getWorkingWidgetState().textTransparency
+            getWorkingWidgetState().contentColor,
+            getWorkingWidgetState().contentAlpha
         )
     }
 
     private fun resetPreview() {
-        this.view?.setPreviewTextSize(WidgetState.DEFAULT_TEXT_SIZE)
-        this.view?.setPreviewTransparency(WidgetState.DEFAULT_TRANSPARENCY)
         this.view?.setPreviewBackgroundColor(WidgetState.DEFAULT_BACKGROUND_COLOR)
         this.view?.setPreviewTitleColor(WidgetState.DEFAULT_TITLE_COLOR)
-        this.view?.setPreviewTextColor(WidgetState.DEFAULT_TEXT_COLOR)
+        this.view?.setPreviewContentColor(WidgetState.DEFAULT_CONTENT_COLOR)
+        this.view?.setPreviewTextSize(WidgetState.DEFAULT_TEXT_SIZE)
+        this.view?.setPreviewBackgroundAlpha(WidgetState.DEFAULT_TRANSPARENCY)
     }
 
     private fun getWorkingWidgetState(): WidgetState {

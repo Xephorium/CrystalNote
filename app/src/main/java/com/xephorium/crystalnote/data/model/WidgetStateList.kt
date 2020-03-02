@@ -65,18 +65,6 @@ class WidgetStateList(string: String) {
         return widgetStates
     }
 
-    fun setTextSizeAtIndex(index: Int, textSize: TextSize) {
-        widgetStates[index].textSize = textSize
-    }
-
-    fun setTransparencyAtIndex(index: Int, transparency: Transparency) {
-        widgetStates[index].transparency = transparency
-    }
-
-    fun setTextTransparencyAtIndex(index: Int, transparency: Transparency) {
-        widgetStates[index].textTransparency = transparency
-    }
-
     fun setBackgroundColorAtIndex(index: Int, color: Int) {
         widgetStates[index].backgroundColor = color
     }
@@ -85,8 +73,20 @@ class WidgetStateList(string: String) {
         widgetStates[index].titleColor = color
     }
 
-    fun setTextColorAtIndex(index: Int, color: Int) {
-        widgetStates[index].textColor = color
+    fun setContentColorAtIndex(index: Int, color: Int) {
+        widgetStates[index].contentColor = color
+    }
+
+    fun setTextSizeAtIndex(index: Int, textSize: TextSize) {
+        widgetStates[index].textSize = textSize
+    }
+
+    fun setBackgroundAlphaAtIndex(index: Int, transparency: Transparency) {
+        widgetStates[index].backgroundAlpha = transparency
+    }
+
+    fun setContentAlphaAtIndex(index: Int, transparency: Transparency) {
+        widgetStates[index].contentAlpha = transparency
     }
 
     fun updateWidgetId(oldId: Int, newId: Int) {

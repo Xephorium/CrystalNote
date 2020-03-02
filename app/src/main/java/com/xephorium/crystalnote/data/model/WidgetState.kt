@@ -10,21 +10,21 @@ import java.lang.StringBuilder
     The WidgetState class represents a single CrystalNote Widget's
   configuration, including the following:
 
-    widgetId                 (Int)      ID for widget
-    noteId                   (Int)      ID for note to display
-    textSize                 (Int)      Size of display text
-    transparency          (Double)      Transparency of widget background
-    textTransparency      (Double)      Transparency of widget text
-    backgroundColor          (Int)      Color of widget background
-    titleColor               (Int)      Color of widget title
-    textColor                (Int)      Color of widget text
+    widgetId            (Int)        ID for widget
+    noteId              (Int)        ID for note to display
+    backgroundColor     (Int)        Color of widget background
+    titleColor          (Int)        Color of widget title text
+    contentColor        (Int)        Color of widget content text
+    textSize            (Int)        Size of widget text
+    backgroundAlpha     (Double)     Transparency of widget background
+    contentAlpha        (Double)     Transparency of widget content
 
     WidgetState's primary purpose is to encapsulate the logic of
   converting the class' fields to and from a string to be stored
   in Shared Preferences. The string's format is as follows:
 
-    "<widgetId> <noteId> <textSize> <transparency> <textTransparency>"
-      + "<backgroundColor> <titleColor> <textColor>"
+    "<widgetId> <noteId> <backgroundColor> <titleColor> <contentColor>"
+      + "<textSize> <backgroundAlpha> <contentAlpha>"
 */
 
 class WidgetState(string: String) {
@@ -34,33 +34,32 @@ class WidgetState(string: String) {
 
     var widgetId: Int = Note.NO_NOTE
     var noteId: Int = Note.NO_NOTE
-    var textSize: TextSize = DEFAULT_TEXT_SIZE
-    var transparency: Transparency = DEFAULT_TRANSPARENCY
-    var textTransparency: Transparency = DEFAULT_TRANSPARENCY
     var backgroundColor: Int = DEFAULT_BACKGROUND_COLOR
     var titleColor: Int = DEFAULT_TITLE_COLOR
-    var textColor: Int = DEFAULT_TEXT_COLOR
-
+    var contentColor: Int = DEFAULT_CONTENT_COLOR
+    var textSize: TextSize = DEFAULT_TEXT_SIZE
+    var backgroundAlpha: Transparency = DEFAULT_TRANSPARENCY
+    var contentAlpha: Transparency = DEFAULT_TRANSPARENCY
 
     /*--- Constructors ---*/
 
     constructor(
         widgetId: Int,
         noteId: Int = Note.NO_NOTE,
-        textSize: TextSize = DEFAULT_TEXT_SIZE,
-        transparency: Transparency = DEFAULT_TRANSPARENCY,
         backgroundColor: Int = DEFAULT_BACKGROUND_COLOR,
         titleColor: Int = DEFAULT_TITLE_COLOR,
-        textColor: Int = DEFAULT_TEXT_COLOR,
-        textTransparency: Transparency = DEFAULT_TRANSPARENCY
+        contentColor: Int = DEFAULT_CONTENT_COLOR,
+        textSize: TextSize = DEFAULT_TEXT_SIZE,
+        backgroundAlpha: Transparency = DEFAULT_TRANSPARENCY,
+        contentAlpha: Transparency = DEFAULT_TRANSPARENCY
     ): this(widgetId.toString() + STRING_DELIMITER
             + noteId.toString() + STRING_DELIMITER
-            + textSize.size.toString() + STRING_DELIMITER
-            + transparency.value.toString() + STRING_DELIMITER
-            + textTransparency.value.toString() + STRING_DELIMITER
             + backgroundColor.toString() + STRING_DELIMITER
             + titleColor.toString() + STRING_DELIMITER
-            + textColor.toString() + STRING_DELIMITER
+            + contentColor.toString() + STRING_DELIMITER
+            + textSize.size.toString() + STRING_DELIMITER
+            + backgroundAlpha.value.toString() + STRING_DELIMITER
+            + contentAlpha.value.toString() + STRING_DELIMITER
     )
 
     init {
@@ -76,17 +75,17 @@ class WidgetState(string: String) {
         builder.append(STRING_DELIMITER)
         builder.append(noteId)
         builder.append(STRING_DELIMITER)
-        builder.append(textSize.size)
-        builder.append(STRING_DELIMITER)
-        builder.append(transparency.value)
-        builder.append(STRING_DELIMITER)
-        builder.append(textTransparency.value)
-        builder.append(STRING_DELIMITER)
         builder.append(backgroundColor)
         builder.append(STRING_DELIMITER)
         builder.append(titleColor)
         builder.append(STRING_DELIMITER)
-        builder.append(textColor)
+        builder.append(contentColor)
+        builder.append(STRING_DELIMITER)
+        builder.append(textSize.size)
+        builder.append(STRING_DELIMITER)
+        builder.append(backgroundAlpha.value)
+        builder.append(STRING_DELIMITER)
+        builder.append(contentAlpha.value)
 
         return builder.toString()
     }
@@ -100,12 +99,12 @@ class WidgetState(string: String) {
             val values = input.split(Regex(STRING_DELIMITER))
             widgetId = values[0].toInt()
             noteId = values[1].toInt()
-            textSize = TextSize.fromSize(values[2].toInt())
-            transparency = Transparency.fromValue(values[3].toDouble())
-            textTransparency = Transparency.fromValue(values[4].toDouble())
-            backgroundColor = values[5].toInt()
-            titleColor = values[6].toInt()
-            textColor = values[7].toInt()
+            backgroundColor = values[2].toInt()
+            titleColor = values[3].toInt()
+            contentColor = values[4].toInt()
+            textSize = TextSize.fromSize(values[5].toInt())
+            backgroundAlpha = Transparency.fromValue(values[6].toDouble())
+            contentAlpha = Transparency.fromValue(values[7].toDouble())
         }
     }
 
@@ -114,11 +113,11 @@ class WidgetState(string: String) {
 
     companion object {
         const val STRING_DELIMITER = " "
-        val DEFAULT_TEXT_SIZE: TextSize = TextSize.Medium
-        val DEFAULT_TRANSPARENCY = Transparency.NONE
         val DEFAULT_BACKGROUND_COLOR = Color.parseColor("#FFFFFF")
         val DEFAULT_TITLE_COLOR = Color.parseColor("#1C1C1C")
-        val DEFAULT_TEXT_COLOR = Color.parseColor("#666666")
+        val DEFAULT_CONTENT_COLOR = Color.parseColor("#666666")
+        val DEFAULT_TEXT_SIZE: TextSize = TextSize.Medium
+        val DEFAULT_TRANSPARENCY = Transparency.NONE
 
         enum class TextSize(val displayName: String, val size: Int) {
             Small("Small", 13),

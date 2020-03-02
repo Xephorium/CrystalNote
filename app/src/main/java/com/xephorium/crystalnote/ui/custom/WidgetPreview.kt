@@ -37,7 +37,7 @@ class WidgetPreview : View {
     private var transparency = WidgetState.DEFAULT_TRANSPARENCY
     private var backgroundColor = WidgetState.DEFAULT_BACKGROUND_COLOR
     private var titleColor = WidgetState.DEFAULT_TITLE_COLOR
-    private var textColor = WidgetState.DEFAULT_TEXT_COLOR
+    private var textColor = WidgetState.DEFAULT_CONTENT_COLOR
 
 
     /*--- Constructors ---*/

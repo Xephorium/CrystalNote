@@ -193,7 +193,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/layoutWidgetSettingsTextColor"
+                android:id="@+id/layoutWidgetSettingsContentColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -201,7 +201,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetSettingsTextColorLabel"
+                    android:id="@+id/textWidgetSettingsContentColorLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -209,13 +209,13 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTextColorLabel"
+                    android:text="@string/widgetSettingsContentColorLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
 
                 <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbWidgetSettingsTextColor"
+                    android:id="@+id/colorOrbWidgetSettingsContentColor"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
@@ -262,7 +262,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetSettingsTransparencyLabel"
+                    android:id="@+id/textWidgetSettingsBackgroundAlphaLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -270,13 +270,13 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTransparencyLabel"
+                    android:text="@string/widgetSettingsBackgroundAlphaLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsTransparency"
+                    android:id="@+id/selectorWidgetSettingsBackgroundAlpha"
                     android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
@@ -293,7 +293,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetSettingsTextTransparencyLabel"
+                    android:id="@+id/textWidgetSettingsContentAlphaLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -301,13 +301,13 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingLarge"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTextTransparencyLabel"
+                    android:text="@string/widgetSettingsContentAlphaLabel"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />
 
                 <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsTextTransparency"
+                    android:id="@+id/selectorWidgetSettingsContentAlpha"
                     android:layout_width="@dimen/selectorWidgetSmall"
                     android:layout_height="match_parent"
                     android:popupBackground="@drawable/selector_popup_background"
