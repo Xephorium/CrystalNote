@@ -37,6 +37,7 @@
     <dimen name="drawerItemPadding">20dp</dimen>
     <dimen name="drawerItemRadius">5dp</dimen>
     <dimen name="floatingActionButtonElevation">6dp</dimen>
+    <dimen name="iconWidgetSettingsContrast">48dp</dimen>
     <dimen name="noteListItemHeight">72dp</dimen>
     <dimen name="selectorPaddingWidgetSettings">10dp</dimen>
     <dimen name="selectorSettings">150dp</dimen>

@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.widget
 
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.model.WidgetStateList
@@ -25,6 +26,7 @@ interface WidgetContract {
         fun setPreviewBackgroundColor(color: Int)
         fun setPreviewTitleColor(color: Int)
         fun setPreviewTextColor(color: Int)
+        fun setPreviewBackgroundBrightness(light: Boolean)
 
         fun showNoWidgetsMessage()
         fun hideNoWidgetsMessage()
@@ -44,6 +46,7 @@ interface WidgetContract {
         lateinit var workingWidgetStates: WidgetStateList
         lateinit var noteNameList: List<String>
         var workingWidgetIndex = 0
+        var previewBackgroundBright: Boolean = true
 
         abstract fun handleWidgetChange(index: Int)
         abstract fun handleTextSizeChange(textSize: TextSize)
@@ -54,6 +57,7 @@ interface WidgetContract {
         abstract fun handleBackgroundColorChange(color: Int)
         abstract fun handleTitleColorChange(color: Int)
         abstract fun handleTextColorChange(color: Int)
+        abstract fun handlePreviewBackgroundBrightnessToggle()
 
         abstract fun handleMenuButtonClick()
         abstract fun handleSaveClick()

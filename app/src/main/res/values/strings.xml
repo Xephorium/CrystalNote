@@ -39,6 +39,7 @@
     <string name="settingsUnderline">Text Underline</string>
     <string name="settingsMonospace">Monospaced Font</string>
 
+    <string name="widgetSettingsIconContrast">Toggle Preview Background Brightness</string>
     <string name="widgetSettingsSelectionHeader">Current Selection</string>
     <string name="widgetSettingsSelectionLabel">Widget</string>
     <string name="widgetSettingsAppearanceHeader">Appearance</string>

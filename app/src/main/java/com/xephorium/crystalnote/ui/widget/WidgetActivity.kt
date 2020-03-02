@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import androidx.core.graphics.drawable.DrawableCompat
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
@@ -16,8 +18,10 @@ import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
+import com.xephorium.crystalnote.ui.extensions.getThemeColor
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import kotlinx.android.synthetic.main.widget_activity_layout.*
+import kotlinx.android.synthetic.main.widget_activity_layout.buttonSave
 
 
 class WidgetActivity : DrawerActivity(), WidgetContract.View {
@@ -37,8 +41,11 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         presenter = WidgetPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.noteRoomRepository = NoteRoomRepository(this)
+        presenter.previewBackgroundBright =
+            getThemeColor(R.attr.themeNoteBackground) == R.color.lightNoteBackground
 
         setupToolbar()
+        setupPreviewIcons()
         setupTextSizeSpinner()
         setupTransparencySpinner()
         setupColorOrbs()
@@ -122,6 +129,27 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         widgetSettingsPreview.setTextColor(color)
     }
 
+    override fun setPreviewBackgroundBrightness(light: Boolean) {
+
+        // Determine Background & Icon Colors
+        val backgroundColor: Int
+        val iconColor: Int
+        if (light) {
+            backgroundColor = resources.getColor(R.color.lightSettingsPreviewBackground)
+            iconColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.white), 110)
+        } else {
+            backgroundColor = resources.getColor(R.color.darkSettingsPreviewBackground)
+            iconColor = resources.getColor(R.color.darkNoteBackground)
+        }
+
+        // Set Background & Icon Colors
+        viewWidgetSettingsPreviewBackground.setBackgroundColor(backgroundColor)
+        val icon = ContextCompat.getDrawable(this, R.drawable.icon_contrast)
+        val drawable = DrawableCompat.wrap(icon!!)
+        DrawableCompat.setTint(drawable, iconColor)
+        iconWidgetSettingsContrast.setImageDrawable(drawable)
+    }
+
     override fun showNoWidgetsMessage() {
         scrollViewWidgetSettings.visibility = View.GONE
         buttonSave.visibility = View.GONE
@@ -186,6 +214,12 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             override fun onRightButtonClick() = Unit
             override fun onTextChange(text: String) = Unit
         })
+    }
+
+    private fun setupPreviewIcons() {
+        iconWidgetSettingsContrast.setOnClickListener {
+            presenter.handlePreviewBackgroundBrightnessToggle()
+        }
     }
 
     private fun setupTextSizeSpinner() {

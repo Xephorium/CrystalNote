@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?themeNoteBackground"
-    >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?themeNoteBackground">
 
     <!-- Note: This view is a dirty hack. Because I'm manually inflating each layout added to
          the layoutActivityContent view, the layouts don't want to expand horizontally into the
@@ -41,6 +40,19 @@
             />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iconWidgetSettingsContrast"
+        android:layout_width="@dimen/iconWidgetSettingsContrast"
+        android:layout_height="@dimen/iconWidgetSettingsContrast"
+        android:padding="16dp"
+        android:layout_marginEnd="@dimen/paddingMedium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/viewWidgetSettingsPreviewBackground"
+        android:contentDescription="@string/widgetSettingsIconContrast"
+        android:src="@drawable/icon_contrast"
+        tools:tint="?themeNoteBackground"
+        />
 
     <ScrollView
         android:id="@+id/scrollViewWidgetSettings"

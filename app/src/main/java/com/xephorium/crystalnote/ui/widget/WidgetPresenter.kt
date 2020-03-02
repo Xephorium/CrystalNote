@@ -34,6 +34,9 @@ class WidgetPresenter : WidgetContract.Presenter() {
             this.view?.showNoWidgetsMessage()
             resetPreview()
         }
+
+        // Set Preview Background
+        this.view?.setPreviewBackgroundBrightness(previewBackgroundBright)
     }
 
     /*--- Action Handling Methods ---*/
@@ -85,6 +88,11 @@ class WidgetPresenter : WidgetContract.Presenter() {
         workingWidgetStates.setTextColorAtIndex(workingWidgetIndex, color)
         view?.populateTextColor(color)
         view?.setPreviewTextColor(getWorkingWidgetState().textColor)
+    }
+
+    override fun handlePreviewBackgroundBrightnessToggle() {
+        previewBackgroundBright = previewBackgroundBright.not()
+        view?.setPreviewBackgroundBrightness(previewBackgroundBright)
     }
 
     override fun handleSaveClick() {
