@@ -109,6 +109,35 @@ class WidgetPresenter : WidgetContract.Presenter() {
     }
 
 
+    override fun handleBackClick() {
+        if (initialWidgetStates.toString() == workingWidgetStates.toString()) {
+
+            // No Changes - Navigate Back
+            view?.navigateBack()
+
+        } else {
+
+            // Widget State Changed - Build Name List
+            val builder = StringBuilder()
+            val initialStates = initialWidgetStates!!.getWidgetStates()
+            val workingStates = workingWidgetStates.getWidgetStates()
+            for (index in 0 until initialStates.size) {
+                if (initialStates[index].toString() != workingStates[index].toString()) {
+                    builder.append("• ")
+                    builder.append(noteNameList[index])
+                    builder.append("\n")
+                }
+            }
+
+            // Prompt User
+            view?.showDiscardChangesDialog(builder.toString())
+        }
+    }
+
+    override fun handleBackConfirm() {
+        view?.navigateBack()
+    }
+
     /*--- Private Methods ---*/
 
     private fun widgetStateListChanged(): Boolean {

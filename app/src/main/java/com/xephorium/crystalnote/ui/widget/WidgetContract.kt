@@ -34,6 +34,8 @@ interface WidgetContract {
         fun showTitleColorPickerDialog()
         fun showContentColorPickerDialog()
         fun showNavigationDrawer()
+        fun showDiscardChangesDialog(widgetNames: String)
+        fun navigateBack()
 
         fun refreshWidgets()
     }
@@ -62,5 +64,7 @@ interface WidgetContract {
 
         abstract fun handleMenuButtonClick()
         abstract fun handleSaveClick()
+        abstract fun handleBackClick()
+        abstract fun handleBackConfirm()
     }
 }

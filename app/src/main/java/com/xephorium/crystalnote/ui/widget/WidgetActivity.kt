@@ -1,9 +1,11 @@
 package com.xephorium.crystalnote.ui.widget
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
@@ -61,6 +63,14 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     override fun onDestroy() {
         super.onDestroy()
         presenter.detachView()
+    }
+
+    override fun onBackPressed() {
+        if (drawerOpen) {
+            super.onBackPressed()
+        } else {
+            presenter.handleBackClick()
+        }
     }
 
 
@@ -205,6 +215,27 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     override fun showNavigationDrawer() {
         openDrawer()
+    }
+
+    override fun showDiscardChangesDialog(widgetNames: String) {
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
+        alertDialog.setCancelable(true)
+        alertDialog.setTitle("Discard Changes")
+        alertDialog.setMessage(
+            "The following widgets have not been saved. Discard changes?\n\n${widgetNames}"
+        )
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { dialog, _ ->
+            dialog.dismiss()
+            presenter.handleBackConfirm()
+        }
+        alertDialog.show()
+    }
+
+    override fun navigateBack() {
+        super.onBackPressed()
     }
 
 
