@@ -43,8 +43,8 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         presenter = WidgetPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.noteRoomRepository = NoteRoomRepository(this)
-        presenter.previewBackgroundBright =
-            getThemeColor(R.attr.themeNoteBackground) == R.color.lightNoteBackground
+        presenter.previewBackgroundBright = getThemeColor(R.attr.themeNoteBackground) ==
+                resources.getColor(R.color.lightNoteBackground)
 
         setupToolbar()
         setupPreviewIcons()

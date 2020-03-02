@@ -150,23 +150,23 @@ class ColorGridView: LinearLayout {
             Color.parseColor("#3d8f57"), //      Desaturated Green
             Color.parseColor("#4db36f"), //      Desaturated Green Light
             Color.parseColor("#666666"), // R3 - Black on White Secondary
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
             Color.parseColor("#555555"), // R4 - Dark Theme Background
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
             Color.parseColor("#353535"), // R5 - Black on White Primary
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
             Color.parseColor("#000000"), // R6 - Black
-            Color.parseColor("#555555"),
-            Color.parseColor("#555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
             Color.parseColor("#008a99"), //      Sage
             Color.parseColor("#12B4B8")  //      Sage Light
         )
