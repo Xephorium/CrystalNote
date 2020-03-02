@@ -128,68 +128,6 @@
                 />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:id="@+id/textWidgetSettingsTextSizeLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTextSizeLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsTextSize"
-                    android:layout_width="@dimen/selectorWidgetSmall"
-                    android:layout_height="match_parent"
-                    android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
-                    app:backgroundTint="?themeTextSecondary"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:id="@+id/textWidgetSettingsTransparencyLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTransparencyLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
-
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsTransparency"
-                    android:layout_width="@dimen/selectorWidgetSmall"
-                    android:layout_height="match_parent"
-                    android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
-                    app:backgroundTint="?themeTextSecondary"
-                    />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/layoutWidgetSettingsBackgroundColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -281,6 +219,99 @@
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/textWidgetSettingsTextSizeLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/paddingHuge"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingLarge"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/widgetSettingsTextSizeLabel"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/selectorWidgetSettingsTextSize"
+                    android:layout_width="@dimen/selectorWidgetSmall"
+                    android:layout_height="match_parent"
+                    android:popupBackground="@drawable/selector_popup_background"
+                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                    app:backgroundTint="?themeTextSecondary"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/textWidgetSettingsTransparencyLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/paddingHuge"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingLarge"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/widgetSettingsTransparencyLabel"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/selectorWidgetSettingsTransparency"
+                    android:layout_width="@dimen/selectorWidgetSmall"
+                    android:layout_height="match_parent"
+                    android:popupBackground="@drawable/selector_popup_background"
+                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                    app:backgroundTint="?themeTextSecondary"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/textWidgetSettingsTextTransparencyLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/paddingHuge"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingLarge"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/widgetSettingsTextTransparencyLabel"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/selectorWidgetSettingsTextTransparency"
+                    android:layout_width="@dimen/selectorWidgetSmall"
+                    android:layout_height="match_parent"
+                    android:popupBackground="@drawable/selector_popup_background"
+                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                    app:backgroundTint="?themeTextSecondary"
                     />
 
             </LinearLayout>

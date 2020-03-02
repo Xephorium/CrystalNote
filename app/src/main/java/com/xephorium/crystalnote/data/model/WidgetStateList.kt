@@ -73,6 +73,10 @@ class WidgetStateList(string: String) {
         widgetStates[index].transparency = transparency
     }
 
+    fun setTextTransparencyAtIndex(index: Int, transparency: Transparency) {
+        widgetStates[index].textTransparency = transparency
+    }
+
     fun setBackgroundColorAtIndex(index: Int, color: Int) {
         widgetStates[index].backgroundColor = color
     }

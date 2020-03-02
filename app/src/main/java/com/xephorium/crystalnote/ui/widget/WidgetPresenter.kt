@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.ui.widget
 import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
+import com.xephorium.crystalnote.data.utility.ColorUtility
 
 
 class WidgetPresenter : WidgetContract.Presenter() {
@@ -60,6 +61,11 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewTransparency(getWorkingWidgetState().transparency)
     }
 
+    override fun handleTextTransparencyChange(transparency: Transparency) {
+        workingWidgetStates.setTextTransparencyAtIndex(workingWidgetIndex, transparency)
+        view?.setPreviewTextColor(getTextColorWithTransparency())
+    }
+
     override fun handleBackgroundColorClick() {
         view?.showBackgroundColorPickerDialog()
     }
@@ -87,7 +93,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
     override fun handleTextColorChange(color: Int) {
         workingWidgetStates.setTextColorAtIndex(workingWidgetIndex, color)
         view?.populateTextColor(color)
-        view?.setPreviewTextColor(getWorkingWidgetState().textColor)
+        view?.setPreviewTextColor(getTextColorWithTransparency())
     }
 
     override fun handlePreviewBackgroundBrightnessToggle() {
@@ -132,6 +138,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.populateWidgetSelector(workingWidgetIndex)
         view?.populateTextSize(getWorkingWidgetState().textSize)
         view?.populateTransparency(getWorkingWidgetState().transparency)
+        view?.populateTextTransparency(getWorkingWidgetState().textTransparency)
         view?.populateBackgroundColor(getWorkingWidgetState().backgroundColor)
         view?.populateTitleColor(getWorkingWidgetState().titleColor)
         view?.populateTextColor(getWorkingWidgetState().textColor)
@@ -141,7 +148,14 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewTransparency(getWorkingWidgetState().transparency)
         view?.setPreviewBackgroundColor(getWorkingWidgetState().backgroundColor)
         view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
-        view?.setPreviewTextColor(getWorkingWidgetState().textColor)
+        view?.setPreviewTextColor(getTextColorWithTransparency())
+    }
+
+    private fun getTextColorWithTransparency(): Int {
+        return ColorUtility.applyTransparency(
+            getWorkingWidgetState().textColor,
+            getWorkingWidgetState().textTransparency
+        )
     }
 
     private fun resetPreview() {

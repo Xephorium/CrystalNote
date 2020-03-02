@@ -23,6 +23,7 @@ import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import com.xephorium.crystalnote.data.model.WidgetState
+import com.xephorium.crystalnote.data.utility.ColorUtility
 
 
 /*
@@ -206,8 +207,14 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
         // Text Color
         widgetView.setTextColor(R.id.textWidgetTitle, state.titleColor)
-        widgetView.setTextColor(R.id.textWidgetContent, state.textColor)
-        widgetView.setTextColor(R.id.textWidgetEmpty, state.textColor)
+        widgetView.setTextColor(
+            R.id.textWidgetContent,
+            ColorUtility.applyTransparency(state.textColor, state.textTransparency)
+        )
+        widgetView.setTextColor(
+            R.id.textWidgetEmpty,
+            ColorUtility.applyTransparency(state.textColor, state.textTransparency)
+        )
     }
 
     private fun getOnClickPendingIntent(

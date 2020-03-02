@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.widget
 
-import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.model.WidgetStateList
@@ -17,6 +16,7 @@ interface WidgetContract {
         fun populateWidgetSelector(index: Int)
         fun populateTextSize(size: TextSize)
         fun populateTransparency(transparency: Transparency)
+        fun populateTextTransparency(transparency: Transparency)
         fun populateBackgroundColor(color: Int)
         fun populateTitleColor(color: Int)
         fun populateTextColor(color: Int)
@@ -51,6 +51,7 @@ interface WidgetContract {
         abstract fun handleWidgetChange(index: Int)
         abstract fun handleTextSizeChange(textSize: TextSize)
         abstract fun handleTransparencyChange(transparency: Transparency)
+        abstract fun handleTextTransparencyChange(transparency: Transparency)
         abstract fun handleBackgroundColorClick()
         abstract fun handleTitleColorClick()
         abstract fun handleTextColorClick()
