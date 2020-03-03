@@ -6,6 +6,8 @@ import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.data.model.WidgetState
 
 import com.xephorium.crystalnote.data.model.WidgetStateList
+import com.xephorium.crystalnote.data.utility.CrystalNoteLogger
+import com.xephorium.crystalnote.data.utility.DateUtility
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 
 class SharedPreferencesRepository(private val context: Context) {
@@ -103,6 +105,15 @@ class SharedPreferencesRepository(private val context: Context) {
 
         editor.putString(WIDGET_STATE_LIST, widgetStateList.toString())
         editor.apply()
+
+        log(DateUtility.getCurrentFormattedDateTime()
+                + ", SharedPrefs, Setting note id "
+                + noteId
+                + " for Widget id "
+                + widgetId
+                + ", New WidgetStateList: "
+                + widgetStateList.toString()
+        )
     }
 
     fun getNoteIdForWidget(widgetId: Int): Int? {
@@ -128,6 +139,13 @@ class SharedPreferencesRepository(private val context: Context) {
 
         editor.putString(WIDGET_STATE_LIST, widgetStateList.toString())
         editor.apply()
+
+        log(DateUtility.getCurrentFormattedDateTime()
+                + ", SharedPrefs, Removing widget id "
+                + widgetId
+                + ", New WidgetStateList: "
+                + widgetStateList.toString()
+        )
     }
 
     fun getWidgetStateList(): WidgetStateList {
@@ -161,6 +179,10 @@ class SharedPreferencesRepository(private val context: Context) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
         editor.putString(WIDGET_STATE_LIST, "")
         editor.apply()
+    }
+
+    private fun log(string: String) {
+        CrystalNoteLogger.log(context, string)
     }
 
 

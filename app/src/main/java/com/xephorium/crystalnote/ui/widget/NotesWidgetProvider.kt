@@ -24,6 +24,8 @@ import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.utility.ColorUtility
+import com.xephorium.crystalnote.data.utility.CrystalNoteLogger
+import com.xephorium.crystalnote.data.utility.DateUtility
 
 
 /*
@@ -68,6 +70,12 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 // Save New WidgetState
                 if (widgetState == null) {
                     sharedPreferencesRepository.setNoteIdForWidget(widgetId, NO_NOTE)
+
+                    // Log
+                    log(context, DateUtility.getCurrentFormattedDateTime()
+                            + ", NotesWidgetProvider, Adding new widget id "
+                            + widgetId
+                    )
                 }
 
                 // Set Widget Style
@@ -151,6 +159,12 @@ class NotesWidgetProvider : AppWidgetProvider() {
         val sharedPreferencesRepository = SharedPreferencesRepository(context)
         for (widgetId in widgetIds) {
             sharedPreferencesRepository.removeWidgetState(widgetId)
+
+            // Log
+            log(context, DateUtility.getCurrentFormattedDateTime()
+                    + ", NotesWidgetProvider, Removing widget id "
+                    + widgetId
+            )
         }
     }
 
@@ -167,6 +181,16 @@ class NotesWidgetProvider : AppWidgetProvider() {
             widgetStateList.updateWidgetId(oldWidgetIds[index], newWidgetIds[index])
         }
         sharedPreferencesRepository.setWidgetStateList(widgetStateList)
+
+        // Log
+        log(context, DateUtility.getCurrentFormattedDateTime()
+                + ", NotesWidgetProvider, Updating widget ids from "
+                + oldWidgetIds
+                + " to "
+                + newWidgetIds
+                + ", New WidgetStateList: "
+                + widgetStateList.toString()
+        )
     }
 
 
@@ -231,6 +255,10 @@ class NotesWidgetProvider : AppWidgetProvider() {
             intent,
             PendingIntent.FLAG_CANCEL_CURRENT
         )
+    }
+
+    private fun log(context: Context, string: String) {
+        CrystalNoteLogger.log(context, string)
     }
 
 

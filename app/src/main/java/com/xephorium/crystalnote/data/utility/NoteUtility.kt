@@ -6,10 +6,7 @@ import android.text.format.DateUtils
 import com.xephorium.crystalnote.data.model.Note
 
 import java.text.SimpleDateFormat
-import java.util.ArrayList
-import java.util.Calendar
-import java.util.Locale
-import java.util.Random
+import java.util.*
 
 object NoteUtility {
 
