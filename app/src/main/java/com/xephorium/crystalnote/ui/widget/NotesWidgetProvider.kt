@@ -69,13 +69,14 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Save New WidgetState
                 if (widgetState == null) {
-                    sharedPreferencesRepository.setNoteIdForWidget(widgetId, NO_NOTE)
 
                     // Log
                     log(context, DateUtility.getCurrentFormattedDateTime()
                             + ", NotesWidgetProvider, Adding new widget id "
                             + widgetId
                     )
+
+                    sharedPreferencesRepository.setNoteIdForWidget(widgetId, NO_NOTE)
                 }
 
                 // Set Widget Style
@@ -158,13 +159,14 @@ class NotesWidgetProvider : AppWidgetProvider() {
         // Remove Widget ID from Shared Preferences
         val sharedPreferencesRepository = SharedPreferencesRepository(context)
         for (widgetId in widgetIds) {
-            sharedPreferencesRepository.removeWidgetState(widgetId)
 
             // Log
             log(context, DateUtility.getCurrentFormattedDateTime()
                     + ", NotesWidgetProvider, Removing widget id "
                     + widgetId
             )
+
+            sharedPreferencesRepository.removeWidgetState(widgetId)
         }
     }
 
@@ -180,7 +182,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
         for (index in oldWidgetIds.indices) {
             widgetStateList.updateWidgetId(oldWidgetIds[index], newWidgetIds[index])
         }
-        sharedPreferencesRepository.setWidgetStateList(widgetStateList)
 
         // Log
         log(context, DateUtility.getCurrentFormattedDateTime()
@@ -191,6 +192,8 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 + ", New WidgetStateList: "
                 + widgetStateList.toString()
         )
+
+        sharedPreferencesRepository.setWidgetStateList(widgetStateList)
     }
 
 
