@@ -106,7 +106,7 @@ class ColorOrb : View {
 
     fun setColor(color: Int) {
         orbColor = color
-        orbContrast = ColorUtility.calculateContrastRatio(theme.colorNoteBackground, color)
+        orbContrast = if (theme.colorNoteBackground == color) 1.0 else 2.0
         invalidate()
     }
 
