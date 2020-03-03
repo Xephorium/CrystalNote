@@ -164,16 +164,16 @@ class ColorGridView: LinearLayout {
             Color.parseColor("#dfac20"), //      Gold Dark
             Color.parseColor("#bfbf40"), //      Yellow Dark
             Color.parseColor("#333333"), // R5
-            Color.parseColor("#a7b3be"), //      Blue Smoke Light
+            Color.parseColor("#d3d9df"), //      Blue Smoke Light
+            Color.parseColor("#c6b9a9"), //      Coffee Light
             Color.parseColor("#c0add2"), //      Barney Light
             Color.parseColor("#d6a9c0"), //      Thanos Light
-            Color.parseColor("#ad9a85"), //      Coffee Light
             Color.parseColor("#dbdbbd"), //      Parchment Light
             Color.parseColor("#000000"), // R6 - Black
             Color.parseColor("#576775"), //      Blue Smoke Dark
+            Color.parseColor("#5d554c"), //      Coffee Dark
             Color.parseColor("#8c70a9"), //      Barney Dark
             Color.parseColor("#996680"), //      Thanos Dark
-            Color.parseColor("#8a745c"), //      Coffee Dark
             Color.parseColor("#adad85")  //      Parchment Dark
         )
     }
