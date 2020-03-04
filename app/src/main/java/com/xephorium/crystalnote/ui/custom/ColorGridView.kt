@@ -134,47 +134,116 @@ class ColorGridView: LinearLayout {
 
     companion object {
         private const val ORB_SIZE_INITIAL = 0
-        private const val GRID_COLUMNS = 6
+        private const val GRID_COLUMNS = 7
         private const val ORB_PADDING = 0.15
         private const val ORB_OUTLINE = true
 
         private val COLOR_OPTIONS = listOf(
+            Color.parseColor("#ffffff"), // R1 ---              (White)
+            Color.parseColor("#d3d9df"), //    Blue Smoke Light
+            Color.parseColor("#899aa9"), //    Blue Smoke
+            Color.parseColor("#576775"), //    Blue Smoke Dark
+            Color.parseColor("#f6a655"), //    Orange Light
+            Color.parseColor("#d2802d"), //    Orange
+            Color.parseColor("#00555555"), //    Orange Dark
+            Color.parseColor("#cccccc"), // R2 ---
+            Color.parseColor("#7aa4d1"), //    Azure Light
+            Color.parseColor("#3F7AB9"), //    Azure
+            Color.parseColor("#426080"), //    Azure Dark
+            Color.parseColor("#f47762"), //    Red Light
+            Color.parseColor("#d6514b"), //    Red
+            Color.parseColor("#00555555"), //    Red Dark
+            Color.parseColor("#a3a3a3"), // R3 ---
+            Color.parseColor("#12B4B8"), //    Sage Light
+            Color.parseColor("#008999"), //    Sage
+            Color.parseColor("#316c72"), //    Sage Dark
+            Color.parseColor("#f47762"), //    Tomato Light
+            Color.parseColor("#B3564D"), //    Tomato
+            Color.parseColor("#00555555"), //    Tomato Dark
+            Color.parseColor("#7a7a7a"), // R4 ---
+            Color.parseColor("#64b47f"), //    Green Light
+            Color.parseColor("#4b9b63"), //    Green
+            Color.parseColor("#437050"), //    Green Dark
+            Color.parseColor("#d6a9c0"), //    Thanos Light
+            Color.parseColor("#996680"), //    Thanos
+            Color.parseColor("#00555555"), //    Thanos Dark
+            Color.parseColor("#555555"), // R5 ---              (Dark Theme Background)
+            Color.parseColor("#badd6e"), //    Olive Light
+            Color.parseColor("#94b649"), //    Olive
+            Color.parseColor("#627934"), //    Olive Dark
+            Color.parseColor("#c0add2"), //    Barney Light
+            Color.parseColor("#8c70a9"), //    Barney
+            Color.parseColor("#00555555"), //    Barney Dark
+            Color.parseColor("#292929"), // R6 ---
+            Color.parseColor("#eeee8c"), //    Yellow Light
+            Color.parseColor("#dede63"), //    Yellow
+            Color.parseColor("#bebe5b"), //    Yellow Dark
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#000000"), // R7 ---              (Black)
+            Color.parseColor("#e9e9d8"), //    Parchment Light
+            Color.parseColor("#d7d7b7"), //    Parchment
+            Color.parseColor("#adad85"), //    Parchment Dark
+            Color.parseColor("#00555555"),
+            Color.parseColor("#dbdbbd"), //    Parchment Light
+            Color.parseColor("#adad85")  //    Parchment Dark
+        )
+
+//        Color.parseColor("#f9d36c"), //    Gold Light
+//        Color.parseColor("#dfac20"), //    Gold
+//        Color.parseColor("#00555555"), //    Gold Dark
+
+        private val COLOR_OPTIONS_OLD = listOf(
             Color.parseColor("#ffffff"), // R1 - White
             Color.parseColor("#7aa4d1"), //      Azure Light
             Color.parseColor("#66b3ff"), //      Azure Saturated
             Color.parseColor("#12B4B8"), //      Sage Light
             Color.parseColor("#8cd9bf"), //      Green Light
             Color.parseColor("#64b47f"), //      Desaturated Green Light
+            Color.parseColor("#00555555"),
             Color.parseColor("#c6c6c6"), // R2
             Color.parseColor("#345679"), //      Azure Dark
             Color.parseColor("#3F7AB9"), //      Azure
             Color.parseColor("#008a99"), //      Sage
             Color.parseColor("#40bf95"), //      Green
             Color.parseColor("#4b9b63"), //      Desaturated Green
+            Color.parseColor("#00555555"),
             Color.parseColor("#777777"), // R3
             Color.parseColor("#f18f8d"), //      Lightish Red
             Color.parseColor("#f47762"), //      Tomato Light
             Color.parseColor("#f6a655"), //      Orange Light
             Color.parseColor("#f9d36c"), //      Gold Light
             Color.parseColor("#e6e689"), //      Yellow Light
+            Color.parseColor("#00555555"),
             Color.parseColor("#555555"), // R4 - Dark Theme Background
             Color.parseColor("#B3564D"), //      Tomato
             Color.parseColor("#d6514b"), //      Red
             Color.parseColor("#d2802d"), //      Orange Dark
             Color.parseColor("#dfac20"), //      Gold Dark
             Color.parseColor("#bfbf40"), //      Yellow Dark
+            Color.parseColor("#00555555"),
             Color.parseColor("#333333"), // R5
             Color.parseColor("#d3d9df"), //      Blue Smoke Light
             Color.parseColor("#c6b9a9"), //      Coffee Light
             Color.parseColor("#c0add2"), //      Barney Light
             Color.parseColor("#d6a9c0"), //      Thanos Light
             Color.parseColor("#dbdbbd"), //      Parchment Light
+            Color.parseColor("#00555555"),
             Color.parseColor("#000000"), // R6 - Black
             Color.parseColor("#576775"), //      Blue Smoke Dark
             Color.parseColor("#5d554c"), //      Coffee Dark
             Color.parseColor("#8c70a9"), //      Barney Dark
             Color.parseColor("#996680"), //      Thanos Dark
-            Color.parseColor("#adad85")  //      Parchment Dark
+            Color.parseColor("#adad85"), //      Parchment Dark
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555"),
+            Color.parseColor("#00555555")
         )
     }
 }
