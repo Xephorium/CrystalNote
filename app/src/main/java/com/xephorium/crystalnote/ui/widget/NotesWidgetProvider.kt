@@ -170,6 +170,12 @@ class NotesWidgetProvider : AppWidgetProvider() {
         }
     }
 
+    // Handle Final Widget Deletion
+    override fun onDisabled(context: Context) {
+        super.onDisabled(context)
+        SharedPreferencesRepository(context).removeAllWidgetStates()
+    }
+
     // Handle Device Reboot
     override fun onRestored(context: Context, oldWidgetIds: IntArray, newWidgetIds: IntArray) {
         super.onRestored(context, oldWidgetIds, newWidgetIds)

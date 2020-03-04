@@ -160,6 +160,12 @@ class SharedPreferencesRepository(private val context: Context) {
         editor.apply()
     }
 
+    fun removeAllWidgetStates() {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putString(WIDGET_STATE_LIST, "")
+        editor.apply()
+    }
+
     fun setSelectedDrawerButton(button: DrawerButton) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
         editor.putString(SELECTED_DRAWER_BUTTON_NAME, button.name)
@@ -174,12 +180,6 @@ class SharedPreferencesRepository(private val context: Context) {
 
 
     /*--- Developer Utility Methods ---*/
-
-    fun clearWidgetStates() {
-        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
-        editor.putString(WIDGET_STATE_LIST, "")
-        editor.apply()
-    }
 
     private fun log(string: String) {
         CrystalNoteLogger.log(context, string)
