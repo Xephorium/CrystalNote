@@ -90,6 +90,19 @@
                 />
         </receiver>
 
+        <!-- Widget Configuration Activity -->
+        <activity
+            android:name=".ui.widget.WidgetConfigurationActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:excludeFromRecents="true"
+            android:theme="@style/WidgetConfigurationActivityTheme"
+            >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

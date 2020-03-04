@@ -51,6 +51,11 @@
         <item name="colorAccent">?themeAccent</item>
     </style>
 
+    <style name="WidgetConfigurationActivityTheme" parent="CrystalNoteTheme">
+        <!-- Note: This attribute defines splash screen appearance. -->
+        <item name="android:windowBackground">@drawable/transparent</item>
+    </style>
+
 
     <!-- Base Color Themes -->
 

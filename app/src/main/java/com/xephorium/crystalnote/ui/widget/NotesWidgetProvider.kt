@@ -13,7 +13,6 @@ import android.widget.RemoteViews
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
-import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.select.SelectActivity
@@ -67,18 +66,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
                         future.get()
                     }
 
-                // Save New WidgetState
-                if (widgetState == null) {
-
-                    // Log
-                    log(context, DateUtility.getCurrentFormattedDateTime()
-                            + ", NotesWidgetProvider, Adding new widget id "
-                            + widgetId
-                    )
-
-                    sharedPreferencesRepository.setNoteIdForWidget(widgetId, NO_NOTE)
-                }
-
                 // Set Widget Style
                 if (widgetState == null) {
                     styleWidget(widgetView, WidgetState(0, 0))
@@ -130,7 +117,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
             TITLE_CLICK_INTENT, TEXT_CLICK_INTENT -> {
 
-                // Update Current Display Note
+                // Launch UpdateActivity for Note
                 SharedPreferencesRepository(context).getNoteIdForWidget(widgetId)?.let { id ->
                     val updateIntent = Intent(context, UpdateActivity::class.java)
                     updateIntent.putExtra(KEY_NOTE_ID, id)
@@ -143,7 +130,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
             EMPTY_CLICK_INTENT -> {
 
-                // Choose New Display Note
+                // Choose New Note
                 val buttonIntent = Intent(context, SelectActivity::class.java)
                 buttonIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 buttonIntent.putExtra(KEY_WIDGET_ID, widgetId)
@@ -159,13 +146,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
         // Remove Widget ID from Shared Preferences
         val sharedPreferencesRepository = SharedPreferencesRepository(context)
         for (widgetId in widgetIds) {
-
-            // Log
-            log(context, DateUtility.getCurrentFormattedDateTime()
-                    + ", NotesWidgetProvider, Removing widget id "
-                    + widgetId
-            )
-
             sharedPreferencesRepository.removeWidgetState(widgetId)
         }
     }
@@ -188,17 +168,6 @@ class NotesWidgetProvider : AppWidgetProvider() {
         for (index in oldWidgetIds.indices) {
             widgetStateList.updateWidgetId(oldWidgetIds[index], newWidgetIds[index])
         }
-
-        // Log
-        log(context, DateUtility.getCurrentFormattedDateTime()
-                + ", NotesWidgetProvider, Updating widget ids from "
-                + oldWidgetIds
-                + " to "
-                + newWidgetIds
-                + ", New WidgetStateList: "
-                + widgetStateList.toString()
-        )
-
         sharedPreferencesRepository.setWidgetStateList(widgetStateList)
     }
 
