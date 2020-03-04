@@ -48,6 +48,7 @@
         android:paddingLeft="@dimen/widgetDefaultPadding"
         android:paddingRight="@dimen/widgetDefaultPadding"
         android:paddingBottom="@dimen/widgetDefaultPadding"
+        android:lineSpacingMultiplier="1.135"
         android:textColor="@color/lightTextSecondary"
         android:layout_below="@+id/textWidgetTitle"
         tools:text="This is a bunch of widget text!"
