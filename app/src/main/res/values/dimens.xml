@@ -51,7 +51,7 @@
     <dimen name="toolbarText">19sp</dimen>
     <dimen name="widgetCornerRadius">2dp</dimen>
     <dimen name="widgetDefaultPadding">10dp</dimen>
-    <dimen name="widgetHeaderHeight">36dp</dimen>
+    <dimen name="widgetHeaderBottomPadding">6dp</dimen>
     <dimen name="widgetHeaderTextSize">15sp</dimen>
     <dimen name="widgetMinimumHeight">110dp</dimen>
     <dimen name="widgetMinimumWidth">110dp</dimen>
