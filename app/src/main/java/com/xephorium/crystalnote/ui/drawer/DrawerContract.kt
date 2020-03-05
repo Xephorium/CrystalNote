@@ -8,6 +8,7 @@ import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
 interface DrawerContract {
 
     interface View : BaseView {
+        fun closeDrawer()
         fun closeDrawerAfterDelay()
 
         fun navigateToHome()

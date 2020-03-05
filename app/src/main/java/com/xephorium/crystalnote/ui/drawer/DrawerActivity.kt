@@ -95,13 +95,13 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         drawerAnimating = true
     }
 
-    fun closeDrawer() {
+
+    /*--- View Manipulation Methods ---*/
+
+    override fun closeDrawer() {
         layoutDrawer.closeDrawers()
         drawerAnimating = true
     }
-
-
-    /*--- View Manipulation Methods ---*/
 
     override fun closeDrawerAfterDelay() {
         Handler().postDelayed({

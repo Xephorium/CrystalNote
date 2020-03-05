@@ -23,31 +23,47 @@ class DrawerPresenter : DrawerContract.Presenter() {
     /*--- Action Handling Methods ---*/
 
     override fun handleHomeClick() {
-        view?.closeDrawerAfterDelay()
-        sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
-        view?.setSelectedMenuButton(NOTES)
-        view?.navigateToHome()
+        if (sharedPreferencesRepository.getSelectedDrawerButton() != NOTES) {
+            view?.closeDrawerAfterDelay()
+            sharedPreferencesRepository.setSelectedDrawerButton(NOTES)
+            view?.setSelectedMenuButton(NOTES)
+            view?.navigateToHome()
+        } else {
+            view?.closeDrawer()
+        }
     }
 
     override fun handleWidgetClick() {
-        view?.closeDrawerAfterDelay()
-        sharedPreferencesRepository.setSelectedDrawerButton(WIDGET)
-        view?.setSelectedMenuButton(WIDGET)
-        view?.navigateToWidget()
+        if (sharedPreferencesRepository.getSelectedDrawerButton() != WIDGET) {
+            view?.closeDrawerAfterDelay()
+            sharedPreferencesRepository.setSelectedDrawerButton(WIDGET)
+            view?.setSelectedMenuButton(WIDGET)
+            view?.navigateToWidget()
+        } else {
+            view?.closeDrawer()
+        }
     }
 
     override fun handleSettingsClick() {
-        view?.closeDrawerAfterDelay()
-        sharedPreferencesRepository.setSelectedDrawerButton(SETTINGS)
-        view?.setSelectedMenuButton(SETTINGS)
-        view?.navigateToSettings()
+        if (sharedPreferencesRepository.getSelectedDrawerButton() != SETTINGS) {
+            view?.closeDrawerAfterDelay()
+            sharedPreferencesRepository.setSelectedDrawerButton(SETTINGS)
+            view?.setSelectedMenuButton(SETTINGS)
+            view?.navigateToSettings()
+        } else {
+            view?.closeDrawer()
+        }
     }
 
     override fun handleAboutClick() {
-        view?.closeDrawerAfterDelay()
-        sharedPreferencesRepository.setSelectedDrawerButton(ABOUT)
-        view?.setSelectedMenuButton(ABOUT)
-        view?.navigateToAbout()
+        if (sharedPreferencesRepository.getSelectedDrawerButton() != ABOUT) {
+            view?.closeDrawerAfterDelay()
+            sharedPreferencesRepository.setSelectedDrawerButton(ABOUT)
+            view?.setSelectedMenuButton(ABOUT)
+            view?.navigateToAbout()
+        } else {
+            view?.closeDrawer()
+        }
     }
 
     override fun handleBackClick() {
