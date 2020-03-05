@@ -16,15 +16,14 @@ import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.select.SelectActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.data.utility.CrystalNoteLogger
-import com.xephorium.crystalnote.data.utility.DateUtility
+import com.xephorium.crystalnote.ui.update.UpdateActivity
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 
 
 /*

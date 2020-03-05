@@ -31,12 +31,23 @@
         <item name="android:colorEdgeEffect">?themeOverscroll</item>
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
+        <item name="android:actionOverflowButtonStyle">@style/ToolbarOptionsButton</item>
     </style>
 
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <item name="android:background">?themeToolbar</item>
         <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
         <item name="android:colorControlActivated">?themeTextHandle</item>
+    </style>
+
+    <style name="ToolbarOptionsTheme" parent="CrystalNoteTheme">
+        <item name="android:itemBackground">?themeNoteBackground</item>
+        <item name="android:textColor">?themeTextSecondary</item>
+    </style>
+
+    <style name="ToolbarOptionsButton">
+        <item name="android:src">@drawable/icon_options</item>
+        <item name="android:paddingEnd">16dp</item>
     </style>
 
     <style name="SpinnerTheme" parent="@android:style/Widget.Holo.DropDownItem.Spinner">

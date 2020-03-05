@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.update
 
-import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.validation.NoteValidator
 
 class UpdatePresenter : UpdateContract.Presenter() {
@@ -21,9 +20,12 @@ class UpdatePresenter : UpdateContract.Presenter() {
                 name = initialName
                 initialContent = it.contents
                 content = initialContent
+                initialColor = it.color
+                color = initialColor
 
                 // Update View
                 this.view?.populateFields(it.name, it.contents)
+                this.view?.populateColor(it.color)
             }
 
             // Update Underline
@@ -49,14 +51,32 @@ class UpdatePresenter : UpdateContract.Presenter() {
         this.content = content
     }
 
+    override fun handleColorClick() {
+        view?.showColorPickerDialog()
+    }
+
+    override fun handleColorChange(color: Int) {
+        this.color = color
+        view?.populateColor(this.color)
+    }
+
     override fun handleBackClick() {
         if (!isInEditMode && name.isBlank() && content.isBlank()) {
+
+            // New, Blank Note - Return
             returnToCallingScreen()
+
         } else if (NoteValidator.isValidNoteName(name) && !isInEditMode) {
+
+            // New Note w/ Valid Name - Save
             returnToCallingScreen()
             saveNote()
+
         } else if (NoteValidator.isValidNoteName(name)) {
+
+            // Existing Note w/ Valid Name - ???
             returnToCallingScreen()
+
         } else {
             view?.showInvalidNameDialog()
         }
@@ -91,19 +111,19 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     private fun saveNote() {
 
-        if (initialName == name && initialContent == content) {
+        if (initialName == name && initialContent == content && initialColor == color) {
 
             // No Changes - Do Nothing
 
         } else if (!isInEditMode) {
 
             // New Note - Save
-            noteRepository.insertNote(name, content, NoteUtility.getDefaultColor())
+            noteRepository.insertNote(name, content, color)
 
         } else {
 
             // Existing Note - Update
-            noteRepository.updateNote(noteId, name, content, NoteUtility.getDefaultColor())
+            noteRepository.updateNote(noteId, name, content, color)
         }
 
         if (isLaunchFromWidget) view?.refreshWidget()

@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
+import com.xephorium.crystalnote.data.model.Note.Companion.NO_COLOR
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
@@ -10,10 +11,12 @@ interface UpdateContract {
 
     interface View : BaseView {
         fun populateFields(name: String, content: String)
+        fun populateColor(color: Int)
         fun showTextUnderline()
         fun hideTextUnderline()
         fun showMonospacedFont()
 
+        fun showColorPickerDialog()
         fun showInvalidNameDialog()
         fun showDiscardChangesDialog()
         fun showDeleteNoteDialog()
@@ -32,11 +35,15 @@ interface UpdateContract {
         var noteId: Int = NO_NOTE
         var initialName: String = ""
         var initialContent: String = ""
+        var initialColor: Int = NO_COLOR
         var name: String = ""
         var content: String = ""
+        var color: Int = NO_COLOR
 
         abstract fun handleNameTextChange(name: String)
         abstract fun handleContentTextChange(content: String)
+        abstract fun handleColorClick()
+        abstract fun handleColorChange(color: Int)
         abstract fun handleBackClick()
         abstract fun handleBackground()
         abstract fun handleDeleteClick()

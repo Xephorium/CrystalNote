@@ -8,11 +8,11 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
+import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
 
 import kotlinx.android.synthetic.main.home_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
@@ -89,8 +89,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         toolbar.setTitle(R.string.homeTitle)
         toolbar.setLeftButtonImage(R.drawable.icon_menu)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
-            override fun onRightButtonClick() = Unit
+            override fun onButtonClick() = presenter.handleMenuButtonClick()
+            override fun onColorClick() = Unit
             override fun onTextChange(text: String) = Unit
         })
     }

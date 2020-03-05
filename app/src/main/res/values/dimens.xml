@@ -29,6 +29,7 @@
     <dimen name="cardViewMargin">5dp</dimen>
     <dimen name="colorOrbPaddingWidgetSettings">20dp</dimen>
     <dimen name="colorOrbSizeWidgetSettings">25dp</dimen>
+    <dimen name="colorOrbSizeToolbar">56dp</dimen>
     <dimen name="colorPickerPaddingBottom">30dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">12dp</dimen>

@@ -8,9 +8,9 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_SELECT
 
 import kotlinx.android.synthetic.main.select_activity_layout.*
@@ -90,8 +90,8 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
         toolbar.setTitle(R.string.selectTitle)
         toolbar.setLeftButtonImage(R.drawable.icon_back)
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onLeftButtonClick() = presenter.handleToolbarBackClick()
-            override fun onRightButtonClick() = Unit
+            override fun onButtonClick() = presenter.handleToolbarBackClick()
+            override fun onColorClick() = Unit
             override fun onTextChange(text: String) = Unit
         })
     }

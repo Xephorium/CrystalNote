@@ -6,21 +6,25 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
-import com.xephorium.crystalnote.ui.base.ToolbarActivity
+import com.xephorium.crystalnote.ui.base.BaseActivity
+import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
+import kotlinx.android.synthetic.main.note_toolbar_layout.*
 
 import kotlinx.android.synthetic.main.update_activity_layout.*
-import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
-class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
+class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
 
     /*--- Variable Declarations ---*/
@@ -41,7 +45,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.update_activity_layout)
+        setContentView(R.layout.update_activity_layout)
 
         presenter = UpdatePresenter()
         presenter.noteRepository = NoteRoomRepository(this)
@@ -58,6 +62,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     override fun onResume() {
         super.onResume()
         presenter.attachView(this)
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
     }
 
     public override fun onPause() {
@@ -82,6 +87,10 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
         textNoteContent.setText(content)
     }
 
+    override fun populateColor(color: Int) {
+        toolbar.setColor(color)
+    }
+
     override fun showTextUnderline() {
         textNoteContent.showUnderline()
     }
@@ -92,6 +101,19 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
 
     override fun showMonospacedFont() {
         textNoteContent.useMonospacedFont()
+    }
+
+    override fun showColorPickerDialog() {
+        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
+        colorPickerDialog.setTitle("Choose Note Color")
+        colorPickerDialog.setColorPickerListener(object :
+            ColorPickerDialog.Companion.ColorPickerListener {
+            override fun onColorSelect(color: Int) {
+                colorPickerDialog.dismiss()
+                presenter.handleColorChange(color)
+            }
+        })
+        colorPickerDialog.show()
     }
 
     override fun showInvalidNameDialog() {
@@ -156,15 +178,31 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
     }
 
 
-    /*--- Private Setup Methods ---*/
+    /*--- Setup Methods ---*/
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.toolbar_options, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.option_lock -> Unit
+            R.id.option_unlock -> Unit
+            R.id.option_delete -> presenter.handleDeleteClick()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun setupToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         toolbar.isEditMode = true
         toolbar.setLeftButtonImage(R.drawable.icon_back)
-        toolbar.setRightButtonImage(R.drawable.icon_delete)
+        toolbar.showColor()
         toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onLeftButtonClick() = presenter.handleBackClick()
-            override fun onRightButtonClick() = presenter.handleDeleteClick()
+            override fun onButtonClick() = presenter.handleBackClick()
+            override fun onColorClick() = presenter.handleColorClick()
             override fun onTextChange(text: String) = presenter.handleNameTextChange(text)
         })
     }
@@ -177,6 +215,7 @@ class UpdateActivity() : ToolbarActivity(), UpdateContract.View {
                 presenter.handleContentTextChange(textNoteContent.text.toString())
             }
         })
+        colorOrbToolbar.setOnClickListener { presenter.handleColorClick() }
     }
 
 

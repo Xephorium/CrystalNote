@@ -51,14 +51,11 @@ class NoteToolbar : Toolbar {
 
         this.isEditMode = false
         this.setLeftButtonImage(DEFAULT_LEFT_BUTTON_IMAGE)
-        this.setRightButtonImage(NO_IMAGE)
         this.noteToolbarListener = getDefaultNoteToolbarListener()
+        colorOrbToolbar.setPadding(COLOR_ORB_PADDING)
 
         findViewById<View>(R.id.buttonToolbarLeft).setOnClickListener {
-            noteToolbarListener?.onLeftButtonClick()
-        }
-        findViewById<View>(R.id.buttonToolbarRight).setOnClickListener {
-            noteToolbarListener?.onRightButtonClick()
+            noteToolbarListener?.onButtonClick()
         }
         (findViewById<View>(R.id.textToolbarEdit) as EditText).addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
@@ -108,23 +105,16 @@ class NoteToolbar : Toolbar {
         buttonToolbarLeft.scaleY = scale
     }
 
-    fun setRightButtonImage(drawable: Int) {
-        if (drawable == NO_IMAGE) {
-            buttonToolbarRight.visibility = View.GONE
-        } else {
-            buttonToolbarRight.visibility = View.VISIBLE
-            buttonToolbarRight.setImageDrawable(resources.getDrawable(drawable, context.theme))
-            buttonToolbarRight.setColorFilter(
-                    context.getThemeColor(R.attr.themeToolbarTextSecondary),
-                    android.graphics.PorterDuff.Mode.SRC_IN
-            )
-            setRightButtonScale(TOOLBAR_ICON_SCALE_SMALLER)
-        }
+    fun showColor() {
+        colorOrbToolbar.visibility = View.VISIBLE
     }
 
-    fun setRightButtonScale(scale: Float) {
-        buttonToolbarRight.scaleX = scale
-        buttonToolbarRight.scaleY = scale
+    fun hideColor() {
+        colorOrbToolbar.visibility = View.GONE
+    }
+
+    fun setColor(color: Int) {
+        colorOrbToolbar.setColor(color)
     }
 
     fun setNoteToolbarListener(noteToolbarListener: NoteToolbarListener) {
@@ -135,8 +125,8 @@ class NoteToolbar : Toolbar {
     /*--- Private Utility Methods ---*/
 
     private fun getDefaultNoteToolbarListener() = object : NoteToolbarListener {
-        override fun onLeftButtonClick() {}
-        override fun onRightButtonClick() {}
+        override fun onButtonClick() {}
+        override fun onColorClick() {}
         override fun onTextChange(text: String) {}
     }
 
@@ -144,8 +134,8 @@ class NoteToolbar : Toolbar {
     /*--- Action Handling Interface ---*/
 
     interface NoteToolbarListener {
-        fun onLeftButtonClick()
-        fun onRightButtonClick()
+        fun onButtonClick()
+        fun onColorClick()
         fun onTextChange(text: String)
     }
 
@@ -155,6 +145,7 @@ class NoteToolbar : Toolbar {
     companion object {
         private const val DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back
         private const val NO_IMAGE = -1
-        const val TOOLBAR_ICON_SCALE_SMALLER = (.93).toFloat()
+        private const val COLOR_ORB_PADDING = 0.6
+        const val TOOLBAR_ICON_SCALE_SMALLER = (0.93).toFloat()
     }
 }

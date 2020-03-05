@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:overScrollMode="ifContentScrolls"
-    android:scrollbars="none"
     android:background="?themeBackground"
     >
 
-    <com.xephorium.crystalnote.ui.custom.LineEditText
-        android:id="@+id/textNoteContent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/paddingActivity"
-        android:paddingEnd="@dimen/paddingActivity"
-        android:paddingTop="@dimen/paddingActivity"
-        android:lineSpacingMultiplier="1.145"
-        android:textSize="@dimen/textUpdate"
-        android:textColor="?themeTextSecondary"
-        />
+        >
 
-</ScrollView>
+        <com.xephorium.crystalnote.ui.custom.NoteToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?themeToolbar"
+            android:elevation="@dimen/toolbarElevation"
+            app:contentInsetStart="0dp"
+            app:popupTheme="@style/ToolbarOptionsTheme"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbars="none"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <com.xephorium.crystalnote.ui.custom.LineEditText
+            android:id="@+id/textNoteContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="@dimen/paddingActivity"
+            android:paddingEnd="@dimen/paddingActivity"
+            android:paddingTop="@dimen/paddingActivity"
+            android:lineSpacingMultiplier="1.145"
+            android:textSize="@dimen/textUpdate"
+            android:textColor="?themeTextSecondary"
+            />
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
