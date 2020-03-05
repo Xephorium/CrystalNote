@@ -88,7 +88,7 @@ open class NoteListAdapter(
 
             DrawableCompat.setTint(
                     holder.colorBar.background,
-                    CrystalNoteTheme.fromCurrentTheme(context).colorNoteColorBar
+                    note.color
             )
             if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE
 

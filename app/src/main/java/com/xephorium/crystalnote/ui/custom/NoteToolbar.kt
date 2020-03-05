@@ -145,7 +145,7 @@ class NoteToolbar : Toolbar {
     companion object {
         private const val DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back
         private const val NO_IMAGE = -1
-        private const val COLOR_ORB_PADDING = 0.6
+        private const val COLOR_ORB_PADDING = 0.7
         const val TOOLBAR_ICON_SCALE_SMALLER = (0.93).toFloat()
     }
 }
