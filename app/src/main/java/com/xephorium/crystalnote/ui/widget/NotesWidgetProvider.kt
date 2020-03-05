@@ -194,7 +194,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
         widgetView.setTextViewTextSize(
             R.id.textWidgetTitle,
             COMPLEX_UNIT_SP,
-            (state.textSize.size).toFloat()
+            (state.textSize.size + 1).toFloat()
         )
         widgetView.setTextViewTextSize(
             R.id.textWidgetContent,

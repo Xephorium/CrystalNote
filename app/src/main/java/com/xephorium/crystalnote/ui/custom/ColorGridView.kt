@@ -174,7 +174,7 @@ class ColorGridView: LinearLayout {
             Color.parseColor("#fbb065"), //    Orange Light
             Color.parseColor("#ef9439"), //    Orange
             Color.parseColor("#da8c3e"), //    Orange Dark
-            Color.parseColor("#343434"), // R6 ---
+            Color.parseColor("#363636"), // R6 ---
             Color.parseColor("#bebe5b"), //    Yellow Dark
             Color.parseColor("#dede63"), //    Yellow
             Color.parseColor("#eeee8c"), //    Yellow Light

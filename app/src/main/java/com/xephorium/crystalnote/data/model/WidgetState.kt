@@ -114,7 +114,7 @@ class WidgetState(string: String) {
     companion object {
         const val STRING_DELIMITER = " "
         val DEFAULT_BACKGROUND_COLOR = Color.parseColor("#FFFFFF")
-        val DEFAULT_TITLE_COLOR = Color.parseColor("#1C1C1C")
+        val DEFAULT_TITLE_COLOR = Color.parseColor("#363636")
         val DEFAULT_CONTENT_COLOR = Color.parseColor("#666666")
         val DEFAULT_TEXT_SIZE: TextSize = TextSize.Medium
         val DEFAULT_TRANSPARENCY = Transparency.NONE
