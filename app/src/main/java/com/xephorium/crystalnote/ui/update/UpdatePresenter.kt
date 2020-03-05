@@ -12,10 +12,10 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
         if (isInEditMode) {
 
-            // Get Note
+            // Get Note'
             noteRepository.getNote(noteId)?.let {
 
-                // Update State Fields
+                // Populate State Fields for Existing Note
                 initialName = it.name
                 name = initialName
                 initialContent = it.contents
@@ -23,21 +23,27 @@ class UpdatePresenter : UpdateContract.Presenter() {
                 initialColor = it.color
                 color = initialColor
 
-                // Update View
+                // Update View for Existing Note
                 this.view?.populateFields(it.name, it.contents)
                 this.view?.populateColor(it.color)
+
             }
 
-            // Update Underline
-            if (sharedPreferencesRepository.getNoteUnderlineEnabled())
-                this.view?.showTextUnderline()
-            else
-                this.view?.hideTextUnderline()
+        } else {
 
-            // Update Monospaced Font
-            if (sharedPreferencesRepository.getMonospacedFontEnabled())
-                this.view?.showMonospacedFont()
+            // Update View for New Note
+            this.view?.populateColor(initialColor)
         }
+
+        // Update Underline
+        if (sharedPreferencesRepository.getNoteUnderlineEnabled())
+            this.view?.showTextUnderline()
+        else
+            this.view?.hideTextUnderline()
+
+        // Update Monospaced Font
+        if (sharedPreferencesRepository.getMonospacedFontEnabled())
+            this.view?.showMonospacedFont()
     }
 
 
