@@ -145,7 +145,7 @@ class ColorGridView: LinearLayout {
             Color.parseColor("#d3d9df"), //    Blue Smoke Light
             Color.parseColor("#caa8f0"), //    Barney Light
             Color.parseColor("#a882d3"), //    Barney
-            Color.parseColor("#856aa4"), //    Barney Dark
+            Color.parseColor("#856ea0"), //    Barney Dark
             Color.parseColor("#cccccc"), // R2 ---
             Color.parseColor("#426080"), //    Azure Dark
             Color.parseColor("#3F7AB9"), //    Azure
@@ -161,7 +161,7 @@ class ColorGridView: LinearLayout {
             Color.parseColor("#b5615a"), //    Tomato
             Color.parseColor("#9d5148"), //    Tomato Dark
             Color.parseColor("#7a7a7a"), // R4 ---
-            Color.parseColor("#53795e"), //    Green Dark
+            Color.parseColor("#507c5c"), //    Green Dark
             Color.parseColor("#4b9b63"), //    Green
             Color.parseColor("#98cdaa"), //    Green Light
             Color.parseColor("#ec9393"), //    Red Light
