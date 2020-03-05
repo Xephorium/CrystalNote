@@ -53,7 +53,7 @@ class ColorGridView: LinearLayout {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         // Calculate Orb Sizes & Adjust ColorGridView Side Padding
-        if (orbSize == ORB_SIZE_INITIAL) {
+        if (orbSize == ORB_SIZE_INITIAL && colorOrbs.isNotEmpty()) {
 
             // Get Row Width in Pixels
             val width = findViewById<LinearLayout>(R.id.colorGridRow).width
@@ -74,6 +74,13 @@ class ColorGridView: LinearLayout {
                 orb.setSizeByPixelValue(orbSize)
             }
         }
+    }
+
+    override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
+        super.onLayout(changed, l, t, r, b)
+
+        // Force Layout Refresh
+        findViewById<LinearLayout>(R.id.colorGridRow).requestLayout()
     }
 
 
