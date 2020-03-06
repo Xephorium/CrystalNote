@@ -19,6 +19,9 @@ interface UpdateContract {
         fun showUnlockMenuOption()
 
         fun showColorPickerDialog()
+        fun showSetPasswordDialog()
+        fun showVerifyPasswordDialog()
+        fun showRemovePasswordDialog()
         fun showInvalidNameDialog()
         fun showDiscardChangesDialog()
         fun showDeleteNoteDialog()

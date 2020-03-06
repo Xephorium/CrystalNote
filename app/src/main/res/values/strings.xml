@@ -25,6 +25,8 @@
     <string name="noteListLockIcon">Note locked</string>
     <string name="noteNewName">New Note</string>
 
+    <string name="passwordDialogHint">password</string>
+
     <string name="selectTitle">Select a Note</string>
     <string name="selectTextEmpty">Tap + to create a note.</string>
 

@@ -62,6 +62,18 @@
         <item name="colorAccent">?themeAccent</item>
     </style>
 
+    <style name="DialogTextInputLayoutTheme" parent="Theme.AppCompat">
+        <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
+        <item name="android:colorControlActivated">?themeTextHandle</item>
+        <item name="android:textColorHighlight">?themeTextHighlight</item>
+        <item name="android:backgroundTint">?themeTextSecondary</item>
+    </style>
+
+    <style name="DialogTextInputErrorTheme" parent="@android:style/TextAppearance">
+        <item name="android:textColor">?themeTextPrimary</item>
+        <item name="android:textSize">@dimen/textError</item>
+    </style>
+
     <style name="WidgetConfigurationActivityTheme" parent="CrystalNoteTheme">
         <!-- Note: This attribute defines splash screen appearance. -->
         <item name="android:windowBackground">@drawable/transparent</item>

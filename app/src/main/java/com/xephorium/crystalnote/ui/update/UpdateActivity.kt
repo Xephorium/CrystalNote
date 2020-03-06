@@ -18,6 +18,7 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 import kotlinx.android.synthetic.main.note_toolbar_layout.*
@@ -125,6 +126,22 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
             }
         })
         colorPickerDialog.show()
+    }
+
+    override fun showSetPasswordDialog() {
+        val setPasswordDialog = PasswordDialog.Builder(this).create()
+        setPasswordDialog.setTitle("Choose Password")
+        setPasswordDialog.setMessage("Once locked, your note will be accessible only by password.")
+        setPasswordDialog.setButtonName("Set")
+        setPasswordDialog.show()
+    }
+
+    override fun showVerifyPasswordDialog() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showRemovePasswordDialog() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showInvalidNameDialog() {
