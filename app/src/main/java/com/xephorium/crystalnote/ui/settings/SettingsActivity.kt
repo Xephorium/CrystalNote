@@ -69,7 +69,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     override fun populateNotePreviewLines(lines: Int) {
-        selectorSettingsLines.setSelection(lines - 1)
+        selectorSettingsLines.setSelection(lines)
     }
 
     override fun populateNoteDateType(dateType: DateType) {
@@ -181,7 +181,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         selectorSettingsLines.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {}
             override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                presenter.handleNoteLinesChange(position + 1)
+                presenter.handleNoteLinesChange(position)
             }
         }
         textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
@@ -227,7 +227,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     companion object {
         private val THEMES = CrystalNoteTheme.Themes.values().map { it.displayName }
-        private val NOTE_PREVIEW_LINES = listOf("1 Line", "2 Lines", "3 Lines", "4 Lines", "5 Lines")
+        private val NOTE_PREVIEW_LINES = listOf("None", "1 Line", "2 Lines", "3 Lines", "4 Lines")
         private val NOTE_DATE = DateType.values().map { it.displayName }
     }
 

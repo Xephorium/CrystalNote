@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Note: As of May 2019, widgets don't support ConstraintLayout. :( -->
+<!-- Note: As of March 2020, widgets don't support ConstraintLayout. :( -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,7 +24,6 @@
         style="@android:style/TextAppearance.Medium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/note_widget_header_ripple"
         android:clickable="true"
         android:ellipsize="end"
         android:focusable="true"
@@ -45,7 +44,6 @@
         style="@android:style/TextAppearance.Small"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/note_widget_text_ripple"
         android:clickable="true"
         android:focusable="true"
         android:paddingLeft="@dimen/widgetDefaultPadding"
@@ -62,12 +60,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@drawable/note_widget_blank_ripple"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:padding="@dimen/paddingActivity"
+        android:padding="@dimen/widgetDefaultPadding"
         android:text="@string/widgetTextEmpty"
+        android:textColor="@color/lightTextSecondary"
+        />
+
+    <TextView
+        android:id="@+id/textWidgetLocked"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="@dimen/widgetDefaultPadding"
+        android:text="@string/widgetTextLocked"
         android:textColor="@color/lightTextSecondary"
         />
 

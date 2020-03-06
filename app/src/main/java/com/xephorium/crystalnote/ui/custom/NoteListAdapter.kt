@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Space
 import android.widget.TextView
 import androidx.core.graphics.drawable.DrawableCompat
@@ -76,7 +77,17 @@ open class NoteListAdapter(
             holder.name.text = note.name
 
             holder.preview.text = note.contents.replace("\\s+".toRegex(), " ").trim()
-            holder.preview.maxLines = notePreviewLines
+
+            if (note.password.isNotEmpty()) {
+                holder.lock.visibility = View.VISIBLE
+            }
+
+            if (notePreviewLines == 0 || note.password.isNotEmpty()) {
+                holder.preview.visibility = View.GONE
+            } else {
+                holder.preview.visibility = View.VISIBLE
+                holder.preview.maxLines = notePreviewLines
+            }
 
             when (noteDateType) {
                 DateType.DYNAMIC -> holder.date.text = NoteUtility.getDynamicallyFormattedDate(note)
@@ -157,6 +168,7 @@ open class NoteListAdapter(
     inner class ViewHolder internal constructor(val view: View, val type: Int) :
             RecyclerView.ViewHolder(view) {
 
+        internal lateinit var lock: ImageView
         internal lateinit var name: TextView
         internal lateinit var preview: TextView
         internal lateinit var date: TextView
@@ -166,6 +178,7 @@ open class NoteListAdapter(
 
         init {
             if (type == VIEW_TYPE_NOTE) {
+                lock = view.iconNoteListLock
                 name = view.textNoteListTitle
                 preview = view.textNoteListPreview
                 date = view.textNoteListDate

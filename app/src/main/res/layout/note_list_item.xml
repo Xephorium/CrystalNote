@@ -45,11 +45,35 @@
             tools:text="11.11.11"
             />
 
+        <Space
+            android:id="@+id/spaceNoteListLeft"
+            android:layout_width="@dimen/paddingMedium"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@id/colorBarNoteList"
+            app:layout_constraintTop_toTopOf="@id/textNoteListDate"
+            app:layout_constraintBottom_toBottomOf="@id/textNoteListDate"
+            />
+
+        <ImageView
+            android:id="@+id/iconNoteListLock"
+            android:layout_width="@dimen/noteListIconLockSize"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/spaceNoteListLeft"
+            app:layout_constraintTop_toTopOf="@id/textNoteListDate"
+            app:layout_constraintBottom_toBottomOf="@id/textNoteListDate"
+            android:paddingStart="@dimen/paddingMedium"
+            android:paddingEnd="0dp"
+            android:paddingTop="@dimen/noteListIconLockTop"
+            android:src="@drawable/icon_lock"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
         <TextView
             android:id="@+id/textNoteListTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/paddingBig"
+            android:paddingStart="@dimen/paddingMedium"
             android:paddingTop="@dimen/paddingBig"
             android:paddingEnd="0dp"
             android:paddingBottom="@dimen/paddingMedium"
@@ -57,7 +81,7 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/textNoteListPreview"
             app:layout_constraintEnd_toStartOf="@id/textNoteListDate"
-            app:layout_constraintStart_toEndOf="@+id/colorBarNoteList"
+            app:layout_constraintStart_toEndOf="@+id/iconNoteListLock"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Note Title"
@@ -71,14 +95,21 @@
             android:maxLines="2"
             android:paddingStart="@dimen/paddingBig"
             android:paddingEnd="@dimen/paddingBig"
-            android:paddingBottom="@dimen/paddingBig"
+            android:paddingBottom="@dimen/noteListPreviewPadding"
             android:textColor="?themeTextSecondary"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/spaceNoteListBottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/colorBarNoteList"
             app:layout_constraintTop_toBottomOf="@+id/textNoteListTitle"
             tools:text="This is a note preview which contains a bunch of text. This is a note preview which contains a bunch of text."
+            />
+
+        <Space
+            android:id="@+id/spaceNoteListBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/noteListBottomPadding"
+            app:layout_constraintBottom_toBottomOf="parent"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

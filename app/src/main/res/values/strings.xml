@@ -60,5 +60,6 @@
 
     <string name="widgetTitle">Widget Settings</string>
     <string name="widgetTextEmpty">Tap here to choose a note.</string>
+    <string name="widgetTextLocked">Note Locked</string>
 
 </resources>

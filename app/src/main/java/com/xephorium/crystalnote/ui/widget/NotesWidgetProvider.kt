@@ -74,16 +74,34 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Populate Widget Fields
                 if (widgetNote != null) {
-                    widgetView.setViewVisibility(R.id.textWidgetTitle, View.VISIBLE)
-                    widgetView.setViewVisibility(R.id.textWidgetContent, View.VISIBLE)
-                    widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
 
-                    widgetView.setTextViewText(R.id.textWidgetTitle, widgetNote.name)
-                    widgetView.setTextViewText(R.id.textWidgetContent, widgetNote.contents)
+                    if (widgetNote.password.isEmpty()) {
+
+                        // Populate Normal State
+                        widgetView.setViewVisibility(R.id.textWidgetTitle, View.VISIBLE)
+                        widgetView.setViewVisibility(R.id.textWidgetContent, View.VISIBLE)
+                        widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
+                        widgetView.setViewVisibility(R.id.textWidgetLocked, View.GONE)
+                        widgetView.setTextViewText(R.id.textWidgetTitle, widgetNote.name)
+                        widgetView.setTextViewText(R.id.textWidgetContent, widgetNote.contents)
+
+
+                    } else {
+
+                        // Populate Locked State
+                        widgetView.setViewVisibility(R.id.textWidgetTitle, View.GONE)
+                        widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
+                        widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
+                        widgetView.setViewVisibility(R.id.textWidgetLocked, View.VISIBLE)
+                    }
+
                 } else {
+
+                    // Populate Empty State
                     widgetView.setViewVisibility(R.id.textWidgetTitle, View.GONE)
                     widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
                     widgetView.setViewVisibility(R.id.textWidgetEmpty, View.VISIBLE)
+                    widgetView.setViewVisibility(R.id.textWidgetLocked, View.GONE)
                 }
 
                 // Set Listeners
@@ -205,6 +223,11 @@ class NotesWidgetProvider : AppWidgetProvider() {
             COMPLEX_UNIT_SP,
             (state.textSize.size).toFloat()
         )
+        widgetView.setTextViewTextSize(
+            R.id.textWidgetLocked,
+            COMPLEX_UNIT_SP,
+            (state.textSize.size).toFloat()
+        )
 
         // Text Color
         widgetView.setTextColor(R.id.textWidgetTitle, state.titleColor)
@@ -214,6 +237,10 @@ class NotesWidgetProvider : AppWidgetProvider() {
         )
         widgetView.setTextColor(
             R.id.textWidgetEmpty,
+            ColorUtility.applyTransparency(state.contentColor, state.contentAlpha)
+        )
+        widgetView.setTextColor(
+            R.id.textWidgetLocked,
             ColorUtility.applyTransparency(state.contentColor, state.contentAlpha)
         )
     }

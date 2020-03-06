@@ -7,10 +7,6 @@ import android.graphics.Paint
 import android.graphics.Paint.Style.*
 import android.util.AttributeSet
 import android.view.View
-import androidx.annotation.IntegerRes
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.ColorUtils
-import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
@@ -237,7 +233,8 @@ class ThemePreview : View {
         val textTitleHeight = textHeight!! + (paddingMedium!! * 2)
         val textLineHeight = textHeight!! + paddingSmall!!
         val lines = if (previewLines > maxLines) maxLines else previewLines
-        val viewHeight = textTitleHeight + (lines * textLineHeight) + paddingSmall!!
+        var viewHeight = textTitleHeight + (lines * textLineHeight)
+        if (lines > 0) viewHeight += paddingSmall!!
         val colorBarDisplayWidth = if (showColorBar) colorBarWidth!! else 0
 
         // Background
