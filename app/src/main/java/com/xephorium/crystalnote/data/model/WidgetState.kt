@@ -120,6 +120,7 @@ class WidgetState(string: String) {
         val DEFAULT_TRANSPARENCY = Transparency.NONE
 
         enum class TextSize(val displayName: String, val size: Int) {
+            Tiny("Tiny", 12),
             Small("Small", 13),
             Medium("Medium", 14),
             Large("Large", 15),

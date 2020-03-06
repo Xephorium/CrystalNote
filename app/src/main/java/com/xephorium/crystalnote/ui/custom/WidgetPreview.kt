@@ -199,6 +199,7 @@ class WidgetPreview : View {
     fun setTextSize(textSize: TextSize) {
         textScale = DEFAULT_TEXT_SCALE
         when (textSize) {
+            TextSize.Tiny -> textScale -= (TEXT_SCALE_VARIATION * 2)
             TextSize.Small -> textScale -= TEXT_SCALE_VARIATION
             TextSize.Medium -> Unit
             TextSize.Large -> textScale += TEXT_SCALE_VARIATION
