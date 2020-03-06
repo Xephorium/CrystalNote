@@ -322,7 +322,7 @@ class ThemePreview : View {
     companion object {
         private const val CORNER_RADIUS = 3.toFloat()
 
-        private val NOTE_COLORS = listOf(
+        val NOTE_COLORS = listOf(
                 Color.parseColor("#7aa4d1"), //    Azure Light
                 Color.parseColor("#98cdaa"), //    Green Light
                 Color.parseColor("#eeee8c"), //    Yellow Light
