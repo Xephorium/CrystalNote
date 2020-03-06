@@ -44,15 +44,26 @@ class SharedPreferencesRepository(private val context: Context) {
         return DateType.values()[prefs.getInt(NOTE_DATE_TYPE, 0)]
     }
 
-    fun setNoteColorsEnabled(enabled: Boolean) {
+    fun setNoteColorBarEnabled(enabled: Boolean) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
-        editor.putBoolean(NOTE_COLORS_ENABLED, enabled)
+        editor.putBoolean(NOTE_COLOR_BAR_ENABLED, enabled)
         editor.apply()
     }
 
-    fun getNoteColorsEnabled(): Boolean {
+    fun getNoteColorBarEnabled(): Boolean {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        return prefs.getBoolean(NOTE_COLORS_ENABLED, true)
+        return prefs.getBoolean(NOTE_COLOR_BAR_ENABLED, true)
+    }
+
+    fun setNoteThemedBarEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(NOTE_COLOR_BAR_THEME_ENABLED, enabled)
+        editor.apply()
+    }
+
+    fun getNoteThemedBarEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(NOTE_COLOR_BAR_THEME_ENABLED, true)
     }
 
     fun setTodayHeaderEnabled(enabled: Boolean) {
@@ -176,7 +187,8 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val THEME = "Theme"
         private const val NOTE_PREVIEW_LINES = "NotePreviewLines"
         private const val NOTE_DATE_TYPE = "NoteDateType"
-        private const val NOTE_COLORS_ENABLED = "CustomNoteColorsEnabled"
+        private const val NOTE_COLOR_BAR_ENABLED = "NoteColorBarEnabled"
+        private const val NOTE_COLOR_BAR_THEME_ENABLED = "NoteColorBarThemeEnabled"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
         private const val MONOSPACED_FONT = "MonospacedFont"

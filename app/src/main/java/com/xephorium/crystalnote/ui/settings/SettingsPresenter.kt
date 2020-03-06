@@ -14,7 +14,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
         theme = sharedPreferencesRepository.getTheme()
         notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
         noteDateType = sharedPreferencesRepository.getNoteDateType()
-        noteColorsEnabled = sharedPreferencesRepository.getNoteColorsEnabled()
+        colorBarEnabled = sharedPreferencesRepository.getNoteColorBarEnabled()
+        themedBarEnabled = sharedPreferencesRepository.getNoteThemedBarEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
         noteUnderlineEnabled = sharedPreferencesRepository.getNoteUnderlineEnabled()
         useMonospacedFont = sharedPreferencesRepository.getMonospacedFontEnabled()
@@ -22,14 +23,16 @@ class SettingsPresenter : SettingsContract.Presenter() {
         this.view?.populateTheme(theme)
         this.view?.populateNotePreviewLines(notePreviewLines)
         this.view?.populateNoteDateType(noteDateType)
-        this.view?.populateNoteColorsSwitch(noteColorsEnabled)
+        this.view?.populateNoteColorBarSwitch(colorBarEnabled)
+        this.view?.populateThemedColorBarSwitch(themedBarEnabled)
         this.view?.populateTodayHeaderSwitch(todayHeaderEnabled)
         this.view?.populateNoteUnderlineSwitch(noteUnderlineEnabled)
         this.view?.populateMonospaceSwitch(useMonospacedFont)
 
         this.view?.setPreviewLines(notePreviewLines)
         this.view?.setPreviewDateType(noteDateType)
-        this.view?.setPreviewColorBoxVisibility(noteColorsEnabled)
+        this.view?.setPreviewColorBarVisibility(colorBarEnabled)
+        this.view?.setPreviewColorBarThemed(themedBarEnabled)
         this.view?.setPreviewHeaderVisibility(todayHeaderEnabled)
     }
 
@@ -55,9 +58,14 @@ class SettingsPresenter : SettingsContract.Presenter() {
         view?.setPreviewDateType(noteDateType)
     }
 
-    override fun handleNoteColorsToggle(checked: Boolean) {
-        noteColorsEnabled = checked
-        view?.setPreviewColorBoxVisibility(noteColorsEnabled)
+    override fun handleNoteColorBarToggle(checked: Boolean) {
+        colorBarEnabled = checked
+        view?.setPreviewColorBarVisibility(colorBarEnabled)
+    }
+
+    override fun handleThemedColorBarToggle(checked: Boolean) {
+        themedBarEnabled = checked
+        view?.setPreviewColorBarThemed(checked)
     }
 
     override fun handleTodayHeaderToggle(checked: Boolean) {
@@ -76,7 +84,8 @@ class SettingsPresenter : SettingsContract.Presenter() {
     override fun handleSaveClick() {
         sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         sharedPreferencesRepository.setNoteDateType(noteDateType)
-        sharedPreferencesRepository.setNoteColorsEnabled(noteColorsEnabled)
+        sharedPreferencesRepository.setNoteColorBarEnabled(colorBarEnabled)
+        sharedPreferencesRepository.setNoteThemedBarEnabled(themedBarEnabled)
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
         sharedPreferencesRepository.setNoteUnderlineEnabled(noteUnderlineEnabled)
         sharedPreferencesRepository.setMonospacedFontEnabled(useMonospacedFont)
@@ -111,7 +120,9 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
         if (sharedPreferencesRepository.getNoteDateType() != noteDateType) unsavedChanges = true
 
-        if (sharedPreferencesRepository.getNoteColorsEnabled() != noteColorsEnabled) unsavedChanges = true
+        if (sharedPreferencesRepository.getNoteColorBarEnabled() != colorBarEnabled) unsavedChanges = true
+
+        if (sharedPreferencesRepository.getNoteThemedBarEnabled() != themedBarEnabled) unsavedChanges = true
 
         if (sharedPreferencesRepository.getTodayHeaderEnabled() != todayHeaderEnabled) unsavedChanges = true
 

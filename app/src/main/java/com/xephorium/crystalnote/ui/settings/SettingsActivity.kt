@@ -76,8 +76,12 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         selectorSettingsDate.setSelection(dateType.ordinal)
     }
 
-    override fun populateNoteColorsSwitch(checked: Boolean) {
-        switchSettingsNoteColors.isChecked = checked
+    override fun populateNoteColorBarSwitch(checked: Boolean) {
+        switchSettingsNoteColorBar.isChecked = checked
+    }
+
+    override fun populateThemedColorBarSwitch(checked: Boolean) {
+        switchSettingsNoteBarThemed.isChecked = checked
     }
 
     override fun populateTodayHeaderSwitch(checked: Boolean) {
@@ -104,8 +108,12 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         themePreview.setDateType(type)
     }
 
-    override fun setPreviewColorBoxVisibility(visible: Boolean) {
-        themePreview.setNoteColorsVisible(visible)
+    override fun setPreviewColorBarVisibility(visible: Boolean) {
+        themePreview.setNoteColorBarVisible(visible)
+    }
+
+    override fun setPreviewColorBarThemed(themed: Boolean) {
+        themePreview.setNoteColorBarThemed(themed)
     }
 
     override fun setPreviewHeaderVisibility(visible: Boolean) {
@@ -193,8 +201,11 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     private fun setupSwitches() {
-        switchSettingsNoteColors.setOnCheckedChangeListener { _, checked ->
-            presenter.handleNoteColorsToggle(checked)
+        switchSettingsNoteColorBar.setOnCheckedChangeListener { _, checked ->
+            presenter.handleNoteColorBarToggle(checked)
+        }
+        switchSettingsNoteBarThemed.setOnCheckedChangeListener { _, checked ->
+            presenter.handleThemedColorBarToggle(checked)
         }
         switchSettingsToday.setOnCheckedChangeListener { _, checked ->
             presenter.handleTodayHeaderToggle(checked)

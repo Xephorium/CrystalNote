@@ -39,6 +39,7 @@ class ThemePreview : View {
     private var maxLines = 5
     private var dateType = DateType.DYNAMIC
     private var showColorBar = true
+    private var themeColorBar = true
     private var showHeaders = true
 
 
@@ -140,10 +141,10 @@ class ThemePreview : View {
         }
 
         // Card 1
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 5)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 5, 0)
 
         // Card 2
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 2)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 2, 1)
 
         // Header 2
         if (showHeaders) {
@@ -161,19 +162,19 @@ class ThemePreview : View {
         }
 
         // Card 3
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3, 2)
 
         // Card 4
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 1)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 1, 3)
 
         // Card 5
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 4)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 4, 4, 4)
 
         // Card 6
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 2)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 3, 2, 5)
 
         // Card 7
-        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3)
+        currentVerticalPosition += drawNoteCard(canvas, paint, currentVerticalPosition, 5, 3, 6)
 
         // Floating Action Button
         paint.color = theme.colorAccent
@@ -206,8 +207,13 @@ class ThemePreview : View {
         invalidate()
     }
 
-    fun setNoteColorsVisible(visible: Boolean) {
+    fun setNoteColorBarVisible(visible: Boolean) {
         showColorBar = visible
+        invalidate()
+    }
+
+    fun setNoteColorBarThemed(themed: Boolean) {
+        themeColorBar = themed
         invalidate()
     }
 
@@ -224,7 +230,8 @@ class ThemePreview : View {
             paint: Paint,
             currentVerticalPosition: Int,
             titleLength: Int,
-            previewLines: Int
+            previewLines: Int,
+            index: Int
     ): Int {
 
         val textTitleHeight = textHeight!! + (paddingMedium!! * 2)
@@ -246,7 +253,7 @@ class ThemePreview : View {
         )
 
         // Color Bar
-        paint.color = theme.colorNoteColorBar
+        paint.color = if (themeColorBar) theme.colorNoteColorBar else NOTE_COLORS[index]
         canvas?.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 currentVerticalPosition.toFloat(),
@@ -314,5 +321,15 @@ class ThemePreview : View {
 
     companion object {
         private const val CORNER_RADIUS = 3.toFloat()
+
+        private val NOTE_COLORS = listOf(
+                Color.parseColor("#7aa4d1"), //    Azure Light
+                Color.parseColor("#98cdaa"), //    Green Light
+                Color.parseColor("#eeee8c"), //    Yellow Light
+                Color.parseColor("#fbb065"), //    Orange Light
+                Color.parseColor("#ec9393"), //    Red Light
+                Color.parseColor("#d6a9c0"), //    Thanos Light
+                Color.parseColor("#caa8f0")  //    Barney Light
+        )
     }
 }

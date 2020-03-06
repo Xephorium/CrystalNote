@@ -33,7 +33,8 @@
     <string name="settingsHomeAppearance">Home Appearance</string>
     <string name="settingsNotePreviewLines">Note Preview</string>
     <string name="settingsNoteDate">Note Date</string>
-    <string name="settingsCustomNoteColors">Note Color Bar</string>
+    <string name="settingsNoteColorBar">Show Color Bar</string>
+    <string name="settingsNoteThemeBar">Theme Color Bar</string>
     <string name="settingsToday">Separate Today Header</string>
     <string name="settingsNoteAppearance">Note Appearance</string>
     <string name="settingsUnderline">Text Underline</string>

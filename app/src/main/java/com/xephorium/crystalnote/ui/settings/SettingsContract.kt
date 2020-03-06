@@ -11,7 +11,8 @@ interface SettingsContract {
         fun populateTheme(theme: String)
         fun populateNotePreviewLines(lines: Int)
         fun populateNoteDateType(dateType: DateType)
-        fun populateNoteColorsSwitch(checked: Boolean)
+        fun populateNoteColorBarSwitch(checked: Boolean)
+        fun populateThemedColorBarSwitch(checked: Boolean)
         fun populateTodayHeaderSwitch(checked: Boolean)
         fun populateNoteUnderlineSwitch(checked: Boolean)
         fun populateMonospaceSwitch(checked: Boolean)
@@ -19,7 +20,8 @@ interface SettingsContract {
         fun setPreviewTheme(theme: String)
         fun setPreviewLines(lines: Int)
         fun setPreviewDateType(type: DateType)
-        fun setPreviewColorBoxVisibility(visible: Boolean)
+        fun setPreviewColorBarVisibility(visible: Boolean)
+        fun setPreviewColorBarThemed(themed: Boolean)
         fun setPreviewHeaderVisibility(visible: Boolean)
 
         fun showNavigationDrawer()
@@ -34,7 +36,8 @@ interface SettingsContract {
         lateinit var theme: String
         var notePreviewLines: Int = 1
         lateinit var noteDateType: DateType
-        var noteColorsEnabled: Boolean = true
+        var colorBarEnabled: Boolean = true
+        var themedBarEnabled: Boolean = true
         var todayHeaderEnabled: Boolean = true
         var noteUnderlineEnabled: Boolean = true
         var useMonospacedFont: Boolean = true
@@ -43,7 +46,8 @@ interface SettingsContract {
         abstract fun handleThemeChange(newTheme: String)
         abstract fun handleNoteLinesChange(lines: Int)
         abstract fun handleNoteDateTypeChange(dateType: DateType)
-        abstract fun handleNoteColorsToggle(checked: Boolean)
+        abstract fun handleNoteColorBarToggle(checked: Boolean)
+        abstract fun handleThemedColorBarToggle(checked: Boolean)
         abstract fun handleTodayHeaderToggle(checked: Boolean)
         abstract fun handleNoteUnderlineToggle(checked: Boolean)
         abstract fun handleMonospaceToggle(checked: Boolean)

@@ -174,7 +174,7 @@
         </LinearLayout>
 
         <Switch
-            android:id="@+id/switchSettingsNoteColors"
+            android:id="@+id/switchSettingsNoteColorBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -182,7 +182,21 @@
             android:paddingTop="@dimen/paddingMedium"
             android:paddingEnd="@dimen/paddingActivity"
             android:paddingBottom="@dimen/settingsItemPadding"
-            android:text="@string/settingsCustomNoteColors"
+            android:text="@string/settingsNoteColorBar"
+            android:textColor="?themeTextSecondary"
+            android:textSize="@dimen/textSettings"
+            />
+
+        <Switch
+            android:id="@+id/switchSettingsNoteBarThemed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:paddingStart="@dimen/paddingHuge"
+            android:paddingTop="@dimen/paddingMedium"
+            android:paddingEnd="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/settingsItemPadding"
+            android:text="@string/settingsNoteThemeBar"
             android:textColor="?themeTextSecondary"
             android:textSize="@dimen/textSettings"
             />

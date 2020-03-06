@@ -10,8 +10,8 @@ import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.model.Note
@@ -39,7 +39,7 @@ open class NoteListAdapter(
     private val sharedPreferencesRepository = SharedPreferencesRepository(context)
     private val notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
     private val noteDateType = sharedPreferencesRepository.getNoteDateType()
-    private val shouldShowColorBar = sharedPreferencesRepository.getNoteColorsEnabled()
+    private val shouldShowColorBar = sharedPreferencesRepository.getNoteColorBarEnabled()
     private val shouldShowTodayHeader = sharedPreferencesRepository.getTodayHeaderEnabled()
 
 
@@ -86,9 +86,11 @@ open class NoteListAdapter(
                 else -> holder.date.visibility = View.GONE
             }
 
+            val themeColorBar = sharedPreferencesRepository.getNoteThemedBarEnabled()
             DrawableCompat.setTint(
                     holder.colorBar.background,
-                    note.color
+                    if (themeColorBar) CrystalNoteTheme.fromCurrentTheme(context).colorNoteColorBar
+                    else note.color
             )
             if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE
 
