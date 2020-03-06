@@ -10,6 +10,7 @@ import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
+import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.update.UpdateActivity
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
 import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
@@ -68,6 +69,28 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun showNavigationDrawer() {
         openDrawer()
+    }
+
+    override fun showUnlockNoteDialog(password: String, id: Int) {
+        val setPasswordDialog = PasswordDialog.Builder(this).create()
+        setPasswordDialog.setTitle("Note Locked")
+        setPasswordDialog.setMessage("Enter password to view.")
+        setPasswordDialog.setButtonName("Open")
+        setPasswordDialog.setPasswordDialogListener(object :
+            PasswordDialog.Companion.PasswordDialogListener {
+            override fun onPasswordProvided(password: String) {
+                presenter.handleNoteAuthenticate(id)
+            }
+
+            override fun verifyPassword(newPassword: String): String {
+                if (password != newPassword) {
+                    return " "
+                } else {
+                    return ""
+                }
+            }
+        })
+        setPasswordDialog.show()
     }
 
     override fun navigateToEditNote(id: Int) {

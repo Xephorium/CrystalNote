@@ -12,6 +12,7 @@ interface HomeContract {
         fun showEmptyNotesList()
 
         fun showNavigationDrawer()
+        fun showUnlockNoteDialog(password: String, id: Int)
         fun navigateToEditNote(id: Int)
         fun navigateToNewNote()
     }
@@ -23,6 +24,7 @@ interface HomeContract {
         abstract fun handleMenuButtonClick()
         abstract fun handleNewNoteButtonClick()
         abstract fun handleNoteClick(note: Note)
+        abstract fun handleNoteAuthenticate(id: Int)
         abstract fun handleNoteLongClick(note: Note)
         abstract fun handleNoteListRefresh()
     }

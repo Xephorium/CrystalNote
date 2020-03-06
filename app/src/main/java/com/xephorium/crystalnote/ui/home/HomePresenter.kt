@@ -30,7 +30,15 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleNoteClick(note: Note) {
-        view?.navigateToEditNote(note.id)
+        if (note.password.isNotEmpty()) {
+            view?.showUnlockNoteDialog(note.password, note.id)
+        } else {
+            view?.navigateToEditNote(note.id)
+        }
+    }
+
+    override fun handleNoteAuthenticate(id: Int) {
+        view?.navigateToEditNote(id)
     }
 
     override fun handleNoteLongClick(note: Note) {
