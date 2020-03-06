@@ -85,8 +85,8 @@ class NoteRoomRepository(context: Context) {
     }
 
     companion object {
-        private val DATE_OF_FIRST_COMMIT: Long = 1493355600000
-        private val ONE_MINUTE: Long = 60000
+        private const val DATE_OF_FIRST_COMMIT: Long = 1493355600000
+        private const val ONE_MINUTE: Long = 60000
         private val DEVELOPER_NOTES = listOf(
             Note(
                 id = Note.NO_NOTE,
