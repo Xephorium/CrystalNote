@@ -30,6 +30,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     /*--- Variable Declarations ---*/
 
     lateinit var presenter: UpdatePresenter
+    lateinit var optionsMenu: Menu
 
     private val noteId: Int
         get() = intent.getIntExtra(KEY_NOTE_ID, NO_NOTE)
@@ -101,6 +102,16 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
     override fun showMonospacedFont() {
         textNoteContent.useMonospacedFont()
+    }
+
+    override fun showLockMenuOption() {
+        optionsMenu.findItem(R.id.option_lock).isVisible = true
+        optionsMenu.findItem(R.id.option_unlock).isVisible = false
+    }
+
+    override fun showUnlockMenuOption() {
+        optionsMenu.findItem(R.id.option_lock).isVisible = false
+        optionsMenu.findItem(R.id.option_unlock).isVisible = true
     }
 
     override fun showColorPickerDialog() {
@@ -182,13 +193,27 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.toolbar_options, menu)
+
+        // Determine Lock Items' Initial Visibility
+        // Note: This should be handled in the presenter, but the onCreateOptionsMenu()
+        //       method is called after attach, meaning we don't yet have a menu to
+        //       manipulate. May the Code Gods forgive me.
+        optionsMenu = menu
+        if (presenter.password.isEmpty()) {
+            optionsMenu.findItem(R.id.option_lock).isVisible = true
+            optionsMenu.findItem(R.id.option_unlock).isVisible = false
+        } else {
+            optionsMenu.findItem(R.id.option_lock).isVisible = false
+            optionsMenu.findItem(R.id.option_unlock).isVisible = true
+        }
+
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.option_lock -> Unit
-            R.id.option_unlock -> Unit
+            R.id.option_lock -> presenter.handleLockClick()
+            R.id.option_unlock -> presenter.handleUnlockClick()
             R.id.option_delete -> presenter.handleDeleteClick()
         }
         return super.onOptionsItemSelected(item)

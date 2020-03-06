@@ -22,11 +22,12 @@ class UpdatePresenter : UpdateContract.Presenter() {
                 content = initialContent
                 initialColor = it.color
                 color = initialColor
+                initialPassword = it.password
+                password = initialPassword
 
                 // Update View for Existing Note
                 this.view?.populateFields(it.name, it.contents)
                 this.view?.populateColor(it.color)
-
             }
 
         } else {
@@ -102,6 +103,18 @@ class UpdatePresenter : UpdateContract.Presenter() {
         }
     }
 
+    override fun handleLockClick() {
+        // TODO - Properly Handle
+        this.password = "password"
+        view?.showUnlockMenuOption()
+    }
+
+    override fun handleUnlockClick() {
+        // TODO - Properly Handle
+        this.password = ""
+        view?.showLockMenuOption()
+    }
+
     override fun handleDeleteConfirm() {
         noteRepository.deleteNote(noteId)
         view?.refreshWidget()
@@ -117,22 +130,26 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     private fun saveNote() {
 
-        if (initialName == name && initialContent == content && initialColor == color) {
+        if (initialName == name
+            && initialContent == content
+            && initialColor == color
+            && initialPassword == password
+        ) {
 
             // No Changes - Do Nothing
 
         } else if (!isInEditMode) {
 
             // New Note - Save
-            noteRepository.insertNote(name, content, color)
+            noteRepository.insertNote(name, content, color, password)
 
         } else {
 
             // Existing Note - Update
-            noteRepository.updateNote(noteId, name, content, color)
+            noteRepository.updateNote(noteId, name, content, color, password)
         }
 
-        if (isLaunchFromWidget) view?.refreshWidget()
+        view?.refreshWidget()
     }
 
     private fun returnToCallingScreen() {

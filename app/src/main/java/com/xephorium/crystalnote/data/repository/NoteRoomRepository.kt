@@ -4,7 +4,6 @@ import android.content.Context
 
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.room.RoomRepository
-import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.custom.ThemePreview
 
 import java.util.*
@@ -26,13 +25,14 @@ class NoteRoomRepository(context: Context) {
 
     /*--- Public Read/Write Methods ---*/
 
-    fun insertNote(name: String, contents: String, color: Int) {
+    fun insertNote(name: String, contents: String, color: Int, password: String) {
         roomRepository.insertNote(
             Note(
                 name = name,
                 contents = contents,
                 date = Calendar.getInstance().time,
-                color = color
+                color = color,
+                password = password
             )
         )
     }
@@ -41,14 +41,15 @@ class NoteRoomRepository(context: Context) {
         return roomRepository.getNote(id)
     }
 
-    fun updateNote(id: Int, name: String, contents: String, color: Int) {
+    fun updateNote(id: Int, name: String, contents: String, color: Int, password: String) {
         roomRepository.updateNote(
             Note(
                 id = id,
                 name = name,
                 contents = contents,
                 date = Calendar.getInstance().time,
-                color = color
+                color = color,
+                password = password
             )
         )
     }
