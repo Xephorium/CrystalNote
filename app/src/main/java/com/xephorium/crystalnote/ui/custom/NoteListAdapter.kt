@@ -80,6 +80,7 @@ open class NoteListAdapter(
 
             if (note.password.isNotEmpty()) {
                 holder.lock.visibility = View.VISIBLE
+                holder.date.visibility = View.GONE
             }
 
             if (notePreviewLines == 0 || note.password.isNotEmpty()) {

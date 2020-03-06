@@ -22,6 +22,7 @@
 
     <string name="noteListOlder">Older</string>
     <string name="noteListToday">Today</string>
+    <string name="noteListLockIcon">Note locked</string>
     <string name="noteNewName">New Note</string>
 
     <string name="selectTitle">Select a Note</string>
