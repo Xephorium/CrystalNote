@@ -104,15 +104,27 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleLockClick() {
-        view?.showSetPasswordDialog()
-        //this.password = "password"
-        //view?.showUnlockMenuOption()
+        view?.showSetNewPasswordDialog()
+    }
+
+    override fun handleNewPasswordSet(password: String) {
+        view?.showVerifyNewPasswordDialog(password)
+    }
+
+    override fun handleNewPasswordVerify(password: String) {
+        this.password = password
+        view?.showUnlockMenuOption()
+        view?.showNoteLockedMessage()
     }
 
     override fun handleUnlockClick() {
-        // TODO - Properly Handle
+        view?.showRemovePasswordDialog(password)
+    }
+
+    override fun handleOldPasswordVerify() {
         this.password = ""
         view?.showLockMenuOption()
+        view?.showNoteUnlockedMessage()
     }
 
     override fun handleDeleteConfirm() {

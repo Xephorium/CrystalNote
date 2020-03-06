@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
@@ -19,6 +20,7 @@ import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
+import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDialogListener
 import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 import kotlinx.android.synthetic.main.note_toolbar_layout.*
@@ -128,20 +130,75 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         colorPickerDialog.show()
     }
 
-    override fun showSetPasswordDialog() {
+    override fun showSetNewPasswordDialog() {
         val setPasswordDialog = PasswordDialog.Builder(this).create()
         setPasswordDialog.setTitle("Choose Password")
         setPasswordDialog.setMessage("Once locked, your note will be accessible only by password.")
         setPasswordDialog.setButtonName("Set")
+        setPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
+            override fun onPasswordProvided(password: String) {
+                presenter.handleNewPasswordSet(password)
+            }
+
+            override fun verifyPassword(password: String): String {
+                if (password.contains("\\s".toRegex())) {
+                    return "Cannot contain whitespace"
+                } else {
+                    return ""
+                }
+            }
+        })
         setPasswordDialog.show()
     }
 
-    override fun showVerifyPasswordDialog() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showVerifyNewPasswordDialog(password: String) {
+        val verifyPasswordDialog = PasswordDialog.Builder(this).create()
+        verifyPasswordDialog.setTitle("Confirm Password")
+        verifyPasswordDialog.setMessage("Please type password again.")
+        verifyPasswordDialog.setButtonName("Confirm")
+        verifyPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
+            override fun onPasswordProvided(newPassword: String) {
+                presenter.handleNewPasswordVerify(newPassword)
+            }
+
+            override fun verifyPassword(newPassword: String): String {
+                if (password != newPassword) {
+                    return "Password doesn't match"
+                } else {
+                    return ""
+                }
+            }
+        })
+        verifyPasswordDialog.show()
     }
 
-    override fun showRemovePasswordDialog() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun showNoteLockedMessage() {
+        Toast.makeText(this, "Note locked.", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun showRemovePasswordDialog(password: String) {
+        val verifyPasswordDialog = PasswordDialog.Builder(this).create()
+        verifyPasswordDialog.setTitle("Unlock Note")
+        verifyPasswordDialog.setMessage("Please confirm note password.")
+        verifyPasswordDialog.setButtonName("Unlock")
+        verifyPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
+            override fun onPasswordProvided(password: String) {
+                presenter.handleOldPasswordVerify()
+            }
+
+            override fun verifyPassword(newPassword: String): String {
+                if (password != newPassword) {
+                    return " "
+                } else {
+                    return ""
+                }
+            }
+        })
+        verifyPasswordDialog.show()
+    }
+
+    override fun showNoteUnlockedMessage() {
+        Toast.makeText(this, "Note unlocked.", Toast.LENGTH_SHORT).show()
     }
 
     override fun showInvalidNameDialog() {

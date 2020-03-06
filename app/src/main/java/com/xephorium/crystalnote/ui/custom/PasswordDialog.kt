@@ -33,7 +33,7 @@ class PasswordDialog private constructor(private val context: Context) {
 
     fun setButtonName(name: String) {
         alertDialog.setButton(BUTTON_POSITIVE, name) { dialog, _ ->
-            listener.onPasswordProvided(alertDialog.textInputEditTextPassword.toString())
+            listener.onPasswordProvided(alertDialog.textInputEditTextPassword.text.toString())
             dialog.dismiss()
         }
     }
