@@ -25,8 +25,8 @@ class ColorOrb : View {
 
     private var theme = CrystalNoteTheme.default(context)
     private var backgroundColor: Int? = null
-    private var radiusColor: Int? = null
-    private var radiusAlpha: Int? = null
+    private var outlineColor: Int? = null
+    private var outlineAlpha: Int? = null
     private var orbColor = DEFAULT_ORB_COLOR
     private var orbContrast = 2.0
     private var padding: Double = 0.0
@@ -83,7 +83,7 @@ class ColorOrb : View {
         canvas?.drawCircle(
             (viewWidth!! / 2.0).toFloat(),
             (viewHeight!! / 2.0).toFloat(),
-            ((viewWidth!! * RADIUS_COLOR * pad) / 2.0).toFloat(),
+            ((viewWidth!! * OUTLINE_RADIUS * pad) / 2.0).toFloat(),
             paint
         )
 
@@ -93,7 +93,7 @@ class ColorOrb : View {
         canvas?.drawCircle(
             (viewWidth!! / 2.0).toFloat(),
             (viewHeight!! / 2.0).toFloat(),
-            ((viewWidth!! * RADIUS_COLOR * pad) / 2.0).toFloat(),
+            ((viewWidth!! * OUTLINE_RADIUS * pad) / 2.0).toFloat(),
             paint
         )
 
@@ -114,13 +114,13 @@ class ColorOrb : View {
         outlinePaintColor = determineOutlineColor()
     }
 
-    fun setRadiusColor(color: Int) {
-        radiusColor = color
+    fun setOutlineColor(color: Int) {
+        outlineColor = color
         outlinePaintColor = determineOutlineColor()
     }
 
-    fun setRadiusAlpha(alpha: Double) {
-        radiusAlpha = (alpha * 255).toInt()
+    fun setOutlineAlpha(alpha: Double) {
+        outlineAlpha = (alpha * 255).toInt()
         outlinePaintColor = determineOutlineColor()
     }
 
@@ -166,8 +166,8 @@ class ColorOrb : View {
 
     private fun determineOutlineColor(): Int {
         if (orbContrast < CONTRAST_THRESHOLD && useContrastOutline) {
-            val drawColor = radiusColor ?: theme.colorTextPrimary
-            val drawAlpha = radiusAlpha ?: OUTLINE_ALPHA
+            val drawColor = outlineColor ?: theme.colorTextPrimary
+            val drawAlpha = outlineAlpha ?: OUTLINE_ALPHA
             return ColorUtils.setAlphaComponent(drawColor, drawAlpha)
         } else {
             return orbColor
@@ -180,7 +180,7 @@ class ColorOrb : View {
     companion object {
         val DEFAULT_ORB_COLOR = Color.parseColor("#000000")
         const val CONTRAST_THRESHOLD = 1.1
-        const val RADIUS_COLOR = 0.9
+        const val OUTLINE_RADIUS = 0.9
         const val OUTLINE_WIDTH = (5.0).toFloat()
         const val OUTLINE_ALPHA = (0.2 * 255).toInt()
     }

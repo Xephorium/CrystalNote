@@ -55,8 +55,8 @@ class NoteToolbar : Toolbar {
         this.noteToolbarListener = getDefaultNoteToolbarListener()
         colorOrbToolbar.setPadding(COLOR_ORB_PADDING)
         colorOrbToolbar.setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
-        colorOrbToolbar.setRadiusColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbarTextPrimary)
-        colorOrbToolbar.setRadiusAlpha(COLOR_ORB_ALPHA)
+        colorOrbToolbar.setOutlineColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbarTextPrimary)
+        colorOrbToolbar.setOutlineAlpha(COLOR_ORB_ALPHA)
 
         findViewById<View>(R.id.buttonToolbarLeft).setOnClickListener {
             noteToolbarListener?.onButtonClick()
