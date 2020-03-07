@@ -59,7 +59,19 @@
         <item name="android:colorBackground">?themeNoteBackground</item>
         <item name="android:textColor">?themeTextPrimary</item>
         <item name="android:textColorPrimary">?themeTextSecondary</item>
+        <item name="buttonBarNegativeButtonStyle">@style/NegativeDialogButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/PositiveDialogButtonStyle</item>
         <item name="colorAccent">?themeAccent</item>
+    </style>
+
+    <style name="NegativeDialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?themeTextPrimary</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="PositiveDialogButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">?themeTextPrimary</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="DialogTextInputLayoutTheme" parent="Theme.AppCompat">
