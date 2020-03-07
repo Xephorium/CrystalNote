@@ -59,6 +59,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleColorClick() {
+        view?.hideKeyboard()
         view?.showColorPickerDialog()
     }
 

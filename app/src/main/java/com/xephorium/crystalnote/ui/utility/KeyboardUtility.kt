@@ -4,31 +4,29 @@ import android.app.Activity
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 
-object KeyboardUtils {
+object KeyboardUtility {
 
 
     /*--- Public Utility Methods ---*/
 
     fun hideKeyboard(activity: Activity) {
-        val view = activity.currentFocus
-        if (view != null) {
+        activity.currentFocus?.let {
             val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.hideSoftInputFromWindow(view.windowToken, 0)
+            imm.hideSoftInputFromWindow(it.windowToken, 0)
         }
     }
 
     fun showKeyboard(activity: Activity) {
-        val view = activity.currentFocus
-        if (view != null) {
+        activity.currentFocus?.let {
             val imm = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            imm.showSoftInput(view, 0)
+            imm.showSoftInput(it, 0)
         }
     }
 
     fun getKeyboardHeight(activity: Activity): Int {
-        val appHeight = DisplayUtils.getAppHeight(activity)
-        val displayHeight = DisplayUtils.getDisplayHeight(activity)
-        val statusBarHeight = DisplayUtils.getStatusBarHeight(activity)
+        val appHeight = DisplayUtility.getAppHeight(activity)
+        val displayHeight = DisplayUtility.getDisplayHeight(activity)
+        val statusBarHeight = DisplayUtility.getStatusBarHeight(activity)
         return displayHeight - (appHeight + statusBarHeight)
     }
 }

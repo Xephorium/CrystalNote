@@ -30,6 +30,7 @@ interface UpdateContract {
         fun navigateHome()
         fun navigateBack()
         fun refreshWidget()
+        fun hideKeyboard()
     }
 
     abstract class Presenter : BasePresenter<View>() {

@@ -18,7 +18,7 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.about.AboutActivity
 import com.xephorium.crystalnote.ui.base.BaseActivity
-import com.xephorium.crystalnote.ui.utility.DisplayUtils
+import com.xephorium.crystalnote.ui.utility.DisplayUtility
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
 import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.settings.SettingsActivity
@@ -238,8 +238,8 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     private fun getActivityContentHeight(): Int {
-        val displayHeight = DisplayUtils.getDisplayHeight(this)
-        val statusBarHeight = DisplayUtils.getStatusBarHeight(this)
+        val displayHeight = DisplayUtility.getDisplayHeight(this)
+        val statusBarHeight = DisplayUtility.getStatusBarHeight(this)
         val toolbarHeight = resources.getDimensionPixelSize(R.dimen.toolbarHeight)
         return displayHeight - (statusBarHeight + toolbarHeight)
     }

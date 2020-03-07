@@ -6,7 +6,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.core.content.ContextCompat
 
-object DisplayUtils {
+object DisplayUtility {
 
 
     /*--- Public Utility Methods ---*/

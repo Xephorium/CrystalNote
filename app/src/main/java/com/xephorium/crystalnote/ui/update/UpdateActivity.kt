@@ -22,6 +22,7 @@ import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDialogListener
 import com.xephorium.crystalnote.ui.home.HomeActivity
+import com.xephorium.crystalnote.ui.utility.KeyboardUtility
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 import kotlinx.android.synthetic.main.note_toolbar_layout.*
 
@@ -260,6 +261,10 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
     override fun refreshWidget() {
         NotesWidgetProvider.refreshWidgets(this, application)
+    }
+
+    override fun hideKeyboard() {
+        KeyboardUtility.hideKeyboard(this)
     }
 
 
