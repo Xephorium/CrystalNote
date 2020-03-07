@@ -12,8 +12,8 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
         if (isInEditMode) {
 
-            // Get Note'
-            noteRepository.getNote(noteId)?.let {
+            // Get Note
+            noteRoomRepository.getNote(noteId)?.let {
 
                 // Populate State Fields for Existing Note
                 initialName = it.name
@@ -140,6 +140,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleExportConfirm() {
+        noteDiskRepository.exportNoteToDownloads(this.name, this.content)
         view?.showExportConfirmationMessage()
     }
 
@@ -153,7 +154,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleDeleteConfirm() {
-        noteRepository.deleteNote(noteId)
+        noteRoomRepository.deleteNote(noteId)
         view?.refreshWidget()
         returnToCallingScreen()
     }
@@ -178,12 +179,12 @@ class UpdatePresenter : UpdateContract.Presenter() {
         } else if (!isInEditMode) {
 
             // New Note - Save
-            noteRepository.insertNote(name, content, color, password)
+            noteRoomRepository.insertNote(name, content, color, password)
 
         } else {
 
             // Existing Note - Update
-            noteRepository.updateNote(noteId, name, content, color, password)
+            noteRoomRepository.updateNote(noteId, name, content, color, password)
         }
 
         view?.refreshWidget()

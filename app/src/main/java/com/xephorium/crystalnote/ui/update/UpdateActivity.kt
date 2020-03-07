@@ -31,6 +31,7 @@ import kotlinx.android.synthetic.main.note_toolbar_layout.*
 
 import kotlinx.android.synthetic.main.update_activity_layout.*
 import androidx.core.app.ActivityCompat
+import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 
 
 class UpdateActivity() : BaseActivity(), UpdateContract.View {
@@ -58,8 +59,9 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         setContentView(R.layout.update_activity_layout)
 
         presenter = UpdatePresenter()
-        presenter.noteRepository = NoteRoomRepository(this)
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
+        presenter.noteRoomRepository = NoteRoomRepository(this)
+        presenter.noteDiskRepository = NoteDiskRepository()
         presenter.isInEditMode = noteId != NO_NOTE
         presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.isLaunchFromSelect = isLaunchFromSelect

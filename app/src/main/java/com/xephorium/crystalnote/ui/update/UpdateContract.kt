@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.update
 
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
+import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
@@ -40,7 +41,8 @@ interface UpdateContract {
 
     abstract class Presenter : BasePresenter<View>() {
         lateinit var sharedPreferencesRepository: SharedPreferencesRepository
-        lateinit var noteRepository: NoteRoomRepository
+        lateinit var noteRoomRepository: NoteRoomRepository
+        lateinit var noteDiskRepository: NoteDiskRepository
 
         var isInEditMode: Boolean = false
         var isLaunchFromWidget: Boolean = false
