@@ -57,7 +57,7 @@
             android:textColorHighlight="?themeTextHighlight"
             android:textColorHint="?themeToolbarTextSecondary"
             android:textColorTertiary="?themeToolbarTextPrimary"
-            android:textCursorDrawable="?themeToolbarTextPrimary"
+            android:textCursorDrawable="@null"
             app:layout_constraintEnd_toStartOf="@id/colorOrbToolbar"
             app:layout_constraintStart_toEndOf="@id/buttonToolbarLeft"
             app:layout_constraintTop_toTopOf="parent"
