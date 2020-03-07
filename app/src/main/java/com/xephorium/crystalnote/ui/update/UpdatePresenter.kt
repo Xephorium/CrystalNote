@@ -107,7 +107,6 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     override fun handleNewPasswordVerify(password: String) {
         this.password = password
-        view?.hideKeyboard()
         view?.showUnlockMenuOption()
         view?.showNoteLockedMessage()
     }
@@ -119,7 +118,6 @@ class UpdatePresenter : UpdateContract.Presenter() {
 
     override fun handleOldPasswordVerify() {
         this.password = ""
-        view?.hideKeyboard()
         view?.showLockMenuOption()
         view?.showNoteUnlockedMessage()
     }
