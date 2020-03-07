@@ -175,7 +175,7 @@ class ColorGridView: LinearLayout {
             Color.parseColor("#d35050"), //    Red
             Color.parseColor("#b63535"), //    Red Dark
             Color.parseColor("#555555"), // R5 ---                (Dark Theme Background)
-            Color.parseColor("#6c7c4b"), //    Olive Dark
+            Color.parseColor("#778A53"), //    Olive Dark
             Color.parseColor("#92b34d"), //    Olive
             Color.parseColor("#d6e8b0"), //    Olive Light
             Color.parseColor("#fbb065"), //    Orange Light
