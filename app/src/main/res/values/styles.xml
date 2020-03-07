@@ -64,9 +64,9 @@
 
     <style name="DialogTextInputLayoutTheme" parent="Theme.AppCompat">
         <item name="android:editTextColor">?themeTextPrimary</item>
-        <item name="android:textColorHint">?themeTextTertiary</item>
+        <item name="android:textColorHint">?themeTextSecondary</item>
         <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
-        <item name="android:colorControlActivated">?themeTextHandle</item>
+        <item name="android:colorControlActivated">?themeTextSecondary</item>
         <item name="android:textColorHighlight">?themeTextHighlight</item>
         <item name="android:backgroundTint">?themeTextSecondary</item>
     </style>

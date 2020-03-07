@@ -81,7 +81,7 @@ class PasswordDialog private constructor(private val context: Context) {
 
             // Disable Button
             button.isEnabled = false
-            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextTertiary)
+            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
 
             // Hide Error
             alertDialog.textInputLayoutPassword.error = ""
@@ -91,7 +91,7 @@ class PasswordDialog private constructor(private val context: Context) {
 
             // Disable Button
             button.isEnabled = false
-            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextTertiary)
+            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
 
             // Show Error
             alertDialog.textInputLayoutPassword.error = passwordError
