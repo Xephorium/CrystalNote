@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.appcompat.widget.Toolbar
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.ui.extensions.getThemeColor
 import kotlinx.android.synthetic.main.note_toolbar_layout.view.*
 
@@ -53,6 +54,9 @@ class NoteToolbar : Toolbar {
         this.setLeftButtonImage(DEFAULT_LEFT_BUTTON_IMAGE)
         this.noteToolbarListener = getDefaultNoteToolbarListener()
         colorOrbToolbar.setPadding(COLOR_ORB_PADDING)
+        colorOrbToolbar.setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
+        colorOrbToolbar.setRadiusColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbarTextPrimary)
+        colorOrbToolbar.setRadiusAlpha(COLOR_ORB_ALPHA)
 
         findViewById<View>(R.id.buttonToolbarLeft).setOnClickListener {
             noteToolbarListener?.onButtonClick()
@@ -146,6 +150,7 @@ class NoteToolbar : Toolbar {
         private const val DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back
         private const val NO_IMAGE = -1
         private const val COLOR_ORB_PADDING = 0.7
+        private const val COLOR_ORB_ALPHA = 1.0
         const val TOOLBAR_ICON_SCALE_SMALLER = (0.93).toFloat()
     }
 }

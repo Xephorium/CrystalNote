@@ -24,10 +24,15 @@ class ColorOrb : View {
     private var desiredViewHeight: Int? = null
 
     private var theme = CrystalNoteTheme.default(context)
+    private var backgroundColor: Int? = null
+    private var radiusColor: Int? = null
+    private var radiusAlpha: Int? = null
     private var orbColor = DEFAULT_ORB_COLOR
     private var orbContrast = 2.0
     private var padding: Double = 0.0
     private var useContrastOutline = true
+
+    private var outlinePaintColor: Int? = null
 
 
     /*--- Constructors ---*/
@@ -68,11 +73,10 @@ class ColorOrb : View {
         val pad = (1.0 - padding)
 
         // Set Outline Paint Color
-        if (orbContrast < CONTRAST_THRESHOLD && useContrastOutline) {
-            paint.color = ColorUtils.setAlphaComponent(theme.colorTextPrimary, OUTLINE_ALPHA)
-        } else {
-            paint.color = orbColor
+        if (outlinePaintColor == null) {
+            outlinePaintColor = determineOutlineColor()
         }
+        paint.color = outlinePaintColor!!
 
         // Outline
         paint.style = STROKE
@@ -104,9 +108,26 @@ class ColorOrb : View {
         invalidate()
     }
 
+    fun setBackdropColor(color: Int) {
+        backgroundColor = color
+        orbContrast = determineOrbContrast()
+        outlinePaintColor = determineOutlineColor()
+    }
+
+    fun setRadiusColor(color: Int) {
+        radiusColor = color
+        outlinePaintColor = determineOutlineColor()
+    }
+
+    fun setRadiusAlpha(alpha: Double) {
+        radiusAlpha = (alpha * 255).toInt()
+        outlinePaintColor = determineOutlineColor()
+    }
+
     fun setColor(color: Int) {
         orbColor = color
-        orbContrast = ColorUtility.calculateContrastRatio(theme.colorNoteBackground, color)
+        orbContrast = determineOrbContrast()
+        outlinePaintColor = determineOutlineColor()
         invalidate()
     }
 
@@ -130,6 +151,27 @@ class ColorOrb : View {
 
     fun showContrastOutline(show: Boolean) {
         useContrastOutline = show
+    }
+
+
+    /*--- Private Methods ---*/
+
+    private fun determineOrbContrast(): Double {
+        if (backgroundColor != null) {
+            return ColorUtility.calculateContrastRatio(backgroundColor!!, orbColor)
+        } else {
+            return ColorUtility.calculateContrastRatio(theme.colorNoteBackground, orbColor)
+        }
+    }
+
+    private fun determineOutlineColor(): Int {
+        if (orbContrast < CONTRAST_THRESHOLD && useContrastOutline) {
+            val drawColor = radiusColor ?: theme.colorTextPrimary
+            val drawAlpha = radiusAlpha ?: OUTLINE_ALPHA
+            return ColorUtils.setAlphaComponent(drawColor, drawAlpha)
+        } else {
+            return orbColor
+        }
     }
 
 
