@@ -41,8 +41,8 @@
     <color name="darkAccentTextPrimary">@color/white</color>
     <color name="darkAccentTextSecondary">#bbf3f3f3</color>
     <color name="darkTextPrimary">#fff</color>
-    <color name="darkTextSecondary">#aaffffff</color>
-    <color name="darkTextTertiary">#77ffffff</color>
+    <color name="darkTextSecondary">#c6c6c6</color>
+    <color name="darkTextTertiary">#a4a4a4</color>
     <color name="darkTextHighlight">#7d888888</color>
     <color name="darkTextHandle">@color/white</color>
     <color name="darkNoteBackground">#555</color>

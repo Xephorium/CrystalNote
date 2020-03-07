@@ -14,6 +14,7 @@ data class CrystalNoteTheme(
         val colorToolbar: Int,
         val colorToolbarTextPrimary: Int,
         val colorToolbarTextSecondary: Int,
+        val colorTextInvertedPrimary: Int,
         val colorTextPrimary: Int,
         val colorTextSecondary: Int,
         val colorTextTertiary: Int,
@@ -43,6 +44,7 @@ data class CrystalNoteTheme(
                 R.attr.themeBackground,
                 R.attr.themeNoteBackground,
                 R.attr.themeNoteColorBar,
+                R.attr.themeTextInvertedPrimary,
                 R.attr.themeTextPrimary,
                 R.attr.themeTextSecondary,
                 R.attr.themeTextTertiary,
@@ -58,6 +60,7 @@ data class CrystalNoteTheme(
                 ContextCompat.getColor(context, R.color.lightToolbar),
                 ContextCompat.getColor(context, R.color.lightToolbarTextPrimary),
                 ContextCompat.getColor(context, R.color.lightToolbarTextSecondary),
+                ContextCompat.getColor(context, R.color.darkTextPrimary),
                 ContextCompat.getColor(context, R.color.lightTextPrimary),
                 ContextCompat.getColor(context, R.color.lightTextSecondary),
                 ContextCompat.getColor(context, R.color.lightTextTertiary),
@@ -89,6 +92,7 @@ data class CrystalNoteTheme(
             val colorToolbar = parseColor(typedArray, ATTRIBUTES, R.attr.themeToolbar)
             val colorToolbarTextPrimary = parseColor(typedArray, ATTRIBUTES, R.attr.themeToolbarTextPrimary)
             val colorToolbarTextSecondary = parseColor(typedArray, ATTRIBUTES, R.attr.themeToolbarTextSecondary)
+            val colorTextInvertedPrimary = parseColor(typedArray, ATTRIBUTES, R.attr.themeTextInvertedPrimary)
             val colorTextPrimary = parseColor(typedArray, ATTRIBUTES, R.attr.themeTextPrimary)
             val colorTextSecondary = parseColor(typedArray, ATTRIBUTES, R.attr.themeTextSecondary)
             val colorTextTertiary = parseColor(typedArray, ATTRIBUTES, R.attr.themeTextTertiary)
@@ -103,6 +107,7 @@ data class CrystalNoteTheme(
                     colorToolbar,
                     colorToolbarTextPrimary,
                     colorToolbarTextSecondary,
+                    colorTextInvertedPrimary,
                     colorTextPrimary,
                     colorTextSecondary,
                     colorTextTertiary,

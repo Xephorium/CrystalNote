@@ -145,8 +145,8 @@
         <item name="themeTextPrimary">@color/darkTextPrimary</item>
         <item name="themeTextSecondary">@color/darkTextSecondary</item>
         <item name="themeTextTertiary">@color/darkTextTertiary</item>
-        <item name="themeTextInvertedPrimary">@color/darkTextPrimary</item>
-        <item name="themeTextInvertedSecondary">@color/darkTextSecondary</item>
+        <item name="themeTextInvertedPrimary">@color/lightTextPrimary</item>
+        <item name="themeTextInvertedSecondary">@color/lightTextSecondary</item>
         <item name="themeTextHandle">@color/darkTextHandle</item>
         <item name="themeTextHighlight">@color/darkTextHighlight</item>
 

@@ -9,13 +9,13 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
@@ -173,7 +173,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     }
 
     override fun showNoteLockedMessage() {
-        Toast.makeText(this, "Note locked.", Toast.LENGTH_SHORT).show()
+        CrystalNoteToast.showShort(this, "Note locked.")
     }
 
     override fun showRemovePasswordDialog(password: String) {
@@ -198,7 +198,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     }
 
     override fun showNoteUnlockedMessage() {
-        Toast.makeText(this, "Note unlocked.", Toast.LENGTH_SHORT).show()
+        CrystalNoteToast.showShort(this, "Note unlocked.")
     }
 
     override fun showInvalidNameDialog() {
