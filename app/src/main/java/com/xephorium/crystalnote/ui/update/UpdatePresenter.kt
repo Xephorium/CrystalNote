@@ -97,6 +97,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleLockClick() {
+        view?.hideKeyboard()
         view?.showSetNewPasswordDialog()
     }
 
@@ -111,6 +112,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleUnlockClick() {
+        view?.hideKeyboard()
         view?.showRemovePasswordDialog(password)
     }
 
@@ -121,6 +123,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleExportClick() {
+        view?.hideKeyboard()
         if (!isFileWritePermissionGranted) {
             view?.requestFileWritePermission()
         } else {
@@ -141,6 +144,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     override fun handleDeleteClick() {
+        view?.hideKeyboard()
         if (isInEditMode) {
             view?.showDeleteNoteDialog()
         } else {
