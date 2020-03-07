@@ -154,7 +154,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     override fun showVerifyNewPasswordDialog(password: String) {
         val verifyPasswordDialog = PasswordDialog.Builder(this).create()
         verifyPasswordDialog.setTitle("Confirm Password")
-        verifyPasswordDialog.setMessage("Please type password again.")
+        verifyPasswordDialog.setMessage("Please enter password again.")
         verifyPasswordDialog.setButtonName("Confirm")
         verifyPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
             override fun onPasswordProvided(newPassword: String) {
@@ -179,7 +179,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     override fun showRemovePasswordDialog(password: String) {
         val verifyPasswordDialog = PasswordDialog.Builder(this).create()
         verifyPasswordDialog.setTitle("Unlock Note")
-        verifyPasswordDialog.setMessage("Please confirm note password.")
+        verifyPasswordDialog.setMessage("Enter password to unlock note.")
         verifyPasswordDialog.setButtonName("Unlock")
         verifyPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
             override fun onPasswordProvided(password: String) {

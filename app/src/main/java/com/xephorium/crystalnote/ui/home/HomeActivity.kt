@@ -74,7 +74,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     override fun showUnlockNoteDialog(password: String, id: Int) {
         val setPasswordDialog = PasswordDialog.Builder(this).create()
         setPasswordDialog.setTitle("Note Locked")
-        setPasswordDialog.setMessage("Enter password to view.")
+        setPasswordDialog.setMessage("Enter password to view note.")
         setPasswordDialog.setButtonName("Open")
         setPasswordDialog.setPasswordDialogListener(object :
             PasswordDialog.Companion.PasswordDialogListener {

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
@@ -19,6 +20,7 @@ class PasswordDialog private constructor(private val context: Context) {
         .setView(R.layout.password_dialog_layout)
         .create()
     private var listener: PasswordDialogListener = DEFAULT_LISTENER
+    private var message: String = ""
 
 
     /*--- Public Methods ---*/
@@ -28,7 +30,7 @@ class PasswordDialog private constructor(private val context: Context) {
     }
 
     fun setMessage(message: String) {
-        alertDialog.setMessage(message)
+        this.message = message
     }
 
     fun setButtonName(name: String) {
@@ -44,6 +46,12 @@ class PasswordDialog private constructor(private val context: Context) {
 
     fun show() {
         alertDialog.show()
+
+        // Setup Message
+        if (message.isNotEmpty()) {
+            alertDialog.textPasswordMessage.visibility = View.VISIBLE
+            alertDialog.textPasswordMessage.text = message
+        }
 
         // Setup Password EditText Listener
         alertDialog.textInputEditTextPassword.addTextChangedListener(object : TextWatcher {
