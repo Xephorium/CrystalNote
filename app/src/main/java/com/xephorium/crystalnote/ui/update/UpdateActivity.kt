@@ -258,8 +258,22 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     }
 
     override fun showExportDialog() {
-        // TODO
-        CrystalNoteToast.showLong(this, "We gon' export ya!")
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
+        alertDialog.setCancelable(true)
+        alertDialog.setTitle("Export Note")
+        alertDialog.setMessage("Note will be saved as a .txt file in the Downloads folder.")
+        alertDialog.setButton(BUTTON_NEGATIVE, "Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+        alertDialog.setButton(BUTTON_POSITIVE, "Confirm") { dialog, _ ->
+            dialog.dismiss()
+            presenter.handleExportConfirm()
+        }
+        alertDialog.show()
+    }
+
+    override fun showExportConfirmationMessage() {
+        CrystalNoteToast.showLong(this, "Note exported.")
     }
 
     override fun navigateHome() {

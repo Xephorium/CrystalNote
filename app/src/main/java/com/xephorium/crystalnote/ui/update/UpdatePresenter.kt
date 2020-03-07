@@ -136,6 +136,10 @@ class UpdatePresenter : UpdateContract.Presenter() {
         view?.showFileWritePermissionDeniedMessage()
     }
 
+    override fun handleExportConfirm() {
+        view?.showExportConfirmationMessage()
+    }
+
     override fun handleDeleteClick() {
         if (isInEditMode) {
             view?.showDeleteNoteDialog()
