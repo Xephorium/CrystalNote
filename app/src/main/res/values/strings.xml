@@ -45,6 +45,7 @@
 
     <string name="toolbarOptionLock">Lock</string>
     <string name="toolbarOptionUnlock">Unlock</string>
+    <string name="toolbarOptionExport">Export</string>
     <string name="toolbarOptionDelete">Delete</string>
 
     <string name="widgetSettingsIconContrast">Toggle Preview Background Brightness</string>

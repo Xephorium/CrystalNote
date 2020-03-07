@@ -27,10 +27,14 @@ interface UpdateContract {
         fun showInvalidNameDialog()
         fun showDiscardChangesDialog()
         fun showDeleteNoteDialog()
+        fun showFileWritePermissionDeniedMessage()
+        fun showExportDialog()
         fun navigateHome()
         fun navigateBack()
         fun refreshWidget()
         fun hideKeyboard()
+
+        fun requestFileWritePermission()
     }
 
     abstract class Presenter : BasePresenter<View>() {
@@ -40,6 +44,7 @@ interface UpdateContract {
         var isInEditMode: Boolean = false
         var isLaunchFromWidget: Boolean = false
         var isLaunchFromSelect: Boolean = false
+        var isFileWritePermissionGranted: Boolean = false
         var noteId: Int = NO_NOTE
         var initialName: String = ""
         var initialContent: String = ""
@@ -61,6 +66,9 @@ interface UpdateContract {
         abstract fun handleNewPasswordVerify(password: String)
         abstract fun handleUnlockClick()
         abstract fun handleOldPasswordVerify()
+        abstract fun handleExportClick()
+        abstract fun handleFileWritePermissionGranted()
+        abstract fun handleFileWritePermissionDenied()
         abstract fun handleDeleteClick()
         abstract fun handleDeleteConfirm()
         abstract fun handleDiscardChangesConfirm()

@@ -96,14 +96,6 @@ class UpdatePresenter : UpdateContract.Presenter() {
         }
     }
 
-    override fun handleDeleteClick() {
-        if (isInEditMode) {
-            view?.showDeleteNoteDialog()
-        } else {
-            view?.showDiscardChangesDialog()
-        }
-    }
-
     override fun handleLockClick() {
         view?.showSetNewPasswordDialog()
     }
@@ -126,6 +118,30 @@ class UpdatePresenter : UpdateContract.Presenter() {
         this.password = ""
         view?.showLockMenuOption()
         view?.showNoteUnlockedMessage()
+    }
+
+    override fun handleExportClick() {
+        if (!isFileWritePermissionGranted) {
+            view?.requestFileWritePermission()
+        } else {
+            view?.showExportDialog()
+        }
+    }
+
+    override fun handleFileWritePermissionGranted() {
+        view?.showExportDialog()
+    }
+
+    override fun handleFileWritePermissionDenied() {
+        view?.showFileWritePermissionDeniedMessage()
+    }
+
+    override fun handleDeleteClick() {
+        if (isInEditMode) {
+            view?.showDeleteNoteDialog()
+        } else {
+            view?.showDiscardChangesDialog()
+        }
     }
 
     override fun handleDeleteConfirm() {

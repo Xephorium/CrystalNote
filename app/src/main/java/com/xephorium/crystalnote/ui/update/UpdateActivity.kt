@@ -1,8 +1,10 @@
 package com.xephorium.crystalnote.ui.update
 
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
@@ -27,6 +30,8 @@ import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
 import kotlinx.android.synthetic.main.note_toolbar_layout.*
 
 import kotlinx.android.synthetic.main.update_activity_layout.*
+import androidx.core.app.ActivityCompat
+
 
 class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
@@ -58,6 +63,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         presenter.isInEditMode = noteId != NO_NOTE
         presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.isLaunchFromSelect = isLaunchFromSelect
+        presenter.isFileWritePermissionGranted = checkFileWritePermission()
         presenter.noteId = noteId
 
         setupToolbar()
@@ -247,6 +253,15 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         alertDialog.show()
     }
 
+    override fun showFileWritePermissionDeniedMessage() {
+        CrystalNoteToast.showLong(this, "Export permission denied.")
+    }
+
+    override fun showExportDialog() {
+        // TODO
+        CrystalNoteToast.showLong(this, "We gon' export ya!")
+    }
+
     override fun navigateHome() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(KEY_FROM_UPDATE_ACTIVITY, true)
@@ -265,6 +280,38 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
     override fun hideKeyboard() {
         KeyboardUtility.hideKeyboard(this)
+    }
+
+
+    /*--- Permissions Methods ---*/
+
+    override fun requestFileWritePermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(WRITE_EXTERNAL_STORAGE),
+            FILE_WRITE_REQUEST_CODE
+        )
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        results: IntArray
+    ) {
+        if (requestCode == FILE_WRITE_REQUEST_CODE && permissionRequestGranted(results)) {
+            presenter.handleFileWritePermissionGranted()
+        } else {
+            presenter.handleFileWritePermissionDenied()
+        }
+    }
+
+    private fun permissionRequestGranted(results: IntArray): Boolean {
+        return results.isNotEmpty() && results[0] == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun checkFileWritePermission(): Boolean {
+        return ContextCompat.checkSelfPermission(applicationContext, WRITE_EXTERNAL_STORAGE) ==
+                PackageManager.PERMISSION_GRANTED
     }
 
 
@@ -293,6 +340,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         when (item.itemId) {
             R.id.option_lock -> presenter.handleLockClick()
             R.id.option_unlock -> presenter.handleUnlockClick()
+            R.id.option_export -> presenter.handleExportClick()
             R.id.option_delete -> presenter.handleDeleteClick()
         }
         return super.onOptionsItemSelected(item)
@@ -323,12 +371,13 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     }
 
 
-    /*--- ---*/
+    /*--- Constants ---*/
 
     companion object {
         const val KEY_NOTE_ID = "NOTE_ID_KEY"
         const val KEY_FROM_UPDATE_ACTIVITY = "FROM_UPDATE_ACTIVITY_KEY"
         const val KEY_LAUNCH_FROM_WIDGET = "LAUNCH_FROM_WIDGET_KEY"
         const val KEY_LAUNCH_FROM_SELECT = "LAUNCH_FROM_SELECT_KEY"
+        const val FILE_WRITE_REQUEST_CODE = 117
     }
 }
