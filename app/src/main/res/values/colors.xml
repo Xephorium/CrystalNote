@@ -82,7 +82,7 @@
     <color name="tomatoDark">#6B342E</color>
     <color name="tomatoLight">#F17265</color>
     <color name="tomatoHighlight">#28B65349</color>
-    <color name="tomatoDesaturated">#B66860</color>
+    <color name="tomatoDesaturated">#D17670</color>
     <color name="tomatoDesaturatedDark">#7C342B</color>
     <color name="transparent">#00ffffff</color>
     <color name="white">#ffffff</color>
@@ -97,7 +97,7 @@
     <color name="drawerFilterBlack">#cc191919</color>
     <color name="drawerFilterSage">#cc01797C</color>
     <color name="drawerFilterOlive">#cc26350E</color>
-    <color name="drawerFilterTomato">#CCBE4D3F</color>
+    <color name="drawerFilterTomato">#CCB94B3D</color>
     <color name="drawerFilterWhite">#ccffffff</color>
 
     <color name="rippleDefault">#cccccc</color>
