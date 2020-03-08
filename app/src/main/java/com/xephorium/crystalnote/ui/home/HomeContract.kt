@@ -23,6 +23,7 @@ interface HomeContract {
         fun showExportDialog()
         fun showExportConfirmationMessage()
         fun showDeleteNoteDialog()
+        fun showNoteDeletedMessage()
         fun showLockedNoteOptionsDialog()
         fun showNotePasswordDialog(password: String, id: Int)
         fun navigateToEditNote(id: Int)

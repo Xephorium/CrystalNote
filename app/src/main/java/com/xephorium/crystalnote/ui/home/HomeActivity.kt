@@ -218,6 +218,10 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         alertDialog.show()
     }
 
+    override fun showNoteDeletedMessage() {
+        CrystalNoteToast.showShort(this, "Note deleted.")
+    }
+
     override fun showNotePasswordDialog(password: String, id: Int) {
         val setPasswordDialog = PasswordDialog.Builder(this).create()
         setPasswordDialog.setTitle("Note Locked")

@@ -120,6 +120,7 @@ class HomePresenter : HomeContract.Presenter() {
     override fun handleDeleteConfirm() {
         selectedNote?.let {
             noteRoomRepository.deleteNote(it.id)
+            view?.showNoteDeletedMessage()
             beginDelayedNoteListRefresh {
                 refreshNoteList()
             }
