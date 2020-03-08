@@ -60,6 +60,7 @@ class HomePresenter : HomeContract.Presenter() {
 
     override fun handleNewPasswordVerify(password: String) {
         selectedNote?.let {
+            view?.showNoteLockedMessage()
             noteRoomRepository.updateNote(
                     id = it.id,
                     name = it.name,
@@ -79,6 +80,7 @@ class HomePresenter : HomeContract.Presenter() {
 
     override fun handleOldPasswordVerify() {
         selectedNote?.let {
+            view?.showNoteUnlockedMessage()
             noteRoomRepository.updateNote(
                     id = it.id,
                     name = it.name,
