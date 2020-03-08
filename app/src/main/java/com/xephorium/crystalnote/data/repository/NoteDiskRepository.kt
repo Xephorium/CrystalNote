@@ -35,7 +35,16 @@ class NoteDiskRepository() {
     }
 
     private fun getNoteName(name: String): String {
-        return name + FILE_EXTENSION
+        val downloadFiles = getDownloadsDirectory().listFiles().map { it.name }
+        var fileName = name + FILE_EXTENSION
+        var index = 1
+
+        while (downloadFiles.contains(fileName)) {
+            index++
+            fileName = "$name($index)$FILE_EXTENSION"
+        }
+
+        return fileName
     }
 
     private fun getDownloadsDirectory(): File {
