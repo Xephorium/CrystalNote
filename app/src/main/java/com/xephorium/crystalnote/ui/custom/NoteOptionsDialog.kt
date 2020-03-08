@@ -103,7 +103,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     /*--- Constants ---*/
 
     companion object {
-        private const val ANIMATION_DELAY: Long = 135
+        private const val ANIMATION_DELAY: Long = 100
 
         private val DEFAULT_LISTENER = object : NoteOptionsListener {
             override fun onLockClick() = Unit
