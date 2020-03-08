@@ -71,18 +71,22 @@ class NoteOptionsDialog private constructor(private val context: Context) {
 
     private fun setupClickListeners() {
         alertDialog.textNoteOptionsLock.setOnClickListener {
+            Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onLockClick()
         }
         alertDialog.textNoteOptionsUnlock.setOnClickListener {
+            Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onUnlockClick()
         }
         alertDialog.textNoteOptionsExport.setOnClickListener {
+            Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onExportClick()
         }
         alertDialog.textNoteOptionsDelete.setOnClickListener {
+            Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onDeleteClick()
         }
@@ -99,6 +103,8 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     /*--- Constants ---*/
 
     companion object {
+        private const val ANIMATION_DELAY: Long = 135
+
         private val DEFAULT_LISTENER = object : NoteOptionsListener {
             override fun onLockClick() = Unit
             override fun onUnlockClick() = Unit
