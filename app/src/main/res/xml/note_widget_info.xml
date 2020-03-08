@@ -7,4 +7,5 @@
     android:previewImage="@drawable/note_widget_thumbnail"
     android:configure="com.xephorium.crystalnote.ui.widget.WidgetConfigurationActivity"
     android:updatePeriodMillis="1000000"
+    android:resizeMode="horizontal|vertical"
     />
