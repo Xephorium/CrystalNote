@@ -31,7 +31,7 @@ class HomePresenter : HomeContract.Presenter() {
 
     override fun handleNoteClick(note: Note) {
         if (note.password.isNotEmpty()) {
-            view?.showUnlockNoteDialog(note.password, note.id)
+            view?.showNotePasswordDialog(note.password, note.id)
         } else {
             view?.navigateToEditNote(note.id)
         }
@@ -42,7 +42,11 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleNoteLongClick(note: Note) {
-        // Do Nothing
+        if (note.password.isBlank()) {
+            view?.showNoteOptionsDialog()
+        } else {
+            view?.showLockedNoteOptionsDialog()
+        }
     }
 
     override fun handleNoteListRefresh() {

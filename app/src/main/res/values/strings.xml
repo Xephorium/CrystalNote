@@ -24,6 +24,11 @@
     <string name="noteListToday">Today</string>
     <string name="noteListLockIcon">Note locked</string>
     <string name="noteNewName">New Note</string>
+    <string name="noteOptionsTitle">Note Options</string>
+    <string name="noteOptionsLock">Lock</string>
+    <string name="noteOptionsUnlock">Unlock</string>
+    <string name="noteOptionsExport">Export</string>
+    <string name="noteOptionsDelete">Delete</string>
 
     <string name="passwordDialogHint">password</string>
 

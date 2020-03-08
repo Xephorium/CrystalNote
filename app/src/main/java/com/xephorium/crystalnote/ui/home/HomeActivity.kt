@@ -7,8 +7,11 @@ import android.view.View
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
+import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
+import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptionsListener
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.update.UpdateActivity
@@ -71,7 +74,32 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         openDrawer()
     }
 
-    override fun showUnlockNoteDialog(password: String, id: Int) {
+    override fun showNoteOptionsDialog() {
+        val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
+        noteOptionsDialog.hideUnlockOption()
+        noteOptionsDialog.setListener(object: NoteOptionsListener {
+            override fun onLockClick() = Unit
+            override fun onUnlockClick() = Unit
+            override fun onExportClick() = Unit
+            override fun onDeleteClick() = Unit
+        })
+        noteOptionsDialog.show()
+    }
+
+    override fun showLockedNoteOptionsDialog() {
+        val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
+        noteOptionsDialog.hideLockOption()
+        noteOptionsDialog.hideExportOption()
+        noteOptionsDialog.setListener(object: NoteOptionsListener {
+            override fun onLockClick() = Unit
+            override fun onUnlockClick() = Unit
+            override fun onExportClick() = Unit
+            override fun onDeleteClick() = Unit
+        })
+        noteOptionsDialog.show()
+    }
+
+    override fun showNotePasswordDialog(password: String, id: Int) {
         val setPasswordDialog = PasswordDialog.Builder(this).create()
         setPasswordDialog.setTitle("Note Locked")
         setPasswordDialog.setMessage("Enter password to view note.")

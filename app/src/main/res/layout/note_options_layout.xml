@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/paddingMedium"
+    android:paddingBottom="@dimen/paddingMedium"
+    android:background="?themeNoteBackground"
+    >
+
+    <TextView
+        android:id="@+id/textNoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:paddingTop="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingActivity"
+        android:textSize="16sp"
+        android:textColor="?themeTextPrimary"
+        android:text="@string/noteOptionsTitle"
+        />
+
+    <TextView
+        android:id="@+id/textNoteOptionsLock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:paddingTop="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingActivity"
+        android:drawableStart="@drawable/icon_lock_large"
+        android:drawablePadding="@dimen/paddingActivity"
+        android:textSize="16sp"
+        android:textColor="?themeTextSecondary"
+        android:text="@string/noteOptionsLock"
+        android:background="@drawable/ripple"
+        />
+
+    <TextView
+        android:id="@+id/textNoteOptionsUnlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:paddingTop="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingActivity"
+        android:drawableStart="@drawable/icon_unlock_large"
+        android:drawablePadding="@dimen/paddingActivity"
+        android:textSize="16sp"
+        android:textColor="?themeTextSecondary"
+        android:text="@string/noteOptionsUnlock"
+        android:background="@drawable/ripple"
+        />
+
+    <TextView
+        android:id="@+id/textNoteOptionsExport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:paddingTop="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingActivity"
+        android:drawableStart="@drawable/icon_upload"
+        android:drawablePadding="@dimen/paddingActivity"
+        android:textSize="16sp"
+        android:textColor="?themeTextSecondary"
+        android:text="@string/noteOptionsExport"
+        android:background="@drawable/ripple"
+        />
+
+    <TextView
+        android:id="@+id/textNoteOptionsDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:paddingTop="@dimen/paddingActivity"
+        android:paddingBottom="@dimen/paddingActivity"
+        android:drawableStart="@drawable/icon_delete"
+        android:drawablePadding="@dimen/paddingActivity"
+        android:textSize="16sp"
+        android:textColor="?themeTextSecondary"
+        android:text="@string/noteOptionsDelete"
+        android:background="@drawable/ripple"
+        />
+
+</LinearLayout>

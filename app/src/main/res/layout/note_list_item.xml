@@ -65,7 +65,7 @@
             android:paddingStart="@dimen/paddingMedium"
             android:paddingEnd="0dp"
             android:paddingTop="@dimen/noteListIconLockTop"
-            android:src="@drawable/icon_lock"
+            android:src="@drawable/icon_lock_small"
             android:contentDescription="@string/noteListLockIcon"
             android:visibility="gone"
             tools:visibility="visible"

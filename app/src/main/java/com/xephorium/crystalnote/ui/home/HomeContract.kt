@@ -12,7 +12,9 @@ interface HomeContract {
         fun showEmptyNotesList()
 
         fun showNavigationDrawer()
-        fun showUnlockNoteDialog(password: String, id: Int)
+        fun showNoteOptionsDialog()
+        fun showLockedNoteOptionsDialog()
+        fun showNotePasswordDialog(password: String, id: Int)
         fun navigateToEditNote(id: Int)
         fun navigateToNewNote()
     }
