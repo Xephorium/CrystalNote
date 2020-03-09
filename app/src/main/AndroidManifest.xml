@@ -10,7 +10,7 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/icon_launcher"
         android:label="@string/appName"
         android:supportsRtl="true"
         android:theme="@style/Dark"
@@ -79,7 +79,7 @@
         <!-- Widget Broadcast Receiver -->
         <receiver
             android:name=".ui.widget.NotesWidgetProvider"
-            android:icon="@drawable/ic_launcher"
+            android:icon="@mipmap/icon_launcher"
             android:label="CrystalNote Widget"
             android:permission="false"
             >

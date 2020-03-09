@@ -105,11 +105,16 @@
     <color name="rippleLight">#77ffffff</color>
 
 
-    <!-- Widget Colors (TODO - Extract to Theme) -->
+    <!-- Widget Default Colors -->
 
     <color name="widgetBackground">#ffffff</color>
     <color name="widgetDivider">#dddddd</color>
     <color name="widgetTextPrimary">#333333</color>
     <color name="widgetTextSecondary">@color/gray8</color>
+
+
+    <!-- Launcher Icon Colors -->
+
+    <color name="launcherBackground">#666</color>
 
 </resources>
