@@ -65,5 +65,7 @@
     <dimen name="widgetHeaderTextSize">15sp</dimen>
     <dimen name="widgetMinimumHeight">110dp</dimen>
     <dimen name="widgetMinimumWidth">110dp</dimen>
+    <dimen name="widgetMinimumResizeHeight">50dp</dimen>
+    <dimen name="widgetMinimumResizeWidth">50dp</dimen>
 
 </resources>
