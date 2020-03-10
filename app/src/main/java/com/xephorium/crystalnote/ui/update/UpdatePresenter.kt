@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.update
 
-import com.xephorium.crystalnote.data.validation.NoteValidator
 
 class UpdatePresenter : UpdateContract.Presenter() {
 
@@ -74,24 +73,26 @@ class UpdatePresenter : UpdateContract.Presenter() {
             // New, Blank Note - Return
             returnToCallingScreen()
 
-        } else if (NoteValidator.isValidNoteName(name) && !isInEditMode) {
+        } else if (!isInEditMode && name.isNotBlank()) {
 
-            // New Note w/ Valid Name - Save
+            // New Note w/ Name - Save Here
             returnToCallingScreen()
             saveNote()
 
-        } else if (NoteValidator.isValidNoteName(name)) {
+        } else if (name.isNotBlank()) {
 
-            // Existing Note w/ Valid Name - ???
+            // Existing Note w/ Name - Save in handleBackground() via onPause()
             returnToCallingScreen()
 
         } else {
+
+            // Invalid Name
             view?.showInvalidNameDialog()
         }
     }
 
     override fun handleBackground() {
-        if (NoteValidator.isValidNoteName(name) && isInEditMode) {
+        if (name.isNotBlank() && isInEditMode) {
             saveNote()
         }
     }

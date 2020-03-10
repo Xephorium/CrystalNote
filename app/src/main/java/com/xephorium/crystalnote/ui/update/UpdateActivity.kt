@@ -218,7 +218,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         alertDialog.setButton(BUTTON_NEGATIVE, "Rename") { dialog, _ ->
             dialog.dismiss()
         }
-        alertDialog.setButton(BUTTON_POSITIVE, "Continue") { dialog, _ ->
+        alertDialog.setButton(BUTTON_POSITIVE, "Discard") { dialog, _ ->
             dialog.dismiss()
             presenter.handleDiscardChangesConfirm()
         }

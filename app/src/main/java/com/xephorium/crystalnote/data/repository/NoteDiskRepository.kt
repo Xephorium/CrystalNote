@@ -36,7 +36,7 @@ class NoteDiskRepository() {
 
     private fun getNoteName(name: String): String {
         val downloadFiles = getDownloadsDirectory().listFiles().map { it.name }
-        var fileName = name + FILE_EXTENSION
+        var fileName = sanitizeNoteName(name) + FILE_EXTENSION
         var index = 1
 
         while (downloadFiles.contains(fileName)) {
@@ -45,6 +45,12 @@ class NoteDiskRepository() {
         }
 
         return fileName
+    }
+
+    private fun sanitizeNoteName(name: String): String {
+        return name.map { char ->
+            if (RESERVED_CHARACTERS.contains(char)) REPLACEMENT_CHARACTER else char
+        }.joinToString(separator = "", prefix = "")
     }
 
     private fun getDownloadsDirectory(): File {
@@ -78,5 +84,20 @@ class NoteDiskRepository() {
 
     companion object {
         private const val FILE_EXTENSION = ".txt"
+        private const val REPLACEMENT_CHARACTER = '_'
+        private val RESERVED_CHARACTERS = listOf(
+            '|',
+            '?',
+            '*',
+            '<',
+            '\\',
+            '"',
+            ':',
+            '>',
+            '+',
+            '[',
+            ']',
+            '/'
+        )
     }
 }
