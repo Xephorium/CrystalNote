@@ -42,8 +42,6 @@ class ColorGridView: LinearLayout {
         this.setPadding(paddingGridSide, paddingGridTop, paddingGridSide, paddingGridBottom)
         this.orientation = VERTICAL
         this.gravity = Gravity.TOP
-
-        populateOrbGrid()
     }
 
 
@@ -90,10 +88,7 @@ class ColorGridView: LinearLayout {
         this.listener = listener
     }
 
-
-    /*--- Private Methods ---*/
-
-    private fun populateOrbGrid() {
+    fun populateOrbGrid() {
         var colorIndex = 0
 
         // For Each Row
@@ -124,6 +119,9 @@ class ColorGridView: LinearLayout {
             this.addView(rowLayout)
         }
     }
+
+
+    /*--- Private Methods ---*/
 
     private fun getAttributePx(id: Int): Int {
         val styledAttributes = context.obtainStyledAttributes(TypedValue().data, intArrayOf(id))

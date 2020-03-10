@@ -32,6 +32,7 @@ class ColorPickerDialog private constructor(context: Context) {
 
     fun show() {
         alertDialog.show()
+        colorGridView.populateOrbGrid()
     }
 
     fun dismiss() {
