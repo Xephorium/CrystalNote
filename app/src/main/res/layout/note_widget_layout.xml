@@ -78,6 +78,7 @@
         android:padding="@dimen/widgetDefaultPadding"
         android:text="@string/widgetTextLocked"
         android:textColor="@color/lightTextSecondary"
+        android:visibility="gone"
         />
 
 </RelativeLayout>
