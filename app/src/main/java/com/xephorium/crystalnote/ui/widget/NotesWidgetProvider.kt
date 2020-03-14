@@ -21,9 +21,9 @@ import java.util.concurrent.Executors
 import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.data.utility.CrystalNoteLogger
-import com.xephorium.crystalnote.ui.update.UpdateActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_LAUNCH_FROM_WIDGET
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
+import com.xephorium.crystalnote.ui.update.UpdateNoteActivity
+import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_LAUNCH_FROM_WIDGET
+import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_NOTE_ID
 
 
 /*
@@ -136,7 +136,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
                 // Launch UpdateActivity for Note
                 SharedPreferencesRepository(context).getNoteIdForWidget(widgetId)?.let { id ->
-                    val updateIntent = Intent(context, UpdateActivity::class.java)
+                    val updateIntent = Intent(context, UpdateNoteActivity::class.java)
                     updateIntent.putExtra(KEY_NOTE_ID, id)
                     updateIntent.putExtra(KEY_LAUNCH_FROM_WIDGET, true)
                     updateIntent.addFlags(

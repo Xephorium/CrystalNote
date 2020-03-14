@@ -31,4 +31,5 @@
         android:title="@string/toolbarOptionDelete"
         app:showAsAction="never"
         />
+
 </menu>

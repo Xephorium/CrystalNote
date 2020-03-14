@@ -25,8 +25,8 @@ class NoteRoomRepository(context: Context) {
 
     /*--- Public Read/Write Methods ---*/
 
-    fun insertNote(name: String, contents: String, color: Int, password: String) {
-        roomRepository.insertNote(
+    fun insertNote(name: String, contents: String, color: Int, password: String): Int {
+        return roomRepository.insertNote(
             Note(
                 name = name,
                 contents = contents,
@@ -34,7 +34,7 @@ class NoteRoomRepository(context: Context) {
                 color = color,
                 password = password
             )
-        )
+        ).toInt()
     }
 
     fun getNote(id: Int): Note? {

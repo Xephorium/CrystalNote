@@ -8,7 +8,7 @@ import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
 
-interface UpdateContract {
+interface UpdateNoteContract {
 
     interface View : BaseView {
         fun populateFields(name: String, content: String)
@@ -47,6 +47,7 @@ interface UpdateContract {
         var isInEditMode: Boolean = false
         var isLaunchFromWidget: Boolean = false
         var isLaunchFromSelect: Boolean = false
+        var isLaunchFromUpdateFile: Boolean = false
         var isFileWritePermissionGranted: Boolean = false
         var noteId: Int = NO_NOTE
         var initialName: String = ""

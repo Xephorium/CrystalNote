@@ -22,9 +22,9 @@ import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptio
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDialogListener
-import com.xephorium.crystalnote.ui.update.UpdateActivity
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
-import com.xephorium.crystalnote.ui.update.UpdateActivity.Companion.KEY_NOTE_ID
+import com.xephorium.crystalnote.ui.update.UpdateNoteActivity
+import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
+import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_NOTE_ID
 
 import kotlinx.android.synthetic.main.home_activity_layout.*
 import kotlinx.android.synthetic.main.toolbar_activity_layout.*
@@ -48,7 +48,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
         presenter = HomePresenter()
         presenter.noteRoomRepository = NoteRoomRepository(this)
-        presenter.noteDiskRepository = NoteDiskRepository()
+        presenter.noteDiskRepository = NoteDiskRepository(this)
         presenter.fromUpdateActivity = fromUpdateActivity
         presenter.isFileWritePermissionGranted = checkFileWritePermission()
 
@@ -244,13 +244,13 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     }
 
     override fun navigateToEditNote(id: Int) {
-        val intent = Intent(this, UpdateActivity::class.java)
+        val intent = Intent(this, UpdateNoteActivity::class.java)
         intent.putExtra(KEY_NOTE_ID, id)
         startActivity(intent)
     }
 
     override fun navigateToNewNote() {
-        val intent = Intent(this, UpdateActivity::class.java)
+        val intent = Intent(this, UpdateNoteActivity::class.java)
         startActivity(intent)
     }
 

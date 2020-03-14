@@ -19,14 +19,16 @@ class RoomRepository(context: Context) {
 
     /*--- Database Access Methods ---*/
 
-    fun insertNote(note: Note) {
-        Executors.newSingleThreadExecutor().submit(Callable {
+    fun insertNote(note: Note): Long {
+        val callable = Callable {
             roomDatabase.noteRepository().insertNote(note)
-        })
+        }
+        val future = Executors.newSingleThreadExecutor().submit(callable)
+        return future.get()
     }
 
     fun getNote(id: Int) : Note {
-        val callable = Callable<Note> {
+        val callable = Callable {
             roomDatabase.noteRepository().getNote(id)
         }
         val future = Executors.newSingleThreadExecutor().submit(callable)

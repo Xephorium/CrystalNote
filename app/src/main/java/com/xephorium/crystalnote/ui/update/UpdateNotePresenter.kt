@@ -1,12 +1,12 @@
 package com.xephorium.crystalnote.ui.update
 
 
-class UpdatePresenter : UpdateContract.Presenter() {
+class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
 
     /*--- Lifecycle Methods ---*/
 
-    override fun attachView(view: UpdateContract.View) {
+    override fun attachView(view: UpdateNoteContract.View) {
         super.attachView(view)
 
         if (isInEditMode) {
@@ -192,7 +192,7 @@ class UpdatePresenter : UpdateContract.Presenter() {
     }
 
     private fun returnToCallingScreen() {
-        if (isLaunchFromWidget || isLaunchFromSelect) view?.navigateBack()
+        if (isLaunchFromWidget || isLaunchFromSelect || isLaunchFromUpdateFile) view?.navigateBack()
         else view?.navigateHome()
     }
 }

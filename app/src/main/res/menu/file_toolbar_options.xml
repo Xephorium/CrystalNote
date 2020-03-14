@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/option_revert"
+        android:orderInCategory="100"
+        android:title="@string/toolbarOptionRevert"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/option_import"
+        android:orderInCategory="200"
+        android:title="@string/toolbarOptionImport"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/option_open_note"
+        android:orderInCategory="300"
+        android:title="@string/toolbarOptionOpenNote"
+        app:showAsAction="never"
+        />
+
+</menu>

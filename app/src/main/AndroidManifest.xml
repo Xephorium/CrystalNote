@@ -54,13 +54,49 @@
             android:screenOrientation="portrait"
             />
 
-        <!-- Note Update Activity -->
+        <!-- Update Note Activity -->
         <activity
-            android:name=".ui.update.UpdateActivity"
+            android:name=".ui.update.UpdateNoteActivity"
             android:screenOrientation="portrait"
             >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Update File Activity -->
+        <activity
+            android:name=".ui.update.UpdateFileActivity"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:scheme="content" />
+                <data android:mimeType="text/plain" />
+                <data android:host="*" />
+
+                <!--
+                    "Work around Android's ugly primitive PatternMatcher
+                    implementation that can't cope with finding a . early in
+                    the path unless it's explicitly matched."
+
+                    Stack Overflow Source: https://tinyurl.com/txufblc
+
+                    Here, I account for up to 9 preceding decimals.
+                -->
+                <data android:pathPattern=".*\\.txt" />
+                <data android:pathPattern=".*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
+                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
             </intent-filter>
         </activity>
 

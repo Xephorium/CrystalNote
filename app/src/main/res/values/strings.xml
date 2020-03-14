@@ -51,7 +51,10 @@
     <string name="toolbarOptionLock">Lock</string>
     <string name="toolbarOptionUnlock">Unlock</string>
     <string name="toolbarOptionExport">Export</string>
+    <string name="toolbarOptionRevert">Revert</string>
+    <string name="toolbarOptionImport">Import</string>
     <string name="toolbarOptionDelete">Delete</string>
+    <string name="toolbarOptionOpenNote">Open Note</string>
 
     <string name="widgetSettingsIconContrast">Toggle Preview Background Brightness</string>
     <string name="widgetSettingsSelectionHeader">Current Selection</string>

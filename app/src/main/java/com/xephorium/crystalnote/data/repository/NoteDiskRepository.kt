@@ -1,19 +1,23 @@
 package com.xephorium.crystalnote.data.repository
 
+import android.content.Context
+import android.net.Uri
 import android.os.Environment
+import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
+import com.xephorium.crystalnote.data.utility.NoteUtility
+import java.io.*
 
-import java.io.File
-import java.io.FileOutputStream
-import java.io.PrintWriter
+import java.util.*
 
 /*
-  NoteDiskRepository                                    05.11.2019
+  NoteDiskRepository                                          03.13.2020
   Christopher Cruzen
 
-    Manages read/write to note files in Android's external storage.
+    Manages read/write to plaintext files in Android's external storage.
 */
 
-class NoteDiskRepository() {
+class NoteDiskRepository(private val context: Context) {
 
 
     /*--- Public Read/Write Methods ---*/
@@ -24,6 +28,41 @@ class NoteDiskRepository() {
         initializeFile(noteFile)
 
         writeToFile(noteFile, content)
+    }
+
+    fun readPlaintextFile(uri: Uri): Note {
+        context.contentResolver.openInputStream(uri).let { inputStream ->
+
+            // Read Name
+            val name = uri.path?.let { path -> extractFileNameFromPath(path) } ?: ""
+
+            // Read Contents
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            val contents = StringBuilder()
+            var line = reader.readLine()
+            while (line != null) {
+                contents.append(line).append('\n')
+                line = reader.readLine()
+            }
+
+            return Note(
+                    id = NO_NOTE,
+                    name = name,
+                    contents = contents.toString(),
+                    date = Date(),
+                    color = NoteUtility.getDefaultColor()
+            )
+        }
+    }
+
+    fun writePlaintextFile(uri: Uri, contents: String) {
+        context.contentResolver.openOutputStream(uri).let { outputStream ->
+
+            // Write Contents
+            val writer = BufferedWriter(OutputStreamWriter(outputStream))
+            writer.write(contents)
+            writer.close()
+        }
     }
 
 
@@ -79,6 +118,15 @@ class NoteDiskRepository() {
         }
     }
 
+    private fun extractFileNameFromPath(path: String): String {
+        val fileNameWithExtension =
+                path.substring(path.indexOfLast { char -> char == '/' } + 1, path.length)
+        return if (fileNameWithExtension.contains(FILE_EXTENSION))
+            fileNameWithExtension.substring(0, fileNameWithExtension.indexOf(FILE_EXTENSION))
+        else
+            fileNameWithExtension
+    }
+
 
     /*--- Constants ---*/
 
@@ -86,18 +134,18 @@ class NoteDiskRepository() {
         private const val FILE_EXTENSION = ".txt"
         private const val REPLACEMENT_CHARACTER = '_'
         private val RESERVED_CHARACTERS = listOf(
-            '|',
-            '?',
-            '*',
-            '<',
-            '\\',
-            '"',
-            ':',
-            '>',
-            '+',
-            '[',
-            ']',
-            '/'
+                '|',
+                '?',
+                '*',
+                '<',
+                '\\',
+                '"',
+                ':',
+                '>',
+                '+',
+                '[',
+                ']',
+                '/'
         )
     }
 }

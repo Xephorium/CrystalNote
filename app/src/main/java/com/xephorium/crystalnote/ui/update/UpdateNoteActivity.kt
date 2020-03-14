@@ -34,12 +34,12 @@ import androidx.core.app.ActivityCompat
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 
 
-class UpdateActivity() : BaseActivity(), UpdateContract.View {
+class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
 
     /*--- Variable Declarations ---*/
 
-    lateinit var presenter: UpdatePresenter
+    lateinit var presenter: UpdateNotePresenter
     lateinit var optionsMenu: Menu
 
     private val noteId: Int
@@ -51,6 +51,9 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
     private val isLaunchFromSelect: Boolean
         get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_SELECT, false))
 
+    private val isLaunchFromUpdateFile: Boolean
+        get() = (intent.getBooleanExtra(KEY_LAUNCH_FROM_UPDATE_FILE, false))
+
 
     /*--- Lifecycle Methods ---*/
 
@@ -58,13 +61,14 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.update_activity_layout)
 
-        presenter = UpdatePresenter()
+        presenter = UpdateNotePresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.noteRoomRepository = NoteRoomRepository(this)
-        presenter.noteDiskRepository = NoteDiskRepository()
+        presenter.noteDiskRepository = NoteDiskRepository(this)
         presenter.isInEditMode = noteId != NO_NOTE
         presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.isLaunchFromSelect = isLaunchFromSelect
+        presenter.isLaunchFromUpdateFile = isLaunchFromUpdateFile
         presenter.isFileWritePermissionGranted = checkFileWritePermission()
         presenter.noteId = noteId
 
@@ -88,8 +92,33 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         presenter.detachView()
     }
 
-    override fun onBackPressed() {
-        presenter.handleBackClick()
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.note_toolbar_options, menu)
+
+        // Determine Menu Option Items' Initial Visibility
+        // Note: This should be handled in the presenter, but the onCreateOptionsMenu()
+        //       method is called after attach, meaning we don't yet have a menu to
+        //       manipulate in onAttach(). May the Code Gods forgive me.
+        optionsMenu = menu
+        if (presenter.password.isEmpty()) {
+            optionsMenu.findItem(R.id.option_lock).isVisible = true
+            optionsMenu.findItem(R.id.option_unlock).isVisible = false
+        } else {
+            optionsMenu.findItem(R.id.option_lock).isVisible = false
+            optionsMenu.findItem(R.id.option_unlock).isVisible = true
+        }
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.option_lock -> presenter.handleLockClick()
+            R.id.option_unlock -> presenter.handleUnlockClick()
+            R.id.option_export -> presenter.handleExportClick()
+            R.id.option_delete -> presenter.handleDeleteClick()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
@@ -298,6 +327,10 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         KeyboardUtility.hideKeyboard(this)
     }
 
+    override fun onBackPressed() {
+        presenter.handleBackClick()
+    }
+
 
     /*--- Permissions Methods ---*/
 
@@ -333,35 +366,6 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
 
     /*--- Setup Methods ---*/
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.toolbar_options, menu)
-
-        // Determine Lock Items' Initial Visibility
-        // Note: This should be handled in the presenter, but the onCreateOptionsMenu()
-        //       method is called after attach, meaning we don't yet have a menu to
-        //       manipulate. May the Code Gods forgive me.
-        optionsMenu = menu
-        if (presenter.password.isEmpty()) {
-            optionsMenu.findItem(R.id.option_lock).isVisible = true
-            optionsMenu.findItem(R.id.option_unlock).isVisible = false
-        } else {
-            optionsMenu.findItem(R.id.option_lock).isVisible = false
-            optionsMenu.findItem(R.id.option_unlock).isVisible = true
-        }
-
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.option_lock -> presenter.handleLockClick()
-            R.id.option_unlock -> presenter.handleUnlockClick()
-            R.id.option_export -> presenter.handleExportClick()
-            R.id.option_delete -> presenter.handleDeleteClick()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun setupToolbar() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -394,6 +398,7 @@ class UpdateActivity() : BaseActivity(), UpdateContract.View {
         const val KEY_FROM_UPDATE_ACTIVITY = "FROM_UPDATE_ACTIVITY_KEY"
         const val KEY_LAUNCH_FROM_WIDGET = "LAUNCH_FROM_WIDGET_KEY"
         const val KEY_LAUNCH_FROM_SELECT = "LAUNCH_FROM_SELECT_KEY"
+        const val KEY_LAUNCH_FROM_UPDATE_FILE = "LAUNCH_FROM_UPDATE_FILE_KEY"
         const val FILE_WRITE_REQUEST_CODE = 117
     }
 }

@@ -7,7 +7,7 @@ import com.xephorium.crystalnote.data.model.Note
 interface RoomNoteDao {
 
     @Insert
-    fun insertNote(note: Note)
+    fun insertNote(note: Note): Long
 
     @Query("SELECT * FROM notes WHERE id = :id")
     fun getNote(id: Int): Note
