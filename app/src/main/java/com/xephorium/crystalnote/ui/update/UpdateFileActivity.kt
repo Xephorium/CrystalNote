@@ -153,7 +153,8 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     }
 
     override fun navigateBack() {
-        finish()
+        if (isTaskRoot) finish()
+        else finishAffinity()
     }
 
     override fun navigateToUpdateNote(id: Int) {
