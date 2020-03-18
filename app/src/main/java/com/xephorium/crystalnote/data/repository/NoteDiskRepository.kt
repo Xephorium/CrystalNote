@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Environment
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import java.io.*
 
@@ -55,13 +56,19 @@ class NoteDiskRepository(private val context: Context) {
         }
     }
 
-    fun writePlaintextFile(uri: Uri, contents: String) {
-        context.contentResolver.openOutputStream(uri).let { outputStream ->
+    fun writePlaintextFile(uri: Uri, contents: String): Boolean {
+        try {
+            context.contentResolver.openOutputStream(uri).let { outputStream ->
 
-            // Write Contents
-            val writer = BufferedWriter(OutputStreamWriter(outputStream))
-            writer.write(contents)
-            writer.close()
+                // Write Contents
+                val writer = BufferedWriter(OutputStreamWriter(outputStream))
+                writer.write(contents)
+                writer.close()
+
+                return true
+            }
+        } catch (exception: Exception) {
+            return false
         }
     }
 

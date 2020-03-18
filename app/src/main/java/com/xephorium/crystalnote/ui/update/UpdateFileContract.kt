@@ -21,6 +21,7 @@ interface UpdateFileContract {
         fun showImportSuccessMessage()
         fun showOpenNoteMenuOption()
         fun showFileSavedMessage()
+        fun showFileAccessDeniedMessage()
         fun showErrorReadingFileMessage()
         fun navigateBack()
         fun navigateToUpdateNote(id: Int)

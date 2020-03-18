@@ -148,6 +148,14 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         Toast.makeText(this, "File saved.", Toast.LENGTH_SHORT).show()
     }
 
+    override fun showFileAccessDeniedMessage() {
+        Toast.makeText(
+            this,
+            "Error saving: file access denied.",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
     override fun showErrorReadingFileMessage() {
         Toast.makeText(this, "Error reading file.", Toast.LENGTH_SHORT).show()
     }

@@ -87,8 +87,8 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleBackClick() {
-        saveFile()
-        view?.showFileSavedMessage()
+        if (saveFile()) view?.showFileSavedMessage()
+        else view?.showFileAccessDeniedMessage()
         view?.navigateBack()
     }
 
@@ -99,9 +99,10 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
 
     /*--- Private Methods ---*/
 
-    private fun saveFile() {
+    private fun saveFile(): Boolean {
         if (initialContent != content) {
-            noteDiskRepository.writePlaintextFile(fileUri!!, content)
+            return noteDiskRepository.writePlaintextFile(fileUri!!, content)
         }
+        return true
     }
 }
