@@ -4,14 +4,6 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android'
 
 android {
-    signingConfigs {
-        release {
-            storeFile file(project.findProperty('keystoreFile'))
-            storePassword project.findProperty('keystorePassword')
-            keyAlias project.findProperty('keyAlias')
-            keyPassword project.findProperty('keyPassword')
-        }
-    }
     compileSdkVersion 28
 
     defaultConfig {
@@ -20,7 +12,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
