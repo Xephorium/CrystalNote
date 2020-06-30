@@ -9,6 +9,14 @@ An aggressively minimalist, highly customizable notes app for Android.
 
 ##
 
+Crystal Note was designed to be the most customizable notes app on Android. From color theme to widget appearance, every pixel can be tailored to your preference. All free forever, with no ads, tracking, or spam.
+
+</br>
+
+**Download**: [Google Play](https://play.google.com/store/apps/details?id=com.xephorium.crystalnote)
+
+</br>
+
 ### App Features
 - Note Colors
 - Note Password Protection
