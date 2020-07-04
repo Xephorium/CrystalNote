@@ -202,6 +202,7 @@
     <style name="White" parent="Light">
         <item name="themeStatusBar">#B6B6B6</item>
         <item name="themeToolbar">@color/white</item>
+        <item name="themeToolbarRipple">@color/lightNoteRipple</item>
         <item name="themeToolbarTextPrimary">@color/lightTextPrimary</item>
         <item name="themeToolbarTextSecondary">@color/lightTextSecondary</item>
         <item name="themeAccent">@color/lightTextHandle</item>
