@@ -110,7 +110,7 @@
         <item name="themeOverscroll">@color/lightOverscroll</item>
 
         <item name="themeAccent">@color/lightAccent</item>
-        <item name="themeAccentRipple">@color/rippleDark</item>
+        <item name="themeAccentRipple">@color/rippleLight</item>
         <item name="themeAccentTextPrimary">@color/lightAccentTextPrimary</item>
         <item name="themeAccentTextSecondary">@color/lightAccentTextSecondary</item>
 
@@ -132,7 +132,7 @@
         <item name="themeDrawerItem">@color/lightDrawerItem</item>
         <item name="themeDrawerItemSelected">@color/lightDrawerItemSelected</item>
         <item name="themeDrawerItemSelectedBackground">@color/lightDrawerSelection</item>
-        <item name="themeDrawerImageFilter">@color/drawerFilterCharcoal</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterLight</item>
 
     </style>
 
@@ -172,12 +172,27 @@
         <item name="themeDrawerItem">@color/darkDrawerItem</item>
         <item name="themeDrawerItemSelected">@color/darkDrawerItemSelected</item>
         <item name="themeDrawerItemSelectedBackground">@color/darkDrawerSelection</item>
-        <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterDark</item>
 
     </style>
 
 
     <!-- Custom Color Themes -->
+
+    <style name="Black" parent="Dark">
+        <item name="themeStatusBar">@color/black</item>
+        <item name="themeToolbar">@color/blackToolbar</item>
+        <item name="themeBackground">@color/black</item>
+        <item name="themeAccent">@color/blackAccent</item>
+        <item name="themeAccentRipple">@color/rippleBlack</item>
+        <item name="themeTextHandle">@color/blackTextHandle</item>
+        <item name="themeNoteRipple">@color/rippleBlackNote</item>
+        <item name="themeNoteBackground">@color/blackNoteBackground</item>
+        <item name="themeNoteColorBar">@color/blackNoteColorBar</item>
+        <item name="themeSettingsPreviewBackground">@color/black</item>
+        <item name="themeDrawerItemSelectedBackground">@color/blackHighlight</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
+    </style>
 
     <style name="Azure" parent="Light">
         <item name="themeStatusBar">@color/azureDark</item>

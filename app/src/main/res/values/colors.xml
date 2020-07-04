@@ -6,7 +6,7 @@
 
     <color name="lightStatusBar">@color/charcoalDarker</color>
     <color name="lightToolbar">@color/charcoalLight</color>
-    <color name="lightToolbarRipple">@color/rippleDark</color>
+    <color name="lightToolbarRipple">@color/rippleLight</color>
     <color name="lightToolbarTextPrimary">@color/whiteSmoke</color>
     <color name="lightToolbarTextSecondary">@color/whiteSmokeAlpha</color>
     <color name="lightBackground">@color/direwolf</color>
@@ -22,7 +22,7 @@
     <color name="lightTextHandle">@color/gray8</color>
     <color name="lightNoteBackground">@color/white</color>
     <color name="lightNoteColorBar">@color/gray8</color>
-    <color name="lightNoteRipple">@color/rippleDefault</color>
+    <color name="lightNoteRipple">@color/rippleLightNote</color>
     <color name="lightNoteUnderline">#ccc</color>
     <color name="lightSettingsPreviewBackground">#b8b8b8</color>
     <color name="lightDrawerItem">@color/lightTextSecondary</color>
@@ -47,7 +47,7 @@
     <color name="darkTextHandle">@color/white</color>
     <color name="darkNoteBackground">#555</color>
     <color name="darkNoteColorBar">@color/gray8</color>
-    <color name="darkNoteRipple">@color/rippleLight</color>
+    <color name="darkNoteRipple">@color/rippleDarkNote</color>
     <color name="darkNoteUnderline">#666</color>
     <color name="darkSettingsPreviewBackground">#1d1d1d</color>
     <color name="darkDrawerItem">@color/darkTextSecondary</color>
@@ -67,6 +67,12 @@
     <color name="charcoalDarker">#161616</color>
     <color name="charcoalLight">#333333</color>
     <color name="black">#000</color>
+    <color name="blackToolbar">#202020</color>
+    <color name="blackAccent">#404040</color>
+    <color name="blackTextHandle">#707070</color>
+    <color name="blackNoteBackground">#202020</color>
+    <color name="blackNoteColorBar">#424242</color>
+    <color name="blackHighlight">#343434</color>
     <color name="gray8">#888888</color>
     <color name="olive">#778A53</color>
     <color name="oliveDesaturated">#889E64</color>
@@ -92,17 +98,22 @@
 
     <!-- Control Colors -->
 
+    <color name="drawerFilterLight">#cc333333</color>
+    <color name="drawerFilterDark">#cc191919</color>
+    <color name="drawerFilterBlack">#da000000</color>
     <color name="drawerFilterAzure">#CC2A6BB3</color>
-    <color name="drawerFilterCharcoal">#cc333333</color>
-    <color name="drawerFilterBlack">#cc191919</color>
     <color name="drawerFilterSage">#cc01797C</color>
     <color name="drawerFilterOlive">#cc26350E</color>
     <color name="drawerFilterTomato">#CCB94B3D</color>
     <color name="drawerFilterWhite">#ccffffff</color>
 
     <color name="rippleDefault">#cccccc</color>
-    <color name="rippleDark">#33ffffff</color>
-    <color name="rippleLight">#77ffffff</color>
+    <color name="rippleDark">#24ffffff</color>
+    <color name="rippleDarkNote">#50ffffff</color>
+    <color name="rippleLight">#28ffffff</color>
+    <color name="rippleLightNote">#cccccc</color>
+    <color name="rippleBlack">#0affffff</color>
+    <color name="rippleBlackNote">#50ffffff</color>
 
 
     <!-- Widget Default Colors -->
