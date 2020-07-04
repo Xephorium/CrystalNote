@@ -105,7 +105,7 @@
     <color name="drawerFilterSage">#cc01797C</color>
     <color name="drawerFilterOlive">#cc26350E</color>
     <color name="drawerFilterTomato">#CCB94B3D</color>
-    <color name="drawerFilterWhite">#ccffffff</color>
+    <color name="drawerFilterWhite">#88ffffff</color>
 
     <color name="rippleDefault">#cccccc</color>
     <color name="rippleDark">#24ffffff</color>

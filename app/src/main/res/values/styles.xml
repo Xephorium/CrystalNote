@@ -199,6 +199,18 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
     </style>
 
+    <style name="White" parent="Light">
+        <item name="themeStatusBar">#B6B6B6</item>
+        <item name="themeToolbar">@color/white</item>
+        <item name="themeToolbarTextPrimary">@color/lightTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/lightTextSecondary</item>
+        <item name="themeAccent">@color/lightTextHandle</item>
+        <item name="themeAccentTextPrimary">@color/darkTextPrimary</item>
+        <item name="themeAccentTextSecondary">@color/darkTextPrimary</item>
+        <item name="themeNoteColorBar">@color/lightTextTertiary</item>
+        <item name="themeDrawerImageFilter">@color/drawerFilterWhite</item>
+    </style>
+
     <style name="Azure" parent="Light">
         <item name="themeStatusBar">@color/azureDark</item>
         <item name="themeToolbar">@color/azure</item>
