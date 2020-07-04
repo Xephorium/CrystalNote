@@ -127,7 +127,9 @@
         <item name="themeNoteRipple">@color/lightNoteRipple</item>
         <item name="themeNoteUnderline">@color/lightNoteUnderline</item>
 
-        <item name="themeSettingsPreviewBackground">@color/lightSettingsPreviewBackground</item>
+        <item name="themePreviewBackgroundDefault">@color/lightPreviewBackground</item>
+        <item name="themePreviewBackgroundLight">@color/lightPreviewBackground</item>
+        <item name="themePreviewBackgroundDark">@color/darkPreviewBackground</item>
 
         <item name="themeDrawerItem">@color/lightDrawerItem</item>
         <item name="themeDrawerItemSelected">@color/lightDrawerItemSelected</item>
@@ -167,7 +169,9 @@
         <item name="themeNoteRipple">@color/darkNoteRipple</item>
         <item name="themeNoteUnderline">@color/darkNoteUnderline</item>
 
-        <item name="themeSettingsPreviewBackground">@color/darkSettingsPreviewBackground</item>
+        <item name="themePreviewBackgroundDefault">@color/darkPreviewBackground</item>
+        <item name="themePreviewBackgroundLight">@color/lightPreviewBackground</item>
+        <item name="themePreviewBackgroundDark">@color/darkPreviewBackground</item>
 
         <item name="themeDrawerItem">@color/darkDrawerItem</item>
         <item name="themeDrawerItemSelected">@color/darkDrawerItemSelected</item>
@@ -189,7 +193,8 @@
         <item name="themeNoteRipple">@color/rippleBlackNote</item>
         <item name="themeNoteBackground">@color/blackNoteBackground</item>
         <item name="themeNoteColorBar">@color/blackNoteColorBar</item>
-        <item name="themeSettingsPreviewBackground">@color/black</item>
+        <item name="themePreviewBackgroundDefault">@color/black</item>
+        <item name="themePreviewBackgroundDark">@color/black</item>
         <item name="themeDrawerItemSelectedBackground">@color/blackHighlight</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
     </style>

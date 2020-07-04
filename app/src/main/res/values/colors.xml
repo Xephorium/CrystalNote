@@ -24,7 +24,7 @@
     <color name="lightNoteColorBar">@color/gray8</color>
     <color name="lightNoteRipple">@color/rippleLightNote</color>
     <color name="lightNoteUnderline">#ccc</color>
-    <color name="lightSettingsPreviewBackground">#b8b8b8</color>
+    <color name="lightPreviewBackground">#b8b8b8</color>
     <color name="lightDrawerItem">@color/lightTextSecondary</color>
     <color name="lightDrawerItemSelected">@color/lightTextPrimary</color>
     <color name="lightDrawerSelection">#eee</color>
@@ -49,7 +49,7 @@
     <color name="darkNoteColorBar">@color/gray8</color>
     <color name="darkNoteRipple">@color/rippleDarkNote</color>
     <color name="darkNoteUnderline">#666</color>
-    <color name="darkSettingsPreviewBackground">#1d1d1d</color>
+    <color name="darkPreviewBackground">#1d1d1d</color>
     <color name="darkDrawerItem">@color/darkTextSecondary</color>
     <color name="darkDrawerItemSelected">@color/darkTextPrimary</color>
     <color name="darkDrawerSelection">#494949</color>

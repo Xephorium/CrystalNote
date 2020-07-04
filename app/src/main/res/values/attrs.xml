@@ -39,7 +39,9 @@
     <attr name="themeNoteRipple" format="reference|color" />
     <attr name="themeNoteUnderline" format="reference|color" />
 
-    <attr name="themeSettingsPreviewBackground" format="reference|color" />
+    <attr name="themePreviewBackgroundDefault" format="reference|color" />
+    <attr name="themePreviewBackgroundLight" format="reference|color" />
+    <attr name="themePreviewBackgroundDark" format="reference|color" />
 
     <attr name="themeDrawerItem" format="reference|color" />
     <attr name="themeDrawerItemSelected" format="reference|color" />

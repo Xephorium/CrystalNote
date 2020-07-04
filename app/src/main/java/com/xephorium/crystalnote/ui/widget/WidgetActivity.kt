@@ -150,11 +150,10 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         val backgroundColor: Int
         val iconColor: Int
         if (light) {
-            backgroundColor = resources.getColor(R.color.lightSettingsPreviewBackground)
+            backgroundColor = getThemeColor(R.attr.themePreviewBackgroundLight)
             iconColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.white), 110)
         } else {
-            backgroundColor =
-                CrystalNoteTheme.fromCurrentTheme(this).colorDarkSettingsPreviewBackground
+            backgroundColor = getThemeColor(R.attr.themePreviewBackgroundDark)
             iconColor = resources.getColor(R.color.darkNoteBackground)
         }
 

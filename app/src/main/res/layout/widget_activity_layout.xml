@@ -23,7 +23,7 @@
         android:id="@+id/viewWidgetSettingsPreviewBackground"
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="?themeSettingsPreviewBackground"
+        android:background="?attr/themePreviewBackgroundDefault"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
