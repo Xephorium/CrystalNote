@@ -18,7 +18,8 @@ data class CrystalNoteTheme(
         val colorTextPrimary: Int,
         val colorTextSecondary: Int,
         val colorTextTertiary: Int,
-        val colorAccent: Int
+        val colorAccent: Int,
+        val colorDarkSettingsPreviewBackground: Int
 ) {
 
     enum class Themes(val displayName: String, val resourceId: Int) {
@@ -45,6 +46,7 @@ data class CrystalNoteTheme(
                 R.attr.themeBackground,
                 R.attr.themeNoteBackground,
                 R.attr.themeNoteColorBar,
+                R.attr.themeSettingsPreviewBackground,
                 R.attr.themeTextInvertedPrimary,
                 R.attr.themeTextPrimary,
                 R.attr.themeTextSecondary,
@@ -59,6 +61,7 @@ data class CrystalNoteTheme(
                 ContextCompat.getColor(context, R.color.lightNoteBackground),
                 ContextCompat.getColor(context, R.color.lightNoteColorBar),
                 ContextCompat.getColor(context, R.color.lightToolbar),
+                ContextCompat.getColor(context, R.color.lightSettingsPreviewBackground),
                 ContextCompat.getColor(context, R.color.lightToolbarTextPrimary),
                 ContextCompat.getColor(context, R.color.lightToolbarTextSecondary),
                 ContextCompat.getColor(context, R.color.darkTextPrimary),
@@ -98,6 +101,7 @@ data class CrystalNoteTheme(
             val colorTextSecondary = parseColor(typedArray, ATTRIBUTES, R.attr.themeTextSecondary)
             val colorTextTertiary = parseColor(typedArray, ATTRIBUTES, R.attr.themeTextTertiary)
             val colorAccent = parseColor(typedArray, ATTRIBUTES, R.attr.themeAccent)
+            val colorDarkSettingsPreviewBackground = parseColor(typedArray, ATTRIBUTES, R.attr.themeSettingsPreviewBackground)
             typedArray.recycle()
 
             // Return Theme
@@ -112,7 +116,8 @@ data class CrystalNoteTheme(
                     colorTextPrimary,
                     colorTextSecondary,
                     colorTextTertiary,
-                    colorAccent
+                    colorAccent,
+                    colorDarkSettingsPreviewBackground
             )
         }
 

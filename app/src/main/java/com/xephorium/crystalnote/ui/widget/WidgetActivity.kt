@@ -153,7 +153,8 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             backgroundColor = resources.getColor(R.color.lightSettingsPreviewBackground)
             iconColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.white), 110)
         } else {
-            backgroundColor = resources.getColor(R.color.darkSettingsPreviewBackground)
+            backgroundColor =
+                CrystalNoteTheme.fromCurrentTheme(this).colorDarkSettingsPreviewBackground
             iconColor = resources.getColor(R.color.darkNoteBackground)
         }
 
