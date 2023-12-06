@@ -1,0 +1,3 @@
+Crystal Note does not collect or share any data. All note information is stored only locally on your device.
+
+If you installed this app from Google Play, then Google Play does collect some personal data. Please see the privacy policy for Google Play Services here: https://policies.google.com/privacy
