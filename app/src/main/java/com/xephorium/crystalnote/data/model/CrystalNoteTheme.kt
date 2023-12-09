@@ -85,6 +85,16 @@ data class CrystalNoteTheme(
 
         }
 
+        fun getNameFromTheme(context: Context, theme: CrystalNoteTheme): String {
+            for (testTheme in Themes.values()) {
+                if (fromThemeName(context, testTheme.displayName).equals(theme)) {
+                    return testTheme.displayName
+                }
+            }
+
+            return ""
+        }
+
         private fun getThemeFromTypedArray(typedArray: TypedArray): CrystalNoteTheme {
 
             // Parse Theme Colors
