@@ -12,7 +12,8 @@ class RoomRepository(context: Context) {
     /*--- Variable Declarations ---*/
 
     private val roomDatabase = Room.databaseBuilder(
-        context, RoomDatabase::class.java,
+        context,
+        RoomDatabase::class.java,
         RoomDatabase.ROOM_DATABASE_NAME
     ).build()
 
