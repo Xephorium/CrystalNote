@@ -52,6 +52,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         presenter.detachView()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (drawerOpen) {
             super.onBackPressed()

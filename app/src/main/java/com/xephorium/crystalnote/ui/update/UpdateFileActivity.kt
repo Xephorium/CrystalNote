@@ -177,6 +177,7 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         KeyboardUtility.hideKeyboard(this)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         presenter.handleBackClick()
     }

@@ -327,6 +327,7 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         KeyboardUtility.hideKeyboard(this)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         presenter.handleBackClick()
     }

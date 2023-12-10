@@ -1,8 +1,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.xephorium.crystalnote"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -23,6 +21,7 @@
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,6 +57,7 @@
         <activity
             android:name=".ui.update.UpdateNoteActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />
@@ -68,6 +68,7 @@
         <activity
             android:name=".ui.update.UpdateFileActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -106,6 +107,7 @@
             android:noHistory="false"
             android:screenOrientation="portrait"
             android:excludeFromRecents="true"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.widget.CHOOSE_NOTE" />
@@ -118,6 +120,7 @@
             android:icon="@mipmap/icon_launcher"
             android:label="CrystalNote Widget"
             android:permission="false"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -136,6 +139,7 @@
             android:screenOrientation="portrait"
             android:excludeFromRecents="true"
             android:theme="@style/WidgetConfigurationActivityTheme"
+            android:exported="true"
             >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />

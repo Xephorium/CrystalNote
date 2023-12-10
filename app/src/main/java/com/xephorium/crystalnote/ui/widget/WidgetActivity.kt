@@ -65,6 +65,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         presenter.detachView()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (drawerOpen) {
             super.onBackPressed()

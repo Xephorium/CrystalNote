@@ -68,6 +68,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         presenter.detachView()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (drawerAnimating)
             return

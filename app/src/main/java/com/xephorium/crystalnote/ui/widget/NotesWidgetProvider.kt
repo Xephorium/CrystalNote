@@ -257,7 +257,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
             context,
             widgetId,
             intent,
-            PendingIntent.FLAG_CANCEL_CURRENT
+            PendingIntent.FLAG_IMMUTABLE
         )
     }
 
