@@ -27,19 +27,20 @@
 
     <!-- Custom Controls -->
     <dimen name="cardViewColorBar">10dp</dimen>
-    <dimen name="cardViewCornerRadius">5dp</dimen>
-    <dimen name="cardViewElevation">4dp</dimen>
+    <dimen name="cardViewCornerRadius">10dp</dimen>
+    <dimen name="cardViewElevation">0dp</dimen>
     <dimen name="cardViewMargin">5dp</dimen>
     <dimen name="colorOrbPaddingWidgetSettings">20dp</dimen>
     <dimen name="colorOrbSizeWidgetSettings">25dp</dimen>
     <dimen name="colorOrbSizeToolbar">56dp</dimen>
     <dimen name="colorPickerPaddingBottom">30dp</dimen>
+    <dimen name="dialogCornerRadius">10dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">12dp</dimen>
     <dimen name="drawerIconPaddingIncreased">14dp</dimen>
     <dimen name="drawerItemHeight">50dp</dimen>
     <dimen name="drawerItemPadding">20dp</dimen>
-    <dimen name="drawerItemRadius">5dp</dimen>
+    <dimen name="drawerItemRadius">8dp</dimen>
     <dimen name="floatingActionButtonElevation">6dp</dimen>
     <dimen name="iconWidgetSettingsContrast">48dp</dimen>
     <dimen name="noteListIconLockSize">20dp</dimen>
@@ -57,7 +58,7 @@
     <dimen name="settingsSaveButtonPadding">14dp</dimen>
     <dimen name="splashIconSize">90dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
-    <dimen name="toolbarElevation">4dp</dimen>
+    <dimen name="toolbarElevation">0dp</dimen>
     <dimen name="toolbarText">19sp</dimen>
     <dimen name="widgetCornerRadius">2dp</dimen>
     <dimen name="widgetDefaultPadding">10dp</dimen>

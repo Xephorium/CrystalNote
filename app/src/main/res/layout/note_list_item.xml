@@ -6,10 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/paddingActivity"
-    android:layout_marginTop="@dimen/paddingMedium"
+    android:layout_marginTop="@dimen/paddingBig"
     android:layout_marginEnd="@dimen/paddingActivity"
     app:cardBackgroundColor="?themeNoteBackground"
     app:cardCornerRadius="@dimen/cardViewCornerRadius"
+    app:cardElevation="@dimen/cardViewElevation"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
