@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.ui.base
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.viewbinding.ViewBinding
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
@@ -13,15 +14,15 @@ open class ToolbarActivity : BaseActivity() {
 
     /*--- Variable Declarations ---*/
 
-    private lateinit var binding: ToolbarActivityLayoutBinding
+    protected lateinit var toolbarBinding: ToolbarActivityLayoutBinding
 
 
     /*--- Lifecycle Methods ---*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ToolbarActivityLayoutBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        toolbarBinding = ToolbarActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(toolbarBinding.root)
 
         setupToolbar()
     }
@@ -34,15 +35,15 @@ open class ToolbarActivity : BaseActivity() {
 
     /*--- Public Methods ---*/
 
-    fun setActivityContent(layoutResource: Int) {
-        layoutInflater.inflate(layoutResource, findViewById(R.id.layoutActivityContent))
+    fun setBoundViewAsContent(boundView: ViewBinding) {
+        toolbarBinding.layoutActivityContent.addView(boundView.root)
     }
 
 
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(toolbarBinding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 }

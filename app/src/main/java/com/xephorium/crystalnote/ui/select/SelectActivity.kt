@@ -8,7 +8,6 @@ import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.databinding.SelectActivityLayoutBinding
-import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.ToolbarActivity
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
@@ -27,18 +26,15 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
 
     lateinit var presenter: SelectPresenter
 
-    private lateinit var selectActivityBinding: SelectActivityLayoutBinding
-
-    private lateinit var toolbarBinding: ToolbarActivityLayoutBinding
+    private lateinit var selectBinding: SelectActivityLayoutBinding
 
 
     /*--- Lifecycle Methods ---*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        selectActivityBinding = SelectActivityLayoutBinding.inflate(layoutInflater)
-        toolbarBinding = ToolbarActivityLayoutBinding.inflate(layoutInflater)
-        setActivityContent(R.layout.select_activity_layout)
+        selectBinding = SelectActivityLayoutBinding.inflate(layoutInflater)
+        setBoundViewAsContent(selectBinding)
 
         presenter = SelectPresenter()
         presenter.noteRepository = NoteRoomRepository(this)
@@ -63,7 +59,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
-        selectActivityBinding.run {
+        selectBinding.run {
             listSelectNotes.visibility = View.VISIBLE
             textSelectEmpty.visibility = View.GONE
             listSelectNotes.populateNoteList(notes)
@@ -71,7 +67,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     }
 
     override fun showEmptyNotesList() {
-        selectActivityBinding.run {
+        selectBinding.run {
             listSelectNotes.visibility = View.GONE
             textSelectEmpty.visibility = View.VISIBLE
         }
@@ -95,11 +91,11 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        toolbarBinding.run {
-            toolbar.isEditMode = false
-            toolbar.setTitle(R.string.selectTitle)
-            toolbar.setLeftButtonImage(R.drawable.icon_back)
-            toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+        toolbarBinding.toolbar.run {
+            isEditMode = false
+            setTitle(R.string.selectTitle)
+            setLeftButtonImage(R.drawable.icon_back)
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
                 override fun onButtonClick() = presenter.handleToolbarBackClick()
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
@@ -108,7 +104,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
     }
 
     private fun setupClickListeners() {
-        selectActivityBinding.run {
+        selectBinding.run {
             floatingActionButtonSelect.setOnClickListener { presenter.handleNewNoteButtonClick() }
             listSelectNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
                 override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)

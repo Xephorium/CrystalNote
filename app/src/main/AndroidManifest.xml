@@ -20,6 +20,7 @@
         <activity
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:theme="@style/SplashTheme"
             android:exported="true"
             >
@@ -33,30 +34,34 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait"
-            />
+            tools:ignore="LockedOrientationActivity" />
 
         <!-- Widget Activity -->
         <activity
             android:name=".ui.widget.WidgetActivity"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             />
 
         <!-- Settings Activity -->
         <activity
             android:name=".ui.settings.SettingsActivity"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             />
 
         <!-- About Activity -->
         <activity
             android:name=".ui.about.AboutActivity"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             />
 
         <!-- Update Note Activity -->
         <activity
             android:name=".ui.update.UpdateNoteActivity"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -68,6 +73,7 @@
         <activity
             android:name=".ui.update.UpdateFileActivity"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:exported="true"
             >
             <intent-filter>
@@ -106,6 +112,7 @@
             android:name=".ui.select.SelectActivity"
             android:noHistory="false"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:excludeFromRecents="true"
             android:exported="true"
             >
@@ -137,6 +144,7 @@
             android:name=".ui.widget.WidgetConfigurationActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
             android:excludeFromRecents="true"
             android:theme="@style/WidgetConfigurationActivityTheme"
             android:exported="true"
