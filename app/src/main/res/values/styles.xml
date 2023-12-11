@@ -216,23 +216,23 @@
     </style>
 
     <style name="Cobalt" parent="Dark">
-        <item name="themeStatusBar">#191e27</item>
-        <item name="themeToolbar">#29303f</item>
-        <item name="themeNoteBackground">#29303f</item>
-        <item name="themeBackground">#191e27</item>
-        <item name="themeAccent">#DEE2E8</item>
-        <item name="themeNoteColorBar">#DEE2E8</item>
+        <item name="themeStatusBar">@color/cobaltForeground</item>
+        <item name="themeToolbar">@color/cobaltForeground</item>
+        <item name="themeNoteBackground">@color/cobaltForeground</item>
+        <item name="themeBackground">@color/cobaltBackground</item>
+        <item name="themeAccent">#eff3f9</item>
+        <item name="themeNoteColorBar">#eff3f9</item>
         <item name="themeTextPrimary">#ffffff</item>
         <item name="themeTextSecondary">#a1b1cb</item>
         <item name="themeTextTertiary">#6d82a1</item>
-        <item name="themeAccentTextPrimary">#191e27</item>
-        <item name="themeAccentTextSecondary">#191e27</item>
-        <item name="themeToolbarTextSecondary">#7a8aa1</item>
-        <item name="themeDrawerItem">#a1b1cb</item>
+        <item name="themeAccentTextPrimary">#252d3b</item>
+        <item name="themeAccentTextSecondary">#252d3b</item>
+        <item name="themeToolbarTextSecondary">#a1b1cb</item>
+        <item name="themeDrawerItem">#bbd2f5</item>
         <item name="themeDrawerItemSelected">#ffffff</item>
-        <item name="themeDrawerItemSelectedBackground">#29a1b1cb</item>
+        <item name="themeDrawerItemSelectedBackground">#30a1b1cb</item>
         <item name="themeDrawerImageFilter">#e40d1220</item>
-        <item name="themeDivider">#3f506a</item>
+        <item name="themeDivider">#556f95</item>
         <item name="themePreviewBackgroundDefault">#0d0f12</item>
         <item name="themePreviewBackgroundDark">#0d0f12</item>
         <item name="themePreviewBackgroundLight">#7989a1</item>
