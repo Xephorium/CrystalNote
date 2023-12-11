@@ -37,7 +37,7 @@
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/paddingLarge"
+        android:layout_marginEnd="@dimen/cardViewDividerPadding"
         android:layout_marginTop="@dimen/paddingSmall"
         app:layout_constraintStart_toEndOf="@+id/textNoteListHeader"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/paddingLarge"
+        android:layout_marginStart="@dimen/cardViewDividerPadding"
         android:layout_marginTop="@dimen/paddingSmall"
         app:layout_constraintEnd_toStartOf="@+id/textNoteListHeader"
         app:layout_constraintStart_toStartOf="parent"
