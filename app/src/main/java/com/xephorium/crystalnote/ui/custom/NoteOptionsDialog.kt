@@ -1,15 +1,10 @@
 package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
-import android.content.DialogInterface.BUTTON_POSITIVE
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import kotlinx.android.synthetic.main.note_options_layout.*
-import kotlinx.android.synthetic.main.password_dialog_layout.*
 
 
 class NoteOptionsDialog private constructor(private val context: Context) {
@@ -63,29 +58,34 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     /*--- Private Methods ---*/
 
     private fun setupViewItems() {
-        alertDialog.textNoteOptionsLock.visibility = if (showLock) View.VISIBLE else View.GONE
-        alertDialog.textNoteOptionsUnlock.visibility = if (showUnlock) View.VISIBLE else View.GONE
-        alertDialog.textNoteOptionsExport.visibility = if (showExport) View.VISIBLE else View.GONE
-        alertDialog.textNoteOptionsDelete.visibility = if (showDelete) View.VISIBLE else View.GONE
+        var textLock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)
+        var textUnlock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsUnlock)
+        var textExport = alertDialog.findViewById<TextView>(R.id.textNoteOptionsExport)
+        var textDelete = alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)
+
+        textLock?.visibility = if (showLock) View.VISIBLE else View.GONE
+        textUnlock?.visibility = if (showUnlock) View.VISIBLE else View.GONE
+        textExport?.visibility = if (showExport) View.VISIBLE else View.GONE
+        textDelete?.visibility = if (showDelete) View.VISIBLE else View.GONE
     }
 
     private fun setupClickListeners() {
-        alertDialog.textNoteOptionsLock.setOnClickListener {
+        alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onLockClick()
         }
-        alertDialog.textNoteOptionsUnlock.setOnClickListener {
+        alertDialog.findViewById<TextView>(R.id.textNoteOptionsUnlock)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onUnlockClick()
         }
-        alertDialog.textNoteOptionsExport.setOnClickListener {
+        alertDialog.findViewById<TextView>(R.id.textNoteOptionsExport)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onExportClick()
         }
-        alertDialog.textNoteOptionsDelete.setOnClickListener {
+        alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onDeleteClick()

@@ -81,6 +81,7 @@ class NoteDiskRepository(private val context: Context) {
     }
 
     private fun getNoteName(name: String): String {
+        // TODO - Permission needed to read from disk. This call returns null.
         val downloadFiles = getDownloadsDirectory().listFiles().map { it.name }
         var fileName = sanitizeNoteName(name) + FILE_EXTENSION
         var index = 1
@@ -104,6 +105,8 @@ class NoteDiskRepository(private val context: Context) {
     }
 
     private fun initializeFile(file: File) {
+        // TODO - File writing has changed in apps targeting newer versions of Android.
+        //        This throws an exception and needs to be revisited.
         if (!file.exists()) try {
             file.createNewFile()
         } catch (e: Exception) {

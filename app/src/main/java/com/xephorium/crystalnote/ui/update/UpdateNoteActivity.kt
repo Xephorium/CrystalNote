@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
@@ -12,13 +13,15 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
+import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
+import com.xephorium.crystalnote.databinding.UpdateActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
@@ -27,11 +30,6 @@ import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDial
 import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.utility.KeyboardUtility
 import com.xephorium.crystalnote.ui.widget.NotesWidgetProvider
-import kotlinx.android.synthetic.main.note_toolbar_layout.*
-
-import kotlinx.android.synthetic.main.update_activity_layout.*
-import androidx.core.app.ActivityCompat
-import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 
 
 class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
@@ -39,7 +37,10 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
     /*--- Variable Declarations ---*/
 
+    private lateinit var updateBinding: UpdateActivityLayoutBinding
+
     lateinit var presenter: UpdateNotePresenter
+
     lateinit var optionsMenu: Menu
 
     private val noteId: Int
@@ -59,7 +60,8 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.update_activity_layout)
+        updateBinding = UpdateActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(updateBinding.root)
 
         presenter = UpdateNotePresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -125,24 +127,24 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateFields(name: String, content: String) {
-        toolbar.setEditTextContent(name)
-        textNoteContent.setText(content)
+        updateBinding.toolbar.setEditTextContent(name)
+        updateBinding.textNoteContent.setText(content)
     }
 
     override fun populateColor(color: Int) {
-        toolbar.setColor(color)
+        updateBinding.toolbar.setColor(color)
     }
 
     override fun showTextUnderline() {
-        textNoteContent.showUnderline()
+        updateBinding.textNoteContent.showUnderline()
     }
 
     override fun hideTextUnderline() {
-        textNoteContent.hideUnderline()
+        updateBinding.textNoteContent.hideUnderline()
     }
 
     override fun showMonospacedFont() {
-        textNoteContent.useMonospacedFont()
+        updateBinding.textNoteContent.useMonospacedFont()
     }
 
     override fun showLockMenuOption() {
@@ -232,6 +234,7 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
                 }
             }
         })
+        verifyPasswordDialog.setShouldShowErrors(false)
         verifyPasswordDialog.show()
     }
 
@@ -327,6 +330,7 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         KeyboardUtility.hideKeyboard(this)
     }
 
+    @SuppressLint("MissingSuperCall")
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         presenter.handleBackClick()
@@ -343,6 +347,7 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         )
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -368,27 +373,30 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     /*--- Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(updateBinding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        toolbar.isEditMode = true
-        toolbar.setLeftButtonImage(R.drawable.icon_back)
-        toolbar.showColor()
-        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onButtonClick() = presenter.handleBackClick()
-            override fun onColorClick() = presenter.handleColorClick()
-            override fun onTextChange(text: String) = presenter.handleNameTextChange(text)
-        })
+        updateBinding.toolbar.run {
+            isEditMode = true
+            setLeftButtonImage(R.drawable.icon_back)
+            showColor()
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+                override fun onButtonClick() = presenter.handleBackClick()
+                override fun onColorClick() = presenter.handleColorClick()
+                override fun onTextChange(text: String) = presenter.handleNameTextChange(text)
+            })
+        }
     }
 
     private fun setupClickListeners() {
-        textNoteContent.addTextChangedListener(object : TextWatcher {
+        updateBinding.textNoteContent.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun afterTextChanged(editable: Editable?) {
-                presenter.handleContentTextChange(textNoteContent.text.toString())
+                presenter.handleContentTextChange(
+                    updateBinding.textNoteContent.text.toString()
+                )
             }
         })
-        colorOrbToolbar.setOnClickListener { presenter.handleColorClick() }
     }
 
 

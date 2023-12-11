@@ -8,26 +8,25 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewbinding.ViewBinding
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.databinding.DrawerActivityLayoutBinding
 import com.xephorium.crystalnote.ui.about.AboutActivity
 import com.xephorium.crystalnote.ui.base.BaseActivity
-import com.xephorium.crystalnote.ui.utility.DisplayUtility
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton.*
 import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
+import com.xephorium.crystalnote.ui.extensions.getThemeColor
 import com.xephorium.crystalnote.ui.home.HomeActivity
 import com.xephorium.crystalnote.ui.settings.SettingsActivity
+import com.xephorium.crystalnote.ui.utility.DisplayUtility
 import com.xephorium.crystalnote.ui.widget.WidgetActivity
-import kotlinx.android.synthetic.main.drawer_activity_layout.*
-import kotlinx.android.synthetic.main.drawer_layout.*
-import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton.*
-import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerButton
-import com.xephorium.crystalnote.ui.extensions.getThemeColor
 
 
 @SuppressLint("Registered")
@@ -35,6 +34,8 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
 
     /*--- Variable Declarations ---*/
+
+    protected lateinit var drawerBinding: DrawerActivityLayoutBinding
 
     private lateinit var presenter: DrawerPresenter
 
@@ -48,7 +49,8 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.drawer_activity_layout)
+        drawerBinding = DrawerActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(drawerBinding.root)
 
         presenter = DrawerPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -68,13 +70,14 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
         presenter.detachView()
     }
 
+    @SuppressLint("MissingSuperCall")
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (drawerAnimating)
             return
 
         if (drawerOpen) {
-            layoutDrawer.closeDrawers()
+            drawerBinding.layoutDrawer.closeDrawers()
             drawerAnimating = true
         } else {
             presenter.handleBackClick()
@@ -86,13 +89,23 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
     fun setActivityContent(layoutResource: Int) {
         val view = layoutInflater.inflate(layoutResource, null)
-        view.layoutParams =
-                ViewGroup.LayoutParams(layoutActivityContent.width, getActivityContentHeight())
-        layoutActivityContent.addView(view)
+        view.layoutParams = ViewGroup.LayoutParams(
+            drawerBinding.layoutActivityContent.width,
+            getActivityContentHeight()
+        )
+        drawerBinding.layoutActivityContent.addView(view)
+    }
+
+    fun setBoundViewAsContent(boundView: ViewBinding) {
+        boundView.root.layoutParams = ViewGroup.LayoutParams(
+            drawerBinding.layoutActivityContent.width,
+            getActivityContentHeight()
+        )
+        drawerBinding.layoutActivityContent.addView(boundView.root)
     }
 
     fun openDrawer() {
-        layoutDrawer.openDrawer(GravityCompat.START)
+        drawerBinding.layoutDrawer.openDrawer(GravityCompat.START)
         drawerAnimating = true
     }
 
@@ -100,7 +113,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun closeDrawer() {
-        layoutDrawer.closeDrawers()
+        drawerBinding.layoutDrawer.closeDrawers()
         drawerAnimating = true
     }
 
@@ -135,23 +148,26 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     }
 
     override fun setSelectedMenuButton(button: DrawerButton) {
+        val listDrawer = drawerBinding.layoutDrawer.findViewById<RecyclerView>(R.id.listDrawer)
         (listDrawer.adapter as? DrawerAdapter)?.items?.forEachIndexed { index, item ->
             if (item.type == BUTTON) {
                 val holder = listDrawer.findViewHolderForLayoutPosition(index) as? DrawerAdapter.ViewHolder
-                holder?.let {
+                holder?.run {
+                    val context = this@DrawerActivity as Context
                     if (item.text == button.displayName) {
-
-                        val itemColor = (this as Context).getThemeColor(R.attr.themeDrawerItemSelected)
-                        it.text.setTextColor(itemColor)
-                        it.icon.setColorFilter(itemColor, PorterDuff.Mode.SRC_IN)
-                        it.layout.background = ContextCompat.getDrawable(this, R.drawable.drawer_selection_background)
+                        val itemColor = context.getThemeColor(R.attr.themeDrawerItemSelected)
+                        text.setTextColor(itemColor)
+                        icon.setColorFilter(itemColor, PorterDuff.Mode.SRC_IN)
+                        layout.background = ContextCompat.getDrawable(
+                            context,
+                            R.drawable.drawer_selection_background
+                        )
 
                     } else {
-
-                        val itemColor = (this as Context).getThemeColor(R.attr.themeDrawerItem)
-                        it.text.setTextColor(itemColor)
-                        it.icon.setColorFilter(itemColor, PorterDuff.Mode.SRC_IN)
-                        it.layout.background = null
+                        val itemColor = context.getThemeColor(R.attr.themeDrawerItem)
+                        text.setTextColor(itemColor)
+                        icon.setColorFilter(itemColor, PorterDuff.Mode.SRC_IN)
+                        layout.background = null
                     }
                 }
             }
@@ -162,7 +178,7 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(drawerBinding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
@@ -172,17 +188,18 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
 
         drawerToggle = getActionBarDrawerToggle()
         drawerToggle.isDrawerIndicatorEnabled = false
-        layoutDrawer.addDrawerListener(drawerToggle)
+        drawerBinding.layoutDrawer.addDrawerListener(drawerToggle)
     }
 
     private fun setupNavDrawerItems() {
+        val listDrawer = drawerBinding.layoutDrawer.findViewById<RecyclerView>(R.id.listDrawer)
         listDrawer.layoutManager = LinearLayoutManager(this)
         listDrawer.adapter = DrawerAdapter(this, getItems())
     }
 
     private fun getActionBarDrawerToggle() = object : ActionBarDrawerToggle(
             this,
-            layoutDrawer,
+            drawerBinding.layoutDrawer,
             R.string.navigationDrawerOpened,
             R.string.navigationDrawerClosed) {
 

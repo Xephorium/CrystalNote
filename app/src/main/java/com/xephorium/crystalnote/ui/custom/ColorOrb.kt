@@ -67,7 +67,7 @@ class ColorOrb : View {
         setMeasuredDimension(viewWidth!!, viewHeight!!)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
 
         // Calculate Padding
         val pad = (1.0 - padding)

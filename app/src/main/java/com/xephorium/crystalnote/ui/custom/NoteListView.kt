@@ -4,15 +4,13 @@ import android.content.Context
 import android.text.format.DateUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View.OnClickListener
+import android.view.View.OnLongClickListener
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
-import com.xephorium.crystalnote.R
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.xephorium.crystalnote.data.model.Note
-import kotlinx.android.synthetic.main.note_list_layout.view.*
-
-import java.util.Calendar
+import com.xephorium.crystalnote.databinding.NoteListLayoutBinding
 
 /*
   NoteListView                                                             05.12.2019
@@ -35,6 +33,8 @@ class NoteListView : SwipeRefreshLayout {
 
     var noteListViewListener: NoteListViewListener? = null
 
+    private lateinit var binding: NoteListLayoutBinding
+
 
     /*--- List View Setup ---*/
 
@@ -47,9 +47,8 @@ class NoteListView : SwipeRefreshLayout {
     }
 
     private fun buildNoteListView(context: Context) {
-        val layoutInflater = LayoutInflater.from(context)
-        val noteListViewLayout = layoutInflater.inflate(R.layout.note_list_layout, null)
-        this.addView(noteListViewLayout)
+        binding = NoteListLayoutBinding.inflate(LayoutInflater.from(context))
+        this.addView(binding.root)
 
         this.noteListViewListener = getDefaultNoteListViewListener()
         this.setOnRefreshListener(getOnRefreshListener())
@@ -61,8 +60,8 @@ class NoteListView : SwipeRefreshLayout {
     fun populateNoteList(noteList: List<Note>) {
         parseNotes(noteList)
 
-        listNotes.layoutManager = LinearLayoutManager(context)
-        listNotes.adapter = getNoteListAdapter(newNotes, oldNotes)
+        binding.listNotes.layoutManager = LinearLayoutManager(context)
+        binding.listNotes.adapter = getNoteListAdapter(newNotes, oldNotes)
     }
 
 

@@ -1,0 +1,31 @@
+
+December 2023
+
+  //////////////////////////////////
+  /// CrystalNote v1.1 Checklist ///
+  //////////////////////////////////
+
+  Feature Rework - Changes needed to target Android 14
+  • Upgrade Gradle (12.09.2023)
+  • Upgrade Kotlin (12.09.2023)
+  • Migrate to AndroidX (12.09.2023)
+  • Migrate to ViewBinding (12.10.2023)
+  ◦ Review Permission Changes
+    - App hibernation
+    - Reading from downloads
+    - Writing to txt file
+  ◦ Review Widget Changes
+    - No startActivity() from BroadcastReceiver
+    - New widget configuration method
+  ◦ Review Intent Changes
+    - Intent filters need to be exported
+  ◦ Other
+    - Mandatory rounded corners on widgets?? :(
+    - v2 key signing for PlayStore upload
+    - Update Version #
+
+  New Features
+  ◦ Home Screen Optimization
+  ◦ Note Revert
+  ◦ Optional Scroll to Bottom Button
+  ◦ Darker Night Theme

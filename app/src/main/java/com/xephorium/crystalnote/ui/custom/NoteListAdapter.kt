@@ -9,15 +9,12 @@ import android.widget.Space
 import android.widget.TextView
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
-
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.DateType
-import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.data.model.Note
-import kotlinx.android.synthetic.main.note_list_header.view.*
-import kotlinx.android.synthetic.main.note_list_item.view.*
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.utility.NoteUtility
 
 /*
   NoteListAdapter                                                        05.12.2019
@@ -179,14 +176,14 @@ open class NoteListAdapter(
 
         init {
             if (type == VIEW_TYPE_NOTE) {
-                lock = view.iconNoteListLock
-                name = view.textNoteListTitle
-                preview = view.textNoteListPreview
-                date = view.textNoteListDate
-                colorBar = view.colorBarNoteList
+                lock = view.findViewById(R.id.iconNoteListLock)
+                name = view.findViewById(R.id.textNoteListTitle)
+                preview = view.findViewById(R.id.textNoteListPreview)
+                date = view.findViewById(R.id.textNoteListDate)
+                colorBar = view.findViewById(R.id.colorBarNoteList)
             } else {
-                header = view.textNoteListHeader
-                space = view.space
+                header = view.findViewById(R.id.textNoteListHeader)
+                space = view.findViewById(R.id.space)
             }
         }
 

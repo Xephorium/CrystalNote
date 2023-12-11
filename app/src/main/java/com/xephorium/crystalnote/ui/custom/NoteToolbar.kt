@@ -7,12 +7,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.ui.extensions.getThemeColor
-import kotlinx.android.synthetic.main.note_toolbar_layout.view.*
 
 class NoteToolbar : Toolbar {
 
@@ -23,11 +24,11 @@ class NoteToolbar : Toolbar {
 
     var isEditMode: Boolean = false
         set(editMode) = if (editMode) {
-            textToolbarEdit.visibility = View.VISIBLE
-            textToolbarTitle.visibility = View.GONE
+            findViewById<EditText>(R.id.textToolbarEdit)?.visibility = View.VISIBLE
+            findViewById<TextView>(R.id.textToolbarTitle)?.visibility = View.GONE
         } else {
-            textToolbarEdit.visibility = View.GONE
-            textToolbarTitle.visibility = View.VISIBLE
+            findViewById<EditText>(R.id.textToolbarEdit)?.visibility = View.GONE
+            findViewById<TextView>(R.id.textToolbarTitle)?.visibility = View.VISIBLE
         }
 
 
@@ -53,20 +54,25 @@ class NoteToolbar : Toolbar {
         this.isEditMode = false
         this.setLeftButtonImage(DEFAULT_LEFT_BUTTON_IMAGE)
         this.noteToolbarListener = getDefaultNoteToolbarListener()
-        colorOrbToolbar.setPadding(COLOR_ORB_PADDING)
-        colorOrbToolbar.setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
-        colorOrbToolbar.setOutlineColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbarTextSecondary)
-        colorOrbToolbar.setOutlineAlpha(COLOR_ORB_ALPHA)
 
-        findViewById<View>(R.id.buttonToolbarLeft).setOnClickListener {
+        findViewById<ColorOrb>(R.id.colorOrbToolbar).run {
+            setPadding(COLOR_ORB_PADDING)
+            setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
+            setOutlineColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbarTextSecondary)
+            setOutlineAlpha(COLOR_ORB_ALPHA)
+            setOnClickListener { noteToolbarListener?.onColorClick() }
+        }
+
+        findViewById<ImageView>(R.id.buttonToolbarLeft).setOnClickListener {
             noteToolbarListener?.onButtonClick()
         }
-        (findViewById<View>(R.id.textToolbarEdit) as EditText).addTextChangedListener(object : TextWatcher {
+
+        findViewById<EditText>(R.id.textToolbarEdit).addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
             override fun afterTextChanged(editable: Editable) {
                 noteToolbarListener?.onTextChange(
-                        (findViewById<View>(R.id.textToolbarEdit) as EditText).text.toString())
+                    (findViewById<View>(R.id.textToolbarEdit) as EditText).text.toString())
             }
         })
     }
@@ -75,54 +81,58 @@ class NoteToolbar : Toolbar {
     /*--- Public Methods ---*/
 
     override fun setTitle(stringResource: Int) {
-        textToolbarTitle.text = resources.getText(stringResource)
+        findViewById<TextView>(R.id.textToolbarTitle).text = resources.getText(stringResource)
     }
 
     fun setTitle(string: String) {
-        textToolbarTitle.text = string
+        findViewById<TextView>(R.id.textToolbarTitle).text.toString()
     }
 
     override fun getTitle(): CharSequence {
-        return textToolbarTitle.text
+        return findViewById<TextView>(R.id.textToolbarTitle).text.toString()
     }
 
     fun setEditTextContent(content: String) {
-        textToolbarEdit.setText(content)
+        findViewById<EditText>(R.id.textToolbarEdit).setText(content)
     }
 
     fun getEditTextContent(): String {
-        return textToolbarEdit.toString()
+        return findViewById<EditText>(R.id.textToolbarEdit).text.toString()
     }
 
     fun setLeftButtonImage(drawable: Int) {
-        if (drawable == NO_IMAGE) {
-            buttonToolbarLeft.visibility = View.GONE
-        } else {
-            buttonToolbarLeft.visibility = View.VISIBLE
-            buttonToolbarLeft.setImageDrawable(resources.getDrawable(drawable, context.theme))
-            buttonToolbarLeft.setColorFilter(
+        findViewById<ImageView>(R.id.buttonToolbarLeft).run {
+            if (drawable == NO_IMAGE) {
+                visibility = View.GONE
+            } else {
+                visibility = View.VISIBLE
+                setImageDrawable(resources.getDrawable(drawable, context.theme))
+                setColorFilter(
                     context.getThemeColor(R.attr.themeToolbarTextSecondary),
                     android.graphics.PorterDuff.Mode.SRC_IN
-            )
-            setLeftButtonScale(TOOLBAR_ICON_SCALE_SMALLER)
+                )
+                setLeftButtonScale(TOOLBAR_ICON_SCALE_SMALLER)
+            }
         }
     }
 
     fun setLeftButtonScale(scale: Float) {
-        buttonToolbarLeft.scaleX = scale
-        buttonToolbarLeft.scaleY = scale
+        findViewById<ImageView>(R.id.buttonToolbarLeft).run {
+            scaleX = scale
+            scaleY = scale
+        }
     }
 
     fun showColor() {
-        colorOrbToolbar.visibility = View.VISIBLE
+        findViewById<ColorOrb>(R.id.colorOrbToolbar).visibility = View.VISIBLE
     }
 
     fun hideColor() {
-        colorOrbToolbar.visibility = View.GONE
+        findViewById<ColorOrb>(R.id.colorOrbToolbar).visibility = View.GONE
     }
 
     fun setColor(color: Int) {
-        colorOrbToolbar.setColor(color)
+        findViewById<ColorOrb>(R.id.colorOrbToolbar).setColor(color)
     }
 
     fun setNoteToolbarListener(noteToolbarListener: NoteToolbarListener) {

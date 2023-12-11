@@ -8,19 +8,20 @@ import android.widget.AdapterView
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
-import kotlinx.android.synthetic.main.settings_activity_layout.*
-import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
+import com.xephorium.crystalnote.databinding.SettingsActivityLayoutBinding
 
 
 class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
 
     /*--- Variable Declarations ---*/
+
+    private lateinit var settingsBinding: SettingsActivityLayoutBinding
 
     private lateinit var presenter: SettingsPresenter
 
@@ -29,7 +30,8 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.settings_activity_layout)
+        settingsBinding = SettingsActivityLayoutBinding.inflate(layoutInflater)
+        setBoundViewAsContent(settingsBinding)
 
         presenter = SettingsPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -66,59 +68,59 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     override fun populateTheme(theme: String) {
         val themeIndex = CrystalNoteTheme.Themes.values().firstOrNull { it.displayName == theme }?.ordinal ?: 0
-        selectorSettingsTheme.setSelection(themeIndex)
+        settingsBinding.selectorSettingsTheme.setSelection(themeIndex)
     }
 
     override fun populateNotePreviewLines(lines: Int) {
-        selectorSettingsLines.setSelection(lines)
+        settingsBinding.selectorSettingsLines.setSelection(lines)
     }
 
     override fun populateNoteDateType(dateType: DateType) {
-        selectorSettingsDate.setSelection(dateType.ordinal)
+        settingsBinding.selectorSettingsDate.setSelection(dateType.ordinal)
     }
 
     override fun populateNoteColorBarSwitch(checked: Boolean) {
-        switchSettingsNoteColorBar.isChecked = checked
+        settingsBinding.switchSettingsNoteColorBar.isChecked = checked
     }
 
     override fun populateThemedColorBarSwitch(checked: Boolean) {
-        switchSettingsNoteBarThemed.isChecked = checked
+        settingsBinding.switchSettingsNoteBarThemed.isChecked = checked
     }
 
     override fun populateTodayHeaderSwitch(checked: Boolean) {
-        switchSettingsToday.isChecked = checked
+        settingsBinding.switchSettingsToday.isChecked = checked
     }
 
     override fun populateNoteUnderlineSwitch(checked: Boolean) {
-        switchSettingsUnderline.isChecked = checked
+        settingsBinding.switchSettingsUnderline.isChecked = checked
     }
 
     override fun populateMonospaceSwitch(checked: Boolean) {
-        switchSettingsMonospace.isChecked = checked
+        settingsBinding.switchSettingsMonospace.isChecked = checked
     }
 
     override fun setPreviewTheme(theme: String) {
-        themePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
+        settingsBinding.themePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
     }
 
     override fun setPreviewLines(lines: Int) {
-        themePreview.setPreviewLines(lines)
+        settingsBinding.themePreview.setPreviewLines(lines)
     }
 
     override fun setPreviewDateType(type: DateType) {
-        themePreview.setDateType(type)
+        settingsBinding.themePreview.setDateType(type)
     }
 
     override fun setPreviewColorBarVisibility(visible: Boolean) {
-        themePreview.setNoteColorBarVisible(visible)
+        settingsBinding.themePreview.setNoteColorBarVisible(visible)
     }
 
     override fun setPreviewColorBarThemed(themed: Boolean) {
-        themePreview.setNoteColorBarThemed(themed)
+        settingsBinding.themePreview.setNoteColorBarThemed(themed)
     }
 
     override fun setPreviewHeaderVisibility(visible: Boolean) {
-        themePreview.setHeadersVisible(visible)
+        settingsBinding.themePreview.setHeadersVisible(visible)
     }
 
     override fun showNavigationDrawer() {
@@ -152,75 +154,85 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        toolbar.isEditMode = false
-        toolbar.setTitle(R.string.settingsTitle)
-        toolbar.setLeftButtonImage(R.drawable.icon_menu)
-        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onButtonClick() = presenter.handleMenuButtonClick()
-            override fun onColorClick() = Unit
-            override fun onTextChange(text: String) = Unit
-        })
+        drawerBinding.toolbar.run {
+            isEditMode = false
+            setTitle(R.string.settingsTitle)
+            setLeftButtonImage(R.drawable.icon_menu)
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onColorClick() = Unit
+                override fun onTextChange(text: String) = Unit
+            })
+        }
     }
 
     private fun setupThemeSpinner() {
         val themeAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, THEMES)
         themeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorSettingsTheme.adapter = themeAdapter
-        selectorSettingsTheme.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
-            override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                presenter.handleThemeChange(CrystalNoteTheme.Themes.values()[position].displayName)
+        settingsBinding.run {
+            selectorSettingsTheme.adapter = themeAdapter
+            selectorSettingsTheme.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+                override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    presenter.handleThemeChange(CrystalNoteTheme.Themes.values()[position].displayName)
+                }
             }
+            textSettingsThemeLabel.setOnClickListener { selectorSettingsTheme.performClick() }
         }
-        textSettingsThemeLabel.setOnClickListener { selectorSettingsTheme.performClick() }
     }
 
     private fun setupNotePreviewLinesSpinner() {
         val linesAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, NOTE_PREVIEW_LINES)
         linesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorSettingsLines.adapter = linesAdapter
-        selectorSettingsLines.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
-            override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                presenter.handleNoteLinesChange(position)
+        settingsBinding.run {
+            selectorSettingsLines.adapter = linesAdapter
+            selectorSettingsLines.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+                override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    presenter.handleNoteLinesChange(position)
+                }
             }
+            textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
         }
-        textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
     }
 
     private fun setupNoteDateType() {
         val dateAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, NOTE_DATE)
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorSettingsDate.adapter = dateAdapter
-        selectorSettingsDate.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {}
-            override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                presenter.handleNoteDateTypeChange(DateType.values()[position])
+        settingsBinding.run {
+            selectorSettingsDate.adapter = dateAdapter
+            selectorSettingsDate.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
+                override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    presenter.handleNoteDateTypeChange(DateType.values()[position])
+                }
             }
+            textSettingsNoteDateLabel.setOnClickListener { selectorSettingsDate.performClick() }
         }
-        textSettingsNoteDateLabel.setOnClickListener { selectorSettingsDate.performClick() }
     }
 
     private fun setupSwitches() {
-        switchSettingsNoteColorBar.setOnCheckedChangeListener { _, checked ->
-            presenter.handleNoteColorBarToggle(checked)
-        }
-        switchSettingsNoteBarThemed.setOnCheckedChangeListener { _, checked ->
-            presenter.handleThemedColorBarToggle(checked)
-        }
-        switchSettingsToday.setOnCheckedChangeListener { _, checked ->
-            presenter.handleTodayHeaderToggle(checked)
-        }
-        switchSettingsUnderline.setOnCheckedChangeListener { _, checked ->
-            presenter.handleNoteUnderlineToggle(checked)
-        }
-        switchSettingsMonospace.setOnCheckedChangeListener { _, checked ->
-            presenter.handleMonospaceToggle(checked)
+        settingsBinding.run {
+            switchSettingsNoteColorBar.setOnCheckedChangeListener { _, checked ->
+                presenter.handleNoteColorBarToggle(checked)
+            }
+            switchSettingsNoteBarThemed.setOnCheckedChangeListener { _, checked ->
+                presenter.handleThemedColorBarToggle(checked)
+            }
+            switchSettingsToday.setOnCheckedChangeListener { _, checked ->
+                presenter.handleTodayHeaderToggle(checked)
+            }
+            switchSettingsUnderline.setOnCheckedChangeListener { _, checked ->
+                presenter.handleNoteUnderlineToggle(checked)
+            }
+            switchSettingsMonospace.setOnCheckedChangeListener { _, checked ->
+                presenter.handleMonospaceToggle(checked)
+            }
         }
     }
 
     private fun setupSaveButton() {
-        buttonSave.setOnClickListener { presenter.handleSaveClick() }
+        settingsBinding.buttonSave.setOnClickListener { presenter.handleSaveClick() }
     }
 
 

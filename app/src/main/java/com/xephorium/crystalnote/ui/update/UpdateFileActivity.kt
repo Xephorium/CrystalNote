@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
@@ -21,11 +22,11 @@ import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
+import com.xephorium.crystalnote.databinding.UpdateActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_LAUNCH_FROM_UPDATE_FILE
 import com.xephorium.crystalnote.ui.utility.KeyboardUtility
-import kotlinx.android.synthetic.main.update_activity_layout.*
 
 
 class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
@@ -36,15 +37,19 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     private val fileUri: Uri?
         get() = intent.data
 
+    private lateinit var updateBinding: UpdateActivityLayoutBinding
+
     lateinit var presenter: UpdateFilePresenter
-    lateinit var optionsMenu: Menu
+
+    private lateinit var optionsMenu: Menu
 
 
     /*--- Lifecycle Methods ---*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.update_activity_layout)
+        updateBinding = UpdateActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(updateBinding.root)
 
         presenter = UpdateFilePresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -89,20 +94,20 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateFields(name: String, content: String) {
-        toolbar.setTitle(name)
-        textNoteContent.setText(content)
+        updateBinding.toolbar.setTitle(name)
+        updateBinding.textNoteContent.setText(content)
     }
 
     override fun showTextUnderline() {
-        textNoteContent.showUnderline()
+        updateBinding.textNoteContent.showUnderline()
     }
 
     override fun hideTextUnderline() {
-        textNoteContent.hideUnderline()
+        updateBinding.textNoteContent.hideUnderline()
     }
 
     override fun showMonospacedFont() {
-        textNoteContent.useMonospacedFont()
+        updateBinding.textNoteContent.useMonospacedFont()
     }
 
     override fun showRevertDialog() {
@@ -177,6 +182,7 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         KeyboardUtility.hideKeyboard(this)
     }
 
+    @SuppressLint("MissingSuperCall")
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         presenter.handleBackClick()
@@ -193,6 +199,7 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         )
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
@@ -218,23 +225,25 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     /*--- Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(updateBinding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        toolbar.isEditMode = false
-        toolbar.setLeftButtonImage(NoteToolbar.NO_IMAGE)
-        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onButtonClick() = Unit
-            override fun onColorClick() = Unit
-            override fun onTextChange(text: String) = Unit
-        })
+        updateBinding.toolbar.run {
+            isEditMode = false
+            setLeftButtonImage(NoteToolbar.NO_IMAGE)
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+                override fun onButtonClick() = Unit
+                override fun onColorClick() = Unit
+                override fun onTextChange(text: String) = Unit
+            })
+        }
     }
 
     private fun setupClickListeners() {
-        textNoteContent.addTextChangedListener(object : TextWatcher {
+        updateBinding.textNoteContent.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun afterTextChanged(editable: Editable?) {
-                presenter.handleContentTextChange(textNoteContent.text.toString())
+                presenter.handleContentTextChange(updateBinding.textNoteContent.text.toString())
             }
         })
     }

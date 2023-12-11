@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.home
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,25 +10,22 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
-import com.xephorium.crystalnote.ui.drawer.DrawerActivity
+import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptionsListener
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDialogListener
+import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_NOTE_ID
-
-import kotlinx.android.synthetic.main.home_activity_layout.*
-import kotlinx.android.synthetic.main.toolbar_activity_layout.*
 
 class HomeActivity : DrawerActivity(), HomeContract.View {
 
@@ -37,6 +35,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     private val fromUpdateActivity: Boolean
         get() = intent.getBooleanExtra(KEY_FROM_UPDATE_ACTIVITY, false)
 
+    private lateinit var homeBinding: HomeActivityLayoutBinding
+
     lateinit var presenter: HomePresenter
 
 
@@ -44,7 +44,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.home_activity_layout)
+        homeBinding = HomeActivityLayoutBinding.inflate(layoutInflater)
+        setBoundViewAsContent(homeBinding)
 
         presenter = HomePresenter()
         presenter.noteRoomRepository = NoteRoomRepository(this)
@@ -70,14 +71,14 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateNoteList(notes: List<Note>) {
-        listHomeNotes.visibility = View.VISIBLE
-        textHomeEmpty.visibility = View.GONE
-        listHomeNotes.populateNoteList(notes)
+        homeBinding.listHomeNotes.visibility = View.VISIBLE
+        homeBinding.textHomeEmpty.visibility = View.GONE
+        homeBinding.listHomeNotes.populateNoteList(notes)
     }
 
     override fun showEmptyNotesList() {
-        listHomeNotes.visibility = View.GONE
-        textHomeEmpty.visibility = View.VISIBLE
+        homeBinding.listHomeNotes.visibility = View.GONE
+        homeBinding.textHomeEmpty.visibility = View.VISIBLE
     }
 
     override fun showNavigationDrawer() {
@@ -173,6 +174,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
                 }
             }
         })
+        verifyPasswordDialog.setShouldShowErrors(false)
         verifyPasswordDialog.show()
     }
 
@@ -240,6 +242,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
                 }
             }
         })
+        setPasswordDialog.setShouldShowErrors(false)
         setPasswordDialog.show()
     }
 
@@ -265,6 +268,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         )
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
@@ -290,19 +294,21 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        toolbar.isEditMode = false
-        toolbar.setTitle(R.string.homeTitle)
-        toolbar.setLeftButtonImage(R.drawable.icon_menu)
-        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onButtonClick() = presenter.handleMenuButtonClick()
-            override fun onColorClick() = Unit
-            override fun onTextChange(text: String) = Unit
-        })
+        drawerBinding.toolbar.run {
+            isEditMode = false
+            setTitle(R.string.homeTitle)
+            setLeftButtonImage(R.drawable.icon_menu)
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onColorClick() = Unit
+                override fun onTextChange(text: String) = Unit
+            })
+        }
     }
 
     private fun setupClickListeners() {
-        floatingActionButtonHome.setOnClickListener { presenter.handleNewNoteButtonClick() }
-        listHomeNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
+        homeBinding.floatingActionButtonHome.setOnClickListener { presenter.handleNewNoteButtonClick() }
+        homeBinding.listHomeNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
             override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
             override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()

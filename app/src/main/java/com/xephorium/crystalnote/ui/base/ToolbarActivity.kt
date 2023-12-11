@@ -5,17 +5,23 @@ import android.os.Bundle
 import android.view.WindowManager
 
 import com.xephorium.crystalnote.R
-import kotlinx.android.synthetic.main.toolbar_activity_layout.*
+import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
 
 @SuppressLint("Registered")
 open class ToolbarActivity : BaseActivity() {
+
+
+    /*--- Variable Declarations ---*/
+
+    private lateinit var binding: ToolbarActivityLayoutBinding
 
 
     /*--- Lifecycle Methods ---*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.toolbar_activity_layout)
+        binding = ToolbarActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupToolbar()
     }
@@ -36,7 +42,7 @@ open class ToolbarActivity : BaseActivity() {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 }

@@ -16,20 +16,21 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
+import com.xephorium.crystalnote.databinding.WidgetActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.extensions.getThemeColor
-import kotlinx.android.synthetic.main.toolbar_activity_layout.*
-import kotlinx.android.synthetic.main.widget_activity_layout.*
-import kotlinx.android.synthetic.main.widget_activity_layout.buttonSave
 
 
 class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
 
     /*--- Variable Declarations ---*/
+
+    private lateinit var widgetActivityBinding: WidgetActivityLayoutBinding
 
     private lateinit var presenter: WidgetPresenter
 
@@ -38,7 +39,8 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.widget_activity_layout)
+        widgetActivityBinding = WidgetActivityLayoutBinding.inflate(layoutInflater)
+        setBoundViewAsContent(widgetActivityBinding)
 
         presenter = WidgetPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -84,65 +86,67 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             widgetNames
         )
         widgetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsSelection.adapter = widgetAdapter
-        selectorWidgetSettingsSelection.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleWidgetChange(position)
+        widgetActivityBinding.run {
+            selectorWidgetSettingsSelection.adapter = widgetAdapter
+            selectorWidgetSettingsSelection.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {}
+                    override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                        presenter.handleWidgetChange(position)
+                    }
                 }
-        }
-        textWidgetSettingsSelectionLabel.setOnClickListener {
-            selectorWidgetSettingsSelection.performClick()
+            textWidgetSettingsSelectionLabel.setOnClickListener {
+                selectorWidgetSettingsSelection.performClick()
+            }
         }
     }
 
     override fun populateWidgetSelector(index: Int) {
-        selectorWidgetSettingsSelection.setSelection(index)
+        widgetActivityBinding.selectorWidgetSettingsSelection.setSelection(index)
     }
 
     override fun populateBackgroundColor(color: Int) {
-        colorOrbWidgetSettingsBackgroundColor.setColor(color)
+        widgetActivityBinding.colorOrbWidgetSettingsBackgroundColor.setColor(color)
     }
 
     override fun populateTitleColor(color: Int) {
-        colorOrbWidgetSettingsTitleColor.setColor(color)
+        widgetActivityBinding.colorOrbWidgetSettingsTitleColor.setColor(color)
     }
 
     override fun populateContentColor(color: Int) {
-        colorOrbWidgetSettingsContentColor.setColor(color)
+        widgetActivityBinding.colorOrbWidgetSettingsContentColor.setColor(color)
     }
 
     override fun populateTextSize(size: TextSize) {
-        selectorWidgetSettingsTextSize.setSelection(size.ordinal)
+        widgetActivityBinding.selectorWidgetSettingsTextSize.setSelection(size.ordinal)
     }
 
     override fun populateBackgroundAlpha(transparency: Transparency) {
-        selectorWidgetSettingsBackgroundAlpha.setSelection(transparency.ordinal)
+        widgetActivityBinding.selectorWidgetSettingsBackgroundAlpha.setSelection(transparency.ordinal)
     }
 
     override fun populateContentAlpha(transparency: Transparency) {
-        selectorWidgetSettingsContentAlpha.setSelection(transparency.ordinal)
+        widgetActivityBinding.selectorWidgetSettingsContentAlpha.setSelection(transparency.ordinal)
     }
 
     override fun setPreviewBackgroundColor(color: Int) {
-        widgetSettingsPreview.setBackgroundColor(color)
+        widgetActivityBinding.widgetSettingsPreview.setBackgroundColor(color)
     }
 
     override fun setPreviewTitleColor(color: Int) {
-        widgetSettingsPreview.setTitleColor(color)
+        widgetActivityBinding.widgetSettingsPreview.setTitleColor(color)
     }
 
     override fun setPreviewContentColor(color: Int) {
-        widgetSettingsPreview.setTextColor(color)
+        widgetActivityBinding.widgetSettingsPreview.setTextColor(color)
     }
 
     override fun setPreviewTextSize(size: TextSize) {
-        widgetSettingsPreview.setTextSize(size)
+        widgetActivityBinding.widgetSettingsPreview.setTextSize(size)
     }
 
     override fun setPreviewBackgroundAlpha(transparency: Transparency) {
-        widgetSettingsPreview.setTransparency(transparency)
+        widgetActivityBinding.widgetSettingsPreview.setTransparency(transparency)
     }
 
     override fun setPreviewBackgroundBrightness(light: Boolean) {
@@ -159,23 +163,27 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
 
         // Set Background & Icon Colors
-        viewWidgetSettingsPreviewBackground.setBackgroundColor(backgroundColor)
+        widgetActivityBinding.viewWidgetSettingsPreviewBackground.setBackgroundColor(backgroundColor)
         val icon = ContextCompat.getDrawable(this, R.drawable.icon_contrast)
         val drawable = DrawableCompat.wrap(icon!!)
         DrawableCompat.setTint(drawable, iconColor)
-        iconWidgetSettingsContrast.setImageDrawable(drawable)
+        widgetActivityBinding.iconWidgetSettingsContrast.setImageDrawable(drawable)
     }
 
     override fun showNoWidgetsMessage() {
-        scrollViewWidgetSettings.visibility = View.GONE
-        buttonSave.visibility = View.GONE
-        textWidgetSettingsEmpty.visibility = View.VISIBLE
+        widgetActivityBinding.run {
+            scrollViewWidgetSettings.visibility = View.GONE
+            buttonSave.visibility = View.GONE
+            textWidgetSettingsEmpty.visibility = View.VISIBLE
+        }
     }
 
     override fun hideNoWidgetsMessage() {
-        scrollViewWidgetSettings.visibility = View.VISIBLE
-        buttonSave.visibility = View.VISIBLE
-        textWidgetSettingsEmpty.visibility = View.GONE
+        widgetActivityBinding.run {
+            scrollViewWidgetSettings.visibility = View.VISIBLE
+            buttonSave.visibility = View.VISIBLE
+            textWidgetSettingsEmpty.visibility = View.GONE
+        }
     }
 
     override fun showBackgroundColorPickerDialog() {
@@ -243,61 +251,65 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        toolbar.isEditMode = false
-        toolbar.setTitle(R.string.widgetTitle)
-        toolbar.setLeftButtonImage(R.drawable.icon_menu)
-        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onButtonClick() = presenter.handleMenuButtonClick()
-            override fun onColorClick() = Unit
-            override fun onTextChange(text: String) = Unit
-        })
+        drawerBinding.toolbar.run {
+            isEditMode = false
+            setTitle(R.string.widgetTitle)
+            setLeftButtonImage(R.drawable.icon_menu)
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onColorClick() = Unit
+                override fun onTextChange(text: String) = Unit
+            })
+        }
     }
 
     private fun setupPreviewIcons() {
-        iconWidgetSettingsContrast.setOnClickListener {
+        widgetActivityBinding.iconWidgetSettingsContrast.setOnClickListener {
             presenter.handlePreviewBackgroundBrightnessToggle()
         }
     }
 
     private fun setupColorOrbs() {
+        widgetActivityBinding.run {
 
-        // Retrieve Theme
-        val theme = CrystalNoteTheme.fromCurrentTheme(this)
+            // Retrieve Theme
+            val theme = CrystalNoteTheme.fromCurrentTheme(this@WidgetActivity)
 
-        // Background Color Orb
-        layoutWidgetSettingsBackgroundColor.setOnClickListener {
-            colorOrbWidgetSettingsBackgroundColor.performClick()
-        }
-        textWidgetSettingsBackgroundColorLabel.setOnClickListener {
-            colorOrbWidgetSettingsBackgroundColor.performClick()
-        }
-        colorOrbWidgetSettingsBackgroundColor.setTheme(theme)
-        colorOrbWidgetSettingsBackgroundColor.setOnClickListener {
-            presenter.handleBackgroundColorClick()
-        }
+            // Background Color Orb
+            layoutWidgetSettingsBackgroundColor.setOnClickListener {
+                colorOrbWidgetSettingsBackgroundColor.performClick()
+            }
+            textWidgetSettingsBackgroundColorLabel.setOnClickListener {
+                colorOrbWidgetSettingsBackgroundColor.performClick()
+            }
+            colorOrbWidgetSettingsBackgroundColor.setTheme(theme)
+            colorOrbWidgetSettingsBackgroundColor.setOnClickListener {
+                presenter.handleBackgroundColorClick()
+            }
 
-        // Title Color Orb
-        layoutWidgetSettingsTitleColor.setOnClickListener {
-            colorOrbWidgetSettingsTitleColor.performClick()
-        }
-        textWidgetSettingsTitleColorLabel.setOnClickListener {
-            colorOrbWidgetSettingsTitleColor.performClick()
-        }
-        colorOrbWidgetSettingsTitleColor.setTheme(theme)
-        colorOrbWidgetSettingsTitleColor.setOnClickListener {
-            presenter.handleTitleColorClick()
-        }
+            // Title Color Orb
+            layoutWidgetSettingsTitleColor.setOnClickListener {
+                colorOrbWidgetSettingsTitleColor.performClick()
+            }
+            textWidgetSettingsTitleColorLabel.setOnClickListener {
+                colorOrbWidgetSettingsTitleColor.performClick()
+            }
+            colorOrbWidgetSettingsTitleColor.setTheme(theme)
+            colorOrbWidgetSettingsTitleColor.setOnClickListener {
+                presenter.handleTitleColorClick()
+            }
 
-        // Text Color Orb
-        layoutWidgetSettingsContentColor.setOnClickListener {
-            colorOrbWidgetSettingsContentColor.performClick()
-        }
-        textWidgetSettingsContentColorLabel.setOnClickListener {
-            colorOrbWidgetSettingsContentColor.performClick()
-        }
-        colorOrbWidgetSettingsContentColor.setTheme(theme)
-        colorOrbWidgetSettingsContentColor.setOnClickListener {
-            presenter.handleContentColorClick()
+            // Text Color Orb
+            layoutWidgetSettingsContentColor.setOnClickListener {
+                colorOrbWidgetSettingsContentColor.performClick()
+            }
+            textWidgetSettingsContentColorLabel.setOnClickListener {
+                colorOrbWidgetSettingsContentColor.performClick()
+            }
+            colorOrbWidgetSettingsContentColor.setTheme(theme)
+            colorOrbWidgetSettingsContentColor.setOnClickListener {
+                presenter.handleContentColorClick()
+            }
         }
     }
 
@@ -305,16 +317,18 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         val textSizesAdapter =
             ArrayAdapter<String>(this, R.layout.settings_selector_item, TEXT_SIZES)
         textSizesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsTextSize.adapter = textSizesAdapter
-        selectorWidgetSettingsTextSize.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleTextSizeChange(TextSize.values()[position])
+        widgetActivityBinding.run {
+            selectorWidgetSettingsTextSize.adapter = textSizesAdapter
+            selectorWidgetSettingsTextSize.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {}
+                    override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                        presenter.handleTextSizeChange(TextSize.values()[position])
+                    }
                 }
+            textWidgetSettingsTextSizeLabel.setOnClickListener {
+                selectorWidgetSettingsTextSize.performClick()
             }
-        textWidgetSettingsTextSizeLabel.setOnClickListener {
-            selectorWidgetSettingsTextSize.performClick()
         }
     }
 
@@ -325,16 +339,18 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             TRANSPARENCY_VALUES
         )
         transparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsBackgroundAlpha.adapter = transparencyAdapter
-        selectorWidgetSettingsBackgroundAlpha.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleBackgroundAlphaChange(Transparency.values()[position])
+        widgetActivityBinding.run {
+            selectorWidgetSettingsBackgroundAlpha.adapter = transparencyAdapter
+            selectorWidgetSettingsBackgroundAlpha.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {}
+                    override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                        presenter.handleBackgroundAlphaChange(Transparency.values()[position])
+                    }
                 }
+            textWidgetSettingsBackgroundAlphaLabel.setOnClickListener {
+                selectorWidgetSettingsBackgroundAlpha.performClick()
             }
-        textWidgetSettingsBackgroundAlphaLabel.setOnClickListener {
-            selectorWidgetSettingsBackgroundAlpha.performClick()
         }
     }
 
@@ -345,21 +361,23 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             TRANSPARENCY_VALUES
         )
         textTransparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        selectorWidgetSettingsContentAlpha.adapter = textTransparencyAdapter
-        selectorWidgetSettingsContentAlpha.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {}
-                override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                    presenter.handleContentAlphaChange(Transparency.values()[position])
+        widgetActivityBinding.run {
+            selectorWidgetSettingsContentAlpha.adapter = textTransparencyAdapter
+            selectorWidgetSettingsContentAlpha.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {}
+                    override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                        presenter.handleContentAlphaChange(Transparency.values()[position])
+                    }
                 }
+            textWidgetSettingsContentAlphaLabel.setOnClickListener {
+                selectorWidgetSettingsContentAlpha.performClick()
             }
-        textWidgetSettingsContentAlphaLabel.setOnClickListener {
-            selectorWidgetSettingsContentAlpha.performClick()
         }
     }
 
     private fun setupSaveButton() {
-        buttonSave.setOnClickListener { presenter.handleSaveClick() }
+        widgetActivityBinding.buttonSave.setOnClickListener { presenter.handleSaveClick() }
     }
 
     override fun refreshWidgets() {

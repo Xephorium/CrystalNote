@@ -5,10 +5,11 @@ import android.content.DialogInterface.BUTTON_POSITIVE
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.textfield.TextInputEditText
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import kotlinx.android.synthetic.main.password_dialog_layout.*
 
 
 class PasswordDialog private constructor(private val context: Context) {
@@ -21,6 +22,7 @@ class PasswordDialog private constructor(private val context: Context) {
         .create()
     private var listener: PasswordDialogListener = DEFAULT_LISTENER
     private var message: String = ""
+    private var shouldShowErrors: Boolean = true
 
 
     /*--- Public Methods ---*/
@@ -35,7 +37,9 @@ class PasswordDialog private constructor(private val context: Context) {
 
     fun setButtonName(name: String) {
         alertDialog.setButton(BUTTON_POSITIVE, name) { dialog, _ ->
-            listener.onPasswordProvided(alertDialog.textInputEditTextPassword.text.toString())
+            alertDialog.findViewById<TextInputEditText>(R.id.textInputEditTextPassword)?.let {
+                listener.onPasswordProvided(it.text.toString())
+            }
             dialog.dismiss()
         }
     }
@@ -44,24 +48,33 @@ class PasswordDialog private constructor(private val context: Context) {
         this.listener = listener
     }
 
+    fun setShouldShowErrors(show: Boolean) {
+        shouldShowErrors = show
+    }
+
     fun show() {
         alertDialog.show()
 
         // Setup Message
         if (message.isNotEmpty()) {
-            alertDialog.textPasswordMessage.visibility = View.VISIBLE
-            alertDialog.textPasswordMessage.text = message
+            alertDialog.findViewById<TextView>(R.id.textPasswordMessage)?.run {
+                visibility = View.VISIBLE
+                text = message
+            }
         }
 
         // Setup Password EditText Listener
-        alertDialog.textInputEditTextPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
-            override fun afterTextChanged(p0: Editable?) = validatePasswordField(p0.toString())
-        })
+        alertDialog.findViewById<TextInputEditText>(R.id.textInputEditTextPassword)?.run {
 
-        // Set Initial State
-        validatePasswordField(alertDialog.textInputEditTextPassword.text.toString())
+            addTextChangedListener (object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
+                override fun afterTextChanged(p0: Editable?) = validatePasswordField(p0.toString())
+            })
+
+            // Set Initial State
+            validatePasswordField(text.toString())
+        }
     }
 
     fun dismiss() {
@@ -72,40 +85,31 @@ class PasswordDialog private constructor(private val context: Context) {
     /*--- Private Methods ---*/
 
     private fun validatePasswordField(password: String) {
-        val isEmptyPassword = (alertDialog.textInputEditTextPassword.text ?: "").isEmpty()
-        val passwordError = listener.verifyPassword(password)
-        val isInvalidPassword = passwordError.isNotEmpty()
-        val button = alertDialog.getButton(BUTTON_POSITIVE)
+        alertDialog.findViewById<TextInputEditText>(R.id.textInputEditTextPassword)?.run {
+            val isEmptyPassword = (text ?: "").isEmpty()
+            val passwordError = listener.verifyPassword(password)
+            val isInvalidPassword = passwordError.isNotEmpty()
+            val button = alertDialog.getButton(BUTTON_POSITIVE)
 
-        if (isEmptyPassword) {
+            // No Password Entered
+            if (isEmptyPassword) {
+                button.isEnabled = false
+                button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
+                error = null // Hide Error
 
-            // Disable Button
-            button.isEnabled = false
-            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
+            // Password Invalid
+            } else if (isInvalidPassword) {
+                button.isEnabled = false
+                button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
+                if (shouldShowErrors) error = passwordError // Show Error
 
-            // Hide Error
-            alertDialog.textInputLayoutPassword.error = ""
+            // Password Valid
+            } else {
+                button.isEnabled = true
+                button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextPrimary)
+                error = null // Hide Error
 
-
-        } else if (isInvalidPassword) {
-
-            // Disable Button
-            button.isEnabled = false
-            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
-
-            // Show Error
-            alertDialog.textInputLayoutPassword.error = passwordError
-
-
-        } else {
-
-            // Enable Button
-            button.isEnabled = true
-            button.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextPrimary)
-
-            // Hide Error
-            alertDialog.textInputLayoutPassword.error = ""
-
+            }
         }
     }
 

@@ -3,10 +3,10 @@ package com.xephorium.crystalnote.ui.about
 import android.os.Bundle
 
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.databinding.AboutActivityLayoutBinding
+import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
-import kotlinx.android.synthetic.main.toolbar_activity_layout.*
-
 
 class AboutActivity : DrawerActivity(), AboutContract.View {
 
@@ -20,7 +20,7 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setActivityContent(R.layout.about_activity_layout)
+        setBoundViewAsContent(AboutActivityLayoutBinding.inflate(layoutInflater))
 
         presenter = AboutPresenter()
 
@@ -48,14 +48,16 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
     /*--- Private Setup Methods ---*/
 
     private fun setupToolbar() {
-        toolbar.isEditMode = false
-        toolbar.setTitle(R.string.aboutTitle)
-        toolbar.setLeftButtonImage(R.drawable.icon_menu)
-        toolbar.setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-            override fun onButtonClick() = presenter.handleMenuButtonClick()
-            override fun onColorClick() = Unit
-            override fun onTextChange(text: String) = Unit
-        })
+        drawerBinding.toolbar.run {
+            isEditMode = false
+            setTitle(R.string.aboutTitle)
+            setLeftButtonImage(R.drawable.icon_menu)
+            setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
+                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onColorClick() = Unit
+                override fun onTextChange(text: String) = Unit
+            })
+        }
     }
 
 }

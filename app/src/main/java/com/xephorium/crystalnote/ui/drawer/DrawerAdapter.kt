@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.*
-import kotlinx.android.synthetic.main.drawer_item.view.*
+import com.xephorium.crystalnote.ui.drawer.DrawerItem.Companion.DrawerItemType.BUTTON
+
 
 /*
   DrawerAdapter                                                          05.13.2019
@@ -61,9 +61,9 @@ open class DrawerAdapter(
 
         init {
             if (type == BUTTON.ordinal) {
-                layout = view.layoutDrawerItem
-                icon = view.iconDividerItem
-                text = view.textDividerItem
+                layout = view.findViewById(R.id.layoutDrawerItem)
+                icon = view.findViewById(R.id.iconDividerItem)
+                text = view.findViewById(R.id.textDividerItem)
             }
         }
 

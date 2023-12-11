@@ -82,7 +82,7 @@ class WidgetPreview : View {
         setMeasuredDimension(viewWidth!!, viewHeight!!)
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
 
         var currentVerticalPosition = 0
 
