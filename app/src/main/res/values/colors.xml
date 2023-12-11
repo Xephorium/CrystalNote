@@ -66,8 +66,8 @@
     <color name="charcoalDark">#222222</color>
     <color name="charcoalDarker">#161616</color>
     <color name="charcoalLight">#333333</color>
-    <color name="cobaltBackground">#252d3b</color>
-    <color name="cobaltForeground">#3b455b</color>
+    <color name="cobaltBackground">#2E374A</color>
+    <color name="cobaltForeground">#252d3b</color>
     <color name="black">#000</color>
     <color name="blackToolbar">#141414</color>
     <color name="blackAccent">#383838</color>

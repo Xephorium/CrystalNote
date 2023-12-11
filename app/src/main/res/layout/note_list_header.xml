@@ -23,40 +23,14 @@
         android:textSize="15sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/paddingActivity"
+        android:paddingStart="42dp"
         android:paddingTop="@dimen/paddingSmall"
         android:paddingEnd="@dimen/paddingActivity"
         android:paddingBottom="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space"
-        app:layout_constraintEnd_toEndOf="parent"
         tools:text="@string/noteListToday"
         style="@style/TextAppearance.AppCompat.Body1"
-        />
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/cardViewDividerPadding"
-        android:layout_marginTop="@dimen/paddingSmall"
-        app:layout_constraintStart_toEndOf="@+id/textNoteListHeader"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textNoteListHeader"
-        app:layout_constraintBottom_toBottomOf="@id/textNoteListHeader"
-        app:dividerColor="?themeDivider"
-        />
-
-
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/cardViewDividerPadding"
-        android:layout_marginTop="@dimen/paddingSmall"
-        app:layout_constraintEnd_toStartOf="@+id/textNoteListHeader"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textNoteListHeader"
-        app:layout_constraintBottom_toBottomOf="@id/textNoteListHeader"
-        app:dividerColor="?themeDivider"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

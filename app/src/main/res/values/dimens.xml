@@ -30,7 +30,6 @@
     <dimen name="cardViewCornerRadius">10dp</dimen>
     <dimen name="cardViewElevation">0dp</dimen>
     <dimen name="cardViewMargin">5dp</dimen>
-    <dimen name="cardViewDividerPadding">26dp</dimen>
     <dimen name="colorOrbPaddingWidgetSettings">20dp</dimen>
     <dimen name="colorOrbSizeWidgetSettings">25dp</dimen>
     <dimen name="colorOrbSizeToolbar">56dp</dimen>
