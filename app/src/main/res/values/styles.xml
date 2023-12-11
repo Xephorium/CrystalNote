@@ -212,6 +212,29 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterWhite</item>
     </style>
 
+    <style name="Cobalt" parent="Dark">
+        <item name="themeStatusBar">#191e27</item>
+        <item name="themeToolbar">#29303f</item>
+        <item name="themeNoteBackground">#29303f</item>
+        <item name="themeBackground">#191e27</item>
+        <item name="themeAccent">#61a2ff</item>
+        <item name="themeNoteColorBar">#61a2ff</item>
+        <item name="themeTextPrimary">#ffffff</item>
+        <item name="themeTextSecondary">#a1b1cb</item>
+        <item name="themeTextTertiary">#6d82a1</item>
+        <item name="themeAccentTextPrimary">#ffffff</item>
+        <item name="themeAccentTextSecondary">#ffffff</item>
+        <item name="themeToolbarTextSecondary">#7a8aa1</item>
+        <item name="themeDrawerItem">#a1b1cb</item>
+        <item name="themeDrawerItemSelected">#ffffff</item>
+        <item name="themeDrawerItemSelectedBackground">#29a1b1cb</item>
+        <item name="themeDrawerImageFilter">#e40d1220</item>
+        <item name="themeDivider">#3f506a</item>
+        <item name="themePreviewBackgroundDefault">#0d0f12</item>
+        <item name="themePreviewBackgroundDark">#0d0f12</item>
+        <item name="themePreviewBackgroundLight">#7989a1</item>
+    </style>
+
     <style name="Azure" parent="Light">
         <item name="themeStatusBar">@color/azureDark</item>
         <item name="themeToolbar">@color/azure</item>

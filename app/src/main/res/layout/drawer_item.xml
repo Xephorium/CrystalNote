@@ -20,7 +20,7 @@
         android:paddingTop="@dimen/drawerIconPaddingIncreased"
         android:paddingEnd="@dimen/drawerIconPadding"
         android:paddingBottom="@dimen/drawerIconPadding"
-        android:tint="?themeDrawerItem"
+        app:tint="?themeDrawerItem"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/icon_note"
         />
