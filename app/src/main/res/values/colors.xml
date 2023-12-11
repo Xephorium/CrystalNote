@@ -67,14 +67,14 @@
     <color name="charcoalDarker">#161616</color>
     <color name="charcoalLight">#333333</color>
     <color name="cobaltBackground">#2E374A</color>
-    <color name="cobaltForeground">#252d3b</color>
+    <color name="cobaltForeground">#242B39</color>
     <color name="black">#000</color>
-    <color name="blackToolbar">#141414</color>
+    <color name="blackToolbar">#161616</color>
     <color name="blackAccent">#383838</color>
     <color name="blackTextHandle">#707070</color>
     <color name="blackNoteBackground">#141414</color>
     <color name="blackNoteColorBar">#424242</color>
-    <color name="blackHighlight">#202020</color>
+    <color name="blackHighlight">#b0202020</color>
     <color name="gray8">#888888</color>
     <color name="olive">#778A53</color>
     <color name="oliveDesaturated">#889E64</color>
