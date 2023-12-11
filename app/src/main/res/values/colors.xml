@@ -67,12 +67,12 @@
     <color name="charcoalDarker">#161616</color>
     <color name="charcoalLight">#333333</color>
     <color name="black">#000</color>
-    <color name="blackToolbar">#202020</color>
-    <color name="blackAccent">#404040</color>
+    <color name="blackToolbar">#141414</color>
+    <color name="blackAccent">#383838</color>
     <color name="blackTextHandle">#707070</color>
-    <color name="blackNoteBackground">#202020</color>
+    <color name="blackNoteBackground">#141414</color>
     <color name="blackNoteColorBar">#424242</color>
-    <color name="blackHighlight">#343434</color>
+    <color name="blackHighlight">#202020</color>
     <color name="gray8">#888888</color>
     <color name="olive">#778A53</color>
     <color name="oliveDesaturated">#889E64</color>
@@ -100,7 +100,7 @@
 
     <color name="drawerFilterLight">#cc333333</color>
     <color name="drawerFilterDark">#cc191919</color>
-    <color name="drawerFilterBlack">#da000000</color>
+    <color name="drawerFilterBlack">#e8000000</color>
     <color name="drawerFilterAzure">#CC2A6BB3</color>
     <color name="drawerFilterSage">#cc01797C</color>
     <color name="drawerFilterOlive">#cc26350E</color>
