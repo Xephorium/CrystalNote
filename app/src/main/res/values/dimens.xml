@@ -41,7 +41,8 @@
     <dimen name="drawerItemHeight">50dp</dimen>
     <dimen name="drawerItemPadding">20dp</dimen>
     <dimen name="drawerItemRadius">8dp</dimen>
-    <dimen name="floatingActionButtonElevation">6dp</dimen>
+    <dimen name="floatingActionButtonElevation">0dp</dimen>
+    <dimen name="floatingActionButtonMargin">10dp</dimen>
     <dimen name="iconWidgetSettingsContrast">48dp</dimen>
     <dimen name="noteListIconLockSize">20dp</dimen>
     <dimen name="noteListIconLockTop">9dp</dimen>
