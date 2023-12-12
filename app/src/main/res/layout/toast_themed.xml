@@ -1,0 +1,19 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/paddingMedium"
+    android:paddingBottom="@dimen/paddingMedium"
+    android:paddingStart="@dimen/paddingBig"
+    android:paddingEnd="@dimen/paddingBig"
+    android:background="@drawable/toast_background"
+    >
+    <TextView android:id="@+id/toastText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="?themeAccentTextPrimary"
+        tools:text="Toast!"
+        />
+</LinearLayout>
