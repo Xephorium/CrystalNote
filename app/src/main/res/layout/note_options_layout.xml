@@ -1,89 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/paddingMedium"
-    android:paddingBottom="@dimen/paddingMedium"
-    android:background="?themeNoteBackground"
+    android:layout_height="match_parent"
+    android:padding="32dp"
     >
 
-    <TextView
-        android:id="@+id/textNoteTitle"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:paddingTop="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingActivity"
-        android:textSize="@dimen/textNoteOptionsTitle"
-        android:textColor="?themeTextPrimary"
-        android:text="@string/noteOptionsTitle"
-        />
+        android:orientation="vertical"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingBottom="@dimen/paddingMedium"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
 
-    <TextView
-        android:id="@+id/textNoteOptionsLock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:paddingTop="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingActivity"
-        android:drawableStart="@drawable/icon_lock_large"
-        android:drawablePadding="@dimen/paddingActivity"
-        android:textSize="@dimen/textNoteOptions"
-        android:textColor="?themeTextSecondary"
-        android:text="@string/noteOptionsLock"
-        android:background="@drawable/ripple"
-        />
+        <TextView
+            android:id="@+id/textNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingTop="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptionsTitle"
+            android:textColor="?themeTextPrimary"
+            android:text="@string/noteOptionsTitle"
+            />
 
-    <TextView
-        android:id="@+id/textNoteOptionsUnlock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:paddingTop="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingActivity"
-        android:drawableStart="@drawable/icon_unlock_large"
-        android:drawablePadding="@dimen/paddingActivity"
-        android:textSize="@dimen/textNoteOptions"
-        android:textColor="?themeTextSecondary"
-        android:text="@string/noteOptionsUnlock"
-        android:background="@drawable/ripple"
-        />
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/paddingMedium"
+            android:layout_marginBottom="@dimen/paddingMedium"
+            app:dividerColor="?themeDivider"
+            />
 
-    <TextView
-        android:id="@+id/textNoteOptionsExport"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:paddingTop="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingActivity"
-        android:drawableStart="@drawable/icon_upload"
-        android:drawablePadding="@dimen/paddingActivity"
-        android:textSize="@dimen/textNoteOptions"
-        android:textColor="?themeTextSecondary"
-        android:text="@string/noteOptionsExport"
-        android:background="@drawable/ripple"
-        />
+        <TextView
+            android:id="@+id/textNoteOptionsLock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingTop="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/paddingActivity"
+            android:drawableStart="@drawable/icon_lock_large"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/noteOptionsLock"
+            android:background="@drawable/ripple"
+            />
 
-    <TextView
-        android:id="@+id/textNoteOptionsDelete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:paddingTop="@dimen/paddingActivity"
-        android:paddingBottom="@dimen/paddingActivity"
-        android:drawableStart="@drawable/icon_delete"
-        android:drawablePadding="@dimen/paddingActivity"
-        android:textSize="@dimen/textNoteOptions"
-        android:textColor="?themeTextSecondary"
-        android:text="@string/noteOptionsDelete"
-        android:background="@drawable/ripple"
-        />
+        <TextView
+            android:id="@+id/textNoteOptionsUnlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingTop="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/paddingActivity"
+            android:drawableStart="@drawable/icon_unlock_large"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/noteOptionsUnlock"
+            android:background="@drawable/ripple"
+            />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textNoteOptionsExport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingTop="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/paddingActivity"
+            android:drawableStart="@drawable/icon_upload"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/noteOptionsExport"
+            android:background="@drawable/ripple"
+            />
+
+        <TextView
+            android:id="@+id/textNoteOptionsDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingTop="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/paddingActivity"
+            android:drawableStart="@drawable/icon_delete"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/noteOptionsDelete"
+            android:background="@drawable/ripple"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

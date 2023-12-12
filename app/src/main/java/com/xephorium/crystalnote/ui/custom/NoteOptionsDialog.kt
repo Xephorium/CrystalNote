@@ -1,6 +1,8 @@
 package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -46,6 +48,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
 
     fun show() {
         alertDialog.show()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setupViewItems()
         setupClickListeners()
     }

@@ -56,7 +56,6 @@
 
     <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:colorControlHighlight">?themeNoteRipple</item>
-        <item name="android:colorBackground">?themeNoteBackground</item>
         <item name="android:textColor">?themeTextPrimary</item>
         <item name="android:textColorPrimary">?themeTextSecondary</item>
         <item name="buttonBarNegativeButtonStyle">@style/NegativeDialogButtonStyle</item>
