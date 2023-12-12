@@ -1,8 +1,11 @@
 package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.R
+
 
 class ColorPickerDialog private constructor(context: Context) {
 
@@ -32,11 +35,21 @@ class ColorPickerDialog private constructor(context: Context) {
 
     fun show() {
         alertDialog.show()
+        setupDialogAppearance()
+
         colorGridView.populateOrbGrid()
     }
 
     fun dismiss() {
         alertDialog.dismiss()
+    }
+
+
+    /*--- Private Methods ---*/
+
+    private fun setupDialogAppearance() {
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.window?.setBackgroundDrawableResource(R.drawable.dialog_background)
     }
 
 
