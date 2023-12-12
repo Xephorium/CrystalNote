@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.xephorium.crystalnote.R
 
 
@@ -15,7 +16,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     /*--- Variable Declarations ---*/
 
     private val alertDialog = AlertDialog.Builder(context, R.style.DialogTheme)
-        .setView(R.layout.note_options_layout)
+        .setView(R.layout.note_options_dialog_layout)
         .create()
     private var listener: NoteOptionsListener = DEFAULT_LISTENER
     private var showLock = true
@@ -48,9 +49,10 @@ class NoteOptionsDialog private constructor(private val context: Context) {
 
     fun show() {
         alertDialog.show()
-        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        setupDialogAppearance()
         setupViewItems()
-        setupClickListeners()
+        setupEventListeners()
     }
 
     fun dismiss() {
@@ -59,6 +61,10 @@ class NoteOptionsDialog private constructor(private val context: Context) {
 
 
     /*--- Private Methods ---*/
+
+    private fun setupDialogAppearance() {
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
 
     private fun setupViewItems() {
         var textLock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)
@@ -72,7 +78,11 @@ class NoteOptionsDialog private constructor(private val context: Context) {
         textDelete?.visibility = if (showDelete) View.VISIBLE else View.GONE
     }
 
-    private fun setupClickListeners() {
+    private fun setupEventListeners() {
+        alertDialog.findViewById<ConstraintLayout>(R.id.dialogBackground)?.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
         alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()

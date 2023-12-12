@@ -112,6 +112,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun showSetNewPasswordDialog() {
         val setPasswordDialog = PasswordDialog.Builder(this).create()
+        setPasswordDialog.show()
         setPasswordDialog.setTitle("Choose Password")
         setPasswordDialog.setMessage("Once locked, your note will be accessible only by password.")
         setPasswordDialog.setButtonName("Set")
@@ -128,11 +129,11 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
                 }
             }
         })
-        setPasswordDialog.show()
     }
 
     override fun showVerifyNewPasswordDialog(password: String) {
         val verifyPasswordDialog = PasswordDialog.Builder(this).create()
+        verifyPasswordDialog.show()
         verifyPasswordDialog.setTitle("Confirm Password")
         verifyPasswordDialog.setMessage("Please enter password again.")
         verifyPasswordDialog.setButtonName("Confirm")
@@ -149,7 +150,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
                 }
             }
         })
-        verifyPasswordDialog.show()
     }
 
     override fun showNoteLockedMessage() {
@@ -158,6 +158,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun showRemovePasswordDialog(password: String) {
         val verifyPasswordDialog = PasswordDialog.Builder(this).create()
+        verifyPasswordDialog.setShouldShowErrors(false)
+        verifyPasswordDialog.show()
         verifyPasswordDialog.setTitle("Unlock Note")
         verifyPasswordDialog.setMessage("Enter password to unlock note.")
         verifyPasswordDialog.setButtonName("Unlock")
@@ -174,8 +176,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
                 }
             }
         })
-        verifyPasswordDialog.setShouldShowErrors(false)
-        verifyPasswordDialog.show()
     }
 
     override fun showNoteUnlockedMessage() {
@@ -226,6 +226,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun showNotePasswordDialog(password: String, id: Int) {
         val setPasswordDialog = PasswordDialog.Builder(this).create()
+        setPasswordDialog.setShouldShowErrors(false)
+        setPasswordDialog.show()
         setPasswordDialog.setTitle("Note Locked")
         setPasswordDialog.setMessage("Enter password to view note.")
         setPasswordDialog.setButtonName("Open")
@@ -242,8 +244,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
                 }
             }
         })
-        setPasswordDialog.setShouldShowErrors(false)
-        setPasswordDialog.show()
     }
 
     override fun navigateToEditNote(id: Int) {
