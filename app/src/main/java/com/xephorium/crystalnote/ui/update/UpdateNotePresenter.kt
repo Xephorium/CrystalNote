@@ -1,5 +1,7 @@
 package com.xephorium.crystalnote.ui.update
 
+import android.net.Uri
+
 
 class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
@@ -125,24 +127,15 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleExportClick() {
         view?.hideKeyboard()
-        if (!isFileWritePermissionGranted) {
-            view?.requestFileWritePermission()
+        view?.showExportDialog(name)
+    }
+
+    override fun handleExportFileCreated(uri: Uri) {
+        if (noteDiskRepository.writeStringToTextFile(uri, content)) {
+            view?.showExportConfirmationMessage()
         } else {
-            view?.showExportDialog()
+            view?.showExportErrorMessage()
         }
-    }
-
-    override fun handleFileWritePermissionGranted() {
-        view?.showExportDialog()
-    }
-
-    override fun handleFileWritePermissionDenied() {
-        view?.showFileWritePermissionDeniedMessage()
-    }
-
-    override fun handleExportConfirm() {
-        noteDiskRepository.exportNoteToDownloads(this.name, this.content)
-        view?.showExportConfirmationMessage()
     }
 
     override fun handleDeleteClick() {

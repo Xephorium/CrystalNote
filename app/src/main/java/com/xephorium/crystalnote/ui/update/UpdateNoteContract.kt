@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
+import android.net.Uri
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
@@ -7,6 +8,7 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
+
 
 interface UpdateNoteContract {
 
@@ -28,15 +30,13 @@ interface UpdateNoteContract {
         fun showInvalidNameDialog()
         fun showDiscardChangesDialog()
         fun showDeleteNoteDialog()
-        fun showFileWritePermissionDeniedMessage()
-        fun showExportDialog()
+        fun showExportDialog(noteName: String)
         fun showExportConfirmationMessage()
+        fun showExportErrorMessage()
         fun navigateHome()
         fun navigateBack()
         fun refreshWidget()
         fun hideKeyboard()
-
-        fun requestFileWritePermission()
     }
 
     abstract class Presenter : BasePresenter<View>() {
@@ -48,7 +48,6 @@ interface UpdateNoteContract {
         var isLaunchFromWidget: Boolean = false
         var isLaunchFromSelect: Boolean = false
         var isLaunchFromUpdateFile: Boolean = false
-        var isFileWritePermissionGranted: Boolean = false
         var noteId: Int = NO_NOTE
         var initialName: String = ""
         var initialContent: String = ""
@@ -71,9 +70,7 @@ interface UpdateNoteContract {
         abstract fun handleUnlockClick()
         abstract fun handleOldPasswordVerify()
         abstract fun handleExportClick()
-        abstract fun handleFileWritePermissionGranted()
-        abstract fun handleFileWritePermissionDenied()
-        abstract fun handleExportConfirm()
+        abstract fun handleExportFileCreated(uri: Uri)
         abstract fun handleDeleteClick()
         abstract fun handleDeleteConfirm()
         abstract fun handleDiscardChangesConfirm()

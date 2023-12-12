@@ -1,20 +1,21 @@
 package com.xephorium.crystalnote.ui.update
 
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.DialogInterface.BUTTON_NEGATIVE
 import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment.DIRECTORY_DOWNLOADS
+import android.os.Environment.getExternalStoragePublicDirectory
+import android.provider.DocumentsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
@@ -71,7 +72,6 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         presenter.isLaunchFromWidget = isLaunchFromWidget
         presenter.isLaunchFromSelect = isLaunchFromSelect
         presenter.isLaunchFromUpdateFile = isLaunchFromUpdateFile
-        presenter.isFileWritePermissionGranted = checkFileWritePermission()
         presenter.noteId = noteId
 
         setupToolbar()
@@ -287,27 +287,37 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         alertDialog.show()
     }
 
-    override fun showFileWritePermissionDeniedMessage() {
-        CrystalNoteToast.showLong(this, "Export permission denied.")
+    override fun showExportDialog(noteName: String) {
+        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*"
+            putExtra(Intent.EXTRA_TITLE, "$noteName.txt")
+
+            // If supported, set initial directory to downloads
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val downloadsDirectory = getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS)
+                putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsDirectory)
+            }
+        }
+        startActivityForResult(intent, FILE_CREATE_REQUEST_CODE)
     }
 
-    override fun showExportDialog() {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(true)
-        alertDialog.setTitle("Export Note")
-        alertDialog.setMessage("Note will be saved as a .txt file in the Downloads folder.")
-        alertDialog.setButton(BUTTON_NEGATIVE, "Cancel") { dialog, _ ->
-            dialog.dismiss()
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+        if (requestCode == FILE_CREATE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            resultData?.data?.also { uri ->
+                presenter.handleExportFileCreated(uri)
+            }
         }
-        alertDialog.setButton(BUTTON_POSITIVE, "Confirm") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleExportConfirm()
-        }
-        alertDialog.show()
     }
 
     override fun showExportConfirmationMessage() {
-        CrystalNoteToast.showLong(this, "Note exported.")
+        CrystalNoteToast.showShort(this, "Note exported.")
+    }
+
+    override fun showExportErrorMessage() {
+        CrystalNoteToast.showLong(this, "Error exporting note.")
     }
 
     override fun navigateHome() {
@@ -334,39 +344,6 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         presenter.handleBackClick()
-    }
-
-
-    /*--- Permissions Methods ---*/
-
-    override fun requestFileWritePermission() {
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(WRITE_EXTERNAL_STORAGE),
-            FILE_WRITE_REQUEST_CODE
-        )
-    }
-
-    @SuppressLint("MissingSuperCall")
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        results: IntArray
-    ) {
-        if (requestCode == FILE_WRITE_REQUEST_CODE && permissionRequestGranted(results)) {
-            presenter.handleFileWritePermissionGranted()
-        } else {
-            presenter.handleFileWritePermissionDenied()
-        }
-    }
-
-    private fun permissionRequestGranted(results: IntArray): Boolean {
-        return results.isNotEmpty() && results[0] == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun checkFileWritePermission(): Boolean {
-        return ContextCompat.checkSelfPermission(applicationContext, WRITE_EXTERNAL_STORAGE) ==
-                PackageManager.PERMISSION_GRANTED
     }
 
 
@@ -408,6 +385,6 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         const val KEY_LAUNCH_FROM_WIDGET = "LAUNCH_FROM_WIDGET_KEY"
         const val KEY_LAUNCH_FROM_SELECT = "LAUNCH_FROM_SELECT_KEY"
         const val KEY_LAUNCH_FROM_UPDATE_FILE = "LAUNCH_FROM_UPDATE_FILE_KEY"
-        const val FILE_WRITE_REQUEST_CODE = 117
+        const val FILE_CREATE_REQUEST_CODE = 264
     }
 }

@@ -19,7 +19,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
         // Update View
         if (initialContent.isEmpty()) {
             if (isFileWriteInitiallyPermitted || isFileWriteGranted) {
-                noteDiskRepository.readPlaintextFile(fileUri!!).let { note ->
+                noteDiskRepository.readNoteFromTextFile(fileUri!!).let { note ->
                     name = note.name
                     initialContent = note.contents
                     content = initialContent
@@ -101,7 +101,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
 
     private fun saveFile(): Boolean {
         if (initialContent != content) {
-            return noteDiskRepository.writePlaintextFile(fileUri!!, content)
+            return noteDiskRepository.writeStringToTextFile(fileUri!!, content)
         }
         return true
     }

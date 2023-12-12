@@ -5,14 +5,13 @@ import android.net.Uri
 import android.os.Environment
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
-import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import java.io.*
 
 import java.util.*
 
 /*
-  NoteDiskRepository                                          03.13.2020
+  NoteDiskRepository                                          12.12.2023
   Christopher Cruzen
 
     Manages read/write to plaintext files in Android's external storage.
@@ -23,15 +22,7 @@ class NoteDiskRepository(private val context: Context) {
 
     /*--- Public Read/Write Methods ---*/
 
-    fun exportNoteToDownloads(name: String, content: String) {
-        val noteFile = getNoteFile(name)
-
-        initializeFile(noteFile)
-
-        writeToFile(noteFile, content)
-    }
-
-    fun readPlaintextFile(uri: Uri): Note {
+    fun readNoteFromTextFile(uri: Uri): Note {
         context.contentResolver.openInputStream(uri).let { inputStream ->
 
             // Read Name
@@ -47,52 +38,39 @@ class NoteDiskRepository(private val context: Context) {
             }
 
             return Note(
-                    id = NO_NOTE,
-                    name = name,
-                    contents = contents.toString(),
-                    date = Date(),
-                    color = NoteUtility.getDefaultColor()
+                id = NO_NOTE,
+                name = name,
+                contents = contents.toString(),
+                date = Date(),
+                color = NoteUtility.getDefaultColor()
             )
         }
     }
 
-    fun writePlaintextFile(uri: Uri, contents: String): Boolean {
-        try {
+    fun writeStringToTextFile(uri: Uri, contents: String): Boolean {
+        return try {
             context.contentResolver.openOutputStream(uri).let { outputStream ->
-
-                // Write Contents
                 val writer = BufferedWriter(OutputStreamWriter(outputStream))
                 writer.write(contents)
                 writer.close()
-
-                return true
             }
+            true
         } catch (exception: Exception) {
-            return false
+            false
         }
+    }
+
+    @Deprecated("Direct file access has been disabled in Android 12.")
+    fun exportNoteToDownloads(name: String, content: String) {
+        val noteFile = getNoteFile(name)
+
+        initializeFile(noteFile)
+
+        writeToFile(noteFile, content)
     }
 
 
     /*--- Private Methods ---*/
-
-    private fun getNoteFile(name: String): File {
-        val fileName = getNoteName(name)
-        return File(getDownloadsDirectory().toString() + "/" + fileName)
-    }
-
-    private fun getNoteName(name: String): String {
-        // TODO - Permission needed to read from disk. This call returns null.
-        val downloadFiles = getDownloadsDirectory().listFiles().map { it.name }
-        var fileName = sanitizeNoteName(name) + FILE_EXTENSION
-        var index = 1
-
-        while (downloadFiles.contains(fileName)) {
-            index++
-            fileName = "$name($index)$FILE_EXTENSION"
-        }
-
-        return fileName
-    }
 
     private fun sanitizeNoteName(name: String): String {
         return name.map { char ->
@@ -104,16 +82,50 @@ class NoteDiskRepository(private val context: Context) {
         return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
     }
 
+    private fun extractFileNameFromPath(path: String): String {
+        val fileNameWithExtension =
+            path.substring(path.indexOfLast { char -> char == '/' } + 1, path.length)
+        return if (fileNameWithExtension.contains(FILE_EXTENSION))
+            fileNameWithExtension.substring(0, fileNameWithExtension.indexOf(FILE_EXTENSION))
+        else
+            fileNameWithExtension
+    }
+
+    @Deprecated("Direct file access has been disabled in Android 12.")
+    private fun getNoteFile(name: String): File {
+        val fileName = getNoteName(name)
+        return File(getDownloadsDirectory().toString() + "/" + fileName)
+    }
+
+    @Deprecated("Direct file access has been disabled in Android 12.")
+    private fun getNoteName(name: String): String {
+        var fileName = sanitizeNoteName(name) + FILE_EXTENSION
+        var file = File(getDownloadsDirectory().toString() + "/" + fileName)
+        var index = 1
+
+        while (file.exists()) {
+            index++
+            fileName = "$name($index)$FILE_EXTENSION"
+            file = File(getDownloadsDirectory().toString() + "/" + fileName)
+            System.out.println("LLAMA - Trying new name: " + fileName)
+        }
+
+        System.out.println("LLAMA - Name Selected: " + fileName)
+        return fileName
+    }
+
+    @Deprecated("Direct file access has been disabled in Android 12.")
     private fun initializeFile(file: File) {
         // TODO - File writing has changed in apps targeting newer versions of Android.
         //        This throws an exception and needs to be revisited.
         if (!file.exists()) try {
             file.createNewFile()
         } catch (e: Exception) {
-            // Do Nothing
+            println("LLAMA - File writing failed: " + e.toString())
         }
     }
 
+    @Deprecated("Direct file access has been disabled in Android 12.")
     private fun writeToFile(file: File, content: String): Boolean {
         return try {
             val noteOutputStream = FileOutputStream(file)
@@ -126,15 +138,6 @@ class NoteDiskRepository(private val context: Context) {
         } catch (e: Exception) {
             false
         }
-    }
-
-    private fun extractFileNameFromPath(path: String): String {
-        val fileNameWithExtension =
-                path.substring(path.indexOfLast { char -> char == '/' } + 1, path.length)
-        return if (fileNameWithExtension.contains(FILE_EXTENSION))
-            fileNameWithExtension.substring(0, fileNameWithExtension.indexOf(FILE_EXTENSION))
-        else
-            fileNameWithExtension
     }
 
 
