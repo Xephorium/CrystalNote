@@ -22,7 +22,7 @@
         >
 
         <TextView
-            android:id="@+id/textPasswordTitle"
+            android:id="@+id/textDialogTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="?dialogPreferredPadding"
@@ -34,65 +34,47 @@
             app:layout_constraintTop_toTopOf="parent"
             android:textSize="@dimen/textNoteOptionsTitle"
             android:textColor="?themeTextPrimary"
-            tools:text="@string/passwordDialogTitle"
+            tools:text="Dialog Title"
             />
 
         <TextView
-            android:id="@+id/textPasswordMessage"
+            android:id="@+id/textDialogMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="?dialogPreferredPadding"
-            android:paddingEnd="?dialogPreferredPadding"
-            app:layout_constraintTop_toBottomOf="@id/textPasswordTitle"
+            app:layout_constraintTop_toBottomOf="@id/textDialogTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingBottom="@dimen/paddingActivity"
             android:textSize="15sp"
             android:textColor="?themeTextSecondary"
             android:visibility="gone"
             tools:visibility="visible"
-            tools:text="This is a message! A nice, long one. Lots of content to fill the screen."
+            tools:text="This is a message! A nice, long one. Lots of content to fill the screen. How exciting!"
             />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/passwordDialogTextInputLayoutMargin"
-            android:layout_marginEnd="@dimen/passwordDialogTextInputLayoutMargin"
-            android:paddingTop="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/paddingActivity"
-            app:layout_constraintTop_toBottomOf="@id/textPasswordMessage"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:theme="@style/DialogTextInputLayoutTheme"
-            app:errorTextAppearance="@style/DialogTextInputErrorTheme"
-            android:animateLayoutChanges="true"
-            app:errorEnabled="false"
-            app:hintEnabled="false"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="3dp"
-                android:paddingEnd="3dp"
-                android:importantForAutofill="no"
-                android:hint="@string/passwordDialogHint"
-                android:inputType="textPassword"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonPasswordPositive"
+            android:id="@+id/buttonDialogPositive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/paddingActivity"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
+            app:layout_constraintTop_toBottomOf="@+id/textDialogMessage"
             app:layout_constraintEnd_toEndOf="parent"
             style="@style/DialogButtonStyle"
-            tools:text="Set"
+            tools:text="Confirm"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonDialogNegative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textDialogMessage"
+            app:layout_constraintEnd_toStartOf="@id/buttonDialogPositive"
+            android:visibility="gone"
+            style="@style/DialogButtonStyle"
+            tools:text="Cancel"
+            tools:visibility="visible"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

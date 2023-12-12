@@ -2,12 +2,10 @@ package com.xephorium.crystalnote.ui.home
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.xephorium.crystalnote.R
@@ -16,6 +14,7 @@ import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
+import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptionsListener
@@ -26,6 +25,7 @@ import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_NOTE_ID
+
 
 class HomeActivity : DrawerActivity(), HomeContract.View {
 
@@ -187,18 +187,19 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     }
 
     override fun showExportDialog() {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(true)
-        alertDialog.setTitle("Export Note")
-        alertDialog.setMessage("Note will be saved as a .txt file in the Downloads folder.")
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Confirm") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleExportConfirm()
-        }
-        alertDialog.show()
+        val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
+        deleteNoteDialog.show()
+        deleteNoteDialog.setTitle("Export Note")
+        deleteNoteDialog.setMessage("Note will be saved as a .txt file in the Downloads folder.")
+        deleteNoteDialog.setPositiveButtonName("Confirm")
+        deleteNoteDialog.setNegativeButtonName("Cancel")
+        deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleExportConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun showExportConfirmationMessage() {
@@ -206,18 +207,19 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     }
 
     override fun showDeleteNoteDialog() {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(false)
-        alertDialog.setTitle("Delete Note")
-        alertDialog.setMessage("Are you sure?")
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleDeleteConfirm()
-        }
-        alertDialog.show()
+        val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
+        deleteNoteDialog.show()
+        deleteNoteDialog.setTitle("Delete Note")
+        deleteNoteDialog.setMessage("Note will be permanently deleted. Are you sure?")
+        deleteNoteDialog.setPositiveButtonName("Confirm")
+        deleteNoteDialog.setNegativeButtonName("Cancel")
+        deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleDeleteConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun showNoteDeletedMessage() {

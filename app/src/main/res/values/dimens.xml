@@ -35,7 +35,8 @@
     <dimen name="colorOrbSizeToolbar">56dp</dimen>
     <dimen name="colorPickerPaddingBottom">30dp</dimen>
     <dimen name="dialogCornerRadius">10dp</dimen>
-    <dimen name="dialogButtonCornerRadius">8dp</dimen>
+    <dimen name="dialogButtonCornerRadius">100dp</dimen>
+    <dimen name="dialogButtonMargin">12dp</dimen>
     <dimen name="dialogMargin">36dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">12dp</dimen>
@@ -51,7 +52,7 @@
     <dimen name="noteListItemHeight">72dp</dimen>
     <dimen name="noteListPreviewPadding">6dp</dimen>
     <dimen name="noteListBottomPadding">10dp</dimen>
-    <dimen name="passwordDialogTextInputLayoutMargin">-2dp</dimen>
+    <dimen name="passwordDialogTextInputLayoutMargin">22dp</dimen>
     <dimen name="selectorPaddingWidgetSettings">9dp</dimen>
     <dimen name="selectorSettings">150dp</dimen>
     <dimen name="selectorWidgetLarge">180dp</dimen>
