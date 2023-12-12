@@ -15,6 +15,7 @@ import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
@@ -291,13 +292,13 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
             addCategory(Intent.CATEGORY_OPENABLE)
             type = "*/*"
-            putExtra(Intent.EXTRA_TITLE, "$noteName.txt")
+            putExtra(Intent.EXTRA_TITLE, noteName)
 
             // If supported, set initial directory to downloads
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                val downloadsDirectory = getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS)
-                putExtra(DocumentsContract.EXTRA_INITIAL_URI, downloadsDirectory)
-            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) putExtra(
+                DocumentsContract.EXTRA_INITIAL_URI,
+                NoteDiskRepository.getDownloadsDirectory()
+            )
         }
         startActivityForResult(intent, FILE_CREATE_REQUEST_CODE)
     }

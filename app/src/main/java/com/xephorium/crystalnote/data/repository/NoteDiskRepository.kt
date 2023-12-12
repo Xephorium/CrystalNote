@@ -47,6 +47,12 @@ class NoteDiskRepository(private val context: Context) {
         }
     }
 
+    fun getSanitizedExportFileName(name: String): String {
+        return name.map { char ->
+            if (RESERVED_CHARACTERS.contains(char)) REPLACEMENT_CHARACTER else char
+        }.joinToString(separator = "", prefix = "").plus(FILE_EXTENSION)
+    }
+
     fun writeStringToTextFile(uri: Uri, contents: String): Boolean {
         return try {
             context.contentResolver.openOutputStream(uri).let { outputStream ->
@@ -72,16 +78,6 @@ class NoteDiskRepository(private val context: Context) {
 
     /*--- Private Methods ---*/
 
-    private fun sanitizeNoteName(name: String): String {
-        return name.map { char ->
-            if (RESERVED_CHARACTERS.contains(char)) REPLACEMENT_CHARACTER else char
-        }.joinToString(separator = "", prefix = "")
-    }
-
-    private fun getDownloadsDirectory(): File {
-        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-    }
-
     private fun extractFileNameFromPath(path: String): String {
         val fileNameWithExtension =
             path.substring(path.indexOfLast { char -> char == '/' } + 1, path.length)
@@ -99,7 +95,7 @@ class NoteDiskRepository(private val context: Context) {
 
     @Deprecated("Direct file access has been disabled in Android 12.")
     private fun getNoteName(name: String): String {
-        var fileName = sanitizeNoteName(name) + FILE_EXTENSION
+        var fileName = getSanitizedExportFileName(name) + FILE_EXTENSION
         var file = File(getDownloadsDirectory().toString() + "/" + fileName)
         var index = 1
 
@@ -145,10 +141,11 @@ class NoteDiskRepository(private val context: Context) {
 
     companion object {
         private const val FILE_EXTENSION = ".txt"
-        private const val REPLACEMENT_CHARACTER = '_'
+        private const val REPLACEMENT_CHARACTER = ""
         private val RESERVED_CHARACTERS = listOf(
                 '|',
                 '?',
+                '!',
                 '*',
                 '<',
                 '\\',
@@ -160,5 +157,9 @@ class NoteDiskRepository(private val context: Context) {
                 ']',
                 '/'
         )
+
+        fun getDownloadsDirectory(): File {
+            return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+        }
     }
 }

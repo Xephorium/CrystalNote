@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.net.Uri
+import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 
 
 class UpdateNotePresenter : UpdateNoteContract.Presenter() {
@@ -127,7 +128,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleExportClick() {
         view?.hideKeyboard()
-        view?.showExportDialog(name)
+        view?.showExportDialog(noteDiskRepository.getSanitizedExportFileName(name))
     }
 
     override fun handleExportFileCreated(uri: Uri) {
