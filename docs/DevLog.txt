@@ -5,27 +5,49 @@ December 2023
   /// CrystalNote v1.1 Checklist ///
   //////////////////////////////////
 
-  Feature Rework - Changes needed to target Android 14
-  • Upgrade Gradle (12.09.2023)
-  • Upgrade Kotlin (12.09.2023)
-  • Migrate to AndroidX (12.09.2023)
-  • Migrate to ViewBinding (12.10.2023)
-  ◦ Review Permission Changes
-    - App hibernation
-    - Reading from downloads
-    - Writing to txt file
-  ◦ Review Widget Changes
-    - No startActivity() from BroadcastReceiver
-    - New widget configuration method
-  ◦ Review Intent Changes
-    - Intent filters need to be exported
-  ◦ Other
-    - Mandatory rounded corners on widgets?? :(
-    - v2 key signing for PlayStore upload
-    - Update Version #
+    Feature Rework - Changes needed to target Android 14
+    • Upgrade Gradle (12.09.2023)
+    • Upgrade Kotlin (12.09.2023)
+    • Migrate to AndroidX (12.09.2023)
+    • Migrate to ViewBinding (12.10.2023)
+    ◦ Review Permission Changes
+      - App hibernation
+      - Reading from downloads
+      - Writing to txt file
+    ◦ Review Widget Changes
+      - No startActivity() from BroadcastReceiver
+      - New widget configuration method
+    ◦ Review Intent Changes
+      - Intent filters need to be exported
+    ◦ Other
+      - Mandatory rounded corners on widgets?? :(
+      - v2 key signing for PlayStore upload
+      - Update Version #
 
-  New Features
-  ◦ Home Screen Optimization
-  ◦ Note Revert
-  ◦ Optional Scroll to Bottom Button
-  ◦ Darker Night Theme
+    New Features
+    ◦ Home Screen Optimization
+    ◦ Note Revert
+    ◦ Optional Scroll to Bottom Button
+    ◦ Darker Night Theme
+
+  /////////////////////////////
+  /// Hard-Earned Knowledge ///
+  /////////////////////////////
+
+    App Icons
+    • Source: Feather Icons (https://feathericons.com)
+    • For a moment, it looked like 2020 Chris' decision not to document
+      where these icons came from was going to make finding the source
+      impossible. Lucky for 2023 me, I never deleted the .svg fies from
+      my laptop and was able to google the vector source class strings
+      until I found a match. I'm so glad I created this document.
+
+    AlertDialog Emulator Issues
+    • AlertDialogs are meant to dim the entire screen behind them when
+      shown. This doesn't happen on the emulator, leading me to believe
+      the default UI behavior must have changed in newer versions of
+      Android. After wasting an entire night trying various layout,
+      style, and drawable configurations, it turns out my code was fine.
+      The issue is that the "Disable HW overlays" needs to be toggled
+      on in the Hardware Accelerated Rendering section of the emulated
+      device settings.
