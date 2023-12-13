@@ -99,6 +99,11 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         }
     }
 
+    override fun handleNoteOptionsClicked() {
+        view?.hideKeyboard()
+        view?.showNoteOptionsDialog(password.isNotEmpty())
+    }
+
     override fun handleLockClick() {
         view?.hideKeyboard()
         view?.showSetNewPasswordDialog()
@@ -110,7 +115,6 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleNewPasswordVerify(password: String) {
         this.password = password
-        view?.showUnlockMenuOption()
         view?.showNoteLockedMessage()
     }
 
@@ -121,7 +125,6 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleOldPasswordVerify() {
         this.password = ""
-        view?.showLockMenuOption()
         view?.showNoteUnlockedMessage()
     }
 

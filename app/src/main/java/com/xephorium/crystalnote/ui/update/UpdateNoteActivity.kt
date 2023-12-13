@@ -9,7 +9,6 @@ import android.provider.DocumentsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
-import android.view.MenuItem
 import android.view.WindowManager
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
@@ -21,6 +20,7 @@ import com.xephorium.crystalnote.databinding.UpdateActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.BaseActivity
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
+import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDialogListener
@@ -90,35 +90,6 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         presenter.detachView()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.note_toolbar_options, menu)
-
-        // Determine Menu Option Items' Initial Visibility
-        // Note: This should be handled in the presenter, but the onCreateOptionsMenu()
-        //       method is called after attach, meaning we don't yet have a menu to
-        //       manipulate in onAttach(). May the Code Gods forgive me.
-        optionsMenu = menu
-        if (presenter.password.isEmpty()) {
-            optionsMenu.findItem(R.id.option_lock).isVisible = true
-            optionsMenu.findItem(R.id.option_unlock).isVisible = false
-        } else {
-            optionsMenu.findItem(R.id.option_lock).isVisible = false
-            optionsMenu.findItem(R.id.option_unlock).isVisible = true
-        }
-
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.option_lock -> presenter.handleLockClick()
-            R.id.option_unlock -> presenter.handleUnlockClick()
-            R.id.option_export -> presenter.handleExportClick()
-            R.id.option_delete -> presenter.handleDeleteClick()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
 
     /*--- View Manipulation Methods ---*/
 
@@ -143,14 +114,19 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         updateBinding.textNoteContent.useMonospacedFont()
     }
 
-    override fun showLockMenuOption() {
-        optionsMenu.findItem(R.id.option_lock).isVisible = true
-        optionsMenu.findItem(R.id.option_unlock).isVisible = false
-    }
+    override fun showNoteOptionsDialog(isLocked: Boolean) {
+        val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
 
-    override fun showUnlockMenuOption() {
-        optionsMenu.findItem(R.id.option_lock).isVisible = false
-        optionsMenu.findItem(R.id.option_unlock).isVisible = true
+        if (isLocked) noteOptionsDialog.hideLockOption()
+        else noteOptionsDialog.hideUnlockOption()
+
+        noteOptionsDialog.setListener(object: NoteOptionsDialog.Companion.NoteOptionsListener {
+            override fun onLockClick() = presenter.handleLockClick()
+            override fun onUnlockClick() = presenter.handleUnlockClick()
+            override fun onExportClick() = presenter.handleExportClick()
+            override fun onDeleteClick() = presenter.handleDeleteClick()
+        })
+        noteOptionsDialog.show()
     }
 
     override fun showColorPickerDialog() {
@@ -355,8 +331,10 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
             isEditMode = true
             setLeftButtonImage(R.drawable.icon_back)
             showColor()
+            showRightButton()
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = presenter.handleBackClick()
+                override fun onLeftButtonClick() = presenter.handleBackClick()
+                override fun onRightButtonClick() = presenter.handleNoteOptionsClicked()
                 override fun onColorClick() = presenter.handleColorClick()
                 override fun onTextChange(text: String) = presenter.handleNameTextChange(text)
             })

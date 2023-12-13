@@ -18,9 +18,8 @@ interface UpdateNoteContract {
         fun showTextUnderline()
         fun hideTextUnderline()
         fun showMonospacedFont()
-        fun showLockMenuOption()
-        fun showUnlockMenuOption()
 
+        fun showNoteOptionsDialog(isLocked: Boolean)
         fun showColorPickerDialog()
         fun showSetNewPasswordDialog()
         fun showVerifyNewPasswordDialog(password: String)
@@ -64,6 +63,7 @@ interface UpdateNoteContract {
         abstract fun handleColorChange(color: Int)
         abstract fun handleBackClick()
         abstract fun handleBackground()
+        abstract fun handleNoteOptionsClicked()
         abstract fun handleLockClick()
         abstract fun handleNewPasswordSet(password: String)
         abstract fun handleNewPasswordVerify(password: String)

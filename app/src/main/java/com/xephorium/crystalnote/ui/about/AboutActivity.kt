@@ -4,7 +4,6 @@ import android.os.Bundle
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.databinding.AboutActivityLayoutBinding
-import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 
@@ -53,7 +52,8 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
             setTitle(R.string.aboutTitle)
             setLeftButtonImage(R.drawable.icon_menu)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
+                override fun onRightButtonClick() = Unit
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

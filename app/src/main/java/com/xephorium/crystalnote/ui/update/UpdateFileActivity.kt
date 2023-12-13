@@ -231,7 +231,8 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
             isEditMode = false
             setLeftButtonImage(NoteToolbar.NO_IMAGE)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = Unit
+                override fun onLeftButtonClick() = Unit
+                override fun onRightButtonClick() = Unit
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

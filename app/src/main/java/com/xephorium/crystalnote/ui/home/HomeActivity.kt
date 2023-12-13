@@ -278,7 +278,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             setTitle(R.string.homeTitle)
             setLeftButtonImage(R.drawable.icon_menu)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
+                override fun onRightButtonClick() = Unit
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

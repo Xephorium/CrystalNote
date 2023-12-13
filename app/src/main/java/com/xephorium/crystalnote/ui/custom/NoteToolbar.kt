@@ -64,7 +64,11 @@ class NoteToolbar : Toolbar {
         }
 
         findViewById<ImageView>(R.id.buttonToolbarLeft).setOnClickListener {
-            noteToolbarListener?.onButtonClick()
+            noteToolbarListener?.onLeftButtonClick()
+        }
+
+        findViewById<ImageView>(R.id.buttonToolbarRight).setOnClickListener {
+            noteToolbarListener?.onRightButtonClick()
         }
 
         findViewById<EditText>(R.id.textToolbarEdit).addTextChangedListener(object : TextWatcher {
@@ -135,6 +139,14 @@ class NoteToolbar : Toolbar {
         findViewById<ColorOrb>(R.id.colorOrbToolbar).setColor(color)
     }
 
+    fun showRightButton() {
+        findViewById<ImageView>(R.id.buttonToolbarRight).visibility = View.VISIBLE
+    }
+
+    fun hideRightButton() {
+        findViewById<ImageView>(R.id.buttonToolbarRight).visibility = View.GONE
+    }
+
     fun setNoteToolbarListener(noteToolbarListener: NoteToolbarListener) {
         this.noteToolbarListener = noteToolbarListener
     }
@@ -143,7 +155,8 @@ class NoteToolbar : Toolbar {
     /*--- Private Utility Methods ---*/
 
     private fun getDefaultNoteToolbarListener() = object : NoteToolbarListener {
-        override fun onButtonClick() {}
+        override fun onLeftButtonClick() {}
+        override fun onRightButtonClick() {}
         override fun onColorClick() {}
         override fun onTextChange(text: String) {}
     }
@@ -152,7 +165,8 @@ class NoteToolbar : Toolbar {
     /*--- Action Handling Interface ---*/
 
     interface NoteToolbarListener {
-        fun onButtonClick()
+        fun onLeftButtonClick()
+        fun onRightButtonClick()
         fun onColorClick()
         fun onTextChange(text: String)
     }

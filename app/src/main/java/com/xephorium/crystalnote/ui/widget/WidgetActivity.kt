@@ -256,7 +256,8 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             setTitle(R.string.widgetTitle)
             setLeftButtonImage(R.drawable.icon_menu)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
+                override fun onRightButtonClick() = Unit
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

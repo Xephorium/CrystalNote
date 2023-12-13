@@ -159,7 +159,8 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
             setTitle(R.string.settingsTitle)
             setLeftButtonImage(R.drawable.icon_menu)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = presenter.handleMenuButtonClick()
+                override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
+                override fun onRightButtonClick() = Unit
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

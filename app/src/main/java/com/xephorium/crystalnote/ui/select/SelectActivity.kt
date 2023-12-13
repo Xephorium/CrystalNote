@@ -96,7 +96,8 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
             setTitle(R.string.selectTitle)
             setLeftButtonImage(R.drawable.icon_back)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
-                override fun onButtonClick() = presenter.handleToolbarBackClick()
+                override fun onLeftButtonClick() = presenter.handleToolbarBackClick()
+                override fun onRightButtonClick() = Unit
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })
