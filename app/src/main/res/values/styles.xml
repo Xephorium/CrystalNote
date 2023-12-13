@@ -226,14 +226,14 @@
         <item name="themeAccentTextSecondary">#252d3b</item>
         <item name="themeAccentRipple">#91B1E3</item>
         <item name="themeToolbarTextSecondary">#AFBDD3</item>
-        <item name="themeDrawerItem">#bbd2f5</item>
+        <item name="themeDrawerItem">#AFBDD3</item>
         <item name="themeDrawerItemSelected">#ffffff</item>
         <item name="themeDrawerItemSelectedBackground">#24AFBDD3</item>
         <item name="themeDrawerImageFilter">#e40d1220</item>
         <item name="themeDivider">#455268</item>
         <item name="themePreviewBackgroundDefault">#0d0f12</item>
         <item name="themePreviewBackgroundDark">#0d0f12</item>
-        <item name="themePreviewBackgroundLight">#7989a1</item>
+        <item name="themePreviewBackgroundLight">#8A929E</item>
     </style>
 
     <style name="Azure" parent="Light">
