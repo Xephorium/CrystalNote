@@ -64,6 +64,8 @@
     <dimen name="toolbarHeight">56dp</dimen>
     <dimen name="toolbarElevation">0dp</dimen>
     <dimen name="toolbarText">19sp</dimen>
+    <dimen name="toolbarTextMargin">80dp</dimen>
+    <dimen name="toolbarOptionsIconWidth">26dp</dimen>
     <dimen name="widgetCornerRadius">2dp</dimen>
     <dimen name="widgetDefaultPadding">10dp</dimen>
     <dimen name="widgetHeaderBottomPadding">6dp</dimen>
