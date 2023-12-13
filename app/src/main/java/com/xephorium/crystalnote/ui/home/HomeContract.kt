@@ -1,10 +1,12 @@
 package com.xephorium.crystalnote.ui.home
 
+import android.net.Uri
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
+
 
 interface HomeContract {
 
@@ -20,23 +22,21 @@ interface HomeContract {
         fun showRemovePasswordDialog(password: String)
         fun showNoteUnlockedMessage()
         fun showFileWritePermissionDeniedMessage()
-        fun showExportDialog()
+        fun showExportDialog(noteName: String)
         fun showExportConfirmationMessage()
+        fun showExportErrorMessage()
         fun showDeleteNoteDialog()
         fun showNoteDeletedMessage()
         fun showLockedNoteOptionsDialog()
         fun showNotePasswordDialog(password: String, id: Int)
         fun navigateToEditNote(id: Int)
         fun navigateToNewNote()
-
-        fun requestFileWritePermission()
     }
 
     abstract class Presenter : BasePresenter<View>() {
         lateinit var noteRoomRepository: NoteRoomRepository
         lateinit var noteDiskRepository: NoteDiskRepository
         var fromUpdateActivity: Boolean = false
-        var isFileWritePermissionGranted: Boolean = false
         var selectedNote: Note? = null
 
         abstract fun handleMenuButtonClick()
@@ -50,8 +50,7 @@ interface HomeContract {
         abstract fun handleUnlockClick()
         abstract fun handleOldPasswordVerify()
         abstract fun handleExportClick()
-        abstract fun handleFileWritePermissionGranted()
-        abstract fun handleFileWritePermissionDenied()
+        abstract fun handleExportFileCreated(uri: Uri)
         abstract fun handleExportConfirm()
         abstract fun handleDeleteClick()
         abstract fun handleDeleteConfirm()

@@ -1,7 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.net.Uri
-import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 
 
 class UpdateNotePresenter : UpdateNoteContract.Presenter() {

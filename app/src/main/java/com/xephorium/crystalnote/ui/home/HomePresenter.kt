@@ -1,7 +1,9 @@
 package com.xephorium.crystalnote.ui.home
 
+import android.net.Uri
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.utility.NoteUtility
+
 
 class HomePresenter : HomeContract.Presenter() {
 
@@ -95,19 +97,19 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleExportClick() {
-        if (!isFileWritePermissionGranted) {
-            view?.requestFileWritePermission()
-        } else {
-            view?.showExportDialog()
+        selectedNote?.run {
+            view?.showExportDialog(noteDiskRepository.getSanitizedExportFileName(name))
         }
     }
 
-    override fun handleFileWritePermissionGranted() {
-        view?.showExportDialog()
-    }
-
-    override fun handleFileWritePermissionDenied() {
-        view?.showFileWritePermissionDeniedMessage()
+    override fun handleExportFileCreated(uri: Uri) {
+        selectedNote?.run {
+            if (noteDiskRepository.writeStringToTextFile(uri, contents)) {
+                view?.showExportConfirmationMessage()
+            } else {
+                view?.showExportErrorMessage()
+            }
+        }
     }
 
     override fun handleExportConfirm() {

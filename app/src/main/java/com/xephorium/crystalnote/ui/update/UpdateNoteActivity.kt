@@ -2,21 +2,15 @@ package com.xephorium.crystalnote.ui.update
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.DialogInterface.BUTTON_NEGATIVE
-import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment.DIRECTORY_DOWNLOADS
-import android.os.Environment.getExternalStoragePublicDirectory
 import android.provider.DocumentsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository

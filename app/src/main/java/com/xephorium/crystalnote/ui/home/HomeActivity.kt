@@ -1,13 +1,11 @@
 package com.xephorium.crystalnote.ui.home
 
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
-import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import android.view.View
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
@@ -51,7 +49,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         presenter.noteRoomRepository = NoteRoomRepository(this)
         presenter.noteDiskRepository = NoteDiskRepository(this)
         presenter.fromUpdateActivity = fromUpdateActivity
-        presenter.isFileWritePermissionGranted = checkFileWritePermission()
 
         setupToolbar()
         setupClickListeners()
@@ -186,24 +183,37 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         CrystalNoteToast.showLong(this, "Export permission denied.")
     }
 
-    override fun showExportDialog() {
-        val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
-        deleteNoteDialog.show()
-        deleteNoteDialog.setTitle("Export Note")
-        deleteNoteDialog.setMessage("Note will be saved as a .txt file in the Downloads folder.")
-        deleteNoteDialog.setPositiveButtonName("Confirm")
-        deleteNoteDialog.setNegativeButtonName("Cancel")
-        deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
-            override fun onPositiveClick() {
-                presenter.handleExportConfirm()
+    override fun showExportDialog(noteName: String) {
+        val intent = Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "*/*"
+            putExtra(Intent.EXTRA_TITLE, noteName)
+
+            // If supported, set initial directory to downloads
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) putExtra(
+                DocumentsContract.EXTRA_INITIAL_URI,
+                NoteDiskRepository.getDownloadsDirectory()
+            )
+        }
+        startActivityForResult(intent, UpdateNoteActivity.FILE_CREATE_REQUEST_CODE)
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+        if (requestCode == UpdateNoteActivity.FILE_CREATE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            resultData?.data?.also { uri ->
+                presenter.handleExportFileCreated(uri)
             }
-            override fun onNegativeClick() = Unit
-            override fun onBackClick() = Unit
-        })
+        }
     }
 
     override fun showExportConfirmationMessage() {
         CrystalNoteToast.showLong(this, "Note exported.")
+    }
+
+    override fun showExportErrorMessage() {
+        CrystalNoteToast.showLong(this, "Error exporting note.")
     }
 
     override fun showDeleteNoteDialog() {
@@ -257,39 +267,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     override fun navigateToNewNote() {
         val intent = Intent(this, UpdateNoteActivity::class.java)
         startActivity(intent)
-    }
-
-
-    /*--- Permissions Methods ---*/
-
-    override fun requestFileWritePermission() {
-        ActivityCompat.requestPermissions(
-                this,
-                arrayOf(WRITE_EXTERNAL_STORAGE),
-                FILE_WRITE_REQUEST_CODE
-        )
-    }
-
-    @SuppressLint("MissingSuperCall")
-    override fun onRequestPermissionsResult(
-            requestCode: Int,
-            permissions: Array<out String>,
-            results: IntArray
-    ) {
-        if (requestCode == FILE_WRITE_REQUEST_CODE && permissionRequestGranted(results)) {
-            presenter.handleFileWritePermissionGranted()
-        } else {
-            presenter.handleFileWritePermissionDenied()
-        }
-    }
-
-    private fun permissionRequestGranted(results: IntArray): Boolean {
-        return results.isNotEmpty() && results[0] == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun checkFileWritePermission(): Boolean {
-        return ContextCompat.checkSelfPermission(applicationContext, WRITE_EXTERNAL_STORAGE) ==
-                PackageManager.PERMISSION_GRANTED
     }
 
 
