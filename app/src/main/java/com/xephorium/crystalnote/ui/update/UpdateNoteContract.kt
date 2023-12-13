@@ -33,6 +33,7 @@ interface UpdateNoteContract {
         fun showExportConfirmationMessage()
         fun showExportErrorMessage()
         fun showRestoreDialog()
+        fun showRestoreConfirmationMessage()
         fun navigateHome()
         fun navigateBack()
         fun refreshWidget()

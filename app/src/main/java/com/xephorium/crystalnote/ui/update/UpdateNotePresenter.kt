@@ -154,8 +154,10 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         password = initialPassword
 
         // Update View
-        this.view?.populateFields(name, content)
-        this.view?.populateColor(color)
+        view?.populateFields(name, content)
+        view?.populateColor(color)
+
+        view?.showRestoreConfirmationMessage()
     }
 
     override fun handleDeleteClick() {

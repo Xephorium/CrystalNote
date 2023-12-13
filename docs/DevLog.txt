@@ -16,7 +16,7 @@ December 2023
       - Writing to txt file
     ◦ Review Widget Changes
       - No startActivity() from BroadcastReceiver
-      - New widget configuration method
+      - New widget configuration method?
     ◦ Review Intent Changes
       - Intent filters need to be exported
     ◦ Other
@@ -26,7 +26,7 @@ December 2023
 
     New Features
     ◦ Home Screen Optimization
-    ◦ Note Revert
+    • Note Restoration
     ◦ Optional Scroll to Bottom Button
     ◦ Darker Night Theme
 

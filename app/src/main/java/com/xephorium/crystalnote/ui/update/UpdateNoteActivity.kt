@@ -314,6 +314,10 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         })
     }
 
+    override fun showRestoreConfirmationMessage() {
+        CrystalNoteToast.showLong(this, "Note restored.")
+    }
+
     override fun navigateHome() {
         val intent = Intent(this, HomeActivity::class.java)
         intent.putExtra(KEY_FROM_UPDATE_ACTIVITY, true)
