@@ -89,6 +89,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
             override fun onExportClick() = presenter.handleExportClick()
+            override fun onRestoreClick() = Unit
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
         noteOptionsDialog.show()
@@ -102,6 +103,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
             override fun onExportClick() = presenter.handleExportClick()
+            override fun onRestoreClick() = Unit
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
         noteOptionsDialog.show()

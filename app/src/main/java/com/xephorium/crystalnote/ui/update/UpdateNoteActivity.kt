@@ -114,16 +114,19 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         updateBinding.textNoteContent.useMonospacedFont()
     }
 
-    override fun showNoteOptionsDialog(isLocked: Boolean) {
+    override fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean) {
         val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
 
         if (isLocked) noteOptionsDialog.hideLockOption()
         else noteOptionsDialog.hideUnlockOption()
 
+        if (isInEditMode) noteOptionsDialog.showRestoreOption()
+
         noteOptionsDialog.setListener(object: NoteOptionsDialog.Companion.NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
             override fun onExportClick() = presenter.handleExportClick()
+            override fun onRestoreClick() = presenter.handleRestoreClick()
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
         noteOptionsDialog.show()
@@ -236,7 +239,7 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         deleteNoteDialog.setTitle("Discard Note")
         deleteNoteDialog.setMessage("New note will be permanently deleted. Are you sure?")
         deleteNoteDialog.setPositiveButtonName("Discard")
-        deleteNoteDialog.setNegativeButtonName("Resume")
+        deleteNoteDialog.setNegativeButtonName("Cancel")
         deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
             override fun onPositiveClick() {
                 presenter.handleDiscardChangesConfirm()
@@ -293,6 +296,22 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
     override fun showExportErrorMessage() {
         CrystalNoteToast.showLong(this, "Error exporting note.")
+    }
+
+    override fun showRestoreDialog() {
+        val restoreNoteDialog = CrystalNoteDialog.Builder(this).create()
+        restoreNoteDialog.show()
+        restoreNoteDialog.setTitle("Restore Note")
+        restoreNoteDialog.setMessage("Note will be restored to its last save state, discarding current changes. Are you sure?")
+        restoreNoteDialog.setPositiveButtonName("Restore")
+        restoreNoteDialog.setNegativeButtonName("Cancel")
+        restoreNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleRestoreConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun navigateHome() {

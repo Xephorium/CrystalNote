@@ -101,7 +101,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleNoteOptionsClicked() {
         view?.hideKeyboard()
-        view?.showNoteOptionsDialog(password.isNotEmpty())
+        view?.showNoteOptionsDialog(isInEditMode, password.isNotEmpty())
     }
 
     override fun handleLockClick() {
@@ -139,6 +139,23 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         } else {
             view?.showExportErrorMessage()
         }
+    }
+
+    override fun handleRestoreClick() {
+        view?.showRestoreDialog()
+    }
+
+    override fun handleRestoreConfirm() {
+
+        // Reset State
+        name = initialName
+        content = initialContent
+        color = initialColor
+        password = initialPassword
+
+        // Update View
+        this.view?.populateFields(name, content)
+        this.view?.populateColor(color)
     }
 
     override fun handleDeleteClick() {

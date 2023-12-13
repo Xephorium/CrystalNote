@@ -22,6 +22,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     private var showLock = true
     private var showUnlock = true
     private var showExport = true
+    private var showRestore = false
     private var showDelete = true
 
 
@@ -37,6 +38,10 @@ class NoteOptionsDialog private constructor(private val context: Context) {
 
     fun hideExportOption() {
         showExport = false
+    }
+
+    fun showRestoreOption() {
+        showRestore = true
     }
 
     fun hideDeleteOption() {
@@ -70,11 +75,13 @@ class NoteOptionsDialog private constructor(private val context: Context) {
         var textLock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)
         var textUnlock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsUnlock)
         var textExport = alertDialog.findViewById<TextView>(R.id.textNoteOptionsExport)
+        var textRestore = alertDialog.findViewById<TextView>(R.id.textNoteOptionsRestore)
         var textDelete = alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)
 
         textLock?.visibility = if (showLock) View.VISIBLE else View.GONE
         textUnlock?.visibility = if (showUnlock) View.VISIBLE else View.GONE
         textExport?.visibility = if (showExport) View.VISIBLE else View.GONE
+        textRestore?.visibility = if (showRestore) View.VISIBLE else View.GONE
         textDelete?.visibility = if (showDelete) View.VISIBLE else View.GONE
     }
 
@@ -97,6 +104,11 @@ class NoteOptionsDialog private constructor(private val context: Context) {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
             listener.onExportClick()
+        }
+        alertDialog.findViewById<TextView>(R.id.textNoteOptionsRestore)?.setOnClickListener {
+            Thread.sleep(ANIMATION_DELAY)
+            alertDialog.dismiss()
+            listener.onRestoreClick()
         }
         alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
@@ -122,6 +134,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
             override fun onLockClick() = Unit
             override fun onUnlockClick() = Unit
             override fun onExportClick() = Unit
+            override fun onRestoreClick() = Unit
             override fun onDeleteClick() = Unit
         }
 
@@ -129,6 +142,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
             fun onLockClick()
             fun onUnlockClick()
             fun onExportClick()
+            fun onRestoreClick()
             fun onDeleteClick()
         }
     }

@@ -28,6 +28,7 @@
     <string name="noteOptionsLock">Lock</string>
     <string name="noteOptionsUnlock">Unlock</string>
     <string name="noteOptionsExport">Export</string>
+    <string name="noteOptionsRestore">Restore</string>
     <string name="noteOptionsDelete">Delete</string>
 
     <string name="passwordDialogHint">password</string>
