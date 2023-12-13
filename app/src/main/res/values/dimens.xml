@@ -20,7 +20,7 @@
     <dimen name="textDrawerMessage">16sp</dimen>
     <dimen name="textDrawerItem">15sp</dimen>
     <dimen name="textNoteOptions">16sp</dimen>
-    <dimen name="textNoteOptionsTitle">16sp</dimen>
+    <dimen name="textNoteOptionsTitle">17sp</dimen>
     <dimen name="textSettings">15sp</dimen>
     <dimen name="textUpdate">17sp</dimen>
     <dimen name="textUpdateMono">16sp</dimen>
@@ -38,6 +38,7 @@
     <dimen name="dialogButtonCornerRadius">100dp</dimen>
     <dimen name="dialogButtonMargin">12dp</dimen>
     <dimen name="dialogMargin">36dp</dimen>
+    <dimen name="dialogOptionPadding">12dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">12dp</dimen>
     <dimen name="drawerIconPaddingIncreased">14dp</dimen>
