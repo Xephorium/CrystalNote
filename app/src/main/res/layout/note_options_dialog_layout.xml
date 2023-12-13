@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingTop="@dimen/paddingMedium"
-        android:paddingBottom="@dimen/paddingMedium"
+        android:paddingBottom="12dp"
         android:background="@drawable/dialog_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,65 +48,69 @@
             android:id="@+id/textNoteOptionsLock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="?dialogPreferredPadding"
-            android:paddingEnd="?dialogPreferredPadding"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:paddingTop="@dimen/dialogOptionPadding"
             android:paddingBottom="@dimen/dialogOptionPadding"
-            android:drawableStart="@drawable/icon_lock_large"
             android:drawablePadding="@dimen/paddingActivity"
             android:textSize="@dimen/textNoteOptions"
             android:textColor="?themeTextSecondary"
             android:text="@string/noteOptionsLock"
-            android:background="@drawable/ripple"
-            />
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_lock_large" />
 
         <TextView
             android:id="@+id/textNoteOptionsUnlock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="?dialogPreferredPadding"
-            android:paddingEnd="?dialogPreferredPadding"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:paddingTop="@dimen/dialogOptionPadding"
             android:paddingBottom="@dimen/dialogOptionPadding"
-            android:drawableStart="@drawable/icon_unlock_large"
             android:drawablePadding="@dimen/paddingActivity"
             android:textSize="@dimen/textNoteOptions"
             android:textColor="?themeTextSecondary"
             android:text="@string/noteOptionsUnlock"
-            android:background="@drawable/ripple"
-            />
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_unlock_large" />
 
         <TextView
             android:id="@+id/textNoteOptionsExport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="?dialogPreferredPadding"
-            android:paddingEnd="?dialogPreferredPadding"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:paddingTop="@dimen/dialogOptionPadding"
             android:paddingBottom="@dimen/dialogOptionPadding"
-            android:drawableStart="@drawable/icon_upload"
             android:drawablePadding="@dimen/paddingActivity"
             android:textSize="@dimen/textNoteOptions"
             android:textColor="?themeTextSecondary"
             android:text="@string/noteOptionsExport"
-            android:background="@drawable/ripple"
-            />
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_upload" />
 
         <TextView
             android:id="@+id/textNoteOptionsDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="?dialogPreferredPadding"
-            android:paddingEnd="?dialogPreferredPadding"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             android:paddingTop="@dimen/dialogOptionPadding"
             android:paddingBottom="@dimen/dialogOptionPadding"
-            android:drawableStart="@drawable/icon_delete"
             android:drawablePadding="@dimen/paddingActivity"
             android:textSize="@dimen/textNoteOptions"
             android:textColor="?themeTextSecondary"
             android:text="@string/noteOptionsDelete"
-            android:background="@drawable/ripple"
-            />
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_delete" />
 
     </LinearLayout>
 
