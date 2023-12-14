@@ -46,12 +46,13 @@ interface UpdateFileContract {
         val isFirstLaunch: Boolean
             get() = initialContent == null
 
-        val isLegacyBuild: Boolean
-            get() = Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q
-
         val isFileImported: Boolean
             get() = newNoteId != NO_NOTE
 
+        val isLegacyBuild: Boolean
+            get() = Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q
+
+        // Legacy Permissions (API <= Android 10)
         var isFileWriteInitiallyPermitted: Boolean = false
         var isFileWriteGranted: Boolean = false
         var isFileWriteDenied: Boolean = false
