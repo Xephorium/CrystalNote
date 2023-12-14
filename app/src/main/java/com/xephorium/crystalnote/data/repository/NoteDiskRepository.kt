@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.data.repository
 import android.content.Context
 import android.net.Uri
 import android.os.Environment
+import android.provider.OpenableColumns
 import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.utility.NoteUtility
@@ -23,31 +24,13 @@ class NoteDiskRepository(private val context: Context) {
     /*--- Public Read/Write Methods ---*/
 
     fun readNoteFromTextFile(uri: Uri): Note {
-        context.contentResolver.openInputStream(uri).let { inputStream ->
-
-            // Read Name
-            // TODO - Crashes on newer versions of Android API. Runs, but returns
-            //        a junk path (and therefore name) on older versions. Will need
-            //        a new method of retrieving Filename. ContentProvider?
-            val name = "Fake Name" // uri.path?.let { path -> extractFileNameFromPath(path) } ?: ""
-
-            // Read Contents
-            val reader = BufferedReader(InputStreamReader(inputStream))
-            val contents = StringBuilder()
-            var line = reader.readLine()
-            while (line != null) {
-                contents.append(line).append('\n')
-                line = reader.readLine()
-            }
-
-            return Note(
-                id = NO_NOTE,
-                name = name,
-                contents = contents.toString(),
-                date = Date(),
-                color = NoteUtility.getDefaultColor()
-            )
-        }
+        return Note(
+            id = NO_NOTE,
+            name = getFileNameFromUri(uri) ?: "LLAMAS",
+            contents = getFileContentsFromUri(uri),
+            date = Date(),
+            color = NoteUtility.getDefaultColor()
+        )
     }
 
     fun getSanitizedExportFileName(name: String): String {
@@ -81,13 +64,28 @@ class NoteDiskRepository(private val context: Context) {
 
     /*--- Private Methods ---*/
 
-    private fun extractFileNameFromPath(path: String): String {
-        val fileNameWithExtension =
-            path.substring(path.indexOfLast { char -> char == '/' } + 1, path.length)
-        return if (fileNameWithExtension.contains(FILE_EXTENSION))
-            fileNameWithExtension.substring(0, fileNameWithExtension.indexOf(FILE_EXTENSION))
-        else
-            fileNameWithExtension
+    private fun getFileNameFromUri(uri: Uri): String {
+        var fileName = DEFAULT_FILE_NAME
+        context.contentResolver.query(uri, null, null, null, null)?.let {
+            it.moveToFirst()
+            val index = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+            if (index >= 0) fileName = it.getString(index)
+            it.close()
+        }
+        return fileName
+    }
+
+    private fun getFileContentsFromUri(uri: Uri): String {
+        context.contentResolver.openInputStream(uri).let { inputStream ->
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            val contents = StringBuilder()
+            var line = reader.readLine()
+            while (line != null) {
+                contents.append(line).append('\n')
+                line = reader.readLine()
+            }
+            return contents.toString()
+        }
     }
 
     @Deprecated("Direct file access has been disabled in Android 12.")
@@ -143,6 +141,7 @@ class NoteDiskRepository(private val context: Context) {
     /*--- Constants ---*/
 
     companion object {
+        private const val DEFAULT_FILE_NAME = "Opened File"
         private const val FILE_EXTENSION = ".txt"
         private const val REPLACEMENT_CHARACTER = ""
         private val RESERVED_CHARACTERS = listOf(
