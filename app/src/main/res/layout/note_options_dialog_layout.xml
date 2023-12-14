@@ -34,7 +34,7 @@
             android:paddingBottom="@dimen/paddingActivity"
             android:textSize="@dimen/textNoteOptionsTitle"
             android:textColor="?themeTextPrimary"
-            android:text="@string/noteOptionsTitle"
+            tools:text="@string/noteOptionsTitle"
             />
 
         <com.google.android.material.divider.MaterialDivider
@@ -80,6 +80,25 @@
             app:drawableStartCompat="@drawable/icon_unlock_large" />
 
         <TextView
+            android:id="@+id/textNoteOptionsImport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialogOptionPadding"
+            android:layout_marginEnd="@dimen/dialogOptionPadding"
+            android:paddingStart="@dimen/dialogOptionPadding"
+            android:paddingEnd="@dimen/dialogOptionPadding"
+            android:paddingTop="@dimen/dialogOptionPadding"
+            android:paddingBottom="@dimen/dialogOptionPadding"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/noteOptionsImport"
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_import"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <TextView
             android:id="@+id/textNoteOptionsExport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,6 +114,25 @@
             android:text="@string/noteOptionsExport"
             android:background="@drawable/ripple_dialog_list_item"
             app:drawableStartCompat="@drawable/icon_upload" />
+
+        <TextView
+            android:id="@+id/textNoteOptionsOpen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialogOptionPadding"
+            android:layout_marginEnd="@dimen/dialogOptionPadding"
+            android:paddingStart="@dimen/dialogOptionPadding"
+            android:paddingEnd="@dimen/dialogOptionPadding"
+            android:paddingTop="@dimen/dialogOptionPadding"
+            android:paddingBottom="@dimen/dialogOptionPadding"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/noteOptionsOpen"
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_edit"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textNoteOptionsRestore"

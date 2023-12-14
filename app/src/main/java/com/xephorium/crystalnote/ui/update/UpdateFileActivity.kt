@@ -10,10 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
-import android.view.MenuItem
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -24,6 +21,8 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.UpdateActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.BaseActivity
+import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
+import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_LAUNCH_FROM_UPDATE_FILE
 import com.xephorium.crystalnote.ui.utility.KeyboardUtility
@@ -40,8 +39,6 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     private lateinit var updateBinding: UpdateActivityLayoutBinding
 
     lateinit var presenter: UpdateFilePresenter
-
-    private lateinit var optionsMenu: Menu
 
 
     /*--- Lifecycle Methods ---*/
@@ -74,22 +71,6 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         presenter.detachView()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.file_toolbar_options, menu)
-        optionsMenu = menu
-        optionsMenu.findItem(R.id.option_open_note).isVisible = false
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.option_revert -> presenter.handleRevertClick()
-            R.id.option_import -> presenter.handleImportClick()
-            R.id.option_open_note -> presenter.handleOpenNoteClick()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
 
     /*--- View Manipulation Methods ---*/
 
@@ -110,59 +91,77 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         updateBinding.textNoteContent.useMonospacedFont()
     }
 
-    override fun showRevertDialog() {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(true)
-        alertDialog.setTitle("Revert Changes")
-        alertDialog.setMessage("Restore file to its initial state?")
-        alertDialog.setButton(BUTTON_NEGATIVE, "Cancel") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.setButton(BUTTON_POSITIVE, "Yes") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleRevertConfirm()
-        }
-        alertDialog.show()
+    override fun showFileOptionsDialog(isFileImported: Boolean) {
+        val dialog = NoteOptionsDialog.Builder(this).create()
+
+        dialog.setTitle("File Options")
+
+        dialog.hideLockOption()
+        dialog.hideUnlockOption()
+        dialog.hideExportOption()
+        if (!isFileImported) dialog.showImportOption()
+        if (isFileImported) dialog.showOpenOption()
+        dialog.showRestoreOption()
+        dialog.hideDeleteOption()
+
+        dialog.setListener(object: NoteOptionsDialog.Companion.NoteOptionsListener {
+            override fun onLockClick() = Unit
+            override fun onUnlockClick() = Unit
+            override fun onImportClick() = presenter.handleImportClick()
+            override fun onExportClick() = Unit
+            override fun onOpenClick() = presenter.handleOpenNoteClick()
+            override fun onRestoreClick() = presenter.handleRestoreClick()
+            override fun onDeleteClick() = Unit
+        })
+        dialog.show()
+    }
+
+    override fun showRestoreDialog() {
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Restore File")
+        dialog.setMessage("File will be restored to its last save state, discarding current changes. Are you sure?")
+        dialog.setPositiveButtonName("Restore")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleRestoreConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun showImportDialog() {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(true)
-        alertDialog.setTitle("Import File")
-        alertDialog.setMessage("Save file contents as new note?")
-        alertDialog.setButton(BUTTON_NEGATIVE, "Cancel") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.setButton(BUTTON_POSITIVE, "Yes") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleImportConfirm()
-        }
-        alertDialog.show()
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Import File")
+        dialog.setMessage("Save file contents as new note?")
+        dialog.setPositiveButtonName("Import")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleImportConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun showImportSuccessMessage() {
-        CrystalNoteToast.showLong(this, "File imported. Tap 'Open Note' to view.")
-    }
-
-    override fun showOpenNoteMenuOption() {
-        optionsMenu.findItem(R.id.option_import).isVisible = false
-        optionsMenu.findItem(R.id.option_open_note).isVisible = true
+        CrystalNoteToast.showLong(this, "File imported. Tap 'Open Note' to edit.")
     }
 
     override fun showFileSavedMessage() {
-        Toast.makeText(this, "File saved.", Toast.LENGTH_SHORT).show()
+        CrystalNoteToast.showShort(this, "File saved.")
     }
 
     override fun showFileAccessDeniedMessage() {
-        Toast.makeText(
-            this,
-            "Error saving: file access denied.",
-            Toast.LENGTH_LONG
-        ).show()
+        CrystalNoteToast.showLong(this, "Error saving: file access denied.")
     }
 
     override fun showErrorReadingFileMessage() {
-        Toast.makeText(this, "Error reading file.", Toast.LENGTH_SHORT).show()
+        CrystalNoteToast.showShort(this, "Error reading file.")
     }
 
     override fun navigateBack() {
@@ -230,9 +229,10 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         updateBinding.toolbar.run {
             isEditMode = false
             setLeftButtonImage(NoteToolbar.NO_IMAGE)
+            showRightButton()
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
                 override fun onLeftButtonClick() = Unit
-                override fun onRightButtonClick() = Unit
+                override fun onRightButtonClick() = presenter.handleFileOptionsClick()
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

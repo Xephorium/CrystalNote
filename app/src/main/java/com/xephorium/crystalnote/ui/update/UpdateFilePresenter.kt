@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
+import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.utility.NoteUtility
 
 
@@ -65,12 +66,19 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
         view?.navigateBack()
     }
 
-    override fun handleRevertClick() {
+    override fun handleFileOptionsClick() {
+        val isFileImported = newNoteId != Note.NO_NOTE
+
         view?.hideKeyboard()
-        view?.showRevertDialog()
+        view?.showFileOptionsDialog(isFileImported)
     }
 
-    override fun handleRevertConfirm() {
+    override fun handleRestoreClick() {
+        view?.hideKeyboard()
+        view?.showRestoreDialog()
+    }
+
+    override fun handleRestoreConfirm() {
         content = initialContent
         view?.populateFields(name, initialContent)
     }
@@ -83,7 +91,6 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     override fun handleImportConfirm() {
         newNoteId = noteRoomRepository.insertNote(name, content, NoteUtility.getDefaultColor(), "")
         this.view?.showImportSuccessMessage()
-        this.view?.showOpenNoteMenuOption()
     }
 
     override fun handleOpenNoteClick() {

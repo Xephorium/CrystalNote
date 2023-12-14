@@ -27,7 +27,9 @@
     <string name="noteOptionsTitle">Note Options</string>
     <string name="noteOptionsLock">Lock</string>
     <string name="noteOptionsUnlock">Unlock</string>
+    <string name="noteOptionsImport">Import</string>
     <string name="noteOptionsExport">Export</string>
+    <string name="noteOptionsOpen">Open Note</string>
     <string name="noteOptionsRestore">Restore</string>
     <string name="noteOptionsDelete">Delete</string>
 

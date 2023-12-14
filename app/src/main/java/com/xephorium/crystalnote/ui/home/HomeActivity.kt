@@ -88,7 +88,9 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         noteOptionsDialog.setListener(object: NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
+            override fun onImportClick() = Unit
             override fun onExportClick() = presenter.handleExportClick()
+            override fun onOpenClick() = Unit
             override fun onRestoreClick() = Unit
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
@@ -102,7 +104,9 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         noteOptionsDialog.setListener(object: NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
+            override fun onImportClick() = Unit
             override fun onExportClick() = presenter.handleExportClick()
+            override fun onOpenClick() = Unit
             override fun onRestoreClick() = Unit
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })

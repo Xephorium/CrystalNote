@@ -125,7 +125,9 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         noteOptionsDialog.setListener(object: NoteOptionsDialog.Companion.NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
+            override fun onImportClick() = Unit
             override fun onExportClick() = presenter.handleExportClick()
+            override fun onOpenClick() = Unit
             override fun onRestoreClick() = presenter.handleRestoreClick()
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
@@ -133,25 +135,25 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showColorPickerDialog() {
-        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
-        colorPickerDialog.setTitle("Choose Note Color")
-        colorPickerDialog.setColorPickerListener(object :
+        val dialog = ColorPickerDialog.Builder(this).create()
+        dialog.setTitle("Choose Note Color")
+        dialog.setColorPickerListener(object :
             ColorPickerDialog.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {
-                colorPickerDialog.dismiss()
+                dialog.dismiss()
                 presenter.handleColorChange(color)
             }
         })
-        colorPickerDialog.show()
+        dialog.show()
     }
 
     override fun showSetNewPasswordDialog() {
-        val setPasswordDialog = PasswordDialog.Builder(this).create()
-        setPasswordDialog.show()
-        setPasswordDialog.setTitle("Choose Password")
-        setPasswordDialog.setMessage("Once locked, your note will be accessible only by password.")
-        setPasswordDialog.setButtonName("Set")
-        setPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
+        val dialog = PasswordDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Choose Password")
+        dialog.setMessage("Once locked, your note will be accessible only by password.")
+        dialog.setButtonName("Set")
+        dialog.setPasswordDialogListener(object : PasswordDialogListener {
             override fun onPasswordProvided(password: String) {
                 presenter.handleNewPasswordSet(password)
             }
@@ -167,12 +169,12 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showVerifyNewPasswordDialog(password: String) {
-        val verifyPasswordDialog = PasswordDialog.Builder(this).create()
-        verifyPasswordDialog.show()
-        verifyPasswordDialog.setTitle("Confirm Password")
-        verifyPasswordDialog.setMessage("Please enter password again.")
-        verifyPasswordDialog.setButtonName("Confirm")
-        verifyPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
+        val dialog = PasswordDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Confirm Password")
+        dialog.setMessage("Please enter password again.")
+        dialog.setButtonName("Confirm")
+        dialog.setPasswordDialogListener(object : PasswordDialogListener {
             override fun onPasswordProvided(newPassword: String) {
                 presenter.handleNewPasswordVerify(newPassword)
             }
@@ -192,13 +194,13 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showRemovePasswordDialog(password: String) {
-        val verifyPasswordDialog = PasswordDialog.Builder(this).create()
-        verifyPasswordDialog.setShouldShowErrors(false)
-        verifyPasswordDialog.show()
-        verifyPasswordDialog.setTitle("Unlock Note")
-        verifyPasswordDialog.setMessage("Enter password to unlock note.")
-        verifyPasswordDialog.setButtonName("Unlock")
-        verifyPasswordDialog.setPasswordDialogListener(object : PasswordDialogListener {
+        val dialog = PasswordDialog.Builder(this).create()
+        dialog.setShouldShowErrors(false)
+        dialog.show()
+        dialog.setTitle("Unlock Note")
+        dialog.setMessage("Enter password to unlock note.")
+        dialog.setButtonName("Unlock")
+        dialog.setPasswordDialogListener(object : PasswordDialogListener {
             override fun onPasswordProvided(password: String) {
                 presenter.handleOldPasswordVerify()
             }
@@ -218,13 +220,13 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showInvalidNameDialog() {
-        val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
-        deleteNoteDialog.show()
-        deleteNoteDialog.setTitle("Invalid Name")
-        deleteNoteDialog.setMessage("Note name is invalid and cannot be saved.")
-        deleteNoteDialog.setPositiveButtonName("Discard")
-        deleteNoteDialog.setNegativeButtonName("Rename")
-        deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Invalid Name")
+        dialog.setMessage("Note name is invalid and cannot be saved.")
+        dialog.setPositiveButtonName("Discard")
+        dialog.setNegativeButtonName("Rename")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
             override fun onPositiveClick() {
                 presenter.handleDiscardChangesConfirm()
             }
@@ -234,13 +236,13 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showDiscardChangesDialog() {
-        val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
-        deleteNoteDialog.show()
-        deleteNoteDialog.setTitle("Discard Note")
-        deleteNoteDialog.setMessage("New note will be permanently deleted. Are you sure?")
-        deleteNoteDialog.setPositiveButtonName("Discard")
-        deleteNoteDialog.setNegativeButtonName("Cancel")
-        deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Discard Note")
+        dialog.setMessage("New note will be permanently deleted. Are you sure?")
+        dialog.setPositiveButtonName("Discard")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
             override fun onPositiveClick() {
                 presenter.handleDiscardChangesConfirm()
             }
@@ -250,13 +252,13 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showDeleteNoteDialog() {
-        val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
-        deleteNoteDialog.show()
-        deleteNoteDialog.setTitle("Delete Note")
-        deleteNoteDialog.setMessage("Note will be permanently deleted. Are you sure?")
-        deleteNoteDialog.setPositiveButtonName("Confirm")
-        deleteNoteDialog.setNegativeButtonName("Cancel")
-        deleteNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Delete Note")
+        dialog.setMessage("Note will be permanently deleted. Are you sure?")
+        dialog.setPositiveButtonName("Confirm")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
             override fun onPositiveClick() {
                 presenter.handleDeleteConfirm()
             }
@@ -299,13 +301,13 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     override fun showRestoreDialog() {
-        val restoreNoteDialog = CrystalNoteDialog.Builder(this).create()
-        restoreNoteDialog.show()
-        restoreNoteDialog.setTitle("Restore Note")
-        restoreNoteDialog.setMessage("Note will be restored to its last save state, discarding current changes. Are you sure?")
-        restoreNoteDialog.setPositiveButtonName("Restore")
-        restoreNoteDialog.setNegativeButtonName("Cancel")
-        restoreNoteDialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Restore Note")
+        dialog.setMessage("Note will be restored to its last save state, discarding current changes. Are you sure?")
+        dialog.setPositiveButtonName("Restore")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
             override fun onPositiveClick() {
                 presenter.handleRestoreConfirm()
             }
