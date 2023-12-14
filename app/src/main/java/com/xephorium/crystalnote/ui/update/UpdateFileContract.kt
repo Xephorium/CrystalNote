@@ -1,6 +1,8 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.net.Uri
+import android.os.Build
+import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
@@ -36,13 +38,23 @@ interface UpdateFileContract {
         lateinit var noteDiskRepository: NoteDiskRepository
 
         var fileUri: Uri? = null
+        var newNoteId: Int = NO_NOTE
+        var name: String = ""
+        var initialContent: String? = null
+        var content: String = ""
+
+        val isFirstLaunch: Boolean
+            get() = initialContent == null
+
+        val isLegacyBuild: Boolean
+            get() = Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q
+
+        val isFileImported: Boolean
+            get() = newNoteId != NO_NOTE
+
         var isFileWriteInitiallyPermitted: Boolean = false
         var isFileWriteGranted: Boolean = false
         var isFileWriteDenied: Boolean = false
-        var newNoteId: Int = NO_NOTE
-        var name: String = ""
-        var initialContent: String = ""
-        var content: String = ""
 
         abstract fun handleContentTextChange(content: String)
         abstract fun handleFileWritePermissionGranted()

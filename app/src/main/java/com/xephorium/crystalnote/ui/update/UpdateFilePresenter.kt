@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.update
 
-import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.utility.NoteUtility
 
 
@@ -18,32 +17,17 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
         }
 
         // Update View
-        if (initialContent.isEmpty()) {
-            // TODO - Permission code crashes on newer versions of Android!
-            //         Test and version lock at the minimum API level.
-            if (isFileWriteInitiallyPermitted || isFileWriteGranted) {
-                fileUri?.let {
-                    noteDiskRepository.readNoteFromTextFile(it).let { note ->
-                        name = note.name
-                        initialContent = note.contents
-                        content = initialContent
-                    }
-                    this.view?.populateFields(name, initialContent)
-                }
-            } else if (!isFileWriteDenied) {
-                this.view?.requestFileWritePermission()
-            }
+        if (isFirstLaunch) {
+            if (isLegacyBuild) initializeStateForLegacyPermissions()
+            else initializeStateForModernPermissions()
         }
 
         // Update Underline
-        if (sharedPreferencesRepository.getNoteUnderlineEnabled())
-            this.view?.showTextUnderline()
-        else
-            this.view?.hideTextUnderline()
+        if (sharedPreferencesRepository.getNoteUnderlineEnabled()) this.view?.showTextUnderline()
+        else this.view?.hideTextUnderline()
 
         // Update Monospaced Font
-        if (sharedPreferencesRepository.getMonospacedFontEnabled())
-            this.view?.showMonospacedFont()
+        if (sharedPreferencesRepository.getMonospacedFontEnabled()) this.view?.showMonospacedFont()
     }
 
 
@@ -67,8 +51,6 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleFileOptionsClick() {
-        val isFileImported = newNoteId != Note.NO_NOTE
-
         view?.hideKeyboard()
         view?.showFileOptionsDialog(isFileImported)
     }
@@ -79,8 +61,10 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleRestoreConfirm() {
-        content = initialContent
-        view?.populateFields(name, initialContent)
+        initialContent?.let {
+            content = it
+            view?.populateFields(name, content)
+        }
     }
 
     override fun handleImportClick() {
@@ -108,7 +92,33 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
 
-    /*--- Private Methods ---*/
+    /*--- Private Initialization Methods ---*/
+
+    private fun initializeStateForLegacyPermissions() {
+        if (isFileWriteInitiallyPermitted || isFileWriteGranted) {
+            initializeState()
+        } else if (!isFileWriteDenied) {
+            this.view?.requestFileWritePermission()
+        }
+    }
+
+    private fun initializeStateForModernPermissions() {
+        initializeState()
+    }
+
+    private fun initializeState() {
+        fileUri?.let {
+            noteDiskRepository.readNoteFromTextFile(it).let { note ->
+                name = note.name
+                initialContent = note.contents
+                content = note.contents
+            }
+            this.view?.populateFields(name, content)
+        }
+    }
+
+
+    /*--- Private Save Methods ---*/
 
     private fun saveFile(): Boolean {
         if (initialContent != content) {
