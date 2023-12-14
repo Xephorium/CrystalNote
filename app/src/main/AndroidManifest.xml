@@ -2,6 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
@@ -59,7 +62,7 @@
             android:name=".ui.update.UpdateNoteActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"
-            android:exported="true"
+            android:exported="false"
             >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.CREATE_NOTE" />
@@ -76,31 +79,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-
+                <data android:mimeType="text/plain" />
                 <data android:scheme="file" />
                 <data android:scheme="content" />
-                <data android:mimeType="text/plain" />
-                <data android:host="*" />
-
-                <!--
-                    "Work around Android's ugly primitive PatternMatcher
-                    implementation that can't cope with finding a . early in
-                    the path unless it's explicitly matched."
-
-                    Stack Overflow Source: https://tinyurl.com/txufblc
-
-                    Here, I account for up to 9 preceding decimals.
-                -->
-                <data android:pathPattern=".*\\.txt" />
-                <data android:pathPattern=".*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
-                <data android:pathPattern=".*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\..*\\.txt" />
             </intent-filter>
         </activity>
 
@@ -111,7 +92,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"
             android:excludeFromRecents="true"
-            android:exported="true"
+            android:exported="false"
             >
             <intent-filter>
                 <action android:name="com.xephorium.crystalnote.widget.CHOOSE_NOTE" />
@@ -124,7 +105,7 @@
             android:icon="@mipmap/icon_launcher"
             android:label="CrystalNote Widget"
             android:permission="false"
-            android:exported="true"
+            android:exported="false"
             >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -144,7 +125,7 @@
             tools:ignore="LockedOrientationActivity"
             android:excludeFromRecents="true"
             android:theme="@style/WidgetConfigurationActivityTheme"
-            android:exported="true"
+            android:exported="false"
             >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />

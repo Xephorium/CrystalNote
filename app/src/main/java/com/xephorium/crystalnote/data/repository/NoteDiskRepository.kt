@@ -26,7 +26,10 @@ class NoteDiskRepository(private val context: Context) {
         context.contentResolver.openInputStream(uri).let { inputStream ->
 
             // Read Name
-            val name = uri.path?.let { path -> extractFileNameFromPath(path) } ?: ""
+            // TODO - Crashes on newer versions of Android API. Runs, but returns
+            //        a junk path (and therefore name) on older versions. Will need
+            //        a new method of retrieving Filename. ContentProvider?
+            val name = "Fake Name" // uri.path?.let { path -> extractFileNameFromPath(path) } ?: ""
 
             // Read Contents
             val reader = BufferedReader(InputStreamReader(inputStream))

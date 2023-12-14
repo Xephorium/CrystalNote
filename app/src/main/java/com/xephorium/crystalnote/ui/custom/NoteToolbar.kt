@@ -89,7 +89,7 @@ class NoteToolbar : Toolbar {
     }
 
     fun setTitle(string: String) {
-        findViewById<TextView>(R.id.textToolbarTitle).text.toString()
+        findViewById<TextView>(R.id.textToolbarTitle).text = string
     }
 
     override fun getTitle(): CharSequence {

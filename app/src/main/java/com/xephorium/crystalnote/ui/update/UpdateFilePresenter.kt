@@ -18,13 +18,17 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
 
         // Update View
         if (initialContent.isEmpty()) {
+            // TODO - Permission code crashes on newer versions of Android!
+            //         Test and version lock at the minimum API level.
             if (isFileWriteInitiallyPermitted || isFileWriteGranted) {
-                noteDiskRepository.readNoteFromTextFile(fileUri!!).let { note ->
-                    name = note.name
-                    initialContent = note.contents
-                    content = initialContent
+                fileUri?.let {
+                    noteDiskRepository.readNoteFromTextFile(it).let { note ->
+                        name = note.name
+                        initialContent = note.contents
+                        content = initialContent
+                    }
+                    this.view?.populateFields(name, initialContent)
                 }
-                this.view?.populateFields(name, initialContent)
             } else if (!isFileWriteDenied) {
                 this.view?.requestFileWritePermission()
             }
