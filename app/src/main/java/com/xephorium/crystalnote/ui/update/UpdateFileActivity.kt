@@ -2,19 +2,18 @@ package com.xephorium.crystalnote.ui.update
 
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
-import android.content.DialogInterface.BUTTON_NEGATIVE
-import android.content.DialogInterface.BUTTON_POSITIVE
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.DocumentsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.WindowManager
-import androidx.appcompat.app.AlertDialog
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
@@ -36,7 +35,7 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     private val fileUri: Uri?
         get() = intent.data
 
-    private lateinit var updateBinding: UpdateActivityLayoutBinding
+    private lateinit var binding: UpdateActivityLayoutBinding
 
     lateinit var presenter: UpdateFilePresenter
 
@@ -45,8 +44,8 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        updateBinding = UpdateActivityLayoutBinding.inflate(layoutInflater)
-        setContentView(updateBinding.root)
+        binding = UpdateActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         presenter = UpdateFilePresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -75,23 +74,27 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateFields(name: String, content: String) {
-        updateBinding.toolbar.setTitle(name)
-        updateBinding.textNoteContent.setText(content)
+        binding.toolbar.setTitle(name)
+        binding.textNoteContent.setText(content)
+    }
+
+    override fun disableFileEdit() {
+        binding.textNoteContent.isEnabled = false
     }
 
     override fun showTextUnderline() {
-        updateBinding.textNoteContent.showUnderline()
+        binding.textNoteContent.showUnderline()
     }
 
     override fun hideTextUnderline() {
-        updateBinding.textNoteContent.hideUnderline()
+        binding.textNoteContent.hideUnderline()
     }
 
     override fun showMonospacedFont() {
-        updateBinding.textNoteContent.useMonospacedFont()
+        binding.textNoteContent.useMonospacedFont()
     }
 
-    override fun showFileOptionsDialog(isFileImported: Boolean) {
+    override fun showFileOptionsDialog(isFileImported: Boolean, isLegacyBuild: Boolean) {
         val dialog = NoteOptionsDialog.Builder(this).create()
 
         dialog.setTitle("File Options")
@@ -101,7 +104,7 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         dialog.hideExportOption()
         if (!isFileImported) dialog.showImportOption()
         if (isFileImported) dialog.showOpenOption()
-        dialog.showRestoreOption()
+        if (isLegacyBuild) dialog.showRestoreOption()
         dialog.hideDeleteOption()
 
         dialog.setListener(object: NoteOptionsDialog.Companion.NoteOptionsListener {
@@ -224,9 +227,9 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     /*--- Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(updateBinding.toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        updateBinding.toolbar.run {
+        binding.toolbar.run {
             isEditMode = false
             setLeftButtonImage(NoteToolbar.NO_IMAGE)
             showRightButton()
@@ -240,11 +243,11 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
     }
 
     private fun setupClickListeners() {
-        updateBinding.textNoteContent.addTextChangedListener(object : TextWatcher {
+        binding.textNoteContent.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun afterTextChanged(editable: Editable?) {
-                presenter.handleContentTextChange(updateBinding.textNoteContent.text.toString())
+                presenter.handleContentTextChange(binding.textNoteContent.text.toString())
             }
         })
     }

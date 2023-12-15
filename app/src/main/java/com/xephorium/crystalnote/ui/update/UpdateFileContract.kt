@@ -14,17 +14,19 @@ interface UpdateFileContract {
 
     interface View : BaseView {
         fun populateFields(name: String, content: String)
+        fun disableFileEdit()
         fun showTextUnderline()
         fun hideTextUnderline()
         fun showMonospacedFont()
 
-        fun showFileOptionsDialog(isFileImported: Boolean)
+        fun showFileOptionsDialog(isFileImported: Boolean, isLegacyBuild: Boolean)
         fun showRestoreDialog()
         fun showImportDialog()
         fun showImportSuccessMessage()
         fun showFileSavedMessage()
         fun showFileAccessDeniedMessage()
         fun showErrorReadingFileMessage()
+
         fun navigateBack()
         fun navigateToUpdateNote(id: Int)
         fun hideKeyboard()
@@ -38,10 +40,10 @@ interface UpdateFileContract {
         lateinit var noteDiskRepository: NoteDiskRepository
 
         var fileUri: Uri? = null
-        var newNoteId: Int = NO_NOTE
         var name: String = ""
         var initialContent: String? = null
         var content: String = ""
+        var newNoteId: Int = NO_NOTE
 
         val isFirstLaunch: Boolean
             get() = initialContent == null

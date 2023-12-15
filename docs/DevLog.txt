@@ -51,3 +51,42 @@ December 2023
       The issue is that the "Disable HW overlays" needs to be toggled
       on in the Hardware Accelerated Rendering section of the emulated
       device settings.
+
+    Editing Plaintext Files Opened From an External App
+    • Storage access permissions for Android API > 29 make editing files
+      opened from any external app (like File Manager) a prohibitively
+      clunky user experience. Since it's a comparatively minor feature,
+      I've simply disabled external plaintext file editing on newer
+      versions of Android.
+    • The problem is the access level granted by File Manager's intent.
+      The intent only provides view access to the URI it passes, which
+      is how CrystalNote is able to open and display a plaintext file's
+      contents. However, write access to that same file is not permitted.
+      From what I can tell, Google's new storage paradigm doesn't allow
+      any method of asking the user for write access to the file beyond
+      simply opening a file browser for them to select the document they
+      want to edit. For reference, this would be done by creating and
+      firing a ACTION_OPEN_DOCUMENT intent:
+
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "text/plain"
+            putExtra(DocumentsContract.EXTRA_INITIAL_URI, fileUri)
+        }
+        startActivityForResult(intent, ACTIVITY_FOR_RESULT_CODE)
+
+    • This works, but the user experience is a mess. The entire process:
+
+        1. User opens File Manager app. Browses to text file. Taps.
+        2. User selects CrystalNote from list of apps.
+        3. File is open for viewing in CrystalNote. Cannot be edited.
+        4. User taps more menu. Selects "Edit File".
+        5. Dialog is shown explaining that user will need to reopen
+           the file. User taps continue. System file browser shown.
+        6. User finds and taps the file they've already opened one
+           more time. File opens in CrystalNote, now in edit mode.
+        7. User can finally edit the file.
+
+    • If the user has to go to this much trouble, they might as well
+      just import the note, edit it, and export a new text file. Maybe
+      I'll change my mind later. But for now, it isn't worth the hassle.

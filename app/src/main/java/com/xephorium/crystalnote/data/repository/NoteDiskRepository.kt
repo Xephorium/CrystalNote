@@ -48,11 +48,12 @@ class NoteDiskRepository(private val context: Context) {
             }
             true
         } catch (exception: Exception) {
+            System.out.println(exception.toString())
             false
         }
     }
 
-    @Deprecated("Direct file access has been disabled in Android 12.")
+    @Deprecated("Direct file access has been disabled in Android 11.")
     fun exportNoteToDownloads(name: String, content: String) {
         val noteFile = getNoteFile(name)
 
@@ -88,13 +89,13 @@ class NoteDiskRepository(private val context: Context) {
         }
     }
 
-    @Deprecated("Direct file access has been disabled in Android 12.")
+    @Deprecated("Direct file access has been disabled in Android 11.")
     private fun getNoteFile(name: String): File {
         val fileName = getNoteName(name)
         return File(getDownloadsDirectory().toString() + "/" + fileName)
     }
 
-    @Deprecated("Direct file access has been disabled in Android 12.")
+    @Deprecated("Direct file access has been disabled in Android 11.")
     private fun getNoteName(name: String): String {
         var fileName = getSanitizedExportFileName(name) + FILE_EXTENSION
         var file = File(getDownloadsDirectory().toString() + "/" + fileName)
@@ -104,25 +105,21 @@ class NoteDiskRepository(private val context: Context) {
             index++
             fileName = "$name($index)$FILE_EXTENSION"
             file = File(getDownloadsDirectory().toString() + "/" + fileName)
-            System.out.println("LLAMA - Trying new name: " + fileName)
         }
 
-        System.out.println("LLAMA - Name Selected: " + fileName)
         return fileName
     }
 
-    @Deprecated("Direct file access has been disabled in Android 12.")
+    @Deprecated("Direct file access has been disabled in Android 11.")
     private fun initializeFile(file: File) {
-        // TODO - File writing has changed in apps targeting newer versions of Android.
-        //        This throws an exception and needs to be revisited.
         if (!file.exists()) try {
             file.createNewFile()
         } catch (e: Exception) {
-            println("LLAMA - File writing failed: " + e.toString())
+            // Do Nothing
         }
     }
 
-    @Deprecated("Direct file access has been disabled in Android 12.")
+    @Deprecated("Direct file access has been disabled in Android 11.")
     private fun writeToFile(file: File, content: String): Boolean {
         return try {
             val noteOutputStream = FileOutputStream(file)

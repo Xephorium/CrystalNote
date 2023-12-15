@@ -52,7 +52,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
 
     override fun handleFileOptionsClick() {
         view?.hideKeyboard()
-        view?.showFileOptionsDialog(isFileImported)
+        view?.showFileOptionsDialog(isFileImported, isLegacyBuild)
     }
 
     override fun handleRestoreClick() {
@@ -82,8 +82,11 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleBackClick() {
-        if (saveFile()) view?.showFileSavedMessage()
-        else view?.showFileAccessDeniedMessage()
+        if (isLegacyBuild) {
+            if (saveFile()) view?.showFileSavedMessage()
+            else view?.showFileAccessDeniedMessage()
+        }
+
         view?.navigateBack()
     }
 
@@ -103,7 +106,14 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     private fun initializeStateForModernPermissions() {
+        /* Note: Storage access permissions for Android API > 29 make editing
+         *       files opened from the file manager a prohibitively clunky
+         *       experience. Since it's a comparatively minor feature, I've
+         *       simply disabled plaintext editing on newer versions of Android.
+         *       For more info, see my full writeup in 'DevLog.txt'.
+         */
         initializeState()
+        view?.disableFileEdit()
     }
 
     private fun initializeState() {
