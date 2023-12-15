@@ -48,7 +48,6 @@ class NoteDiskRepository(private val context: Context) {
             }
             true
         } catch (exception: Exception) {
-            System.out.println(exception.toString())
             false
         }
     }
