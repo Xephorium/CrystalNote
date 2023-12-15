@@ -82,7 +82,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleBackClick() {
-        if (isLegacyBuild) {
+        if (isLegacyBuild && isContentChanged) {
             if (saveFile()) view?.showFileSavedMessage()
             else view?.showFileAccessDeniedMessage()
         }
@@ -91,7 +91,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleDestroy() {
-        saveFile()
+        if (isLegacyBuild && isContentChanged) saveFile()
     }
 
 
@@ -131,9 +131,6 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     /*--- Private Save Methods ---*/
 
     private fun saveFile(): Boolean {
-        if (initialContent != content) {
-            return noteDiskRepository.writeStringToTextFile(fileUri!!, content)
-        }
-        return true
+        return fileUri?.let { noteDiskRepository.writeStringToTextFile(it, content) } ?: false
     }
 }

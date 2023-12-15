@@ -41,7 +41,7 @@ class NoteDiskRepository(private val context: Context) {
 
     fun writeStringToTextFile(uri: Uri, contents: String): Boolean {
         return try {
-            context.contentResolver.openOutputStream(uri).let { outputStream ->
+            context.contentResolver.openOutputStream(uri, "rwt").let { outputStream ->
                 val writer = BufferedWriter(OutputStreamWriter(outputStream))
                 writer.write(contents)
                 writer.close()

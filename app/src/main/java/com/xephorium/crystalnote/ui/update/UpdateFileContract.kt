@@ -51,6 +51,9 @@ interface UpdateFileContract {
         val isFileImported: Boolean
             get() = newNoteId != NO_NOTE
 
+        val isContentChanged: Boolean
+            get() = content != initialContent
+
         val isLegacyBuild: Boolean
             get() = Build.VERSION.SDK_INT <= Build.VERSION_CODES.Q
 
