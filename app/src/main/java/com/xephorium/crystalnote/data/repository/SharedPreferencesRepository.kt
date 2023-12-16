@@ -18,7 +18,7 @@ class SharedPreferencesRepository(private val context: Context) {
 
     fun getTheme(): String {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        val backupValue = CrystalNoteTheme.Themes.values()[0].displayName
+        val backupValue = CrystalNoteTheme.Themes.values()[1].displayName
         return prefs.getString(THEME, backupValue) ?: backupValue
     }
 

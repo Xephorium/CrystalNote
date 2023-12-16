@@ -141,7 +141,7 @@
 
     </style>
 
-    <style name="Dark" parent="CrystalNoteTheme">
+    <style name="DarkBase" parent="CrystalNoteTheme">
 
         <item name="themeStatusBar">@color/darkBackdropDark</item>
 
@@ -184,7 +184,7 @@
 
     <!-- Custom Color Themes -->
 
-    <style name="Starscape" parent="Dark">
+    <style name="Dark" parent="DarkBase">
         <item name="themeStatusBar">@color/starscapeBackdropDark</item>
 
         <item name="themeToolbar">@color/starscapeBackdropDark</item>
