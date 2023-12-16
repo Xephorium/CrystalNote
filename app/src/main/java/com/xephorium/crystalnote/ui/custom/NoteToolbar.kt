@@ -56,7 +56,7 @@ class NoteToolbar : Toolbar {
         this.noteToolbarListener = getDefaultNoteToolbarListener()
 
         findViewById<ColorOrb>(R.id.colorOrbToolbar).run {
-            setPadding(COLOR_ORB_PADDING)
+            setPadding(R.dimen.toolbarColorOrbPadding)
             setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
             setOutlineColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbarTextSecondary)
             setOutlineAlpha(COLOR_ORB_ALPHA)
@@ -129,6 +129,7 @@ class NoteToolbar : Toolbar {
 
     fun showColor() {
         findViewById<ColorOrb>(R.id.colorOrbToolbar).visibility = View.VISIBLE
+        findViewById<ColorOrb>(R.id.colorOrbToolbar).forceThickOutline()
     }
 
     fun hideColor() {
@@ -176,7 +177,6 @@ class NoteToolbar : Toolbar {
 
     companion object {
         private const val DEFAULT_LEFT_BUTTON_IMAGE = R.drawable.icon_back
-        private const val COLOR_ORB_PADDING = 0.7
         private const val COLOR_ORB_ALPHA = 0.68
         const val NO_IMAGE = -1
         const val TOOLBAR_ICON_SCALE_SMALLER = (0.93).toFloat()

@@ -10,18 +10,20 @@ December 2023
     • Upgrade Kotlin (12.09.2023)
     • Migrate to AndroidX (12.09.2023)
     • Migrate to ViewBinding (12.10.2023)
-    ◦ Review Permission Changes
+    • Review Permission Changes (12.14.2023)
       - App hibernation
       - Reading from downloads
       - Writing to txt file
-    ◦ Review Widget Changes
+    • Review Intent Changes (12.14.2023)
+      - Intent filters need to be exported
+    • Review Widget Changes (12.14.2023)
       - No startActivity() from BroadcastReceiver
       - New widget configuration method?
-    ◦ Review Intent Changes
-      - Intent filters need to be exported
     ◦ Other
       - Mandatory rounded corners on widgets?? :(
       - v2 key signing for PlayStore upload
+      - Refresh themes
+        > Add Black & review for issues
       - Update Version #
 
     New Features

@@ -34,20 +34,25 @@
 
         <com.xephorium.crystalnote.ui.custom.ColorOrb
             android:id="@+id/colorOrbToolbar"
-            android:layout_width="@dimen/colorOrbSizeToolbar"
-            android:layout_height="@dimen/colorOrbSizeToolbar"
+            android:layout_width="@dimen/toolbarIconSize"
+            android:layout_height="@dimen/toolbarIconSize"
             app:layout_constraintEnd_toStartOf="@id/buttonToolbarRight"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:visibility="gone"
             tools:visibility="visible"
             />
 
         <ImageView
             android:id="@+id/buttonToolbarRight"
-            android:layout_width="@dimen/toolbarOptionsIconWidth"
-            android:layout_height="@dimen/toolbarHeight"
+            android:layout_width="@dimen/toolbarIconSize"
+            android:layout_height="@dimen/toolbarIconSize"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="@dimen/paddingActivity"
+            android:padding="@dimen/paddingMedium"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"

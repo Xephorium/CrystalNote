@@ -4,8 +4,10 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Paint.Style.*
+import android.graphics.Paint.Style.FILL
+import android.graphics.Paint.Style.STROKE
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
@@ -29,8 +31,13 @@ class ColorOrb : View {
     private var outlineAlpha: Int? = null
     private var orbColor = DEFAULT_ORB_COLOR
     private var orbContrast = 2.0
-    private var padding: Double = 0.0
+    private var padding: Float = DEFAULT_ORB_PADDING
     private var useContrastOutline = true
+    private var forceThickOutline = false
+
+    private var viewPadding: Float = 0f
+    private var thickOutlineStrokeWidth: Float
+    private var thickOutlineGapWidth: Float
 
     private var outlinePaintColor: Int? = null
 
@@ -44,6 +51,20 @@ class ColorOrb : View {
     init {
         paint.isAntiAlias = true
         paint.strokeWidth = OUTLINE_WIDTH
+
+        // Calculate DP Dimens
+        calculateViewPadding()
+        thickOutlineStrokeWidth = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            THICK_OUTLINE_RADIUS,
+            resources.displayMetrics
+        )
+        thickOutlineGapWidth = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            THICK_OUTLINE_GAP,
+            resources.displayMetrics
+        )
+
     }
 
 
@@ -70,7 +91,7 @@ class ColorOrb : View {
     override fun onDraw(canvas: Canvas) {
 
         // Calculate Padding
-        val pad = (1.0 - padding)
+        val overdrawPadding = 0.90 // (1.0 - padding)
 
         // Set Outline Paint Color
         if (outlinePaintColor == null) {
@@ -78,24 +99,61 @@ class ColorOrb : View {
         }
         paint.color = outlinePaintColor!!
 
-        // Outline
-        paint.style = STROKE
-        canvas?.drawCircle(
-            (viewWidth!! / 2.0).toFloat(),
-            (viewHeight!! / 2.0).toFloat(),
-            ((viewWidth!! * OUTLINE_RADIUS * pad) / 2.0).toFloat(),
-            paint
-        )
+        if (forceThickOutline) {
 
-        // Color Circle
-        paint.color = orbColor
-        paint.style = FILL
-        canvas?.drawCircle(
-            (viewWidth!! / 2.0).toFloat(),
-            (viewHeight!! / 2.0).toFloat(),
-            ((viewWidth!! * OUTLINE_RADIUS * pad) / 2.0).toFloat(),
-            paint
-        )
+            // Thick Outline
+            paint.style = STROKE
+            paint.strokeWidth = thickOutlineStrokeWidth
+            canvas.drawCircle(
+                (viewWidth!! / 2.0).toFloat(),
+                (viewHeight!! / 2.0).toFloat(),
+                ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
+                paint
+            )
+
+            // Background Circle
+            backgroundColor?.let {
+                paint.color = it
+                paint.style = FILL
+                canvas.drawCircle(
+                    (viewWidth!! / 2.0).toFloat(),
+                    (viewHeight!! / 2.0).toFloat(),
+                    ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
+                    paint
+                )
+            }
+
+            // Foreground Circle
+            paint.color = orbColor
+            paint.style = FILL
+            canvas.drawCircle(
+                (viewWidth!! / 2.0).toFloat(),
+                (viewHeight!! / 2.0).toFloat(),
+                ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - thickOutlineGapWidth - viewPadding) / 2.0).toFloat(),
+                paint
+            )
+
+        } else {
+
+            // Outline
+            paint.style = STROKE
+            canvas.drawCircle(
+                (viewWidth!! / 2.0).toFloat(),
+                (viewHeight!! / 2.0).toFloat(),
+                ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
+                paint
+            )
+
+            // Color Circle
+            paint.color = orbColor
+            paint.style = FILL
+            canvas.drawCircle(
+                (viewWidth!! / 2.0).toFloat(),
+                (viewHeight!! / 2.0).toFloat(),
+                ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
+                paint
+            )
+        }
 
         super.onDraw(canvas)
     }
@@ -145,16 +203,33 @@ class ColorOrb : View {
         invalidate()
     }
 
-    fun setPadding(newPadding: Double) {
-        padding = newPadding
+    fun setPadding(dimenResource: Int) {
+        padding = getResourceDp(dimenResource)
+        calculateViewPadding()
+        invalidate()
     }
 
-    fun showContrastOutline(show: Boolean) {
-        useContrastOutline = show
+    fun forceThickOutline() {
+        setOutlineAlpha(1.0)
+        setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
+        forceThickOutline = true
     }
 
 
     /*--- Private Methods ---*/
+
+    fun getResourceDp(dimenResource: Int): Float {
+        return resources.getDimension(dimenResource) / resources.displayMetrics.density
+
+    }
+
+    fun calculateViewPadding() {
+        viewPadding = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            padding,
+            resources.displayMetrics
+        )
+    }
 
     private fun determineOrbContrast(): Double {
         if (backgroundColor != null) {
@@ -165,7 +240,7 @@ class ColorOrb : View {
     }
 
     private fun determineOutlineColor(): Int {
-        if (orbContrast < CONTRAST_THRESHOLD && useContrastOutline) {
+        if ((orbContrast < CONTRAST_THRESHOLD && useContrastOutline) || forceThickOutline) {
             val drawColor = outlineColor ?: theme.colorTextPrimary
             val drawAlpha = outlineAlpha ?: OUTLINE_ALPHA
             return ColorUtils.setAlphaComponent(drawColor, drawAlpha)
@@ -179,9 +254,12 @@ class ColorOrb : View {
 
     companion object {
         val DEFAULT_ORB_COLOR = Color.parseColor("#000000")
-        const val CONTRAST_THRESHOLD = 1.1
+        val DEFAULT_ORB_PADDING = 15f
+        const val CONTRAST_THRESHOLD = 1.3
         const val OUTLINE_RADIUS = 0.9
         const val OUTLINE_WIDTH = (5.0).toFloat()
         const val OUTLINE_ALPHA = (0.2 * 255).toInt()
+        const val THICK_OUTLINE_RADIUS = 3.5f
+        const val THICK_OUTLINE_GAP = 3.0f
     }
 }

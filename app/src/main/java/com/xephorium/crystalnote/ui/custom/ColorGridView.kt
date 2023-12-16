@@ -107,8 +107,7 @@ class ColorGridView: LinearLayout {
                 val orb = ColorOrb(context)
                 orb.setTheme(theme)
                 orb.setColor(COLOR_OPTIONS[colorIndex++])
-                orb.setPadding(ORB_PADDING)
-                orb.showContrastOutline(ORB_OUTLINE)
+                orb.setPadding(R.dimen.colorPickerPaddingOrb)
                 orb.setOnClickListener { listener?.onColorSelect(orb.getColor()) }
 
                 // Add Orb to Row
@@ -141,7 +140,6 @@ class ColorGridView: LinearLayout {
         private const val ORB_SIZE_INITIAL = 0
         private const val GRID_COLUMNS = 7
         private const val ORB_PADDING = 0.15
-        private const val ORB_OUTLINE = true
 
         private val COLOR_OPTIONS = listOf(
             Color.parseColor("#ffffff"), // R1 ---                (White)
