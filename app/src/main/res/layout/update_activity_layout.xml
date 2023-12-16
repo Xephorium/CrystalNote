@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?themeBackground"
+    android:background="?themeNoteBackground"
     >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="@dimen/toolbarElevation"
         >
 
         <com.xephorium.crystalnote.ui.custom.NoteToolbar
@@ -18,7 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?themeToolbar"
-            android:elevation="@dimen/toolbarElevation"
             app:contentInsetStart="0dp"
             app:popupTheme="@style/ToolbarOptionsTheme"
             app:layout_scrollFlags="scroll|enterAlways|snap"

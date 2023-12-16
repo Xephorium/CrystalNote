@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?themeNoteBackground"
+    android:background="?themeBackground"
     >
 
     <!-- Note: This view is a dirty hack. Because I'm manually inflating each layout added to
@@ -173,7 +173,7 @@
 
         </LinearLayout>
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSettingsNoteColorBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
             android:textSize="@dimen/textSettings"
             />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSettingsNoteBarThemed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
             android:textSize="@dimen/textSettings"
             />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSettingsToday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
             android:textSize="@dimen/textSettings"
             />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSettingsUnderline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -242,7 +242,7 @@
             android:textSize="@dimen/textSettings"
             />
 
-        <Switch
+        <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/switchSettingsMonospace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -262,16 +262,14 @@
 
     <Button
         android:id="@+id/buttonSave"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/paddingActivity"
-        android:backgroundTint="?themeAccent"
         android:text="@string/commonSave"
-        android:textColor="?themeAccentTextPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        style="@style/ButtonTheme"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

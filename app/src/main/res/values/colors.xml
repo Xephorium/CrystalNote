@@ -29,33 +29,37 @@
     <color name="lightDrawerItemSelected">@color/lightTextPrimary</color>
     <color name="lightDrawerSelection">#eee</color>
 
-    <color name="darkStatusBar">@color/charcoalDarker</color>
-    <color name="darkToolbar">@color/charcoalLight</color>
-    <color name="darkToolbarRipple">@color/rippleDark</color>
-    <color name="darkToolbarTextPrimary">@color/whiteSmoke</color>
-    <color name="darkToolbarTextSecondary">@color/whiteSmokeAlpha</color>
-    <color name="darkBackground">#444</color>
-    <color name="darkDivider">#666</color>
+    <color name="darkBackdropDark">#303030</color>
+    <color name="darkBackdropLight">#3d3d3d</color>
+    <color name="darkBackdropHighlight">#4f4f4f</color>
+    <color name="darkBackdropRipple">#595959</color>
     <color name="darkOverscroll">#fff</color>
-    <color name="darkAccent">@color/charcoalLight</color>
-    <color name="darkAccentTextPrimary">@color/white</color>
-    <color name="darkAccentTextSecondary">#bbf3f3f3</color>
-    <color name="darkTextPrimary">#fff</color>
-    <color name="darkTextSecondary">#c1c1c1</color>
-    <color name="darkTextTertiary">#a4a4a4</color>
-    <color name="darkTextHighlight">#7d888888</color>
-    <color name="darkTextHandle">@color/white</color>
-    <color name="darkNoteBackground">#555</color>
-    <color name="darkNoteColorBar">@color/gray8</color>
-    <color name="darkNoteRipple">@color/rippleDarkNote</color>
-    <color name="darkNoteUnderline">#666</color>
-    <color name="darkPreviewBackground">#1d1d1d</color>
-    <color name="darkDrawerItem">@color/darkTextSecondary</color>
-    <color name="darkDrawerItemSelected">@color/darkTextPrimary</color>
-    <color name="darkDrawerSelection">#494949</color>
+    <color name="darkAccent">#ffffff</color>
+    <color name="darkAccentRipple">#808080</color>
+    <color name="darkTextPrimary">#ffffff</color>
+    <color name="darkTextSecondary">#d1d1d1</color>
+    <color name="darkTextTertiary">#b3b3b3</color>
+    <color name="darkTextHighlight">#20ffffff</color>
+    <color name="darkDrawerFilter">#ce0d0d0d</color>
+    <color name="darkDivider">#38ffffff</color>
+    <color name="darkPreviewBackgroundDark">#171717</color>
+    <color name="darkPreviewBackgroundLight">#d1d1d1</color>
 
 
-    <!-- Custom Colors -->
+    <!-- Custom Theme Colors -->
+
+    <color name="starscapeBackdropDark">#282b30</color>
+    <color name="starscapeBackdropLight">#32353d</color>
+    <color name="starscapeBackdropHighlight">#42464f</color>
+    <color name="starscapeBackdropRipple">#4b4f59</color>
+    <color name="starscapeAccent">#f7f9ff</color>
+    <color name="starscapeAccentRipple">#6b7180</color>
+    <color name="starscapeTextPrimary">#ffffff</color>
+    <color name="starscapeTextSecondary">#c7cad1</color>
+    <color name="starscapeTextTertiary">#a1a5b3</color>
+    <color name="starscapeDrawerFilter">#ce03070d</color>
+    <color name="starscapePreviewBackgroundDark">#131517</color>
+    <color name="starscapePreviewBackgroundLight">#c7cad1</color>
 
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>
@@ -65,7 +69,7 @@
     <color name="azureDesaturatedDark">#406185</color>
     <color name="charcoalDark">#222222</color>
     <color name="charcoalDarker">#161616</color>
-    <color name="charcoalLight">#333333</color>
+    <color name="charcoalLight">#303030</color>
     <color name="cobaltBackground">#2E374A</color>
     <color name="cobaltForeground">#242B39</color>
     <color name="black">#000</color>
@@ -101,7 +105,6 @@
     <!-- Control Colors -->
 
     <color name="drawerFilterLight">#cc333333</color>
-    <color name="drawerFilterDark">#cc191919</color>
     <color name="drawerFilterBlack">#e8000000</color>
     <color name="drawerFilterAzure">#CC2A6BB3</color>
     <color name="drawerFilterSage">#cc01797C</color>
@@ -109,9 +112,6 @@
     <color name="drawerFilterTomato">#CCB94B3D</color>
     <color name="drawerFilterWhite">#88ffffff</color>
 
-    <color name="rippleDefault">#cccccc</color>
-    <color name="rippleDark">#24ffffff</color>
-    <color name="rippleDarkNote">#50ffffff</color>
     <color name="rippleLight">#28ffffff</color>
     <color name="rippleLightNote">#cccccc</color>
     <color name="rippleBlack">#0affffff</color>

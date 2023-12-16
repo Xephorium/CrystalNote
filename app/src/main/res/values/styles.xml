@@ -34,6 +34,14 @@
         <item name="android:actionOverflowButtonStyle">@style/ToolbarOptionsButton</item>
     </style>
 
+    <style
+        name="ButtonTheme"
+        parent="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+        >
+        <item name="android:backgroundTint">?themeAccent</item>
+        <item name="android:textColor">?themeAccentTextPrimary</item>
+    </style>
+
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <item name="android:background">?themeToolbar</item>
         <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
@@ -114,8 +122,6 @@
         <item name="themeTextPrimary">@color/lightTextPrimary</item>
         <item name="themeTextSecondary">@color/lightTextSecondary</item>
         <item name="themeTextTertiary">@color/lightTextTertiary</item>
-        <item name="themeTextInvertedPrimary">@color/darkTextPrimary</item>
-        <item name="themeTextInvertedSecondary">@color/darkTextSecondary</item>
         <item name="themeTextHandle">@color/lightTextHandle</item>
         <item name="themeTextHighlight">@color/lightTextHighlight</item>
 
@@ -126,7 +132,7 @@
 
         <item name="themePreviewBackgroundDefault">@color/lightPreviewBackground</item>
         <item name="themePreviewBackgroundLight">@color/lightPreviewBackground</item>
-        <item name="themePreviewBackgroundDark">@color/darkPreviewBackground</item>
+        <item name="themePreviewBackgroundDark">#1d1d1d</item>
 
         <item name="themeDrawerItem">@color/lightDrawerItem</item>
         <item name="themeDrawerItemSelected">@color/lightDrawerItemSelected</item>
@@ -137,48 +143,80 @@
 
     <style name="Dark" parent="CrystalNoteTheme">
 
-        <item name="themeStatusBar">@color/darkStatusBar</item>
+        <item name="themeStatusBar">@color/darkBackdropDark</item>
 
-        <item name="themeToolbar">@color/darkToolbar</item>
-        <item name="themeToolbarRipple">@color/darkToolbarRipple</item>
-        <item name="themeToolbarTextPrimary">@color/darkToolbarTextPrimary</item>
-        <item name="themeToolbarTextSecondary">@color/darkToolbarTextSecondary</item>
+        <item name="themeToolbar">@color/darkBackdropDark</item>
+        <item name="themeToolbarRipple">@color/darkBackdropRipple</item>
+        <item name="themeToolbarTextPrimary">@color/darkTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/darkTextSecondary</item>
 
-        <item name="themeBackground">@color/darkBackground</item>
+        <item name="themeBackground">@color/darkBackdropLight</item>
         <item name="themeDivider">@color/darkDivider</item>
         <item name="themeOverscroll">@color/darkOverscroll</item>
 
         <item name="themeAccent">@color/darkAccent</item>
-        <item name="themeAccentRipple">@color/rippleDark</item>
-        <item name="themeAccentTextPrimary">@color/darkAccentTextPrimary</item>
-        <item name="themeAccentTextSecondary">@color/darkAccentTextSecondary</item>
+        <item name="themeAccentRipple">@color/darkAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/darkBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/darkBackdropLight</item>
 
         <item name="themeTextPrimary">@color/darkTextPrimary</item>
         <item name="themeTextSecondary">@color/darkTextSecondary</item>
         <item name="themeTextTertiary">@color/darkTextTertiary</item>
-        <item name="themeTextInvertedPrimary">@color/lightTextPrimary</item>
-        <item name="themeTextInvertedSecondary">@color/lightTextSecondary</item>
-        <item name="themeTextHandle">@color/darkTextHandle</item>
+        <item name="themeTextHandle">@color/darkTextPrimary</item>
         <item name="themeTextHighlight">@color/darkTextHighlight</item>
 
-        <item name="themeNoteBackground">@color/darkNoteBackground</item>
-        <item name="themeNoteColorBar">@color/darkNoteColorBar</item>
-        <item name="themeNoteRipple">@color/darkNoteRipple</item>
-        <item name="themeNoteUnderline">@color/darkNoteUnderline</item>
+        <item name="themeNoteBackground">@color/darkBackdropDark</item>
+        <item name="themeNoteColorBar">@color/darkAccent</item>
+        <item name="themeNoteRipple">@color/darkBackdropRipple</item>
+        <item name="themeNoteUnderline">@color/darkDivider</item>
 
-        <item name="themePreviewBackgroundDefault">@color/darkPreviewBackground</item>
-        <item name="themePreviewBackgroundLight">@color/lightPreviewBackground</item>
-        <item name="themePreviewBackgroundDark">@color/darkPreviewBackground</item>
+        <item name="themePreviewBackgroundDefault">@color/darkPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/darkPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/darkPreviewBackgroundDark</item>
 
-        <item name="themeDrawerItem">@color/darkDrawerItem</item>
-        <item name="themeDrawerItemSelected">@color/darkDrawerItemSelected</item>
-        <item name="themeDrawerItemSelectedBackground">@color/darkDrawerSelection</item>
-        <item name="themeDrawerImageFilter">@color/drawerFilterDark</item>
+        <item name="themeDrawerItem">@color/darkTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/darkTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/darkBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/darkDrawerFilter</item>
 
     </style>
 
 
     <!-- Custom Color Themes -->
+
+    <style name="Starscape" parent="Dark">
+        <item name="themeStatusBar">@color/starscapeBackdropDark</item>
+
+        <item name="themeToolbar">@color/starscapeBackdropDark</item>
+        <item name="themeToolbarRipple">@color/starscapeBackdropRipple</item>
+        <item name="themeToolbarTextPrimary">@color/starscapeTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/starscapeTextSecondary</item>
+
+        <item name="themeBackground">@color/starscapeBackdropLight</item>
+
+        <item name="themeAccent">@color/starscapeAccent</item>
+        <item name="themeAccentRipple">@color/starscapeAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/starscapeBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/starscapeBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/starscapeTextPrimary</item>
+        <item name="themeTextSecondary">@color/starscapeTextSecondary</item>
+        <item name="themeTextTertiary">@color/starscapeTextTertiary</item>
+        <item name="themeTextHandle">@color/starscapeTextPrimary</item>
+
+        <item name="themeNoteBackground">@color/starscapeBackdropDark</item>
+        <item name="themeNoteColorBar">@color/starscapeAccent</item>
+        <item name="themeNoteRipple">@color/starscapeBackdropRipple</item>
+
+        <item name="themePreviewBackgroundDefault">@color/starscapePreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/starscapePreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/starscapePreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/starscapeTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/starscapeTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/starscapeBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/starscapeDrawerFilter</item>
+    </style>
 
     <style name="Black" parent="Dark">
         <item name="themeStatusBar">#0d0d0d</item>

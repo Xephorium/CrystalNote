@@ -5,8 +5,8 @@
 
         Theme Attributes
 
-            These custom attributes are represent color categories which can be overridden in each theme and used
-            throughout the app. The access syntax is ?themeColorName.
+            These custom attributes are represent color categories which can be overridden in
+            each theme and used throughout the app. The access syntax is ?themeColorName.
 
     -->
 
@@ -29,8 +29,6 @@
     <attr name="themeTextPrimary" format="reference|color" />
     <attr name="themeTextSecondary" format="reference|color" />
     <attr name="themeTextTertiary" format="reference|color"/>
-    <attr name="themeTextInvertedPrimary" format="reference|color" />
-    <attr name="themeTextInvertedSecondary" format="reference|color" />
     <attr name="themeTextHandle" format="reference|color" />
     <attr name="themeTextHighlight" format="reference|color" />
 

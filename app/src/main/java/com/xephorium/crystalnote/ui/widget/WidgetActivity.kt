@@ -159,7 +159,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             iconColor = ColorUtils.setAlphaComponent(resources.getColor(R.color.white), 110)
         } else {
             backgroundColor = getThemeColor(R.attr.themePreviewBackgroundDark)
-            iconColor = resources.getColor(R.color.darkNoteBackground)
+            iconColor = resources.getColor(R.color.darkBackdropDark)
         }
 
         // Set Background & Icon Colors
