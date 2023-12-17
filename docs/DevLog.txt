@@ -21,6 +21,7 @@ December 2023
       - New widget configuration method?
     ◦ Other
       - Mandatory rounded corners on widgets?? :(
+        > It's fine, actually. Don't need to change code & looks decent enough
       - v2 key signing for PlayStore upload
       - Refresh themes
         > Review Black for issues
@@ -29,8 +30,8 @@ December 2023
     New Features
     ◦ Home Screen Optimization
     • Note Restoration (12.13.2023)
-    ◦ Optional Scroll to Bottom Button
-    • Darker Night Theme
+    • Optional Scroll to Bottom Button (12.17.2023)
+    • Darker Night Theme (12.10.2023)
 
   /////////////////////////////
   /// Hard-Earned Knowledge ///
