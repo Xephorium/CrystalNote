@@ -28,6 +28,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewNoteContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="ifContentScrolls"
@@ -51,6 +52,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/actionButtonBottom"
         android:layout_width="@dimen/updateNoteActionButtonSize"
         android:layout_height="@dimen/updateNoteActionButtonSize"
         android:layout_marginEnd="20dp"

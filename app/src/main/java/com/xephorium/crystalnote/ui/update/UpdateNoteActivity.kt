@@ -9,6 +9,7 @@ import android.provider.DocumentsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
+import android.view.View
 import android.view.WindowManager
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.Note.Companion.NO_NOTE
@@ -34,11 +35,9 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
     /*--- Variable Declarations ---*/
 
-    private lateinit var updateBinding: UpdateActivityLayoutBinding
+    private lateinit var binding: UpdateActivityLayoutBinding
 
     lateinit var presenter: UpdateNotePresenter
-
-    lateinit var optionsMenu: Menu
 
     private val noteId: Int
         get() = intent.getIntExtra(KEY_NOTE_ID, NO_NOTE)
@@ -57,8 +56,8 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        updateBinding = UpdateActivityLayoutBinding.inflate(layoutInflater)
-        setContentView(updateBinding.root)
+        binding = UpdateActivityLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         presenter = UpdateNotePresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -94,24 +93,41 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     /*--- View Manipulation Methods ---*/
 
     override fun populateFields(name: String, content: String) {
-        updateBinding.toolbar.setEditTextContent(name)
-        updateBinding.textNoteContent.setText(content)
+        binding.toolbar.setEditTextContent(name)
+        binding.textNoteContent.setText(content)
     }
 
     override fun populateColor(color: Int) {
-        updateBinding.toolbar.setColor(color)
+        binding.toolbar.setColor(color)
+    }
+
+    override fun showBottomButton() {
+        binding.actionButtonBottom.visibility = View.VISIBLE
+    }
+
+    override fun hideBottomButton() {
+        binding.actionButtonBottom.visibility = View.GONE
     }
 
     override fun showTextUnderline() {
-        updateBinding.textNoteContent.showUnderline()
+        binding.textNoteContent.showUnderline()
     }
 
     override fun hideTextUnderline() {
-        updateBinding.textNoteContent.hideUnderline()
+        binding.textNoteContent.hideUnderline()
     }
 
     override fun showMonospacedFont() {
-        updateBinding.textNoteContent.useMonospacedFont()
+        binding.textNoteContent.useMonospacedFont()
+    }
+
+    override fun scrollToBottom() {
+        binding.appbar.setExpanded(false)
+        binding.scrollViewNoteContent.smoothScrollTo(
+            0,
+            binding.scrollViewNoteContent.getChildAt(0).height,
+            SCROLL_TO_BOTTOM_TIME_MILLISECONDS
+        )
     }
 
     override fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean) {
@@ -350,9 +366,9 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     /*--- Setup Methods ---*/
 
     private fun setupToolbar() {
-        setSupportActionBar(updateBinding.toolbar)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        updateBinding.toolbar.run {
+        binding.toolbar.run {
             isEditMode = true
             setLeftButtonImage(R.drawable.icon_back)
             showColor()
@@ -367,15 +383,18 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
     }
 
     private fun setupClickListeners() {
-        updateBinding.textNoteContent.addTextChangedListener(object : TextWatcher {
+        binding.textNoteContent.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
             override fun afterTextChanged(editable: Editable?) {
                 presenter.handleContentTextChange(
-                    updateBinding.textNoteContent.text.toString()
+                    binding.textNoteContent.text.toString()
                 )
             }
         })
+        binding.actionButtonBottom.setOnClickListener {
+            presenter.handleBottomClick()
+        }
     }
 
 
@@ -388,5 +407,6 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         const val KEY_LAUNCH_FROM_SELECT = "LAUNCH_FROM_SELECT_KEY"
         const val KEY_LAUNCH_FROM_UPDATE_FILE = "LAUNCH_FROM_UPDATE_FILE_KEY"
         const val FILE_CREATE_REQUEST_CODE = 264
+        const val SCROLL_TO_BOTTOM_TIME_MILLISECONDS = 750
     }
 }

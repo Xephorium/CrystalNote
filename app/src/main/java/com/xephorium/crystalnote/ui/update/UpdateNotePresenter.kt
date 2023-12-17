@@ -1,6 +1,9 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.net.Uri
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.StringReader
 
 
 class UpdateNotePresenter : UpdateNoteContract.Presenter() {
@@ -37,6 +40,10 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
             this.view?.populateColor(initialColor)
         }
 
+        // Update Bottom Button
+        if (countLinesInNote() > SHOW_BOTTOM_BUTTON_THRESHOLD) this.view?.showBottomButton()
+        else this.view?.hideBottomButton()
+
         // Update Underline
         if (sharedPreferencesRepository.getNoteUnderlineEnabled())
             this.view?.showTextUnderline()
@@ -57,6 +64,10 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleContentTextChange(content: String) {
         this.content = content
+    }
+
+    override fun handleBottomClick() {
+        this.view?.scrollToBottom()
     }
 
     override fun handleColorClick() {
@@ -181,6 +192,10 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
 
     /*--- Private Methods ---*/
+
+    private fun countLinesInNote(): Int {
+        return content.lines().size
+    }
 
     private fun saveNote() {
 

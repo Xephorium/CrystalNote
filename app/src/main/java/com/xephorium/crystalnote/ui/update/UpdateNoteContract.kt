@@ -15,10 +15,14 @@ interface UpdateNoteContract {
     interface View : BaseView {
         fun populateFields(name: String, content: String)
         fun populateColor(color: Int)
+        fun showBottomButton()
+        fun hideBottomButton()
+
         fun showTextUnderline()
         fun hideTextUnderline()
         fun showMonospacedFont()
 
+        fun scrollToBottom()
         fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean)
         fun showColorPickerDialog()
         fun showSetNewPasswordDialog()
@@ -61,6 +65,7 @@ interface UpdateNoteContract {
 
         abstract fun handleNameTextChange(name: String)
         abstract fun handleContentTextChange(content: String)
+        abstract fun handleBottomClick()
         abstract fun handleColorClick()
         abstract fun handleColorChange(color: Int)
         abstract fun handleBackClick()
@@ -78,5 +83,9 @@ interface UpdateNoteContract {
         abstract fun handleDeleteClick()
         abstract fun handleDeleteConfirm()
         abstract fun handleDiscardChangesConfirm()
+
+        companion object {
+            const val SHOW_BOTTOM_BUTTON_THRESHOLD = 100 // 4 screens worth of text on a Pixel 1
+        }
     }
 }
