@@ -50,4 +50,20 @@
 
     </androidx.core.widget.NestedScrollView>
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="@dimen/updateNoteActionButtonSize"
+        android:layout_height="@dimen/updateNoteActionButtonSize"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:layout_gravity="end|bottom"
+        android:backgroundTint="?themeBackground"
+        android:elevation="@dimen/floatingActionButtonElevation"
+        app:elevation="@dimen/floatingActionButtonElevation"
+        app:collapsedSize="@dimen/updateNoteActionButtonSize"
+        app:icon="@drawable/icon_down"
+        app:iconTint="?themeTextSecondary"
+        app:rippleColor="?themeTextHighlight"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
