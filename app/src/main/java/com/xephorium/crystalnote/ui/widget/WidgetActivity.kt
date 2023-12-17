@@ -287,6 +287,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             colorOrbWidgetSettingsBackgroundColor.setOnClickListener {
                 presenter.handleBackgroundColorClick()
             }
+            colorOrbWidgetSettingsBackgroundColor.setPadding(R.dimen.paddingMicro)
 
             // Title Color Orb
             layoutWidgetSettingsTitleColor.setOnClickListener {
@@ -299,6 +300,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             colorOrbWidgetSettingsTitleColor.setOnClickListener {
                 presenter.handleTitleColorClick()
             }
+            colorOrbWidgetSettingsTitleColor.setPadding(R.dimen.paddingMicro)
 
             // Text Color Orb
             layoutWidgetSettingsContentColor.setOnClickListener {
@@ -311,6 +313,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             colorOrbWidgetSettingsContentColor.setOnClickListener {
                 presenter.handleContentColorClick()
             }
+            colorOrbWidgetSettingsContentColor.setPadding(R.dimen.paddingMicro)
         }
     }
 

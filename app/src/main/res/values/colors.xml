@@ -59,7 +59,7 @@
     <color name="starscapeTextTertiary">#a1a5b3</color>
     <color name="starscapeDrawerFilter">#ce03070d</color>
     <color name="starscapePreviewBackgroundDark">#131517</color>
-    <color name="starscapePreviewBackgroundLight">#c7cad1</color>
+    <color name="starscapePreviewBackgroundLight">#BBBEC5</color>
 
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>

@@ -157,6 +157,9 @@
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
                     />
 
             </LinearLayout>
@@ -189,6 +192,9 @@
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
                     />
 
             </LinearLayout>
@@ -221,6 +227,9 @@
                     android:layout_height="@dimen/colorOrbSizeWidgetSettings"
                     android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
                     android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
                     />
 
             </LinearLayout>
