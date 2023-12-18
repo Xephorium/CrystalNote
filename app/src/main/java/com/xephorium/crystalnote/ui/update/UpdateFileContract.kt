@@ -14,11 +14,15 @@ interface UpdateFileContract {
 
     interface View : BaseView {
         fun populateFields(name: String, content: String)
+        fun showBottomButton()
+        fun hideBottomButton()
         fun disableFileEdit()
+
         fun showTextUnderline()
         fun hideTextUnderline()
         fun showMonospacedFont()
 
+        fun scrollToBottom()
         fun showFileOptionsDialog(isFileImported: Boolean, isLegacyBuild: Boolean)
         fun showRestoreDialog()
         fun showImportDialog()
@@ -66,6 +70,7 @@ interface UpdateFileContract {
         abstract fun handleFileWritePermissionGranted()
         abstract fun handleFileWritePermissionDenied()
         abstract fun handleFileWritePermissionDeniedConfirm()
+        abstract fun handleBottomClick()
         abstract fun handleFileOptionsClick()
         abstract fun handleRestoreClick()
         abstract fun handleRestoreConfirm()

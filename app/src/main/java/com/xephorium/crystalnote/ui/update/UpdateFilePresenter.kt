@@ -22,6 +22,12 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
             else initializeStateForModernPermissions()
         }
 
+        // Update Bottom Button
+        if (countLinesInNote() > UpdateNoteContract.Presenter.SHOW_BOTTOM_BUTTON_THRESHOLD)
+            this.view?.showBottomButton()
+        else
+            this.view?.hideBottomButton()
+
         // Update Underline
         if (sharedPreferencesRepository.getNoteUnderlineEnabled()) this.view?.showTextUnderline()
         else this.view?.hideTextUnderline()
@@ -48,6 +54,10 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
 
     override fun handleFileWritePermissionDeniedConfirm() {
         view?.navigateBack()
+    }
+
+    override fun handleBottomClick() {
+        this.view?.scrollToBottom()
     }
 
     override fun handleFileOptionsClick() {
@@ -95,7 +105,11 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
 
-    /*--- Private Initialization Methods ---*/
+    /*--- Private Methods ---*/
+
+    private fun countLinesInNote(): Int {
+        return content.lines().size
+    }
 
     private fun initializeStateForLegacyPermissions() {
         if (isFileWriteInitiallyPermitted || isFileWriteGranted) {

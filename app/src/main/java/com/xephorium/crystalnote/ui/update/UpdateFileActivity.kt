@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.view.WindowManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -75,6 +76,14 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
         binding.textNoteContent.setText(content)
     }
 
+    override fun showBottomButton() {
+        binding.actionButtonBottom.visibility = View.VISIBLE
+    }
+
+    override fun hideBottomButton() {
+        binding.actionButtonBottom.visibility = View.GONE
+    }
+
     override fun disableFileEdit() {
         binding.textNoteContent.isEnabled = false
     }
@@ -89,6 +98,15 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
 
     override fun showMonospacedFont() {
         binding.textNoteContent.useMonospacedFont()
+    }
+
+    override fun scrollToBottom() {
+        binding.appbar.setExpanded(false)
+        binding.scrollViewNoteContent.smoothScrollTo(
+            0,
+            binding.scrollViewNoteContent.getChildAt(0).height,
+            UpdateNoteActivity.SCROLL_TO_BOTTOM_TIME_MILLISECONDS
+        )
     }
 
     override fun showFileOptionsDialog(isFileImported: Boolean, isLegacyBuild: Boolean) {
@@ -247,6 +265,9 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
                 presenter.handleContentTextChange(binding.textNoteContent.text.toString())
             }
         })
+        binding.actionButtonBottom.setOnClickListener {
+            presenter.handleBottomClick()
+        }
     }
 
 
