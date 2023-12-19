@@ -227,23 +227,71 @@
         <item name="themeDrawerImageFilter">@color/starscapeDrawerFilter</item>
     </style>
 
-    <style name="Black" parent="Dark">
-        <item name="themeStatusBar">#0d0d0d</item>
-        <item name="themeToolbar">#0d0d0d</item>
-        <item name="themeBackground">@color/blackToolbar</item>
+    <style name="Cobalt" parent="DarkBase">
+        <item name="themeStatusBar">@color/cobaltBackdropDark</item>
+
+        <item name="themeToolbar">@color/cobaltBackdropDark</item>
+        <item name="themeToolbarTextSecondary">#AFBDD3</item>
+
+        <item name="themeBackground">@color/cobaltBackdropLight</item>
+        <item name="themeDivider">#455268</item>
+
+        <item name="themeAccent">#eff3f9</item>
+        <item name="themeAccentRipple">#91B1E3</item>
+        <item name="themeAccentTextPrimary">#252d3b</item>
+        <item name="themeAccentTextSecondary">#252d3b</item>
+
+        <item name="themeTextPrimary">#ffffff</item>
+        <item name="themeTextSecondary">#AFBDD3</item>
+        <item name="themeTextTertiary">#6d82a1</item>
+        <item name="themeTextHandle">#eff3f9</item>
+
+        <item name="themeNoteBackground">@color/cobaltBackdropDark</item>
+        <item name="themeNoteColorBar">#eff3f9</item>
+        <item name="themeNoteRipple">@color/cobaltBackdropRipple</item>
+
+        <item name="themePreviewBackgroundDefault">#0d0f12</item>
+        <item name="themePreviewBackgroundLight">#8A929E</item>
+        <item name="themePreviewBackgroundDark">#0d0f12</item>
+
+        <item name="themeDrawerItem">#AFBDD3</item>
+        <item name="themeDrawerItemSelected">#ffffff</item>
+        <item name="themeDrawerItemSelectedBackground">#24AFBDD3</item>
+        <item name="themeDrawerImageFilter">#e40d1220</item>
+    </style>
+
+    <style name="Black" parent="DarkBase">
+        <item name="themeStatusBar">@color/blackBackdropDark</item>
+
+        <item name="themeToolbar">@color/blackBackdropDark</item>
+        <item name="themeToolbarRipple">@color/blackBackdropRipple</item>
+        <item name="themeToolbarTextPrimary">@color/blackTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/blackTextSecondary</item>
+
+        <item name="themeBackground">@color/blackBackdropLight</item>
+
         <item name="themeAccent">@color/blackAccent</item>
-        <item name="themeAccentRipple">@color/rippleBlack</item>
-        <item name="themeTextSecondary">#b0b0b0</item>
-        <item name="themeTextTertiary">#787878</item>
-        <item name="themeTextHandle">@color/blackTextHandle</item>
-        <item name="themeNoteRipple">@color/rippleBlackNote</item>
-        <item name="themeDivider">#434343</item>
-        <item name="themeNoteBackground">#0d0d0d</item>
-        <item name="themeNoteColorBar">@color/blackNoteColorBar</item>
-        <item name="themePreviewBackgroundDefault">@color/black</item>
-        <item name="themePreviewBackgroundDark">@color/black</item>
-        <item name="themeDrawerItemSelectedBackground">@color/blackHighlight</item>
-        <item name="themeDrawerImageFilter">@color/drawerFilterBlack</item>
+        <item name="themeAccentRipple">@color/blackAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/blackBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/blackBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/blackTextPrimary</item>
+        <item name="themeTextSecondary">@color/blackTextSecondary</item>
+        <item name="themeTextTertiary">@color/blackTextTertiary</item>
+        <item name="themeTextHandle">@color/blackAccent</item>
+
+        <item name="themeNoteBackground">@color/blackBackdropDark</item>
+        <item name="themeNoteColorBar">@color/blackAccent</item>
+        <item name="themeNoteRipple">@color/blackBackdropRipple</item>
+
+        <item name="themePreviewBackgroundDefault">@color/blackPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/blackPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/blackPreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/blackTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/blackTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/blackBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/blackDrawerFilter</item>
     </style>
 
     <style name="White" parent="Light">
@@ -257,30 +305,6 @@
         <item name="themeAccentTextSecondary">@color/darkTextPrimary</item>
         <item name="themeNoteColorBar">@color/lightTextTertiary</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterWhite</item>
-    </style>
-
-    <style name="Cobalt" parent="Dark">
-        <item name="themeStatusBar">@color/cobaltForeground</item>
-        <item name="themeToolbar">@color/cobaltForeground</item>
-        <item name="themeNoteBackground">@color/cobaltForeground</item>
-        <item name="themeBackground">@color/cobaltBackground</item>
-        <item name="themeAccent">#eff3f9</item>
-        <item name="themeNoteColorBar">#eff3f9</item>
-        <item name="themeTextPrimary">#ffffff</item>
-        <item name="themeTextSecondary">#AFBDD3</item>
-        <item name="themeTextTertiary">#6d82a1</item>
-        <item name="themeAccentTextPrimary">#252d3b</item>
-        <item name="themeAccentTextSecondary">#252d3b</item>
-        <item name="themeAccentRipple">#91B1E3</item>
-        <item name="themeToolbarTextSecondary">#AFBDD3</item>
-        <item name="themeDrawerItem">#AFBDD3</item>
-        <item name="themeDrawerItemSelected">#ffffff</item>
-        <item name="themeDrawerItemSelectedBackground">#24AFBDD3</item>
-        <item name="themeDrawerImageFilter">#e40d1220</item>
-        <item name="themeDivider">#455268</item>
-        <item name="themePreviewBackgroundDefault">#0d0f12</item>
-        <item name="themePreviewBackgroundDark">#0d0f12</item>
-        <item name="themePreviewBackgroundLight">#8A929E</item>
     </style>
 
     <style name="Azure" parent="Light">
@@ -331,7 +355,7 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterTomato</item>
     </style>
 
-    <style name="Olive" parent="Dark">
+    <style name="Olive" parent="DarkBase">
         <item name="themeAccent">@color/olive</item>
         <item name="themeTextTertiary">@color/oliveDesaturated</item>
         <item name="themeTextHandle">@color/olive</item>

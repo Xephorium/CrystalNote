@@ -32,6 +32,7 @@ December 2023
     • Note Restoration (12.13.2023)
     • Optional Scroll to Bottom Button (12.17.2023)
     • Darker Night Theme (12.10.2023)
+    ◦ Theme Badges
 
   /////////////////////////////
   /// Hard-Earned Knowledge ///

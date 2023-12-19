@@ -20,6 +20,7 @@ import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
 import com.xephorium.crystalnote.databinding.WidgetActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog.Companion.ColorPickerListener
+import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import com.xephorium.crystalnote.ui.extensions.getThemeColor
@@ -227,20 +228,21 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     override fun showDiscardChangesDialog(widgetNames: String) {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(true)
-        alertDialog.setTitle("Discard Changes")
-        alertDialog.setMessage(
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Discard Changes")
+        dialog.setMessage(
             "The following widgets have not been saved. Discard changes?\n\n${widgetNames}"
         )
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleBackConfirm()
-        }
-        alertDialog.show()
+        dialog.setPositiveButtonName("Discard")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleBackConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun navigateBack() {

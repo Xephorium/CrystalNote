@@ -32,7 +32,7 @@
     <color name="darkBackdropDark">#303030</color>
     <color name="darkBackdropLight">#3d3d3d</color>
     <color name="darkBackdropHighlight">#4f4f4f</color>
-    <color name="darkBackdropRipple">#595959</color>
+    <color name="darkBackdropRipple">#1affffff</color>
     <color name="darkOverscroll">#fff</color>
     <color name="darkAccent">#ffffff</color>
     <color name="darkAccentRipple">#808080</color>
@@ -61,6 +61,23 @@
     <color name="starscapePreviewBackgroundDark">#131517</color>
     <color name="starscapePreviewBackgroundLight">#BBBEC5</color>
 
+    <color name="cobaltBackdropDark">#242B39</color>
+    <color name="cobaltBackdropLight">#2E374A</color>
+    <color name="cobaltBackdropRipple">#505A70</color>
+
+    <color name="blackBackdropDark">#0c0c0c</color>
+    <color name="blackBackdropLight">#161616</color>
+    <color name="blackBackdropHighlight">#222222</color>
+    <color name="blackBackdropRipple">#50ffffff</color>
+    <color name="blackAccent">#eaeaea</color>
+    <color name="blackAccentRipple">#444444</color>
+    <color name="blackTextPrimary">#ffffff</color>
+    <color name="blackTextSecondary">#b0b0b0</color>
+    <color name="blackTextTertiary">#787878</color>
+    <color name="blackDrawerFilter">#e8000000</color>
+    <color name="blackPreviewBackgroundDark">#000000</color>
+    <color name="blackPreviewBackgroundLight">#BBBEC5</color>
+
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>
     <color name="azureLight">#4DA5FF</color>
@@ -70,15 +87,7 @@
     <color name="charcoalDark">#222222</color>
     <color name="charcoalDarker">#161616</color>
     <color name="charcoalLight">#303030</color>
-    <color name="cobaltBackground">#2E374A</color>
-    <color name="cobaltForeground">#242B39</color>
     <color name="black">#000</color>
-    <color name="blackToolbar">#161616</color>
-    <color name="blackAccent">#383838</color>
-    <color name="blackTextHandle">#707070</color>
-    <color name="blackNoteBackground">#141414</color>
-    <color name="blackNoteColorBar">#424242</color>
-    <color name="blackHighlight">#b0202020</color>
     <color name="gray8">#888888</color>
     <color name="olive">#778A53</color>
     <color name="oliveDesaturated">#889E64</color>
@@ -105,7 +114,6 @@
     <!-- Control Colors -->
 
     <color name="drawerFilterLight">#cc333333</color>
-    <color name="drawerFilterBlack">#e8000000</color>
     <color name="drawerFilterAzure">#CC2A6BB3</color>
     <color name="drawerFilterSage">#cc01797C</color>
     <color name="drawerFilterOlive">#cc26350E</color>
@@ -114,8 +122,6 @@
 
     <color name="rippleLight">#28ffffff</color>
     <color name="rippleLightNote">#cccccc</color>
-    <color name="rippleBlack">#0affffff</color>
-    <color name="rippleBlackNote">#50ffffff</color>
 
 
     <!-- Widget Default Colors -->

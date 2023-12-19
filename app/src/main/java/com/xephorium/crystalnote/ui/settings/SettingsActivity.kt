@@ -14,6 +14,7 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 import com.xephorium.crystalnote.databinding.SettingsActivityLayoutBinding
+import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 
 
 class SettingsActivity : DrawerActivity(), SettingsContract.View {
@@ -128,18 +129,19 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     override fun showDiscardChangesDialog() {
-        val alertDialog = AlertDialog.Builder(this, R.style.DialogTheme).create()
-        alertDialog.setCancelable(true)
-        alertDialog.setTitle("Discard Changes")
-        alertDialog.setMessage("Your changes have not been saved. Discard changes?")
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No") { dialog, _ ->
-            dialog.dismiss()
-        }
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { dialog, _ ->
-            dialog.dismiss()
-            presenter.handleBackConfirm()
-        }
-        alertDialog.show()
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Discard Changes")
+        dialog.setMessage("Your changes have not been saved. Discard changes?")
+        dialog.setPositiveButtonName("Discard")
+        dialog.setNegativeButtonName("Cancel")
+        dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
+            override fun onPositiveClick() {
+                presenter.handleBackConfirm()
+            }
+            override fun onNegativeClick() = Unit
+            override fun onBackClick() = Unit
+        })
     }
 
     override fun refreshScreen() {
@@ -168,7 +170,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     private fun setupThemeSpinner() {
-        val themeAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, THEMES)
+        val themeAdapter = ArrayAdapter(this, R.layout.settings_selector_item, THEMES)
         themeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         settingsBinding.run {
             selectorSettingsTheme.adapter = themeAdapter
@@ -183,7 +185,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     private fun setupNotePreviewLinesSpinner() {
-        val linesAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, NOTE_PREVIEW_LINES)
+        val linesAdapter = ArrayAdapter(this, R.layout.settings_selector_item, NOTE_PREVIEW_LINES)
         linesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         settingsBinding.run {
             selectorSettingsLines.adapter = linesAdapter
@@ -198,7 +200,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     }
 
     private fun setupNoteDateType() {
-        val dateAdapter = ArrayAdapter<String>(this, R.layout.settings_selector_item, NOTE_DATE)
+        val dateAdapter = ArrayAdapter(this, R.layout.settings_selector_item, NOTE_DATE)
         dateAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         settingsBinding.run {
             selectorSettingsDate.adapter = dateAdapter
