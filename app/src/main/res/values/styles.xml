@@ -32,6 +32,7 @@
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
         <item name="android:actionOverflowButtonStyle">@style/ToolbarOptionsButton</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
     <style
