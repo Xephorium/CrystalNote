@@ -25,6 +25,7 @@ December 2023
       - v2 key signing for PlayStore upload
       - Refresh themes
         > Review Black for issues
+      - Update Splash Screen for new APIs
       - Update Version #
 
     New Features
