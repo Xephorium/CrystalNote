@@ -231,33 +231,33 @@
         <item name="themeStatusBar">@color/cobaltBackdropDark</item>
 
         <item name="themeToolbar">@color/cobaltBackdropDark</item>
-        <item name="themeToolbarTextSecondary">#AFBDD3</item>
+        <item name="themeToolbarTextSecondary">@color/cobaltTextSecondary</item>
 
         <item name="themeBackground">@color/cobaltBackdropLight</item>
-        <item name="themeDivider">#455268</item>
+        <item name="themeDivider">@color/cobaltDivider</item>
 
-        <item name="themeAccent">#eff3f9</item>
-        <item name="themeAccentRipple">#91B1E3</item>
-        <item name="themeAccentTextPrimary">#252d3b</item>
-        <item name="themeAccentTextSecondary">#252d3b</item>
+        <item name="themeAccent">@color/cobaltAccent</item>
+        <item name="themeAccentRipple">@color/cobaltAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/cobaltBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/cobaltBackdropLight</item>
 
-        <item name="themeTextPrimary">#ffffff</item>
-        <item name="themeTextSecondary">#AFBDD3</item>
-        <item name="themeTextTertiary">#6d82a1</item>
-        <item name="themeTextHandle">#eff3f9</item>
+        <item name="themeTextPrimary">@color/cobaltTextPrimary</item>
+        <item name="themeTextSecondary">@color/cobaltTextSecondary</item>
+        <item name="themeTextTertiary">@color/cobaltTextTertiary</item>
+        <item name="themeTextHandle">@color/cobaltTextHandle</item>
 
         <item name="themeNoteBackground">@color/cobaltBackdropDark</item>
-        <item name="themeNoteColorBar">#eff3f9</item>
+        <item name="themeNoteColorBar">@color/cobaltNoteColorBar</item>
         <item name="themeNoteRipple">@color/cobaltBackdropRipple</item>
 
-        <item name="themePreviewBackgroundDefault">#0d0f12</item>
-        <item name="themePreviewBackgroundLight">#8A929E</item>
-        <item name="themePreviewBackgroundDark">#0d0f12</item>
+        <item name="themePreviewBackgroundDefault">@color/cobaltPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/cobaltPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/cobaltPreviewBackgroundDark</item>
 
-        <item name="themeDrawerItem">#AFBDD3</item>
-        <item name="themeDrawerItemSelected">#ffffff</item>
-        <item name="themeDrawerItemSelectedBackground">#24AFBDD3</item>
-        <item name="themeDrawerImageFilter">#e40d1220</item>
+        <item name="themeDrawerItem">@color/cobaltTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/cobaltTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/cobaltBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/cobaltDrawerFilter</item>
     </style>
 
     <style name="Black" parent="DarkBase">

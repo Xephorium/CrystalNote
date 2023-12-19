@@ -63,7 +63,19 @@
 
     <color name="cobaltBackdropDark">#242B39</color>
     <color name="cobaltBackdropLight">#2E374A</color>
+    <color name="cobaltBackdropHighlight">#24AFBDD3</color>
     <color name="cobaltBackdropRipple">#505A70</color>
+    <color name="cobaltNoteColorBar">#eff3f9</color>
+    <color name="cobaltAccent">#eff3f9</color>
+    <color name="cobaltAccentRipple">#4E607C</color>
+    <color name="cobaltTextPrimary">#ffffff</color>
+    <color name="cobaltTextSecondary">#AFBDD3</color>
+    <color name="cobaltTextTertiary">#6d82a1</color>
+    <color name="cobaltTextHandle">#eff3f9</color>
+    <color name="cobaltDrawerFilter">#e40d1220</color>
+    <color name="cobaltDivider">#455268</color>
+    <color name="cobaltPreviewBackgroundDark">#0d0f12</color>
+    <color name="cobaltPreviewBackgroundLight">#8A929E</color>
 
     <color name="blackBackdropDark">#0c0c0c</color>
     <color name="blackBackdropLight">#161616</color>
