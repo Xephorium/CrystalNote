@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.update
 
+import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.utility.NoteUtility
 
 
@@ -135,7 +136,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
             noteDiskRepository.readNoteFromTextFile(it).let { note ->
                 name = note.name
                 initialContent = note.contents
-                content = note.contents
+                content = note.contents ?: Note.NOTE_ERROR_CONTENT
             }
             this.view?.populateFields(name, content)
         }

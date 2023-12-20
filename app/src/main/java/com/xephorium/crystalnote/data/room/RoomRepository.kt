@@ -28,17 +28,23 @@ class RoomRepository(context: Context) {
         return future.get()
     }
 
-    fun getNote(id: Int) : Note {
+    fun getFullNote(id: Int) : Note {
         val callable = Callable {
-            roomDatabase.noteRepository().getNote(id)
+            roomDatabase.noteRepository().getFullNote(id)
         }
         val future = Executors.newSingleThreadExecutor().submit(callable)
         return future.get()
     }
 
-    fun updateNote(note: Note) {
+    fun updateFullNote(note: Note) {
         Executors.newSingleThreadExecutor().submit(Callable {
-            roomDatabase.noteRepository().updateNote(note)
+            roomDatabase.noteRepository().updateFullNote(note)
+        })
+    }
+
+    fun updateNotePassword(id: Int, password: String) {
+        Executors.newSingleThreadExecutor().submit(Callable {
+            roomDatabase.noteRepository().updateNotePassword(id, password)
         })
     }
 
@@ -48,16 +54,16 @@ class RoomRepository(context: Context) {
         })
     }
 
-    fun getNotes() : List<Note> {
+    fun getLightweightNotes() : List<Note> {
         val callable = Callable<List<Note>> {
-            roomDatabase.noteRepository().getNotes()
+            roomDatabase.noteRepository().getLightweightNotes()
         }
         val future = Executors.newSingleThreadExecutor().submit(callable)
         return future.get()
     }
 
-    fun getNoteSynchronously(id: Int) : Note {
-        return roomDatabase.noteRepository().getNote(id)
+    fun getFullNoteSynchronously(id: Int) : Note {
+        return roomDatabase.noteRepository().getFullNote(id)
     }
 
 }

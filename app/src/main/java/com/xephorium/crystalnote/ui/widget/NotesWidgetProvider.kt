@@ -59,7 +59,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 val widgetNoteId = sharedPreferencesRepository.getNoteIdForWidget(widgetId)
                 val widgetNote = widgetNoteId?.let { id ->
                         val callable = Callable<Note> {
-                            NoteRoomRepository(context).getNoteSynchronously(id)
+                            NoteRoomRepository(context).getFullNoteSynchronously(id)
                         }
                         val future = Executors.newSingleThreadExecutor().submit(callable)
                         future.get()

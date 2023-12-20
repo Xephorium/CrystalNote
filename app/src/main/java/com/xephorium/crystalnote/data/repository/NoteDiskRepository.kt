@@ -24,10 +24,12 @@ class NoteDiskRepository(private val context: Context) {
     /*--- Public Read/Write Methods ---*/
 
     fun readNoteFromTextFile(uri: Uri): Note {
+        val contents = getFileContentsFromUri(uri)
         return Note(
             id = NO_NOTE,
-            name = getFileNameFromUri(uri) ?: "LLAMAS",
-            contents = getFileContentsFromUri(uri),
+            name = getFileNameFromUri(uri),
+            preview = Note.getPreviewFromContents(contents),
+            contents = contents,
             date = Date(),
             color = NoteUtility.getDefaultColor()
         )
@@ -53,12 +55,12 @@ class NoteDiskRepository(private val context: Context) {
     }
 
     @Deprecated("Direct file access has been disabled in Android 11.")
-    fun exportNoteToDownloads(name: String, content: String) {
+    fun exportNoteToDownloads(name: String, content: String): Boolean {
         val noteFile = getNoteFile(name)
 
         initializeFile(noteFile)
 
-        writeToFile(noteFile, content)
+        return writeToFile(noteFile, content)
     }
 
 

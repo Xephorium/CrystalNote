@@ -63,13 +63,7 @@ class HomePresenter : HomeContract.Presenter() {
     override fun handleNewPasswordVerify(password: String) {
         selectedNote?.let {
             view?.showNoteLockedMessage()
-            noteRoomRepository.updateNote(
-                    id = it.id,
-                    name = it.name,
-                    contents = it.contents,
-                    color = it.color,
-                    password = password
-            )
+            noteRoomRepository.updateNotePassword(it.id, password)
             beginDelayedNoteListRefresh {
                 refreshNoteList()
             }
@@ -83,13 +77,7 @@ class HomePresenter : HomeContract.Presenter() {
     override fun handleOldPasswordVerify() {
         selectedNote?.let {
             view?.showNoteUnlockedMessage()
-            noteRoomRepository.updateNote(
-                    id = it.id,
-                    name = it.name,
-                    contents = it.contents,
-                    color = it.color,
-                    password = ""
-            )
+            noteRoomRepository.updateNotePassword(it.id, "")
             beginDelayedNoteListRefresh {
                 refreshNoteList()
             }
@@ -104,17 +92,26 @@ class HomePresenter : HomeContract.Presenter() {
 
     override fun handleExportFileCreated(uri: Uri) {
         selectedNote?.run {
-            if (noteDiskRepository.writeStringToTextFile(uri, contents)) {
-                view?.showExportConfirmationMessage()
-            } else {
-                view?.showExportErrorMessage()
+            noteRoomRepository.getFullNote(id)?.run {
+                if (contents != null && noteDiskRepository.writeStringToTextFile(uri, contents!!)) {
+                    view?.showExportConfirmationMessage()
+                } else {
+                    view?.showExportErrorMessage()
+                }
             }
         }
     }
 
     override fun handleExportConfirm() {
-        selectedNote?.let { noteDiskRepository.exportNoteToDownloads(it.name, it.contents) }
-        view?.showExportConfirmationMessage()
+        selectedNote?.run {
+            noteRoomRepository.getFullNote(id)?.run {
+                if (contents != null && noteDiskRepository.exportNoteToDownloads(name, contents!!)) {
+                    view?.showExportConfirmationMessage()
+                } else {
+                    view?.showExportErrorMessage()
+                }
+            }
+        }
     }
 
     override fun handleDeleteClick() {
@@ -139,7 +136,7 @@ class HomePresenter : HomeContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        val list = noteRoomRepository.getNotes().toMutableList()
+        val list = noteRoomRepository.getLightweightNotes().toMutableList()
 
         if (list.isNotEmpty()) {
             view?.populateNoteList(NoteUtility.sortNotes(list, NoteUtility.SortType.DATE_NEW))

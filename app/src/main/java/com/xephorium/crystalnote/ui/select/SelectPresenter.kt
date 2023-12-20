@@ -43,7 +43,7 @@ class SelectPresenter : SelectContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        val list = noteRepository.getNotes().toMutableList()
+        val list = noteRepository.getLightweightNotes().toMutableList()
 
         if (list.isNotEmpty()) {
             view?.populateNoteList(NoteUtility.sortNotes(list, NoteUtility.SortType.DATE_NEW))

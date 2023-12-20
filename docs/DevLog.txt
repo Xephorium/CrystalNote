@@ -23,16 +23,15 @@ December 2023
       - Mandatory rounded corners on widgets?? :(
         > It's fine, actually. Don't need to change code & looks decent enough
       - v2 key signing for PlayStore upload
-      - Refresh themes
-        > Review Black for issues
       - Update Splash Screen for new APIs
       - Update Version #
 
     New Features
-    ◦ Home Screen Optimization
+    • Home Screen Optimization (12.20.2023)
     • Note Restoration (12.13.2023)
     • Optional Scroll to Bottom Button (12.17.2023)
     • Darker Night Theme (12.10.2023)
+    ◦ Refresh themes (Ongoing)
     ◦ Theme Badges
 
   /////////////////////////////

@@ -30,6 +30,7 @@ class NoteRoomRepository(context: Context) {
             Note(
                 name = name,
                 contents = contents,
+                preview = Note.getPreviewFromContents(contents),
                 date = Calendar.getInstance().time,
                 color = color,
                 password = password
@@ -37,17 +38,47 @@ class NoteRoomRepository(context: Context) {
         ).toInt()
     }
 
-    fun getNote(id: Int): Note? {
-        return roomRepository.getNote(id)
+    fun getFullNote(id: Int): Note? {
+        return roomRepository.getFullNote(id)
     }
 
-    fun updateNote(id: Int, name: String, contents: String, color: Int, password: String) {
-        roomRepository.updateNote(
+    fun updateFullNote(id: Int, name: String, contents: String, color: Int, password: String) {
+        roomRepository.updateFullNote(
             Note(
                 id = id,
                 name = name,
                 contents = contents,
+                preview = Note.getPreviewFromContents(contents),
                 date = Calendar.getInstance().time,
+                color = color,
+                password = password
+            )
+        )
+    }
+
+    fun updateNotePassword(id: Int, password: String) {
+        roomRepository.updateNotePassword(id, password)
+    }
+
+    /* Creates preview field for note and updates entry in database when no
+     * other value has changed. Importantly, this method preserves the existing
+     * entry's last edit time and date.
+     */
+    fun migrateNote(
+        id: Int,
+        name: String,
+        contents: String,
+        date: Date,
+        color: Int,
+        password: String
+    ) {
+        roomRepository.updateFullNote(
+            Note(
+                id = id,
+                name = name,
+                contents = contents,
+                preview = Note.getPreviewFromContents(contents),
+                date = date,
                 color = color,
                 password = password
             )
@@ -56,24 +87,24 @@ class NoteRoomRepository(context: Context) {
 
     fun deleteNote(id: Int) {
         if (noteExists(id)) {
-            roomRepository.getNotes().firstOrNull { id == it.id }?.let {
+            roomRepository.getLightweightNotes().firstOrNull { id == it.id }?.let {
                 roomRepository.deleteNote(it)
             }
         }
     }
 
-    fun getNotes(): List<Note> {
-        return roomRepository.getNotes()
+    fun getLightweightNotes(): List<Note> {
+        return roomRepository.getLightweightNotes()
     }
 
     fun noteExists(id: Int): Boolean {
-        return roomRepository.getNotes().any { note -> id == note.id }
+        return roomRepository.getLightweightNotes().any { note -> id == note.id }
     }
 
     // Note: To be used only by NotesWidgetProvider, which creates
     //       a separate thread for the database query internally.
-    fun getNoteSynchronously(id: Int): Note? {
-        return roomRepository.getNoteSynchronously(id)
+    fun getFullNoteSynchronously(id: Int): Note? {
+        return roomRepository.getFullNoteSynchronously(id)
     }
 
 
@@ -93,6 +124,7 @@ class NoteRoomRepository(context: Context) {
                 id = Note.NO_NOTE,
                 name = "Note",
                 contents = "• List Item #5\n• List Item #6\n\n• List Item #7\n• List Item #8\n\nLorem ipsum dolor sit amet, consecte adipiscing elit, sed do eiusmod tempor.",
+                preview = "• List Item #5",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 5)),
                 color = ThemePreview.NOTE_COLORS[0]
             ),
@@ -100,6 +132,7 @@ class NoteRoomRepository(context: Context) {
                 id = Note.NO_NOTE,
                 name = "Beautiful Vistas",
                 contents = "- Shipyard, Halo Reach\n- All of Skyrim\n- Winterfell, The Forest",
+                preview = "- Shipyard, Halo Reach",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 4)),
                 color = ThemePreview.NOTE_COLORS[1]
             ),
@@ -107,6 +140,7 @@ class NoteRoomRepository(context: Context) {
                 id = Note.NO_NOTE,
                 name = "Shopping List",
                 contents = "- Bread\n- Milk\n- Eggs\n- Sugar",
+                preview = "- Bread",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 3)),
                 color = ThemePreview.NOTE_COLORS[2]
             ),
@@ -114,6 +148,7 @@ class NoteRoomRepository(context: Context) {
                 id = Note.NO_NOTE,
                 name = "Reasons To Code",
                 contents = "- Puzzle Solving!\n- Free To Learn\n- Hones Critical Thinking\n- It Pays Well",
+                preview = "- Puzzle Solving",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 2)),
                 color = ThemePreview.NOTE_COLORS[3]
             ),
@@ -121,6 +156,7 @@ class NoteRoomRepository(context: Context) {
                 id = Note.NO_NOTE,
                 name = "Cities to Visit",
                 contents = "- Chicago\n- New York\n- Seattle\n- San Francisco",
+                preview = "- Chicago",
                 date = Date(DATE_OF_FIRST_COMMIT + ONE_MINUTE),
                 color = ThemePreview.NOTE_COLORS[4]
             ),
@@ -128,6 +164,7 @@ class NoteRoomRepository(context: Context) {
                 id = Note.NO_NOTE,
                 name = "A Final Note",
                 contents = "Building this app has been challenging. There were more than a few moments when I was ready to throw in the towel and accept that I'd learned enough. But each successfully rendered list item, formatted to responsive perfection has been a reminder of why I started: to create something beautiful. The world deserves a clean notes app for Android. It's about time someone put in the hours to code one.",
+                preview = "Building this app has been challenging.",
                 date = Date(DATE_OF_FIRST_COMMIT),
                 color = ThemePreview.NOTE_COLORS[6]
             )

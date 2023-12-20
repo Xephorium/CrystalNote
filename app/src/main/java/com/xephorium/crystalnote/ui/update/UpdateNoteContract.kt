@@ -8,6 +8,8 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
+import java.util.Calendar
+import java.util.Date
 
 
 interface UpdateNoteContract {
@@ -56,10 +58,12 @@ interface UpdateNoteContract {
         var noteId: Int = NO_NOTE
         var initialName: String = ""
         var initialContent: String = ""
+        var initialPreview: String = ""
         var initialColor: Int = NoteUtility.getDefaultColor()
         var initialPassword: String = ""
         var name: String = ""
         var content: String = ""
+        var date: Date = Calendar.getInstance().time
         var color: Int = NoteUtility.getDefaultColor()
         var password: String = ""
 

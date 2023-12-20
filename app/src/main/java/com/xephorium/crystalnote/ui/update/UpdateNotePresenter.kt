@@ -1,9 +1,8 @@
 package com.xephorium.crystalnote.ui.update
 
 import android.net.Uri
-import java.io.BufferedReader
-import java.io.FileReader
-import java.io.StringReader
+import com.xephorium.crystalnote.data.model.Note
+import java.lang.Exception
 
 
 class UpdateNotePresenter : UpdateNoteContract.Presenter() {
@@ -17,20 +16,24 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         if (isInEditMode) {
 
             // Get Note
-            noteRoomRepository.getNote(noteId)?.let {
+            noteRoomRepository.getFullNote(noteId)?.let {
+
+                if (it.contents == null) throw Exception("Error - note content is null.")
 
                 // Populate State Fields for Existing Note
                 initialName = it.name
                 name = initialName
-                initialContent = it.contents
+                initialContent = it.contents ?: Note.NOTE_ERROR_CONTENT
                 content = initialContent
+                initialPreview = it.preview
+                date = it.date
                 initialColor = it.color
                 color = initialColor
                 initialPassword = it.password
                 password = initialPassword
 
                 // Update View for Existing Note
-                this.view?.populateFields(it.name, it.contents)
+                this.view?.populateFields(it.name, it.contents ?: Note.NOTE_ERROR_CONTENT)
                 this.view?.populateColor(it.color)
             }
 
@@ -207,6 +210,12 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
             // No Changes - Do Nothing
 
+            if (initialPreview.isEmpty() && Note.getPreviewFromContents(content).isNotEmpty()) {
+
+                // Old Database Note Without Preview - Migrate & Add Preview
+                noteRoomRepository.migrateNote(noteId, name, content, date, color, password)
+            }
+
         } else if (!isInEditMode) {
 
             // New Note - Save
@@ -215,7 +224,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         } else {
 
             // Existing Note - Update
-            noteRoomRepository.updateNote(noteId, name, content, color, password)
+            noteRoomRepository.updateFullNote(noteId, name, content, color, password)
         }
 
         view?.refreshWidget()

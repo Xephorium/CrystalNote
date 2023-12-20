@@ -73,14 +73,14 @@ open class NoteListAdapter(
 
             holder.name.text = note.name
 
-            holder.preview.text = note.contents.replace("\\s+".toRegex(), " ").trim()
+            holder.preview.text = note.preview
 
             if (note.password.isNotEmpty()) {
                 holder.lock.visibility = View.VISIBLE
                 holder.date.visibility = View.GONE
             }
 
-            if (notePreviewLines == 0 || note.password.isNotEmpty()) {
+            if (notePreviewLines == 0 || note.preview.isEmpty() || note.password.isNotEmpty()) {
                 holder.preview.visibility = View.GONE
             } else {
                 holder.preview.visibility = View.VISIBLE

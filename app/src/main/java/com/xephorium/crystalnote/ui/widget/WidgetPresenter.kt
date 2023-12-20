@@ -147,7 +147,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
     }
 
     private fun generateNoteNameList(): List<String> {
-        val notes = noteRoomRepository.getNotes()
+        val notes = noteRoomRepository.getLightweightNotes()
         val names = mutableListOf<String>()
         var blankCount = 1
         for (widgetState in initialWidgetStates!!.getWidgetStates()) {
