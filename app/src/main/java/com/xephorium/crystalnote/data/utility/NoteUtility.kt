@@ -70,13 +70,13 @@ object NoteUtility {
     }
 
     fun getFormattedTime(note: PreviewNote): String {
-        return SimpleDateFormat("h:mma", Locale.US).format(note.date).toLowerCase()
+        return SimpleDateFormat("h:mma", Locale.US).format(note.date).lowercase(Locale.ROOT)
     }
 
     fun getFormattedDateTime(note: PreviewNote): String {
         val dayFormat = SimpleDateFormat("M/d/yy", Locale.US)
         val hourFormat = SimpleDateFormat("h:mma", Locale.US)
-        return dayFormat.format(note.date) + " " + hourFormat.format(note.date).toLowerCase()
+        return dayFormat.format(note.date) + " " + hourFormat.format(note.date).lowercase(Locale.ROOT)
     }
 
     fun getPreviewFromContents(contents: String): String {

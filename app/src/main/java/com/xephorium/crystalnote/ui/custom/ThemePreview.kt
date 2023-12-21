@@ -88,7 +88,7 @@ class ThemePreview : View {
 
         // Toolbar
         paint.color = theme.colorToolbar
-        canvas?.drawRect(
+        canvas.drawRect(
                 0.toFloat(),
                 0.toFloat(),
                 (viewWidth!!).toFloat(),
@@ -99,7 +99,7 @@ class ThemePreview : View {
 
         // Toolbar Icon
         paint.color = theme.colorToolbarTextSecondary
-        canvas?.drawRoundRect(
+        canvas.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 (paddingLarge!!).toFloat(),
                 (toolbarHeight!! - paddingLarge!!).toFloat(),
@@ -111,7 +111,7 @@ class ThemePreview : View {
 
         // Toolbar Title
         paint.color = theme.colorToolbarTextPrimary
-        canvas?.drawRoundRect(
+        canvas.drawRoundRect(
                 (toolbarHeight!!).toFloat(),
                 (paddingLarge!!).toFloat(),
                 (toolbarHeight!! + (scaleUnit!! * 5.5)).toFloat(),
@@ -124,7 +124,7 @@ class ThemePreview : View {
         // Header 1
         if (showHeaders) {
             paint.color = theme.colorTextSecondary
-            canvas?.drawRoundRect(
+            canvas.drawRoundRect(
                     (paddingLarge!!).toFloat(),
                     currentVerticalPosition.toFloat(),
                     (paddingLarge!! + (scaleUnit!! * 1.5)).toFloat(),
@@ -145,7 +145,7 @@ class ThemePreview : View {
         // Header 2
         if (showHeaders) {
             paint.color = theme.colorTextSecondary
-            canvas?.drawRoundRect(
+            canvas.drawRoundRect(
                     (paddingLarge!!).toFloat(),
                     (currentVerticalPosition + paddingMedium!!).toFloat(),
                     (paddingLarge!! + (scaleUnit!! * 1.3)).toFloat(),
@@ -174,7 +174,7 @@ class ThemePreview : View {
 
         // Floating Action Button
         paint.color = theme.colorAccent
-        canvas?.drawCircle(
+        canvas.drawCircle(
                 (viewWidth!! - (actionButtonRadius!! + paddingLarge!!)).toFloat(),
                 (viewHeight!! - (actionButtonRadius!! + paddingLarge!!)).toFloat(),
                 (actionButtonRadius!!).toFloat(),

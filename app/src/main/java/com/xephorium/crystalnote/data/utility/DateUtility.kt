@@ -12,6 +12,6 @@ object DateUtility {
     fun getFormattedDateTime(date: Date): String {
         val dayFormat = SimpleDateFormat("M/d/yy", Locale.US)
         val hourFormat = SimpleDateFormat("h:mma", Locale.US)
-        return dayFormat.format(date) + " " + hourFormat.format(date).toLowerCase()
+        return dayFormat.format(date) + " " + hourFormat.format(date).lowercase(Locale.ROOT)
     }
 }

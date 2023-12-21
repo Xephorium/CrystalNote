@@ -54,7 +54,7 @@ class NoteDiskRepository(private val context: Context) {
         }
     }
 
-    @Deprecated("Direct file access has been disabled in Android 11.")
+    /* NOTE: Does not work after Android 10. */
     fun exportNoteToDownloads(name: String, content: String): Boolean {
         val noteFile = getNoteFile(name)
 
@@ -90,13 +90,13 @@ class NoteDiskRepository(private val context: Context) {
         }
     }
 
-    @Deprecated("Direct file access has been disabled in Android 11.")
+    /* NOTE: Does not work after Android 10. */
     private fun getNoteFile(name: String): File {
         val fileName = getNoteName(name)
         return File(getDownloadsDirectory().toString() + "/" + fileName)
     }
 
-    @Deprecated("Direct file access has been disabled in Android 11.")
+    /* NOTE: Does not work after Android 10. */
     private fun getNoteName(name: String): String {
         var fileName = getSanitizedExportFileName(name) + FILE_EXTENSION
         var file = File(getDownloadsDirectory().toString() + "/" + fileName)
@@ -111,7 +111,7 @@ class NoteDiskRepository(private val context: Context) {
         return fileName
     }
 
-    @Deprecated("Direct file access has been disabled in Android 11.")
+    /* NOTE: Does not work after Android 10. */
     private fun initializeFile(file: File) {
         if (!file.exists()) try {
             file.createNewFile()
@@ -120,7 +120,7 @@ class NoteDiskRepository(private val context: Context) {
         }
     }
 
-    @Deprecated("Direct file access has been disabled in Android 11.")
+    /* NOTE: Does not work after Android 10. */
     private fun writeToFile(file: File, content: String): Boolean {
         return try {
             val noteOutputStream = FileOutputStream(file)

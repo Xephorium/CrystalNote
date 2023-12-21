@@ -88,7 +88,7 @@ class WidgetPreview : View {
 
         // Background
         paint.color = getColorWithTransparencyApplied(backgroundColor, transparency.value)
-        canvas?.drawRoundRect(
+        canvas.drawRoundRect(
                 0.toFloat(),
                 0.toFloat(),
                 viewWidth!!.toFloat(),
@@ -100,7 +100,7 @@ class WidgetPreview : View {
 
         // Title
         paint.color = titleColor
-        canvas?.drawRoundRect(
+        canvas.drawRoundRect(
                 (paddingBorder!!).toFloat(),
                 (paddingBorder!! + (paddingTiny!! * 3)).toFloat(),
                 (viewWidth!! * 0.4).toFloat(),
