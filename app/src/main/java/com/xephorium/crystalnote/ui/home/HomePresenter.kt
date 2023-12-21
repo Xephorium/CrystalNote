@@ -1,7 +1,7 @@
 package com.xephorium.crystalnote.ui.home
 
 import android.net.Uri
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.utility.NoteUtility
 
 
@@ -31,7 +31,7 @@ class HomePresenter : HomeContract.Presenter() {
         view?.navigateToNewNote()
     }
 
-    override fun handleNoteClick(note: Note) {
+    override fun handleNoteClick(note: PreviewNote) {
         if (note.password.isNotEmpty()) {
             view?.showNotePasswordDialog(note.password, note.id)
         } else {
@@ -43,8 +43,8 @@ class HomePresenter : HomeContract.Presenter() {
         view?.navigateToEditNote(id)
     }
 
-    override fun handleNoteLongClick(note: Note) {
-        selectedNote = note
+    override fun handleNoteLongClick(note: PreviewNote) {
+        selectedPreviewNote = note
         if (note.password.isBlank()) {
             view?.showNoteOptionsDialog()
         } else {
@@ -61,7 +61,7 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleNewPasswordVerify(password: String) {
-        selectedNote?.let {
+        selectedPreviewNote?.let {
             view?.showNoteLockedMessage()
             noteRoomRepository.updateNotePassword(it.id, password)
             beginDelayedNoteListRefresh {
@@ -71,11 +71,11 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleUnlockClick() {
-        selectedNote?.let { view?.showRemovePasswordDialog(it.password) }
+        selectedPreviewNote?.let { view?.showRemovePasswordDialog(it.password) }
     }
 
     override fun handleOldPasswordVerify() {
-        selectedNote?.let {
+        selectedPreviewNote?.let {
             view?.showNoteUnlockedMessage()
             noteRoomRepository.updateNotePassword(it.id, "")
             beginDelayedNoteListRefresh {
@@ -85,15 +85,15 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleExportClick() {
-        selectedNote?.run {
+        selectedPreviewNote?.run {
             view?.showExportDialog(noteDiskRepository.getSanitizedExportFileName(name))
         }
     }
 
     override fun handleExportFileCreated(uri: Uri) {
-        selectedNote?.run {
-            noteRoomRepository.getFullNote(id)?.run {
-                if (contents != null && noteDiskRepository.writeStringToTextFile(uri, contents!!)) {
+        selectedPreviewNote?.run {
+            noteRoomRepository.getNote(id)?.run {
+                if (noteDiskRepository.writeStringToTextFile(uri, contents)) {
                     view?.showExportConfirmationMessage()
                 } else {
                     view?.showExportErrorMessage()
@@ -103,9 +103,9 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleExportConfirm() {
-        selectedNote?.run {
-            noteRoomRepository.getFullNote(id)?.run {
-                if (contents != null && noteDiskRepository.exportNoteToDownloads(name, contents!!)) {
+        selectedPreviewNote?.run {
+            noteRoomRepository.getNote(id)?.run {
+                if (noteDiskRepository.exportNoteToDownloads(name, contents)) {
                     view?.showExportConfirmationMessage()
                 } else {
                     view?.showExportErrorMessage()
@@ -119,7 +119,7 @@ class HomePresenter : HomeContract.Presenter() {
     }
 
     override fun handleDeleteConfirm() {
-        selectedNote?.let {
+        selectedPreviewNote?.let {
             noteRoomRepository.deleteNote(it.id)
             view?.showNoteDeletedMessage()
             beginDelayedNoteListRefresh {
@@ -136,10 +136,10 @@ class HomePresenter : HomeContract.Presenter() {
     /*--- Private Methods ---*/
 
     private fun refreshNoteList() {
-        val list = noteRoomRepository.getLightweightNotes().toMutableList()
+        val list = noteRoomRepository.getPreviewNotes().toMutableList()
 
         if (list.isNotEmpty()) {
-            view?.populateNoteList(NoteUtility.sortNotes(list, NoteUtility.SortType.DATE_NEW))
+            view?.populateNoteList(NoteUtility.sortPreviewNotes(list, NoteUtility.SortType.DATE_NEW))
         } else {
             view?.showEmptyNotesList()
         }

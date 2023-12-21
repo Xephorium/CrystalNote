@@ -3,7 +3,9 @@ package com.xephorium.crystalnote.data.repository
 import android.content.Context
 
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.room.RoomRepository
+import com.xephorium.crystalnote.data.utility.NoteUtility
 import com.xephorium.crystalnote.ui.custom.ThemePreview
 
 import java.util.*
@@ -30,7 +32,7 @@ class NoteRoomRepository(context: Context) {
             Note(
                 name = name,
                 contents = contents,
-                preview = Note.getPreviewFromContents(contents),
+                preview = NoteUtility.getPreviewFromContents(contents),
                 date = Calendar.getInstance().time,
                 color = color,
                 password = password
@@ -38,17 +40,17 @@ class NoteRoomRepository(context: Context) {
         ).toInt()
     }
 
-    fun getFullNote(id: Int): Note? {
-        return roomRepository.getFullNote(id)
+    fun getNote(id: Int): Note? {
+        return roomRepository.getNote(id)
     }
 
-    fun updateFullNote(id: Int, name: String, contents: String, color: Int, password: String) {
-        roomRepository.updateFullNote(
+    fun updateNote(id: Int, name: String, contents: String, color: Int, password: String) {
+        roomRepository.updateNote(
             Note(
                 id = id,
                 name = name,
                 contents = contents,
-                preview = Note.getPreviewFromContents(contents),
+                preview = NoteUtility.getPreviewFromContents(contents),
                 date = Calendar.getInstance().time,
                 color = color,
                 password = password
@@ -72,12 +74,12 @@ class NoteRoomRepository(context: Context) {
         color: Int,
         password: String
     ) {
-        roomRepository.updateFullNote(
+        roomRepository.updateNote(
             Note(
                 id = id,
                 name = name,
                 contents = contents,
-                preview = Note.getPreviewFromContents(contents),
+                preview = NoteUtility.getPreviewFromContents(contents),
                 date = date,
                 color = color,
                 password = password
@@ -87,24 +89,26 @@ class NoteRoomRepository(context: Context) {
 
     fun deleteNote(id: Int) {
         if (noteExists(id)) {
-            roomRepository.getLightweightNotes().firstOrNull { id == it.id }?.let {
-                roomRepository.deleteNote(it)
-            }
+            roomRepository.deleteNote(id)
         }
     }
 
-    fun getLightweightNotes(): List<Note> {
-        return roomRepository.getLightweightNotes()
+    /* Reads all notes into lightweight PreviewNote objects, which contain
+     * all note information except the full content and are used to efficiently
+     * populate most screens in the app.
+     */
+    fun getPreviewNotes(): List<PreviewNote> {
+        return roomRepository.getPreviewNotes()
     }
 
     fun noteExists(id: Int): Boolean {
-        return roomRepository.getLightweightNotes().any { note -> id == note.id }
+        return roomRepository.getPreviewNotes().any { note -> id == note.id }
     }
 
     // Note: To be used only by NotesWidgetProvider, which creates
     //       a separate thread for the database query internally.
-    fun getFullNoteSynchronously(id: Int): Note? {
-        return roomRepository.getFullNoteSynchronously(id)
+    fun getNoteSynchronously(id: Int): Note {
+        return roomRepository.getNoteSynchronously(id)
     }
 
 

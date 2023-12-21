@@ -9,7 +9,7 @@ import android.view.View.OnLongClickListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.databinding.NoteListLayoutBinding
 
 /*
@@ -17,9 +17,9 @@ import com.xephorium.crystalnote.databinding.NoteListLayoutBinding
   Christopher Cruzen
 
     Encapsulating the view behavior of a SwipeRefreshLayout and a custom RecyclerView,
-  this class represents a collection of notes organized by reverse chronological order.
-  The first section is populated by notes modified today and the second is populated by
-  notes modified before today.
+  this class represents a collection of PreviewNotes organized by reverse chronological
+  order. The first section is populated by PreviewNotes modified today and the second
+  is populated by PreviewNotes modified before today.
 
 */
 
@@ -28,8 +28,8 @@ class NoteListView : SwipeRefreshLayout {
 
     /*--- Variable Declarations ---*/
 
-    private lateinit var newNotes: MutableList<Note>
-    private lateinit var oldNotes: MutableList<Note>
+    private lateinit var newNotes: MutableList<PreviewNote>
+    private lateinit var oldNotes: MutableList<PreviewNote>
 
     var noteListViewListener: NoteListViewListener? = null
 
@@ -57,7 +57,7 @@ class NoteListView : SwipeRefreshLayout {
 
     /*--- Public Methods ---*/
 
-    fun populateNoteList(noteList: List<Note>) {
+    fun populateNoteList(noteList: List<PreviewNote>) {
         parseNotes(noteList)
 
         binding.listNotes.layoutManager = LinearLayoutManager(context)
@@ -67,9 +67,9 @@ class NoteListView : SwipeRefreshLayout {
 
     /*--- Private Utility Methods ---*/
 
-    private fun parseNotes(notes: List<Note>) {
-        val newNotes = mutableListOf<Note>()
-        val oldNotes = mutableListOf<Note>()
+    private fun parseNotes(notes: List<PreviewNote>) {
+        val newNotes = mutableListOf<PreviewNote>()
+        val oldNotes = mutableListOf<PreviewNote>()
 
         for (x in notes.indices) {
             if (DateUtils.isToday(notes[x].date.time))
@@ -82,13 +82,16 @@ class NoteListView : SwipeRefreshLayout {
         this.oldNotes = oldNotes
     }
 
-    private fun getNoteListAdapter(newNotes: List<Note>, oldNotes: List<Note>): NoteListAdapter {
+    private fun getNoteListAdapter(
+        newNotes: List<PreviewNote>,
+        oldNotes: List<PreviewNote>
+    ): NoteListAdapter {
         return object : NoteListAdapter(context, newNotes, oldNotes) {
-            override fun getOnClickListener(note: Note): OnClickListener {
+            override fun getOnClickListener(note: PreviewNote): OnClickListener {
                 return OnClickListener { noteListViewListener?.onNoteClick(note) }
             }
 
-            override fun getOnLongClickListener(note: Note): OnLongClickListener {
+            override fun getOnLongClickListener(note: PreviewNote): OnLongClickListener {
                 return OnLongClickListener {
                     noteListViewListener?.onNoteLongClick(note)
                     true
@@ -98,8 +101,8 @@ class NoteListView : SwipeRefreshLayout {
     }
 
     private fun getDefaultNoteListViewListener() = object : NoteListViewListener {
-        override fun onNoteClick(note: Note) {}
-        override fun onNoteLongClick(note: Note) {}
+        override fun onNoteClick(note: PreviewNote) {}
+        override fun onNoteLongClick(note: PreviewNote) {}
         override fun onNoteListRefresh() {}
     }
 
@@ -112,8 +115,8 @@ class NoteListView : SwipeRefreshLayout {
     /*--- Action Handling Interface ---*/
 
     interface NoteListViewListener {
-        fun onNoteClick(note: Note)
-        fun onNoteLongClick(note: Note)
+        fun onNoteClick(note: PreviewNote)
+        fun onNoteLongClick(note: PreviewNote)
         fun onNoteListRefresh()
     }
 

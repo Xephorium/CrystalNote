@@ -12,7 +12,6 @@ import android.view.View
 import android.widget.RemoteViews
 
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.model.Note
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.select.SelectActivity
@@ -58,8 +57,8 @@ class NotesWidgetProvider : AppWidgetProvider() {
                 val widgetState = sharedPreferencesRepository.getWidgetState(widgetId)
                 val widgetNoteId = sharedPreferencesRepository.getNoteIdForWidget(widgetId)
                 val widgetNote = widgetNoteId?.let { id ->
-                        val callable = Callable<Note> {
-                            NoteRoomRepository(context).getFullNoteSynchronously(id)
+                        val callable = Callable {
+                            NoteRoomRepository(context).getNoteSynchronously(id)
                         }
                         val future = Executors.newSingleThreadExecutor().submit(callable)
                         future.get()

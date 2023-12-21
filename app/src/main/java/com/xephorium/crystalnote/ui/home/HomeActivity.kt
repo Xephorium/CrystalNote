@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.view.View
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
@@ -67,7 +67,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     /*--- View Manipulation Methods ---*/
 
-    override fun populateNoteList(notes: List<Note>) {
+    override fun populateNoteList(notes: List<PreviewNote>) {
         homeBinding.listHomeNotes.visibility = View.VISIBLE
         homeBinding.textHomeEmpty.visibility = View.GONE
         homeBinding.listHomeNotes.populateNoteList(notes)
@@ -125,11 +125,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             }
 
             override fun verifyPassword(password: String): String {
-                if (password.contains("\\s".toRegex())) {
-                    return "Cannot contain whitespace"
-                } else {
-                    return ""
-                }
+                return if (password.contains("\\s".toRegex())) "Cannot contain whitespace" else ""
             }
         })
     }
@@ -146,11 +142,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             }
 
             override fun verifyPassword(newPassword: String): String {
-                if (password != newPassword) {
-                    return "Password doesn't match"
-                } else {
-                    return ""
-                }
+                return if (password != newPassword) "Password doesn't match" else ""
             }
         })
     }
@@ -172,11 +164,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             }
 
             override fun verifyPassword(newPassword: String): String {
-                if (password != newPassword) {
-                    return " "
-                } else {
-                    return ""
-                }
+                return if (password != newPassword) " " else ""
             }
         })
     }
@@ -255,11 +243,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             }
 
             override fun verifyPassword(newPassword: String): String {
-                if (password != newPassword) {
-                    return " "
-                } else {
-                    return ""
-                }
+                return if (password != newPassword) " " else ""
             }
         })
     }
@@ -295,8 +279,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     private fun setupClickListeners() {
         homeBinding.floatingActionButtonHome.setOnClickListener { presenter.handleNewNoteButtonClick() }
         homeBinding.listHomeNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
-            override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
-            override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
+            override fun onNoteClick(note: PreviewNote) = presenter.handleNoteClick(note)
+            override fun onNoteLongClick(note: PreviewNote) = presenter.handleNoteLongClick(note)
             override fun onNoteListRefresh() = presenter.handleNoteListRefresh()
         }
     }

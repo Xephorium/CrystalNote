@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.data.room
 import android.content.Context
 import androidx.room.Room
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import java.util.concurrent.Callable
 import java.util.concurrent.Executors
 
@@ -28,17 +29,17 @@ class RoomRepository(context: Context) {
         return future.get()
     }
 
-    fun getFullNote(id: Int) : Note {
+    fun getNote(id: Int) : Note {
         val callable = Callable {
-            roomDatabase.noteRepository().getFullNote(id)
+            roomDatabase.noteRepository().getNote(id)
         }
         val future = Executors.newSingleThreadExecutor().submit(callable)
         return future.get()
     }
 
-    fun updateFullNote(note: Note) {
+    fun updateNote(note: Note) {
         Executors.newSingleThreadExecutor().submit(Callable {
-            roomDatabase.noteRepository().updateFullNote(note)
+            roomDatabase.noteRepository().updateNote(note)
         })
     }
 
@@ -48,22 +49,22 @@ class RoomRepository(context: Context) {
         })
     }
 
-    fun deleteNote(note: Note) {
+    fun deleteNote(id: Int) {
         Executors.newSingleThreadExecutor().submit(Callable {
-            roomDatabase.noteRepository().deleteNote(note)
+            roomDatabase.noteRepository().deleteNote(id)
         })
     }
 
-    fun getLightweightNotes() : List<Note> {
-        val callable = Callable<List<Note>> {
-            roomDatabase.noteRepository().getLightweightNotes()
+    fun getPreviewNotes() : List<PreviewNote> {
+        val callable = Callable {
+            roomDatabase.noteRepository().getPreviewNotes()
         }
         val future = Executors.newSingleThreadExecutor().submit(callable)
         return future.get()
     }
 
-    fun getFullNoteSynchronously(id: Int) : Note {
-        return roomDatabase.noteRepository().getFullNote(id)
+    fun getNoteSynchronously(id: Int) : Note {
+        return roomDatabase.noteRepository().getNote(id)
     }
 
 }

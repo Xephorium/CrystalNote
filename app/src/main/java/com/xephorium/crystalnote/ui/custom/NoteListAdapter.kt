@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.NoteUtility
 
@@ -26,9 +26,9 @@ import com.xephorium.crystalnote.data.utility.NoteUtility
 */
 
 open class NoteListAdapter(
-        private val context: Context,
-        private val newNotes: List<Note>,
-        private val oldNotes: List<Note>
+    private val context: Context,
+    private val newNotes: List<PreviewNote>,
+    private val oldNotes: List<PreviewNote>
 ) : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
 
 
@@ -141,7 +141,7 @@ open class NoteListAdapter(
         }
     }
 
-    private fun getNoteFromPosition(position: Int): Note {
+    private fun getNoteFromPosition(position: Int): PreviewNote {
         if (shouldShowTodayHeader) {
             return when {
                 newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes[position]
@@ -187,19 +187,19 @@ open class NoteListAdapter(
             }
         }
 
-        fun setNoteClickListeners(note: Note) {
+        fun setNoteClickListeners(note: PreviewNote) {
             view.setOnClickListener(getOnClickListener(note))
             view.setOnLongClickListener(getOnLongClickListener(note))
         }
     }
 
-    open fun getOnClickListener(note: Note): View.OnClickListener {
+    open fun getOnClickListener(note: PreviewNote): View.OnClickListener {
         return View.OnClickListener {
             // Default Behavior; Do Nothing
         }
     }
 
-    open fun getOnLongClickListener(note: Note): View.OnLongClickListener {
+    open fun getOnLongClickListener(note: PreviewNote): View.OnLongClickListener {
         return View.OnLongClickListener {
             // Default Behavior; Do Nothing
             true

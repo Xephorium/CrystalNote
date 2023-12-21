@@ -28,7 +28,7 @@ class NoteDiskRepository(private val context: Context) {
         return Note(
             id = NO_NOTE,
             name = getFileNameFromUri(uri),
-            preview = Note.getPreviewFromContents(contents),
+            preview = NoteUtility.getPreviewFromContents(contents),
             contents = contents,
             date = Date(),
             color = NoteUtility.getDefaultColor()

@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.text.format.DateUtils
 
 import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 
 import java.text.SimpleDateFormat
 import java.util.*
@@ -13,7 +14,7 @@ object NoteUtility {
 
     /*--- Constants ---*/
 
-    private const val PREVIEW_LENGTH = 500
+    private const val PREVIEW_LENGTH = 220
 
     enum class SortType {
         DATE_OLD,
@@ -47,20 +48,16 @@ object NoteUtility {
         return noteList?.firstOrNull { note -> note.name == noteName }
     }
 
-    fun sortNotes(inputList: MutableList<Note>, type: SortType): List<Note> {
-        val outputList: List<Note>
-
-        when (type) {
-            NoteUtility.SortType.DATE_NEW -> outputList = sortNotesByDateNew(inputList)
-
-            NoteUtility.SortType.DATE_OLD -> outputList = sortNotesByDateOld(inputList)
-
-            else -> outputList = ArrayList()
+    fun sortPreviewNotes(inputList: MutableList<PreviewNote>, type: SortType): List<PreviewNote> {
+        val outputList: List<PreviewNote> = when (type) {
+            SortType.DATE_NEW -> sortPreviewNotesByDateNew(inputList)
+            SortType.DATE_OLD -> sortPreviewNotesByDateOld(inputList)
+            else -> ArrayList()
         }
         return outputList
     }
 
-    fun getDynamicallyFormattedDate(note: Note): String {
+    fun getDynamicallyFormattedDate(note: PreviewNote): String {
         return if (DateUtils.isToday(note.date.time)) {
             getFormattedTime(note)
         } else {
@@ -68,35 +65,32 @@ object NoteUtility {
         }
     }
 
-    fun getFormattedDate(note: Note): String {
+    fun getFormattedDate(note: PreviewNote): String {
         return SimpleDateFormat("M/d/yy", Locale.US).format(note.date)
     }
 
-    fun getFormattedTime(note: Note): String {
+    fun getFormattedTime(note: PreviewNote): String {
         return SimpleDateFormat("h:mma", Locale.US).format(note.date).toLowerCase()
     }
 
-    fun getFormattedDateTime(note: Note): String {
+    fun getFormattedDateTime(note: PreviewNote): String {
         val dayFormat = SimpleDateFormat("M/d/yy", Locale.US)
         val hourFormat = SimpleDateFormat("h:mma", Locale.US)
         return dayFormat.format(note.date) + " " + hourFormat.format(note.date).toLowerCase()
     }
 
-    fun getPreview(c: String): String {
-        var contents = c
-        contents = contents.replace("\\n".toRegex(), " ")
-
-        return if (contents.length >= PREVIEW_LENGTH) {
-            contents.substring(0, PREVIEW_LENGTH)
-        } else {
-            contents
-        }
+    fun getPreviewFromContents(contents: String): String {
+        return if (contents.isNotEmpty()) {
+            val trimmed = contents.replace("\\s+".toRegex(), " ").trim()
+            if (trimmed.length > PREVIEW_LENGTH) trimmed.substring(0, PREVIEW_LENGTH)
+            else trimmed.substring(0, trimmed.length)
+        } else ""
     }
 
 
     /*--- Private Methods ---*/
 
-    private fun sortNotesByDateNew(inputList: MutableList<Note>): List<Note> {
+    private fun sortPreviewNotesByDateNew(inputList: MutableList<PreviewNote>): List<PreviewNote> {
         for (x in inputList.indices) {
             for (y in inputList.size - 1 downTo x + 1) {
                 if (inputList[y].date.after(inputList[y - 1].date)) {
@@ -109,7 +103,7 @@ object NoteUtility {
         return inputList
     }
 
-    private fun sortNotesByDateOld(inputList: MutableList<Note>): List<Note> {
+    private fun sortPreviewNotesByDateOld(inputList: MutableList<PreviewNote>): List<PreviewNote> {
         for (x in inputList.indices) {
             for (y in inputList.size - 1 downTo x + 1) {
                 if (inputList[y].date.before(inputList[y - 1].date)) {

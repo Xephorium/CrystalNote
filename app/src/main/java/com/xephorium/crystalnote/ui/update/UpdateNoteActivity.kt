@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.provider.DocumentsContract
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Menu
 import android.view.View
 import android.view.WindowManager
 import com.xephorium.crystalnote.R

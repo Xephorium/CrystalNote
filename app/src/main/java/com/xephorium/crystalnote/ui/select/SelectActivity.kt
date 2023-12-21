@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.model.Note
+import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.databinding.SelectActivityLayoutBinding
@@ -58,7 +58,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
 
     /*--- View Manipulation Methods ---*/
 
-    override fun populateNoteList(notes: List<Note>) {
+    override fun populateNoteList(notes: List<PreviewNote>) {
         selectBinding.run {
             listSelectNotes.visibility = View.VISIBLE
             textSelectEmpty.visibility = View.GONE
@@ -108,8 +108,8 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
         selectBinding.run {
             floatingActionButtonSelect.setOnClickListener { presenter.handleNewNoteButtonClick() }
             listSelectNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
-                override fun onNoteClick(note: Note) = presenter.handleNoteClick(note)
-                override fun onNoteLongClick(note: Note) = presenter.handleNoteLongClick(note)
+                override fun onNoteClick(note: PreviewNote) = presenter.handleNoteClick(note)
+                override fun onNoteLongClick(note: PreviewNote) = presenter.handleNoteLongClick(note)
                 override fun onNoteListRefresh() = presenter.handleNoteListRefresh()
             }
         }
