@@ -135,32 +135,32 @@ class NoteRoomRepository(context: Context) {
             Note(
                 id = Note.NO_NOTE,
                 name = "Beautiful Vistas",
-                contents = "- Shipyard, Halo Reach\n- All of Skyrim\n- Winterfell, The Forest",
-                preview = "- Shipyard, Halo Reach",
+                contents = "• Shipyard, Halo Reach\n• All of Skyrim\n• Winterfell, The Forest",
+                preview = "• Shipyard, Halo Reach",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 4)),
                 color = ThemePreview.NOTE_COLORS[1]
             ),
             Note(
                 id = Note.NO_NOTE,
                 name = "Shopping List",
-                contents = "- Bread\n- Milk\n- Eggs\n- Sugar",
-                preview = "- Bread",
+                contents = "• Bread\n• Milk\n• Eggs\n• Sugar",
+                preview = "• Bread",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 3)),
                 color = ThemePreview.NOTE_COLORS[2]
             ),
             Note(
                 id = Note.NO_NOTE,
                 name = "Reasons To Code",
-                contents = "- Puzzle Solving!\n- Free To Learn\n- Hones Critical Thinking\n- It Pays Well",
-                preview = "- Puzzle Solving",
+                contents = "• Puzzle Solving!\n• Free To Learn\n• Hones Critical Thinking\n• It Pays Well",
+                preview = "• Puzzle Solving",
                 date = Date(DATE_OF_FIRST_COMMIT + (ONE_MINUTE * 2)),
                 color = ThemePreview.NOTE_COLORS[3]
             ),
             Note(
                 id = Note.NO_NOTE,
                 name = "Cities to Visit",
-                contents = "- Chicago\n- New York\n- Seattle\n- San Francisco",
-                preview = "- Chicago",
+                contents = "• Chicago\n• New York\n• Seattle\n• San Francisco",
+                preview = "• Chicago",
                 date = Date(DATE_OF_FIRST_COMMIT + ONE_MINUTE),
                 color = ThemePreview.NOTE_COLORS[4]
             ),
