@@ -7,6 +7,12 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="NewSplashTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/starscapeBackdropDark</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_splash_padded</item>
+        <item name="postSplashScreenTheme">@style/CrystalNoteTheme</item>
+    </style>
+
 
     <!-- Universal App Theme -->
 
@@ -33,6 +39,7 @@
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
         <item name="android:actionOverflowButtonStyle">@style/ToolbarOptionsButton</item>
         <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">?themeNoteBackground</item>
     </style>
 
     <style

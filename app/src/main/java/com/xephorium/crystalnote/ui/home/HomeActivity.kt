@@ -10,6 +10,7 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
+import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
@@ -20,6 +21,7 @@ import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.custom.PasswordDialog
 import com.xephorium.crystalnote.ui.custom.PasswordDialog.Companion.PasswordDialogListener
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
+import com.xephorium.crystalnote.ui.drawer.DrawerItem
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_FROM_UPDATE_ACTIVITY
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_NOTE_ID
@@ -42,8 +44,13 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         homeBinding = HomeActivityLayoutBinding.inflate(layoutInflater)
         setBoundViewAsContent(homeBinding)
+
+        // Set Initial Drawer Button Selection
+        val sharedPreferencesRepository = SharedPreferencesRepository(this)
+        sharedPreferencesRepository.setSelectedDrawerButton(DrawerItem.Companion.DrawerButton.NOTES)
 
         presenter = HomePresenter()
         presenter.noteRoomRepository = NoteRoomRepository(this)

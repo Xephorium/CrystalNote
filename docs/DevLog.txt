@@ -11,20 +11,20 @@ December 2023
     • Migrate to AndroidX (12.09.2023)
     • Migrate to ViewBinding (12.10.2023)
     • Review Permission Changes (12.14.2023)
-      - App hibernation
-      - Reading from downloads
-      - Writing to txt file
+      • App hibernation
+      • Reading from downloads
+      • Writing to txt file
     • Review Intent Changes (12.14.2023)
-      - Intent filters need to be exported
+      • Intent filters need to be exported
     • Review Widget Changes (12.14.2023)
-      - No startActivity() from BroadcastReceiver
-      - New widget configuration method?
+      • No startActivity() from BroadcastReceiver
+      • New widget configuration method?
     ◦ Other
-      - Mandatory rounded corners on widgets?? :(
+      •  Mandatory rounded corners on widgets?? :(
         > It's fine, actually. Don't need to change code & looks decent enough
-      - v2 key signing for PlayStore upload
-      - Update Splash Screen for new APIs
-      - Update Version #
+      • Update Splash Screen for new APIs (12.23.2023)
+      ◦ v2 key signing for PlayStore upload
+      ◦ Update Version #
 
     New Features
     • Home Screen Optimization (12.20.2023)

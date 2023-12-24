@@ -63,7 +63,7 @@ class SharedPreferencesRepository(private val context: Context) {
 
     fun getNoteThemedBarEnabled(): Boolean {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        return prefs.getBoolean(NOTE_COLOR_BAR_THEME_ENABLED, true)
+        return prefs.getBoolean(NOTE_COLOR_BAR_THEME_ENABLED, false)
     }
 
     fun setTodayHeaderEnabled(enabled: Boolean) {
