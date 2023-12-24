@@ -3,6 +3,7 @@
     <!-- Splash Theme -->
 
     <style name="SplashTheme" parent="Theme.SplashScreen">
+        <item name="android:windowDisablePreview">true</item>
         <item name="windowSplashScreenBackground">@color/starscapeBackdropDark</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/icon_splash_padded</item>
         <item name="postSplashScreenTheme">@style/CrystalNoteTheme</item>
