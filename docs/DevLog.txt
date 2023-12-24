@@ -26,15 +26,21 @@ December 2023
       ◦ v2 key signing for PlayStore upload
       ◦ Update Version #
 
-    New Features
+    2023 Features
     • Home Screen Optimization (12.20.2023)
     • Note Restoration (12.13.2023)
     • Optional Scroll to Bottom Button (12.17.2023)
     • Fix Background Before Save New Note Bug (12.23.2023)
+    • Redesign Icon (12.23.2023)
+    • Themed Adaptive Icon (12.17.2023)
     ◦ Refresh themes (Ongoing)
       • Darker Night Theme (12.10.2023)
     ◦ New About Screen?
     ◦ Theme Badges
+
+    Future Improvements
+    ◦ "System" theme for Dynamic Color on API 12+
+
 
   /////////////////////////////
   /// Hard-Earned Knowledge ///
