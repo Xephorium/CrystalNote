@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Splash Screen Icon Inset -->
+    <dimen name="iconSplashInset">46dp</dimen>
+
+</resources>

@@ -2,12 +2,7 @@
 
     <!-- Splash Theme -->
 
-    <style name="SplashTheme" parent="ThemeOverlay.AppCompat.Dark">
-        <item name="android:windowBackground">@drawable/splash_background</item>
-        <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="NewSplashTheme" parent="Theme.SplashScreen">
+    <style name="SplashTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/starscapeBackdropDark</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/icon_splash_padded</item>
         <item name="postSplashScreenTheme">@style/CrystalNoteTheme</item>

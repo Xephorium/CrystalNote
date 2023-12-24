@@ -83,4 +83,7 @@
     <dimen name="widgetMinimumResizeHeight">50dp</dimen>
     <dimen name="widgetMinimumResizeWidth">50dp</dimen>
 
+    <!-- Splash Screen Icon Inset -->
+    <dimen name="iconSplashInset">76dp</dimen>
+
 </resources>

@@ -27,7 +27,7 @@
             android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"
-            android:theme="@style/NewSplashTheme"
+            android:theme="@style/SplashTheme"
             android:exported="true"
             >
             <intent-filter>
