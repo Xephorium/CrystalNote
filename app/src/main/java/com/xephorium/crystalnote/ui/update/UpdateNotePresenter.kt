@@ -37,7 +37,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         } else {
 
             // Update View for New Note
-            this.view?.populateColor(initialColor)
+            this.view?.populateColor(color)
         }
 
         // Update Bottom Button
@@ -106,7 +106,15 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleBackground() {
         if (name.isNotBlank() && isInEditMode) {
+
+            // Save Existing Note
             saveNote()
+
+        } else if (name.isNotBlank()) {
+
+            // Save New Note
+            saveNote()
+            isInEditMode = true
         }
     }
 
@@ -216,7 +224,8 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         } else if (!isInEditMode) {
 
             // New Note - Save
-            noteRoomRepository.insertNote(name, content, color, password)
+            noteId = noteRoomRepository.insertNote(name, content, color, password)
+            System.out.println("LLAMA - " + noteId)
 
         } else {
 
