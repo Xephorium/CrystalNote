@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.provider.DocumentsContract
 import android.view.View
+import android.view.ViewTreeObserver
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
@@ -39,6 +41,8 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     lateinit var presenter: HomePresenter
 
+    private var splashDelayComplete = false
+
 
     /*--- Lifecycle Methods ---*/
 
@@ -48,17 +52,15 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         homeBinding = HomeActivityLayoutBinding.inflate(layoutInflater)
         setBoundViewAsContent(homeBinding)
 
-        // Set Initial Drawer Button Selection
-        val sharedPreferencesRepository = SharedPreferencesRepository(this)
-        sharedPreferencesRepository.setSelectedDrawerButton(DrawerItem.Companion.DrawerButton.NOTES)
-
         presenter = HomePresenter()
         presenter.noteRoomRepository = NoteRoomRepository(this)
         presenter.noteDiskRepository = NoteDiskRepository(this)
         presenter.fromUpdateActivity = fromUpdateActivity
 
         setupToolbar()
+        setupDrawer()
         setupClickListeners()
+        delaySplashScreenCompletion()
     }
 
     override fun onResume() {
@@ -283,6 +285,11 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         }
     }
 
+    private fun setupDrawer() {
+        val sharedPreferencesRepository = SharedPreferencesRepository(this)
+        sharedPreferencesRepository.setSelectedDrawerButton(DrawerItem.Companion.DrawerButton.NOTES)
+    }
+
     private fun setupClickListeners() {
         homeBinding.floatingActionButtonHome.setOnClickListener { presenter.handleNewNoteButtonClick() }
         homeBinding.listHomeNotes.noteListViewListener = object : NoteListView.NoteListViewListener {
@@ -292,10 +299,31 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         }
     }
 
+    private fun delaySplashScreenCompletion() {
+        // No splash screen shown for API levels beneath 29 (Q)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            Handler().postDelayed({ splashDelayComplete = true }, SPLASH_SCREEN_DELAY)
+            val content: View = findViewById(android.R.id.content)
+            content.viewTreeObserver.addOnPreDrawListener(
+                object : ViewTreeObserver.OnPreDrawListener {
+                    override fun onPreDraw(): Boolean {
+                        return if (splashDelayComplete) {
+                            content.viewTreeObserver.removeOnPreDrawListener(this)
+                            true
+                        } else {
+                            false
+                        }
+                    }
+                }
+            )
+        }
+    }
+
 
     /*--- Constants ---*/
 
     companion object {
+        const val SPLASH_SCREEN_DELAY: Long = 250
         const val FILE_WRITE_REQUEST_CODE = 117
     }
 }
