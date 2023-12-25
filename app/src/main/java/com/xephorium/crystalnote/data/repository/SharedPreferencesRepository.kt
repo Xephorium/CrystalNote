@@ -85,7 +85,7 @@ class SharedPreferencesRepository(private val context: Context) {
 
     fun getNoteUnderlineEnabled(): Boolean {
         val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
-        return prefs.getBoolean(NOTE_UNDERLINE_ENABLED, true)
+        return prefs.getBoolean(NOTE_UNDERLINE_ENABLED, false)
     }
 
     fun setMonospacedFontEnabled(enabled: Boolean) {
