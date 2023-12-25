@@ -88,9 +88,8 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
         } else if (!isInEditMode && name.isNotBlank()) {
 
-            // New Note w/ Name - Save Here
+            // New Note w/ Name - Save in handleBackground() via onPause()
             returnToCallingScreen()
-            saveNote()
 
         } else if (name.isNotBlank()) {
 
