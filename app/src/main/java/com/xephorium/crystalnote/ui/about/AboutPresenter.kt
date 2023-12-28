@@ -13,6 +13,14 @@ class AboutPresenter : AboutContract.Presenter() {
         view?.showNavigationDrawer()
     }
 
+    override fun handleDeveloperButtonClick() {
+        view?.navigateToDeveloperSite()
+    }
+
+    override fun handlePrivacyPolicyButtonClick() {
+        view?.navigateToPrivacyPolicy()
+    }
+
 
     /*--- Private Methods ---*/
 

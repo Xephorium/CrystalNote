@@ -1,16 +1,20 @@
 package com.xephorium.crystalnote.ui.about
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.databinding.AboutActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 
+
 class AboutActivity : DrawerActivity(), AboutContract.View {
 
 
     /*--- Variable Declarations ---*/
+
+    private lateinit var binding: AboutActivityLayoutBinding
 
     private lateinit var presenter: AboutPresenter
 
@@ -19,11 +23,14 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setBoundViewAsContent(AboutActivityLayoutBinding.inflate(layoutInflater))
+
+        binding = AboutActivityLayoutBinding.inflate(layoutInflater)
+        setBoundViewAsContent(binding)
 
         presenter = AboutPresenter()
 
         setupToolbar()
+        setupClickListeners()
     }
 
     override fun onResume() {
@@ -43,6 +50,20 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
         openDrawer()
     }
 
+    override fun navigateToDeveloperSite() {
+        val url = "https://xephorium.github.io/"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setData(Uri.parse(url))
+        startActivity(intent)
+    }
+
+    override fun navigateToPrivacyPolicy() {
+        val url = "https://raw.githubusercontent.com/Xephorium/CrystalNote/master/docs/PrivacyPolicy.txt"
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setData(Uri.parse(url))
+        startActivity(intent)
+    }
+
 
     /*--- Private Setup Methods ---*/
 
@@ -57,6 +78,15 @@ class AboutActivity : DrawerActivity(), AboutContract.View {
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })
+        }
+    }
+
+    private fun setupClickListeners() {
+        binding.buttonAboutDeveloper.setOnClickListener {
+            presenter.handleDeveloperButtonClick()
+        }
+        binding.buttonAboutPrivacyPolicy.setOnClickListener {
+            presenter.handlePrivacyPolicyButtonClick()
         }
     }
 

@@ -53,6 +53,18 @@
         <item name="cornerRadius">@dimen/buttonCornerRadius</item>
     </style>
 
+    <style name="AboutButtonTheme" parent="Widget.Material3.Button">
+        <item name="android:backgroundTint">?themeNoteBackground</item>
+        <item name="android:textColor">?themeTextPrimary</item>
+        <item name="android:textSize">@dimen/buttonTextSize</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:paddingStart">@dimen/paddingLarge</item>
+        <item name="android:paddingEnd">@dimen/paddingLarge</item>
+        <item name="cornerRadius">100dp</item>
+        <item name="rippleColor">?themeNoteRipple</item>
+    </style>
+
     <style name="ToolbarTheme" parent="Theme.AppCompat">
         <item name="android:background">?themeToolbar</item>
         <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>

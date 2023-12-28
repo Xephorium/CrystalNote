@@ -3,11 +3,12 @@
     <string name="aboutTitle">About</string>
     <string name="aboutHeader">Crystal Note</string>
     <string name="aboutAuthor">Chris Cruzen</string>
-    <string name="aboutVersion">v1.0.0</string>
-    <string name="aboutDescription">An aggressively minimalist, highly customizable notes app for Android. ❤</string>
+    <string name="aboutDescription">An aggressively minimalist, highly customizable notes app. 🤍</string>
+    <string name="aboutButtonDeveloper">Developer Profile</string>
+    <string name="aboutButtonPrivacy">Privacy Policy</string>
 
     <string name="appName">CrystalNote</string>
-    <string name="appVersion">v1.0.0</string>
+    <string name="appVersion">2.0.0</string>
 
     <string name="commonSave">Save</string>
 

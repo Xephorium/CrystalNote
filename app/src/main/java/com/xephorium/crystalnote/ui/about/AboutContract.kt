@@ -7,9 +7,13 @@ interface AboutContract {
 
     interface View : BaseView {
         fun showNavigationDrawer()
+        fun navigateToDeveloperSite()
+        fun navigateToPrivacyPolicy()
     }
 
     abstract class Presenter : BasePresenter<View>() {
         abstract fun handleMenuButtonClick()
+        abstract fun handleDeveloperButtonClick()
+        abstract fun handlePrivacyPolicyButtonClick()
     }
 }

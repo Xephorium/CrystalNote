@@ -7,59 +7,98 @@
     android:background="?themeBackground"
     >
 
+    <ImageView
+        android:id="@+id/imageAppIconPrimary"
+        android:layout_width="@dimen/iconAboutSize"
+        android:layout_height="@dimen/iconAboutSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/paddingTitanic"
+        app:tint="?themeTextTertiary"
+        android:src="@drawable/icon_monochrome_alternate"
+        android:importantForAccessibility="no"
+        />
+
+    <ImageView
+        android:id="@+id/imageAppIconSecondary"
+        android:layout_width="@dimen/iconAboutSize"
+        android:layout_height="@dimen/iconAboutSize"
+        app:layout_constraintBottom_toBottomOf="@id/imageAppIconPrimary"
+        app:layout_constraintEnd_toEndOf="@id/imageAppIconPrimary"
+        app:layout_constraintStart_toStartOf="@id/imageAppIconPrimary"
+        app:layout_constraintTop_toTopOf="@id/imageAppIconPrimary"
+        app:tint="?themeTextPrimary"
+        android:src="@drawable/icon_monochrome_alternate_highlights"
+        android:importantForAccessibility="no"
+        />
+
     <TextView
         android:id="@+id/textAboutHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/aboutHeader"
-        android:textColor="?themeTextSecondary"
+        android:textColor="?themeTextPrimary"
         android:textSize="22sp"
-        android:textStyle="bold"
+        android:layout_marginTop="@dimen/paddingSmall"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias=".3"
-        />
-
-    <TextView
-        android:id="@+id/textAboutAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/aboutAuthor"
-        android:textColor="?themeTextSecondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAboutHeader"
+        app:layout_constraintTop_toBottomOf="@id/imageAppIconPrimary"
+        app:layout_constraintVertical_bias="0"
         />
 
     <TextView
         android:id="@+id/textAboutVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/aboutVersion"
+        android:text="@string/appVersion"
         android:textColor="?themeTextTertiary"
+        android:layout_marginTop="@dimen/paddingSmall"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAboutAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/textAboutHeader"
         />
 
     <TextView
         android:id="@+id/textAboutDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:paddingStart="@dimen/paddingHuge"
-        android:paddingTop="@dimen/paddingLarge"
-        android:paddingEnd="@dimen/paddingHuge"
+        android:paddingStart="@dimen/paddingMassive"
+        android:paddingEnd="@dimen/paddingMassive"
         android:text="@string/aboutDescription"
         android:textColor="?themeTextSecondary"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textAboutVersion"
-        app:layout_constraintVertical_bias=".15"
+        app:layout_constraintBottom_toTopOf="@id/buttonAboutDeveloper"
+        app:layout_constraintVertical_bias=".4"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonAboutDeveloper"
+        android:layout_width="@dimen/buttonAboutWidth"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/buttonAboutPrivacyPolicy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/paddingMicro"
+        style="@style/AboutButtonTheme"
+        android:text="@string/aboutButtonDeveloper"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonAboutPrivacyPolicy"
+        android:layout_width="@dimen/buttonAboutWidth"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/paddingMassive"
+        style="@style/AboutButtonTheme"
+        android:text="@string/aboutButtonPrivacy"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
