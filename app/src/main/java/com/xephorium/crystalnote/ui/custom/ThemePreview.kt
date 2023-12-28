@@ -22,6 +22,7 @@ class ThemePreview : View {
     private var scaleUnit: Int? = null
 
     private var toolbarHeight: Int? = null
+    private var toolbarWidth: Int? = null
     private var headerHeight: Int? = null
     private var textHeight: Int? = null
     private var colorBarWidth: Int? = null
@@ -30,6 +31,8 @@ class ThemePreview : View {
     private var paddingLarge: Int? = null
     private var paddingMedium: Int? = null
     private var paddingSmall: Int? = null
+
+    private var paddingCardGap: Int? = null
 
     private var theme = CrystalNoteTheme.default(context)
     private var maxLines = 5
@@ -67,14 +70,17 @@ class ThemePreview : View {
         if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
 
         if (toolbarHeight == null) toolbarHeight = (scaleUnit!! * 2.25).toInt()
+        if (toolbarWidth == null) toolbarWidth = (scaleUnit!! * 2.5).toInt()
         if (headerHeight == null) headerHeight = (scaleUnit!! * .3).toInt()
         if (textHeight == null) textHeight = (scaleUnit!! * .25).toInt()
-        if (colorBarWidth == null) colorBarWidth = (scaleUnit!! * .35).toInt()
+        if (colorBarWidth == null) colorBarWidth = (scaleUnit!! * .4).toInt()
         if (actionButtonRadius == null) actionButtonRadius = (scaleUnit!! * 1).toInt()
 
-        if (paddingLarge == null) paddingLarge = (scaleUnit!! * .75).toInt()
-        if (paddingMedium == null) paddingMedium = (scaleUnit!! * .5).toInt()
-        if (paddingSmall == null) paddingSmall = (scaleUnit!! * .25).toInt()
+        if (paddingLarge == null) paddingLarge = (scaleUnit!! * .8).toInt()
+        if (paddingMedium == null) paddingMedium = (scaleUnit!! * .55).toInt()
+        if (paddingSmall == null) paddingSmall = (scaleUnit!! * .3).toInt()
+
+        if (paddingCardGap == null) paddingCardGap = (scaleUnit!! * .65).toInt()
 
         setMeasuredDimension(viewWidth!!, viewHeight!!)
     }
@@ -112,9 +118,9 @@ class ThemePreview : View {
         // Toolbar Title
         paint.color = theme.colorToolbarTextPrimary
         canvas.drawRoundRect(
-                (toolbarHeight!!).toFloat(),
+                ((viewWidth!! / 2) - (toolbarWidth!! / 2)).toFloat(),
                 (paddingLarge!!).toFloat(),
-                (toolbarHeight!! + (scaleUnit!! * 5.5)).toFloat(),
+                ((viewWidth!! / 2) + (toolbarWidth!! / 2)).toFloat(),
                 (toolbarHeight!! - paddingLarge!!).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
@@ -254,16 +260,17 @@ class ThemePreview : View {
         canvas?.drawRoundRect(
                 (paddingLarge!!).toFloat(),
                 currentVerticalPosition.toFloat(),
-                (paddingLarge!! + colorBarDisplayWidth).toFloat(),
+                (paddingLarge!!+ colorBarDisplayWidth * 3).toFloat(),
                 (currentVerticalPosition + viewHeight).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,
                 paint
         )
+        paint.color = theme.colorNoteBackground
         canvas?.drawRect(
-                (paddingLarge!! + (colorBarDisplayWidth / 2)).toFloat(),
-                currentVerticalPosition.toFloat(),
                 (paddingLarge!! + colorBarDisplayWidth).toFloat(),
+                currentVerticalPosition.toFloat(),
+                (paddingLarge!! + (colorBarDisplayWidth * 3)).toFloat(),
                 (currentVerticalPosition + viewHeight).toFloat(),
                 paint
         )
@@ -310,14 +317,14 @@ class ThemePreview : View {
             )
         }
 
-        return viewHeight + paddingMedium!!
+        return viewHeight + paddingCardGap!!
     }
 
 
     /*--- Constants ---*/
 
     companion object {
-        private const val CORNER_RADIUS = 3.toFloat()
+        private const val CORNER_RADIUS = 8.toFloat()
 
         val NOTE_COLORS = listOf(
                 Color.parseColor("#7aa4d1"), //    Azure Light
