@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?themeBackground"
+    android:background="?themePreviewBackgroundDefault"
     >
 
     <!-- Note: This view is a dirty hack. Because I'm manually inflating each layout added to
@@ -24,7 +24,7 @@
         android:id="@+id/viewSettingsPreviewBackground"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="?attr/themePreviewBackgroundDefault"
+        android:background="?themePreviewBackgroundDefault"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,231 +45,295 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/settingsSaveButtonPadding"
         android:overScrollMode="ifContentScrolls"
-        app:layout_constraintBottom_toTopOf="@id/buttonSave"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewSettingsPreviewBackground"
+        android:background="@drawable/settings_foreground"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="@dimen/paddingSmall"
+            android:paddingBottom="@dimen/paddingMedium"
             >
 
-        <TextView
-            android:id="@+id/textSettingsAppAppearanceHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/paddingActivity"
-            android:paddingTop="@dimen/paddingLarge"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/paddingSmall"
-            android:text="@string/settingsAppAppearance"
-            android:textColor="?themeTextPrimary"
-            android:textSize="@dimen/textSettings"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:id="@+id/textSettingsThemeLabel"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="@dimen/paddingHuge"
-                android:paddingTop="@dimen/paddingMedium"
-                android:paddingEnd="@dimen/paddingLarge"
-                android:paddingBottom="@dimen/settingsItemPadding"
-                android:text="@string/settingsAppTheme"
-                android:textColor="?themeTextSecondary"
-                android:textSize="@dimen/textSettings"
-                />
+                android:orientation="vertical"
+                android:background="@drawable/settings_tile_background"
+                android:layout_margin="@dimen/paddingActivity"
+                >
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/selectorSettingsTheme"
-                android:layout_width="@dimen/selectorSettings"
-                android:layout_height="match_parent"
-                android:popupBackground="@drawable/selector_popup_background"
-                app:backgroundTint="?themeTextSecondary"
-                />
+                <TextView
+                    android:id="@+id/textSettingsAppAppearanceHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/paddingActivity"
+                    android:text="@string/settingsAppAppearance"
+                    android:gravity="center"
+                    android:textColor="?themeTextPrimary"
+                    android:textSize="@dimen/textSettingsHeader"
+                    />
 
-        </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="?themeDivider"
+                    />
 
-        <TextView
-            android:id="@+id/textSettingsHomeAppearanceHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/paddingActivity"
-            android:paddingTop="@dimen/paddingLarge"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/paddingSmall"
-            android:text="@string/settingsHomeAppearance"
-            android:textColor="?themeTextPrimary"
-            android:textSize="@dimen/textSettings"
-            />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+                    <TextView
+                        android:id="@+id/textSettingsThemeLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingActivity"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/settingsAppTheme"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
 
-            <TextView
-                android:id="@+id/textSettingsNoteLinesLabel"
-                android:layout_width="0dp"
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorSettingsTheme"
+                        android:layout_width="@dimen/selectorSettings"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonApplyTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/paddingActivity"
+                    android:layout_marginEnd="@dimen/paddingActivity"
+                    android:layout_marginTop="@dimen/paddingMedium"
+                    android:layout_marginBottom="@dimen/paddingActivity"
+                    android:text="Apply"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_gravity="end"
+                    style="@style/ButtonTheme"
+                    android:enabled="true"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="@dimen/paddingHuge"
-                android:paddingTop="@dimen/paddingMedium"
-                android:paddingEnd="@dimen/paddingLarge"
-                android:paddingBottom="@dimen/settingsItemPadding"
-                android:text="@string/settingsNotePreviewLines"
-                android:textColor="?themeTextSecondary"
-                android:textSize="@dimen/textSettings"
-                />
+                android:orientation="vertical"
+                android:background="@drawable/settings_tile_background"
+                android:layout_marginStart="@dimen/paddingActivity"
+                android:layout_marginEnd="@dimen/paddingActivity"
+                android:layout_marginBottom="@dimen/paddingActivity"
+                >
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/selectorSettingsLines"
-                android:layout_width="@dimen/selectorSettings"
-                android:layout_height="match_parent"
-                android:popupBackground="@drawable/selector_popup_background"
-                app:backgroundTint="?themeTextSecondary"
-                />
+                <TextView
+                    android:id="@+id/textSettingsHomeAppearanceHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/paddingActivity"
+                    android:text="@string/settingsHomeAppearance"
+                    android:gravity="center"
+                    android:textColor="?themeTextPrimary"
+                    android:textSize="@dimen/textSettingsHeader"
+                    />
 
-        </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="?themeDivider"
+                    />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
 
-            <TextView
-                android:id="@+id/textSettingsNoteDateLabel"
-                android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/textSettingsNoteLinesLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingActivity"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/settingsNotePreviewLines"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorSettingsLines"
+                        android:layout_width="@dimen/selectorSettings"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/textSettingsNoteDateLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/settingsNoteDate"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorSettingsDate"
+                        android:layout_width="@dimen/selectorSettings"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsNoteColorBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/settingsNoteColorBar"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsNoteBarThemed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/settingsNoteThemeBar"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:layout_marginBottom="@dimen/paddingMedium"
+                    android:text="@string/settingsToday"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingStart="@dimen/paddingHuge"
-                android:paddingTop="@dimen/paddingMedium"
-                android:paddingEnd="@dimen/paddingLarge"
-                android:paddingBottom="@dimen/settingsItemPadding"
-                android:text="@string/settingsNoteDate"
-                android:textColor="?themeTextSecondary"
-                android:textSize="@dimen/textSettings"
-                />
+                android:orientation="vertical"
+                android:background="@drawable/settings_tile_background"
+                android:layout_marginStart="@dimen/paddingActivity"
+                android:layout_marginEnd="@dimen/paddingActivity"
+                android:layout_marginBottom="@dimen/paddingActivity"
+                >
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/selectorSettingsDate"
-                android:layout_width="@dimen/selectorSettings"
-                android:layout_height="match_parent"
-                android:popupBackground="@drawable/selector_popup_background"
-                app:backgroundTint="?themeTextSecondary"
-                />
+                <TextView
+                    android:id="@+id/textSettingsNoteAppearanceHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/paddingActivity"
+                    android:text="@string/settingsNoteAppearance"
+                    android:gravity="center"
+                    android:textColor="?themeTextPrimary"
+                    android:textSize="@dimen/textSettingsHeader"
+                    />
 
-        </LinearLayout>
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="?themeDivider"
+                    />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchSettingsNoteColorBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:paddingStart="@dimen/paddingHuge"
-            android:paddingTop="@dimen/paddingMedium"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/settingsItemPadding"
-            android:text="@string/settingsNoteColorBar"
-            android:textColor="?themeTextSecondary"
-            android:textSize="@dimen/textSettings"
-            />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsUnderline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/settingsUnderline"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchSettingsNoteBarThemed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:paddingStart="@dimen/paddingHuge"
-            android:paddingTop="@dimen/paddingMedium"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/settingsItemPadding"
-            android:text="@string/settingsNoteThemeBar"
-            android:textColor="?themeTextSecondary"
-            android:textSize="@dimen/textSettings"
-            />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsMonospace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:layout_marginBottom="@dimen/paddingMedium"
+                    android:text="@string/settingsMonospace"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchSettingsToday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:paddingStart="@dimen/paddingHuge"
-            android:paddingTop="@dimen/paddingMedium"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/settingsItemPadding"
-            android:text="@string/settingsToday"
-            android:textColor="?themeTextSecondary"
-            android:textSize="@dimen/textSettings"
-            />
-
-        <TextView
-            android:id="@+id/textSettingsNoteAppearanceHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/paddingActivity"
-            android:paddingTop="@dimen/paddingLarge"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/paddingSmall"
-            android:text="@string/settingsNoteAppearance"
-            android:textColor="?themeTextPrimary"
-            android:textSize="@dimen/textSettings"
-            />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchSettingsUnderline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:paddingStart="@dimen/paddingHuge"
-            android:paddingTop="@dimen/paddingMedium"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/settingsItemPadding"
-            android:text="@string/settingsUnderline"
-            android:textColor="?themeTextSecondary"
-            android:textSize="@dimen/textSettings"
-            />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switchSettingsMonospace"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:paddingStart="@dimen/paddingHuge"
-            android:paddingTop="@dimen/paddingMedium"
-            android:paddingEnd="@dimen/paddingActivity"
-            android:paddingBottom="@dimen/settingsItemPadding"
-            android:text="@string/settingsMonospace"
-            android:textColor="?themeTextSecondary"
-            android:textSize="@dimen/textSettings"
-            />
+            </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/paddingActivity"
-        android:text="@string/commonSave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/ButtonTheme"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

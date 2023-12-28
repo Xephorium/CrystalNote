@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.settings
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -9,7 +8,6 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
@@ -42,7 +40,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         setupNotePreviewLinesSpinner()
         setupNoteDateType()
         setupSwitches()
-        setupSaveButton()
+        setupApplyThemeButton()
     }
 
     override fun onResume() {
@@ -128,11 +126,11 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         openDrawer()
     }
 
-    override fun showDiscardChangesDialog() {
+    override fun showDiscardThemeChangeDialog() {
         val dialog = CrystalNoteDialog.Builder(this).create()
         dialog.show()
-        dialog.setTitle("Discard Changes")
-        dialog.setMessage("Your changes have not been saved. Discard changes?")
+        dialog.setTitle("Discard Theme Change")
+        dialog.setMessage("Theme change has not been applied. Discard change?")
         dialog.setPositiveButtonName("Discard")
         dialog.setNegativeButtonName("Cancel")
         dialog.setListener(object : CrystalNoteDialog.Companion.CrystalNoteDialogListener {
@@ -234,8 +232,8 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         }
     }
 
-    private fun setupSaveButton() {
-        settingsBinding.buttonSave.setOnClickListener { presenter.handleSaveClick() }
+    private fun setupApplyThemeButton() {
+        settingsBinding.buttonApplyTheme.setOnClickListener { presenter.handleApplyThemeClick() }
     }
 
 

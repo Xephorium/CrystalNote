@@ -25,7 +25,7 @@ interface SettingsContract {
         fun setPreviewHeaderVisibility(visible: Boolean)
 
         fun showNavigationDrawer()
-        fun showDiscardChangesDialog()
+        fun showDiscardThemeChangeDialog()
         fun refreshScreen()
         fun navigateBack()
     }
@@ -51,7 +51,7 @@ interface SettingsContract {
         abstract fun handleTodayHeaderToggle(checked: Boolean)
         abstract fun handleNoteUnderlineToggle(checked: Boolean)
         abstract fun handleMonospaceToggle(checked: Boolean)
-        abstract fun handleSaveClick()
+        abstract fun handleApplyThemeClick()
         abstract fun handleBackClick()
         abstract fun handleBackConfirm()
     }

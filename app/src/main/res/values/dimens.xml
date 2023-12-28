@@ -24,6 +24,7 @@
     <dimen name="textNoteOptions">16sp</dimen>
     <dimen name="textNoteOptionsTitle">17sp</dimen>
     <dimen name="textSettings">15sp</dimen>
+    <dimen name="textSettingsHeader">16sp</dimen>
     <dimen name="textUpdate">17sp</dimen>
     <dimen name="textUpdateMono">16sp</dimen>
 
@@ -38,7 +39,7 @@
     <dimen name="colorPickerPaddingBottom">30dp</dimen>
     <dimen name="colorPickerPaddingOrb">5dp</dimen>
     <dimen name="buttonAboutWidth">250dp</dimen>
-    <dimen name="buttonCornerRadius">8dp</dimen>
+    <dimen name="buttonCornerRadius">100dp</dimen>
     <dimen name="buttonVerticalPadding">6dp</dimen>
     <dimen name="buttonTextSize">15.5sp</dimen>
     <dimen name="dialogCornerRadius">10dp</dimen>
@@ -67,9 +68,12 @@
     <dimen name="selectorSettings">150dp</dimen>
     <dimen name="selectorWidgetLarge">180dp</dimen>
     <dimen name="selectorWidgetSmall">120dp</dimen>
+    <dimen name="settingsCornerRadius">10dp</dimen>
+    <dimen name="settingsCornerRadiusLarge">18dp</dimen>
     <dimen name="settingsItemPadding">10dp</dimen>
     <dimen name="settingsSaveButtonPadding">14dp</dimen>
     <dimen name="splashIconSize">90dp</dimen>
+    <dimen name="statusBarHeightStandard">24dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
     <dimen name="toolbarElevation">0dp</dimen>
     <dimen name="toolbarText">19sp</dimen>

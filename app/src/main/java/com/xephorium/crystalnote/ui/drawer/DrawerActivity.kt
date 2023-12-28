@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
@@ -258,8 +259,14 @@ open class DrawerActivity : BaseActivity(), DrawerContract.View {
     private fun getActivityContentHeight(): Int {
         val displayHeight = DisplayUtility.getDisplayHeight(this)
         val statusBarHeight = DisplayUtility.getStatusBarHeight(this)
+        val standardStatusBarHeight = resources.getDimensionPixelSize(R.dimen.statusBarHeightStandard)
         val toolbarHeight = resources.getDimensionPixelSize(R.dimen.toolbarHeight)
-        return displayHeight - (statusBarHeight + toolbarHeight)
+
+        return if (statusBarHeight == standardStatusBarHeight) {
+            displayHeight - (statusBarHeight + toolbarHeight)
+        } else {
+            displayHeight - toolbarHeight
+        }
     }
 
 

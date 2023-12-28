@@ -41,14 +41,14 @@
     <color name="darkTextTertiary">#b3b3b3</color>
     <color name="darkTextHighlight">#20ffffff</color>
     <color name="darkDrawerFilter">#ce0d0d0d</color>
-    <color name="darkDivider">#38ffffff</color>
+    <color name="darkDivider">#30ffffff</color>
     <color name="darkPreviewBackgroundDark">#171717</color>
     <color name="darkPreviewBackgroundLight">#d1d1d1</color>
 
 
     <!-- Custom Theme Colors -->
 
-    <color name="starscapeBackdropDark">#282b30</color>
+    <color name="starscapeBackdropDark">#26292E</color>
     <color name="starscapeBackdropLight">#32353d</color>
     <color name="starscapeBackdropHighlight">#42464f</color>
     <color name="starscapeBackdropRipple">#4b4f59</color>
@@ -77,7 +77,7 @@
     <color name="cobaltPreviewBackgroundDark">#0d0f12</color>
     <color name="cobaltPreviewBackgroundLight">#8A929E</color>
 
-    <color name="blackBackdropDark">#0c0c0c</color>
+    <color name="blackBackdropDark">#0b0b0b</color>
     <color name="blackBackdropLight">#161616</color>
     <color name="blackBackdropHighlight">#222222</color>
     <color name="blackBackdropRipple">#50ffffff</color>

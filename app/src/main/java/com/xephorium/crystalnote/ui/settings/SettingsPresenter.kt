@@ -50,55 +50,54 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     override fun handleNoteLinesChange(lines: Int) {
         notePreviewLines = lines
+        sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
         view?.setPreviewLines(notePreviewLines)
     }
 
     override fun handleNoteDateTypeChange(dateType: DateType) {
         noteDateType = dateType
+        sharedPreferencesRepository.setNoteDateType(noteDateType)
         view?.setPreviewDateType(noteDateType)
     }
 
     override fun handleNoteColorBarToggle(checked: Boolean) {
         colorBarEnabled = checked
+        sharedPreferencesRepository.setNoteColorBarEnabled(colorBarEnabled)
         view?.setPreviewColorBarVisibility(colorBarEnabled)
     }
 
     override fun handleThemedColorBarToggle(checked: Boolean) {
         themedBarEnabled = checked
+        sharedPreferencesRepository.setNoteThemedBarEnabled(themedBarEnabled)
         view?.setPreviewColorBarThemed(checked)
     }
 
     override fun handleTodayHeaderToggle(checked: Boolean) {
         todayHeaderEnabled = checked
+        sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
         view?.setPreviewHeaderVisibility(todayHeaderEnabled)
     }
 
     override fun handleNoteUnderlineToggle(checked: Boolean) {
         noteUnderlineEnabled = checked
+        sharedPreferencesRepository.setNoteUnderlineEnabled(noteUnderlineEnabled)
     }
 
     override fun handleMonospaceToggle(checked: Boolean) {
         useMonospacedFont = checked
+        sharedPreferencesRepository.setMonospacedFontEnabled(useMonospacedFont)
     }
 
-    override fun handleSaveClick() {
-        sharedPreferencesRepository.setNotePreviewLines(notePreviewLines)
-        sharedPreferencesRepository.setNoteDateType(noteDateType)
-        sharedPreferencesRepository.setNoteColorBarEnabled(colorBarEnabled)
-        sharedPreferencesRepository.setNoteThemedBarEnabled(themedBarEnabled)
-        sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
-        sharedPreferencesRepository.setNoteUnderlineEnabled(noteUnderlineEnabled)
-        sharedPreferencesRepository.setMonospacedFontEnabled(useMonospacedFont)
-
-        if (sharedPreferencesRepository.getTheme() != theme) {
+    override fun handleApplyThemeClick() {
+        if (hasSelectedThemeChanged()) {
             sharedPreferencesRepository.setTheme(theme)
             view?.refreshScreen()
         }
     }
 
     override fun handleBackClick() {
-        if (unsavedChanges()) {
-            view?.showDiscardChangesDialog()
+        if (hasSelectedThemeChanged()) {
+            view?.showDiscardThemeChangeDialog()
         } else {
             view?.navigateBack()
         }
@@ -111,25 +110,7 @@ class SettingsPresenter : SettingsContract.Presenter() {
 
     /*--- Private Methods ---*/
 
-    private fun unsavedChanges(): Boolean {
-        var unsavedChanges = false
-
-        if (sharedPreferencesRepository.getTheme() != theme) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getNotePreviewLines() != notePreviewLines) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getNoteDateType() != noteDateType) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getNoteColorBarEnabled() != colorBarEnabled) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getNoteThemedBarEnabled() != themedBarEnabled) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getTodayHeaderEnabled() != todayHeaderEnabled) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getNoteUnderlineEnabled() != noteUnderlineEnabled) unsavedChanges = true
-
-        if (sharedPreferencesRepository.getMonospacedFontEnabled() != useMonospacedFont) unsavedChanges = true
-
-        return unsavedChanges
+    private fun hasSelectedThemeChanged(): Boolean {
+        return sharedPreferencesRepository.getTheme() != theme
     }
 }
