@@ -68,8 +68,8 @@
     <dimen name="selectorSettings">150dp</dimen>
     <dimen name="selectorWidgetLarge">180dp</dimen>
     <dimen name="selectorWidgetSmall">120dp</dimen>
-    <dimen name="settingsCornerRadius">10dp</dimen>
-    <dimen name="settingsCornerRadiusLarge">18dp</dimen>
+    <dimen name="settingsTileCornerRadius">10dp</dimen>
+    <dimen name="settingsForegroundCornerRadius">18dp</dimen>
     <dimen name="settingsItemPadding">10dp</dimen>
     <dimen name="splashIconSize">90dp</dimen>
     <dimen name="statusBarHeightStandard">24dp</dimen>

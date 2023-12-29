@@ -40,6 +40,8 @@ December 2023
 
     Future Improvements
     ◦ "System" theme for Dynamic Color on API 12+
+    ◦ Configurable widget background radius
+    ◦ Note preview in settings
 
 
   /////////////////////////////

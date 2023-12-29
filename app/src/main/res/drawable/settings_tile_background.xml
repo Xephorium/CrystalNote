@@ -4,6 +4,6 @@
     android:shape="rectangle"
     >
     <solid android:color="?themeNoteBackground"/>
-    <corners android:radius="@dimen/settingsCornerRadius"/>
+    <corners android:radius="@dimen/settingsTileCornerRadius"/>
 <!--    <stroke android:width="1dp" android:color="?themeDivider" />-->
 </shape>
