@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewWidgetSettingsBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="?themeBackground"
+    android:background="?themePreviewBackgroundDefault"
     >
 
     <!-- Note: This view is a dirty hack. Because I'm manually inflating each layout added to
@@ -59,270 +61,286 @@
         android:id="@+id/scrollViewWidgetSettings"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/settingsSaveButtonPadding"
         android:overScrollMode="ifContentScrolls"
-        app:layout_constraintBottom_toTopOf="@id/buttonSave"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewWidgetSettingsPreviewBackground"
+        android:background="@drawable/settings_foreground"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#00FFFFFF"
+            android:paddingTop="@dimen/paddingMicro"
             >
 
-            <TextView
-                android:id="@+id/textWidgetSettingsSelectionHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/paddingActivity"
-                android:paddingTop="@dimen/paddingLarge"
-                android:paddingEnd="@dimen/paddingActivity"
-                android:paddingBottom="@dimen/paddingSmall"
-                android:text="@string/widgetSettingsSelectionHeader"
-                android:textColor="?themeTextPrimary"
-                android:textSize="@dimen/textSettings"
-                />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
+                android:background="@drawable/settings_tile_background"
+                android:layout_margin="@dimen/paddingActivity"
                 >
 
                 <TextView
-                    android:id="@+id/textWidgetSettingsSelectionLabel"
-                    android:layout_width="0dp"
+                    android:id="@+id/textWidgetSettingsSelectionHeader"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsSelectionLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/paddingActivity"
+                    android:text="@string/widgetSettingsAppearanceHeader"
+                    android:gravity="center"
+                    android:textColor="?themeTextPrimary"
+                    android:textSize="@dimen/textSettingsHeader"
                     />
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsSelection"
-                    android:layout_width="@dimen/selectorWidgetLarge"
-                    android:layout_height="match_parent"
-                    android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
-                    app:backgroundTint="?themeTextSecondary"
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    app:dividerColor="?themeDivider"
                     />
 
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/textWidgetSettingsAppearanceHeader"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/paddingActivity"
-                android:paddingTop="@dimen/paddingLarge"
-                android:paddingEnd="@dimen/paddingActivity"
-                android:paddingBottom="@dimen/paddingSmall"
-                android:text="@string/widgetSettingsAppearanceHeader"
-                android:textColor="?themeTextPrimary"
-                android:textSize="@dimen/textSettings"
-                />
-
-            <LinearLayout
-                android:id="@+id/layoutWidgetSettingsBackgroundColor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
-
-                <TextView
-                    android:id="@+id/textWidgetSettingsBackgroundColorLabel"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsBackgroundColorLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
+                    android:orientation="horizontal"
+                    >
 
-                <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbWidgetSettingsBackgroundColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/colorOrbSizeWidgetSettings"
-                    android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
-                    android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:focusable="true"
-                    />
+                    <TextView
+                        android:id="@+id/textWidgetSettingsSelectionLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingActivity"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsSelectionLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
 
-            </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorWidgetSettingsSelection"
+                        android:layout_width="@dimen/selectorWidgetLarge"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
 
-            <LinearLayout
-                android:id="@+id/layoutWidgetSettingsTitleColor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textWidgetSettingsTitleColorLabel"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/layoutWidgetSettingsBackgroundColor"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTitleColorLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
 
-                <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbWidgetSettingsTitleColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/colorOrbSizeWidgetSettings"
-                    android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
-                    android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:focusable="true"
-                    />
+                    <TextView
+                        android:id="@+id/textWidgetSettingsBackgroundColorLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsBackgroundColorLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
 
-            </LinearLayout>
+                    <com.xephorium.crystalnote.ui.custom.ColorOrb
+                        android:id="@+id/colorOrbWidgetSettingsBackgroundColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/colorOrbSizeWidgetSettings"
+                        android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
+                        android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        />
 
-            <LinearLayout
-                android:id="@+id/layoutWidgetSettingsContentColor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textWidgetSettingsContentColorLabel"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/layoutWidgetSettingsTitleColor"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsContentColorLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
 
-                <com.xephorium.crystalnote.ui.custom.ColorOrb
-                    android:id="@+id/colorOrbWidgetSettingsContentColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/colorOrbSizeWidgetSettings"
-                    android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
-                    android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
-                    android:background="?selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:focusable="true"
-                    />
+                    <TextView
+                        android:id="@+id/textWidgetSettingsTitleColorLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsTitleColorLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
 
-            </LinearLayout>
+                    <com.xephorium.crystalnote.ui.custom.ColorOrb
+                        android:id="@+id/colorOrbWidgetSettingsTitleColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/colorOrbSizeWidgetSettings"
+                        android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
+                        android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textWidgetSettingsTextSizeLabel"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/layoutWidgetSettingsContentColor"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsTextSizeLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsTextSize"
-                    android:layout_width="@dimen/selectorWidgetSmall"
-                    android:layout_height="match_parent"
-                    android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
-                    app:backgroundTint="?themeTextSecondary"
-                    />
+                    <TextView
+                        android:id="@+id/textWidgetSettingsContentColorLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsContentColorLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
 
-            </LinearLayout>
+                    <com.xephorium.crystalnote.ui.custom.ColorOrb
+                        android:id="@+id/colorOrbWidgetSettingsContentColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/colorOrbSizeWidgetSettings"
+                        android:layout_marginEnd="@dimen/colorOrbPaddingWidgetSettings"
+                        android:layout_marginStart="@dimen/colorOrbPaddingWidgetSettings"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textWidgetSettingsBackgroundAlphaLabel"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsBackgroundAlphaLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
+                    android:orientation="horizontal"
+                    >
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsBackgroundAlpha"
-                    android:layout_width="@dimen/selectorWidgetSmall"
-                    android:layout_height="match_parent"
-                    android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
-                    app:backgroundTint="?themeTextSecondary"
-                    />
+                    <TextView
+                        android:id="@+id/textWidgetSettingsTextSizeLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsTextSizeLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
 
-            </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorWidgetSettingsTextSize"
+                        android:layout_width="@dimen/selectorWidgetSmall"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textWidgetSettingsContentAlphaLabel"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingStart="@dimen/paddingHuge"
-                    android:paddingTop="@dimen/paddingMedium"
-                    android:paddingEnd="@dimen/paddingLarge"
-                    android:paddingBottom="@dimen/settingsItemPadding"
-                    android:text="@string/widgetSettingsContentAlphaLabel"
-                    android:textColor="?themeTextSecondary"
-                    android:textSize="@dimen/textSettings"
-                    />
+                    android:orientation="horizontal"
+                    >
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    android:id="@+id/selectorWidgetSettingsContentAlpha"
-                    android:layout_width="@dimen/selectorWidgetSmall"
-                    android:layout_height="match_parent"
-                    android:popupBackground="@drawable/selector_popup_background"
-                    android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
-                    app:backgroundTint="?themeTextSecondary"
+                    <TextView
+                        android:id="@+id/textWidgetSettingsBackgroundAlphaLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsBackgroundAlphaLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorWidgetSettingsBackgroundAlpha"
+                        android:layout_width="@dimen/selectorWidgetSmall"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:id="@+id/textWidgetSettingsContentAlphaLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsContentAlphaLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorWidgetSettingsContentAlpha"
+                        android:layout_width="@dimen/selectorWidgetSmall"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/paddingActivity"
+                    android:text="@string/commonSave"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    style="@style/ButtonTheme"
                     />
 
             </LinearLayout>
@@ -330,18 +348,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/paddingActivity"
-        android:text="@string/commonSave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/ButtonTheme"
-        />
 
     <TextView
         android:id="@+id/textWidgetSettingsEmpty"

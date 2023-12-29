@@ -71,7 +71,6 @@
     <dimen name="settingsCornerRadius">10dp</dimen>
     <dimen name="settingsCornerRadiusLarge">18dp</dimen>
     <dimen name="settingsItemPadding">10dp</dimen>
-    <dimen name="settingsSaveButtonPadding">14dp</dimen>
     <dimen name="splashIconSize">90dp</dimen>
     <dimen name="statusBarHeightStandard">24dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
@@ -82,7 +81,7 @@
     <dimen name="toolbarOptionsIconWidth">24dp</dimen>
     <dimen name="toolbarColorOrbPadding">16dp</dimen>
     <dimen name="updateNoteActionButtonSize">32dp</dimen>
-    <dimen name="widgetCornerRadius">2dp</dimen>
+    <dimen name="widgetCornerRadius">8dp</dimen>
     <dimen name="widgetDefaultPadding">10dp</dimen>
     <dimen name="widgetHeaderBottomPadding">6dp</dimen>
     <dimen name="widgetHeaderTextSize">15sp</dimen>

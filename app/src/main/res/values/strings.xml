@@ -62,9 +62,8 @@
     <string name="toolbarOptionOpenNote">Open Note</string>
 
     <string name="widgetSettingsIconContrast">Toggle Preview Background Brightness</string>
-    <string name="widgetSettingsSelectionHeader">Current Selection</string>
-    <string name="widgetSettingsSelectionLabel">Widget</string>
-    <string name="widgetSettingsAppearanceHeader">Appearance</string>
+    <string name="widgetSettingsAppearanceHeader">Widget Appearance</string>
+    <string name="widgetSettingsSelectionLabel">Selected Widget</string>
     <string name="widgetSettingsBackgroundColorLabel">Background Color</string>
     <string name="widgetSettingsTitleColorLabel">Title Color</string>
     <string name="widgetSettingsContentColorLabel">Content Color</string>

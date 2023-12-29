@@ -1,11 +1,9 @@
 package com.xephorium.crystalnote.ui.widget
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.DrawableCompat
@@ -16,7 +14,6 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
-import com.xephorium.crystalnote.databinding.ToolbarActivityLayoutBinding
 import com.xephorium.crystalnote.databinding.WidgetActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.ColorPickerDialog.Companion.ColorPickerListener
@@ -31,7 +28,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     /*--- Variable Declarations ---*/
 
-    private lateinit var widgetActivityBinding: WidgetActivityLayoutBinding
+    private lateinit var binding: WidgetActivityLayoutBinding
 
     private lateinit var presenter: WidgetPresenter
 
@@ -40,8 +37,8 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        widgetActivityBinding = WidgetActivityLayoutBinding.inflate(layoutInflater)
-        setBoundViewAsContent(widgetActivityBinding)
+        binding = WidgetActivityLayoutBinding.inflate(layoutInflater)
+        setBoundViewAsContent(binding)
 
         presenter = WidgetPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
@@ -87,7 +84,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             widgetNames
         )
         widgetAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        widgetActivityBinding.run {
+        binding.run {
             selectorWidgetSettingsSelection.adapter = widgetAdapter
             selectorWidgetSettingsSelection.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
@@ -103,51 +100,51 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     override fun populateWidgetSelector(index: Int) {
-        widgetActivityBinding.selectorWidgetSettingsSelection.setSelection(index)
+        binding.selectorWidgetSettingsSelection.setSelection(index)
     }
 
     override fun populateBackgroundColor(color: Int) {
-        widgetActivityBinding.colorOrbWidgetSettingsBackgroundColor.setColor(color)
+        binding.colorOrbWidgetSettingsBackgroundColor.setColor(color)
     }
 
     override fun populateTitleColor(color: Int) {
-        widgetActivityBinding.colorOrbWidgetSettingsTitleColor.setColor(color)
+        binding.colorOrbWidgetSettingsTitleColor.setColor(color)
     }
 
     override fun populateContentColor(color: Int) {
-        widgetActivityBinding.colorOrbWidgetSettingsContentColor.setColor(color)
+        binding.colorOrbWidgetSettingsContentColor.setColor(color)
     }
 
     override fun populateTextSize(size: TextSize) {
-        widgetActivityBinding.selectorWidgetSettingsTextSize.setSelection(size.ordinal)
+        binding.selectorWidgetSettingsTextSize.setSelection(size.ordinal)
     }
 
     override fun populateBackgroundAlpha(transparency: Transparency) {
-        widgetActivityBinding.selectorWidgetSettingsBackgroundAlpha.setSelection(transparency.ordinal)
+        binding.selectorWidgetSettingsBackgroundAlpha.setSelection(transparency.ordinal)
     }
 
     override fun populateContentAlpha(transparency: Transparency) {
-        widgetActivityBinding.selectorWidgetSettingsContentAlpha.setSelection(transparency.ordinal)
+        binding.selectorWidgetSettingsContentAlpha.setSelection(transparency.ordinal)
     }
 
     override fun setPreviewBackgroundColor(color: Int) {
-        widgetActivityBinding.widgetSettingsPreview.setBackgroundColor(color)
+        binding.widgetSettingsPreview.setBackgroundColor(color)
     }
 
     override fun setPreviewTitleColor(color: Int) {
-        widgetActivityBinding.widgetSettingsPreview.setTitleColor(color)
+        binding.widgetSettingsPreview.setTitleColor(color)
     }
 
     override fun setPreviewContentColor(color: Int) {
-        widgetActivityBinding.widgetSettingsPreview.setTextColor(color)
+        binding.widgetSettingsPreview.setTextColor(color)
     }
 
     override fun setPreviewTextSize(size: TextSize) {
-        widgetActivityBinding.widgetSettingsPreview.setTextSize(size)
+        binding.widgetSettingsPreview.setTextSize(size)
     }
 
     override fun setPreviewBackgroundAlpha(transparency: Transparency) {
-        widgetActivityBinding.widgetSettingsPreview.setTransparency(transparency)
+        binding.widgetSettingsPreview.setTransparency(transparency)
     }
 
     override fun setPreviewBackgroundBrightness(light: Boolean) {
@@ -164,15 +161,16 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
 
         // Set Background & Icon Colors
-        widgetActivityBinding.viewWidgetSettingsPreviewBackground.setBackgroundColor(backgroundColor)
+        binding.viewWidgetSettingsPreviewBackground.setBackgroundColor(backgroundColor)
+        binding.viewWidgetSettingsBackground.setBackgroundColor(backgroundColor)
         val icon = ContextCompat.getDrawable(this, R.drawable.icon_contrast)
         val drawable = DrawableCompat.wrap(icon!!)
         DrawableCompat.setTint(drawable, iconColor)
-        widgetActivityBinding.iconWidgetSettingsContrast.setImageDrawable(drawable)
+        binding.iconWidgetSettingsContrast.setImageDrawable(drawable)
     }
 
     override fun showNoWidgetsMessage() {
-        widgetActivityBinding.run {
+        binding.run {
             scrollViewWidgetSettings.visibility = View.GONE
             buttonSave.visibility = View.GONE
             textWidgetSettingsEmpty.visibility = View.VISIBLE
@@ -180,7 +178,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     override fun hideNoWidgetsMessage() {
-        widgetActivityBinding.run {
+        binding.run {
             scrollViewWidgetSettings.visibility = View.VISIBLE
             buttonSave.visibility = View.VISIBLE
             textWidgetSettingsEmpty.visibility = View.GONE
@@ -267,13 +265,13 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     private fun setupPreviewIcons() {
-        widgetActivityBinding.iconWidgetSettingsContrast.setOnClickListener {
+        binding.iconWidgetSettingsContrast.setOnClickListener {
             presenter.handlePreviewBackgroundBrightnessToggle()
         }
     }
 
     private fun setupColorOrbs() {
-        widgetActivityBinding.run {
+        binding.run {
 
             // Retrieve Theme
             val theme = CrystalNoteTheme.fromCurrentTheme(this@WidgetActivity)
@@ -323,7 +321,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         val textSizesAdapter =
             ArrayAdapter<String>(this, R.layout.settings_selector_item, TEXT_SIZES)
         textSizesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        widgetActivityBinding.run {
+        binding.run {
             selectorWidgetSettingsTextSize.adapter = textSizesAdapter
             selectorWidgetSettingsTextSize.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
@@ -345,7 +343,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             TRANSPARENCY_VALUES
         )
         transparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        widgetActivityBinding.run {
+        binding.run {
             selectorWidgetSettingsBackgroundAlpha.adapter = transparencyAdapter
             selectorWidgetSettingsBackgroundAlpha.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
@@ -367,7 +365,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             TRANSPARENCY_VALUES
         )
         textTransparencyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        widgetActivityBinding.run {
+        binding.run {
             selectorWidgetSettingsContentAlpha.adapter = textTransparencyAdapter
             selectorWidgetSettingsContentAlpha.onItemSelectedListener =
                 object : AdapterView.OnItemSelectedListener {
@@ -383,7 +381,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     private fun setupSaveButton() {
-        widgetActivityBinding.buttonSave.setOnClickListener { presenter.handleSaveClick() }
+        binding.buttonSave.setOnClickListener { presenter.handleSaveClick() }
     }
 
     override fun refreshWidgets() {
