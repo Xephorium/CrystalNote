@@ -285,6 +285,7 @@
         <item name="themeToolbarTextSecondary">@color/blackTextSecondary</item>
 
         <item name="themeBackground">@color/blackBackdropLight</item>
+        <item name="themeDivider">@color/blackDivider</item>
 
         <item name="themeAccent">@color/blackAccent</item>
         <item name="themeAccentRipple">@color/blackAccentRipple</item>

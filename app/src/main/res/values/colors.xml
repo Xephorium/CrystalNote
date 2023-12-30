@@ -77,18 +77,19 @@
     <color name="cobaltPreviewBackgroundDark">#0d0f12</color>
     <color name="cobaltPreviewBackgroundLight">#8A929E</color>
 
-    <color name="blackBackdropDark">#0b0b0b</color>
-    <color name="blackBackdropLight">#161616</color>
-    <color name="blackBackdropHighlight">#222222</color>
-    <color name="blackBackdropRipple">#50ffffff</color>
-    <color name="blackAccent">#eaeaea</color>
+    <color name="blackBackdropDark">#101112</color>
+    <color name="blackBackdropLight">#191a1c</color>
+    <color name="blackBackdropHighlight">#292b2e</color>
+    <color name="blackBackdropRipple">#50e0eaff</color>
+    <color name="blackAccent">#e9ecf2</color>
     <color name="blackAccentRipple">#444444</color>
     <color name="blackTextPrimary">#ffffff</color>
-    <color name="blackTextSecondary">#b0b0b0</color>
-    <color name="blackTextTertiary">#787878</color>
+    <color name="blackTextSecondary">#9ea4b0</color>
+    <color name="blackTextTertiary">#666c78</color>
     <color name="blackDrawerFilter">#e8000000</color>
+    <color name="blackDivider">#4a4e57</color>
     <color name="blackPreviewBackgroundDark">#000000</color>
-    <color name="blackPreviewBackgroundLight">#BBBEC5</color>
+    <color name="blackPreviewBackgroundLight">#bbc0c9</color>
 
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>
