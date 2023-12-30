@@ -171,16 +171,14 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     override fun showNoWidgetsMessage() {
         binding.run {
-            scrollViewWidgetSettings.visibility = View.GONE
-            buttonSave.visibility = View.GONE
+            viewWidgetSettings.visibility = View.GONE
             textWidgetSettingsEmpty.visibility = View.VISIBLE
         }
     }
 
     override fun hideNoWidgetsMessage() {
         binding.run {
-            scrollViewWidgetSettings.visibility = View.VISIBLE
-            buttonSave.visibility = View.VISIBLE
+            viewWidgetSettings.visibility = View.VISIBLE
             textWidgetSettingsEmpty.visibility = View.GONE
         }
     }

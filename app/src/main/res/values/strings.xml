@@ -46,12 +46,14 @@
     <string name="settingsHomeAppearance">Home Appearance</string>
     <string name="settingsNotePreviewLines">Note Preview</string>
     <string name="settingsNoteDate">Note Date</string>
-    <string name="settingsNoteColorBar">Show Color Bar</string>
-    <string name="settingsNoteThemeBar">Theme Color Bar</string>
-    <string name="settingsToday">Separate Today Header</string>
+    <string name="settingsNoteColorBar">Show Note Color</string>
+    <string name="settingsNoteThemeBar">Theme Note Color</string>
+    <string name="settingsToday">Show Today Header</string>
     <string name="settingsNoteAppearance">Note Appearance</string>
-    <string name="settingsUnderline">Text Underline</string>
-    <string name="settingsMonospace">Monospaced Font</string>
+    <string name="settingsUnderline">Show Underline</string>
+    <string name="settingsScrollButton">Show Scroll Button on Long Notes</string>
+    <string name="settingsColorOrb">Show Color Orb</string>
+    <string name="settingsMonospace">Use Monospaced Font</string>
 
     <string name="toolbarOptionLock">Lock</string>
     <string name="toolbarOptionUnlock">Unlock</string>

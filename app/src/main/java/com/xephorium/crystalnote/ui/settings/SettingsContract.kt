@@ -9,20 +9,26 @@ interface SettingsContract {
 
     interface View : BaseView {
         fun populateTheme(theme: String)
-        fun populateNotePreviewLines(lines: Int)
-        fun populateNoteDateType(dateType: DateType)
-        fun populateNoteColorBarSwitch(checked: Boolean)
-        fun populateThemedColorBarSwitch(checked: Boolean)
-        fun populateTodayHeaderSwitch(checked: Boolean)
+        fun populateHomePreviewLines(lines: Int)
+        fun populateHomeDateType(dateType: DateType)
+        fun populateHomeColorBarSwitch(checked: Boolean)
+        fun populateHomeThemedColorBarSwitch(checked: Boolean)
+        fun populateHomeTodayHeaderSwitch(checked: Boolean)
         fun populateNoteUnderlineSwitch(checked: Boolean)
-        fun populateMonospaceSwitch(checked: Boolean)
+        fun populateNoteScrollButtonSwitch(checked: Boolean)
+        fun populateNoteColorOrbSwitch(checked: Boolean)
+        fun populateNoteMonospaceSwitch(checked: Boolean)
 
         fun setPreviewTheme(theme: String)
-        fun setPreviewLines(lines: Int)
-        fun setPreviewDateType(type: DateType)
-        fun setPreviewColorBarVisibility(visible: Boolean)
-        fun setPreviewColorBarThemed(themed: Boolean)
-        fun setPreviewHeaderVisibility(visible: Boolean)
+        fun setHomePreviewLines(lines: Int)
+        fun setHomePreviewDateType(type: DateType)
+        fun setHomePreviewColorBarVisibility(visible: Boolean)
+        fun setHomePreviewColorBarThemed(themed: Boolean)
+        fun setHomePreviewHeaderVisibility(visible: Boolean)
+        fun setNotePreviewUnderlineVisibility(visible: Boolean)
+        fun setNoteScrollButtonVisibility(visible: Boolean)
+        fun setNoteColorOrbVisibility(visible: Boolean)
+        fun setNoteMonospaceFontVisibility(visible: Boolean)
 
         fun showNavigationDrawer()
         fun showDiscardThemeChangeDialog()
@@ -39,18 +45,22 @@ interface SettingsContract {
         var colorBarEnabled: Boolean = true
         var themedBarEnabled: Boolean = true
         var todayHeaderEnabled: Boolean = true
-        var noteUnderlineEnabled: Boolean = true
+        var noteUnderlineEnabled: Boolean = false
+        var noteScrollButtonEnabled: Boolean = true
+        var noteColorOrbEnabled: Boolean = true
         var useMonospacedFont: Boolean = true
 
         abstract fun handleMenuButtonClick()
         abstract fun handleThemeChange(newTheme: String)
-        abstract fun handleNoteLinesChange(lines: Int)
-        abstract fun handleNoteDateTypeChange(dateType: DateType)
-        abstract fun handleNoteColorBarToggle(checked: Boolean)
-        abstract fun handleThemedColorBarToggle(checked: Boolean)
-        abstract fun handleTodayHeaderToggle(checked: Boolean)
+        abstract fun handleHomeLinesChange(lines: Int)
+        abstract fun handleHomeDateTypeChange(dateType: DateType)
+        abstract fun handleHomeColorBarToggle(checked: Boolean)
+        abstract fun handleHomeThemedColorBarToggle(checked: Boolean)
+        abstract fun handleHomeTodayHeaderToggle(checked: Boolean)
         abstract fun handleNoteUnderlineToggle(checked: Boolean)
-        abstract fun handleMonospaceToggle(checked: Boolean)
+        abstract fun handleNoteScrollButtonToggle(checked: Boolean)
+        abstract fun handleNoteColorOrbToggle(checked: Boolean)
+        abstract fun handleNoteMonospaceToggle(checked: Boolean)
         abstract fun handleApplyThemeClick()
         abstract fun handleBackClick()
         abstract fun handleBackConfirm()

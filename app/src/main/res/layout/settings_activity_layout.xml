@@ -20,27 +20,49 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/viewSettingsPreviewBackground"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="?themePreviewBackgroundDefault"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
 
-        <com.xephorium.crystalnote.ui.custom.ThemePreview
-            android:id="@+id/themePreview"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelinePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"
+            />
+
+        <com.xephorium.crystalnote.ui.custom.HomePreviewView
+            android:id="@+id/viewHomePreview"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/paddingActivity"
             android:layout_marginBottom="@dimen/paddingActivity"
+            android:layout_marginEnd="@dimen/paddingActivity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guidelinePreview"
             />
 
-    </LinearLayout>
+        <com.xephorium.crystalnote.ui.custom.NotePreviewView
+            android:id="@+id/viewNotePreview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/paddingActivity"
+            android:layout_marginBottom="@dimen/paddingActivity"
+            android:layout_marginStart="@dimen/paddingActivity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guidelinePreview"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -311,6 +333,34 @@
                     android:paddingEnd="@dimen/paddingActivity"
                     android:paddingBottom="@dimen/settingsItemPadding"
                     android:text="@string/settingsUnderline"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsScrollButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/settingsScrollButton"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsColorOrb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingActivity"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:text="@string/settingsColorOrb"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />

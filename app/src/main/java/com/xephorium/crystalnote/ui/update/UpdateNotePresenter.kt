@@ -40,15 +40,24 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
             this.view?.populateColor(color)
         }
 
-        // Update Bottom Button
-        if (countLinesInNote() > SHOW_BOTTOM_BUTTON_THRESHOLD) this.view?.showBottomButton()
-        else this.view?.hideBottomButton()
-
         // Update Underline
         if (sharedPreferencesRepository.getNoteUnderlineEnabled())
             this.view?.showTextUnderline()
         else
             this.view?.hideTextUnderline()
+
+        // Update Bottom Button
+        val isLongNote = countLinesInNote() > SHOW_BOTTOM_BUTTON_THRESHOLD
+        val showBottomButton = sharedPreferencesRepository.getScrollButtonEnabled()
+        if (isLongNote && showBottomButton) {
+            this.view?.showBottomButton()
+        } else {
+            this.view?.hideBottomButton()
+        }
+
+        // Update Color Orb
+        if (sharedPreferencesRepository.getColorOrbEnabled()) this.view?.showColorOrb()
+        else this.view?.hideColorOrb()
 
         // Update Monospaced Font
         if (sharedPreferencesRepository.getMonospacedFontEnabled())

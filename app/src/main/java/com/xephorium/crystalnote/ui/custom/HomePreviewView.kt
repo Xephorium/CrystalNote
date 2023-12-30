@@ -11,7 +11,7 @@ import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.model.DateType
 
 
-class ThemePreview : View {
+class HomePreviewView : View {
 
 
     /*--- Variable Declarations ---*/
@@ -22,7 +22,7 @@ class ThemePreview : View {
     private var scaleUnit: Int? = null
 
     private var toolbarHeight: Int? = null
-    private var toolbarWidth: Int? = null
+    private var toolbarTitleWidth: Int? = null
     private var headerHeight: Int? = null
     private var textHeight: Int? = null
     private var colorBarWidth: Int? = null
@@ -70,7 +70,7 @@ class ThemePreview : View {
         if (scaleUnit == null) scaleUnit = (viewWidth!! / 12)
 
         if (toolbarHeight == null) toolbarHeight = (scaleUnit!! * 2.25).toInt()
-        if (toolbarWidth == null) toolbarWidth = (scaleUnit!! * 2.5).toInt()
+        if (toolbarTitleWidth == null) toolbarTitleWidth = (scaleUnit!! * 2.5).toInt()
         if (headerHeight == null) headerHeight = (scaleUnit!! * .3).toInt()
         if (textHeight == null) textHeight = (scaleUnit!! * .25).toInt()
         if (colorBarWidth == null) colorBarWidth = (scaleUnit!! * .4).toInt()
@@ -90,13 +90,31 @@ class ThemePreview : View {
         var currentVerticalPosition = 0
 
         // Background
-        this.setBackgroundColor(theme.colorBackground)
+        paint.color = theme.colorBackground
+        canvas.drawRoundRect(
+            0f,
+            0f,
+            (viewWidth!!).toFloat(),
+            (viewHeight!! + 1).toFloat(),
+            CORNER_RADIUS,
+            CORNER_RADIUS,
+            paint
+        )
 
         // Toolbar
         paint.color = theme.colorToolbar
+        canvas.drawRoundRect(
+            0f,
+            0f,
+            (viewWidth!!).toFloat(),
+            (toolbarHeight!!).toFloat(),
+            CORNER_RADIUS,
+            CORNER_RADIUS,
+            paint
+        )
         canvas.drawRect(
-                0.toFloat(),
-                0.toFloat(),
+                0f,
+                (toolbarHeight!! / 2).toFloat(),
                 (viewWidth!!).toFloat(),
                 (toolbarHeight!!).toFloat(),
                 paint
@@ -118,9 +136,9 @@ class ThemePreview : View {
         // Toolbar Title
         paint.color = theme.colorToolbarTextPrimary
         canvas.drawRoundRect(
-                ((viewWidth!! / 2) - (toolbarWidth!! / 2)).toFloat(),
+                ((viewWidth!! / 2) - (toolbarTitleWidth!! / 2)).toFloat(),
                 (paddingLarge!!).toFloat(),
-                ((viewWidth!! / 2) + (toolbarWidth!! / 2)).toFloat(),
+                ((viewWidth!! / 2) + (toolbarTitleWidth!! / 2)).toFloat(),
                 (toolbarHeight!! - paddingLarge!!).toFloat(),
                 CORNER_RADIUS,
                 CORNER_RADIUS,

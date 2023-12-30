@@ -100,6 +100,14 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         binding.toolbar.setColor(color)
     }
 
+    override fun showTextUnderline() {
+        binding.textNoteContent.showUnderline()
+    }
+
+    override fun hideTextUnderline() {
+        binding.textNoteContent.hideUnderline()
+    }
+
     override fun showBottomButton() {
         binding.actionButtonBottom.visibility = View.VISIBLE
     }
@@ -108,12 +116,12 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         binding.actionButtonBottom.visibility = View.GONE
     }
 
-    override fun showTextUnderline() {
-        binding.textNoteContent.showUnderline()
+    override fun showColorOrb() {
+        binding.toolbar.showColor()
     }
 
-    override fun hideTextUnderline() {
-        binding.textNoteContent.hideUnderline()
+    override fun hideColorOrb() {
+        binding.toolbar.hideColor()
     }
 
     override fun showMonospacedFont() {
@@ -370,7 +378,6 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         binding.toolbar.run {
             isEditMode = true
             setLeftButtonImage(R.drawable.icon_back)
-            showColor()
             showRightButton()
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
                 override fun onLeftButtonClick() = presenter.handleBackClick()

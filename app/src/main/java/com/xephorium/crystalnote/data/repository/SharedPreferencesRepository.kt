@@ -88,6 +88,28 @@ class SharedPreferencesRepository(private val context: Context) {
         return prefs.getBoolean(NOTE_UNDERLINE_ENABLED, false)
     }
 
+    fun setScrollButtonEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(SCROLL_BUTTON_ENABLED, enabled)
+        editor.apply()
+    }
+
+    fun getScrollButtonEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(SCROLL_BUTTON_ENABLED, true)
+    }
+
+    fun setColorOrbEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(COLOR_ORB_ENABLED, enabled)
+        editor.apply()
+    }
+
+    fun getColorOrbEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(COLOR_ORB_ENABLED, true)
+    }
+
     fun setMonospacedFontEnabled(enabled: Boolean) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
         editor.putBoolean(MONOSPACED_FONT, enabled)
@@ -191,6 +213,8 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val NOTE_COLOR_BAR_THEME_ENABLED = "NoteColorBarThemeEnabled"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
+        private const val SCROLL_BUTTON_ENABLED = "ScrollButtonEnabled"
+        private const val COLOR_ORB_ENABLED = "ColorOrbEnabled"
         private const val MONOSPACED_FONT = "MonospacedFont"
         private const val WIDGET_STATE_LIST = "WidgetStateList"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"

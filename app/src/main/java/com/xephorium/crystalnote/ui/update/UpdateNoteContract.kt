@@ -17,11 +17,13 @@ interface UpdateNoteContract {
     interface View : BaseView {
         fun populateFields(name: String, content: String)
         fun populateColor(color: Int)
-        fun showBottomButton()
-        fun hideBottomButton()
 
         fun showTextUnderline()
         fun hideTextUnderline()
+        fun showBottomButton()
+        fun hideBottomButton()
+        fun showColorOrb()
+        fun hideColorOrb()
         fun showMonospacedFont()
 
         fun scrollToBottom()

@@ -70,23 +70,23 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         settingsBinding.selectorSettingsTheme.setSelection(themeIndex)
     }
 
-    override fun populateNotePreviewLines(lines: Int) {
+    override fun populateHomePreviewLines(lines: Int) {
         settingsBinding.selectorSettingsLines.setSelection(lines)
     }
 
-    override fun populateNoteDateType(dateType: DateType) {
+    override fun populateHomeDateType(dateType: DateType) {
         settingsBinding.selectorSettingsDate.setSelection(dateType.ordinal)
     }
 
-    override fun populateNoteColorBarSwitch(checked: Boolean) {
+    override fun populateHomeColorBarSwitch(checked: Boolean) {
         settingsBinding.switchSettingsNoteColorBar.isChecked = checked
     }
 
-    override fun populateThemedColorBarSwitch(checked: Boolean) {
+    override fun populateHomeThemedColorBarSwitch(checked: Boolean) {
         settingsBinding.switchSettingsNoteBarThemed.isChecked = checked
     }
 
-    override fun populateTodayHeaderSwitch(checked: Boolean) {
+    override fun populateHomeTodayHeaderSwitch(checked: Boolean) {
         settingsBinding.switchSettingsToday.isChecked = checked
     }
 
@@ -94,32 +94,57 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         settingsBinding.switchSettingsUnderline.isChecked = checked
     }
 
-    override fun populateMonospaceSwitch(checked: Boolean) {
+    override fun populateNoteScrollButtonSwitch(checked: Boolean) {
+        settingsBinding.switchSettingsScrollButton.isChecked = checked
+    }
+
+    override fun populateNoteColorOrbSwitch(checked: Boolean) {
+        settingsBinding.switchSettingsColorOrb.isChecked = checked
+    }
+
+    override fun populateNoteMonospaceSwitch(checked: Boolean) {
         settingsBinding.switchSettingsMonospace.isChecked = checked
     }
 
     override fun setPreviewTheme(theme: String) {
-        settingsBinding.themePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
+        settingsBinding.viewHomePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
+        settingsBinding.viewNotePreview.setTheme(CrystalNoteTheme.fromThemeName(this, theme))
     }
 
-    override fun setPreviewLines(lines: Int) {
-        settingsBinding.themePreview.setPreviewLines(lines)
+    override fun setHomePreviewLines(lines: Int) {
+        settingsBinding.viewHomePreview.setPreviewLines(lines)
     }
 
-    override fun setPreviewDateType(type: DateType) {
-        settingsBinding.themePreview.setDateType(type)
+    override fun setHomePreviewDateType(type: DateType) {
+        settingsBinding.viewHomePreview.setDateType(type)
     }
 
-    override fun setPreviewColorBarVisibility(visible: Boolean) {
-        settingsBinding.themePreview.setNoteColorBarVisible(visible)
+    override fun setHomePreviewColorBarVisibility(visible: Boolean) {
+        settingsBinding.viewHomePreview.setNoteColorBarVisible(visible)
     }
 
-    override fun setPreviewColorBarThemed(themed: Boolean) {
-        settingsBinding.themePreview.setNoteColorBarThemed(themed)
+    override fun setHomePreviewColorBarThemed(themed: Boolean) {
+        settingsBinding.viewHomePreview.setNoteColorBarThemed(themed)
     }
 
-    override fun setPreviewHeaderVisibility(visible: Boolean) {
-        settingsBinding.themePreview.setHeadersVisible(visible)
+    override fun setHomePreviewHeaderVisibility(visible: Boolean) {
+        settingsBinding.viewHomePreview.setHeadersVisible(visible)
+    }
+
+    override fun setNotePreviewUnderlineVisibility(visible: Boolean) {
+        settingsBinding.viewNotePreview.setUnderlineVisible(visible)
+    }
+
+    override fun setNoteScrollButtonVisibility(visible: Boolean) {
+        settingsBinding.viewNotePreview.setScrollButtonVisible(visible)
+    }
+
+    override fun setNoteColorOrbVisibility(visible: Boolean) {
+        settingsBinding.viewNotePreview.setColorOrbVisible(visible)
+    }
+
+    override fun setNoteMonospaceFontVisibility(visible: Boolean) {
+        settingsBinding.viewNotePreview.setMonospaceFontVisible(visible)
     }
 
     override fun showNavigationDrawer() {
@@ -190,7 +215,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
             selectorSettingsLines.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {}
                 override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    presenter.handleNoteLinesChange(position)
+                    presenter.handleHomeLinesChange(position)
                 }
             }
             textSettingsNoteLinesLabel.setOnClickListener { selectorSettingsLines.performClick() }
@@ -205,7 +230,7 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
             selectorSettingsDate.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {}
                 override fun onItemSelected(adapter: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                    presenter.handleNoteDateTypeChange(DateType.values()[position])
+                    presenter.handleHomeDateTypeChange(DateType.values()[position])
                 }
             }
             textSettingsNoteDateLabel.setOnClickListener { selectorSettingsDate.performClick() }
@@ -215,19 +240,26 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
     private fun setupSwitches() {
         settingsBinding.run {
             switchSettingsNoteColorBar.setOnCheckedChangeListener { _, checked ->
-                presenter.handleNoteColorBarToggle(checked)
+                presenter.handleHomeColorBarToggle(checked)
             }
             switchSettingsNoteBarThemed.setOnCheckedChangeListener { _, checked ->
-                presenter.handleThemedColorBarToggle(checked)
+                presenter.handleHomeThemedColorBarToggle(checked)
             }
             switchSettingsToday.setOnCheckedChangeListener { _, checked ->
-                presenter.handleTodayHeaderToggle(checked)
+                presenter.handleHomeTodayHeaderToggle(checked)
             }
+
             switchSettingsUnderline.setOnCheckedChangeListener { _, checked ->
                 presenter.handleNoteUnderlineToggle(checked)
             }
+            switchSettingsScrollButton.setOnCheckedChangeListener { _, checked ->
+                presenter.handleNoteScrollButtonToggle(checked)
+            }
+            switchSettingsColorOrb.setOnCheckedChangeListener { _, checked ->
+                presenter.handleNoteColorOrbToggle(checked)
+            }
             switchSettingsMonospace.setOnCheckedChangeListener { _, checked ->
-                presenter.handleMonospaceToggle(checked)
+                presenter.handleNoteMonospaceToggle(checked)
             }
         }
     }

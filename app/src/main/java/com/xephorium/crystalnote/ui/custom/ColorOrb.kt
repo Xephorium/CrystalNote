@@ -93,23 +93,25 @@ class ColorOrb : View {
         // Calculate Padding
         val overdrawPadding = 0.90 // (1.0 - padding)
 
-        // Set Outline Paint Color
+        // Calculate Outline Paint Color
         if (outlinePaintColor == null) {
             outlinePaintColor = determineOutlineColor()
         }
-        paint.color = outlinePaintColor!!
 
         if (forceThickOutline) {
 
             // Thick Outline
-            paint.style = STROKE
-            paint.strokeWidth = thickOutlineStrokeWidth
-            canvas.drawCircle(
-                (viewWidth!! / 2.0).toFloat(),
-                (viewHeight!! / 2.0).toFloat(),
-                ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
-                paint
-            )
+            outlinePaintColor?.let {
+                paint.color = it
+                paint.style = STROKE
+                paint.strokeWidth = thickOutlineStrokeWidth
+                canvas.drawCircle(
+                    (viewWidth!! / 2.0).toFloat(),
+                    (viewHeight!! / 2.0).toFloat(),
+                    ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
+                    paint
+                )
+            }
 
             // Background Circle
             backgroundColor?.let {
@@ -136,13 +138,16 @@ class ColorOrb : View {
         } else {
 
             // Outline
-            paint.style = STROKE
-            canvas.drawCircle(
-                (viewWidth!! / 2.0).toFloat(),
-                (viewHeight!! / 2.0).toFloat(),
-                ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
-                paint
-            )
+            outlinePaintColor?.let {
+                paint.color = it
+                paint.style = STROKE
+                canvas.drawCircle(
+                    (viewWidth!! / 2.0).toFloat(),
+                    (viewHeight!! / 2.0).toFloat(),
+                    ((viewWidth!! * OUTLINE_RADIUS * overdrawPadding - viewPadding) / 2.0).toFloat(),
+                    paint
+                )
+            }
 
             // Color Circle
             paint.color = orbColor
@@ -210,9 +215,11 @@ class ColorOrb : View {
     }
 
     fun forceThickOutline() {
+        forceThickOutline = true
         setOutlineAlpha(1.0)
         setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
-        forceThickOutline = true
+        outlinePaintColor = determineOutlineColor()
+        invalidate()
     }
 
 

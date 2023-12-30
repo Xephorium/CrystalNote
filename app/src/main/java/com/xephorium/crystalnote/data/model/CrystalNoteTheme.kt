@@ -11,6 +11,7 @@ data class CrystalNoteTheme(
         val colorBackground: Int,
         val colorNoteBackground: Int,
         val colorNoteColorBar: Int,
+        val colorNoteUnderline: Int,
         val colorToolbar: Int,
         val colorToolbarTextPrimary: Int,
         val colorToolbarTextSecondary: Int,
@@ -46,6 +47,7 @@ data class CrystalNoteTheme(
                 R.attr.themeBackground,
                 R.attr.themeNoteBackground,
                 R.attr.themeNoteColorBar,
+                R.attr.themeNoteUnderline,
                 R.attr.themeTextPrimary,
                 R.attr.themeTextSecondary,
                 R.attr.themeTextTertiary,
@@ -55,16 +57,17 @@ data class CrystalNoteTheme(
         )
 
         fun default(context: Context): CrystalNoteTheme = CrystalNoteTheme(
-                ContextCompat.getColor(context, R.color.lightBackground),
-                ContextCompat.getColor(context, R.color.lightNoteBackground),
-                ContextCompat.getColor(context, R.color.lightNoteColorBar),
-                ContextCompat.getColor(context, R.color.lightToolbar),
-                ContextCompat.getColor(context, R.color.lightPreviewBackground),
-                ContextCompat.getColor(context, R.color.lightToolbarTextPrimary),
-                ContextCompat.getColor(context, R.color.darkTextPrimary),
-                ContextCompat.getColor(context, R.color.lightTextPrimary),
-                ContextCompat.getColor(context, R.color.lightTextSecondary),
-                ContextCompat.getColor(context, R.color.lightTextTertiary)
+                ContextCompat.getColor(context, R.color.starscapeBackdropLight),
+                ContextCompat.getColor(context, R.color.starscapeBackdropDark),
+                ContextCompat.getColor(context, R.color.starscapeAccent),
+                ContextCompat.getColor(context, R.color.darkDivider),
+                ContextCompat.getColor(context, R.color.starscapeBackdropDark),
+                ContextCompat.getColor(context, R.color.starscapeTextPrimary),
+                ContextCompat.getColor(context, R.color.starscapeTextSecondary),
+                ContextCompat.getColor(context, R.color.starscapeTextPrimary),
+                ContextCompat.getColor(context, R.color.starscapeTextSecondary),
+                ContextCompat.getColor(context, R.color.starscapeTextTertiary),
+                ContextCompat.getColor(context, R.color.starscapeAccent)
         )
 
         fun fromCurrentTheme(context: Context): CrystalNoteTheme {
@@ -99,6 +102,7 @@ data class CrystalNoteTheme(
             val colorBackground = parseColor(typedArray, ATTRIBUTES, R.attr.themeBackground)
             val colorNoteBackground = parseColor(typedArray, ATTRIBUTES, R.attr.themeNoteBackground)
             val colorNoteColorBar = parseColor(typedArray, ATTRIBUTES, R.attr.themeNoteColorBar)
+            val colorNoteUnderline = parseColor(typedArray, ATTRIBUTES, R.attr.themeNoteUnderline)
             val colorToolbar = parseColor(typedArray, ATTRIBUTES, R.attr.themeToolbar)
             val colorToolbarTextPrimary = parseColor(typedArray, ATTRIBUTES, R.attr.themeToolbarTextPrimary)
             val colorToolbarTextSecondary = parseColor(typedArray, ATTRIBUTES, R.attr.themeToolbarTextSecondary)
@@ -113,6 +117,7 @@ data class CrystalNoteTheme(
                     colorBackground,
                     colorNoteBackground,
                     colorNoteColorBar,
+                    colorNoteUnderline,
                     colorToolbar,
                     colorToolbarTextPrimary,
                     colorToolbarTextSecondary,

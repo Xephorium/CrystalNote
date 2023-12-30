@@ -41,6 +41,7 @@ December 2023
     Future Improvements
     ◦ "System" theme for Dynamic Color on API 12+
     ◦ Configurable widget background radius
+    ◦ Configurable widget title/content alignment
     ◦ Note preview in settings
 
 
@@ -65,6 +66,7 @@ December 2023
       The issue is that the "Disable HW overlays" needs to be toggled
       on in the Hardware Accelerated Rendering section of the emulated
       device settings.
+    • It seems like this needs to be set again after each boot. 😕
 
     Editing Plaintext Files Opened From an External App
     • Storage access permissions for Android API > 29 make editing files
