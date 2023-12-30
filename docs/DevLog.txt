@@ -34,6 +34,8 @@ December 2023
     • Redesign Icon (12.23.2023)
     • Themed Adaptive Icon (12.17.2023)
     • New About Screen (12.28.2023)
+    • New Settings/Widget Screens (12.29.2023)
+    • Note Preview in Settings & Expanded Note Options (12.30.2023)
     ◦ Refresh themes (Ongoing)
       • Darker Night Theme (12.10.2023)
     ◦ Theme Badges
@@ -42,7 +44,6 @@ December 2023
     ◦ "System" theme for Dynamic Color on API 12+
     ◦ Configurable widget background radius
     ◦ Configurable widget title/content alignment
-    ◦ Note preview in settings
 
 
   /////////////////////////////
