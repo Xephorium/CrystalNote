@@ -104,6 +104,10 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewCornerCurve(cornerCurve)
     }
 
+    override fun handleCornerCurveWarningClick() {
+        view?.showCornerCurveWarningDialog()
+    }
+
     override fun handlePreviewBackgroundBrightnessToggle() {
         previewBackgroundBright = previewBackgroundBright.not()
         view?.setPreviewBackgroundBrightness(previewBackgroundBright)
@@ -179,6 +183,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.populateTextSize(getWorkingWidgetState().textSize)
         view?.populateBackgroundAlpha(getWorkingWidgetState().backgroundAlpha)
         view?.populateContentAlpha(getWorkingWidgetState().contentAlpha)
+        view?.populateCornerCurve(getWorkingWidgetState().cornerCurve)
 
         // Configure Preview
         view?.setPreviewTextSize(getWorkingWidgetState().textSize)
@@ -186,16 +191,11 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
         view?.setPreviewContentColor(getContentColorWithAlpha())
         view?.setPreviewBackgroundAlpha(getWorkingWidgetState().backgroundAlpha)
+        view?.setPreviewCornerCurve(CornerCurve.Huge)
 
-        // Populate & Configure Corner Curve
-        if (isCornerCurveSupported()) {
-            view?.showCornerCurveSpinner()
-            view?.populateCornerCurve(getWorkingWidgetState().cornerCurve)
-            this.view?.setPreviewCornerCurve(getWorkingWidgetState().cornerCurve)
-        } else {
-            view?.hideCornerCurveSpinner()
-            this.view?.setPreviewCornerCurve(CornerCurve.Huge)
-        }
+        // Configure Corner Curve Warning
+        if (isCornerCurveSupported()) view?.hideCornerCurveWarningIcon()
+        else view?.showCornerCurveWarningIcon()
     }
 
     private fun getContentColorWithAlpha(): Int {
@@ -211,11 +211,7 @@ class WidgetPresenter : WidgetContract.Presenter() {
         this.view?.setPreviewContentColor(WidgetState.DEFAULT_CONTENT_COLOR)
         this.view?.setPreviewTextSize(WidgetState.DEFAULT_TEXT_SIZE)
         this.view?.setPreviewBackgroundAlpha(WidgetState.DEFAULT_TRANSPARENCY)
-
-        if (isCornerCurveSupported())
-            this.view?.setPreviewCornerCurve(WidgetState.DEFAULT_CORNER_CURVE)
-        else
-            this.view?.setPreviewCornerCurve(CornerCurve.Huge)
+        this.view?.setPreviewCornerCurve(WidgetState.DEFAULT_CORNER_CURVE)
     }
 
     private fun getWorkingWidgetState(): WidgetState {
@@ -224,8 +220,8 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
     /* Note: Versions of Android above API level 31 automatically apply a corner
      *       radius of 16dp to all widget backgrounds. To avoid a confusing user
-     *       experience, I've disabled corner curve customization for those devices
-     *       and set the preview's corner radius to 16dp.
+     *       experience, I've added a warning icon and dialog explaining this to
+     *       users on newer devices.
      */
     private fun isCornerCurveSupported(): Boolean {
         return Build.VERSION.SDK_INT < Build.VERSION_CODES.S

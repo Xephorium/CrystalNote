@@ -73,6 +73,7 @@
     <string name="widgetSettingsBackgroundAlphaLabel">Background Transparency</string>
     <string name="widgetSettingsContentAlphaLabel">Content Transparency</string>
     <string name="widgetSettingsCornerCurveLabel">Corner Curve</string>
+    <string name="widgetSettingsCornerCurveWarning">Corner Curve Warning</string>
     <string name="widgetSettingsTextEmpty">Add a widget to your home screen\nto get started.</string>
 
     <string name="space">___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________</string>

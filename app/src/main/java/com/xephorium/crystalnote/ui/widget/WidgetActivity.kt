@@ -54,6 +54,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         setupBackgroundAlphaSpinner()
         setupContentAlphaSpinner()
         setupCornerCurveSpinner()
+        setupCornerCurveWarning()
         setupSaveButton()
     }
 
@@ -179,12 +180,24 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         binding.iconWidgetSettingsContrast.setImageDrawable(drawable)
     }
 
-    override fun showCornerCurveSpinner() {
-        binding.viewCornerCurveSpinner.visibility = View.VISIBLE
+    override fun showCornerCurveWarningIcon() {
+        binding.imageWidgetSettingsCornerCurveWarning.visibility = View.VISIBLE
     }
 
-    override fun hideCornerCurveSpinner() {
-        binding.viewCornerCurveSpinner.visibility = View.GONE
+    override fun hideCornerCurveWarningIcon() {
+        binding.imageWidgetSettingsCornerCurveWarning.visibility = View.GONE
+    }
+
+    override fun showCornerCurveWarningDialog() {
+        val dialog = CrystalNoteDialog.Builder(this).create()
+        dialog.show()
+        dialog.setTitle("Corner Curve Support")
+        dialog.setMessage(
+            "The default launcher on Android 12+ sets the corner curve of all widgets to Huge."
+            + "\n\n"
+            + "This setting will likely have no effect on your device unless you install a different launcher."
+        )
+        dialog.setPositiveButtonName("Okay")
     }
 
     override fun showNoWidgetsMessage() {
@@ -415,6 +428,12 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
             textWidgetSettingsCornerCurveLabel.setOnClickListener {
                 selectorWidgetSettingsCornerCurve.performClick()
             }
+        }
+    }
+
+    private fun setupCornerCurveWarning() {
+        binding.imageWidgetSettingsCornerCurveWarning.setOnClickListener {
+            presenter.handleCornerCurveWarningClick()
         }
     }
 

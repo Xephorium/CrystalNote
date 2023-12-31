@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.widget
 
-import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.CornerCurve
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
@@ -32,8 +31,9 @@ interface WidgetContract {
         fun setPreviewCornerCurve(cornerCurve: CornerCurve)
         fun setPreviewBackgroundBrightness(light: Boolean)
 
-        fun showCornerCurveSpinner()
-        fun hideCornerCurveSpinner()
+        fun showCornerCurveWarningIcon()
+        fun hideCornerCurveWarningIcon()
+        fun showCornerCurveWarningDialog()
         fun showNoWidgetsMessage()
         fun hideNoWidgetsMessage()
         fun showBackgroundColorPickerDialog()
@@ -67,6 +67,7 @@ interface WidgetContract {
         abstract fun handleBackgroundAlphaChange(transparency: Transparency)
         abstract fun handleContentAlphaChange(transparency: Transparency)
         abstract fun handleCornerCurveChange(cornerCurve: CornerCurve)
+        abstract fun handleCornerCurveWarningClick()
         abstract fun handlePreviewBackgroundBrightnessToggle()
 
         abstract fun handleMenuButtonClick()
