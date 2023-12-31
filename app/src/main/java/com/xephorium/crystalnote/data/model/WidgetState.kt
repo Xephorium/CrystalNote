@@ -40,6 +40,7 @@ class WidgetState(string: String) {
     var textSize: TextSize = DEFAULT_TEXT_SIZE
     var backgroundAlpha: Transparency = DEFAULT_TRANSPARENCY
     var contentAlpha: Transparency = DEFAULT_TRANSPARENCY
+    var cornerCurve: CornerCurve = DEFAULT_CORNER_CURVE
 
     /*--- Constructors ---*/
 
@@ -51,7 +52,8 @@ class WidgetState(string: String) {
         contentColor: Int = DEFAULT_CONTENT_COLOR,
         textSize: TextSize = DEFAULT_TEXT_SIZE,
         backgroundAlpha: Transparency = DEFAULT_TRANSPARENCY,
-        contentAlpha: Transparency = DEFAULT_TRANSPARENCY
+        contentAlpha: Transparency = DEFAULT_TRANSPARENCY,
+        cornerCurve: CornerCurve = DEFAULT_CORNER_CURVE
     ): this(widgetId.toString() + STRING_DELIMITER
             + noteId.toString() + STRING_DELIMITER
             + backgroundColor.toString() + STRING_DELIMITER
@@ -60,6 +62,7 @@ class WidgetState(string: String) {
             + textSize.size.toString() + STRING_DELIMITER
             + backgroundAlpha.value.toString() + STRING_DELIMITER
             + contentAlpha.value.toString() + STRING_DELIMITER
+            + cornerCurve.value.toString()
     )
 
     init {
@@ -86,6 +89,8 @@ class WidgetState(string: String) {
         builder.append(backgroundAlpha.value)
         builder.append(STRING_DELIMITER)
         builder.append(contentAlpha.value)
+        builder.append(STRING_DELIMITER)
+        builder.append(cornerCurve.value)
 
         return builder.toString()
     }
@@ -93,7 +98,7 @@ class WidgetState(string: String) {
 
     /*--- Private Methods ---*/
 
-    fun parseString(string: String) {
+    private fun parseString(string: String) {
         val input = string.trim()
         if (input.isNotBlank()) {
             val values = input.split(Regex(STRING_DELIMITER))
@@ -105,6 +110,10 @@ class WidgetState(string: String) {
             textSize = TextSize.fromSize(values[5].toInt())
             backgroundAlpha = Transparency.fromValue(values[6].toDouble())
             contentAlpha = Transparency.fromValue(values[7].toDouble())
+
+            // Accommodate Old WidgetState Without CornerCurve
+            cornerCurve = if (values.size > 8) CornerCurve.fromValue(values[8].toDouble())
+            else DEFAULT_CORNER_CURVE
         }
     }
 
@@ -118,6 +127,7 @@ class WidgetState(string: String) {
         val DEFAULT_CONTENT_COLOR = Color.parseColor("#666666")
         val DEFAULT_TEXT_SIZE: TextSize = TextSize.Medium
         val DEFAULT_TRANSPARENCY = Transparency.NONE
+        val DEFAULT_CORNER_CURVE = CornerCurve.Medium
 
         enum class TextSize(val displayName: String, val size: Int) {
             Tiny("Tiny", 12),
@@ -128,7 +138,7 @@ class WidgetState(string: String) {
 
             companion object {
                 fun fromSize(size: Int): TextSize {
-                    return values().firstOrNull { it.size == size } ?: Medium
+                    return entries.firstOrNull { it.size == size } ?: Medium
                 }
             }
         }
@@ -143,7 +153,21 @@ class WidgetState(string: String) {
 
             companion object {
                 fun fromValue(value: Double): Transparency {
-                    return values().firstOrNull { it.value == value } ?: NONE
+                    return entries.firstOrNull { it.value == value } ?: NONE
+                }
+            }
+        }
+
+        enum class CornerCurve(val displayName: String, val value: Double) {
+            None("None", 0.0),
+            Small("Small", 4.0),
+            Medium("Medium", 8.0),
+            Large("Large", 12.0),
+            Huge("Huge", 16.0);
+
+            companion object {
+                fun fromValue(value: Double): CornerCurve {
+                    return entries.firstOrNull { it.value == value } ?: None
                 }
             }
         }

@@ -72,7 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="@dimen/paddingMicro"
+            android:paddingTop="@dimen/paddingSmall"
+            android:paddingBottom="@dimen/paddingMedium"
             >
 
             <LinearLayout
@@ -323,6 +324,40 @@
 
                     <androidx.appcompat.widget.AppCompatSpinner
                         android:id="@+id/selectorWidgetSettingsContentAlpha"
+                        android:layout_width="@dimen/selectorWidgetSmall"
+                        android:layout_height="match_parent"
+                        android:popupBackground="@drawable/selector_popup_background"
+                        android:layout_marginEnd="@dimen/selectorPaddingWidgetSettings"
+                        app:backgroundTint="?themeTextSecondary"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/viewCornerCurveSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    >
+
+                    <TextView
+                        android:id="@+id/textWidgetSettingsCornerCurveLabel"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="@dimen/paddingActivity"
+                        android:paddingTop="@dimen/paddingMedium"
+                        android:paddingEnd="@dimen/paddingLarge"
+                        android:paddingBottom="@dimen/settingsItemPadding"
+                        android:text="@string/widgetSettingsCornerCurveLabel"
+                        android:textColor="?themeTextSecondary"
+                        android:textSize="@dimen/textSettings"
+                        />
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:id="@+id/selectorWidgetSettingsCornerCurve"
                         android:layout_width="@dimen/selectorWidgetSmall"
                         android:layout_height="match_parent"
                         android:popupBackground="@drawable/selector_popup_background"

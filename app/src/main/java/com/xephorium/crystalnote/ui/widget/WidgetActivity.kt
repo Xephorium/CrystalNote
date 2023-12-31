@@ -10,6 +10,7 @@ import androidx.core.graphics.drawable.DrawableCompat
 
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.CornerCurve
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
@@ -52,6 +53,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         setupTextSizeSpinner()
         setupBackgroundAlphaSpinner()
         setupContentAlphaSpinner()
+        setupCornerCurveSpinner()
         setupSaveButton()
     }
 
@@ -127,6 +129,10 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         binding.selectorWidgetSettingsContentAlpha.setSelection(transparency.ordinal)
     }
 
+    override fun populateCornerCurve(cornerCurve: CornerCurve) {
+        binding.selectorWidgetSettingsCornerCurve.setSelection(cornerCurve.ordinal)
+    }
+
     override fun setPreviewBackgroundColor(color: Int) {
         binding.widgetSettingsPreview.setBackgroundColor(color)
     }
@@ -145,6 +151,10 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
 
     override fun setPreviewBackgroundAlpha(transparency: Transparency) {
         binding.widgetSettingsPreview.setTransparency(transparency)
+    }
+
+    override fun setPreviewCornerCurve(cornerCurve: CornerCurve) {
+        binding.widgetSettingsPreview.setCornerCurve(cornerCurve)
     }
 
     override fun setPreviewBackgroundBrightness(light: Boolean) {
@@ -167,6 +177,14 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         val drawable = DrawableCompat.wrap(icon!!)
         DrawableCompat.setTint(drawable, iconColor)
         binding.iconWidgetSettingsContrast.setImageDrawable(drawable)
+    }
+
+    override fun showCornerCurveSpinner() {
+        binding.viewCornerCurveSpinner.visibility = View.VISIBLE
+    }
+
+    override fun hideCornerCurveSpinner() {
+        binding.viewCornerCurveSpinner.visibility = View.GONE
     }
 
     override fun showNoWidgetsMessage() {
@@ -325,7 +343,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(p0: AdapterView<*>?) {}
                     override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                        presenter.handleTextSizeChange(TextSize.values()[position])
+                        presenter.handleTextSizeChange(TextSize.entries[position])
                     }
                 }
             textWidgetSettingsTextSizeLabel.setOnClickListener {
@@ -347,7 +365,7 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(p0: AdapterView<*>?) {}
                     override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                        presenter.handleBackgroundAlphaChange(Transparency.values()[position])
+                        presenter.handleBackgroundAlphaChange(Transparency.entries[position])
                     }
                 }
             textWidgetSettingsBackgroundAlphaLabel.setOnClickListener {
@@ -369,11 +387,33 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
                 object : AdapterView.OnItemSelectedListener {
                     override fun onNothingSelected(p0: AdapterView<*>?) {}
                     override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
-                        presenter.handleContentAlphaChange(Transparency.values()[position])
+                        presenter.handleContentAlphaChange(Transparency.entries[position])
                     }
                 }
             textWidgetSettingsContentAlphaLabel.setOnClickListener {
                 selectorWidgetSettingsContentAlpha.performClick()
+            }
+        }
+    }
+
+    private fun setupCornerCurveSpinner() {
+        val cornerCurveAdapter = ArrayAdapter(
+            this,
+            R.layout.settings_selector_item,
+            CORNER_CURVE_VALUES
+        )
+        cornerCurveAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.run {
+            selectorWidgetSettingsCornerCurve.adapter = cornerCurveAdapter
+            selectorWidgetSettingsCornerCurve.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {}
+                    override fun onItemSelected(a: AdapterView<*>?, v: View?, position: Int, id: Long) {
+                        presenter.handleCornerCurveChange(CornerCurve.entries[position])
+                    }
+                }
+            textWidgetSettingsCornerCurveLabel.setOnClickListener {
+                selectorWidgetSettingsCornerCurve.performClick()
             }
         }
     }
@@ -390,7 +430,8 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     /*--- Constants ---*/
 
     companion object {
-        private val TEXT_SIZES = TextSize.values().map { it.displayName }
-        private val TRANSPARENCY_VALUES = Transparency.values().map { it.displayName }
+        private val TEXT_SIZES = TextSize.entries.map { it.displayName }
+        private val TRANSPARENCY_VALUES = Transparency.entries.map { it.displayName }
+        private val CORNER_CURVE_VALUES = CornerCurve.entries.map { it.displayName }
     }
 }

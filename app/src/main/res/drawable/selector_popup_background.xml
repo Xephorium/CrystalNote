@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="rectangle">
 
-	<solid android:color="?themeNoteBackground"/>
-	<corners android:radius="@dimen/widgetCornerRadius"/>
+	<solid android:color="?themeBackground"/>
+	<corners android:radius="@dimen/selectorCornerRadius"/>
 </shape>

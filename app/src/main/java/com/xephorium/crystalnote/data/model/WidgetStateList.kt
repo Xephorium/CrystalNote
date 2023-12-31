@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.data.model
 
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.CornerCurve
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import java.lang.StringBuilder
@@ -87,6 +88,10 @@ class WidgetStateList(string: String) {
 
     fun setContentAlphaAtIndex(index: Int, transparency: Transparency) {
         widgetStates[index].contentAlpha = transparency
+    }
+
+    fun setCornerCurveAtIndex(index: Int, cornerCurve: CornerCurve) {
+        widgetStates[index].cornerCurve = cornerCurve
     }
 
     fun updateWidgetId(oldId: Int, newId: Int) {

@@ -1,6 +1,8 @@
 package com.xephorium.crystalnote.ui.widget
 
+import android.os.Build
 import com.xephorium.crystalnote.data.model.WidgetState
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.CornerCurve
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.utility.ColorUtility
@@ -97,6 +99,11 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewContentColor(getContentColorWithAlpha())
     }
 
+    override fun handleCornerCurveChange(cornerCurve: CornerCurve) {
+        workingWidgetStates.setCornerCurveAtIndex(workingWidgetIndex, cornerCurve)
+        view?.setPreviewCornerCurve(cornerCurve)
+    }
+
     override fun handlePreviewBackgroundBrightnessToggle() {
         previewBackgroundBright = previewBackgroundBright.not()
         view?.setPreviewBackgroundBrightness(previewBackgroundBright)
@@ -179,6 +186,16 @@ class WidgetPresenter : WidgetContract.Presenter() {
         view?.setPreviewTitleColor(getWorkingWidgetState().titleColor)
         view?.setPreviewContentColor(getContentColorWithAlpha())
         view?.setPreviewBackgroundAlpha(getWorkingWidgetState().backgroundAlpha)
+
+        // Populate & Configure Corner Curve
+        if (isCornerCurveSupported()) {
+            view?.showCornerCurveSpinner()
+            view?.populateCornerCurve(getWorkingWidgetState().cornerCurve)
+            this.view?.setPreviewCornerCurve(getWorkingWidgetState().cornerCurve)
+        } else {
+            view?.hideCornerCurveSpinner()
+            this.view?.setPreviewCornerCurve(CornerCurve.Huge)
+        }
     }
 
     private fun getContentColorWithAlpha(): Int {
@@ -194,9 +211,23 @@ class WidgetPresenter : WidgetContract.Presenter() {
         this.view?.setPreviewContentColor(WidgetState.DEFAULT_CONTENT_COLOR)
         this.view?.setPreviewTextSize(WidgetState.DEFAULT_TEXT_SIZE)
         this.view?.setPreviewBackgroundAlpha(WidgetState.DEFAULT_TRANSPARENCY)
+
+        if (isCornerCurveSupported())
+            this.view?.setPreviewCornerCurve(WidgetState.DEFAULT_CORNER_CURVE)
+        else
+            this.view?.setPreviewCornerCurve(CornerCurve.Huge)
     }
 
     private fun getWorkingWidgetState(): WidgetState {
         return workingWidgetStates.getWidgetStates()[workingWidgetIndex]
+    }
+
+    /* Note: Versions of Android above API level 31 automatically apply a corner
+     *       radius of 16dp to all widget backgrounds. To avoid a confusing user
+     *       experience, I've disabled corner curve customization for those devices
+     *       and set the preview's corner radius to 16dp.
+     */
+    private fun isCornerCurveSupported(): Boolean {
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.S
     }
 }

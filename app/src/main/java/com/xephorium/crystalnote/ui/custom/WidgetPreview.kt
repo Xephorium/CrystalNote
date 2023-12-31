@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.data.model.WidgetState
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.CornerCurve
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 
@@ -38,6 +39,7 @@ class WidgetPreview : View {
     private var backgroundColor = WidgetState.DEFAULT_BACKGROUND_COLOR
     private var titleColor = WidgetState.DEFAULT_TITLE_COLOR
     private var textColor = WidgetState.DEFAULT_CONTENT_COLOR
+    private var cornerCurve = WidgetState.DEFAULT_CORNER_CURVE
 
 
     /*--- Constructors ---*/
@@ -93,8 +95,8 @@ class WidgetPreview : View {
                 0.toFloat(),
                 viewWidth!!.toFloat(),
                 viewHeight!!.toFloat(),
-                CORNER_RADIUS,
-                CORNER_RADIUS,
+                (cornerCurve.value * 2).toFloat(),
+                (cornerCurve.value * 2).toFloat(),
                 paint
         )
 
@@ -225,6 +227,11 @@ class WidgetPreview : View {
 
     fun setTextColor(color: Int) {
         textColor = color
+        invalidate()
+    }
+
+    fun setCornerCurve(curve: CornerCurve) {
+        cornerCurve = curve
         invalidate()
     }
 

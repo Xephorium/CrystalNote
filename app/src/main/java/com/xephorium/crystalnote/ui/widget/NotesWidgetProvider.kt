@@ -7,22 +7,29 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.Rect
+import android.graphics.RectF
 import android.util.TypedValue.COMPLEX_UNIT_SP
 import android.view.View
 import android.widget.RemoteViews
-
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.model.WidgetState
+import com.xephorium.crystalnote.data.model.WidgetState.Companion.CornerCurve
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
-import com.xephorium.crystalnote.ui.select.SelectActivity
-import java.util.concurrent.Callable
-import java.util.concurrent.Executors
-import com.xephorium.crystalnote.data.model.WidgetState
 import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.data.utility.CrystalNoteLogger
+import com.xephorium.crystalnote.ui.select.SelectActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_LAUNCH_FROM_WIDGET
 import com.xephorium.crystalnote.ui.update.UpdateNoteActivity.Companion.KEY_NOTE_ID
+import java.util.concurrent.Callable
+import java.util.concurrent.Executors
 
 
 /*
@@ -192,6 +199,18 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
     private fun styleWidget(widgetView: RemoteViews, state: WidgetState) {
 
+        // Background Drawable
+        widgetView.setImageViewResource(
+            R.id.imageWidgetBackground,
+            when (state.cornerCurve) {
+                CornerCurve.None -> R.drawable.widget_background_corner_none
+                CornerCurve.Small -> R.drawable.widget_background_corner_small
+                CornerCurve.Medium -> R.drawable.widget_background_corner_medium
+                CornerCurve.Large -> R.drawable.widget_background_corner_large
+                CornerCurve.Huge -> R.drawable.widget_background_corner_huge
+            }
+        )
+
         // Background Color
         widgetView.setInt(
             R.id.imageWidgetBackground,
@@ -262,6 +281,20 @@ class NotesWidgetProvider : AppWidgetProvider() {
 
     private fun log(context: Context, string: String) {
         CrystalNoteLogger.log(context, string)
+    }
+
+    private fun getBackgroundBitmap(roundPixelSize: Double): Bitmap {
+        val output = Bitmap.createBitmap(500,500, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(output)
+        val paint = Paint()
+        val rect = Rect(0, 0, 500, 500)
+        val rectF = RectF(rect)
+        val roundPx = roundPixelSize.toFloat()
+        paint.isAntiAlias = true
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint)
+        paint.setXfermode(PorterDuffXfermode(PorterDuff.Mode.SRC_IN))
+        canvas.drawBitmap(output, rect, rect, paint)
+        return output
     }
 
 

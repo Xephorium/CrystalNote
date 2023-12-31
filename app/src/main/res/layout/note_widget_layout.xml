@@ -7,7 +7,7 @@
     android:id="@+id/layoutWidgetBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/paddingSmall"
+    android:layout_margin="@dimen/paddingMicro"
     android:orientation="vertical"
     >
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:importantForAccessibility="no"
-        android:src="@drawable/note_widget_background"
+        android:src="@drawable/widget_background_corner_medium"
         />
 
     <TextView

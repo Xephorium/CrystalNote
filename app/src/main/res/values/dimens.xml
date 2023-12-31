@@ -64,6 +64,7 @@
     <dimen name="noteListPreviewPadding">6dp</dimen>
     <dimen name="noteListBottomPadding">10dp</dimen>
     <dimen name="passwordDialogTextInputLayoutMargin">21dp</dimen>
+    <dimen name="selectorCornerRadius">8dp</dimen>
     <dimen name="selectorPaddingWidgetSettings">9dp</dimen>
     <dimen name="selectorSettings">150dp</dimen>
     <dimen name="selectorWidgetLarge">180dp</dimen>
@@ -81,7 +82,11 @@
     <dimen name="toolbarOptionsIconWidth">24dp</dimen>
     <dimen name="toolbarColorOrbPadding">16dp</dimen>
     <dimen name="updateNoteActionButtonSize">32dp</dimen>
-    <dimen name="widgetCornerRadius">8dp</dimen>
+    <dimen name="widgetCornerRadiusNone">0dp</dimen>
+    <dimen name="widgetCornerRadiusSmall">4dp</dimen>
+    <dimen name="widgetCornerRadiusMedium">8dp</dimen>
+    <dimen name="widgetCornerRadiusLarge">12dp</dimen>
+    <dimen name="widgetCornerRadiusHuge">16dp</dimen>
     <dimen name="widgetDefaultPadding">10dp</dimen>
     <dimen name="widgetHeaderBottomPadding">6dp</dimen>
     <dimen name="widgetHeaderTextSize">15sp</dimen>
