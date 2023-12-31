@@ -36,13 +36,15 @@ December 2023
     • New About Screen (12.28.2023)
     • New Settings/Widget Screens (12.29.2023)
     • Note Preview in Settings & Expanded Note Options (12.30.2023)
+    • Configurable widget background radius (12.31.2023)
+    ◦ Custom Color Picker for Note/Widget Colors
     ◦ Refresh themes (Ongoing)
-      • Darker Night Theme (12.10.2023)
+      • Darker Night Theme (12.30.2023)
     ◦ Theme Badges
+    ◦ New API Widget Preview
 
     Future Improvements
     ◦ "System" theme for Dynamic Color on API 12+
-    ◦ Configurable widget background radius
     ◦ Configurable widget title/content alignment
 
 
