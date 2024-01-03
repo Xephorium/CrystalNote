@@ -38,6 +38,8 @@
     <dimen name="colorOrbSizeToolbar">56dp</dimen>
     <dimen name="colorPickerPaddingBottom">30dp</dimen>
     <dimen name="colorPickerPaddingOrb">5dp</dimen>
+    <dimen name="colorPickerPaddingSnug">12dp</dimen>
+    <dimen name="colorPickerPaddingTop">20dp</dimen>
     <dimen name="buttonAboutWidth">250dp</dimen>
     <dimen name="buttonCornerRadius">100dp</dimen>
     <dimen name="buttonVerticalPadding">6dp</dimen>
@@ -46,6 +48,7 @@
     <dimen name="dialogButtonCornerRadius">100dp</dimen>
     <dimen name="dialogButtonMargin">12dp</dimen>
     <dimen name="dialogMargin">36dp</dimen>
+    <dimen name="dialogMarginColorPicker">24dp</dimen>
     <dimen name="dialogOptionPadding">12dp</dimen>
     <dimen name="drawerDividerHeight">1dp</dimen>
     <dimen name="drawerIconPadding">12dp</dimen>
@@ -74,6 +77,7 @@
     <dimen name="settingsItemPadding">10dp</dimen>
     <dimen name="splashIconSize">90dp</dimen>
     <dimen name="statusBarHeightStandard">24dp</dimen>
+    <dimen name="tabIndicatorHeight">3dp</dimen>
     <dimen name="toolbarHeight">56dp</dimen>
     <dimen name="toolbarElevation">0dp</dimen>
     <dimen name="toolbarText">19sp</dimen>

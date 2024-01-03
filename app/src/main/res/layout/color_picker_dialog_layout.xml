@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialogBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/dialogMarginColorPicker"
+    android:paddingEnd="@dimen/dialogMarginColorPicker"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="@dimen/paddingMedium"
+        android:background="@drawable/dialog_background"
+        android:clickable="true"
+        android:focusable="true"
+        >
+
+        <TextView
+            android:id="@+id/textDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/colorPickerPaddingTop"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingBottom="@dimen/colorPickerPaddingSnug"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textAlignment="center"
+            android:textSize="@dimen/textNoteOptionsTitle"
+            android:textColor="?themeTextPrimary"
+            tools:text="Select a Color"
+            />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutColorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            app:layout_constraintTop_toBottomOf="@id/textDialogTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/TabTheme"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/dividerColorPickerOne"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="@dimen/paddingMedium"
+            app:dividerColor="?themeDivider"
+            app:layout_constraintTop_toBottomOf="@id/tabLayoutColorPicker"
+            />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPagerColorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@id/dividerColorPickerOne"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/dividerColorPickerTwo"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="@dimen/paddingMedium"
+            app:dividerColor="?themeDivider"
+            app:layout_constraintTop_toBottomOf="@id/viewPagerColorPicker"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/paddingSmall"
+            android:layout_marginEnd="@dimen/paddingActivity"
+            app:layout_constraintTop_toBottomOf="@+id/dividerColorPickerTwo"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/DialogButtonStyle"
+            tools:text="Select"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
