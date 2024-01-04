@@ -129,7 +129,7 @@ class NoteToolbar : Toolbar {
 
     fun showColor() {
         findViewById<ColorOrb>(R.id.colorOrbToolbar).visibility = View.VISIBLE
-        findViewById<ColorOrb>(R.id.colorOrbToolbar).forceThickOutline()
+        findViewById<ColorOrb>(R.id.colorOrbToolbar).enableForcedThickOutline()
     }
 
     fun hideColor() {

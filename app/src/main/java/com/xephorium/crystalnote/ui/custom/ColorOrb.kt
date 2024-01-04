@@ -2,7 +2,6 @@ package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Paint.Style.FILL
 import android.graphics.Paint.Style.STROKE
@@ -29,7 +28,7 @@ class ColorOrb : View {
     private var backgroundColor: Int? = null
     private var outlineColor: Int? = null
     private var outlineAlpha: Int? = null
-    private var orbColor = DEFAULT_ORB_COLOR
+    private var orbColor = theme.colorTextSecondary
     private var orbContrast = 2.0
     private var padding: Float = DEFAULT_ORB_PADDING
     private var useContrastOutline = true
@@ -141,6 +140,7 @@ class ColorOrb : View {
             outlinePaintColor?.let {
                 paint.color = it
                 paint.style = STROKE
+                paint.strokeWidth = OUTLINE_WIDTH
                 canvas.drawCircle(
                     (viewWidth!! / 2.0).toFloat(),
                     (viewHeight!! / 2.0).toFloat(),
@@ -182,8 +182,8 @@ class ColorOrb : View {
         outlinePaintColor = determineOutlineColor()
     }
 
-    fun setOutlineAlpha(alpha: Double) {
-        outlineAlpha = (alpha * 255).toInt()
+    fun setOutlineAlpha(alpha: Double?) {
+        outlineAlpha = alpha?.let { (alpha * 255).toInt() }
         outlinePaintColor = determineOutlineColor()
     }
 
@@ -214,9 +214,17 @@ class ColorOrb : View {
         invalidate()
     }
 
-    fun forceThickOutline() {
+    fun enableForcedThickOutline() {
         forceThickOutline = true
         setOutlineAlpha(1.0)
+        setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
+        outlinePaintColor = determineOutlineColor()
+        invalidate()
+    }
+
+    fun disableForcedThickOutline() {
+        forceThickOutline = false
+        setOutlineAlpha(null)
         setBackdropColor(CrystalNoteTheme.fromCurrentTheme(context).colorToolbar)
         outlinePaintColor = determineOutlineColor()
         invalidate()
@@ -247,12 +255,12 @@ class ColorOrb : View {
     }
 
     private fun determineOutlineColor(): Int {
-        if ((orbContrast < CONTRAST_THRESHOLD && useContrastOutline) || forceThickOutline) {
+        return if ((orbContrast < CONTRAST_THRESHOLD && useContrastOutline) || forceThickOutline) {
             val drawColor = outlineColor ?: theme.colorTextPrimary
             val drawAlpha = outlineAlpha ?: OUTLINE_ALPHA
-            return ColorUtils.setAlphaComponent(drawColor, drawAlpha)
+            ColorUtils.setAlphaComponent(drawColor, drawAlpha)
         } else {
-            return orbColor
+            orbColor
         }
     }
 
@@ -260,7 +268,6 @@ class ColorOrb : View {
     /*--- Constants ---*/
 
     companion object {
-        val DEFAULT_ORB_COLOR = Color.parseColor("#000000")
         val DEFAULT_ORB_PADDING = 15f
         const val CONTRAST_THRESHOLD = 1.3
         const val OUTLINE_RADIUS = 0.9

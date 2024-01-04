@@ -37,9 +37,15 @@
     <dimen name="colorOrbSizeWidgetSettings">25dp</dimen>
     <dimen name="colorOrbSizeToolbar">56dp</dimen>
     <dimen name="colorPickerPaddingBottom">30dp</dimen>
-    <dimen name="colorPickerPaddingOrb">5dp</dimen>
+    <dimen name="colorPickerPaddingOrb">3dp</dimen>
     <dimen name="colorPickerPaddingSnug">12dp</dimen>
     <dimen name="colorPickerPaddingTop">20dp</dimen>
+    <dimen name="colorPaletteOrbSize">38dp</dimen>
+    <dimen name="colorPaletteOrbHalfSize">18dp</dimen>
+    <dimen name="colorPaletteOrbPadding">0dp</dimen>
+    <dimen name="colorPaletteOrbHorizMargin">0dp</dimen>
+    <dimen name="colorPaletteOrbVertMargin">-4dp</dimen>
+    <dimen name="colorPaletteOrbHorzOffset">4dp</dimen>
     <dimen name="buttonAboutWidth">250dp</dimen>
     <dimen name="buttonCornerRadius">100dp</dimen>
     <dimen name="buttonVerticalPadding">6dp</dimen>
