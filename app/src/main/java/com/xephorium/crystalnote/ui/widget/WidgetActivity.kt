@@ -16,8 +16,8 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.databinding.WidgetActivityLayoutBinding
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialog
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialog.Companion.ColorPickerListener
+import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialog
+import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialog.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
 import com.xephorium.crystalnote.ui.drawer.DrawerActivity

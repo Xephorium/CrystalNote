@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.colorpicker
+package com.xephorium.crystalnote.ui.colorpicker.view
 
 import android.graphics.Color
 import android.os.Bundle

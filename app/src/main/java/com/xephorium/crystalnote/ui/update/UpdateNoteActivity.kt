@@ -18,7 +18,7 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.UpdateActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.BaseActivity
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialog
+import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialog
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
