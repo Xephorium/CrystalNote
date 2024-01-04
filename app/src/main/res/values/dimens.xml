@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- System Dimens -->
     <dimen name="paddingActivity">16dp</dimen>
@@ -33,6 +33,16 @@
     <dimen name="cardViewCornerRadius">10dp</dimen>
     <dimen name="cardViewElevation">0dp</dimen>
     <dimen name="cardViewMargin">12dp</dimen>
+    <dimen name="colorCustomLayoutPadding">38dp</dimen>
+    <dimen name="colorCustomOrbCustomSize">70dp</dimen>
+    <dimen name="colorCustomOrbCustomPadding">6dp</dimen>
+    <dimen name="colorCustomOrbHistorySize">32dp</dimen>
+    <dimen name="colorCustomOrbHistoryHalfSize">16dp</dimen>
+    <dimen name="colorCustomOrbHistoryPadding">2dp</dimen>
+    <dimen name="colorCustomTextInputHeight">24dp</dimen>
+    <dimen name="colorCustomTextInputWidth">40dp</dimen>
+    <dimen name="colorCustomTextLabelHeight">28dp</dimen>
+    <dimen name="colorCustomTextLabelWidth">24dp</dimen>
     <dimen name="colorOrbPaddingWidgetSettings">20dp</dimen>
     <dimen name="colorOrbSizeWidgetSettings">25dp</dimen>
     <dimen name="colorOrbSizeToolbar">56dp</dimen>
@@ -42,7 +52,7 @@
     <dimen name="colorPickerPaddingTop">20dp</dimen>
     <dimen name="colorPaletteOrbSize">38dp</dimen>
     <dimen name="colorPaletteOrbHalfSize">18dp</dimen>
-    <dimen name="colorPaletteOrbPadding">0dp</dimen>
+    <dimen name="colorPaletteOrbPadding">3dp</dimen>
     <dimen name="colorPaletteOrbHorizMargin">0dp</dimen>
     <dimen name="colorPaletteOrbVertMargin">-4dp</dimen>
     <dimen name="colorPaletteOrbHorzOffset">4dp</dimen>
@@ -104,6 +114,10 @@
     <dimen name="widgetMinimumWidth">110dp</dimen>
     <dimen name="widgetMinimumResizeHeight">50dp</dimen>
     <dimen name="widgetMinimumResizeWidth">50dp</dimen>
+
+    <!-- Control Overrides -->
+
+    <dimen name="mtrl_slider_widget_height" tools:override="true">28dp</dimen>
 
     <!-- Splash Screen Icon Inset -->
     <dimen name="iconSplashInset">90dp</dimen>

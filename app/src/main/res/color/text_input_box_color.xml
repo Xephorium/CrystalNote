@@ -1,0 +1,5 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="?themeDivider" android:state_focused="true"/>
+    <item android:color="?themeDivider" android:state_hovered="true"/>
+    <item android:color="?themeDivider"/>
+</selector>

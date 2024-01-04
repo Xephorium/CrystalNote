@@ -32,7 +32,7 @@ class ColorPickerDialogPaletteFragment : Fragment() {
 
         for (index in ORB_RESOURCES.indices) {
             val orb = view.findViewById<ColorOrb>(ORB_RESOURCES[index])
-            orb?.setPadding(R.dimen.colorPickerPaddingOrb)
+            orb?.setPadding(R.dimen.colorPaletteOrbPadding)
             orb?.setBackdropColor(theme.colorBackground)
             orb?.setColor(ORB_COLORS[index])
             orb?.setOnClickListener {
