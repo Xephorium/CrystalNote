@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.custom
+package com.xephorium.crystalnote.ui.colorpicker
 
 import android.app.Dialog
 import android.graphics.Color
@@ -14,7 +14,6 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager.widget.ViewPager
-import com.google.android.material.button.MaterialButton
 import com.google.android.material.tabs.TabLayout
 import com.xephorium.crystalnote.R
 

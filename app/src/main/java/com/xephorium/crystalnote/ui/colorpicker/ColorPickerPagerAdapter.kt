@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.custom
+package com.xephorium.crystalnote.ui.colorpicker
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

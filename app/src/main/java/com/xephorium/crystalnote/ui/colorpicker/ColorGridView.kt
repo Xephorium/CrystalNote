@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.custom
+package com.xephorium.crystalnote.ui.colorpicker
 
 import android.content.Context
 import android.graphics.Color
@@ -7,9 +7,10 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.LinearLayout.LayoutParams.*
 import android.widget.LinearLayout
-import com.xephorium.crystalnote.ui.custom.ColorPickerDialog.Companion.ColorPickerListener
+import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialog.Companion.ColorPickerListener
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.ui.custom.ColorOrb
 
 
 class ColorGridView: LinearLayout {

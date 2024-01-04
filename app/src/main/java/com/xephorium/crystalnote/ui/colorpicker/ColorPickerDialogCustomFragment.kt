@@ -1,4 +1,4 @@
-package com.xephorium.crystalnote.ui.custom
+package com.xephorium.crystalnote.ui.colorpicker
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.ui.custom.ColorOrb
 
 class ColorPickerDialogCustomFragment : Fragment() {
 
