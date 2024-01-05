@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.custom
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -10,9 +11,13 @@ import android.graphics.PorterDuff
 import android.graphics.Shader
 import android.graphics.Shader.TileMode
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnClickListener
+import android.view.View.OnTouchListener
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presenter.Companion.DEFAULT_CUSTOM_COLOR
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 
@@ -43,6 +48,10 @@ class RainbowView : View {
     private var dotRadius = 8f
     private var dotColor = theme.colorAccent
 
+    private var lastTouchCoordinates: Pair<Float, Float> = Pair(0f, 0f)
+
+    private var listener: RainbowViewListener? = null
+
 
     /*--- Constructors ---*/
 
@@ -57,6 +66,14 @@ class RainbowView : View {
 
 
     /*--- Lifecycle Methods ---*/
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+
+        this.setOnTouchListener(getTouchListener())
+        this.setOnClickListener(getClickListener())
+    }
 
     override fun onDraw(canvas: Canvas) {
         initializeShaders()
@@ -92,6 +109,10 @@ class RainbowView : View {
 
 
     /*--- Public Methods ---*/
+
+    fun setListener(listener: RainbowViewListener) {
+        this.listener = listener
+    }
 
     fun updateColor(color: PreciseColor) {
         colorPrecise = color
@@ -178,4 +199,32 @@ class RainbowView : View {
         return Color.HSVToColor(floatArrayOf(hue, sat, value))
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun getTouchListener() : OnTouchListener {
+        return OnTouchListener { _, event ->
+            if (event.actionMasked == MotionEvent.ACTION_UP) {
+                lastTouchCoordinates = Pair(event.x, event.y)
+            }
+
+            false
+        }
+    }
+
+    private fun getClickListener(): OnClickListener {
+        return OnClickListener {
+            listener?.onRainbowClick(
+                (lastTouchCoordinates.first / measuredWidth).coerceIn(0f, 1f),
+                1f - (lastTouchCoordinates.second / measuredHeight).coerceIn(0f, 1f)
+            )
+        }
+    }
+
+
+    /*--- Constants ---*/
+
+    companion object {
+        interface RainbowViewListener {
+            fun onRainbowClick(x: Float, y: Float)
+        }
+    }
 }

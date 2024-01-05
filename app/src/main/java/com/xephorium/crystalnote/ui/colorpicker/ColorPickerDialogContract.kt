@@ -39,6 +39,7 @@ interface ColorPickerDialogContract {
         abstract fun handleCustomHueChange(hue: String)
         abstract fun handleCustomSatChange(sat: String)
         abstract fun handleCustomValChange(value: String)
+        abstract fun handleRainbowClick(x: Float, y: Float)
 
         companion object {
             val DEFAULT_CUSTOM_COLOR = PreciseColor(212, 75, 100)

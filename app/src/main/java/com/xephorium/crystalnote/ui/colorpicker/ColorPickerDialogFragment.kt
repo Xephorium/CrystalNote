@@ -169,6 +169,7 @@ class ColorPickerDialogFragment(
                 override fun onHueChange(hue: String) = presenter.handleCustomHueChange(hue)
                 override fun onSatChange(sat: String) = presenter.handleCustomSatChange(sat)
                 override fun onValChange(value: String) = presenter.handleCustomValChange(value)
+                override fun onRainbowClick(x: Float, y: Float) = presenter.handleRainbowClick(x, y)
             }
         )
         viewPager.adapter = adapter

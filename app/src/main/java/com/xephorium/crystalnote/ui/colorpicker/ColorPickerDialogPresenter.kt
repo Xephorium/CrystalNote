@@ -1,5 +1,8 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
+import android.app.Dialog
+import androidx.fragment.app.DialogFragment
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
 class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
@@ -58,6 +61,12 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
             selectedCustomColor.value = value.toInt()
             view?.setCustomColor(selectedCustomColor)
         }
+    }
+
+    override fun handleRainbowClick(x: Float, y: Float) {
+        selectedCustomColor.saturation = (x * 100f).toInt()
+        selectedCustomColor.value = (y * 100f).toInt()
+        view?.setCustomColor(selectedCustomColor)
     }
 
 

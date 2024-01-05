@@ -16,6 +16,7 @@ import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presen
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.custom.ColorOrb
 import com.xephorium.crystalnote.ui.custom.RainbowView
+import com.xephorium.crystalnote.ui.custom.RainbowView.Companion.RainbowViewListener
 
 class ColorPickerDialogCustomFragment(
     private val listener: ColorPickerCustomListener
@@ -26,7 +27,7 @@ class ColorPickerDialogCustomFragment(
 
     lateinit var theme: CrystalNoteTheme
 
-    var notUpdatingViews = true
+    private var notUpdatingViews = true
 
 
     /*--- Lifecycle Methods ---*/
@@ -38,9 +39,10 @@ class ColorPickerDialogCustomFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupTheme()
+
+        setupRainbowView()
         setupCustomOrb()
         setupHistoryOrbs()
-
         setupHexField()
         setupHsvSliders()
         setupHsvFields()
@@ -74,6 +76,15 @@ class ColorPickerDialogCustomFragment(
 
     private fun setupTheme() {
         theme = CrystalNoteTheme.fromCurrentTheme(requireContext())
+    }
+
+    private fun setupRainbowView() {
+        val rainbowView = view?.findViewById<RainbowView>(R.id.rainbowViewCustomColor)
+        rainbowView?.setListener(object : RainbowViewListener {
+            override fun onRainbowClick(x: Float, y: Float) {
+                listener.onRainbowClick(x, y)
+            }
+        })
     }
 
     private fun setupCustomOrb() {
@@ -186,6 +197,7 @@ class ColorPickerDialogCustomFragment(
             fun onHueChange(hue: String)
             fun onSatChange(sat: String)
             fun onValChange(value: String)
+            fun onRainbowClick(x: Float, y: Float)
         }
 
         private val HISTORY_ORBS = listOf(
