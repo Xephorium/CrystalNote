@@ -106,7 +106,7 @@ class ColorPickerDialogPaletteFragment(
             Color.parseColor("#14f499"), //
             Color.parseColor("#49fce1"), //
             Color.parseColor("#62ddfe"), //
-            Color.parseColor("#78b6ff"), //
+            Color.parseColor("#7ab8ff"), //
             Color.parseColor("#8a8bff"), //
             Color.parseColor("#8740fb"), //
             Color.parseColor("#9013ee"), //

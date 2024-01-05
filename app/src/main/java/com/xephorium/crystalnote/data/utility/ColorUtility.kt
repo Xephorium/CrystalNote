@@ -3,7 +3,6 @@ package com.xephorium.crystalnote.data.utility
 import android.graphics.Color
 import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
-import java.lang.StringBuilder
 import kotlin.math.max
 import kotlin.math.min
 
@@ -36,6 +35,10 @@ object ColorUtility {
             color = Color.parseColor("#$sanitizedHex")
         } catch (exception: Exception) { /* Do Nothing */ }
         return color
+    }
+
+    fun areEqualHexColors(hexOne: String, hexTwo: String): Boolean {
+        return intFromHex(hexOne) == intFromHex(hexTwo)
     }
 
 

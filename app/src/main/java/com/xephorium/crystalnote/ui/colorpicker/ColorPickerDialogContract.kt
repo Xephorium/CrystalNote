@@ -1,9 +1,9 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
-import android.graphics.Color
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
+import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
 interface ColorPickerDialogContract {
@@ -15,7 +15,7 @@ interface ColorPickerDialogContract {
         fun disableSelectButton()
         fun returnSelectedColor(color: Int)
 
-        fun setCustomColor(color: Int)
+        fun setCustomColor(color: PreciseColor)
     }
 
     abstract class Presenter : BasePresenter<View>() {
@@ -27,7 +27,7 @@ interface ColorPickerDialogContract {
         var currentTab: ColorPickerTab = ColorPickerTab.PALETTE
 
         var selectedPaletteColor: Int? = null
-        var selectedCustomColor: Int = Color.parseColor("#78b6ff")
+        var selectedCustomColor: PreciseColor = DEFAULT_CUSTOM_COLOR
 
         abstract fun handleTabChange(colorPickerTab: ColorPickerTab)
         abstract fun handleSelectButtonClick()
@@ -35,5 +35,12 @@ interface ColorPickerDialogContract {
         abstract fun handlePaletteColorChange(color: Int)
 
         abstract fun handleCustomHexChange(hex: String)
+        abstract fun handleCustomHueChange(hue: String)
+        abstract fun handleCustomSatChange(sat: String)
+        abstract fun handleCustomValChange(value: String)
+
+        companion object {
+            val DEFAULT_CUSTOM_COLOR = PreciseColor(212, 100, 75)
+        }
     }
 }

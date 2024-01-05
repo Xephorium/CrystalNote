@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.ui.colorpicker.view
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogCustomFragment.Companion.ColorPickerCustomListener
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogPaletteFragment.Companion.ColorPickerPaletteListener
 
@@ -45,7 +46,7 @@ class ColorPickerPagerAdapter(
 
     /*--- View Manipulation Methods ---*/
 
-    fun setCustomColor(color: Int) {
+    fun setCustomColor(color: PreciseColor) {
         customFragment?.setCustomColor(color)
     }
 }

@@ -165,8 +165,6 @@
         <item name="trackHeight">2dp</item>
         <item name="thumbRadius">8dp</item>
         <item name="labelBehavior">gone</item>
-        <item name="android:valueFrom">0</item>
-        <item name="android:valueTo">255</item>
     </style>
 
     <style name="WidgetConfigurationActivityTheme" parent="CrystalNoteTheme">

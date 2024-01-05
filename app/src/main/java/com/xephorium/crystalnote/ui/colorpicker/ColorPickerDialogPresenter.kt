@@ -1,7 +1,5 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
-import android.graphics.Color
-import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
 class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
@@ -27,7 +25,7 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
         if (currentTab == ColorPickerTab.PALETTE) {
             selectedPaletteColor?.let { view?.returnSelectedColor(it) }
         } else {
-            view?.returnSelectedColor(selectedCustomColor)
+            view?.returnSelectedColor(selectedCustomColor.getIntColor())
         }
     }
 
@@ -37,14 +35,45 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
     }
 
     override fun handleCustomHexChange(hex: String) {
-        val color = ColorUtility.intFromHex(hex)
-        if (color != null) {
-            view?.setCustomColor(color)
+        if (selectedCustomColor.setFromHex(hex)) view?.setCustomColor(selectedCustomColor)
+    }
+
+    override fun handleCustomHueChange(hue: String) {
+        if (isStringIntegerWithinRange(hue, 0, 360)) {
+            selectedCustomColor.hue = hue.toInt()
+            view?.setCustomColor(selectedCustomColor)
+        }
+    }
+
+    override fun handleCustomSatChange(sat: String) {
+        if (isStringIntegerWithinRange(sat, 0, 100)) {
+            selectedCustomColor.saturation = sat.toInt()
+            view?.setCustomColor(selectedCustomColor)
+        }
+    }
+
+    override fun handleCustomValChange(value: String) {
+        if (isStringIntegerWithinRange(value, 0, 100)) {
+            selectedCustomColor.value = value.toInt()
+            view?.setCustomColor(selectedCustomColor)
         }
     }
 
 
     /*--- Private Methods ---*/
+
+    private fun isStringIntegerWithinRange(string: String, min: Int, max: Int): Boolean {
+        if (string.isEmpty()) return false
+
+        val stringInt: Int
+        try {
+            stringInt = string.toInt()
+        } catch (exception: Exception) {
+            return false
+        }
+
+        return stringInt in 0..360
+    }
 
     private fun updateSelectButtonState() {
         if (currentTab == ColorPickerTab.PALETTE) {

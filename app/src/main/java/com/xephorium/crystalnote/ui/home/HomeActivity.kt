@@ -2,6 +2,7 @@ package com.xephorium.crystalnote.ui.home
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -13,6 +14,7 @@ import com.xephorium.crystalnote.data.model.PreviewNote
 import com.xephorium.crystalnote.data.repository.NoteDiskRepository
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
@@ -103,10 +105,6 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             }
         })
         dialog.showDialog()
-
-//        val newColorPickerDialog = NewColorPickerDialog.Builder(this).create()
-//        newColorPickerDialog.show()
-//        newColorPickerDialog.setTitle("Pick a Color")
 
 //        val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
 //        noteOptionsDialog.hideUnlockOption()

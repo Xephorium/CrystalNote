@@ -48,9 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/ColorPickerEditTextTheme"
+            android:inputType="text"
             android:maxLength="6"
             tools:text="000000"
-            android:text="000000"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -177,8 +177,7 @@
             style="@style/ColorPickerEditTextTheme"
             android:inputType="number"
             android:maxLength="3"
-            tools:text="255"
-            android:text="255"
+            tools:text="360"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -192,6 +191,8 @@
         app:layout_constraintStart_toEndOf="@id/textLabelHue"
         app:layout_constraintEnd_toStartOf="@id/textLayoutCustomColorHue"
         style="@style/ColorPickerSliderTheme"
+        android:valueFrom="0"
+        android:valueTo="360"
         />
 
     <TextView
@@ -222,8 +223,7 @@
             style="@style/ColorPickerEditTextTheme"
             android:inputType="number"
             android:maxLength="3"
-            tools:text="255"
-            android:text="255"
+            tools:text="100"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -237,6 +237,8 @@
         app:layout_constraintStart_toEndOf="@id/textLabelSat"
         app:layout_constraintEnd_toStartOf="@id/textLayoutCustomColorSat"
         style="@style/ColorPickerSliderTheme"
+        android:valueFrom="0"
+        android:valueTo="100"
         />
 
     <TextView
@@ -268,8 +270,7 @@
             style="@style/ColorPickerEditTextTheme"
             android:inputType="number"
             android:maxLength="3"
-            tools:text="255"
-            android:text="255"
+            tools:text="100"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -283,6 +284,8 @@
         app:layout_constraintStart_toEndOf="@id/textLabelVal"
         app:layout_constraintEnd_toStartOf="@id/textLayoutCustomColorVal"
         style="@style/ColorPickerSliderTheme"
+        android:valueFrom="0"
+        android:valueTo="100"
         />
 
 
