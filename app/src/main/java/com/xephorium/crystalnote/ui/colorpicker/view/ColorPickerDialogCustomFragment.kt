@@ -12,14 +12,14 @@ import com.google.android.material.textfield.TextInputEditText
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.data.utility.ColorUtility
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presenter.Companion.DEFAULT_CUSTOM_COLOR
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.custom.ColorOrb
 import com.xephorium.crystalnote.ui.custom.RainbowView
 import com.xephorium.crystalnote.ui.custom.RainbowView.Companion.RainbowViewListener
 
 class ColorPickerDialogCustomFragment(
-    private val listener: ColorPickerCustomListener
+    private val listener: ColorPickerCustomListener,
+    private var customColor: PreciseColor
 ) : Fragment() {
 
 
@@ -47,7 +47,7 @@ class ColorPickerDialogCustomFragment(
         setupHsvSliders()
         setupHsvFields()
 
-        setCustomColor(DEFAULT_CUSTOM_COLOR)
+        setCustomColor(customColor)
     }
 
 
@@ -55,14 +55,15 @@ class ColorPickerDialogCustomFragment(
 
     fun setCustomColor(color: PreciseColor) {
         notUpdatingViews = false
+        customColor = color
 
-        updateRainbowView(color)
-        updateCustomColorOrb(color)
+        updateRainbowView(customColor)
+        updateCustomColorOrb(customColor)
 
-        updateHexField(color)
+        updateHexField(customColor)
 
-        updateHsvSliders(color)
-        updateHsvFields(color)
+        updateHsvSliders(customColor)
+        updateHsvFields(customColor)
 
         notUpdatingViews = true
     }

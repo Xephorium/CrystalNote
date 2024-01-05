@@ -54,10 +54,10 @@ class ColorPickerDialogFragment(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, bundle: Bundle?): View {
+        setupPresenter()
         setupDialogViewListeners()
         setupDialogTabs()
         setupDialogTabListener()
-        setupPresenter()
 
         return dialogView
     }
@@ -81,6 +81,10 @@ class ColorPickerDialogFragment(
 
     fun setButtonText(text: String) {
         presenter.dialogButtonText = text
+    }
+
+    fun setInitialCustomColor(color: Int) {
+        presenter.selectedCustomColor = PreciseColor(color)
     }
 
     fun setColorPickerListener(listener: ColorPickerListener) {
@@ -150,6 +154,10 @@ class ColorPickerDialogFragment(
         }
     }
 
+    private fun setupPresenter() {
+        presenter.sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+    }
+
     private fun setupDialogViewListeners() {
         dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).setOnClickListener {
             presenter.handleSelectButtonClick()
@@ -170,7 +178,8 @@ class ColorPickerDialogFragment(
                 override fun onSatChange(sat: String) = presenter.handleCustomSatChange(sat)
                 override fun onValChange(value: String) = presenter.handleCustomValChange(value)
                 override fun onRainbowClick(x: Float, y: Float) = presenter.handleRainbowClick(x, y)
-            }
+            },
+            presenter.selectedCustomColor
         )
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
@@ -184,10 +193,6 @@ class ColorPickerDialogFragment(
             override fun onPageScrollStateChanged(state: Int) = Unit
             override fun onPageScrolled(pos: Int, posOffset: Float, posOffsetPixels: Int) = Unit
         })
-    }
-
-    private fun setupPresenter() {
-        presenter.sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
     }
 
 

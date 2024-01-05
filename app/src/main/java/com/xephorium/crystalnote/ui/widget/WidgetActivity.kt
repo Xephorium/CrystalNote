@@ -216,10 +216,11 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         }
     }
 
-    override fun showBackgroundColorPickerDialog() {
+    override fun showBackgroundColorPickerDialog(color: Int) {
         val dialog = ColorPickerDialogFragment(supportFragmentManager)
         dialog.setTitle("Select Background Color")
         dialog.setButtonText("Select")
+        dialog.setInitialCustomColor(color)
         dialog.setColorPickerListener(object :
             ColorPickerDialogFragment.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {
@@ -229,10 +230,11 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         dialog.showDialog()
     }
 
-    override fun showTitleColorPickerDialog() {
+    override fun showTitleColorPickerDialog(color: Int) {
         val dialog = ColorPickerDialogFragment(supportFragmentManager)
         dialog.setTitle("Select Title Color")
         dialog.setButtonText("Select")
+        dialog.setInitialCustomColor(color)
         dialog.setColorPickerListener(object :
             ColorPickerDialogFragment.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {
@@ -242,10 +244,11 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         dialog.showDialog()
     }
 
-    override fun showContentColorPickerDialog() {
+    override fun showContentColorPickerDialog(color: Int) {
         val dialog = ColorPickerDialogFragment(supportFragmentManager)
         dialog.setTitle("Select Text Color")
         dialog.setButtonText("Select")
+        dialog.setInitialCustomColor(color)
         dialog.setColorPickerListener(object :
             ColorPickerDialogFragment.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {

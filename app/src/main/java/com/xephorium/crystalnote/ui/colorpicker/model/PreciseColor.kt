@@ -46,6 +46,13 @@ class PreciseColor() {
         this.value = value
     }
 
+    constructor(color: Int) : this () {
+        val hsv = getHsvFromIntColor(color)
+        this.hue = hsv.first
+        this.saturation = hsv.second
+        this.value = hsv.third
+    }
+
 
     /*--- Conversion Methods ---*/
 

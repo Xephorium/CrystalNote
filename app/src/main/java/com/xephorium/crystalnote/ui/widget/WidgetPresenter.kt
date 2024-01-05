@@ -55,15 +55,15 @@ class WidgetPresenter : WidgetContract.Presenter() {
 
 
     override fun handleBackgroundColorClick() {
-        view?.showBackgroundColorPickerDialog()
+        view?.showBackgroundColorPickerDialog(getWorkingWidgetState().backgroundColor)
     }
 
     override fun handleTitleColorClick() {
-        view?.showTitleColorPickerDialog()
+        view?.showTitleColorPickerDialog(getWorkingWidgetState().titleColor)
     }
 
     override fun handleContentColorClick() {
-        view?.showContentColorPickerDialog()
+        view?.showContentColorPickerDialog(getWorkingWidgetState().contentColor)
     }
 
     override fun handleBackgroundColorChange(color: Int) {

@@ -10,7 +10,8 @@ import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogPaletteFra
 class ColorPickerPagerAdapter(
     fragmentManager: FragmentManager,
     private val paletteListener: ColorPickerPaletteListener,
-    private val customListener: ColorPickerCustomListener
+    private val customListener: ColorPickerCustomListener,
+    private val initialCustomColor: PreciseColor
 ) : FragmentPagerAdapter(fragmentManager) {
 
 
@@ -33,7 +34,7 @@ class ColorPickerPagerAdapter(
                 paletteFragment!!
             }
             else -> {
-                customFragment = ColorPickerDialogCustomFragment(customListener)
+                customFragment = ColorPickerDialogCustomFragment(customListener, initialCustomColor)
                 customFragment!!
             }
         }
