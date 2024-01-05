@@ -11,13 +11,11 @@ import android.graphics.PorterDuff
 import android.graphics.Shader
 import android.graphics.Shader.TileMode
 import android.util.AttributeSet
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.View.OnTouchListener
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presenter.Companion.DEFAULT_CUSTOM_COLOR
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 

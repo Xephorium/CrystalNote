@@ -1,9 +1,7 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
-import android.app.Dialog
-import androidx.fragment.app.DialogFragment
-import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
+
 
 class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
 
