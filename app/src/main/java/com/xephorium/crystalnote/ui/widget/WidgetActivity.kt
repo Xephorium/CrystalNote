@@ -15,7 +15,9 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.WidgetActivityLayoutBinding
+import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialog
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialog.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
@@ -215,39 +217,42 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
     }
 
     override fun showBackgroundColorPickerDialog() {
-        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
-        colorPickerDialog.setTitle("Choose Background Color")
-        colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
+        val dialog = ColorPickerDialogFragment(supportFragmentManager)
+        dialog.setTitle("Select Background Color")
+        dialog.setButtonText("Select")
+        dialog.setColorPickerListener(object :
+            ColorPickerDialogFragment.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {
-                colorPickerDialog.dismiss()
                 presenter.handleBackgroundColorChange(color)
             }
         })
-        colorPickerDialog.show()
+        dialog.showDialog()
     }
 
     override fun showTitleColorPickerDialog() {
-        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
-        colorPickerDialog.setTitle("Choose Title Color")
-        colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
+        val dialog = ColorPickerDialogFragment(supportFragmentManager)
+        dialog.setTitle("Select Title Color")
+        dialog.setButtonText("Select")
+        dialog.setColorPickerListener(object :
+            ColorPickerDialogFragment.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {
-                colorPickerDialog.dismiss()
                 presenter.handleTitleColorChange(color)
             }
         })
-        colorPickerDialog.show()
+        dialog.showDialog()
     }
 
     override fun showContentColorPickerDialog() {
-        val colorPickerDialog = ColorPickerDialog.Builder(this).create()
-        colorPickerDialog.setTitle("Choose Text Color")
-        colorPickerDialog.setColorPickerListener(object : ColorPickerListener {
+        val dialog = ColorPickerDialogFragment(supportFragmentManager)
+        dialog.setTitle("Select Text Color")
+        dialog.setButtonText("Select")
+        dialog.setColorPickerListener(object :
+            ColorPickerDialogFragment.Companion.ColorPickerListener {
             override fun onColorSelect(color: Int) {
-                colorPickerDialog.dismiss()
                 presenter.handleContentColorChange(color)
             }
         })
-        colorPickerDialog.show()
+        dialog.showDialog()
     }
 
     override fun showNavigationDrawer() {
