@@ -12,7 +12,6 @@ import android.graphics.PorterDuff
 import android.graphics.Shader
 import android.graphics.Shader.TileMode
 import android.util.AttributeSet
-import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnClickListener
@@ -202,14 +201,16 @@ class RainbowView : View {
     @SuppressLint("ClickableViewAccessibility")
     private fun getTouchListener() : OnTouchListener {
         return OnTouchListener { _, event ->
+            var handled = false
             if (event.actionMasked == MotionEvent.ACTION_MOVE) {
                 lastTouchCoordinates = Pair(event.x, event.y)
                 notifyDialogOfTouchCoordinates()
+                handled = true
             } else if (event.actionMasked == MotionEvent.ACTION_UP) {
                 lastTouchCoordinates = Pair(event.x, event.y)
             }
 
-            false
+            handled
         }
     }
 
