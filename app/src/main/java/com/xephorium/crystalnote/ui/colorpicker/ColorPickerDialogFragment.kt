@@ -116,6 +116,10 @@ class ColorPickerDialogFragment(
         adapter.setCustomColor(color)
     }
 
+    override fun notifyTabChange(tab: ColorPickerTab) {
+        adapter.notifyTabChange(tab)
+    }
+
 
     /*--- View Initialization Methods ---*/
 

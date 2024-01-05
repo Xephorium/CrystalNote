@@ -18,6 +18,7 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
 
     override fun handleTabChange(colorPickerTab: ColorPickerTab) {
         currentTab = colorPickerTab
+        view?.notifyTabChange(colorPickerTab)
         updateSelectButtonState()
     }
 

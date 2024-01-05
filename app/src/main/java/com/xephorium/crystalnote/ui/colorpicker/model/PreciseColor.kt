@@ -60,11 +60,12 @@ class PreciseColor() {
     }
 
     fun getIntColor(): Int {
-        return ColorUtils.HSLToColor(floatArrayOf(
-            hue.toFloat(),
-            (saturation.toDouble() / 100.0).toFloat(),
-            (value.toDouble() / 100.0).toFloat()
-        ))
+        return Color.HSVToColor(floatArrayOf(
+                hue.toFloat(),
+                (saturation.toDouble() / 100.0).toFloat(),
+                (value.toDouble() / 100.0).toFloat()
+            )
+        )
     }
 
     fun getHexCode(): String {

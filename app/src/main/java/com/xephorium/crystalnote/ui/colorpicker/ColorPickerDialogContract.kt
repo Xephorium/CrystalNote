@@ -16,6 +16,7 @@ interface ColorPickerDialogContract {
         fun returnSelectedColor(color: Int)
 
         fun setCustomColor(color: PreciseColor)
+        fun notifyTabChange(tab: ColorPickerTab)
     }
 
     abstract class Presenter : BasePresenter<View>() {
@@ -40,7 +41,7 @@ interface ColorPickerDialogContract {
         abstract fun handleCustomValChange(value: String)
 
         companion object {
-            val DEFAULT_CUSTOM_COLOR = PreciseColor(212, 100, 75)
+            val DEFAULT_CUSTOM_COLOR = PreciseColor(212, 75, 100)
         }
     }
 }

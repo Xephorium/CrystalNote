@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <ImageView
+    <com.xephorium.crystalnote.ui.custom.RainbowView
         android:id="@+id/rainbowViewCustomColor"
         android:layout_width="0dp"
         android:layout_height="85dp"
@@ -28,8 +28,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/colorOrbCustom"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/dialog_background"
-        android:backgroundTint="?themeNoteBackground"
         />
 
     <com.google.android.material.textfield.TextInputLayout

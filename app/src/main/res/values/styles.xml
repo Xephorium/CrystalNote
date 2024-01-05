@@ -161,6 +161,7 @@
     <style name="ColorPickerSliderTheme">
         <item name="trackColor">?themeNoteUnderline</item>
         <item name="haloColor">?themeNoteRipple</item>
+        <item name="haloRadius">18dp</item>
         <item name="thumbColor">?themeAccent</item>
         <item name="trackHeight">2dp</item>
         <item name="thumbRadius">8dp</item>

@@ -15,6 +15,7 @@ import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presenter.Companion.DEFAULT_CUSTOM_COLOR
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.custom.ColorOrb
+import com.xephorium.crystalnote.ui.custom.RainbowView
 
 class ColorPickerDialogCustomFragment(
     private val listener: ColorPickerCustomListener
@@ -53,6 +54,7 @@ class ColorPickerDialogCustomFragment(
     fun setCustomColor(color: PreciseColor) {
         notUpdatingViews = false
 
+        updateRainbowView(color)
         updateCustomColorOrb(color)
 
         updateHexField(color)
@@ -61,6 +63,10 @@ class ColorPickerDialogCustomFragment(
         updateHsvFields(color)
 
         notUpdatingViews = true
+    }
+
+    fun notifyVisible() {
+        view?.findViewById<RainbowView>(R.id.rainbowViewCustomColor)?.notifyVisible()
     }
 
 
@@ -128,6 +134,11 @@ class ColorPickerDialogCustomFragment(
 
 
     /*--- Private Update Methods ---*/
+
+    private fun updateRainbowView(color: PreciseColor) {
+        val rainbowView = view?.findViewById<RainbowView>(R.id.rainbowViewCustomColor)
+        rainbowView?.updateColor(color)
+    }
 
     private fun updateCustomColorOrb(color: PreciseColor) {
         val customColorOrb = view?.findViewById<ColorOrb>(R.id.colorOrbCustom)

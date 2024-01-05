@@ -49,4 +49,8 @@ class ColorPickerPagerAdapter(
     fun setCustomColor(color: PreciseColor) {
         customFragment?.setCustomColor(color)
     }
+
+    fun notifyTabChange(tab: ColorPickerTab) {
+        if (tab == ColorPickerTab.CUSTOM) customFragment?.notifyVisible()
+    }
 }
