@@ -18,6 +18,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.tabs.TabLayout
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogCustomFragment.Companion.ColorPickerCustomListener
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogPaletteFragment.Companion.ColorPickerPaletteListener
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerPagerAdapter
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
@@ -110,6 +111,10 @@ class ColorPickerDialogFragment(
         dismiss()
     }
 
+    override fun setCustomColor(color: Int) {
+        adapter.setCustomColor(color)
+    }
+
 
     /*--- View Initialization Methods ---*/
 
@@ -152,8 +157,11 @@ class ColorPickerDialogFragment(
         adapter = ColorPickerPagerAdapter(
             childFragmentManager,
             object: ColorPickerPaletteListener {
-                override fun onColorClick(color: Int) {
-                    presenter.handlePaletteColorChange(color)
+                override fun onColorClick(color: Int) = presenter.handlePaletteColorChange(color)
+            },
+            object: ColorPickerCustomListener {
+                override fun onHexChange(hex: String) {
+                    presenter.handleCustomHexChange(hex)
                 }
             }
         )

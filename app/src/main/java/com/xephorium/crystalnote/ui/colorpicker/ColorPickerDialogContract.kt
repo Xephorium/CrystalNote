@@ -14,6 +14,8 @@ interface ColorPickerDialogContract {
         fun enableSelectButton()
         fun disableSelectButton()
         fun returnSelectedColor(color: Int)
+
+        fun setCustomColor(color: Int)
     }
 
     abstract class Presenter : BasePresenter<View>() {
@@ -31,5 +33,7 @@ interface ColorPickerDialogContract {
         abstract fun handleSelectButtonClick()
 
         abstract fun handlePaletteColorChange(color: Int)
+
+        abstract fun handleCustomHexChange(hex: String)
     }
 }

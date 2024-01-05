@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
 import android.graphics.Color
+import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
 class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
@@ -33,6 +34,13 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
     override fun handlePaletteColorChange(color: Int) {
         selectedPaletteColor = color
         updateSelectButtonState()
+    }
+
+    override fun handleCustomHexChange(hex: String) {
+        val color = ColorUtility.intFromHex(hex)
+        if (color != null) {
+            view?.setCustomColor(color)
+        }
     }
 
 

@@ -48,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/ColorPickerEditTextTheme"
+            android:maxLength="6"
             tools:text="000000"
             android:text="000000"
             />
@@ -174,6 +175,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/ColorPickerEditTextTheme"
+            android:inputType="number"
+            android:maxLength="3"
             tools:text="255"
             android:text="255"
             />
@@ -217,6 +220,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/ColorPickerEditTextTheme"
+            android:inputType="number"
+            android:maxLength="3"
             tools:text="255"
             android:text="255"
             />
@@ -261,6 +266,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/ColorPickerEditTextTheme"
+            android:inputType="number"
+            android:maxLength="3"
             tools:text="255"
             android:text="255"
             />
