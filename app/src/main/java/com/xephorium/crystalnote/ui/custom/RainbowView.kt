@@ -10,6 +10,7 @@ import android.graphics.PorterDuff
 import android.graphics.Shader
 import android.graphics.Shader.TileMode
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presenter.Companion.DEFAULT_CUSTOM_COLOR
@@ -138,8 +139,8 @@ class RainbowView : View {
     }
 
     private fun refreshDotPosition() {
-        dotPositionX = measuredWidth * (colorPrecise.saturation / 100f)
-        dotPositionY = measuredHeight * (1f - (colorPrecise.value / 100f))
+        dotPositionX = (measuredWidth - 2 * dotRadius) * (colorPrecise.saturation / 100f) + dotRadius
+        dotPositionY = (measuredHeight - 2 * dotRadius) * (1f - (colorPrecise.value / 100f)) + dotRadius
     }
 
     private fun initializeShaders() {
