@@ -7,10 +7,12 @@ import android.graphics.Color
 import android.graphics.ComposeShader
 import android.graphics.LinearGradient
 import android.graphics.Paint
+import android.graphics.Point
 import android.graphics.PorterDuff
 import android.graphics.Shader
 import android.graphics.Shader.TileMode
 import android.util.AttributeSet
+import android.view.DragEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnClickListener
@@ -200,7 +202,10 @@ class RainbowView : View {
     @SuppressLint("ClickableViewAccessibility")
     private fun getTouchListener() : OnTouchListener {
         return OnTouchListener { _, event ->
-            if (event.actionMasked == MotionEvent.ACTION_UP) {
+            if (event.actionMasked == MotionEvent.ACTION_MOVE) {
+                lastTouchCoordinates = Pair(event.x, event.y)
+                notifyDialogOfTouchCoordinates()
+            } else if (event.actionMasked == MotionEvent.ACTION_UP) {
                 lastTouchCoordinates = Pair(event.x, event.y)
             }
 
@@ -210,11 +215,15 @@ class RainbowView : View {
 
     private fun getClickListener(): OnClickListener {
         return OnClickListener {
-            listener?.onRainbowClick(
-                (lastTouchCoordinates.first / measuredWidth).coerceIn(0f, 1f),
-                1f - (lastTouchCoordinates.second / measuredHeight).coerceIn(0f, 1f)
-            )
+            notifyDialogOfTouchCoordinates()
         }
+    }
+
+    private fun notifyDialogOfTouchCoordinates() {
+        listener?.onRainbowClick(
+            (lastTouchCoordinates.first / measuredWidth).coerceIn(0f, 1f),
+            1f - (lastTouchCoordinates.second / measuredHeight).coerceIn(0f, 1f)
+        )
     }
 
 
