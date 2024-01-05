@@ -10,7 +10,9 @@ import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 import com.xephorium.crystalnote.ui.custom.ColorOrb
 
-class ColorPickerDialogPaletteFragment : Fragment() {
+class ColorPickerDialogPaletteFragment(
+    private val listener: ColorPickerPaletteListener
+) : Fragment() {
 
 
     /*--- Variable Declarations ---*/
@@ -40,6 +42,7 @@ class ColorPickerDialogPaletteFragment : Fragment() {
                 selectedOrb?.disableForcedThickOutline()
                 selectedOrb = orb
                 orb.enableForcedThickOutline()
+                listener.onColorClick(orb.getColor())
             }
         }
     }
@@ -48,6 +51,10 @@ class ColorPickerDialogPaletteFragment : Fragment() {
     /*--- Constants ---*/
 
     companion object {
+        interface ColorPickerPaletteListener {
+            fun onColorClick(color: Int)
+        }
+
         private val ORB_RESOURCES = listOf(
             R.id.colorOrb1,
             R.id.colorOrb2,

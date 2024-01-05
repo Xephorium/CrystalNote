@@ -17,6 +17,7 @@ import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment
+import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptionsListener
@@ -96,6 +97,11 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         val dialog = ColorPickerDialogFragment(supportFragmentManager)
         dialog.setTitle("Select a Color")
         dialog.setButtonText("Select")
+        dialog.setColorPickerListener(object : ColorPickerListener {
+            override fun onColorSelect(color: Int) {
+                CrystalNoteToast.showShort(this@HomeActivity, "Color: $color")
+            }
+        })
         dialog.showDialog()
 
 //        val newColorPickerDialog = NewColorPickerDialog.Builder(this).create()

@@ -18,7 +18,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.tabs.TabLayout
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
-import com.xephorium.crystalnote.data.utility.CrystalNoteToast
+import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogPaletteFragment.Companion.ColorPickerPaletteListener
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerPagerAdapter
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
@@ -37,6 +37,8 @@ class ColorPickerDialogFragment(
     private lateinit var viewPager: ViewPager
     private lateinit var adapter: ColorPickerPagerAdapter
 
+    private var colorPickerListener: ColorPickerListener? = null
+
 
     /*--- Lifecycle Methods ---*/
 
@@ -50,6 +52,7 @@ class ColorPickerDialogFragment(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, bundle: Bundle?): View {
+        setupDialogViewListeners()
         setupDialogTabs()
         setupDialogTabListener()
         setupPresenter()
@@ -78,6 +81,10 @@ class ColorPickerDialogFragment(
         presenter.dialogButtonText = text
     }
 
+    fun setColorPickerListener(listener: ColorPickerListener) {
+        colorPickerListener = listener
+    }
+
     fun showDialog() {
         this.show(fragmentManager, null)
     }
@@ -88,6 +95,19 @@ class ColorPickerDialogFragment(
     override fun populateDialogViews(title: String, buttonText: String) {
         dialogView.findViewById<TextView>(R.id.textDialogTitle).text = title
         dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).text = buttonText
+    }
+
+    override fun enableSelectButton() {
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).isEnabled = true
+    }
+
+    override fun disableSelectButton() {
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).isEnabled = false
+    }
+
+    override fun returnSelectedColor(color: Int) {
+        colorPickerListener?.onColorSelect(color)
+        dismiss()
     }
 
 
@@ -120,10 +140,23 @@ class ColorPickerDialogFragment(
         }
     }
 
+    private fun setupDialogViewListeners() {
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).setOnClickListener {
+            presenter.handleSelectButtonClick()
+        }
+    }
+
     private fun setupDialogTabs() {
         val tabLayout = dialogView.findViewById<TabLayout>(R.id.tabLayoutColorPicker)
-        viewPager = dialogView.findViewById<ViewPager>(R.id.viewPagerColorPicker)
-        adapter = ColorPickerPagerAdapter(childFragmentManager)
+        viewPager = dialogView.findViewById(R.id.viewPagerColorPicker)
+        adapter = ColorPickerPagerAdapter(
+            childFragmentManager,
+            object: ColorPickerPaletteListener {
+                override fun onColorClick(color: Int) {
+                    presenter.handlePaletteColorChange(color)
+                }
+            }
+        )
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
     }
@@ -140,5 +173,14 @@ class ColorPickerDialogFragment(
 
     private fun setupPresenter() {
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+    }
+
+
+    /*--- Constants ---*/
+
+    companion object {
+        interface ColorPickerListener {
+            fun onColorSelect(color: Int)
+        }
     }
 }

@@ -3,9 +3,11 @@ package com.xephorium.crystalnote.ui.colorpicker.view
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogPaletteFragment.Companion.ColorPickerPaletteListener
 
 class ColorPickerPagerAdapter(
-    fragmentManager: FragmentManager
+    fragmentManager: FragmentManager,
+    private val paletteListener: ColorPickerPaletteListener
 ) : FragmentPagerAdapter(fragmentManager) {
 
     override fun getCount(): Int {
@@ -14,7 +16,7 @@ class ColorPickerPagerAdapter(
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
-            0 -> ColorPickerDialogPaletteFragment()
+            0 -> ColorPickerDialogPaletteFragment(paletteListener)
             else -> ColorPickerDialogCustomFragment()
         }
     }
