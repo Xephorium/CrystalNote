@@ -7,7 +7,6 @@ import android.graphics.Color
 import android.graphics.ComposeShader
 import android.graphics.LinearGradient
 import android.graphics.Paint
-import android.graphics.Point
 import android.graphics.PorterDuff
 import android.graphics.Shader
 import android.graphics.Shader.TileMode
@@ -17,8 +16,8 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.view.View.OnTouchListener
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogContract.Presenter.Companion.DEFAULT_CUSTOM_COLOR
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
+import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor.Companion.DEFAULT_PRECISE_COLOR
 
 
 class RainbowView : View {
@@ -34,11 +33,11 @@ class RainbowView : View {
     private var colorWhite = Color.WHITE
     private var colorBlack = Color.BLACK
     private var colorBase = Color.HSVToColor(floatArrayOf(
-        DEFAULT_CUSTOM_COLOR.hue.toFloat(),
+        DEFAULT_PRECISE_COLOR.hue.toFloat(),
         1f,
         1f
     ))
-    private var colorPrecise = DEFAULT_CUSTOM_COLOR
+    private var colorPrecise = DEFAULT_PRECISE_COLOR
 
     private var theme = CrystalNoteTheme.default(context)
 

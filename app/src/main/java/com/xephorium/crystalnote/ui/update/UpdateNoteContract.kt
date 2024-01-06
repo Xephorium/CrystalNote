@@ -28,7 +28,7 @@ interface UpdateNoteContract {
 
         fun scrollToBottom()
         fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean)
-        fun showColorPickerDialog()
+        fun showColorPickerDialog(color: Int)
         fun showSetNewPasswordDialog()
         fun showVerifyNewPasswordDialog(password: String)
         fun showNoteLockedMessage()

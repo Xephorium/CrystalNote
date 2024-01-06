@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
+import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
 
@@ -27,7 +28,7 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
         if (currentTab == ColorPickerTab.PALETTE) {
             selectedPaletteColor?.let { view?.returnSelectedColor(it) }
         } else {
-            view?.returnSelectedColor(selectedCustomColor.getIntColor())
+            view?.returnSelectedColor(selectedCustomColor.toIntColor())
         }
     }
 
@@ -37,7 +38,10 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
     }
 
     override fun handleCustomHexChange(hex: String) {
-        if (selectedCustomColor.setFromHex(hex)) view?.setCustomColor(selectedCustomColor)
+        PreciseColor.fromHex(hex)?.let {
+            selectedCustomColor = it
+            view?.setCustomColor(selectedCustomColor)
+        }
     }
 
     override fun handleCustomHueChange(hue: String) {

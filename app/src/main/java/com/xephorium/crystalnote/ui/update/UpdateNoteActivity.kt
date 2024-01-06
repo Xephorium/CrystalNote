@@ -18,7 +18,8 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.UpdateActivityLayoutBinding
 import com.xephorium.crystalnote.ui.base.BaseActivity
-import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialog
+import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment
+import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteToolbar
@@ -157,17 +158,15 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         noteOptionsDialog.show()
     }
 
-    override fun showColorPickerDialog() {
-        val dialog = ColorPickerDialog.Builder(this).create()
-        dialog.setTitle("Choose Note Color")
-        dialog.setColorPickerListener(object :
-            ColorPickerDialog.Companion.ColorPickerListener {
-            override fun onColorSelect(color: Int) {
-                dialog.dismiss()
-                presenter.handleColorChange(color)
-            }
+    override fun showColorPickerDialog(color: Int) {
+        val dialog = ColorPickerDialogFragment(supportFragmentManager)
+        dialog.setTitle("Select Note Color")
+        dialog.setButtonText("Select")
+        dialog.setInitialCustomColor(color)
+        dialog.setColorPickerListener(object : ColorPickerListener {
+            override fun onColorSelect(color: Int) = presenter.handleColorChange(color)
         })
-        dialog.show()
+        dialog.showDialog()
     }
 
     override fun showSetNewPasswordDialog() {

@@ -154,12 +154,12 @@ class ColorPickerDialogCustomFragment(
 
     private fun updateCustomColorOrb(color: PreciseColor) {
         val customColorOrb = view?.findViewById<ColorOrb>(R.id.colorOrbCustom)
-        customColorOrb?.setColor(color.getIntColor())
+        customColorOrb?.setColor(color.toIntColor())
     }
 
     private fun updateHexField(color: PreciseColor) {
         val editTextHex = view?.findViewById<TextInputEditText>(R.id.textInputCustomColorHex)
-        val newHex = color.getHexCode()
+        val newHex = color.toHexString()
         editTextHex?.let {
             if (!ColorUtility.areEqualHexColors(it.text.toString(), newHex)) {
                 if (!editTextHex.isFocused) it.setText(newHex)

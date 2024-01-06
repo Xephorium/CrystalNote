@@ -9,7 +9,7 @@ import kotlin.math.min
 object ColorUtility {
 
 
-    /*--- Public Utility Methods ---*/
+    /*--- Utility Methods ---*/
 
     fun applyTransparency(color: Int, transparency: Transparency): Int {
         return ColorUtils.setAlphaComponent(color, ((1.0 - transparency.value) * 255).toInt())
@@ -27,7 +27,14 @@ object ColorUtility {
         return bright / dark
     }
 
-    fun intFromHex(hex: String): Int? {
+    fun areEqualHexColors(hexOne: String, hexTwo: String): Boolean {
+        return getIntColorFromHexString(hexOne) == getIntColorFromHexString(hexTwo)
+    }
+
+
+    /*--- Conversion Methods ---*/
+
+    fun getIntColorFromHexString(hex: String): Int? {
         var color: Int? = null
         try {
             var sanitizedHex = hex.replace("#", "")
@@ -35,10 +42,6 @@ object ColorUtility {
             color = Color.parseColor("#$sanitizedHex")
         } catch (exception: Exception) { /* Do Nothing */ }
         return color
-    }
-
-    fun areEqualHexColors(hexOne: String, hexTwo: String): Boolean {
-        return intFromHex(hexOne) == intFromHex(hexTwo)
     }
 
 

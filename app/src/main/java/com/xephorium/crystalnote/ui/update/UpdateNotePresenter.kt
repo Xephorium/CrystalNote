@@ -81,7 +81,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleColorClick() {
         view?.hideKeyboard()
-        view?.showColorPickerDialog()
+        view?.showColorPickerDialog(color)
     }
 
     override fun handleColorChange(color: Int) {
@@ -223,7 +223,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
             // No Changes - Do Nothing
 
-            if (initialPreview.isEmpty() && NoteUtility.getPreviewFromContents(content).isNotEmpty()) {
+            if (isOldDatabaseNote()) {
 
                 // Old Database Note Without Preview - Migrate & Add Preview
                 noteRoomRepository.migrateNote(noteId, name, content, date, color, password)
@@ -247,5 +247,9 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
     private fun returnToCallingScreen() {
         if (isLaunchFromWidget || isLaunchFromSelect || isLaunchFromUpdateFile) view?.navigateBack()
         else view?.navigateHome()
+    }
+
+    private fun isOldDatabaseNote() : Boolean {
+        return initialPreview.isEmpty() && NoteUtility.getPreviewFromContents(initialContent).isNotEmpty()
     }
 }

@@ -4,6 +4,7 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
+import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor.Companion.DEFAULT_PRECISE_COLOR
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
 interface ColorPickerDialogContract {
@@ -28,7 +29,7 @@ interface ColorPickerDialogContract {
         var currentTab: ColorPickerTab = ColorPickerTab.PALETTE
 
         var selectedPaletteColor: Int? = null
-        var selectedCustomColor: PreciseColor = DEFAULT_CUSTOM_COLOR
+        var selectedCustomColor: PreciseColor = DEFAULT_PRECISE_COLOR
 
         abstract fun handleTabChange(colorPickerTab: ColorPickerTab)
         abstract fun handleSelectButtonClick()
@@ -40,9 +41,5 @@ interface ColorPickerDialogContract {
         abstract fun handleCustomSatChange(sat: String)
         abstract fun handleCustomValChange(value: String)
         abstract fun handleRainbowClick(x: Float, y: Float)
-
-        companion object {
-            val DEFAULT_CUSTOM_COLOR = PreciseColor(212, 75, 100)
-        }
     }
 }

@@ -1,27 +1,20 @@
 package com.xephorium.crystalnote.ui.colorpicker.model
 
 import android.graphics.Color
-import androidx.core.graphics.ColorUtils
+import android.graphics.Color.HSVToColor
+import android.graphics.Color.colorToHSV
 import kotlin.math.roundToInt
 
 
 /**
- * **Precise Color**
+ * ## Precise Color
  *
- * This class exists to reduce data loss issues while converting
- * between Java's various color classes and their disparate storage
- * strategies on disk. PreciseColor is driven by the following three
- * variables:
+ *   This class exists to store custom hsv color state for the ColorPickerDialog
+ *   and reduce data loss issues while converting between various color formats.
  *
- * - Hue - Integer (0, 360)
- * - Saturation - Integer (0, 100)
- * - Value - Integer (0, 100)
- *
- * All state updates are made to these three variables and all format
- * conversions are derived from them. This produces more stable results
- * than relying on the limited resolution of HEX codes or floating point
- * imprecision of standard HSV/HSL Color classes.
- *
+ *   - Hue - Integer `[0, 360]`
+ *   - Saturation - Integer `[0, 100]`
+ *   - Value - Integer `[0, 100]`
  */
 class PreciseColor() {
 
@@ -54,20 +47,28 @@ class PreciseColor() {
     }
 
 
-    /*--- Conversion Methods ---*/
+    /*--- Class Overrides ---*/
 
-    fun setFromHex(hex: String): Boolean {
-        return getIntColorFromHex(hex)?.let {
-            val hsv = getHsvFromIntColor(it)
-            hue = hsv.first
-            saturation = hsv.second
-            value = hsv.third
-            true
-        } ?: false
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as PreciseColor
+
+        if (hue != other.hue) return false
+        if (saturation != other.saturation) return false
+        return value == other.value
     }
 
-    fun getIntColor(): Int {
-        return Color.HSVToColor(floatArrayOf(
+    fun copy(): PreciseColor {
+        return PreciseColor(hue, saturation, value)
+    }
+
+
+    /*--- Object Conversion Methods ---*/
+
+    fun toIntColor(): Int {
+        return HSVToColor(floatArrayOf(
                 hue.toFloat(),
                 (saturation.toDouble() / 100.0).toFloat(),
                 (value.toDouble() / 100.0).toFloat()
@@ -75,45 +76,66 @@ class PreciseColor() {
         )
     }
 
-    fun getHexCode(): String {
-        return String.format("%06X", 0xFFFFFF and getIntColor()).lowercase()
+    fun toHexString(): String {
+        return String.format("%06X", 0xFFFFFF and toIntColor()).lowercase()
     }
 
 
-    /*--- Private Methods ---*/
+    /*--- Class Properties ---*/
 
-    private fun getHsvFromIntColor(color: Int): Triple<Int, Int, Int> {
-        val floatArray = FloatArray(3)
-        ColorUtils.colorToHSL(color, floatArray)
-        return Triple(
-            floatArray[0].toInt(),
-            (floatArray[1] * 100).roundToInt(),
-            (floatArray[2] * 100).roundToInt(),
-        )
-    }
+    companion object {
+        val DEFAULT_PRECISE_COLOR = PreciseColor(212, 75, 100)
 
-    private fun getIntColorFromHex(hex: String): Int? {
-        var color: Int? = null
-        try {
-            var sanitizedHex = hex.replace("#", "")
-            sanitizedHex = convertThreeDigitHexToSix(sanitizedHex)
-            color = Color.parseColor("#$sanitizedHex")
-        } catch (exception: Exception) { /* Do Nothing */ }
-        return color
-    }
 
-    private fun convertThreeDigitHexToSix(hex: String): String {
-        return if(hex.length == 3) {
-            StringBuilder()
-                .append(hex[0])
-                .append(hex[0])
-                .append(hex[1])
-                .append(hex[1])
-                .append(hex[2])
-                .append(hex[2])
-                .toString()
-        } else {
-            hex
+        /*--- Class Conversion Methods ---*/
+
+        fun fromHex(hex: String) : PreciseColor? {
+            val intColor = getIntColorFromHex(hex)
+            return intColor?.let {
+                val hsv = getHsvFromIntColor(it)
+                PreciseColor(
+                    hsv.first,
+                    hsv.second,
+                    hsv.third
+                )
+            }
+        }
+
+        /*--- Private Utility Methods ---*/
+
+        private fun getHsvFromIntColor(color: Int): Triple<Int, Int, Int> {
+            val floatArray = FloatArray(3)
+            colorToHSV(color, floatArray)
+            return Triple(
+                floatArray[0].toInt(),
+                (floatArray[1] * 100).roundToInt(),
+                (floatArray[2] * 100).roundToInt(),
+            )
+        }
+
+        private fun getIntColorFromHex(hex: String): Int? {
+            var color: Int? = null
+            try {
+                var sanitizedHex = hex.replace("#", "")
+                sanitizedHex = convertThreeDigitHexToSix(sanitizedHex)
+                color = Color.parseColor("#$sanitizedHex")
+            } catch (exception: Exception) { /* Do Nothing */ }
+            return color
+        }
+
+        private fun convertThreeDigitHexToSix(hex: String): String {
+            return if(hex.length == 3) {
+                StringBuilder()
+                    .append(hex[0])
+                    .append(hex[0])
+                    .append(hex[1])
+                    .append(hex[1])
+                    .append(hex[2])
+                    .append(hex[2])
+                    .toString()
+            } else {
+                hex
+            }
         }
     }
 }

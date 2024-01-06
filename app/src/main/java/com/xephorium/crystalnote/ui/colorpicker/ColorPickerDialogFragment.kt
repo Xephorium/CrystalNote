@@ -117,7 +117,7 @@ class ColorPickerDialogFragment(
     }
 
     override fun setCustomColor(color: PreciseColor) {
-        adapter.setCustomColor(color)
+        adapter.setCustomColor(color.copy())
     }
 
     override fun notifyTabChange(tab: ColorPickerTab) {
