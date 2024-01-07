@@ -59,7 +59,7 @@
     <dimen name="buttonAboutWidth">250dp</dimen>
     <dimen name="buttonCornerRadius">100dp</dimen>
     <dimen name="buttonVerticalPadding">6dp</dimen>
-    <dimen name="buttonTextSize">15.5sp</dimen>
+    <dimen name="buttonTextSize">15sp</dimen>
     <dimen name="dialogCornerRadius">10dp</dimen>
     <dimen name="dialogButtonCornerRadius">100dp</dimen>
     <dimen name="dialogButtonMargin">12dp</dimen>

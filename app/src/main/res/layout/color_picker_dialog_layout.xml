@@ -78,29 +78,29 @@
             app:layout_constraintTop_toBottomOf="@id/viewPagerColorPicker"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonDialogSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/paddingSmall"
+            android:layout_marginTop="@dimen/paddingMedium"
             android:layout_marginEnd="@dimen/paddingActivity"
             app:layout_constraintTop_toBottomOf="@+id/dividerColorPickerTwo"
             app:layout_constraintEnd_toEndOf="parent"
             android:enabled="false"
-            style="@style/DialogButtonStyle"
+            style="@style/ButtonPrimaryStyle"
             tools:text="Select"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonDialogFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="-8dp"
+            android:layout_marginEnd="@dimen/colorPickerPaddingSnug"
             app:layout_constraintTop_toTopOf="@id/buttonDialogSelect"
             app:layout_constraintEnd_toStartOf="@id/buttonDialogSelect"
             android:visibility="gone"
             android:text="Favorite"
-            style="@style/DialogButtonStyle"
+            style="@style/ButtonSecondaryStyle"
             tools:visibility="visible"
             />
 

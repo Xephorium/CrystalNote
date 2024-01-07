@@ -54,25 +54,26 @@
             tools:text="This is a message! A nice, long one. Lots of content to fill the screen. How exciting!"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonDialogPositive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/paddingActivity"
             app:layout_constraintTop_toBottomOf="@+id/textDialogMessage"
             app:layout_constraintEnd_toEndOf="parent"
-            style="@style/DialogButtonStyle"
+            style="@style/ButtonPrimaryStyle"
             tools:text="Confirm"
             />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonDialogNegative"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
             app:layout_constraintTop_toBottomOf="@+id/textDialogMessage"
             app:layout_constraintEnd_toStartOf="@id/buttonDialogPositive"
             android:visibility="gone"
-            style="@style/DialogButtonStyle"
+            style="@style/ButtonSecondaryStyle"
             tools:text="Cancel"
             tools:visibility="visible"
             />
