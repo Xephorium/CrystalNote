@@ -7,14 +7,12 @@ import android.graphics.drawable.ColorDrawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.xephorium.crystalnote.R
-import com.xephorium.crystalnote.data.model.CrystalNoteTheme
 
 
 class PasswordDialog private constructor(private val context: Context) {
@@ -112,19 +110,16 @@ class PasswordDialog private constructor(private val context: Context) {
             // No Password Entered
             if (isEmptyPassword) {
                 button?.isEnabled = false
-                button?.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
                 error = null // Hide Error
 
             // Password Invalid
             } else if (isInvalidPassword) {
                 button?.isEnabled = false
-                button?.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextSecondary)
                 if (shouldShowErrors) error = passwordError // Show Error
 
             // Password Valid
             } else {
                 button?.isEnabled = true
-                button?.setTextColor(CrystalNoteTheme.fromCurrentTheme(context).colorTextPrimary)
                 error = null // Hide Error
 
             }
