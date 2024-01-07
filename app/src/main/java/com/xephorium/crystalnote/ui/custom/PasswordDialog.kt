@@ -1,7 +1,6 @@
 package com.xephorium.crystalnote.ui.custom
 
 import android.content.Context
-import android.content.DialogInterface.BUTTON_POSITIVE
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.Editable
