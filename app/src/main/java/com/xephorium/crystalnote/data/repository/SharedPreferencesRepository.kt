@@ -201,6 +201,17 @@ class SharedPreferencesRepository(private val context: Context) {
         return DrawerButton.values().firstOrNull { it.name == buttonName }
     }
 
+    fun setFavoriteColorQueue(favorites: FavoriteColorQueue) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putString(FAVORITE_COLOR_QUEUE, favorites.toString())
+        editor.apply()
+    }
+
+    fun getFavoriteColorQueue(): FavoriteColorQueue {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return FavoriteColorQueue(prefs.getString(FAVORITE_COLOR_QUEUE, "") ?: "")
+    }
+
 
     /*--- Constants ---*/
 
@@ -218,5 +229,6 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val MONOSPACED_FONT = "MonospacedFont"
         private const val WIDGET_STATE_LIST = "WidgetStateList"
         private const val SELECTED_DRAWER_BUTTON_NAME = "SelectedDrawerButtonName"
+        private const val FAVORITE_COLOR_QUEUE = "FavoriteColorQueue"
     }
 }

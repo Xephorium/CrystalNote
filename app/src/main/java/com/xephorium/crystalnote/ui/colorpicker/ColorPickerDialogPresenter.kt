@@ -21,7 +21,7 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
     override fun handleTabChange(colorPickerTab: ColorPickerTab) {
         currentTab = colorPickerTab
         view?.notifyTabChange(colorPickerTab)
-        updateSelectButtonState()
+        updateButtonStates()
     }
 
     override fun handleSelectButtonClick() {
@@ -32,9 +32,15 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
         }
     }
 
+    override fun handleFavoriteButtonClick() {
+        favoriteColors.addColor(selectedCustomColor.toIntColor())
+        view?.setFavoriteColors(favoriteColors)
+        sharedPreferencesRepository.setFavoriteColorQueue(favoriteColors)
+    }
+
     override fun handlePaletteColorChange(color: Int) {
         selectedPaletteColor = color
-        updateSelectButtonState()
+        updateButtonStates()
     }
 
     override fun handleCustomHexChange(hex: String) {
@@ -71,6 +77,11 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
         view?.setCustomColor(selectedCustomColor)
     }
 
+    override fun handleFavoriteClick(color: Int) {
+        selectedCustomColor = PreciseColor(color)
+        view?.setCustomColor(selectedCustomColor)
+    }
+
 
     /*--- Private Methods ---*/
 
@@ -87,12 +98,14 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
         return stringInt in 0..360
     }
 
-    private fun updateSelectButtonState() {
+    private fun updateButtonStates() {
         if (currentTab == ColorPickerTab.PALETTE) {
             if (selectedPaletteColor != null) view?.enableSelectButton()
             else view?.disableSelectButton()
+            view?.hideFavoriteButton()
         } else {
             view?.enableSelectButton()
+            view?.showFavoriteButton()
         }
     }
 }

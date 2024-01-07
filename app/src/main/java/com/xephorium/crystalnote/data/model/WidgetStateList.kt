@@ -14,7 +14,7 @@ import java.lang.StringBuilder
   to and from a string to be stored in Shared Preferences. The string's
   format is as follows:
 
-    "<widgetState1.toString()>, <widgetState2.toString()>, ..."
+    "<widgetState1.toString()>,<widgetState2.toString()>,..."
 */
 
 class WidgetStateList(string: String) {

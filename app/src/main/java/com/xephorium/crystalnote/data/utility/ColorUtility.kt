@@ -44,6 +44,10 @@ object ColorUtility {
         return color
     }
 
+    fun getHexStringFromIntColor(color: Int): String {
+        return String.format("%06X", 0xFFFFFF and color).lowercase()
+    }
+
 
     /*--- Private Methods ---*/
 

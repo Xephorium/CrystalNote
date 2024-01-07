@@ -79,7 +79,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/buttonDialog"
+            android:id="@+id/buttonDialogSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/paddingSmall"
@@ -89,6 +89,19 @@
             android:enabled="false"
             style="@style/DialogButtonStyle"
             tools:text="Select"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonDialogFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="-8dp"
+            app:layout_constraintTop_toTopOf="@id/buttonDialogSelect"
+            app:layout_constraintEnd_toStartOf="@id/buttonDialogSelect"
+            android:visibility="gone"
+            android:text="Favorite"
+            style="@style/DialogButtonStyle"
+            tools:visibility="visible"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

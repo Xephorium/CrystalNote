@@ -1,6 +1,7 @@
 package com.xephorium.crystalnote.ui.colorpicker.view
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,15 +12,19 @@ import com.google.android.material.slider.Slider.OnChangeListener
 import com.google.android.material.textfield.TextInputEditText
 import com.xephorium.crystalnote.R
 import com.xephorium.crystalnote.data.model.CrystalNoteTheme
+import com.xephorium.crystalnote.data.model.FavoriteColorQueue
 import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.custom.ColorOrb
 import com.xephorium.crystalnote.ui.custom.RainbowView
 import com.xephorium.crystalnote.ui.custom.RainbowView.Companion.RainbowViewListener
+import com.xephorium.crystalnote.ui.extensions.getSelectableItemBackgroundBorderless
+
 
 class ColorPickerDialogCustomFragment(
     private val listener: ColorPickerCustomListener,
-    private var customColor: PreciseColor
+    private var customColor: PreciseColor,
+    private var favoriteColors: FavoriteColorQueue
 ) : Fragment() {
 
 
@@ -42,12 +47,13 @@ class ColorPickerDialogCustomFragment(
 
         setupRainbowView()
         setupCustomOrb()
-        setupHistoryOrbs()
+        setupFavoriteOrbs()
         setupHexField()
         setupHsvSliders()
         setupHsvFields()
 
         setCustomColor(customColor)
+        setFavoriteColors(favoriteColors)
     }
 
 
@@ -66,6 +72,16 @@ class ColorPickerDialogCustomFragment(
         updateHsvFields(customColor)
 
         notUpdatingViews = true
+    }
+
+    fun setFavoriteColors(colors: FavoriteColorQueue) {
+        favoriteColors = colors
+        for (index in favoriteColors.getAll().indices) {
+            val orb = view?.findViewById<ColorOrb>(FAVORITE_ORBS[index])
+            orb?.resetOutlineState()
+            orb?.setColor(favoriteColors.getAll()[index])
+            orb?.let { setupFavoriteOrbClickBehavior(it, index) }
+        }
     }
 
     fun notifyVisible() {
@@ -96,13 +112,22 @@ class ColorPickerDialogCustomFragment(
         customColorOrb?.enableForcedThickOutline()
     }
 
-    private fun setupHistoryOrbs() {
-        for (index in HISTORY_ORBS.indices) {
-            val orb = view?.findViewById<ColorOrb>(HISTORY_ORBS[index])
-            orb?.setPadding(R.dimen.colorCustomOrbHistoryPadding)
+    private fun setupFavoriteOrbs() {
+        for (index in FAVORITE_ORBS.indices) {
+            val orb = view?.findViewById<ColorOrb>(FAVORITE_ORBS[index])
+            orb?.setPadding(R.dimen.colorCustomOrbFavoritePadding)
             orb?.setBackdropColor(theme.colorBackground)
             orb?.setColor(theme.colorNoteBackground)
             orb?.setOutlineAlpha(0.0)
+        }
+    }
+
+    private fun setupFavoriteOrbClickBehavior(orb: ColorOrb, index: Int) {
+        orb.setBackgroundResource(requireContext().getSelectableItemBackgroundBorderless())
+        orb.isClickable = true
+        orb.isFocusable = true
+        orb.setOnClickListener {
+            listener.onFavoriteClick(favoriteColors.getAll()[index])
         }
     }
 
@@ -199,17 +224,18 @@ class ColorPickerDialogCustomFragment(
             fun onSatChange(sat: String)
             fun onValChange(value: String)
             fun onRainbowClick(x: Float, y: Float)
+            fun onFavoriteClick(color: Int)
         }
 
-        private val HISTORY_ORBS = listOf(
-            R.id.colorOrbHistory1,
-            R.id.colorOrbHistory2,
-            R.id.colorOrbHistory3,
-            R.id.colorOrbHistory4,
-            R.id.colorOrbHistory5,
-            R.id.colorOrbHistory6,
-            R.id.colorOrbHistory7,
-            R.id.colorOrbHistory8
+        private val FAVORITE_ORBS = listOf(
+            R.id.colorOrbFavorite1,
+            R.id.colorOrbFavorite2,
+            R.id.colorOrbFavorite3,
+            R.id.colorOrbFavorite4,
+            R.id.colorOrbFavorite5,
+            R.id.colorOrbFavorite6,
+            R.id.colorOrbFavorite7,
+            R.id.colorOrbFavorite8
         )
     }
 }

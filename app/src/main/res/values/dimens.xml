@@ -36,9 +36,9 @@
     <dimen name="colorCustomLayoutPadding">38dp</dimen>
     <dimen name="colorCustomOrbCustomSize">70dp</dimen>
     <dimen name="colorCustomOrbCustomPadding">6dp</dimen>
-    <dimen name="colorCustomOrbHistorySize">32dp</dimen>
-    <dimen name="colorCustomOrbHistoryHalfSize">16dp</dimen>
-    <dimen name="colorCustomOrbHistoryPadding">2dp</dimen>
+    <dimen name="colorCustomOrbFavoriteSize">32dp</dimen>
+    <dimen name="colorCustomOrbFavoriteHalfSize">16dp</dimen>
+    <dimen name="colorCustomOrbFavoritePadding">2dp</dimen>
     <dimen name="colorCustomTextInputHeight">24dp</dimen>
     <dimen name="colorCustomTextInputWidth">40dp</dimen>
     <dimen name="colorCustomTextLabelHeight">28dp</dimen>

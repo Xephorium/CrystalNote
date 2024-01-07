@@ -187,6 +187,11 @@ class ColorOrb : View {
         outlinePaintColor = determineOutlineColor()
     }
 
+    fun resetOutlineState() {
+        outlineColor = null
+        outlineAlpha = null
+    }
+
     fun setColor(color: Int) {
         orbColor = color
         orbContrast = determineOrbContrast()

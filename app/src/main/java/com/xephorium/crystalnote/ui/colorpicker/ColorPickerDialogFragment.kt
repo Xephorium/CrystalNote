@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.google.android.material.tabs.TabLayout
 import com.xephorium.crystalnote.R
+import com.xephorium.crystalnote.data.model.FavoriteColorQueue
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerDialogCustomFragment.Companion.ColorPickerCustomListener
@@ -100,15 +101,15 @@ class ColorPickerDialogFragment(
 
     override fun populateDialogViews(title: String, buttonText: String) {
         dialogView.findViewById<TextView>(R.id.textDialogTitle).text = title
-        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).text = buttonText
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogSelect).text = buttonText
     }
 
     override fun enableSelectButton() {
-        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).isEnabled = true
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogSelect).isEnabled = true
     }
 
     override fun disableSelectButton() {
-        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).isEnabled = false
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogSelect).isEnabled = false
     }
 
     override fun returnSelectedColor(color: Int) {
@@ -120,8 +121,20 @@ class ColorPickerDialogFragment(
         adapter.setCustomColor(color.copy())
     }
 
+    override fun setFavoriteColors(favoriteColorQueue: FavoriteColorQueue) {
+        adapter.setFavoriteColorQueue(favoriteColorQueue)
+    }
+
     override fun notifyTabChange(tab: ColorPickerTab) {
         adapter.notifyTabChange(tab)
+    }
+
+    override fun showFavoriteButton() {
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogFavorite).visibility = View.VISIBLE
+    }
+
+    override fun hideFavoriteButton() {
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogFavorite).visibility = View.GONE
     }
 
 
@@ -156,11 +169,15 @@ class ColorPickerDialogFragment(
 
     private fun setupPresenter() {
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(requireContext())
+        presenter.favoriteColors = presenter.sharedPreferencesRepository.getFavoriteColorQueue()
     }
 
     private fun setupDialogViewListeners() {
-        dialogView.findViewById<AppCompatButton>(R.id.buttonDialog).setOnClickListener {
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogSelect).setOnClickListener {
             presenter.handleSelectButtonClick()
+        }
+        dialogView.findViewById<AppCompatButton>(R.id.buttonDialogFavorite).setOnClickListener {
+            presenter.handleFavoriteButtonClick()
         }
     }
 
@@ -178,8 +195,10 @@ class ColorPickerDialogFragment(
                 override fun onSatChange(sat: String) = presenter.handleCustomSatChange(sat)
                 override fun onValChange(value: String) = presenter.handleCustomValChange(value)
                 override fun onRainbowClick(x: Float, y: Float) = presenter.handleRainbowClick(x, y)
+                override fun onFavoriteClick(color: Int) = presenter.handleFavoriteClick(color)
             },
-            presenter.selectedCustomColor
+            presenter.selectedCustomColor,
+            presenter.favoriteColors.copy()
         )
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)

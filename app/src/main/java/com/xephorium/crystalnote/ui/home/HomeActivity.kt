@@ -16,8 +16,6 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment
-import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment.Companion.ColorPickerListener
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptionsListener
@@ -94,26 +92,18 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
     }
 
     override fun showNoteOptionsDialog() {
-        val dialog = ColorPickerDialogFragment(supportFragmentManager)
-        dialog.setTitle("Select a Color")
-        dialog.setButtonText("Select")
-        dialog.setColorPickerListener(object : ColorPickerListener {
-            override fun onColorSelect(color: Int) = Unit
+        val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
+        noteOptionsDialog.hideUnlockOption()
+        noteOptionsDialog.setListener(object: NoteOptionsListener {
+            override fun onLockClick() = presenter.handleLockClick()
+            override fun onUnlockClick() = presenter.handleUnlockClick()
+            override fun onImportClick() = Unit
+            override fun onExportClick() = presenter.handleExportClick()
+            override fun onOpenClick() = Unit
+            override fun onRestoreClick() = Unit
+            override fun onDeleteClick() = presenter.handleDeleteClick()
         })
-        dialog.showDialog()
-
-//        val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
-//        noteOptionsDialog.hideUnlockOption()
-//        noteOptionsDialog.setListener(object: NoteOptionsListener {
-//            override fun onLockClick() = presenter.handleLockClick()
-//            override fun onUnlockClick() = presenter.handleUnlockClick()
-//            override fun onImportClick() = Unit
-//            override fun onExportClick() = presenter.handleExportClick()
-//            override fun onOpenClick() = Unit
-//            override fun onRestoreClick() = Unit
-//            override fun onDeleteClick() = presenter.handleDeleteClick()
-//        })
-//        noteOptionsDialog.show()
+        noteOptionsDialog.show()
     }
 
     override fun showLockedNoteOptionsDialog() {

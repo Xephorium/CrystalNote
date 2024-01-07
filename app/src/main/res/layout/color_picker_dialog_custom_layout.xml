@@ -69,79 +69,79 @@
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory1"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
+        android:id="@+id/colorOrbFavorite1"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
         app:layout_constraintStart_toStartOf="@id/alignmentView"
-        app:layout_constraintEnd_toStartOf="@id/colorOrbHistory2"
+        app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite2"
         app:layout_constraintTop_toTopOf="@id/alignmentView"
         app:layout_constraintHorizontal_chainStyle="packed"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory2"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
-        app:layout_constraintStart_toEndOf="@id/colorOrbHistory1"
-        app:layout_constraintEnd_toStartOf="@id/colorOrbHistory3"
+        android:id="@+id/colorOrbFavorite2"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        app:layout_constraintStart_toEndOf="@id/colorOrbFavorite1"
+        app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite3"
         app:layout_constraintTop_toTopOf="@id/alignmentView"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory3"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
-        app:layout_constraintStart_toEndOf="@id/colorOrbHistory2"
+        android:id="@+id/colorOrbFavorite3"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        app:layout_constraintStart_toEndOf="@id/colorOrbFavorite2"
         app:layout_constraintEnd_toEndOf="@id/alignmentView"
         app:layout_constraintTop_toTopOf="@id/alignmentView"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory6"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
+        android:id="@+id/colorOrbFavorite6"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
         app:layout_constraintStart_toStartOf="@id/alignmentView"
-        app:layout_constraintEnd_toStartOf="@id/colorOrbHistory7"
+        app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite7"
         app:layout_constraintBottom_toBottomOf="@id/alignmentView"
         app:layout_constraintHorizontal_chainStyle="packed"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory7"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
-        app:layout_constraintStart_toEndOf="@id/colorOrbHistory6"
-        app:layout_constraintEnd_toStartOf="@id/colorOrbHistory8"
+        android:id="@+id/colorOrbFavorite7"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        app:layout_constraintStart_toEndOf="@id/colorOrbFavorite6"
+        app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite8"
         app:layout_constraintBottom_toBottomOf="@id/alignmentView"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory8"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
-        app:layout_constraintStart_toEndOf="@id/colorOrbHistory7"
+        android:id="@+id/colorOrbFavorite8"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        app:layout_constraintStart_toEndOf="@id/colorOrbFavorite7"
         app:layout_constraintEnd_toEndOf="@id/alignmentView"
         app:layout_constraintBottom_toBottomOf="@id/alignmentView"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory4"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
-        android:layout_marginStart="@dimen/colorCustomOrbHistoryHalfSize"
-        app:layout_constraintTop_toTopOf="@+id/colorOrbHistory1"
-        app:layout_constraintBottom_toBottomOf="@id/colorOrbHistory6"
-        app:layout_constraintStart_toStartOf="@id/colorOrbHistory1"
+        android:id="@+id/colorOrbFavorite4"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_marginStart="@dimen/colorCustomOrbFavoriteHalfSize"
+        app:layout_constraintTop_toTopOf="@+id/colorOrbFavorite1"
+        app:layout_constraintBottom_toBottomOf="@id/colorOrbFavorite6"
+        app:layout_constraintStart_toStartOf="@id/colorOrbFavorite1"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
-        android:id="@+id/colorOrbHistory5"
-        android:layout_width="@dimen/colorCustomOrbHistorySize"
-        android:layout_height="@dimen/colorCustomOrbHistorySize"
-        android:layout_marginEnd="@dimen/colorCustomOrbHistoryHalfSize"
-        app:layout_constraintTop_toTopOf="@+id/colorOrbHistory1"
-        app:layout_constraintBottom_toBottomOf="@id/colorOrbHistory6"
-        app:layout_constraintEnd_toEndOf="@id/colorOrbHistory3"
+        android:id="@+id/colorOrbFavorite5"
+        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_marginEnd="@dimen/colorCustomOrbFavoriteHalfSize"
+        app:layout_constraintTop_toTopOf="@+id/colorOrbFavorite1"
+        app:layout_constraintBottom_toBottomOf="@id/colorOrbFavorite6"
+        app:layout_constraintEnd_toEndOf="@id/colorOrbFavorite3"
         />
 
     <TextView

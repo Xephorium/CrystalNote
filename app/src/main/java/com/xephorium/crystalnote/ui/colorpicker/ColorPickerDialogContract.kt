@@ -1,5 +1,6 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
+import com.xephorium.crystalnote.data.model.FavoriteColorQueue
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.ui.base.BasePresenter
 import com.xephorium.crystalnote.ui.base.BaseView
@@ -17,7 +18,11 @@ interface ColorPickerDialogContract {
         fun returnSelectedColor(color: Int)
 
         fun setCustomColor(color: PreciseColor)
+        fun setFavoriteColors(favoriteColorQueue: FavoriteColorQueue)
         fun notifyTabChange(tab: ColorPickerTab)
+
+        fun showFavoriteButton()
+        fun hideFavoriteButton()
     }
 
     abstract class Presenter : BasePresenter<View>() {
@@ -31,8 +36,11 @@ interface ColorPickerDialogContract {
         var selectedPaletteColor: Int? = null
         var selectedCustomColor: PreciseColor = DEFAULT_PRECISE_COLOR
 
+        var favoriteColors: FavoriteColorQueue = FavoriteColorQueue("")
+
         abstract fun handleTabChange(colorPickerTab: ColorPickerTab)
         abstract fun handleSelectButtonClick()
+        abstract fun handleFavoriteButtonClick()
 
         abstract fun handlePaletteColorChange(color: Int)
 
@@ -41,5 +49,6 @@ interface ColorPickerDialogContract {
         abstract fun handleCustomSatChange(sat: String)
         abstract fun handleCustomValChange(value: String)
         abstract fun handleRainbowClick(x: Float, y: Float)
+        abstract fun handleFavoriteClick(color: Int)
     }
 }
