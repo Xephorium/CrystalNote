@@ -61,7 +61,7 @@ class ColorPickerPagerAdapter(
         customFragment?.setFavoriteColors(favoriteColorQueue)
     }
 
-    fun notifyTabChange(tab: ColorPickerTab) {
-        if (tab == ColorPickerTab.CUSTOM) customFragment?.notifyVisible()
+    fun notifyTabChange(colorPickerTab: ColorPickerTab) {
+        customFragment?.notifyTabChanged(colorPickerTab)
     }
 }

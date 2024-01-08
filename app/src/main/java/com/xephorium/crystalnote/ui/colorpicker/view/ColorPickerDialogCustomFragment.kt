@@ -83,7 +83,8 @@ class ColorPickerDialogCustomFragment(
         }
     }
 
-    fun notifyVisible() {
+    fun notifyTabChanged(colorPickerTab: ColorPickerTab) {
+        clearFocusForTextInputs()
         view?.findViewById<RainbowView>(R.id.rainbowViewCustomColor)?.notifyVisible()
     }
 
