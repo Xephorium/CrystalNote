@@ -85,7 +85,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="@dimen/paddingMicro"
-        style="@style/AboutButtonTheme"
+        style="@style/ButtonSecondaryStyle"
         android:text="@string/aboutButtonDeveloper"
         />
 
@@ -97,7 +97,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="@dimen/paddingMassive"
-        style="@style/AboutButtonTheme"
+        style="@style/ButtonSecondaryStyle"
         android:text="@string/aboutButtonPrivacy"
         />
 
