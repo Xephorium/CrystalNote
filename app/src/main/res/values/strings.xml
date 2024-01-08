@@ -80,6 +80,10 @@
 
     <string name="widgetTitle">Widget Settings</string>
     <string name="widgetTextEmpty">Tap here to choose a note.</string>
+    <string name="widgetTextLoading">Loading widget…</string>
     <string name="widgetTextLocked">Note Locked</string>
+    <string name="widgetDescription">Keep your friends close. Keep your notes closer.</string>
+    <string name="widgetPreviewTitle">Note Title</string>
+    <string name="widgetPreviewText">• List Item #1\n• List Item #2\n• List Item #3\n• List Item #4\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</string>
 
 </resources>

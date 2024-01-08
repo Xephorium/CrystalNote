@@ -7,6 +7,8 @@
     android:minResizeWidth="@dimen/widgetMinimumResizeWidth"
     android:minResizeHeight="@dimen/widgetMinimumResizeHeight"
     android:previewImage="@drawable/note_widget_thumbnail"
+    android:previewLayout="@layout/note_widget_preview_layout"
+    android:description="@string/widgetDescription"
     android:configure="com.xephorium.crystalnote.ui.widget.WidgetConfigurationActivity"
     android:updatePeriodMillis="1000000"
     android:resizeMode="horizontal|vertical"

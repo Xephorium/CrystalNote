@@ -65,6 +65,20 @@
         android:padding="@dimen/widgetDefaultPadding"
         android:text="@string/widgetTextEmpty"
         android:textColor="@color/lightTextSecondary"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/textWidgetLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="@dimen/widgetDefaultPadding"
+        android:text="@string/widgetTextLoading"
+        android:textColor="@color/lightTextSecondary"
         />
 
     <TextView

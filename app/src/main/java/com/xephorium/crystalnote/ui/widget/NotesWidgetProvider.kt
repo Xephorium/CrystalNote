@@ -80,6 +80,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
                         widgetView.setViewVisibility(R.id.textWidgetContent, View.VISIBLE)
                         widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
                         widgetView.setViewVisibility(R.id.textWidgetLocked, View.GONE)
+                        widgetView.setViewVisibility(R.id.textWidgetLoading, View.GONE)
                         widgetView.setTextViewText(R.id.textWidgetTitle, widgetNote.name)
                         widgetView.setTextViewText(R.id.textWidgetContent, widgetNote.contents)
 
@@ -90,6 +91,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
                         widgetView.setViewVisibility(R.id.textWidgetTitle, View.GONE)
                         widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
                         widgetView.setViewVisibility(R.id.textWidgetEmpty, View.GONE)
+                        widgetView.setViewVisibility(R.id.textWidgetLoading, View.GONE)
                         widgetView.setViewVisibility(R.id.textWidgetLocked, View.VISIBLE)
                     }
 
@@ -100,6 +102,7 @@ class NotesWidgetProvider : AppWidgetProvider() {
                     widgetView.setViewVisibility(R.id.textWidgetContent, View.GONE)
                     widgetView.setViewVisibility(R.id.textWidgetEmpty, View.VISIBLE)
                     widgetView.setViewVisibility(R.id.textWidgetLocked, View.GONE)
+                    widgetView.setViewVisibility(R.id.textWidgetLoading, View.GONE)
                 }
 
                 // Set Listeners

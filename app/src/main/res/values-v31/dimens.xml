@@ -4,4 +4,7 @@
     <!-- Splash Screen Icon Inset -->
     <dimen name="iconSplashInset">46dp</dimen>
 
+    <!-- Widget Dimens -->
+    <dimen name="widgetDefaultPadding">14dp</dimen>
+
 </resources>
