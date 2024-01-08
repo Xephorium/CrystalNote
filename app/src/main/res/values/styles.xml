@@ -108,26 +108,44 @@
         <item name="colorAccent">?themeAccent</item>
     </style>
 
-    <style name="DialogTextInputLayoutTheme" parent="Theme.AppCompat">
-        <item name="android:editTextColor">?themeTextPrimary</item>
-        <item name="android:textColorHint">?themeTextSecondary</item>
-        <item name="android:actionMenuTextColor">?themeToolbarTextPrimary</item>
-        <item name="android:colorControlActivated">?themeTextSecondary</item>
-        <item name="android:textColorHighlight">?themeTextHighlight</item>
-        <item name="android:backgroundTint">?themeTextSecondary</item>
+    <style name="PasswordInputLayoutTheme" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintEnabled">false</item>
+        <item name="boxBackgroundColor">?themeNoteBackground</item>
+        <item name="boxStrokeColor">@color/edit_text_outline_color</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxStrokeErrorColor">@color/errorRed</item>
+        <item name="errorIconDrawable">@drawable/icon_warning</item>
+        <item name="errorIconTint">@color/errorRed</item>
+        <item name="errorTextColor">@color/errorRed</item>
+        <item name="boxCornerRadiusTopStart">@dimen/passwordDialogEditTextCornerRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/passwordDialogEditTextCornerRadius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/passwordDialogEditTextCornerRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/passwordDialogEditTextCornerRadius</item>
+        <item name="cursorColor">?themeAccent</item>
+        <item name="helperText"> </item>
     </style>
 
-    <style name="DialogTextInputErrorTheme" parent="@android:style/TextAppearance">
-        <item name="android:textColor">?themeTextPrimary</item>
-        <item name="android:textSize">@dimen/textError</item>
+    <style name="PasswordEditTextTheme">
+        <item name="android:textColor">?themeTextSecondary</item>
+        <item name="android:textColorHint">?themeTextTertiary</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="ColorPickerInputLayoutTheme" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintEnabled">false</item>
         <item name="boxBackgroundColor">?themeNoteBackground</item>
-        <item name="boxStrokeColor">@color/text_input_box_color</item>
+        <item name="boxStrokeColor">@color/edit_text_outline_color</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/colorCustomTextInputRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/colorCustomTextInputRadius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/colorCustomTextInputRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/colorCustomTextInputRadius</item>
         <item name="cursorColor">?themeAccent</item>
     </style>
 
@@ -257,6 +275,7 @@
         <item name="themeToolbarTextSecondary">@color/starscapeTextSecondary</item>
 
         <item name="themeBackground">@color/starscapeBackdropLight</item>
+        <item name="themeDivider">@color/starscapeDivider</item>
 
         <item name="themeAccent">@color/starscapeAccent</item>
         <item name="themeAccentRipple">@color/starscapeAccentRipple</item>

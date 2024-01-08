@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.xephorium.crystalnote.R
 
 
@@ -100,8 +101,9 @@ class PasswordDialog private constructor(private val context: Context) {
     }
 
     private fun validatePasswordField(password: String) {
-        alertDialog.findViewById<TextInputEditText>(R.id.textInputEditTextPassword)?.run {
-            val isEmptyPassword = (text ?: "").isEmpty()
+        alertDialog.findViewById<TextInputLayout>(R.id.textInputLayoutPassword)?.run {
+            val editText = alertDialog.findViewById<TextInputEditText>(R.id.textInputEditTextPassword)
+            val isEmptyPassword = (editText?.text ?: "").isEmpty()
             val passwordError = listener.verifyPassword(password)
             val isInvalidPassword = passwordError.isNotEmpty()
             val button = alertDialog.findViewById<AppCompatButton>(R.id.buttonPasswordPositive)
