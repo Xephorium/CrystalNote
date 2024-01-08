@@ -95,7 +95,7 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
             return false
         }
 
-        return stringInt in 0..360
+        return stringInt in min..max
     }
 
     private fun updateButtonStates() {

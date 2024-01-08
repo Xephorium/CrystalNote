@@ -126,6 +126,7 @@ class ColorPickerDialogCustomFragment(
         orb.isClickable = true
         orb.isFocusable = true
         orb.setOnClickListener {
+            clearFocusForTextInputs()
             listener.onFavoriteClick(favoriteColors.getAll()[index])
         }
     }
@@ -140,15 +141,24 @@ class ColorPickerDialogCustomFragment(
     private fun setupHsvSliders() {
         val sliderHue = view?.findViewById<Slider>(R.id.sliderCustomColorHue)
         sliderHue?.addOnChangeListener(OnChangeListener { slider, value, fromUser ->
-            listener.onHueChange(value.toInt().toString())
+            if (notUpdatingViews) {
+                clearFocusForTextInputs()
+                listener.onHueChange(value.toInt().toString())
+            }
         })
         val sliderSat = view?.findViewById<Slider>(R.id.sliderCustomColorSat)
         sliderSat?.addOnChangeListener(OnChangeListener { slider, value, fromUser ->
-            listener.onSatChange(value.toInt().toString())
+            if (notUpdatingViews) {
+                clearFocusForTextInputs()
+                listener.onSatChange(value.toInt().toString())
+            }
         })
         val sliderVal = view?.findViewById<Slider>(R.id.sliderCustomColorVal)
         sliderVal?.addOnChangeListener(OnChangeListener { slider, value, fromUser ->
-            listener.onValChange(value.toInt().toString())
+            if (notUpdatingViews) {
+                clearFocusForTextInputs()
+                listener.onValChange(value.toInt().toString())
+            }
         })
 
     }
@@ -158,13 +168,34 @@ class ColorPickerDialogCustomFragment(
         editTextHue?.doOnTextChanged { text, _, _, _ ->
             if (notUpdatingViews) listener.onHueChange(text.toString())
         }
+        editTextHue?.setOnFocusChangeListener { view, focused ->
+            if (!focused) {
+                notUpdatingViews = false
+                editTextHue.setText(customColor.hue.toString())
+                notUpdatingViews = true
+            }
+        }
         val editTextSat = view?.findViewById<TextInputEditText>(R.id.textInputCustomColorSat)
         editTextSat?.doOnTextChanged { text, _, _, _ ->
             if (notUpdatingViews) listener.onSatChange(text.toString())
         }
+        editTextSat?.setOnFocusChangeListener { view, focused ->
+            if (!focused) {
+                notUpdatingViews = false
+                editTextSat.setText(customColor.saturation.toString())
+                notUpdatingViews = true
+            }
+        }
         val editTextVal = view?.findViewById<TextInputEditText>(R.id.textInputCustomColorVal)
         editTextVal?.doOnTextChanged { text, _, _, _ ->
             if (notUpdatingViews) listener.onValChange(text.toString())
+        }
+        editTextVal?.setOnFocusChangeListener { view, focused ->
+            if (!focused) {
+                notUpdatingViews = false
+                editTextVal.setText(customColor.value.toString())
+                notUpdatingViews = true
+            }
         }
     }
 
@@ -211,6 +242,13 @@ class ColorPickerDialogCustomFragment(
         if (editText?.text.toString() != newValue.toString()) {
             if (editText?.isFocused == false) editText.setText(newValue.toString())
         }
+    }
+
+    private fun clearFocusForTextInputs() {
+        view?.findViewById<TextInputEditText>(R.id.textInputCustomColorHex)?.clearFocus()
+        view?.findViewById<TextInputEditText>(R.id.textInputCustomColorHue)?.clearFocus()
+        view?.findViewById<TextInputEditText>(R.id.textInputCustomColorSat)?.clearFocus()
+        view?.findViewById<TextInputEditText>(R.id.textInputCustomColorVal)?.clearFocus()
     }
 
 
