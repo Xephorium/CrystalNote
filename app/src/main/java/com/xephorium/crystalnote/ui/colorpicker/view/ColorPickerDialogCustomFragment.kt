@@ -74,6 +74,7 @@ class ColorPickerDialogCustomFragment(
     }
 
     fun setFavoriteColors(colors: FavoriteColorQueue) {
+        setupFavoriteOrbs()
         favoriteColors = colors
         for (index in favoriteColors.getAll().indices) {
             val orb = view?.findViewById<ColorOrb>(FAVORITE_ORBS[index])
@@ -119,6 +120,11 @@ class ColorPickerDialogCustomFragment(
             orb?.setBackdropColor(theme.colorBackground)
             orb?.setColor(theme.colorNoteBackground)
             orb?.setOutlineAlpha(0.0)
+            orb?.setOnClickListener(null)
+            orb?.setOnLongClickListener(null)
+            orb?.setBackgroundResource(0)
+            orb?.isClickable = false
+            orb?.isFocusable = false
         }
     }
 
@@ -129,6 +135,11 @@ class ColorPickerDialogCustomFragment(
         orb.setOnClickListener {
             clearFocusForTextInputs()
             listener.onFavoriteClick(favoriteColors.getAll()[index])
+        }
+        orb.setOnLongClickListener {
+            clearFocusForTextInputs()
+            listener.onFavoriteLongClick(favoriteColors.getAll()[index])
+            true
         }
     }
 
@@ -263,6 +274,7 @@ class ColorPickerDialogCustomFragment(
             fun onValChange(value: String)
             fun onRainbowClick(x: Float, y: Float)
             fun onFavoriteClick(color: Int)
+            fun onFavoriteLongClick(color: Int)
         }
 
         private val FAVORITE_ORBS = listOf(

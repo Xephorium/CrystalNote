@@ -46,6 +46,10 @@ class FavoriteColorQueue(string: String) {
         }
     }
 
+    fun removeColor(color: Int) {
+        colors.remove(color)
+    }
+
     override fun toString() : String {
         val builder = StringBuilder()
         val upperBound = if (colors.size < MAX_FAVORITES) colors.size else MAX_FAVORITES

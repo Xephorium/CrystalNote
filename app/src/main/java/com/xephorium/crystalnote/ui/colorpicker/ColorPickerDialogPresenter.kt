@@ -1,5 +1,8 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
+import android.app.Activity
+import androidx.fragment.app.DialogFragment
+import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import com.xephorium.crystalnote.ui.colorpicker.view.ColorPickerTab
 
@@ -80,6 +83,12 @@ class ColorPickerDialogPresenter : ColorPickerDialogContract.Presenter() {
     override fun handleFavoriteClick(color: Int) {
         selectedCustomColor = PreciseColor(color)
         view?.setCustomColor(selectedCustomColor)
+    }
+
+    override fun handleFavoriteLongClick(color: Int) {
+        favoriteColors.removeColor(color)
+        CrystalNoteToast.showShort((view as DialogFragment).requireContext(), "Favorite color removed.")
+        view?.setFavoriteColors(favoriteColors)
     }
 
 

@@ -196,6 +196,7 @@ class ColorPickerDialogFragment(
                 override fun onValChange(value: String) = presenter.handleCustomValChange(value)
                 override fun onRainbowClick(x: Float, y: Float) = presenter.handleRainbowClick(x, y)
                 override fun onFavoriteClick(color: Int) = presenter.handleFavoriteClick(color)
+                override fun onFavoriteLongClick(color: Int) = presenter.handleFavoriteLongClick(color)
             },
             presenter.selectedCustomColor,
             presenter.favoriteColors.copy()

@@ -50,5 +50,6 @@ interface ColorPickerDialogContract {
         abstract fun handleCustomValChange(value: String)
         abstract fun handleRainbowClick(x: Float, y: Float)
         abstract fun handleFavoriteClick(color: Int)
+        abstract fun handleFavoriteLongClick(color: Int)
     }
 }

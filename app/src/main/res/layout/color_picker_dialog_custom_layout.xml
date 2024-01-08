@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             style="@style/ColorPickerEditTextTheme"
-            android:inputType="text"
+            android:importantForAutofill="no"
             android:maxLength="6"
             tools:text="000000"
             />
