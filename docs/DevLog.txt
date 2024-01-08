@@ -39,7 +39,6 @@ December 2023
     • Configurable widget background radius (12.31.2023)
     • Custom Color Picker for Note/Widget Colors (01.6.24)
       ◦ Revisit Field Focus Behavior
-      ◦ Replace Password Dialog TextLayout
     ◦ Refresh themes (Ongoing)
       • Darker Night Theme (12.30.2023)
     ◦ Theme Badges
