@@ -142,10 +142,10 @@
         <item name="boxStrokeColor">@color/edit_text_outline_color</item>
         <item name="boxStrokeWidth">1dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
-        <item name="boxCornerRadiusTopStart">@dimen/colorCustomTextInputRadius</item>
-        <item name="boxCornerRadiusTopEnd">@dimen/colorCustomTextInputRadius</item>
-        <item name="boxCornerRadiusBottomStart">@dimen/colorCustomTextInputRadius</item>
-        <item name="boxCornerRadiusBottomEnd">@dimen/colorCustomTextInputRadius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/colorPickerCustomTextInputRadius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/colorPickerCustomTextInputRadius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/colorPickerCustomTextInputRadius</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/colorPickerCustomTextInputRadius</item>
         <item name="cursorColor">?themeAccent</item>
     </style>
 

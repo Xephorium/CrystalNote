@@ -9,84 +9,84 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb1"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="@dimen/colorPaletteOrbHalfSize"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHalfSize"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb2"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb1"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb3"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb2"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb4"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb3"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb5"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb4"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb6"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb5"
         app:layout_constraintTop_toTopOf="parent"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb7"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb6"
         app:layout_constraintTop_toTopOf="parent"
         />
@@ -96,96 +96,96 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb8"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginTop="@dimen/colorPaletteOrbVertMargin"
+        android:layout_marginTop="@dimen/colorPickerPaletteOrbVertMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/colorOrb1"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb9"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb8"
         app:layout_constraintTop_toTopOf="@id/colorOrb8"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb10"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb9"
         app:layout_constraintTop_toTopOf="@id/colorOrb9"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb11"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb10"
         app:layout_constraintTop_toTopOf="@id/colorOrb10"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb12"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb11"
         app:layout_constraintTop_toTopOf="@id/colorOrb11"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb13"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb12"
         app:layout_constraintTop_toTopOf="@id/colorOrb12"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb14"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb13"
         app:layout_constraintTop_toTopOf="@id/colorOrb13"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb15"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb14"
         app:layout_constraintTop_toTopOf="@id/colorOrb14"
         />
@@ -195,85 +195,85 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb16"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/colorOrb8"
-        android:layout_marginStart="@dimen/colorPaletteOrbHalfSize"
-        android:layout_marginTop="@dimen/colorPaletteOrbVertMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHalfSize"
+        android:layout_marginTop="@dimen/colorPickerPaletteOrbVertMargin"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb17"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb16"
         app:layout_constraintTop_toTopOf="@id/colorOrb16"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb18"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb17"
         app:layout_constraintTop_toTopOf="@id/colorOrb17"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb19"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb18"
         app:layout_constraintTop_toTopOf="@id/colorOrb18"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb20"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb19"
         app:layout_constraintTop_toTopOf="@id/colorOrb19"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb21"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb20"
         app:layout_constraintTop_toTopOf="@id/colorOrb20"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb22"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb21"
         app:layout_constraintTop_toTopOf="@id/colorOrb21"
         />
@@ -283,96 +283,96 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb23"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginTop="@dimen/colorPaletteOrbVertMargin"
+        android:layout_marginTop="@dimen/colorPickerPaletteOrbVertMargin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/colorOrb16"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb24"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb23"
         app:layout_constraintTop_toTopOf="@id/colorOrb23"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb25"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb24"
         app:layout_constraintTop_toTopOf="@id/colorOrb24"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb26"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb25"
         app:layout_constraintTop_toTopOf="@id/colorOrb25"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb27"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb26"
         app:layout_constraintTop_toTopOf="@id/colorOrb26"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb28"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb27"
         app:layout_constraintTop_toTopOf="@id/colorOrb27"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb29"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb28"
         app:layout_constraintTop_toTopOf="@id/colorOrb28"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb30"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb29"
         app:layout_constraintTop_toTopOf="@id/colorOrb29"
         />
@@ -382,85 +382,85 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb31"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/colorOrb23"
-        android:layout_marginStart="@dimen/colorPaletteOrbHalfSize"
-        android:layout_marginTop="@dimen/colorPaletteOrbVertMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHalfSize"
+        android:layout_marginTop="@dimen/colorPickerPaletteOrbVertMargin"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb32"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb31"
         app:layout_constraintTop_toTopOf="@id/colorOrb31"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb33"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb32"
         app:layout_constraintTop_toTopOf="@id/colorOrb32"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb34"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb33"
         app:layout_constraintTop_toTopOf="@id/colorOrb33"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb35"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb34"
         app:layout_constraintTop_toTopOf="@id/colorOrb34"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb36"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb35"
         app:layout_constraintTop_toTopOf="@id/colorOrb35"
         />
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrb37"
-        android:layout_width="@dimen/colorPaletteOrbSize"
-        android:layout_height="@dimen/colorPaletteOrbSize"
+        android:layout_width="@dimen/colorPickerPaletteOrbSize"
+        android:layout_height="@dimen/colorPickerPaletteOrbSize"
         android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:focusable="true"
-        android:layout_marginStart="@dimen/colorPaletteOrbHorizMargin"
+        android:layout_marginStart="@dimen/colorPickerPaletteOrbHorizMargin"
         app:layout_constraintStart_toEndOf="@id/colorOrb36"
         app:layout_constraintTop_toTopOf="@id/colorOrb36"
         />

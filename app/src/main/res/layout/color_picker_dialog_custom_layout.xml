@@ -10,8 +10,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbCustom"
-        android:layout_width="@dimen/colorCustomOrbCustomSize"
-        android:layout_height="@dimen/colorCustomOrbCustomSize"
+        android:layout_width="@dimen/colorPickerCustomOrbSize"
+        android:layout_height="@dimen/colorPickerCustomOrbSize"
         android:layout_marginTop="@dimen/paddingSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="0dp"
         android:layout_height="85dp"
         android:layout_marginTop="14dp"
-        android:layout_marginStart="@dimen/colorCustomLayoutPadding"
+        android:layout_marginStart="@dimen/colorPickerCustomLayoutPadding"
         android:layout_marginEnd="6dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/colorOrbCustom"
@@ -33,7 +33,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textLayoutCustomColorHex"
         android:layout_width="55dp"
-        android:layout_height="@dimen/colorCustomTextInputHeight"
+        android:layout_height="@dimen/colorPickerCustomTextInputHeight"
         app:layout_constraintStart_toStartOf="@id/colorOrbCustom"
         app:layout_constraintEnd_toEndOf="@id/colorOrbCustom"
         app:layout_constraintTop_toBottomOf="@id/colorOrbCustom"
@@ -70,8 +70,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite1"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
         app:layout_constraintStart_toStartOf="@id/alignmentView"
         app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite2"
         app:layout_constraintTop_toTopOf="@id/alignmentView"
@@ -80,8 +80,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite2"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
         app:layout_constraintStart_toEndOf="@id/colorOrbFavorite1"
         app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite3"
         app:layout_constraintTop_toTopOf="@id/alignmentView"
@@ -89,8 +89,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite3"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
         app:layout_constraintStart_toEndOf="@id/colorOrbFavorite2"
         app:layout_constraintEnd_toEndOf="@id/alignmentView"
         app:layout_constraintTop_toTopOf="@id/alignmentView"
@@ -98,8 +98,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite6"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
         app:layout_constraintStart_toStartOf="@id/alignmentView"
         app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite7"
         app:layout_constraintBottom_toBottomOf="@id/alignmentView"
@@ -108,8 +108,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite7"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
         app:layout_constraintStart_toEndOf="@id/colorOrbFavorite6"
         app:layout_constraintEnd_toStartOf="@id/colorOrbFavorite8"
         app:layout_constraintBottom_toBottomOf="@id/alignmentView"
@@ -117,8 +117,8 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite8"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
         app:layout_constraintStart_toEndOf="@id/colorOrbFavorite7"
         app:layout_constraintEnd_toEndOf="@id/alignmentView"
         app:layout_constraintBottom_toBottomOf="@id/alignmentView"
@@ -126,9 +126,9 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite4"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_marginStart="@dimen/colorCustomOrbFavoriteHalfSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_marginStart="@dimen/colorPickerCustomOrbFavoriteHalfSize"
         app:layout_constraintTop_toTopOf="@+id/colorOrbFavorite1"
         app:layout_constraintBottom_toBottomOf="@id/colorOrbFavorite6"
         app:layout_constraintStart_toStartOf="@id/colorOrbFavorite1"
@@ -136,9 +136,9 @@
 
     <com.xephorium.crystalnote.ui.custom.ColorOrb
         android:id="@+id/colorOrbFavorite5"
-        android:layout_width="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_height="@dimen/colorCustomOrbFavoriteSize"
-        android:layout_marginEnd="@dimen/colorCustomOrbFavoriteHalfSize"
+        android:layout_width="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_height="@dimen/colorPickerCustomOrbFavoriteSize"
+        android:layout_marginEnd="@dimen/colorPickerCustomOrbFavoriteHalfSize"
         app:layout_constraintTop_toTopOf="@+id/colorOrbFavorite1"
         app:layout_constraintBottom_toBottomOf="@id/colorOrbFavorite6"
         app:layout_constraintEnd_toEndOf="@id/colorOrbFavorite3"
@@ -146,10 +146,10 @@
 
     <TextView
         android:id="@+id/textLabelHue"
-        android:layout_width="@dimen/colorCustomTextLabelWidth"
-        android:layout_height="@dimen/colorCustomTextLabelHeight"
+        android:layout_width="@dimen/colorPickerCustomTextLabelWidth"
+        android:layout_height="@dimen/colorPickerCustomTextLabelHeight"
         android:layout_marginTop="@dimen/paddingMedium"
-        android:layout_marginStart="@dimen/colorCustomLayoutPadding"
+        android:layout_marginStart="@dimen/colorPickerCustomLayoutPadding"
         android:paddingBottom="@dimen/paddingSmall"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rainbowViewCustomColor"
@@ -159,9 +159,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textLayoutCustomColorHue"
-        android:layout_width="@dimen/colorCustomTextInputWidth"
-        android:layout_height="@dimen/colorCustomTextInputHeight"
-        android:layout_marginEnd="@dimen/colorCustomLayoutPadding"
+        android:layout_width="@dimen/colorPickerCustomTextInputWidth"
+        android:layout_height="@dimen/colorPickerCustomTextInputHeight"
+        android:layout_marginEnd="@dimen/colorPickerCustomLayoutPadding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/sliderCustomColorHue"
         app:layout_constraintBottom_toBottomOf="@id/sliderCustomColorHue"
@@ -195,8 +195,8 @@
 
     <TextView
         android:id="@+id/textLabelSat"
-        android:layout_width="@dimen/colorCustomTextLabelWidth"
-        android:layout_height="@dimen/colorCustomTextLabelHeight"
+        android:layout_width="@dimen/colorPickerCustomTextLabelWidth"
+        android:layout_height="@dimen/colorPickerCustomTextLabelHeight"
         android:paddingBottom="@dimen/paddingSmall"
         app:layout_constraintStart_toStartOf="@id/textLabelHue"
         app:layout_constraintTop_toBottomOf="@+id/textLabelHue"
@@ -206,8 +206,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textLayoutCustomColorSat"
-        android:layout_width="@dimen/colorCustomTextInputWidth"
-        android:layout_height="@dimen/colorCustomTextInputHeight"
+        android:layout_width="@dimen/colorPickerCustomTextInputWidth"
+        android:layout_height="@dimen/colorPickerCustomTextInputHeight"
         app:layout_constraintEnd_toEndOf="@id/textLayoutCustomColorHue"
         app:layout_constraintTop_toTopOf="@id/sliderCustomColorSat"
         app:layout_constraintBottom_toBottomOf="@id/sliderCustomColorSat"
@@ -241,8 +241,8 @@
 
     <TextView
         android:id="@+id/textLabelVal"
-        android:layout_width="@dimen/colorCustomTextLabelWidth"
-        android:layout_height="@dimen/colorCustomTextLabelHeight"
+        android:layout_width="@dimen/colorPickerCustomTextLabelWidth"
+        android:layout_height="@dimen/colorPickerCustomTextLabelHeight"
         android:paddingBottom="@dimen/paddingSmall"
         app:layout_constraintStart_toStartOf="@id/textLabelSat"
         app:layout_constraintTop_toBottomOf="@+id/textLabelSat"
@@ -252,8 +252,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textLayoutCustomColorVal"
-        android:layout_width="@dimen/colorCustomTextInputWidth"
-        android:layout_height="@dimen/colorCustomTextInputHeight"
+        android:layout_width="@dimen/colorPickerCustomTextInputWidth"
+        android:layout_height="@dimen/colorPickerCustomTextInputHeight"
         android:layout_marginBottom="@dimen/paddingMicro"
         app:layout_constraintEnd_toEndOf="@id/textLayoutCustomColorSat"
         app:layout_constraintTop_toTopOf="@id/sliderCustomColorVal"

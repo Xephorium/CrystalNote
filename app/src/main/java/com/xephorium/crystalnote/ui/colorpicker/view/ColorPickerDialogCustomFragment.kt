@@ -1,7 +1,6 @@
 package com.xephorium.crystalnote.ui.colorpicker.view
 
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -106,7 +105,7 @@ class ColorPickerDialogCustomFragment(
 
     private fun setupCustomOrb() {
         val customColorOrb = view?.findViewById<ColorOrb>(R.id.colorOrbCustom)
-        customColorOrb?.setPadding(R.dimen.colorCustomOrbCustomPadding)
+        customColorOrb?.setPadding(R.dimen.colorPickerCustomOrbPadding)
         customColorOrb?.setBackdropColor(theme.colorBackground)
         customColorOrb?.setOutlineColor(theme.colorTextPrimary)
         customColorOrb?.enableForcedThickOutline()
@@ -115,7 +114,7 @@ class ColorPickerDialogCustomFragment(
     private fun setupFavoriteOrbs() {
         for (index in FAVORITE_ORBS.indices) {
             val orb = view?.findViewById<ColorOrb>(FAVORITE_ORBS[index])
-            orb?.setPadding(R.dimen.colorCustomOrbFavoritePadding)
+            orb?.setPadding(R.dimen.colorPickerCustomOrbFavoritePadding)
             orb?.setBackdropColor(theme.colorBackground)
             orb?.setColor(theme.colorNoteBackground)
             orb?.setOutlineAlpha(0.0)
