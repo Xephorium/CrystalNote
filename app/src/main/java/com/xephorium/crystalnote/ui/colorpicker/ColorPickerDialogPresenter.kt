@@ -1,6 +1,5 @@
 package com.xephorium.crystalnote.ui.colorpicker
 
-import android.app.Activity
 import androidx.fragment.app.DialogFragment
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
