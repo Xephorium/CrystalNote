@@ -103,7 +103,7 @@
     <color name="parchmentTextSecondary">#655953</color>
     <color name="parchmentTextTertiary">#8E7967</color>
     <color name="parchmentTextHandle">#705E4D</color>
-    <color name="parchmentTextHighlight">#705E4D</color>
+    <color name="parchmentTextHighlight">#bab0a0</color>
     <color name="parchmentDrawerFilter">#70BAA782</color>
     <color name="parchmentDivider">#BFB5AF</color>
     <color name="parchmentPreviewBackgroundDark">#1B1411</color>
