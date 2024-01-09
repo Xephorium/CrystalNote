@@ -1,4 +1,4 @@
-<img align="left" width="120" src="app/src/main/res/mipmap-xxxhdpi/icon_launcher.png" alt="CrystalNote Icon">
+<img align="left" width="140" src="app/src/main/res/mipmap-xxxhdpi/icon_launcher.png" alt="CrystalNote Icon">
 
 # CrystalNote
 An aggressively minimalist, highly customizable notes app for Android.
