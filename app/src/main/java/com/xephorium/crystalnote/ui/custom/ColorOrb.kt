@@ -24,14 +24,13 @@ class ColorOrb : View {
     private var viewWidth: Int? = null
     private var desiredViewHeight: Int? = null
 
-    private var theme = CrystalNoteTheme.default(context)
+    private var theme = CrystalNoteTheme.fromCurrentTheme(context)
     private var backgroundColor: Int? = null
     private var outlineColor: Int? = null
     private var outlineAlpha: Int? = null
     private var orbColor = theme.colorTextSecondary
     private var orbContrast = 2.0
     private var padding: Float = DEFAULT_ORB_PADDING
-    private var useContrastOutline = true
     private var forceThickOutline = false
 
     private var viewPadding: Float = 0f
@@ -260,7 +259,7 @@ class ColorOrb : View {
     }
 
     private fun determineOutlineColor(): Int {
-        return if ((orbContrast < CONTRAST_THRESHOLD && useContrastOutline) || forceThickOutline) {
+        return if (orbContrast < CONTRAST_THRESHOLD || forceThickOutline) {
             val drawColor = outlineColor ?: theme.colorTextPrimary
             val drawAlpha = outlineAlpha ?: OUTLINE_ALPHA
             ColorUtils.setAlphaComponent(drawColor, drawAlpha)

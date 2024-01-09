@@ -37,6 +37,7 @@ class ColorPickerDialogPaletteFragment(
             val orb = view.findViewById<ColorOrb>(ORB_RESOURCES[index])
             orb?.setPadding(R.dimen.colorPickerPaletteOrbPadding)
             orb?.setBackdropColor(theme.colorBackground)
+            orb?.setOutlineColor(theme.colorTextPrimary)
             orb?.setColor(ORB_COLORS[index])
             orb?.setOnClickListener {
                 selectedOrb?.disableForcedThickOutline()

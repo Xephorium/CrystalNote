@@ -46,7 +46,7 @@ class ColorPickerDialogCustomFragment(
 
         setupRainbowView()
         setupCustomOrb()
-        setupFavoriteOrbs()
+        setupEmptyFavoriteOrbs()
         setupHexField()
         setupHsvSliders()
         setupHsvFields()
@@ -74,7 +74,7 @@ class ColorPickerDialogCustomFragment(
     }
 
     fun setFavoriteColors(colors: FavoriteColorQueue) {
-        setupFavoriteOrbs()
+        setupEmptyFavoriteOrbs()
         favoriteColors = colors
         for (index in favoriteColors.getAll().indices) {
             val orb = view?.findViewById<ColorOrb>(FAVORITE_ORBS[index])
@@ -109,17 +109,17 @@ class ColorPickerDialogCustomFragment(
         val customColorOrb = view?.findViewById<ColorOrb>(R.id.colorOrbCustom)
         customColorOrb?.setPadding(R.dimen.colorPickerCustomOrbPadding)
         customColorOrb?.setBackdropColor(theme.colorBackground)
-        customColorOrb?.setOutlineColor(theme.colorTextPrimary)
+        customColorOrb?.setOutlineColor(theme.colorAccent)
         customColorOrb?.enableForcedThickOutline()
     }
 
-    private fun setupFavoriteOrbs() {
+    private fun setupEmptyFavoriteOrbs() {
         for (index in FAVORITE_ORBS.indices) {
             val orb = view?.findViewById<ColorOrb>(FAVORITE_ORBS[index])
             orb?.setPadding(R.dimen.colorPickerCustomOrbFavoritePadding)
             orb?.setBackdropColor(theme.colorBackground)
             orb?.setColor(theme.colorNoteBackground)
-            orb?.setOutlineAlpha(0.0)
+            orb?.resetOutlineState()
             orb?.setOnClickListener(null)
             orb?.setOnLongClickListener(null)
             orb?.setBackgroundResource(0)
