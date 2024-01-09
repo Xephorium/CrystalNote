@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:background="?themeToolbar"
             app:contentInsetStart="0dp"
-            app:popupTheme="@style/ToolbarOptionsTheme"
             app:layout_scrollFlags="scroll|enterAlways|snap"
             app:layout_constraintTop_toTopOf="parent"
             />

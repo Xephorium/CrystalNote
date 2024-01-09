@@ -22,15 +22,12 @@ data class CrystalNoteTheme(
 ) {
 
     enum class Themes(val displayName: String, val resourceId: Int) {
-        LIGHT("Light", R.style.LightBase),
+        BLACK("Black", R.style.Black),
         DARK("Dark", R.style.Dark),
         COBALT("Cobalt", R.style.Cobalt),
-        BLACK("Black", R.style.Black),
         WHITE("White", R.style.White),
-        AZURE("Azure", R.style.Azure),
-        CHILI("Tomato", R.style.Tomato),
-        SAGE("Sage", R.style.Sage),
-        OLIVE("Olive", R.style.Olive);
+        LIGHT("Light", R.style.LightBase),
+        PARCHMENT("Parchment", R.style.Parchment);
 
         companion object {
             fun fromName(name: String): Themes = values().firstOrNull { it.displayName == name } ?: values()[0]

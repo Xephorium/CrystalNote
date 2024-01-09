@@ -92,6 +92,23 @@
     <color name="blackPreviewBackgroundDark">#000000</color>
     <color name="blackPreviewBackgroundLight">#bbc0c9</color>
 
+    <color name="parchmentBackdropDark">#D3CCBD</color>
+    <color name="parchmentBackdropLight">#E8E3DC</color>
+    <color name="parchmentBackdropHighlight">#d6cfc1</color>
+    <color name="parchmentBackdropRipple">#b8afa3</color>
+    <color name="parchmentNoteColorBar">#eff3f9</color>
+    <color name="parchmentAccent">#705E4D</color>
+    <color name="parchmentAccentRipple">#AEA087</color>
+    <color name="parchmentTextPrimary">#38312c</color>
+    <color name="parchmentTextSecondary">#655953</color>
+    <color name="parchmentTextTertiary">#8E7967</color>
+    <color name="parchmentTextHandle">#705E4D</color>
+    <color name="parchmentTextHighlight">#705E4D</color>
+    <color name="parchmentDrawerFilter">#70BAA782</color>
+    <color name="parchmentDivider">#BFB5AF</color>
+    <color name="parchmentPreviewBackgroundDark">#1B1411</color>
+    <color name="parchmentPreviewBackgroundLight">#A59A83</color>
+
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>
     <color name="azureLight">#4DA5FF</color>
@@ -103,9 +120,6 @@
     <color name="charcoalLight">#303030</color>
     <color name="black">#000</color>
     <color name="gray8">#888888</color>
-    <color name="olive">#778A53</color>
-    <color name="oliveDesaturated">#889E64</color>
-    <color name="oliveHighlight">#33ABD860</color>
     <color name="direwolf">#f1f1f1</color>
     <color name="sage">#007c89</color>
     <color name="sageDark">#004A52</color>

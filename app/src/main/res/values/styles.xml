@@ -33,9 +33,10 @@
         <item name="android:colorEdgeEffect">?themeOverscroll</item>
         <item name="android:toolbarStyle">@style/ToolbarTheme</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
-        <item name="android:actionOverflowButtonStyle">@style/ToolbarOptionsButton</item>
+        <item name="android:actionOverflowButtonStyle">@style/OptionsMenuButton</item>
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowBackground">?themeNoteBackground</item>
+        <item name="android:theme">@style/ColoredControlTheme</item>
     </style>
 
     <style name="ButtonPrimaryStyle" parent="Widget.Material3.Button">
@@ -70,12 +71,12 @@
         <item name="android:colorControlActivated">?themeTextHandle</item>
     </style>
 
-    <style name="ToolbarOptionsTheme" parent="CrystalNoteTheme">
-        <item name="android:itemBackground">?themeNoteBackground</item>
-        <item name="android:textColor">?themeTextSecondary</item>
+    <style name="ToolbarOverlayTheme">
+        <item name="android:colorControlHighlight">?themeNoteRipple</item>
+        <item name="colorControlHighlight">?themeNoteRipple</item>
     </style>
 
-    <style name="ToolbarOptionsButton">
+    <style name="OptionsMenuButton">
         <item name="android:src">@drawable/icon_options</item>
         <item name="android:paddingEnd">16dp</item>
     </style>
@@ -86,7 +87,7 @@
         <item name="android:letterSpacing">0.03</item>
         <item name="android:backgroundTint">?themeBackground</item>
         <item name="tabTextColor">?themeTextSecondary</item>
-        <item name="tabSelectedTextColor">?themeTextPrimary</item>
+        <item name="tabSelectedTextColor">?themeAccent</item>
         <item name="tabIndicator">@drawable/tab_indicator</item>
         <item name="tabIndicatorColor">?themeAccent</item>
         <item name="tabIndicatorHeight">@dimen/tabIndicatorHeight</item>
@@ -176,6 +177,16 @@
         <item name="labelBehavior">gone</item>
     </style>
 
+    <style name="ColoredControlTheme">
+
+        <!-- Universal Ripple Color -->
+        <item name="android:colorControlHighlight">?themeNoteRipple</item>
+        <item name="colorControlHighlight">?themeNoteRipple</item>
+
+        <!-- Universal Text Handle -->
+        <item name="colorControlActivated">?themeTextHandle</item>
+    </style>
+
     <style name="WidgetConfigurationActivityTheme" parent="CrystalNoteTheme">
         <!-- Note: This attribute defines splash screen appearance. -->
         <item name="android:windowBackground">@drawable/transparent</item>
@@ -184,8 +195,8 @@
 
     <!-- Base Color Themes -->
 
-    <style name="Light" parent="CrystalNoteTheme">
-
+    <style name="LightBase" parent="CrystalNoteTheme">
+        <item name="android:windowLightStatusBar">true</item>
         <item name="themeStatusBar">@color/lightStatusBar</item>
 
         <item name="themeToolbar">@color/lightToolbar</item>
@@ -267,6 +278,41 @@
 
     <!-- Custom Color Themes -->
 
+    <style name="Black" parent="DarkBase">
+        <item name="themeStatusBar">@color/blackBackdropDark</item>
+
+        <item name="themeToolbar">@color/blackBackdropDark</item>
+        <item name="themeToolbarRipple">@color/blackBackdropRipple</item>
+        <item name="themeToolbarTextPrimary">@color/blackTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/blackTextSecondary</item>
+
+        <item name="themeBackground">@color/blackBackdropLight</item>
+        <item name="themeDivider">@color/blackDivider</item>
+
+        <item name="themeAccent">@color/blackAccent</item>
+        <item name="themeAccentRipple">@color/blackAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/blackBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/blackBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/blackTextPrimary</item>
+        <item name="themeTextSecondary">@color/blackTextSecondary</item>
+        <item name="themeTextTertiary">@color/blackTextTertiary</item>
+        <item name="themeTextHandle">@color/blackAccent</item>
+
+        <item name="themeNoteBackground">@color/blackBackdropDark</item>
+        <item name="themeNoteColorBar">@color/blackAccent</item>
+        <item name="themeNoteRipple">@color/blackBackdropRipple</item>
+
+        <item name="themePreviewBackgroundDefault">@color/blackPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/blackPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/blackPreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/blackTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/blackTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/blackBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/blackDrawerFilter</item>
+    </style>
+
     <style name="Dark" parent="DarkBase">
         <item name="themeStatusBar">@color/starscapeBackdropDark</item>
 
@@ -335,42 +381,7 @@
         <item name="themeDrawerImageFilter">@color/cobaltDrawerFilter</item>
     </style>
 
-    <style name="Black" parent="DarkBase">
-        <item name="themeStatusBar">@color/blackBackdropDark</item>
-
-        <item name="themeToolbar">@color/blackBackdropDark</item>
-        <item name="themeToolbarRipple">@color/blackBackdropRipple</item>
-        <item name="themeToolbarTextPrimary">@color/blackTextPrimary</item>
-        <item name="themeToolbarTextSecondary">@color/blackTextSecondary</item>
-
-        <item name="themeBackground">@color/blackBackdropLight</item>
-        <item name="themeDivider">@color/blackDivider</item>
-
-        <item name="themeAccent">@color/blackAccent</item>
-        <item name="themeAccentRipple">@color/blackAccentRipple</item>
-        <item name="themeAccentTextPrimary">@color/blackBackdropDark</item>
-        <item name="themeAccentTextSecondary">@color/blackBackdropLight</item>
-
-        <item name="themeTextPrimary">@color/blackTextPrimary</item>
-        <item name="themeTextSecondary">@color/blackTextSecondary</item>
-        <item name="themeTextTertiary">@color/blackTextTertiary</item>
-        <item name="themeTextHandle">@color/blackAccent</item>
-
-        <item name="themeNoteBackground">@color/blackBackdropDark</item>
-        <item name="themeNoteColorBar">@color/blackAccent</item>
-        <item name="themeNoteRipple">@color/blackBackdropRipple</item>
-
-        <item name="themePreviewBackgroundDefault">@color/blackPreviewBackgroundDark</item>
-        <item name="themePreviewBackgroundLight">@color/blackPreviewBackgroundLight</item>
-        <item name="themePreviewBackgroundDark">@color/blackPreviewBackgroundDark</item>
-
-        <item name="themeDrawerItem">@color/blackTextSecondary</item>
-        <item name="themeDrawerItemSelected">@color/blackTextPrimary</item>
-        <item name="themeDrawerItemSelectedBackground">@color/blackBackdropHighlight</item>
-        <item name="themeDrawerImageFilter">@color/blackDrawerFilter</item>
-    </style>
-
-    <style name="White" parent="Light">
+    <style name="White" parent="LightBase">
         <item name="themeStatusBar">#B6B6B6</item>
         <item name="themeToolbar">@color/white</item>
         <item name="themeToolbarRipple">@color/lightNoteRipple</item>
@@ -383,7 +394,42 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterWhite</item>
     </style>
 
-    <style name="Azure" parent="Light">
+    <style name="Parchment" parent="LightBase">
+        <item name="themeStatusBar">@color/parchmentBackdropDark</item>
+
+        <item name="themeToolbar">@color/parchmentBackdropDark</item>
+        <item name="themeToolbarTextPrimary">@color/parchmentTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/parchmentTextSecondary</item>
+
+        <item name="themeBackground">@color/parchmentBackdropLight</item>
+        <item name="themeDivider">@color/parchmentDivider</item>
+
+        <item name="themeAccent">@color/parchmentAccent</item>
+        <item name="themeAccentRipple">@color/parchmentAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/parchmentBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/parchmentBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/parchmentTextPrimary</item>
+        <item name="themeTextSecondary">@color/parchmentTextSecondary</item>
+        <item name="themeTextTertiary">@color/parchmentTextTertiary</item>
+        <item name="themeTextHandle">@color/parchmentTextHandle</item>
+        <item name="themeTextHighlight">@color/parchmentTextHighlight</item>
+
+        <item name="themeNoteBackground">@color/parchmentBackdropDark</item>
+        <item name="themeNoteColorBar">@color/parchmentNoteColorBar</item>
+        <item name="themeNoteRipple">@color/parchmentBackdropRipple</item>
+
+        <item name="themePreviewBackgroundDefault">@color/parchmentPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/parchmentPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/parchmentPreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/parchmentTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/parchmentTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/parchmentBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/parchmentDrawerFilter</item>
+    </style>
+
+    <style name="Azure" parent="LightBase">
         <item name="themeStatusBar">@color/azureDark</item>
         <item name="themeToolbar">@color/azure</item>
         <item name="themeToolbarTextSecondary">@color/white</item>
@@ -399,7 +445,7 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterAzure</item>
     </style>
 
-    <style name="Sage" parent="Light">
+    <style name="Sage" parent="LightBase">
         <item name="themeStatusBar">@color/sageDark</item>
         <item name="themeToolbar">@color/sage</item>
         <item name="themeToolbarTextSecondary">@color/white</item>
@@ -415,7 +461,7 @@
         <item name="themeDrawerImageFilter">@color/drawerFilterSage</item>
     </style>
 
-    <style name="Tomato" parent="Light">
+    <style name="Tomato" parent="LightBase">
         <item name="themeStatusBar">@color/tomatoDark</item>
         <item name="themeToolbar">@color/tomato</item>
         <item name="themeToolbarTextSecondary">@color/white</item>
@@ -429,15 +475,6 @@
         <item name="themeDrawerItem">@color/tomatoDesaturated</item>
         <item name="themeDrawerItemSelected">@color/tomatoDesaturatedDark</item>
         <item name="themeDrawerImageFilter">@color/drawerFilterTomato</item>
-    </style>
-
-    <style name="Olive" parent="DarkBase">
-        <item name="themeAccent">@color/olive</item>
-        <item name="themeTextTertiary">@color/oliveDesaturated</item>
-        <item name="themeTextHandle">@color/olive</item>
-        <item name="themeTextHighlight">@color/oliveHighlight</item>
-        <item name="themeNoteColorBar">@color/olive</item>
-        <item name="themeDrawerItemSelectedBackground">@color/oliveHighlight</item>
     </style>
 
 </resources>
