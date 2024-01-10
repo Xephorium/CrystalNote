@@ -418,6 +418,7 @@
         <item name="themeNoteBackground">@color/parchmentBackdropDark</item>
         <item name="themeNoteColorBar">@color/parchmentNoteColorBar</item>
         <item name="themeNoteRipple">@color/parchmentBackdropRipple</item>
+        <item name="themeNoteUnderline">@color/parchmentUnderline</item>
 
         <item name="themePreviewBackgroundDefault">@color/parchmentPreviewBackgroundDark</item>
         <item name="themePreviewBackgroundLight">@color/parchmentPreviewBackgroundLight</item>

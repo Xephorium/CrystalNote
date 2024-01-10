@@ -93,20 +93,21 @@
     <color name="blackPreviewBackgroundLight">#bbc0c9</color>
 
     <color name="parchmentBackdropDark">#D3CCBD</color>
-    <color name="parchmentBackdropLight">#E8E3DC</color>
+    <color name="parchmentBackdropLight">#e6e0d8</color>
     <color name="parchmentBackdropHighlight">#d6cfc1</color>
     <color name="parchmentBackdropRipple">#b8afa3</color>
     <color name="parchmentNoteColorBar">#eff3f9</color>
-    <color name="parchmentAccent">#705E4D</color>
+    <color name="parchmentAccent">#695c51</color>
     <color name="parchmentAccentRipple">#AEA087</color>
-    <color name="parchmentTextPrimary">#38312c</color>
+    <color name="parchmentTextPrimary">#3d3632</color>
     <color name="parchmentTextSecondary">#655953</color>
     <color name="parchmentTextTertiary">#8E7967</color>
-    <color name="parchmentTextHandle">#705E4D</color>
+    <color name="parchmentTextHandle">#695c51</color>
     <color name="parchmentTextHighlight">#bab0a0</color>
     <color name="parchmentDrawerFilter">#70BAA782</color>
+    <color name="parchmentUnderline">#9E958A</color>
     <color name="parchmentDivider">#BFB5AF</color>
-    <color name="parchmentPreviewBackgroundDark">#1B1411</color>
+    <color name="parchmentPreviewBackgroundDark">#1c1916</color>
     <color name="parchmentPreviewBackgroundLight">#A59A83</color>
 
     <color name="azure">#3F7AB9</color>

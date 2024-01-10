@@ -41,8 +41,10 @@ class ColorPickerDialogPaletteFragment(
             orb?.setColor(ORB_COLORS[index])
             orb?.setOnClickListener {
                 selectedOrb?.disableForcedThickOutline()
+                orb.setOutlineColor(theme.colorTextPrimary)
                 selectedOrb = orb
                 orb.enableForcedThickOutline()
+                orb.setOutlineColor(theme.colorAccent)
                 listener.onColorClick(orb.getColor())
             }
         }
