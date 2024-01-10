@@ -28,7 +28,7 @@
         app:layout_constraintEnd_toEndOf="@id/imageAppIconPrimary"
         app:layout_constraintStart_toStartOf="@id/imageAppIconPrimary"
         app:layout_constraintTop_toTopOf="@id/imageAppIconPrimary"
-        app:tint="?themeTextPrimary"
+        app:tint="@color/white"
         android:src="@drawable/icon_monochrome_alternate_highlights"
         android:importantForAccessibility="no"
         />

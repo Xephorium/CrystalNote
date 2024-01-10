@@ -92,22 +92,22 @@
     <color name="blackPreviewBackgroundDark">#000000</color>
     <color name="blackPreviewBackgroundLight">#bbc0c9</color>
 
-    <color name="parchmentBackdropDark">#ded9d1</color>
-    <color name="parchmentBackdropLight">#f0ede9</color>
-    <color name="parchmentBackdropRipple">#b8afa3</color>
+    <color name="parchmentBackdropDark">#e0ded7</color>
+    <color name="parchmentBackdropLight">#f2f0ed</color>
+    <color name="parchmentBackdropRipple">#BAB4AC</color>
     <color name="parchmentNoteColorBar">#eff3f9</color>
     <color name="parchmentAccent">#695c51</color>
-    <color name="parchmentAccentRipple">#AEA087</color>
+    <color name="parchmentAccentRipple">#A8A090</color>
     <color name="parchmentTextPrimary">#3d3632</color>
     <color name="parchmentTextSecondary">#5A534F</color>
-    <color name="parchmentTextTertiary">#8E7D6F</color>
+    <color name="parchmentTextTertiary">#8A8178</color>
     <color name="parchmentTextHandle">#695c51</color>
-    <color name="parchmentTextHighlight">#bab0a0</color>
-    <color name="parchmentDrawerFilter">#70BAA782</color>
+    <color name="parchmentTextHighlight">#ccc6bc</color>
+    <color name="parchmentDrawerFilter">#70D1C8B6</color>
     <color name="parchmentUnderline">#9E958A</color>
-    <color name="parchmentDivider">#BFB5AF</color>
-    <color name="parchmentPreviewBackgroundDark">#1c1916</color>
-    <color name="parchmentPreviewBackgroundLight">#A59A83</color>
+    <color name="parchmentDivider">#c7c4bf</color>
+    <color name="parchmentPreviewBackgroundDark">#1E1C19</color>
+    <color name="parchmentPreviewBackgroundLight">#B3AEA2</color>
 
     <color name="azure">#3F7AB9</color>
     <color name="azureDark">#26496F</color>
