@@ -426,7 +426,7 @@
 
         <item name="themeDrawerItem">@color/parchmentTextSecondary</item>
         <item name="themeDrawerItemSelected">@color/parchmentTextPrimary</item>
-        <item name="themeDrawerItemSelectedBackground">@color/parchmentBackdropHighlight</item>
+        <item name="themeDrawerItemSelectedBackground">@color/parchmentBackdropDark</item>
         <item name="themeDrawerImageFilter">@color/parchmentDrawerFilter</item>
     </style>
 
