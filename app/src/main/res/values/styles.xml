@@ -382,17 +382,42 @@
     </style>
 
     <style name="White" parent="LightBase">
-        <item name="themeStatusBar">#B6B6B6</item>
-        <item name="themeToolbar">@color/white</item>
-        <item name="themeToolbarRipple">@color/lightNoteRipple</item>
-        <item name="themeToolbarTextPrimary">@color/lightTextPrimary</item>
-        <item name="themeToolbarTextSecondary">@color/lightTextSecondary</item>
-        <item name="themeAccent">@color/lightTextHandle</item>
-        <item name="themeAccentTextPrimary">@color/darkTextPrimary</item>
-        <item name="themeAccentTextSecondary">@color/darkTextPrimary</item>
-        <item name="themeNoteColorBar">@color/lightTextTertiary</item>
-        <item name="themeDrawerImageFilter">@color/drawerFilterWhite</item>
+        <item name="themeStatusBar">@color/snowBackdropDark</item>
+
+        <item name="themeToolbar">@color/snowBackdropDark</item>
+        <item name="themeToolbarTextPrimary">@color/snowTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/snowTextSecondary</item>
+
+        <item name="themeBackground">@color/snowBackdropLight</item>
+        <item name="themeDivider">@color/snowDivider</item>
+
+        <item name="themeAccent">@color/snowAccent</item>
+        <item name="themeAccentRipple">@color/snowAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/snowBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/snowBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/snowTextPrimary</item>
+        <item name="themeTextSecondary">@color/snowTextSecondary</item>
+        <item name="themeTextTertiary">@color/snowTextTertiary</item>
+        <item name="themeTextHandle">@color/snowTextHandle</item>
+        <item name="themeTextHighlight">@color/snowTextHighlight</item>
+
+        <item name="themeNoteBackground">@color/snowBackdropDark</item>
+        <item name="themeNoteColorBar">@color/snowNoteColorBar</item>
+        <item name="themeNoteRipple">@color/snowBackdropRipple</item>
+        <item name="themeNoteUnderline">@color/snowUnderline</item>
+
+        <item name="themePreviewBackgroundDefault">@color/snowPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/snowPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/snowPreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/snowTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/snowTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/snowBackdropDark</item>
+        <item name="themeDrawerImageFilter">@color/snowDrawerFilter</item>
     </style>
+
+    <style name="Light" parent="LightBase" />
 
     <style name="Parchment" parent="LightBase">
         <item name="themeStatusBar">@color/parchmentBackdropDark</item>

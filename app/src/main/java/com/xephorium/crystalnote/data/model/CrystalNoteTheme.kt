@@ -26,7 +26,7 @@ data class CrystalNoteTheme(
         DARK("Dark", R.style.Dark),
         COBALT("Cobalt", R.style.Cobalt),
         WHITE("White", R.style.White),
-        LIGHT("Light", R.style.LightBase),
+        LIGHT("Light", R.style.Light),
         PARCHMENT("Parchment", R.style.Parchment);
 
         companion object {

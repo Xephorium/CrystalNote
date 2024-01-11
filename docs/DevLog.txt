@@ -45,6 +45,7 @@ December 2023
     Future Improvements
     ◦ "System" theme for Dynamic Color on API 12+
     ◦ Configurable widget title/content alignment
+    ◦ Archived Notes
     ◦ Theme Badges
 
 
