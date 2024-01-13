@@ -18,7 +18,7 @@
     <string name="homeTitle">Notes</string>
     <string name="homeTextEmpty">Tap + to create a note.</string>
 
-    <string name="homeOptionsTitle">Home Options</string>
+    <string name="homeOptionsTitle">Note List Options</string>
     <string name="homeOptionsShowArchived">Show Archived</string>
 
     <string name="navigationDrawerClosed">Navigation Drawer Closed</string>
@@ -54,7 +54,7 @@
     <string name="settingsNoteColorBar">Show Note Color</string>
     <string name="settingsNoteThemeBar">Theme Note Color</string>
     <string name="settingsToday">Show Today Header</string>
-    <string name="settingsHomeOptions">Show Archival Options</string>
+    <string name="settingsHomeOptions">Show Note List Options</string>
     <string name="settingsNoteAppearance">Note Appearance</string>
     <string name="settingsUnderline">Show Underline</string>
     <string name="settingsScrollButton">Show Scroll Button on Long Notes</string>

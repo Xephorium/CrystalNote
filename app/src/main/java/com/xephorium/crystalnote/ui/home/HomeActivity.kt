@@ -137,6 +137,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     override fun showHomeOptionsDialog(showArchived: Boolean) {
         val dialog = HomeOptionsDialog.Builder(this).create()
+        dialog.setTitle(resources.getString(R.string.homeOptionsTitle))
         dialog.setArchivedShown(showArchived)
         dialog.setListener(object: HomeOptionsListener {
             override fun onShowArchivedClick() = presenter.handleShowArchivedClick()
