@@ -19,12 +19,18 @@ class HomePresenter : HomeContract.Presenter() {
         if (fromUpdateActivity) beginDelayedNoteListRefresh {
             refreshNoteList()
         } else refreshNoteList()
+
+        if (sharedPreferencesRepository.getHomeOptionsEnabled()) view.showHomeOptionsIcon()
     }
 
     /*--- Action Handling Methods ---*/
 
     override fun handleMenuButtonClick() {
         view?.showNavigationDrawer()
+    }
+
+    override fun handleHomeOptionsClick() {
+        view?.showHomeOptionsDialog(showArchived)
     }
 
     override fun handleNewNoteButtonClick() {
@@ -46,9 +52,9 @@ class HomePresenter : HomeContract.Presenter() {
     override fun handleNoteLongClick(note: PreviewNote) {
         selectedPreviewNote = note
         if (note.password.isBlank()) {
-            view?.showNoteOptionsDialog()
+            view?.showNoteOptionsDialog(note.archived)
         } else {
-            view?.showLockedNoteOptionsDialog()
+            view?.showLockedNoteOptionsDialog(note.archived)
         }
     }
 
@@ -114,6 +120,18 @@ class HomePresenter : HomeContract.Presenter() {
         }
     }
 
+    override fun handleArchiveClick() {
+        selectedPreviewNote?.run {
+            archived = !archived
+            noteRoomRepository.updateNoteArchival(id, archived)
+            if (!archived) view?.showNoteUnarchivedMessage()
+            else view?.showNoteArchivedMessage()
+            beginDelayedNoteListRefresh {
+                refreshNoteList()
+            }
+        }
+    }
+
     override fun handleDeleteClick() {
         view?.showDeleteNoteDialog()
     }
@@ -128,6 +146,11 @@ class HomePresenter : HomeContract.Presenter() {
         }
     }
 
+    override fun handleShowArchivedClick() {
+        showArchived = !showArchived
+        refreshNoteList()
+    }
+
     override fun handleNoteListRefresh() {
         refreshNoteList()
     }
@@ -139,7 +162,10 @@ class HomePresenter : HomeContract.Presenter() {
         val list = noteRoomRepository.getPreviewNotes().toMutableList()
 
         if (list.isNotEmpty()) {
-            view?.populateNoteList(NoteUtility.sortPreviewNotes(list, NoteUtility.SortType.DATE_NEW))
+            view?.populateNoteList(
+                NoteUtility.sortPreviewNotes(list, NoteUtility.SortType.DATE_NEW),
+                showArchived
+            )
         } else {
             view?.showEmptyNotesList()
         }

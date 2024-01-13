@@ -27,7 +27,7 @@ interface UpdateNoteContract {
         fun showMonospacedFont()
 
         fun scrollToBottom()
-        fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean)
+        fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean, isArchived: Boolean)
         fun showColorPickerDialog(color: Int)
         fun showSetNewPasswordDialog()
         fun showVerifyNewPasswordDialog(password: String)
@@ -42,6 +42,8 @@ interface UpdateNoteContract {
         fun showExportErrorMessage()
         fun showRestoreDialog()
         fun showRestoreConfirmationMessage()
+        fun showNoteArchivedMessage()
+        fun showNoteUnarchivedMessage()
         fun navigateHome()
         fun navigateBack()
         fun refreshWidget()
@@ -63,11 +65,13 @@ interface UpdateNoteContract {
         var initialPreview: String = ""
         var initialColor: Int = NoteUtility.getDefaultColor()
         var initialPassword: String = ""
+        var initialArchived: Boolean = false
         var name: String = ""
         var content: String = ""
         var date: Date = Calendar.getInstance().time
         var color: Int = NoteUtility.getDefaultColor()
         var password: String = ""
+        var archived: Boolean = false
 
         abstract fun handleNameTextChange(name: String)
         abstract fun handleContentTextChange(content: String)
@@ -86,6 +90,7 @@ interface UpdateNoteContract {
         abstract fun handleExportFileCreated(uri: Uri)
         abstract fun handleRestoreClick()
         abstract fun handleRestoreConfirm()
+        abstract fun handleArchiveClick()
         abstract fun handleDeleteClick()
         abstract fun handleDeleteConfirm()
         abstract fun handleDiscardChangesConfirm()

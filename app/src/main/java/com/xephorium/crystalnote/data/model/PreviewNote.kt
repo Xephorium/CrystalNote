@@ -13,5 +13,6 @@ data class PreviewNote(
     var preview: String,
     var date: Date,
     var color: Int,
-    var password: String
+    var password: String,
+    var archived: Boolean
 )

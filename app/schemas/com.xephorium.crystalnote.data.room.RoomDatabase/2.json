@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "b2218bb231c5c3b49e02c76ef17206f1",
+    "identityHash": "2dd38294326c1b7b3d5a26cc60217094",
     "entities": [
       {
         "tableName": "notes",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `contents` TEXT NOT NULL, `preview` TEXT NOT NULL DEFAULT '', `date` INTEGER NOT NULL, `color` INTEGER NOT NULL, `password` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `contents` TEXT NOT NULL, `preview` TEXT NOT NULL DEFAULT '', `date` INTEGER NOT NULL, `color` INTEGER NOT NULL, `password` TEXT NOT NULL, `archived` INTEGER NOT NULL DEFAULT false)",
         "fields": [
           {
             "fieldPath": "id",
@@ -50,6 +50,13 @@
             "columnName": "password",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "archived",
+            "columnName": "archived",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "false"
           }
         ],
         "primaryKey": {
@@ -65,7 +72,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b2218bb231c5c3b49e02c76ef17206f1')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2dd38294326c1b7b3d5a26cc60217094')"
     ]
   }
 }

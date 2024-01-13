@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialogBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dialogMargin"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/paddingMedium"
+        android:paddingBottom="@dimen/dialogOptionPadding"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:clickable="true"
+        android:focusable="true"
+        >
+
+        <TextView
+            android:id="@+id/textNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:paddingTop="@dimen/paddingActivity"
+            android:paddingBottom="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptionsTitle"
+            android:textColor="?themeTextPrimary"
+            tools:text="@string/homeOptionsTitle"
+            />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="@dimen/paddingMedium"
+            app:dividerColor="?themeDivider"
+            />
+
+        <TextView
+            android:id="@+id/textHomeOptionsShowArchived"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dialogOptionPadding"
+            android:layout_marginEnd="@dimen/dialogOptionPadding"
+            android:paddingStart="@dimen/dialogOptionPadding"
+            android:paddingEnd="@dimen/dialogOptionPadding"
+            android:paddingTop="@dimen/dialogOptionPadding"
+            android:paddingBottom="@dimen/dialogOptionPadding"
+            android:drawablePadding="@dimen/paddingActivity"
+            android:textSize="@dimen/textNoteOptions"
+            android:textColor="?themeTextSecondary"
+            android:text="@string/homeOptionsShowArchived"
+            android:background="@drawable/ripple_dialog_list_item"
+            app:drawableStartCompat="@drawable/icon_archive_large"
+            android:visibility="visible"
+            tools:visibility="visible"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

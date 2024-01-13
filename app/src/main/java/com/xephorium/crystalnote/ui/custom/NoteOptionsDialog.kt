@@ -26,6 +26,8 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     private var showExport = true
     private var showOpen = false
     private var showRestore = false
+    private var showArchive = false
+    private var isArchived = false
     private var showDelete = true
 
 
@@ -59,6 +61,14 @@ class NoteOptionsDialog private constructor(private val context: Context) {
         showRestore = true
     }
 
+    fun showArchiveOption() {
+        showArchive = true
+    }
+
+    fun setIsArchived(archived: Boolean) {
+        isArchived = archived
+    }
+
     fun hideDeleteOption() {
         showDelete = false
     }
@@ -87,14 +97,15 @@ class NoteOptionsDialog private constructor(private val context: Context) {
     }
 
     private fun setupViewItems() {
-        var textTitle = alertDialog.findViewById<TextView>(R.id.textNoteTitle)
-        var textLock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)
-        var textUnlock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsUnlock)
-        var textImport = alertDialog.findViewById<TextView>(R.id.textNoteOptionsImport)
-        var textExport = alertDialog.findViewById<TextView>(R.id.textNoteOptionsExport)
-        var textOpen = alertDialog.findViewById<TextView>(R.id.textNoteOptionsOpen)
-        var textRestore = alertDialog.findViewById<TextView>(R.id.textNoteOptionsRestore)
-        var textDelete = alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)
+        val textTitle = alertDialog.findViewById<TextView>(R.id.textNoteTitle)
+        val textLock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsLock)
+        val textUnlock = alertDialog.findViewById<TextView>(R.id.textNoteOptionsUnlock)
+        val textImport = alertDialog.findViewById<TextView>(R.id.textNoteOptionsImport)
+        val textExport = alertDialog.findViewById<TextView>(R.id.textNoteOptionsExport)
+        val textOpen = alertDialog.findViewById<TextView>(R.id.textNoteOptionsOpen)
+        val textRestore = alertDialog.findViewById<TextView>(R.id.textNoteOptionsRestore)
+        val textArchive = alertDialog.findViewById<TextView>(R.id.textNoteOptionsArchive)
+        val textDelete = alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)
 
         textTitle?.text = title
         textLock?.visibility = if (showLock) View.VISIBLE else View.GONE
@@ -103,6 +114,9 @@ class NoteOptionsDialog private constructor(private val context: Context) {
         textExport?.visibility = if (showExport) View.VISIBLE else View.GONE
         textOpen?.visibility = if (showOpen) View.VISIBLE else View.GONE
         textRestore?.visibility = if (showRestore) View.VISIBLE else View.GONE
+        textArchive?.visibility = if (showArchive) View.VISIBLE else View.GONE
+        textArchive?.text = if (isArchived) context.resources.getString(R.string.noteOptionsUnarchive)
+        else context.resources.getString(R.string.noteOptionsArchive)
         textDelete?.visibility = if (showDelete) View.VISIBLE else View.GONE
     }
 
@@ -141,6 +155,11 @@ class NoteOptionsDialog private constructor(private val context: Context) {
             alertDialog.dismiss()
             listener.onRestoreClick()
         }
+        alertDialog.findViewById<TextView>(R.id.textNoteOptionsArchive)?.setOnClickListener {
+            Thread.sleep(ANIMATION_DELAY)
+            alertDialog.dismiss()
+            listener.onArchiveClick()
+        }
         alertDialog.findViewById<TextView>(R.id.textNoteOptionsDelete)?.setOnClickListener {
             Thread.sleep(ANIMATION_DELAY)
             alertDialog.dismiss()
@@ -168,6 +187,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
             override fun onExportClick() = Unit
             override fun onOpenClick() = Unit
             override fun onRestoreClick() = Unit
+            override fun onArchiveClick() = Unit
             override fun onDeleteClick() = Unit
         }
 
@@ -178,6 +198,7 @@ class NoteOptionsDialog private constructor(private val context: Context) {
             fun onExportClick()
             fun onOpenClick()
             fun onRestoreClick()
+            fun onArchiveClick()
             fun onDeleteClick()
         }
     }

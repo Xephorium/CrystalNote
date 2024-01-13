@@ -16,6 +16,8 @@ import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
 import com.xephorium.crystalnote.data.utility.CrystalNoteToast
 import com.xephorium.crystalnote.databinding.HomeActivityLayoutBinding
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
+import com.xephorium.crystalnote.ui.custom.HomeOptionsDialog
+import com.xephorium.crystalnote.ui.custom.HomeOptionsDialog.Companion.HomeOptionsListener
 import com.xephorium.crystalnote.ui.custom.NoteListView
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog
 import com.xephorium.crystalnote.ui.custom.NoteOptionsDialog.Companion.NoteOptionsListener
@@ -53,6 +55,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         setBoundViewAsContent(homeBinding)
 
         presenter = HomePresenter()
+        presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.noteRoomRepository = NoteRoomRepository(this)
         presenter.noteDiskRepository = NoteDiskRepository(this)
         presenter.fromUpdateActivity = fromUpdateActivity
@@ -76,10 +79,14 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
 
     /*--- View Manipulation Methods ---*/
 
-    override fun populateNoteList(notes: List<PreviewNote>) {
+    override fun populateNoteList(notes: List<PreviewNote>, showArchived: Boolean) {
         homeBinding.listHomeNotes.visibility = View.VISIBLE
         homeBinding.textHomeEmpty.visibility = View.GONE
-        homeBinding.listHomeNotes.populateNoteList(notes)
+        homeBinding.listHomeNotes.populateNoteList(notes, showArchived)
+    }
+
+    override fun showHomeOptionsIcon() {
+        drawerBinding.toolbar.showRightButton()
     }
 
     override fun showEmptyNotesList() {
@@ -91,9 +98,11 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         openDrawer()
     }
 
-    override fun showNoteOptionsDialog() {
+    override fun showNoteOptionsDialog(isArchived: Boolean) {
         val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
         noteOptionsDialog.hideUnlockOption()
+        noteOptionsDialog.showArchiveOption()
+        noteOptionsDialog.setIsArchived(isArchived)
         noteOptionsDialog.setListener(object: NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
@@ -101,15 +110,18 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             override fun onExportClick() = presenter.handleExportClick()
             override fun onOpenClick() = Unit
             override fun onRestoreClick() = Unit
+            override fun onArchiveClick() = presenter.handleArchiveClick()
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
         noteOptionsDialog.show()
     }
 
-    override fun showLockedNoteOptionsDialog() {
+    override fun showLockedNoteOptionsDialog(isArchived: Boolean) {
         val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
         noteOptionsDialog.hideLockOption()
         noteOptionsDialog.hideExportOption()
+        noteOptionsDialog.showArchiveOption()
+        noteOptionsDialog.setIsArchived(isArchived)
         noteOptionsDialog.setListener(object: NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
             override fun onUnlockClick() = presenter.handleUnlockClick()
@@ -117,9 +129,19 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             override fun onExportClick() = presenter.handleExportClick()
             override fun onOpenClick() = Unit
             override fun onRestoreClick() = Unit
+            override fun onArchiveClick() = presenter.handleArchiveClick()
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
         noteOptionsDialog.show()
+    }
+
+    override fun showHomeOptionsDialog(showArchived: Boolean) {
+        val dialog = HomeOptionsDialog.Builder(this).create()
+        dialog.setArchivedShown(showArchived)
+        dialog.setListener(object: HomeOptionsListener {
+            override fun onShowArchivedClick() = presenter.handleShowArchivedClick()
+        })
+        dialog.show()
     }
 
     override fun showSetNewPasswordDialog() {
@@ -219,6 +241,14 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
         CrystalNoteToast.showLong(this, "Error exporting note.")
     }
 
+    override fun showNoteArchivedMessage() {
+        CrystalNoteToast.showShort(this, "Note archived.")
+    }
+
+    override fun showNoteUnarchivedMessage() {
+        CrystalNoteToast.showShort(this, "Note unarchived.")
+    }
+
     override fun showDeleteNoteDialog() {
         val deleteNoteDialog = CrystalNoteDialog.Builder(this).create()
         deleteNoteDialog.show()
@@ -278,7 +308,7 @@ class HomeActivity : DrawerActivity(), HomeContract.View {
             setLeftButtonImage(R.drawable.icon_menu)
             setNoteToolbarListener(object : NoteToolbar.NoteToolbarListener {
                 override fun onLeftButtonClick() = presenter.handleMenuButtonClick()
-                override fun onRightButtonClick() = Unit
+                override fun onRightButtonClick() = presenter.handleHomeOptionsClick()
                 override fun onColorClick() = Unit
                 override fun onTextChange(text: String) = Unit
             })

@@ -49,6 +49,12 @@ class RoomRepository(context: Context) {
         })
     }
 
+    fun updateNoteArchival(id: Int, archived: Boolean) {
+        Executors.newSingleThreadExecutor().submit(Callable {
+            roomDatabase.noteRepository().updateNoteArchival(id, archived)
+        })
+    }
+
     fun deleteNote(id: Int) {
         Executors.newSingleThreadExecutor().submit(Callable {
             roomDatabase.noteRepository().deleteNote(id)

@@ -62,7 +62,7 @@ class SelectActivity : ToolbarActivity(), SelectContract.View {
         selectBinding.run {
             listSelectNotes.visibility = View.VISIBLE
             textSelectEmpty.visibility = View.GONE
-            listSelectNotes.populateNoteList(notes)
+            listSelectNotes.populateNoteList(notes, true)
         }
     }
 

@@ -14,7 +14,9 @@ data class Note(
     var preview: String,
     var date: Date,
     var color: Int,
-    var password: String = ""
+    var password: String = "",
+    @ColumnInfo(defaultValue = "false")
+    var archived: Boolean = false
 ) {
     companion object {
         const val NO_NOTE: Int = 0

@@ -129,6 +129,7 @@ class UpdateFileActivity() : BaseActivity(), UpdateFileContract.View {
             override fun onExportClick() = Unit
             override fun onOpenClick() = presenter.handleOpenNoteClick()
             override fun onRestoreClick() = presenter.handleRestoreClick()
+            override fun onArchiveClick() = Unit
             override fun onDeleteClick() = Unit
         })
         dialog.show()

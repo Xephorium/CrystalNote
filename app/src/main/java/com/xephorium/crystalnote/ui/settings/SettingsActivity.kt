@@ -90,6 +90,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
         settingsBinding.switchSettingsToday.isChecked = checked
     }
 
+    override fun populateHomeOptionsSwitch(checked: Boolean) {
+        settingsBinding.switchSettingsHomeOptions.isChecked = checked
+    }
+
     override fun populateNoteUnderlineSwitch(checked: Boolean) {
         settingsBinding.switchSettingsUnderline.isChecked = checked
     }
@@ -129,6 +133,10 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
 
     override fun setHomePreviewHeaderVisibility(visible: Boolean) {
         settingsBinding.viewHomePreview.setHeadersVisible(visible)
+    }
+
+    override fun setHomePreviewOptionsVisibility(visible: Boolean) {
+        settingsBinding.viewHomePreview.setOptionsVisible(visible)
     }
 
     override fun setNotePreviewUnderlineVisibility(visible: Boolean) {
@@ -247,6 +255,9 @@ class SettingsActivity : DrawerActivity(), SettingsContract.View {
             }
             switchSettingsToday.setOnCheckedChangeListener { _, checked ->
                 presenter.handleHomeTodayHeaderToggle(checked)
+            }
+            switchSettingsHomeOptions.setOnCheckedChangeListener { _, checked ->
+                presenter.handleHomeOptionsToggle(checked)
             }
 
             switchSettingsUnderline.setOnCheckedChangeListener { _, checked ->

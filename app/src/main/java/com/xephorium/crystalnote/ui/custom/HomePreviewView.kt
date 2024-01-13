@@ -40,6 +40,7 @@ class HomePreviewView : View {
     private var showColorBar = true
     private var themeColorBar = true
     private var showHeaders = true
+    private var showOptions = true
 
 
     /*--- Constructors ---*/
@@ -145,6 +146,20 @@ class HomePreviewView : View {
                 paint
         )
 
+        // Toolbar Options Icon
+        if (showOptions) {
+            paint.color = theme.colorToolbarTextSecondary
+            canvas.drawRoundRect(
+                (viewWidth!! - toolbarHeight!! + paddingLarge!!).toFloat(),
+                (paddingLarge!!).toFloat(),
+                (viewWidth!! - paddingLarge!!).toFloat(),
+                (toolbarHeight!! - paddingLarge!!).toFloat(),
+                CORNER_RADIUS,
+                CORNER_RADIUS,
+                paint
+            )
+        }
+
         // Header 1
         if (showHeaders) {
             paint.color = theme.colorTextSecondary
@@ -239,6 +254,11 @@ class HomePreviewView : View {
 
     fun setHeadersVisible(visible: Boolean) {
         showHeaders = visible
+        invalidate()
+    }
+
+    fun setOptionsVisible(visible: Boolean) {
+        showOptions = visible
         invalidate()
     }
 

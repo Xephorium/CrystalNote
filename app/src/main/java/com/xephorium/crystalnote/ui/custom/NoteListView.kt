@@ -57,11 +57,11 @@ class NoteListView : SwipeRefreshLayout {
 
     /*--- Public Methods ---*/
 
-    fun populateNoteList(noteList: List<PreviewNote>) {
+    fun populateNoteList(noteList: List<PreviewNote>, showArchived: Boolean) {
         parseNotes(noteList)
 
         binding.listNotes.layoutManager = LinearLayoutManager(context)
-        binding.listNotes.adapter = getNoteListAdapter(newNotes, oldNotes)
+        binding.listNotes.adapter = getNoteListAdapter(newNotes, oldNotes, showArchived)
     }
 
 
@@ -84,9 +84,10 @@ class NoteListView : SwipeRefreshLayout {
 
     private fun getNoteListAdapter(
         newNotes: List<PreviewNote>,
-        oldNotes: List<PreviewNote>
+        oldNotes: List<PreviewNote>,
+        showArchived: Boolean
     ): NoteListAdapter {
-        return object : NoteListAdapter(context, newNotes, oldNotes) {
+        return object : NoteListAdapter(context, newNotes, oldNotes, showArchived) {
             override fun getOnClickListener(note: PreviewNote): OnClickListener {
                 return OnClickListener { noteListViewListener?.onNoteClick(note) }
             }
@@ -101,9 +102,9 @@ class NoteListView : SwipeRefreshLayout {
     }
 
     private fun getDefaultNoteListViewListener() = object : NoteListViewListener {
-        override fun onNoteClick(note: PreviewNote) {}
-        override fun onNoteLongClick(note: PreviewNote) {}
-        override fun onNoteListRefresh() {}
+        override fun onNoteClick(note: PreviewNote) = Unit
+        override fun onNoteLongClick(note: PreviewNote) = Unit
+        override fun onNoteListRefresh() = Unit
     }
 
     private fun getOnRefreshListener() = OnRefreshListener {

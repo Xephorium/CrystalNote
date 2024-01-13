@@ -138,13 +138,20 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
         )
     }
 
-    override fun showNoteOptionsDialog(isInEditMode: Boolean, isLocked: Boolean) {
+    override fun showNoteOptionsDialog(
+        isInEditMode: Boolean,
+        isLocked: Boolean,
+        isArchived: Boolean
+    ) {
         val noteOptionsDialog = NoteOptionsDialog.Builder(this).create()
 
         if (isLocked) noteOptionsDialog.hideLockOption()
         else noteOptionsDialog.hideUnlockOption()
 
         if (isInEditMode) noteOptionsDialog.showRestoreOption()
+
+        noteOptionsDialog.showArchiveOption()
+        noteOptionsDialog.setIsArchived(isArchived)
 
         noteOptionsDialog.setListener(object: NoteOptionsDialog.Companion.NoteOptionsListener {
             override fun onLockClick() = presenter.handleLockClick()
@@ -153,6 +160,7 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
             override fun onExportClick() = presenter.handleExportClick()
             override fun onOpenClick() = Unit
             override fun onRestoreClick() = presenter.handleRestoreClick()
+            override fun onArchiveClick() = presenter.handleArchiveClick()
             override fun onDeleteClick() = presenter.handleDeleteClick()
         })
         noteOptionsDialog.show()
@@ -340,6 +348,14 @@ class UpdateNoteActivity() : BaseActivity(), UpdateNoteContract.View {
 
     override fun showRestoreConfirmationMessage() {
         CrystalNoteToast.showLong(this, "Note restored.")
+    }
+
+    override fun showNoteArchivedMessage() {
+        CrystalNoteToast.showShort(this, "Note archived.")
+    }
+
+    override fun showNoteUnarchivedMessage() {
+        CrystalNoteToast.showShort(this, "Note unarchived.")
     }
 
     override fun navigateHome() {

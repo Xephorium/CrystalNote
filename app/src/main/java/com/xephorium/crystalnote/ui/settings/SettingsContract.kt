@@ -14,6 +14,7 @@ interface SettingsContract {
         fun populateHomeColorBarSwitch(checked: Boolean)
         fun populateHomeThemedColorBarSwitch(checked: Boolean)
         fun populateHomeTodayHeaderSwitch(checked: Boolean)
+        fun populateHomeOptionsSwitch(checked: Boolean)
         fun populateNoteUnderlineSwitch(checked: Boolean)
         fun populateNoteScrollButtonSwitch(checked: Boolean)
         fun populateNoteColorOrbSwitch(checked: Boolean)
@@ -25,6 +26,7 @@ interface SettingsContract {
         fun setHomePreviewColorBarVisibility(visible: Boolean)
         fun setHomePreviewColorBarThemed(themed: Boolean)
         fun setHomePreviewHeaderVisibility(visible: Boolean)
+        fun setHomePreviewOptionsVisibility(visible: Boolean)
         fun setNotePreviewUnderlineVisibility(visible: Boolean)
         fun setNoteScrollButtonVisibility(visible: Boolean)
         fun setNoteColorOrbVisibility(visible: Boolean)
@@ -45,6 +47,7 @@ interface SettingsContract {
         var colorBarEnabled: Boolean = true
         var themedBarEnabled: Boolean = true
         var todayHeaderEnabled: Boolean = true
+        var homeOptionsEnabled: Boolean = true
         var noteUnderlineEnabled: Boolean = false
         var noteScrollButtonEnabled: Boolean = true
         var noteColorOrbEnabled: Boolean = true
@@ -57,6 +60,7 @@ interface SettingsContract {
         abstract fun handleHomeColorBarToggle(checked: Boolean)
         abstract fun handleHomeThemedColorBarToggle(checked: Boolean)
         abstract fun handleHomeTodayHeaderToggle(checked: Boolean)
+        abstract fun handleHomeOptionsToggle(checked: Boolean)
         abstract fun handleNoteUnderlineToggle(checked: Boolean)
         abstract fun handleNoteScrollButtonToggle(checked: Boolean)
         abstract fun handleNoteColorOrbToggle(checked: Boolean)

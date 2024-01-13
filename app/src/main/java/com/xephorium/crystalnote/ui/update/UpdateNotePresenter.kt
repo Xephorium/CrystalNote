@@ -28,6 +28,8 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
                 color = initialColor
                 initialPassword = it.password
                 password = initialPassword
+                initialArchived = it.archived
+                archived = initialArchived
 
                 // Update View for Existing Note
                 this.view?.populateFields(it.name, it.contents)
@@ -128,7 +130,7 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
 
     override fun handleNoteOptionsClicked() {
         view?.hideKeyboard()
-        view?.showNoteOptionsDialog(isInEditMode, password.isNotEmpty())
+        view?.showNoteOptionsDialog(isInEditMode, password.isNotEmpty(), archived)
     }
 
     override fun handleLockClick() {
@@ -187,6 +189,15 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
         view?.showRestoreConfirmationMessage()
     }
 
+    override fun handleArchiveClick() {
+        archived = !archived
+        if (archived) {
+            view?.showNoteArchivedMessage()
+        } else {
+            view?.showNoteUnarchivedMessage()
+        }
+    }
+
     override fun handleDeleteClick() {
         view?.hideKeyboard()
         if (isInEditMode) {
@@ -221,24 +232,28 @@ class UpdateNotePresenter : UpdateNoteContract.Presenter() {
             && initialPassword == password
         ) {
 
-            // No Changes - Do Nothing
+            // No Content Changes - Handle Edge Cases
 
             if (isOldDatabaseNote()) {
 
-                // Old Database Note Without Preview - Migrate & Add Preview
-                noteRoomRepository.migrateNote(noteId, name, content, date, color, password)
+                // If Old Database Note Without Preview - Migrate & Add Preview
+                noteRoomRepository.migrateNote(noteId, name, content, date, color, password, archived)
+
+            } else if (initialArchived != archived) {
+
+                // If Archival Updated, Persist Change
+                noteRoomRepository.updateNoteArchival(noteId, archived)
             }
 
         } else if (!isInEditMode) {
 
             // New Note - Save
-            noteId = noteRoomRepository.insertNote(name, content, color, password)
-            System.out.println("LLAMA - " + noteId)
+            noteId = noteRoomRepository.insertNote(name, content, color, password, archived)
 
         } else {
 
             // Existing Note - Update
-            noteRoomRepository.updateNote(noteId, name, content, color, password)
+            noteRoomRepository.updateNote(noteId, name, content, color, password, archived)
         }
 
         view?.refreshWidget()

@@ -74,11 +74,8 @@
     <dimen name="iconAppMonochromeInset">18dp</dimen>
     <dimen name="iconAboutSize">80dp</dimen>
     <dimen name="iconWidgetSettingsContrast">48dp</dimen>
-    <dimen name="noteListIconLockSize">20dp</dimen>
-    <dimen name="noteListIconLockTop">9dp</dimen>
-    <dimen name="noteListItemHeight">72dp</dimen>
-    <dimen name="noteListPreviewPadding">6dp</dimen>
-    <dimen name="noteListBottomPadding">10dp</dimen>
+    <dimen name="noteListPreviewPadding">8dp</dimen>
+    <dimen name="noteListBottomPadding">8dp</dimen>
     <dimen name="passwordDialogTextInputLayoutMargin">21dp</dimen>
     <dimen name="passwordDialogEditTextCornerRadius">8dp</dimen>
     <dimen name="passwordDialogButtonPadding">84dp</dimen>

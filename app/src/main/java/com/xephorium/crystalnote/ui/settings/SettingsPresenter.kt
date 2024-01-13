@@ -17,31 +17,34 @@ class SettingsPresenter : SettingsContract.Presenter() {
         colorBarEnabled = sharedPreferencesRepository.getNoteColorBarEnabled()
         themedBarEnabled = sharedPreferencesRepository.getNoteThemedBarEnabled()
         todayHeaderEnabled = sharedPreferencesRepository.getTodayHeaderEnabled()
+        homeOptionsEnabled = sharedPreferencesRepository.getHomeOptionsEnabled()
         noteUnderlineEnabled = sharedPreferencesRepository.getNoteUnderlineEnabled()
         noteScrollButtonEnabled = sharedPreferencesRepository.getScrollButtonEnabled()
         noteColorOrbEnabled = sharedPreferencesRepository.getColorOrbEnabled()
         useMonospacedFont = sharedPreferencesRepository.getMonospacedFontEnabled()
 
-        this.view?.populateTheme(theme)
-        this.view?.populateHomePreviewLines(notePreviewLines)
-        this.view?.populateHomeDateType(noteDateType)
-        this.view?.populateHomeColorBarSwitch(colorBarEnabled)
-        this.view?.populateHomeThemedColorBarSwitch(themedBarEnabled)
-        this.view?.populateHomeTodayHeaderSwitch(todayHeaderEnabled)
-        this.view?.populateNoteUnderlineSwitch(noteUnderlineEnabled)
-        this.view?.populateNoteScrollButtonSwitch(noteScrollButtonEnabled)
-        this.view?.populateNoteColorOrbSwitch(noteColorOrbEnabled)
-        this.view?.populateNoteMonospaceSwitch(useMonospacedFont)
+        view.populateTheme(theme)
+        view.populateHomePreviewLines(notePreviewLines)
+        view.populateHomeDateType(noteDateType)
+        view.populateHomeColorBarSwitch(colorBarEnabled)
+        view.populateHomeThemedColorBarSwitch(themedBarEnabled)
+        view.populateHomeTodayHeaderSwitch(todayHeaderEnabled)
+        view.populateHomeOptionsSwitch(homeOptionsEnabled)
+        view.populateNoteUnderlineSwitch(noteUnderlineEnabled)
+        view.populateNoteScrollButtonSwitch(noteScrollButtonEnabled)
+        view.populateNoteColorOrbSwitch(noteColorOrbEnabled)
+        view.populateNoteMonospaceSwitch(useMonospacedFont)
 
-        this.view?.setHomePreviewLines(notePreviewLines)
-        this.view?.setHomePreviewDateType(noteDateType)
-        this.view?.setHomePreviewColorBarVisibility(colorBarEnabled)
-        this.view?.setHomePreviewColorBarThemed(themedBarEnabled)
-        this.view?.setHomePreviewHeaderVisibility(todayHeaderEnabled)
-        this.view?.setNotePreviewUnderlineVisibility(noteUnderlineEnabled)
-        this.view?.setNoteScrollButtonVisibility(noteScrollButtonEnabled)
-        this.view?.setNoteColorOrbVisibility(noteColorOrbEnabled)
-        this.view?.setNoteMonospaceFontVisibility(useMonospacedFont)
+        view.setHomePreviewLines(notePreviewLines)
+        view.setHomePreviewDateType(noteDateType)
+        view.setHomePreviewColorBarVisibility(colorBarEnabled)
+        view.setHomePreviewColorBarThemed(themedBarEnabled)
+        view.setHomePreviewHeaderVisibility(todayHeaderEnabled)
+        view.setHomePreviewOptionsVisibility(homeOptionsEnabled)
+        view.setNotePreviewUnderlineVisibility(noteUnderlineEnabled)
+        view.setNoteScrollButtonVisibility(noteScrollButtonEnabled)
+        view.setNoteColorOrbVisibility(noteColorOrbEnabled)
+        view.setNoteMonospaceFontVisibility(useMonospacedFont)
     }
 
 
@@ -84,6 +87,12 @@ class SettingsPresenter : SettingsContract.Presenter() {
         todayHeaderEnabled = checked
         sharedPreferencesRepository.setTodayHeaderEnabled(todayHeaderEnabled)
         view?.setHomePreviewHeaderVisibility(todayHeaderEnabled)
+    }
+
+    override fun handleHomeOptionsToggle(checked: Boolean) {
+        homeOptionsEnabled = checked
+        sharedPreferencesRepository.setHomeOptionsEnabled(homeOptionsEnabled)
+        view?.setHomePreviewOptionsVisibility(homeOptionsEnabled)
     }
 
     override fun handleNoteUnderlineToggle(checked: Boolean) {

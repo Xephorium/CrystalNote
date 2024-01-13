@@ -27,12 +27,16 @@ import com.xephorium.crystalnote.data.utility.NoteUtility
 
 open class NoteListAdapter(
     private val context: Context,
-    private val newNotes: List<PreviewNote>,
-    private val oldNotes: List<PreviewNote>
+    newNotesFull: List<PreviewNote>,
+    oldNotesFull: List<PreviewNote>,
+    showArchived: Boolean
 ) : RecyclerView.Adapter<NoteListAdapter.ViewHolder>() {
 
 
     /*--- Private Variables ---*/
+
+    private val newNotes = if (showArchived) newNotesFull.toList() else newNotesFull.filter { !it.archived }
+    private val oldNotes = if (showArchived) oldNotesFull.toList() else oldNotesFull.filter { !it.archived }
 
     private val sharedPreferencesRepository = SharedPreferencesRepository(context)
     private val notePreviewLines = sharedPreferencesRepository.getNotePreviewLines()
@@ -103,6 +107,8 @@ open class NoteListAdapter(
             )
             if (!shouldShowColorBar) holder.colorBar.visibility = View.GONE
 
+            if (note.archived) holder.archivedIcon.visibility = View.VISIBLE
+
             holder.setNoteClickListeners(note)
         }
     }
@@ -110,23 +116,22 @@ open class NoteListAdapter(
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getItemCount(): Int {
-        if (shouldShowTodayHeader) {
-            return when {
+        return if (shouldShowTodayHeader) {
+            when {
                 newNotes.isEmpty() && oldNotes.isEmpty() -> 0
                 newNotes.isNotEmpty() && oldNotes.isEmpty() -> newNotes.size
                 newNotes.isEmpty() && oldNotes.isNotEmpty() -> oldNotes.size
                 else -> newNotes.size + oldNotes.size + 2
             }
         } else {
-            return newNotes.size + oldNotes.size
+            newNotes.size + oldNotes.size
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         if (shouldShowTodayHeader) {
             return when {
-                newNotes.isNotEmpty() && oldNotes.isEmpty() -> VIEW_TYPE_NOTE
-                newNotes.isEmpty() && oldNotes.isNotEmpty() -> VIEW_TYPE_NOTE
+                newNotes.isEmpty().xor(oldNotes.isEmpty()) -> VIEW_TYPE_NOTE
                 else -> {
                     when {
                         position == 0 -> VIEW_TYPE_HEADER
@@ -136,9 +141,7 @@ open class NoteListAdapter(
                     }
                 }
             }
-        } else {
-            return VIEW_TYPE_NOTE
-        }
+        } else return VIEW_TYPE_NOTE
     }
 
     private fun getNoteFromPosition(position: Int): PreviewNote {
@@ -173,17 +176,22 @@ open class NoteListAdapter(
         internal lateinit var colorBar: View
         internal lateinit var header: TextView
         internal lateinit var space: Space
+        internal lateinit var archivedIcon: ImageView
 
         init {
-            if (type == VIEW_TYPE_NOTE) {
-                lock = view.findViewById(R.id.iconNoteListLock)
-                name = view.findViewById(R.id.textNoteListTitle)
-                preview = view.findViewById(R.id.textNoteListPreview)
-                date = view.findViewById(R.id.textNoteListDate)
-                colorBar = view.findViewById(R.id.colorBarNoteList)
-            } else {
-                header = view.findViewById(R.id.textNoteListHeader)
-                space = view.findViewById(R.id.space)
+            when (type) {
+                VIEW_TYPE_NOTE -> {
+                    lock = view.findViewById(R.id.iconNoteListLock)
+                    name = view.findViewById(R.id.textNoteListTitle)
+                    preview = view.findViewById(R.id.textNoteListPreview)
+                    date = view.findViewById(R.id.textNoteListDate)
+                    colorBar = view.findViewById(R.id.colorBarNoteList)
+                    archivedIcon = view.findViewById(R.id.iconNoteListArchived)
+                }
+                else -> {
+                    header = view.findViewById(R.id.textNoteListHeader)
+                    space = view.findViewById(R.id.space)
+                }
             }
         }
 
@@ -195,13 +203,13 @@ open class NoteListAdapter(
 
     open fun getOnClickListener(note: PreviewNote): View.OnClickListener {
         return View.OnClickListener {
-            // Default Behavior; Do Nothing
+            // Default Behavior - Do Nothing
         }
     }
 
     open fun getOnLongClickListener(note: PreviewNote): View.OnLongClickListener {
         return View.OnLongClickListener {
-            // Default Behavior; Do Nothing
+            // Default Behavior - Do Nothing
             true
         }
     }

@@ -285,8 +285,22 @@
                     android:paddingTop="@dimen/paddingMedium"
                     android:paddingEnd="@dimen/paddingActivity"
                     android:paddingBottom="@dimen/settingsItemPadding"
-                    android:layout_marginBottom="@dimen/paddingMedium"
                     android:text="@string/settingsToday"
+                    android:textColor="?themeTextSecondary"
+                    android:textSize="@dimen/textSettings"
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchSettingsHomeOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:paddingStart="@dimen/paddingActivity"
+                    android:paddingTop="@dimen/paddingMedium"
+                    android:paddingEnd="@dimen/paddingActivity"
+                    android:paddingBottom="@dimen/settingsItemPadding"
+                    android:layout_marginBottom="@dimen/paddingMedium"
+                    android:text="@string/settingsHomeOptions"
                     android:textColor="?themeTextSecondary"
                     android:textSize="@dimen/textSettings"
                     />

@@ -83,7 +83,7 @@ class UpdateFilePresenter : UpdateFileContract.Presenter() {
     }
 
     override fun handleImportConfirm() {
-        newNoteId = noteRoomRepository.insertNote(name, content, NoteUtility.getDefaultColor(), "")
+        newNoteId = noteRoomRepository.insertNote(name, content, NoteUtility.getDefaultColor(), "", false)
         this.view?.showImportSuccessMessage()
     }
 

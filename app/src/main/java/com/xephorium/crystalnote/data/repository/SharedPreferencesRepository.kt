@@ -82,6 +82,17 @@ class SharedPreferencesRepository(private val context: Context) {
         return prefs.getBoolean(TODAY_HEADER_ENABLED, true)
     }
 
+    fun setHomeOptionsEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(HOME_OPTIONS_ENABLED, enabled)
+        editor.apply()
+    }
+
+    fun getHomeOptionsEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(HOME_OPTIONS_ENABLED, true)
+    }
+
     fun setNoteUnderlineEnabled(enabled: Boolean) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
         editor.putBoolean(NOTE_UNDERLINE_ENABLED, enabled)
@@ -228,6 +239,7 @@ class SharedPreferencesRepository(private val context: Context) {
         private const val NOTE_COLOR_BAR_ENABLED = "NoteColorBarEnabled"
         private const val NOTE_COLOR_BAR_THEME_ENABLED = "NoteColorBarThemeEnabled"
         private const val TODAY_HEADER_ENABLED = "TodayHeaderEnabled"
+        private const val HOME_OPTIONS_ENABLED = "HomeOptionsEnabled"
         private const val NOTE_UNDERLINE_ENABLED = "NoteUnderlineEnabled"
         private const val SCROLL_BUTTON_ENABLED = "ScrollButtonEnabled"
         private const val COLOR_ORB_ENABLED = "ColorOrbEnabled"
