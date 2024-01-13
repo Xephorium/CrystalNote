@@ -13,6 +13,8 @@ class HomePresenter : HomeContract.Presenter() {
     override fun attachView(view: HomeContract.View) {
         super.attachView(view)
 
+        showArchived = sharedPreferencesRepository.getShowArchivedNotesEnabled()
+
         // TODO - Find Better Solution
         // Note: Refresh delayed minimum amount to account for async
         //       database access in UpdateActivity.
@@ -148,6 +150,7 @@ class HomePresenter : HomeContract.Presenter() {
 
     override fun handleShowArchivedClick() {
         showArchived = !showArchived
+        sharedPreferencesRepository.setShowArchivedNotesEnabled(showArchived)
         refreshNoteList()
     }
 

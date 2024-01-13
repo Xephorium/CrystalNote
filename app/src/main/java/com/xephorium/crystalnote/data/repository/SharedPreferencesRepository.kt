@@ -27,6 +27,17 @@ class SharedPreferencesRepository(private val context: Context) {
         }
     }
 
+    fun setShowArchivedNotesEnabled(enabled: Boolean) {
+        val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
+        editor.putBoolean(SHOW_ARCHIVED_NOTES_ENABLED, enabled)
+        editor.apply()
+    }
+
+    fun getShowArchivedNotesEnabled(): Boolean {
+        val prefs = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE)
+        return prefs.getBoolean(SHOW_ARCHIVED_NOTES_ENABLED, true)
+    }
+
     fun setNotePreviewLines(lines: Int) {
         val editor = context.getSharedPreferences(APP_PRIMARY_KEY, Context.MODE_PRIVATE).edit()
         editor.putInt(NOTE_PREVIEW_LINES, lines)
@@ -234,6 +245,7 @@ class SharedPreferencesRepository(private val context: Context) {
     companion object {
         private const val APP_PRIMARY_KEY = "CrystalNotePreferences"
         private const val THEME = "Theme"
+        private const val SHOW_ARCHIVED_NOTES_ENABLED = "ShowArchivedNotesEnabled"
         private const val NOTE_PREVIEW_LINES = "NotePreviewLines"
         private const val NOTE_DATE_TYPE = "NoteDateType"
         private const val NOTE_COLOR_BAR_ENABLED = "NoteColorBarEnabled"

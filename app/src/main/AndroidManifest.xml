@@ -12,6 +12,7 @@
         />
 
     <application
+        android:name=".ui.base.CrystalNoteApplication"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/icon_launcher"
