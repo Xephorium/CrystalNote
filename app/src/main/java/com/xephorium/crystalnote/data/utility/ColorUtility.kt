@@ -3,6 +3,7 @@ package com.xephorium.crystalnote.data.utility
 import android.graphics.Color
 import androidx.core.graphics.ColorUtils
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
+import com.xephorium.crystalnote.ui.colorpicker.model.PreciseColor
 import kotlin.math.max
 import kotlin.math.min
 
@@ -29,6 +30,10 @@ object ColorUtility {
 
     fun areEqualHexColors(hexOne: String, hexTwo: String): Boolean {
         return getIntColorFromHexString(hexOne) == getIntColorFromHexString(hexTwo)
+    }
+
+    fun isBrightIntColor(color: Int): Boolean {
+        return PreciseColor(color).value >= 50
     }
 
 

@@ -15,6 +15,7 @@ import com.xephorium.crystalnote.data.model.WidgetState.Companion.TextSize
 import com.xephorium.crystalnote.data.model.WidgetState.Companion.Transparency
 import com.xephorium.crystalnote.data.repository.NoteRoomRepository
 import com.xephorium.crystalnote.data.repository.SharedPreferencesRepository
+import com.xephorium.crystalnote.data.utility.ColorUtility
 import com.xephorium.crystalnote.databinding.WidgetActivityLayoutBinding
 import com.xephorium.crystalnote.ui.colorpicker.ColorPickerDialogFragment
 import com.xephorium.crystalnote.ui.custom.CrystalNoteDialog
@@ -43,8 +44,9 @@ class WidgetActivity : DrawerActivity(), WidgetContract.View {
         presenter = WidgetPresenter()
         presenter.sharedPreferencesRepository = SharedPreferencesRepository(this)
         presenter.noteRoomRepository = NoteRoomRepository(this)
-        presenter.previewBackgroundBright = getThemeColor(R.attr.themeNoteBackground) ==
-                resources.getColor(R.color.lightNoteBackground)
+        presenter.previewBackgroundBright = ColorUtility.isBrightIntColor(
+            getThemeColor(R.attr.themePreviewBackgroundDefault)
+        )
 
         setupToolbar()
         setupPreviewIcons()

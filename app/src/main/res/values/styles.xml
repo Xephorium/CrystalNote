@@ -407,7 +407,7 @@
         <item name="themeNoteRipple">@color/snowBackdropRipple</item>
         <item name="themeNoteUnderline">@color/snowUnderline</item>
 
-        <item name="themePreviewBackgroundDefault">@color/snowPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundDefault">@color/snowPreviewBackgroundLight</item>
         <item name="themePreviewBackgroundLight">@color/snowPreviewBackgroundLight</item>
         <item name="themePreviewBackgroundDark">@color/snowPreviewBackgroundDark</item>
 
@@ -417,7 +417,9 @@
         <item name="themeDrawerImageFilter">@color/snowDrawerFilter</item>
     </style>
 
-    <style name="Light" parent="LightBase" />
+    <style name="Light" parent="LightBase">
+
+    </style>
 
     <style name="Parchment" parent="LightBase">
         <item name="themeStatusBar">@color/parchmentBackdropDark</item>
@@ -445,7 +447,7 @@
         <item name="themeNoteRipple">@color/parchmentBackdropRipple</item>
         <item name="themeNoteUnderline">@color/parchmentUnderline</item>
 
-        <item name="themePreviewBackgroundDefault">@color/parchmentPreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundDefault">@color/parchmentPreviewBackgroundLight</item>
         <item name="themePreviewBackgroundLight">@color/parchmentPreviewBackgroundLight</item>
         <item name="themePreviewBackgroundDark">@color/parchmentPreviewBackgroundDark</item>
 
