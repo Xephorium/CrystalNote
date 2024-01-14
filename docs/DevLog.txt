@@ -40,7 +40,7 @@ December 2023
     • Custom Color Picker for Note/Widget Colors (01.6.24)
       • New API Widget Preview (01.08.2024)
     • Archived Notes (01.13.2024)
-    ◦ Refresh themes (Ongoing)
+    • Refresh themes (01.13.2023)
       • Darker Night Theme (12.30.2023)
 
     Future Improvements
