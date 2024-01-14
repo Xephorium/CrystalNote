@@ -109,6 +109,23 @@
     <color name="snowPreviewBackgroundDark">#171717</color>
     <color name="snowPreviewBackgroundLight">#CACACA</color>
 
+    <color name="nasaBackdropDark">#dde6f0</color>
+    <color name="nasaBackdropLight">#edf6ff</color>
+    <color name="nasaBackdropRipple">#a8b1ba</color>
+    <color name="nasaNoteColorBar">#5d6e80</color>
+    <color name="nasaAccent">#546373</color>
+    <color name="nasaAccentRipple">#899aab</color>
+    <color name="nasaTextPrimary">#343940</color>
+    <color name="nasaTextSecondary">#475159</color>
+    <color name="nasaTextTertiary">#626e7a</color>
+    <color name="nasaTextHandle">#546373</color>
+    <color name="nasaTextHighlight">#c1cbd6</color>
+    <color name="nasaDrawerFilter">#70b2c3d4</color>
+    <color name="nasaUnderline">#9AA6B1</color>
+    <color name="nasaDivider">#B8C4CF</color>
+    <color name="nasaPreviewBackgroundDark">#1f2226</color>
+    <color name="nasaPreviewBackgroundLight">#b1bdc9</color>
+
     <color name="parchmentBackdropDark">#e0ded7</color>
     <color name="parchmentBackdropLight">#f2f0ed</color>
     <color name="parchmentBackdropRipple">#BAB4AC</color>

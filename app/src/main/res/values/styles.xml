@@ -418,7 +418,39 @@
     </style>
 
     <style name="Light" parent="LightBase">
+        <item name="themeStatusBar">@color/nasaBackdropDark</item>
 
+        <item name="themeToolbar">@color/nasaBackdropDark</item>
+        <item name="themeToolbarTextPrimary">@color/nasaTextPrimary</item>
+        <item name="themeToolbarTextSecondary">@color/nasaTextSecondary</item>
+
+        <item name="themeBackground">@color/nasaBackdropLight</item>
+        <item name="themeDivider">@color/nasaDivider</item>
+
+        <item name="themeAccent">@color/nasaAccent</item>
+        <item name="themeAccentRipple">@color/nasaAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/nasaBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/nasaBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/nasaTextPrimary</item>
+        <item name="themeTextSecondary">@color/nasaTextSecondary</item>
+        <item name="themeTextTertiary">@color/nasaTextTertiary</item>
+        <item name="themeTextHandle">@color/nasaTextHandle</item>
+        <item name="themeTextHighlight">@color/nasaTextHighlight</item>
+
+        <item name="themeNoteBackground">@color/nasaBackdropDark</item>
+        <item name="themeNoteColorBar">@color/nasaNoteColorBar</item>
+        <item name="themeNoteRipple">@color/nasaBackdropRipple</item>
+        <item name="themeNoteUnderline">@color/nasaUnderline</item>
+
+        <item name="themePreviewBackgroundDefault">@color/nasaPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundLight">@color/nasaPreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/nasaPreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/nasaTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/nasaTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/nasaBackdropDark</item>
+        <item name="themeDrawerImageFilter">@color/nasaDrawerFilter</item>
     </style>
 
     <style name="Parchment" parent="LightBase">
