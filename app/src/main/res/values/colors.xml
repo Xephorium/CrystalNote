@@ -125,15 +125,15 @@
     <color name="snowPreviewBackgroundDark">#171717</color>
     <color name="snowPreviewBackgroundLight">#CACACA</color>
 
-    <color name="nasaBackdropDark">#dde6f0</color>
-    <color name="nasaBackdropLight">#edf6ff</color>
+    <color name="nasaBackdropDark">#dae5f0</color>
+    <color name="nasaBackdropLight">#f0f7fc</color>
     <color name="nasaBackdropRipple">#a8b1ba</color>
     <color name="nasaNoteColorBar">#5d6e80</color>
     <color name="nasaAccent">#546373</color>
     <color name="nasaAccentRipple">#899aab</color>
     <color name="nasaTextPrimary">#343940</color>
-    <color name="nasaTextSecondary">#475159</color>
-    <color name="nasaTextTertiary">#626e7a</color>
+    <color name="nasaTextSecondary">#485057</color>
+    <color name="nasaTextTertiary">#66707A</color>
     <color name="nasaTextHandle">#546373</color>
     <color name="nasaTextHighlight">#c1cbd6</color>
     <color name="nasaDrawerFilter">#70b2c3d4</color>
