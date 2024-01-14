@@ -92,6 +92,22 @@
     <color name="cobaltPreviewBackgroundDark">#0d0f12</color>
     <color name="cobaltPreviewBackgroundLight">#8A929E</color>
 
+    <color name="oliveBackdropDark">#363d33</color>
+    <color name="oliveBackdropLight">#444d3f</color>
+    <color name="oliveBackdropHighlight">#24c0d4b4</color>
+    <color name="oliveBackdropRipple">#6f7a68</color>
+    <color name="oliveNoteColorBar">#f4f7f1</color>
+    <color name="oliveAccent">#f4f7f1</color>
+    <color name="oliveAccentRipple">#8d9985</color>
+    <color name="oliveTextPrimary">#ffffff</color>
+    <color name="oliveTextSecondary">#cfd6ce</color>
+    <color name="oliveTextTertiary">#aeb8ad</color>
+    <color name="oliveTextHandle">#f4f7f1</color>
+    <color name="oliveDrawerFilter">#E4161C12</color>
+    <color name="oliveDivider">#646E5E</color>
+    <color name="olivePreviewBackgroundDark">#171a16</color>
+    <color name="olivePreviewBackgroundLight">#919e8a</color>
+
     <color name="snowBackdropDark">#ececec</color>
     <color name="snowBackdropLight">#ffffff</color>
     <color name="snowBackdropRipple">#BABABA</color>

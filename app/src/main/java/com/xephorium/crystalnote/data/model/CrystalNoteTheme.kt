@@ -25,6 +25,7 @@ data class CrystalNoteTheme(
         BLACK("Black", R.style.Black),
         DARK("Dark", R.style.Dark),
         COBALT("Cobalt", R.style.Cobalt),
+        OLIVE("Olive", R.style.Olive),
         WHITE("White", R.style.White),
         LIGHT("Light", R.style.Light),
         PARCHMENT("Parchment", R.style.Parchment);

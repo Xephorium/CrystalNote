@@ -381,6 +381,39 @@
         <item name="themeDrawerImageFilter">@color/cobaltDrawerFilter</item>
     </style>
 
+    <style name="Olive" parent="DarkBase">
+        <item name="themeStatusBar">@color/oliveBackdropDark</item>
+
+        <item name="themeToolbar">@color/oliveBackdropDark</item>
+        <item name="themeToolbarTextSecondary">@color/oliveTextSecondary</item>
+
+        <item name="themeBackground">@color/oliveBackdropLight</item>
+        <item name="themeDivider">@color/oliveDivider</item>
+
+        <item name="themeAccent">@color/oliveAccent</item>
+        <item name="themeAccentRipple">@color/oliveAccentRipple</item>
+        <item name="themeAccentTextPrimary">@color/oliveBackdropDark</item>
+        <item name="themeAccentTextSecondary">@color/oliveBackdropLight</item>
+
+        <item name="themeTextPrimary">@color/oliveTextPrimary</item>
+        <item name="themeTextSecondary">@color/oliveTextSecondary</item>
+        <item name="themeTextTertiary">@color/oliveTextTertiary</item>
+        <item name="themeTextHandle">@color/oliveTextHandle</item>
+
+        <item name="themeNoteBackground">@color/oliveBackdropDark</item>
+        <item name="themeNoteColorBar">@color/oliveNoteColorBar</item>
+        <item name="themeNoteRipple">@color/oliveBackdropRipple</item>
+
+        <item name="themePreviewBackgroundDefault">@color/olivePreviewBackgroundDark</item>
+        <item name="themePreviewBackgroundLight">@color/olivePreviewBackgroundLight</item>
+        <item name="themePreviewBackgroundDark">@color/olivePreviewBackgroundDark</item>
+
+        <item name="themeDrawerItem">@color/oliveTextSecondary</item>
+        <item name="themeDrawerItemSelected">@color/oliveTextPrimary</item>
+        <item name="themeDrawerItemSelectedBackground">@color/oliveBackdropHighlight</item>
+        <item name="themeDrawerImageFilter">@color/oliveDrawerFilter</item>
+    </style>
+
     <style name="White" parent="LightBase">
         <item name="themeStatusBar">@color/snowBackdropDark</item>
 
