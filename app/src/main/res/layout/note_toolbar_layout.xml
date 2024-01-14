@@ -37,7 +37,7 @@
             android:layout_width="@dimen/toolbarIconSize"
             android:layout_height="@dimen/toolbarIconSize"
             android:layout_marginStart="0dp"
-            android:layout_marginEnd="@dimen/paddingActivity"
+            android:layout_marginEnd="@dimen/paddingMedium"
             android:padding="@dimen/paddingMedium"
             android:background="?selectableItemBackgroundBorderless"
             android:clickable="true"
