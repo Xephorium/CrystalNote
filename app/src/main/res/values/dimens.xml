@@ -97,7 +97,7 @@
     <dimen name="toolbarIconSize">40dp</dimen>
     <dimen name="toolbarOptionsIconWidth">24dp</dimen>
     <dimen name="toolbarColorOrbPadding">16dp</dimen>
-    <dimen name="updateNoteActionButtonSize">32dp</dimen>
+    <dimen name="updateNoteActionButtonSize">36dp</dimen>
     <dimen name="widgetSettingsColorOrbPadding">20dp</dimen>
     <dimen name="widgetSettingsColorOrbSize">25dp</dimen>
     <dimen name="widgetCornerRadiusNone">0dp</dimen>

@@ -42,6 +42,9 @@ December 2023
     • Archived Notes (01.13.2024)
     • Refresh themes (01.13.2024)
       • Darker Night Theme (12.30.2023)
+    • Final Fixes
+      • Increase Action Button Bottom Margin (01.31.2024)
+      • Increase Scroll Button Size (01.31.2024)
 
     Future Improvements
     ◦ "System" theme for Dynamic Color on API 12+
