@@ -18,14 +18,15 @@ Crystal Note was designed to be the most customizable notes app on Android. From
 </br>
 
 ### App Features
-- Note Colors
+- Custom Note Colors
 - Note Password Protection
+- Optional Note Archival
 - Note Import/Export as Plaintext
 - Multiple Widget Support
-- Full Text File Editor
+- Full Text File Editor (Older Devices Only)
 
 ### Personalization
 - Vibrant App Themes
-- Granular Widget Customization
-- Personalized Note List
-- Dynamic App Appearance Preview
+- Most Customizable Widgets on Android
+- Personalized Note List & Edit Screens
+- Real-Time App Appearance Preview
