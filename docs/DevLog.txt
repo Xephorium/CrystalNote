@@ -5,6 +5,8 @@ December 2023
   /// CrystalNote v1.1 Checklist ///
   //////////////////////////////////
 
+    • Save note without name for Ayayron
+
     Feature Rework - Changes needed to target Android 14
     • Upgrade Gradle (12.09.2023)
     • Upgrade Kotlin (12.09.2023)
