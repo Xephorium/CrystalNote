@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Universal App Theme -->
+
+    <style name="CrystalNoteTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+
+        <item name="android:windowTranslucentStatus">false</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="colorAccent">?themeAccent</item>
+        <item name="colorPrimaryDark">?themeStatusBar</item>
+        <item name="android:colorControlActivated">?themeTextHandle</item>
+        <item name="android:colorControlHighlight">?themeToolbarRipple</item>
+        <item name="android:textColorHighlight">?themeTextHighlight</item>
+        <item name="android:colorEdgeEffect">?themeOverscroll</item>
+        <item name="android:toolbarStyle">@style/ToolbarTheme</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerTheme</item>
+        <item name="android:actionOverflowButtonStyle">@style/OptionsMenuButton</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">?themeNoteBackground</item>
+        <item name="android:theme">@style/ColoredControlTheme</item>
+
+        <!-- NOTE: This line is why this file exists. I'm opting out of Edge-to-Edge layouts     -->
+        <!--       as a temporary workaround to refactoring my layouts in Android API 35.        -->
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+</resources>

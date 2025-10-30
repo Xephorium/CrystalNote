@@ -1,4 +1,36 @@
 
+October 2025
+
+  ///////////////////////////////////////
+  /// Upgrading from Android 14 to 15 ///
+  ///////////////////////////////////////
+
+  Feature Rework - Changes needed to target Android 15
+  • String.format() Changes
+    • The Android SDK Upgrade Assistant says this method is now more specific about the %x
+      parameters it accepts. The documentation specifically calls out %0 as invalid syntax that
+      will throw an exception. But I've tested the two usages of this function with a %0 parameter
+      in the app on API 35 and everything works. Gonna call it good!
+  • MutableList.removeFirst() and MutableList.removeLast()
+    • These two calls now conflict with another method in MutableCollection of the same name. To
+      address this, I've replaced references of both with the slightly more verbose
+      MutableList.removeAt(0) and MutableList.removeAt(list.lastIndex).
+  • Intent Security Updates
+    • I won't pretend to fully understand the changes made in API 35. But I've run through all the
+      scenarios involving widget setup and update (the places where I use them) and everything
+      appears to be working as expected.
+  • Add Edge-To-Edge Support
+    • For now, I'm opting out of this feature. If a certain flag is added to the theme, it can be
+      disabled in Android 15 (API 35). That said, the flag will be ignored in Android 16 (API 36),
+      enforcing Edge-to-Edge layouts. I'll need to add proper support before that point.
+    • In addition to adding the theme flag, I needed to adjust the margin of the Home screen's
+      floating action button for Android 15+. This change can be reverted when I refactor to fully
+      support Edge-to-Edge layouts.
+  • There are also lots of text rendering changes that could alter the appearance of apps that use
+    fancy fonts or support other languages. Luckily, mine does neither! So I'm off the hook here.
+
+
+
 December 2023
 
   //////////////////////////////////

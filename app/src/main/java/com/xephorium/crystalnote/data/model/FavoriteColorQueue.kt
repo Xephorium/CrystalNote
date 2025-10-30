@@ -41,7 +41,7 @@ class FavoriteColorQueue(string: String) {
         if (colors.size < MAX_FAVORITES) {
             colors.addFirst(color)
         } else {
-            colors.removeLast()
+            colors.removeAt(colors.lastIndex)
             colors.addFirst(color)
         }
     }

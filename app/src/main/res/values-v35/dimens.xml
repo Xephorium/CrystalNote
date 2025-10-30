@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Custom Controls -->
+    <!-- NOTE: This is a dirty hack. Instead of adding logic to dynamically calculate and set    -->
+    <!--       this button's bottom margin to support End-to-End layouts in Android API 35+,     -->
+    <!--       I'm just increasing the bottom margin by an eyeballed constant amount. This       -->
+    <!--       doesn't seem to be necessary for the scroll to bottom button on the Update Note   -->
+    <!--       screen because it uses a coordinator layout. Unifying the layouts of both screens -->
+    <!--       might also be a cleaner alternative to this.                                      -->
+    <dimen name="floatingActionButtonMarginBottom">128dp</dimen>
+
+</resources>
