@@ -1,13 +1,13 @@
 <img align="left" width="140" src="app/src/main/res/mipmap-xxxhdpi/icon_launcher.png" alt="CrystalNote Icon">
+<div id="toc"><ul style="list-style: none"><summary><h2> CrystalNote </h2></summary></ul></div>
 
-# CrystalNote
 An aggressively minimalist, highly customizable notes app for Android.
 
 </br>
 
 ![Screenshot Showcase](app/src/main/github_showcase.png)
 
-##
+###
 
 Crystal Note was designed to be the most customizable notes app on Android. From app theme to widget appearance, every pixel can be tailored to your preference. All free forever, with no ads, tracking, or spam.
 
